@@ -1,10 +1,15 @@
+import os
+
 import pytest
 from pydantic import ValidationError
 
 from kensa.core.config import Settings
 
 
-def test_defaults_are_local_only() -> None:
+def test_defaults_are_local_only(monkeypatch: pytest.MonkeyPatch) -> None:
+    # The defaults themselves: CI sets KENSA_* variables (the mock provider) for the whole job.
+    for name in [name for name in os.environ if name.upper().startswith("KENSA_")]:
+        monkeypatch.delenv(name)
     settings = Settings(_env_file=None)
     assert settings.ollama_base_url == "http://127.0.0.1:11434"
     assert settings.inference_provider == "ollama"

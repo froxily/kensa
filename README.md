@@ -139,7 +139,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts/ci-local.ps1
 
 | Suite | Count |
 |---|---|
-| Backend tests (pytest) | 467 |
+| Backend tests (pytest) | 468 |
 | Frontend tests (Vitest) | 44 |
 | End-to-end tests (Playwright) | 17, including axe in both languages and themes, and the replay build offline, by keyboard and at phone width |
 

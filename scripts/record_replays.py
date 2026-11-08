@@ -32,7 +32,7 @@ import time
 from collections.abc import Iterator
 from contextlib import contextmanager
 from datetime import UTC, datetime
-from pathlib import Path
+from pathlib import Path, PurePath
 from typing import Any
 
 import httpx
@@ -76,13 +76,24 @@ DEV_CASES = ("d45-coast-scope", "d03-tide-rounding", "d33-plum-cutoff")
 
 # This machine's own paths would reveal the recording user's name or folder layout. CI logs are
 # full of runner paths such as /home/runner/work/...; those are log content, not local paths.
-LOCAL_PATHS = tuple(
-    {
-        variant.lower()
-        for path in (Path.home(), REPO_ROOT)
-        for variant in (str(path), path.as_posix())
-    }
-)
+# So a GitHub-hosted runner's home is never one: it reveals nothing about anyone, and on a runner
+# (where the tests run in CI) it would flag the recorded logs themselves.
+RUNNER_HOME = "/home/runner"
+
+
+def local_paths(*paths: PurePath) -> tuple[str, ...]:
+    """Lower-cased spellings of the given paths, leaving out a CI runner's home."""
+    variants = {variant.lower() for path in paths for variant in (str(path), path.as_posix())}
+    return tuple(
+        sorted(
+            variant
+            for variant in variants
+            if variant != RUNNER_HOME and not variant.startswith(f"{RUNNER_HOME}/")
+        )
+    )
+
+
+LOCAL_PATHS = local_paths(Path.home(), REPO_ROOT)
 
 
 def strings_in(value: Any, where: str = "$") -> Iterator[tuple[str, str]]:
@@ -96,12 +107,12 @@ def strings_in(value: Any, where: str = "$") -> Iterator[tuple[str, str]]:
             yield from strings_in(item, f"{where}[{index}]")
 
 
-def check_recording(recording: dict[str, Any]) -> list[str]:
+def check_recording(recording: dict[str, Any], paths: tuple[str, ...] = LOCAL_PATHS) -> list[str]:
     """Return one line per string that must not be published (empty when the recording is safe)."""
     problems: list[str] = []
     for where, text in strings_in(recording):
         found = findings(text)
-        if any(path in text.lower() for path in LOCAL_PATHS):
+        if any(path in text.lower() for path in paths):
             found.append("local path")
         problems.extend(f"{where}: {kind}" for kind in found)
     return problems

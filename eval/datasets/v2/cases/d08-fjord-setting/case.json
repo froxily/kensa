@@ -1,0 +1,16 @@
+{
+  "id": "d08-fjord-setting",
+  "split": "dev",
+  "category": "missing_env_var",
+  "kind": "standard",
+  "difficulty": "easy",
+  "ecosystem": "kotlin",
+  "title": "Configuration probe lacks its region",
+  "root_cause": "The program requires FJORD_REGION but the job does not set it. The null environment lookup triggers an exception before the probe can print its configuration.",
+  "fix_keywords": ["FJORD_REGION"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 53, "end_line": 55, "why": "The exception reports the missing setting and source line."},
+    {"path": "src/Probe.kt", "start_line": 1, "end_line": 3, "why": "The program requires the environment value."},
+    {"path": ".github/workflows/probe.yml", "start_line": 5, "end_line": 13, "why": "The job invokes the probe without setting its region."}
+  ]
+}

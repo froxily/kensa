@@ -1,0 +1,60 @@
+2026-09-22T11:00:00.0000000Z Current runner version: '2.329.0'
+2026-09-22T11:00:00.1000000Z ##[group]Operating System
+2026-09-22T11:00:00.2000000Z Ubuntu
+2026-09-22T11:00:00.3000000Z 22.04.5
+2026-09-22T11:00:00.4000000Z ##[endgroup]
+2026-09-22T11:00:00.5000000Z ##[group]Runner Image
+2026-09-22T11:00:00.6000000Z Image: ubuntu-22.04
+2026-09-22T11:00:00.7000000Z ##[endgroup]
+2026-09-22T11:00:00.8000000Z Prepare workflow directory
+2026-09-22T11:00:00.9000000Z Prepare all required actions
+2026-09-22T11:00:01.0000000Z Getting action download info
+2026-09-22T11:00:01.1000000Z Download action repository 'actions/checkout@v4'
+2026-09-22T11:00:01.2000000Z Download action repository 'erlef/setup-beam@v1'
+2026-09-22T11:00:01.3000000Z Complete job name: allocate
+2026-09-22T11:00:01.4000000Z ##[group]Run actions/checkout@v4
+2026-09-22T11:00:01.5000000Z with:
+2026-09-22T11:00:01.6000000Z   repository: borage-labs/sample-work
+2026-09-22T11:00:01.7000000Z ##[endgroup]
+2026-09-22T11:00:01.8000000Z Syncing repository: borage-labs/sample-work
+2026-09-22T11:00:01.9000000Z Getting Git version info
+2026-09-22T11:00:02.0000000Z git version 2.51.0
+2026-09-22T11:00:02.1000000Z Checking out the ref
+2026-09-22T11:00:02.2000000Z ##[group]Run erlef/setup-beam@v1
+2026-09-22T11:00:02.3000000Z with:
+2026-09-22T11:00:02.4000000Z   otp-version: 27.1
+2026-09-22T11:00:02.5000000Z   elixir-version: 1.17.3
+2026-09-22T11:00:02.6000000Z ##[endgroup]
+2026-09-22T11:00:03.1000000Z Using cached OTP version 27.1
+2026-09-22T11:00:03.2000000Z Using cached Elixir version 1.17.3
+2026-09-22T11:00:03.3000000Z ##[group]Run ulimit -v 12000000
+2026-09-22T11:00:03.4000000Z ulimit -v 12000000
+2026-09-22T11:00:03.5000000Z elixir tools/materialize.exs
+2026-09-22T11:00:03.6000000Z shell: /usr/bin/bash -e {0}
+2026-09-22T11:00:03.7000000Z ##[endgroup]
+2026-09-22T11:00:04.0000000Z loading segment: north
+2026-09-22T11:00:04.0100000Z loading segment: south
+2026-09-22T11:00:04.0200000Z loading segment: east
+2026-09-22T11:00:04.0300000Z loading segment: west
+2026-09-22T11:00:04.0400000Z loading segment: inner
+2026-09-22T11:00:04.0500000Z loading segment: outer
+2026-09-22T11:00:04.0600000Z loading segment: upper
+2026-09-22T11:00:04.0700000Z loading segment: lower
+2026-09-22T11:00:04.0800000Z loading segment: amber
+2026-09-22T11:00:04.0900000Z loading segment: ivory
+2026-09-22T11:00:04.1000000Z loading segment: silver
+2026-09-22T11:00:04.1100000Z loading segment: bronze
+2026-09-22T11:00:04.1200000Z loading segment: early
+2026-09-22T11:00:04.1300000Z loading segment: late
+2026-09-22T11:00:04.1400000Z loading segment: small
+2026-09-22T11:00:04.1500000Z loading segment: large
+2026-09-22T11:00:04.1600000Z loading segment: primary
+2026-09-22T11:00:04.1700000Z loading segment: secondary
+2026-09-22T11:00:04.1800000Z loading segment: warm
+2026-09-22T11:00:04.1900000Z loading segment: cold
+2026-09-22T11:00:04.2000000Z allocating sample block
+2026-09-22T11:00:04.3000000Z binary_alloc: Cannot allocate 13000000040 bytes of memory (of type "binary").
+2026-09-22T11:00:04.4000000Z Crash dump is being written to: erl_crash.dump...done
+2026-09-22T11:00:04.5000000Z ##[error]Process completed with exit code 1.
+2026-09-22T11:00:04.6000000Z Post job cleanup.
+2026-09-22T11:00:04.7000000Z Cleaning up orphan processes

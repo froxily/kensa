@@ -1,0 +1,17 @@
+name: Label console
+on: [push]
+jobs:
+  contract:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Fetch test runner
+        run: curl -fsSL https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-console-standalone/1.11.3/junit-platform-console-standalone-1.11.3.jar -o junit-console.jar
+      - name: Compile and run label checks
+        run: |
+          javac -cp junit-console.jar -d out src/LabelPolicy.java checks/LabelContractTest.java
+          java -jar junit-console.jar execute --class-path out --scan-class-path --details tree

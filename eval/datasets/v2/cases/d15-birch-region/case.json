@@ -1,0 +1,16 @@
+{
+  "id": "d15-birch-region",
+  "split": "dev",
+  "category": "missing_env_var",
+  "kind": "standard",
+  "difficulty": "easy",
+  "ecosystem": "go",
+  "title": "Region probe starts without its setting",
+  "root_cause": "The probe requires BIRCH_REGION, but the workflow does not provide it. The empty lookup causes the program to log a fatal error and exit.",
+  "fix_keywords": ["BIRCH_REGION"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 51, "end_line": 53, "why": "The probe reports the missing setting and exits."},
+    {"path": "cmd/probe/main.go", "start_line": 8, "end_line": 12, "why": "The program rejects an empty environment value."},
+    {"path": ".github/workflows/probe.yml", "start_line": 5, "end_line": 13, "why": "The workflow invokes the probe without setting the region."}
+  ]
+}

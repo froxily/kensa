@@ -1,0 +1,106 @@
+# Mirrors scripts/ci-local.ps1, and is checked locally by backend/tests/test_ci_workflow.py.
+# No secrets, no paid services, no live model or GitHub calls: inference and embeddings use the
+# deterministic mock provider. Every action is pinned to a full commit SHA (verified against the
+# tag with `git ls-remote`, 2026-11-03); the comment names the release.
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # Throwaway credentials for the job's own database container; not secrets.
+  POSTGRES_USER: kensa
+  POSTGRES_PASSWORD: ci-only
+  POSTGRES_DB: kensa
+  KENSA_DATABASE_URL: postgresql+psycopg://kensa:ci-only@127.0.0.1:5433/kensa
+  KENSA_INFERENCE_PROVIDER: mock
+  KENSA_EMBEDDING_PROVIDER: mock
+  KENSA_TELEMETRY_ENABLED: "false"
+  LANGSMITH_TRACING: "false"
+
+jobs:
+  backend:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    services:
+      db:
+        image: pgvector/pgvector:0.8.7-pg18
+        env:
+          POSTGRES_USER: kensa
+          POSTGRES_PASSWORD: ci-only
+          POSTGRES_DB: kensa
+        ports:
+          - 5433:5432
+        options: >-
+          --health-cmd "pg_isready -U kensa -d kensa"
+          --health-interval 5s --health-timeout 3s --health-retries 20
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+      - run: uv sync --locked
+      - run: uv run --no-sync ruff check . ../scripts
+      - run: uv run --no-sync ruff format --check . ../scripts
+      - run: uv run --no-sync mypy
+      - run: uv run --no-sync pytest
+
+  frontend:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    services:
+      db:
+        image: pgvector/pgvector:0.8.7-pg18
+        env:
+          POSTGRES_USER: kensa
+          POSTGRES_PASSWORD: ci-only
+          POSTGRES_DB: kensa
+        ports:
+          - 5433:5432
+        options: >-
+          --health-cmd "pg_isready -U kensa -d kensa"
+          --health-interval 5s --health-timeout 3s --health-retries 20
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+      - run: npm run -s lint
+      - run: npm run -s format:check
+      - run: npm run -s typecheck
+      - run: npm run -s test
+      - run: npm run -s build
+      # End-to-end + axe: the real backend (mock provider, its own database) and the Vite server.
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+      - run: uv sync --locked --directory ../backend
+      - run: npx playwright install --with-deps chromium
+      - run: npx playwright test
+
+  infra:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - run: docker compose config --quiet

@@ -1,0 +1,17 @@
+{
+  "id": "t26-nutmeg-suppressed",
+  "split": "test",
+  "category": "unknown",
+  "kind": "insufficient",
+  "difficulty": "medium",
+  "ecosystem": "php",
+  "title": "Measurement inspection exits with its output hidden",
+  "root_cause": "The inspection command's output is discarded and its input is masked, leaving only a nonzero exit. The available evidence cannot distinguish malformed input from a rejected measurement or another runtime failure.",
+  "fix_keywords": [],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 66, "end_line": 68, "why": "The step ends with a generic exit code and no command diagnostic."},
+    {"path": "log", "start_line": 32, "end_line": 34, "why": "The measurement value is masked."},
+    {"path": ".github/workflows/inventory-audit.yml", "start_line": 11, "end_line": 17, "why": "The inspection output is redirected and its input comes from a secret."},
+    {"path": "tasks/inventory.php", "start_line": 2, "end_line": 7, "why": "The script can exit on different input conditions."}
+  ]
+}

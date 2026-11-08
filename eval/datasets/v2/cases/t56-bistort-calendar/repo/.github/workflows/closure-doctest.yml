@@ -1,0 +1,12 @@
+name: Closure doctest
+on: [push]
+jobs:
+  calendar:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Verify closure examples
+        run: python -m doctest -v checks/closure_examples.txt

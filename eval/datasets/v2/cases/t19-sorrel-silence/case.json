@@ -1,0 +1,16 @@
+{
+  "id": "t19-sorrel-silence",
+  "split": "test",
+  "category": "unknown",
+  "kind": "insufficient",
+  "difficulty": "medium",
+  "ecosystem": "node",
+  "title": "Release feed check exits without diagnostics",
+  "root_cause": "The child process exits nonzero with its output suppressed. A request failure or invalid response could cause that exit, but the available output does not distinguish them.",
+  "fix_keywords": [],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 55, "end_line": 57, "why": "The only reported failure is a generic exit code."},
+    {"path": "tools/inspect.cjs", "start_line": 3, "end_line": 5, "why": "The child process output is discarded before its status is returned."},
+    {"path": "tools/read-feed.cjs", "start_line": 1, "end_line": 7, "why": "Several failures can lead to the same exit."}
+  ]
+}

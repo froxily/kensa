@@ -1,0 +1,15 @@
+{
+  "id": "t43-sage-duplicate",
+  "split": "test",
+  "category": "dependency_build",
+  "kind": "standard",
+  "difficulty": "easy",
+  "ecosystem": "node",
+  "title": "Release script declares the same constant twice",
+  "root_cause": "The release script declares phaseCount twice in the same scope. Node's syntax check rejects the duplicate declaration before the script can run.",
+  "fix_keywords": ["phaseCount", "phase-release.mjs"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 79, "end_line": 83, "why": "Node reports the duplicate declaration as a syntax error."},
+    {"path": "tools/phase-release.mjs", "start_line": 1, "end_line": 4, "why": "The two constant declarations share a scope."}
+  ]
+}

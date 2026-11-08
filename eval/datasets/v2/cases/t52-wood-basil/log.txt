@@ -1,0 +1,95 @@
+2026-10-27T10:00:00.0000000Z Current runner version: '2.329.0'
+2026-10-27T10:00:00.1000000Z ##[group]Runner Image
+2026-10-27T10:00:00.2000000Z Image: ubuntu-22.04
+2026-10-27T10:00:00.3000000Z ##[endgroup]
+2026-10-27T10:00:00.4000000Z Prepare workflow directory
+2026-10-27T10:00:00.5000000Z Prepare all required actions
+2026-10-27T10:00:00.6000000Z Download action repository 'actions/checkout@v4'
+2026-10-27T10:00:00.7000000Z Complete job name: test
+2026-10-27T10:00:00.8000000Z ##[group]Run actions/checkout@v4
+2026-10-27T10:00:00.9000000Z with:
+2026-10-27T10:00:01.0000000Z   repository: wood-basil-labs/sector-check
+2026-10-27T10:00:01.1000000Z ##[endgroup]
+2026-10-27T10:00:01.2000000Z Syncing repository: wood-basil-labs/sector-check
+2026-10-27T10:00:01.3000000Z Checking out the ref
+2026-10-27T10:00:01.4000000Z ##[group]Run sudo apt-get update && sudo apt-get install -y catch2
+2026-10-27T10:00:01.5000000Z sudo apt-get update && sudo apt-get install -y catch2
+2026-10-27T10:00:01.6000000Z shell: /usr/bin/bash -e {0}
+2026-10-27T10:00:01.7000000Z ##[endgroup]
+2026-10-27T10:00:03.0000000Z Reading package lists...
+2026-10-27T10:00:03.1000000Z Building dependency tree...
+2026-10-27T10:00:03.2000000Z Reading state information...
+2026-10-27T10:00:03.3000000Z Setting up catch2 (2.13.8-1) ...
+2026-10-27T10:00:03.4000000Z ##[group]Run cmake -S . -B build && cmake --build build
+2026-10-27T10:00:03.5000000Z cmake -S . -B build && cmake --build build
+2026-10-27T10:00:03.6000000Z shell: /usr/bin/bash -e {0}
+2026-10-27T10:00:03.7000000Z ##[endgroup]
+2026-10-27T10:00:03.8000000Z -- The CXX compiler identification is GNU 11.4.0
+2026-10-27T10:00:03.9000000Z -- Configuring done
+2026-10-27T10:00:04.0000000Z -- Generating done
+2026-10-27T10:00:04.1000000Z -- Build files have been written to: /home/runner/work/sector-check/sector-check/build
+2026-10-27T10:00:04.2000000Z [ 50%] Building CXX object CMakeFiles/sector_checks.dir/checks/sector_checks.cpp.o
+2026-10-27T10:00:05.0000000Z [100%] Linking CXX executable sector_checks
+2026-10-27T10:00:05.1000000Z [100%] Built target sector_checks
+2026-10-27T10:00:05.2000000Z ##[group]Run ./build/sector_checks --reporter console --success
+2026-10-27T10:00:05.3000000Z ./build/sector_checks --reporter console --success
+2026-10-27T10:00:05.4000000Z shell: /usr/bin/bash -e {0}
+2026-10-27T10:00:05.5000000Z ##[endgroup]
+2026-10-27T10:00:05.6000000Z 
+2026-10-27T10:00:05.6100000Z ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2026-10-27T10:00:05.6200000Z sector_checks is a Catch v2.13.8 host application.
+2026-10-27T10:00:05.6300000Z Run with -? for options
+2026-10-27T10:00:05.6400000Z 
+2026-10-27T10:00:05.6500000Z -------------------------------------------------------------------------------
+2026-10-27T10:00:05.6600000Z ordinary sector arithmetic
+2026-10-27T10:00:05.6700000Z -------------------------------------------------------------------------------
+2026-10-27T10:00:05.6800000Z checks/sector_checks.cpp:5
+2026-10-27T10:00:05.6900000Z ...............................................................................
+2026-10-27T10:00:05.7000000Z 
+2026-10-27T10:00:05.7100000Z checks/sector_checks.cpp:6: PASSED:
+2026-10-27T10:00:05.7200000Z   REQUIRE( 2 + 3 == 5 )
+2026-10-27T10:00:05.7300000Z with expansion:
+2026-10-27T10:00:05.7400000Z   5 == 5
+2026-10-27T10:00:05.7500000Z checks/sector_checks.cpp:7: PASSED:
+2026-10-27T10:00:05.7600000Z   REQUIRE( 9 - 4 == 5 )
+2026-10-27T10:00:05.7700000Z with expansion:
+2026-10-27T10:00:05.7800000Z   5 == 5
+2026-10-27T10:00:05.7900000Z checks/sector_checks.cpp:8: PASSED:
+2026-10-27T10:00:05.8000000Z   REQUIRE( 4 * 3 == 12 )
+2026-10-27T10:00:05.8100000Z with expansion:
+2026-10-27T10:00:05.8200000Z   12 == 12
+2026-10-27T10:00:05.8300000Z checks/sector_checks.cpp:9: PASSED:
+2026-10-27T10:00:05.8400000Z   REQUIRE( 8 / 2 == 4 )
+2026-10-27T10:00:05.8500000Z with expansion:
+2026-10-27T10:00:05.8600000Z   4 == 4
+2026-10-27T10:00:05.8700000Z checks/sector_checks.cpp:10: PASSED:
+2026-10-27T10:00:05.8800000Z   REQUIRE( 6 % 4 == 2 )
+2026-10-27T10:00:05.8900000Z with expansion:
+2026-10-27T10:00:05.9000000Z   2 == 2
+2026-10-27T10:00:05.9100000Z checks/sector_checks.cpp:11: PASSED:
+2026-10-27T10:00:05.9200000Z   REQUIRE( 7 > 3 )
+2026-10-27T10:00:05.9300000Z with expansion:
+2026-10-27T10:00:05.9400000Z   7 > 3
+2026-10-27T10:00:05.9500000Z checks/sector_checks.cpp:12: PASSED:
+2026-10-27T10:00:05.9600000Z   REQUIRE( 2 < 9 )
+2026-10-27T10:00:05.9700000Z with expansion:
+2026-10-27T10:00:05.9800000Z   2 < 9
+2026-10-27T10:00:06.0000000Z -------------------------------------------------------------------------------
+2026-10-27T10:00:06.0100000Z configured sector is present
+2026-10-27T10:00:06.0200000Z -------------------------------------------------------------------------------
+2026-10-27T10:00:06.0300000Z checks/sector_checks.cpp:15
+2026-10-27T10:00:06.0400000Z ...............................................................................
+2026-10-27T10:00:06.0500000Z 
+2026-10-27T10:00:06.0600000Z checks/sector_checks.cpp:17: FAILED:
+2026-10-27T10:00:06.0700000Z   REQUIRE( std::getenv("BASIL_SECTOR") != nullptr )
+2026-10-27T10:00:06.0800000Z with expansion:
+2026-10-27T10:00:06.0900000Z   nullptr != nullptr
+2026-10-27T10:00:06.1000000Z with message:
+2026-10-27T10:00:06.1100000Z   BASIL_SECTOR is not set
+2026-10-27T10:00:06.1200000Z 
+2026-10-27T10:00:06.1300000Z ===============================================================================
+2026-10-27T10:00:06.1400000Z test cases: 2 | 1 passed | 1 failed
+2026-10-27T10:00:06.1500000Z assertions: 8 | 7 passed | 1 failed
+2026-10-27T10:00:06.1600000Z ##[error]Process completed with exit code 1.
+2026-10-27T10:00:06.1700000Z Post job cleanup.
+2026-10-27T10:00:06.1800000Z Cleaning up orphan processes

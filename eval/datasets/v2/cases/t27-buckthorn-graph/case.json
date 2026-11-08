@@ -1,0 +1,16 @@
+{
+  "id": "t27-buckthorn-graph",
+  "split": "test",
+  "category": "db_connectivity",
+  "kind": "masked",
+  "difficulty": "medium",
+  "ecosystem": "kotlin",
+  "title": "Graph query test names an unavailable database",
+  "root_cause": "The test sends its query to the herbarium database, which the Neo4j service does not have. The database returns a not-found error and the test runner reports an assertion failure.",
+  "fix_keywords": ["herbarium", "neo4j"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 54, "end_line": 58, "why": "The service identifies the missing database inside the test output."},
+    {"path": "src/test/kotlin/GraphQueryTest.kt", "start_line": 7, "end_line": 15, "why": "The test selects herbarium and expects a successful response."},
+    {"path": ".github/workflows/graph-console.yml", "start_line": 6, "end_line": 12, "why": "The job starts the graph database service."}
+  ]
+}

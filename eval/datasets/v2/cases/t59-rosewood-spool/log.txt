@@ -1,0 +1,57 @@
+2026-10-31T14:00:00.0000000Z Current runner version: '2.329.0'
+2026-10-31T14:00:00.1000000Z ##[group]Operating System
+2026-10-31T14:00:00.2000000Z Ubuntu 24.04.3 LTS
+2026-10-31T14:00:00.3000000Z ##[endgroup]
+2026-10-31T14:00:00.4000000Z ##[group]Runner Image
+2026-10-31T14:00:00.5000000Z Image: ubuntu-24.04
+2026-10-31T14:00:00.6000000Z ##[endgroup]
+2026-10-31T14:00:00.7000000Z Prepare workflow directory
+2026-10-31T14:00:00.8000000Z Prepare all required actions
+2026-10-31T14:00:00.9000000Z Getting action download info
+2026-10-31T14:00:01.0000000Z Download action repository 'actions/checkout@v4'
+2026-10-31T14:00:01.1000000Z Download action repository 'dtolnay/rust-toolchain@master'
+2026-10-31T14:00:01.2000000Z Complete job name: spool
+2026-10-31T14:00:01.3000000Z ##[group]Run actions/checkout@v4
+2026-10-31T14:00:01.4000000Z with:
+2026-10-31T14:00:01.5000000Z   repository: rosewood-labs/spool-batch
+2026-10-31T14:00:01.6000000Z ##[endgroup]
+2026-10-31T14:00:01.7000000Z Syncing repository: rosewood-labs/spool-batch
+2026-10-31T14:00:01.8000000Z Getting Git version info
+2026-10-31T14:00:01.9000000Z git version 2.51.0
+2026-10-31T14:00:02.0000000Z Checking out the ref
+2026-10-31T14:00:02.1000000Z ##[group]Run dtolnay/rust-toolchain@master
+2026-10-31T14:00:02.2000000Z with:
+2026-10-31T14:00:02.3000000Z   toolchain: 1.89.0
+2026-10-31T14:00:02.4000000Z ##[endgroup]
+2026-10-31T14:00:02.5000000Z info: default toolchain set to '1.89.0-x86_64-unknown-linux-gnu'
+2026-10-31T14:00:02.6000000Z ##[group]Run bash bin/spool_batch.sh
+2026-10-31T14:00:02.7000000Z bash bin/spool_batch.sh
+2026-10-31T14:00:02.8000000Z shell: /usr/bin/bash -e {0}
+2026-10-31T14:00:02.9000000Z ##[endgroup]
+2026-10-31T14:00:04.0000000Z validated lot: lot-a
+2026-10-31T14:00:04.0100000Z validated lot: lot-b
+2026-10-31T14:00:04.0200000Z validated lot: lot-c
+2026-10-31T14:00:04.0300000Z validated lot: lot-d
+2026-10-31T14:00:04.0400000Z validated lot: lot-e
+2026-10-31T14:00:04.0500000Z validated lot: lot-f
+2026-10-31T14:00:04.0600000Z validated lot: lot-g
+2026-10-31T14:00:04.0700000Z validated lot: lot-h
+2026-10-31T14:00:04.0800000Z validated lot: lot-i
+2026-10-31T14:00:04.0900000Z validated lot: lot-j
+2026-10-31T14:00:04.1000000Z validated lot: lot-k
+2026-10-31T14:00:04.1100000Z validated lot: lot-l
+2026-10-31T14:00:04.1200000Z validated lot: lot-m
+2026-10-31T14:00:04.1300000Z validated lot: lot-n
+2026-10-31T14:00:04.1400000Z validated lot: lot-o
+2026-10-31T14:00:04.1500000Z validated lot: lot-p
+2026-10-31T14:00:04.1600000Z validated lot: lot-q
+2026-10-31T14:00:04.1700000Z validated lot: lot-r
+2026-10-31T14:00:04.1800000Z validated lot: lot-s
+2026-10-31T14:00:04.1900000Z validated lot: lot-t
+2026-10-31T14:00:04.2000000Z validated lot: lot-u
+2026-10-31T14:00:04.2100000Z validated lot: lot-v
+2026-10-31T14:00:04.3000000Z ROSEWOOD_TEMPLATE_ID is required
+2026-10-31T14:00:04.4000000Z spool batch failed
+2026-10-31T14:00:04.5000000Z ##[error]Process completed with exit code 1.
+2026-10-31T14:00:04.6000000Z Post job cleanup.
+2026-10-31T14:00:04.7000000Z Cleaning up orphan processes

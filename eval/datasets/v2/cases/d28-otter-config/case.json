@@ -1,0 +1,16 @@
+{
+  "id": "d28-otter-config",
+  "split": "dev",
+  "category": "workflow_path",
+  "kind": "standard",
+  "difficulty": "medium",
+  "ecosystem": "rust",
+  "title": "Preset test references the wrong file name",
+  "root_cause": "The test opens config/presets.txt, but the checked-in file is config/preset.txt. The open returns a not-found error and unwrap panics, so the test suite fails.",
+  "fix_keywords": ["config/preset.txt", "config/presets.txt"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 53, "end_line": 56, "why": "The preset test panics because the file is absent."},
+    {"path": "src/lib.rs", "start_line": 16, "end_line": 20, "why": "The test opens the plural file name."},
+    {"path": "config/preset.txt", "start_line": 1, "end_line": 2, "why": "The available preset uses the singular file name."}
+  ]
+}

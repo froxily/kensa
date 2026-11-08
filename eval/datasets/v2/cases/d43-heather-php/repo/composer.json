@@ -1,0 +1,10 @@
+{
+  "name": "upland/heather",
+  "type": "project",
+  "require": {
+    "php": "^8.4"
+  },
+  "autoload": {
+    "psr-4": {"Heather\\": "src/"}
+  }
+}

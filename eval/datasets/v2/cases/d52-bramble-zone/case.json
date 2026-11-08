@@ -1,0 +1,16 @@
+{
+  "id": "d52-bramble-zone",
+  "split": "dev",
+  "category": "missing_env_var",
+  "kind": "masked",
+  "difficulty": "medium",
+  "ecosystem": "rust",
+  "title": "Rust integration test requires a zone setting",
+  "root_cause": "The test reads BRAMBLE_ZONE, but the workflow never supplies it. The environment lookup returns NotPresent and expect panics, which the Rust test runner reports as a failed test.",
+  "fix_keywords": ["BRAMBLE_ZONE"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 53, "end_line": 57, "why": "The panic reports the missing environment value."},
+    {"path": "tests/limits.rs", "start_line": 10, "end_line": 13, "why": "The test requires the variable."},
+    {"path": ".github/workflows/validate.yml", "start_line": 5, "end_line": 11, "why": "The job runs the test without setting the zone."}
+  ]
+}

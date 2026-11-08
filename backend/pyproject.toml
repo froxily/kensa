@@ -1,0 +1,77 @@
+[project]
+name = "kensa"
+version = "0.1.0"
+description = "Kensa backend: local-first investigation of failed CI runs"
+requires-python = ">=3.13,<3.14"
+# Dependencies are added per milestone (M0 = skeleton subset). See ROADMAP.md.
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.34",
+    "pydantic>=2.11",
+    "pydantic-settings>=2.9",
+    "sqlalchemy>=2.0.40",
+    "alembic>=1.15",
+    "psycopg[binary]>=3.2",
+    "httpx>=0.28",
+    "structlog>=25.1",
+    "pgvector>=0.4",
+    "pyyaml>=6.0",
+    "langgraph>=1.2.18",
+    "langgraph-checkpoint-postgres>=3.2.0",
+    "opentelemetry-api>=1.45.1",
+    "opentelemetry-sdk>=1.45.1",
+    "opentelemetry-instrumentation-fastapi>=0.66b1",
+    "opentelemetry-instrumentation-sqlalchemy>=0.66b1",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3",
+    "respx>=0.22",
+    "ruff>=0.11",
+    "mypy>=1.15",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/kensa"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "I", "B", "UP", "N", "S", "C4", "SIM", "RUF", "PT", "DTZ", "ASYNC"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S101"]
+"alembic/versions/*" = ["N999", "E501"]
+# Regex rule table: patterns are clearer unsplit.
+"src/kensa/analysis/signatures.py" = ["E501"]
+# A stopword list reads best as one string.
+"src/kensa/retrieval/search.py" = ["SIM905"]
+
+[tool.mypy]
+python_version = "3.13"
+strict = true
+files = ["src", "tests", "../scripts"]
+plugins = ["pydantic.mypy"]
+
+# PyYAML ships no type information; avoid installing a stub package just for one import.
+[[tool.mypy.overrides]]
+module = ["yaml", "yaml.*"]
+ignore_missing_imports = true
+
+# Lets editors' Pyright resolve imports from backend/.venv (mypy is the CI type checker).
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"
+markers = ["db: needs the local PostgreSQL (docker compose up -d db); skipped with a reason otherwise"]

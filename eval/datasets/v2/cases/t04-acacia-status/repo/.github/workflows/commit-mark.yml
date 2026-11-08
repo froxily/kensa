@@ -1,0 +1,17 @@
+name: Commit status
+on: [workflow_dispatch]
+permissions:
+  contents: read
+  statuses: read
+jobs:
+  status:
+    runs-on: ubuntu-22.04-arm
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and post status
+        run: |
+          g++ -std=c++17 src/make_status.cc -o make_status
+          ./make_status > mark.json
+          GH_TOKEN="$ACACIA_TOKEN" gh api --include --method POST "repos/$GITHUB_REPOSITORY/statuses/$GITHUB_SHA" --input mark.json
+        env:
+          ACACIA_TOKEN: ${{ github.token }}

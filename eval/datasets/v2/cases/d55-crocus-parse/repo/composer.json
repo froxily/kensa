@@ -1,0 +1,4 @@
+{
+  "name": "garden/crocus",
+  "require-dev": {"phpunit/phpunit": "10.5.48"}
+}

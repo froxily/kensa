@@ -1,0 +1,56 @@
+2026-10-01T15:00:00.0000000Z Current runner version: '2.328.0'
+2026-10-01T15:00:00.1000000Z ##[group]Operating System
+2026-10-01T15:00:00.2000000Z Ubuntu
+2026-10-01T15:00:00.3000000Z 22.04.5
+2026-10-01T15:00:00.4000000Z LTS
+2026-10-01T15:00:00.5000000Z ##[endgroup]
+2026-10-01T15:00:00.6000000Z ##[group]Runner Image
+2026-10-01T15:00:00.7000000Z Image: ubuntu-22.04
+2026-10-01T15:00:00.8000000Z Version: 20260921.1
+2026-10-01T15:00:00.9000000Z ##[endgroup]
+2026-10-01T15:00:01.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-01T15:00:01.1000000Z Checks: read
+2026-10-01T15:00:01.2000000Z Contents: read
+2026-10-01T15:00:01.3000000Z Metadata: read
+2026-10-01T15:00:01.4000000Z ##[endgroup]
+2026-10-01T15:00:01.5000000Z Prepare workflow directory
+2026-10-01T15:00:01.6000000Z Prepare all required actions
+2026-10-01T15:00:01.7000000Z Getting action download info
+2026-10-01T15:00:01.8000000Z Download action repository 'actions/checkout@v4'
+2026-10-01T15:00:01.9000000Z Download action repository 'ruby/setup-ruby@v1'
+2026-10-01T15:00:02.0000000Z Complete job name: report
+2026-10-01T15:00:02.1000000Z ##[group]Run actions/checkout@v4
+2026-10-01T15:00:02.2000000Z with:
+2026-10-01T15:00:02.3000000Z   repository: petalworks/poppy
+2026-10-01T15:00:02.4000000Z   clean: true
+2026-10-01T15:00:02.5000000Z   fetch-depth: 1
+2026-10-01T15:00:02.6000000Z ##[endgroup]
+2026-10-01T15:00:02.7000000Z Syncing repository: petalworks/poppy
+2026-10-01T15:00:02.8000000Z Getting Git version info
+2026-10-01T15:00:02.9000000Z git version 2.51.0
+2026-10-01T15:00:03.0000000Z Initializing the repository
+2026-10-01T15:00:03.2000000Z Fetching the repository
+2026-10-01T15:00:03.4000000Z Checking out the ref
+2026-10-01T15:00:03.5000000Z ##[group]Run ruby/setup-ruby@v1
+2026-10-01T15:00:03.6000000Z with:
+2026-10-01T15:00:03.7000000Z   ruby-version: 3.3
+2026-10-01T15:00:03.8000000Z   bundler-cache: false
+2026-10-01T15:00:03.9000000Z ##[endgroup]
+2026-10-01T15:00:04.0000000Z ##[group]Modifying PATH
+2026-10-01T15:00:04.1000000Z Entries added to PATH:
+2026-10-01T15:00:04.2000000Z   /opt/hostedtoolcache/Ruby/3.3.9/x64/bin
+2026-10-01T15:00:04.3000000Z ##[endgroup]
+2026-10-01T15:00:04.4000000Z ##[group]Print Ruby version
+2026-10-01T15:00:04.5000000Z ruby 3.3.9 (2025-07-24 revision 38531fd73e) [x86_64-linux]
+2026-10-01T15:00:04.6000000Z ##[endgroup]
+2026-10-01T15:00:04.7000000Z ##[group]Run ruby bin/report.rb
+2026-10-01T15:00:04.8000000Z ruby bin/report.rb
+2026-10-01T15:00:04.9000000Z shell: /usr/bin/bash -e {0}
+2026-10-01T15:00:05.0000000Z env:
+2026-10-01T15:00:05.1000000Z   GH_TOKEN: ***
+2026-10-01T15:00:05.2000000Z ##[endgroup]
+2026-10-01T15:00:05.6000000Z GitHub API: 403 Resource not accessible by integration
+2026-10-01T15:00:05.7000000Z ##[error]Process completed with exit code 1.
+2026-10-01T15:00:05.8000000Z Post job cleanup.
+2026-10-01T15:00:05.8500000Z [command]/usr/bin/git version
+2026-10-01T15:00:05.9000000Z Cleaning up orphan processes

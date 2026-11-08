@@ -1,0 +1,11 @@
+name: Swift style
+on: [push]
+jobs:
+  style:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inspect package and lint
+        run: |
+          swift package describe --type json
+          swift-format lint --configuration .config/bergamot-style.json Sources/MarshCatalog/main.swift

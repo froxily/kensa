@@ -1,0 +1,101 @@
+2026-10-29T08:00:00.0000000Z Current runner version: '2.328.0'
+2026-10-29T08:00:00.1000000Z ##[group]Operating System
+2026-10-29T08:00:00.2000000Z Ubuntu
+2026-10-29T08:00:00.3000000Z 22.04.5
+2026-10-29T08:00:00.4000000Z LTS
+2026-10-29T08:00:00.5000000Z ##[endgroup]
+2026-10-29T08:00:00.6000000Z ##[group]Runner Image
+2026-10-29T08:00:00.7000000Z Image: ubuntu-22.04
+2026-10-29T08:00:00.8000000Z Version: 20261026.1
+2026-10-29T08:00:00.9000000Z ##[endgroup]
+2026-10-29T08:00:01.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-29T08:00:01.1000000Z Contents: read
+2026-10-29T08:00:01.2000000Z Metadata: read
+2026-10-29T08:00:01.3000000Z ##[endgroup]
+2026-10-29T08:00:01.4000000Z Prepare workflow directory
+2026-10-29T08:00:01.5000000Z Prepare all required actions
+2026-10-29T08:00:01.6000000Z Download action repository 'actions/checkout@v4'
+2026-10-29T08:00:01.7000000Z Download action repository 'erlef/setup-beam@v1'
+2026-10-29T08:00:01.8000000Z Complete job name: import
+2026-10-29T08:00:02.0000000Z ##[group]Starting records service
+2026-10-29T08:00:02.1000000Z [command]/usr/bin/docker pull postgres:16
+2026-10-29T08:00:02.2000000Z 16: Pulling from library/postgres
+2026-10-29T08:00:03.0000000Z Status: Downloaded newer image for postgres:16
+2026-10-29T08:00:03.1000000Z [command]/usr/bin/docker create --name records --publish 5547:5432 -e POSTGRES_HOST_AUTH_METHOD=trust --health-cmd "pg_isready -U postgres" --health-interval 10s --health-timeout 5s --health-retries 5 postgres:16
+2026-10-29T08:00:03.2000000Z [command]/usr/bin/docker start records
+2026-10-29T08:00:03.3000000Z ##[endgroup]
+2026-10-29T08:00:13.0000000Z records service is healthy.
+2026-10-29T08:00:13.1000000Z ##[group]Run actions/checkout@v4
+2026-10-29T08:00:13.2000000Z with:
+2026-10-29T08:00:13.3000000Z   repository: hedgerow-labs/oriole
+2026-10-29T08:00:13.4000000Z   fetch-depth: 1
+2026-10-29T08:00:13.5000000Z ##[endgroup]
+2026-10-29T08:00:13.6000000Z Syncing repository: hedgerow-labs/oriole
+2026-10-29T08:00:13.7000000Z Fetching the repository
+2026-10-29T08:00:13.8000000Z Checking out the ref
+2026-10-29T08:00:13.9000000Z ##[group]Run erlef/setup-beam@v1
+2026-10-29T08:00:14.0000000Z with:
+2026-10-29T08:00:14.1000000Z   otp-version: 27
+2026-10-29T08:00:14.2000000Z   elixir-version: 1.17
+2026-10-29T08:00:14.3000000Z ##[endgroup]
+2026-10-29T08:00:14.4000000Z OTP 27.3 installed
+2026-10-29T08:00:14.5000000Z Elixir 1.17.3 installed
+2026-10-29T08:00:14.6000000Z ##[group]Run sudo apt-get update && sudo apt-get install -y postgresql-client
+2026-10-29T08:00:14.7000000Z sudo apt-get update && sudo apt-get install -y postgresql-client
+2026-10-29T08:00:14.8000000Z shell: /usr/bin/bash -e {0}
+2026-10-29T08:00:14.9000000Z ##[endgroup]
+2026-10-29T08:00:17.0000000Z Reading package lists...
+2026-10-29T08:00:17.1000000Z Building dependency tree...
+2026-10-29T08:00:17.2000000Z Reading state information...
+2026-10-29T08:00:17.3000000Z postgresql-client is already the newest version.
+2026-10-29T08:00:17.4000000Z 0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+2026-10-29T08:00:17.5000000Z ##[group]Run mix run -e 'Oriole.run()'
+2026-10-29T08:00:17.6000000Z mix run -e 'Oriole.run()'
+2026-10-29T08:00:17.7000000Z shell: /usr/bin/bash -e {0}
+2026-10-29T08:00:17.8000000Z ##[endgroup]
+2026-10-29T08:00:18.0000000Z Compiling 1 file (.ex)
+2026-10-29T08:00:18.1000000Z Generated oriole app
+2026-10-29T08:00:18.1100000Z prepared catalog entry 1
+2026-10-29T08:00:18.1200000Z prepared catalog entry 2
+2026-10-29T08:00:18.1300000Z prepared catalog entry 3
+2026-10-29T08:00:18.1400000Z prepared catalog entry 4
+2026-10-29T08:00:18.1500000Z prepared catalog entry 5
+2026-10-29T08:00:18.1600000Z prepared catalog entry 6
+2026-10-29T08:00:18.1700000Z prepared catalog entry 7
+2026-10-29T08:00:18.1800000Z prepared catalog entry 8
+2026-10-29T08:00:18.1900000Z prepared catalog entry 9
+2026-10-29T08:00:18.2000000Z prepared catalog entry 10
+2026-10-29T08:00:18.2100000Z prepared catalog entry 11
+2026-10-29T08:00:18.2200000Z prepared catalog entry 12
+2026-10-29T08:00:18.2300000Z prepared catalog entry 13
+2026-10-29T08:00:18.2400000Z prepared catalog entry 14
+2026-10-29T08:00:18.2500000Z prepared catalog entry 15
+2026-10-29T08:00:18.2600000Z prepared catalog entry 16
+2026-10-29T08:00:18.2700000Z prepared catalog entry 17
+2026-10-29T08:00:18.2800000Z prepared catalog entry 18
+2026-10-29T08:00:18.2900000Z prepared catalog entry 19
+2026-10-29T08:00:18.3000000Z prepared catalog entry 20
+2026-10-29T08:00:18.3100000Z prepared catalog entry 21
+2026-10-29T08:00:18.3200000Z prepared catalog entry 22
+2026-10-29T08:00:18.3300000Z prepared catalog entry 23
+2026-10-29T08:00:18.3400000Z prepared catalog entry 24
+2026-10-29T08:00:18.3500000Z prepared catalog entry 25
+2026-10-29T08:00:18.3600000Z prepared catalog entry 26
+2026-10-29T08:00:18.3700000Z prepared catalog entry 27
+2026-10-29T08:00:18.3800000Z prepared catalog entry 28
+2026-10-29T08:00:18.3900000Z prepared catalog entry 29
+2026-10-29T08:00:18.4000000Z prepared catalog entry 30
+2026-10-29T08:00:18.4100000Z prepared catalog entry 31
+2026-10-29T08:00:18.4200000Z prepared catalog entry 32
+2026-10-29T08:00:18.4300000Z prepared catalog entry 33
+2026-10-29T08:00:18.4400000Z prepared catalog entry 34
+2026-10-29T08:00:18.4500000Z prepared catalog entry 35
+2026-10-29T08:00:18.4600000Z prepared catalog entry 36
+2026-10-29T08:00:18.4700000Z prepared catalog entry 37
+2026-10-29T08:00:18.4800000Z prepared catalog entry 38
+2026-10-29T08:00:18.4900000Z prepared catalog entry 39
+2026-10-29T08:00:18.5000000Z prepared catalog entry 40
+2026-10-29T08:00:18.6000000Z psql: error: connection to server at "127.0.0.1", port 5547 failed: FATAL:  role "oriole_reader" does not exist
+2026-10-29T08:00:18.7000000Z ##[error]Process completed with exit code 2.
+2026-10-29T08:00:18.8000000Z Stop and remove container: records
+2026-10-29T08:00:18.9000000Z Cleaning up orphan processes

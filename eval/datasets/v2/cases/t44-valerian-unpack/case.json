@@ -1,0 +1,15 @@
+{
+  "id": "t44-valerian-unpack",
+  "split": "test",
+  "category": "oom_timeout",
+  "kind": "misleading",
+  "difficulty": "medium",
+  "ecosystem": "python",
+  "title": "Preview unpack reports a type error after allocation fails",
+  "root_cause": "The process limits its address space to 96 MiB, then requests a 128 MiB buffer. Allocation raises MemoryError, and the fallback passes None to unpack_from, producing the later TypeError.",
+  "fix_keywords": ["RLIMIT_AS", "bytearray"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 50, "end_line": 59, "why": "A MemoryError precedes the later TypeError."},
+    {"path": "tasks/unpack_preview.py", "start_line": 5, "end_line": 14, "why": "The process limit is smaller than the allocation and the fallback passes None onward."}
+  ]
+}

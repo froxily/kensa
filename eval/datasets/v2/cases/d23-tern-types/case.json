@@ -1,0 +1,16 @@
+{
+  "id": "d23-tern-types",
+  "split": "dev",
+  "category": "dependency_build",
+  "kind": "misleading",
+  "difficulty": "medium",
+  "ecosystem": "swift",
+  "title": "Swift source fails type checking after an exclude warning",
+  "root_cause": "The Swift source assigns a string to an Int, which the compiler rejects. The earlier warning about an absent excluded file does not prevent SwiftPM from starting the build.",
+  "fix_keywords": ["total", "Int"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 41, "end_line": 51, "why": "The exclude warning is followed by compilation and a type error."},
+    {"path": "Sources/Tern/main.swift", "start_line": 1, "end_line": 2, "why": "The source assigns a string to an Int."},
+    {"path": "Package.swift", "start_line": 4, "end_line": 5, "why": "The missing path is an exclusion, not an input needed for compilation."}
+  ]
+}

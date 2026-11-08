@@ -1,0 +1,22 @@
+2026-10-02T08:12:00.1000000Z ##[group]Run npm ci
+2026-10-02T08:12:00.1000000Z npm ci
+2026-10-02T08:12:00.1000000Z shell: /usr/bin/bash -e {0}
+2026-10-02T08:12:00.1000000Z ##[endgroup]
+2026-10-02T08:12:03.5000000Z npm error code ERESOLVE
+2026-10-02T08:12:03.5000000Z npm error ERESOLVE could not resolve
+2026-10-02T08:12:03.5000000Z npm error
+2026-10-02T08:12:03.5000000Z npm error While resolving: chart-widgets@0.9.2
+2026-10-02T08:12:03.5000000Z npm error Found: react@19.3.1
+2026-10-02T08:12:03.5000000Z npm error node_modules/react
+2026-10-02T08:12:03.5000000Z npm error   react@"^19.3.0" from the root project
+2026-10-02T08:12:03.5000000Z npm error
+2026-10-02T08:12:03.5000000Z npm error Could not resolve dependency:
+2026-10-02T08:12:03.5000000Z npm error peer react@"^17.0.0 || ^18.0.0" from legacy-tooltip@3.1.0
+2026-10-02T08:12:03.5000000Z npm error node_modules/legacy-tooltip
+2026-10-02T08:12:03.5000000Z npm error   legacy-tooltip@"^3.1.0" from the root project
+2026-10-02T08:12:03.5000000Z npm error
+2026-10-02T08:12:03.5000000Z npm error Fix the upstream dependency conflict, or retry
+2026-10-02T08:12:03.5000000Z npm error this command with --force or --legacy-peer-deps
+2026-10-02T08:12:03.5000000Z npm error to accept an incorrect (and potentially broken) dependency resolution.
+2026-10-02T08:12:03.6000000Z npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-10-02T08_12_00_000Z-debug-0.log
+2026-10-02T08:12:03.7000000Z ##[error]Process completed with exit code 1.

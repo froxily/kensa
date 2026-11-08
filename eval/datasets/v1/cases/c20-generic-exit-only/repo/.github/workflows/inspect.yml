@@ -1,0 +1,26 @@
+name: Bundle inspection
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Fetch bundle project
+        uses: actions/checkout@v4
+      - name: Prepare Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install packages
+        run: npm install
+      - name: Verify bundle
+        run: npm run verify > verify.log 2>&1
+      - name: Save output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: verify-output
+          path: verify.log
+          if-no-files-found: warn

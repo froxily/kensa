@@ -1,0 +1,85 @@
+2026-10-29T16:00:00.0000000Z Current runner version: '2.328.0'
+2026-10-29T16:00:00.1000000Z ##[group]Operating System
+2026-10-29T16:00:00.2000000Z Ubuntu
+2026-10-29T16:00:00.3000000Z 22.04.5
+2026-10-29T16:00:00.4000000Z LTS
+2026-10-29T16:00:00.5000000Z ##[endgroup]
+2026-10-29T16:00:00.6000000Z ##[group]Runner Image
+2026-10-29T16:00:00.7000000Z Image: ubuntu-22.04
+2026-10-29T16:00:00.8000000Z Version: 20261026.1
+2026-10-29T16:00:00.9000000Z ##[endgroup]
+2026-10-29T16:00:01.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-29T16:00:01.1000000Z Contents: read
+2026-10-29T16:00:01.2000000Z Metadata: read
+2026-10-29T16:00:01.3000000Z ##[endgroup]
+2026-10-29T16:00:01.4000000Z Prepare workflow directory
+2026-10-29T16:00:01.5000000Z Prepare all required actions
+2026-10-29T16:00:01.6000000Z Download action repository 'actions/checkout@v4'
+2026-10-29T16:00:01.7000000Z Download action repository 'swift-actions/setup-swift@v2'
+2026-10-29T16:00:01.8000000Z Complete job name: prepare
+2026-10-29T16:00:02.0000000Z ##[group]Run actions/checkout@v4
+2026-10-29T16:00:02.1000000Z with:
+2026-10-29T16:00:02.2000000Z   repository: sandbank-labs/plover
+2026-10-29T16:00:02.3000000Z   fetch-depth: 1
+2026-10-29T16:00:02.4000000Z ##[endgroup]
+2026-10-29T16:00:02.5000000Z Syncing repository: sandbank-labs/plover
+2026-10-29T16:00:02.6000000Z Fetching the repository
+2026-10-29T16:00:02.7000000Z Checking out the ref
+2026-10-29T16:00:02.8000000Z ##[group]Run swift-actions/setup-swift@v2
+2026-10-29T16:00:02.9000000Z with:
+2026-10-29T16:00:03.0000000Z   swift-version: 5.10
+2026-10-29T16:00:03.1000000Z ##[endgroup]
+2026-10-29T16:00:04.0000000Z Swift 5.10.1 is available
+2026-10-29T16:00:04.1000000Z Swift version 5.10.1 (swift-5.10.1-RELEASE)
+2026-10-29T16:00:04.2000000Z Target: x86_64-unknown-linux-gnu
+2026-10-29T16:00:04.3000000Z ##[group]Run swift scripts/prepare.swift
+2026-10-29T16:00:04.4000000Z swift scripts/prepare.swift
+2026-10-29T16:00:04.5000000Z shell: /usr/bin/bash -e {0}
+2026-10-29T16:00:04.6000000Z ##[endgroup]
+2026-10-29T16:00:05.0000000Z prepared avocet
+2026-10-29T16:00:05.0100000Z prepared bunting
+2026-10-29T16:00:05.0200000Z prepared chaffinch
+2026-10-29T16:00:05.0300000Z prepared dotterel
+2026-10-29T16:00:05.0400000Z prepared eider
+2026-10-29T16:00:05.0500000Z prepared grebe
+2026-10-29T16:00:05.0600000Z prepared goldcrest
+2026-10-29T16:00:05.0700000Z prepared hobby
+2026-10-29T16:00:05.0800000Z prepared jackdaw
+2026-10-29T16:00:05.0900000Z prepared kingfisher
+2026-10-29T16:00:05.1000000Z prepared linnet
+2026-10-29T16:00:05.1100000Z prepared mallard
+2026-10-29T16:00:05.1200000Z prepared nightjar
+2026-10-29T16:00:05.1300000Z prepared petrel
+2026-10-29T16:00:05.1400000Z prepared quail
+2026-10-29T16:00:05.1500000Z prepared redshank
+2026-10-29T16:00:05.1600000Z prepared woodcock
+2026-10-29T16:00:05.1700000Z prepared vulture
+2026-10-29T16:00:05.1800000Z prepared wagtail
+2026-10-29T16:00:05.1900000Z prepared yellowhammer
+2026-10-29T16:00:05.2000000Z prepared goshawk
+2026-10-29T16:00:05.2100000Z prepared guillemot
+2026-10-29T16:00:05.2200000Z prepared harrier
+2026-10-29T16:00:05.2300000Z prepared hoopoe
+2026-10-29T16:00:05.2400000Z prepared magpie
+2026-10-29T16:00:05.2500000Z prepared moorhen
+2026-10-29T16:00:05.2600000Z prepared starling
+2026-10-29T16:00:05.2700000Z prepared sparrow
+2026-10-29T16:00:05.2800000Z prepared swan
+2026-10-29T16:00:05.2900000Z prepared teal
+2026-10-29T16:00:05.3000000Z prepared toucan
+2026-10-29T16:00:05.3100000Z prepared waxwing
+2026-10-29T16:00:05.3200000Z prepared buzzard
+2026-10-29T16:00:05.3300000Z prepared curlew
+2026-10-29T16:00:05.3400000Z prepared dipper
+2026-10-29T16:00:05.3500000Z prepared goldfinch
+2026-10-29T16:00:05.3600000Z prepared kite
+2026-10-29T16:00:05.3700000Z prepared loon
+2026-10-29T16:00:05.3800000Z prepared quetzal
+2026-10-29T16:00:05.3900000Z prepared sandpiper
+2026-10-29T16:00:05.4000000Z prepared woodlark
+2026-10-29T16:00:05.4100000Z prepared woodpecker
+2026-10-29T16:00:05.4200000Z prepared whimbrel
+2026-10-29T16:00:05.4300000Z PLOVER_ENDPOINT is not set
+2026-10-29T16:00:05.4400000Z ##[error]Process completed with exit code 1.
+2026-10-29T16:00:05.4500000Z Post job cleanup.
+2026-10-29T16:00:05.4600000Z Cleaning up orphan processes

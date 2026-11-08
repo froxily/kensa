@@ -1,0 +1,10 @@
+pytest==8.3.3
+psycopg[binary]==3.2.3
+# Integration test dependencies.
+# The workflow starts PostgreSQL separately.
+# Keep client and binary package versions aligned.
+# No production credentials belong here.
+# DB_USER selects the service account.
+# DB_PASSWORD supplies its password.
+# DB_HOST points to the database service.
+# DB_NAME selects the test database.

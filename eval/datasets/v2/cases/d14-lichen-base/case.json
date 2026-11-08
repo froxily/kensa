@@ -1,0 +1,15 @@
+{
+  "id": "d14-lichen-base",
+  "split": "dev",
+  "category": "docker",
+  "kind": "standard",
+  "difficulty": "easy",
+  "ecosystem": "java",
+  "title": "Base image tag cannot be resolved",
+  "root_cause": "The Dockerfile names a nonexistent Eclipse Temurin image tag. BuildKit cannot resolve the base image metadata, so no build steps can run.",
+  "fix_keywords": ["eclipse-temurin", "FROM"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 45, "end_line": 56, "why": "BuildKit reports the missing tag and points to the FROM instruction."},
+    {"path": "Dockerfile", "start_line": 1, "end_line": 1, "why": "The base image uses the invalid tag."}
+  ]
+}

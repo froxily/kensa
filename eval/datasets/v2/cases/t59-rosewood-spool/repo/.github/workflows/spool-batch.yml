@@ -1,0 +1,12 @@
+name: Spool batch
+on: [push]
+jobs:
+  spool:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: '1.89.0'
+      - name: Run spool batch
+        run: bash bin/spool_batch.sh

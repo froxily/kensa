@@ -1,0 +1,16 @@
+{
+  "id": "t49-epazote-suffix",
+  "split": "test",
+  "category": "test_regression",
+  "kind": "standard",
+  "difficulty": "easy",
+  "ecosystem": "ruby",
+  "title": "Ledger stem leaves an uppercase CSV suffix",
+  "root_cause": "The stem function removes only the lowercase .csv suffix. The test expects the same behavior for an uppercase .CSV suffix, so the assertion fails in an otherwise working test environment.",
+  "fix_keywords": ["LedgerNames.stem", ".CSV"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 54, "end_line": 58, "why": "The assertion compares the expected stem with the unchanged uppercase suffix."},
+    {"path": "lib/ledger_names.rb", "start_line": 1, "end_line": 4, "why": "The function removes only the lowercase suffix."},
+    {"path": "spec/ledger_names_check.rb", "start_line": 5, "end_line": 7, "why": "The test specifies both lowercase and uppercase cases."}
+  ]
+}

@@ -1,0 +1,21 @@
+name: Kotlin header CLI
+on: [push]
+jobs:
+  verify:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Fetch compiler and runner
+        run: |
+          curl -fsSLo kotlin.zip https://github.com/JetBrains/kotlin/releases/download/v2.0.20/kotlin-compiler-2.0.20.zip
+          unzip -q kotlin.zip -d compiler
+          curl -fsSLo junit.jar https://repo.maven.apache.org/maven2/junit/junit/4.13.2/junit-4.13.2.jar
+          curl -fsSLo hamcrest.jar https://repo.maven.apache.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar
+      - name: Compile and check headers
+        run: |
+          compiler/kotlinc/bin/kotlinc src/test/kotlin/MessageHeaderTest.kt -classpath junit.jar -include-runtime -d header-checks.jar
+          java -cp header-checks.jar:junit.jar:hamcrest.jar org.junit.runner.JUnitCore MessageHeaderTest

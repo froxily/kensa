@@ -1,0 +1,16 @@
+{
+  "id": "d12-maple-lock",
+  "split": "dev",
+  "category": "dependency_build",
+  "kind": "lookalike",
+  "difficulty": "medium",
+  "ecosystem": "node",
+  "title": "Clean install detects a stale dependency lock",
+  "root_cause": "The manifest declares dotenv but the lockfile does not contain it. npm ci rejects the inconsistent dependency files; the missing item is the dotenv package, not an environment setting.",
+  "fix_keywords": ["package-lock.json", "dotenv"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 53, "end_line": 57, "why": "npm reports a manifest and lockfile mismatch and names the missing package."},
+    {"path": "package.json", "start_line": 4, "end_line": 5, "why": "The dependency is declared in the manifest."},
+    {"path": "package-lock.json", "start_line": 5, "end_line": 8, "why": "The lockfile has only the root package."}
+  ]
+}

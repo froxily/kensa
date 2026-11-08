@@ -1,0 +1,15 @@
+name: Index snapshot
+on: [push]
+jobs:
+  snapshot:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - run: dotnet build Flint.csproj -c Release
+      - name: Generate snapshot
+        run: dotnet bin/Release/net8.0/Flint.dll
+        env:
+          DOTNET_GCHeapHardLimit: '2000000'

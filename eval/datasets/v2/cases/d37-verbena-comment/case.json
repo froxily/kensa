@@ -1,0 +1,17 @@
+{
+  "id": "d37-verbena-comment",
+  "split": "dev",
+  "category": "github_permissions",
+  "kind": "misleading",
+  "difficulty": "medium",
+  "ecosystem": "python",
+  "title": "Comment test is denied despite passing local checks",
+  "root_cause": "The job token is limited to issues read, while posting a comment requires issues write. The API returns a 403; the deprecation warnings concern separate passing checks and do not cause the failure.",
+  "fix_keywords": ["issues", "write"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 88, "end_line": 90, "why": "The API denial identifies the integration permission failure."},
+    {"path": "log", "start_line": 91, "end_line": 104, "why": "The later warning summary concerns the passing slug checks."},
+    {"path": ".github/workflows/integration.yml", "start_line": 3, "end_line": 5, "why": "The token has issues read rather than write."},
+    {"path": "tests/test_issue.py", "start_line": 17, "end_line": 27, "why": "The failing test posts an issue comment using the token."}
+  ]
+}

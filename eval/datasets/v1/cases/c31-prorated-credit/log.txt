@@ -1,0 +1,50 @@
+2026-09-14T08:21:00.0000000Z Runner version: 2.321.1
+2026-09-14T08:21:01.0000000Z Current runner: hosted
+2026-09-14T08:21:02.0000000Z Operating System
+2026-09-14T08:21:03.0000000Z Ubuntu 24.04
+2026-09-14T08:21:04.0000000Z Image: ubuntu-24.04
+2026-09-14T08:21:05.0000000Z Repository: birch-labs/credit-ledger
+2026-09-14T08:21:06.0000000Z Job: pricing
+2026-09-14T08:21:07.0000000Z Prepare workflow directory
+2026-09-14T08:21:08.0000000Z Download action repository actions/checkout@v4
+2026-09-14T08:21:09.0000000Z Download action repository actions/setup-python@v5
+2026-09-14T08:21:10.0000000Z ##[group]Run actions/checkout@v4
+2026-09-14T08:21:11.0000000Z Syncing repository: birch-labs/credit-ledger
+2026-09-14T08:21:12.0000000Z Getting Git version info
+2026-09-14T08:21:13.0000000Z git version 2.46.0
+2026-09-14T08:21:14.0000000Z Initializing repository
+2026-09-14T08:21:15.0000000Z Fetching the repository
+2026-09-14T08:21:16.0000000Z Checking out the ref
+2026-09-14T08:21:17.0000000Z ##[endgroup]
+2026-09-14T08:21:18.0000000Z ##[group]Run actions/setup-python@v5
+2026-09-14T08:21:19.0000000Z Installed versions
+2026-09-14T08:21:20.0000000Z Successfully set up CPython 3.12.6
+2026-09-14T08:21:21.0000000Z pip cache restored
+2026-09-14T08:21:22.0000000Z ##[endgroup]
+2026-09-14T08:21:23.0000000Z ##[group]Run python -m pip install -U pip
+2026-09-14T08:21:24.0000000Z Requirement already satisfied: pip
+2026-09-14T08:21:25.0000000Z Collecting pytest==8.3.3
+2026-09-14T08:21:26.0000000Z Downloading pytest-8.3.3-py3-none-any.whl
+2026-09-14T08:21:27.0000000Z Collecting packaging
+2026-09-14T08:21:28.0000000Z Collecting pluggy
+2026-09-14T08:21:29.0000000Z Installing collected packages: pluggy, packaging, pytest
+2026-09-14T08:21:30.0000000Z Successfully installed pytest-8.3.3
+2026-09-14T08:21:31.0000000Z ##[endgroup]
+2026-09-14T08:21:32.0000000Z ##[group]Run python -m pytest -q
+2026-09-14T08:21:33.0000000Z F..                                                                      [100%]
+2026-09-14T08:21:34.0000000Z =================================== FAILURES ===================================
+2026-09-14T08:21:35.0000000Z __________________________ test_partial_month_credit __________________________
+2026-09-14T08:21:36.0000000Z     def test_partial_month_credit():
+2026-09-14T08:21:37.0000000Z >       assert credit_cents(3000, 15, 30) == 1500
+2026-09-14T08:21:38.0000000Z E       assert 0 == 1500
+2026-09-14T08:21:39.0000000Z E        +  where 0 = credit_cents(3000, 15, 30)
+2026-09-14T08:21:40.0000000Z test_credit.py:6: AssertionError
+2026-09-14T08:21:41.0000000Z =========================== short test summary info ============================
+2026-09-14T08:21:42.0000000Z FAILED test_credit.py::test_partial_month_credit - assert 0 == 1500
+2026-09-14T08:21:43.0000000Z 1 failed, 2 passed in 0.08s
+2026-09-14T08:21:44.0000000Z pytest exited unsuccessfully
+2026-09-14T08:21:45.0000000Z Test report unavailable
+2026-09-14T08:21:46.0000000Z Shell: /usr/bin/bash -e {0}
+2026-09-14T08:21:47.0000000Z Python location: /opt/hostedtoolcache/Python/3.12.6/x64
+2026-09-14T08:21:48.0000000Z ##[endgroup]
+2026-09-14T08:21:49.0000000Z ##[error]Process completed with exit code 1.

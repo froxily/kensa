@@ -1,0 +1,15 @@
+{
+  "id": "t12-amaranth-type",
+  "split": "test",
+  "category": "dependency_build",
+  "kind": "lookalike",
+  "difficulty": "medium",
+  "ecosystem": "rust",
+  "title": "Rust program borrows a moved string",
+  "root_cause": "The program moves issue into saved and then tries to borrow issue for printing. The words manifest unknown are a source literal and do not report an image or registry operation.",
+  "fix_keywords": ["issue", "move"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 56, "end_line": 64, "why": "The compiler identifies the move and subsequent borrow of the literal-backed string."},
+    {"path": "tools/payload.rs", "start_line": 1, "end_line": 5, "why": "The string is moved before the program tries to print it."}
+  ]
+}

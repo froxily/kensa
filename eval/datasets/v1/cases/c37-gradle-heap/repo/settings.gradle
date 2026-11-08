@@ -1,0 +1,10 @@
+rootProject.name = 'cedar-index'
+// The test task uses a forked JVM.
+// Test reports go to build/test-results.
+// CI selects the JDK explicitly.
+// Local builds may use the same wrapper.
+// Dependency resolution uses Maven Central.
+// The test corpus is constructed in memory.
+// No services are required for unit tests.
+// Keep the project name stable for reports.
+// This project has one module.

@@ -1,0 +1,12 @@
+name: Inspect a contract
+description: Check that a contract has a name
+inputs:
+  contract:
+    description: Contract JSON path
+    required: true
+runs:
+  using: composite
+  steps:
+    - name: Check name
+      shell: bash
+      run: jq -e '.name | length > 0' "${{ inputs.contract }}"

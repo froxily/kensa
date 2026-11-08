@@ -1,0 +1,54 @@
+# --- Secrets & local env ---
+.env
+.env.*
+!.env.example
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+*.egg-info/
+build/
+
+# --- Node / frontend ---
+node_modules/
+dist/
+dist-replay/
+coverage/
+playwright-report/
+test-results/
+blob-report/
+*.tsbuildinfo
+.vite/
+
+# --- Logs & scratch ---
+*.log
+# ...but not the synthetic CI logs the app and its benchmark read (tests/test_repository.py).
+!backend/src/kensa/samples/*.log
+!eval/fixtures/**/*.log
+# ...nor evaluation-case repositories that contain a dist/ folder (listed in a frozen manifest).
+!eval/datasets/**/dist/
+tmp/
+scratch/
+
+# --- Editors / OS ---
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Local OpenTelemetry traces (M5)
+.telemetry/
+
+# Local baseline checkouts for evaluation (M5.1)
+.worktrees/
+# Local release snapshots: separate repositories, never part of this one.
+.release/

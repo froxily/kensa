@@ -1,0 +1,24 @@
+name: Cache verification
+on: [push]
+jobs:
+  cache:
+    runs-on: ubuntu-22.04
+    services:
+      broker:
+        image: redis:7
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.23'
+          cache: false
+      - run: go run ./cmd/check
+        env:
+          IBIS_CACHE_DB: '64'

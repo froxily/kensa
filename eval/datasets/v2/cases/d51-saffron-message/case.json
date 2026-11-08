@@ -1,0 +1,16 @@
+{
+  "id": "d51-saffron-message",
+  "split": "dev",
+  "category": "test_regression",
+  "kind": "lookalike",
+  "difficulty": "medium",
+  "ecosystem": "go",
+  "title": "Offline message no longer matches its contract",
+  "root_cause": "The message formatter returns service offline while the test expects database connection refused. Both strings are literals in a unit test; no database connection is attempted.",
+  "fix_keywords": ["ErrorMessage", "offline"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 60, "end_line": 63, "why": "The failed assertion compares the two message strings."},
+    {"path": "messages/errors.go", "start_line": 3, "end_line": 7, "why": "The formatter returns the actual literal."},
+    {"path": "messages/errors_test.go", "start_line": 13, "end_line": 16, "why": "The test expects the database-themed message."}
+  ]
+}

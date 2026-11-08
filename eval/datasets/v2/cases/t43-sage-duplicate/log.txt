@@ -1,0 +1,85 @@
+2026-10-18T12:00:00.0000000Z Current runner version: '2.329.0'
+2026-10-18T12:00:00.1000000Z ##[group]Operating System
+2026-10-18T12:00:00.2000000Z macOS 14.7.6
+2026-10-18T12:00:00.3000000Z ##[endgroup]
+2026-10-18T12:00:00.4000000Z ##[group]Runner Image
+2026-10-18T12:00:00.5000000Z Image: macos-14
+2026-10-18T12:00:00.6000000Z ##[endgroup]
+2026-10-18T12:00:00.7000000Z Prepare workflow directory
+2026-10-18T12:00:00.8000000Z Prepare all required actions
+2026-10-18T12:00:00.9000000Z Getting action download info
+2026-10-18T12:00:01.0000000Z Download action repository 'actions/checkout@v4'
+2026-10-18T12:00:01.1000000Z Download action repository 'actions/setup-node@v4'
+2026-10-18T12:00:01.2000000Z Complete job name: checks
+2026-10-18T12:00:01.3000000Z ##[group]Run actions/checkout@v4
+2026-10-18T12:00:01.4000000Z with:
+2026-10-18T12:00:01.5000000Z   repository: sage-labs/units-and-phases
+2026-10-18T12:00:01.6000000Z ##[endgroup]
+2026-10-18T12:00:01.7000000Z Syncing repository: sage-labs/units-and-phases
+2026-10-18T12:00:01.8000000Z Getting Git version info
+2026-10-18T12:00:01.9000000Z git version 2.49.0
+2026-10-18T12:00:02.0000000Z Checking out the ref
+2026-10-18T12:00:02.1000000Z ##[group]Run actions/setup-node@v4
+2026-10-18T12:00:02.2000000Z with:
+2026-10-18T12:00:02.3000000Z   node-version: 22
+2026-10-18T12:00:02.4000000Z ##[endgroup]
+2026-10-18T12:00:02.5000000Z Found in cache: /Users/runner/hostedtoolcache/node/22.19.0/x64
+2026-10-18T12:00:02.6000000Z ##[group]Environment details
+2026-10-18T12:00:02.7000000Z node: v22.19.0
+2026-10-18T12:00:02.8000000Z npm: 10.9.3
+2026-10-18T12:00:02.9000000Z ##[endgroup]
+2026-10-18T12:00:03.0000000Z ##[group]Run node --test checks/units.test.mjs
+2026-10-18T12:00:03.1000000Z node --test checks/units.test.mjs
+2026-10-18T12:00:03.2000000Z node --check tools/phase-release.mjs
+2026-10-18T12:00:03.3000000Z shell: /bin/bash -e {0}
+2026-10-18T12:00:03.4000000Z ##[endgroup]
+2026-10-18T12:00:03.5000000Z TAP version 13
+2026-10-18T12:00:03.5100000Z # Subtest: whole unit
+2026-10-18T12:00:03.5200000Z ok 1 - whole unit
+2026-10-18T12:00:03.5300000Z   ---
+2026-10-18T12:00:03.5400000Z   duration_ms: 0.417
+2026-10-18T12:00:03.5500000Z   ...
+2026-10-18T12:00:03.5600000Z # Subtest: zero unit
+2026-10-18T12:00:03.5700000Z ok 2 - zero unit
+2026-10-18T12:00:03.5800000Z   ---
+2026-10-18T12:00:03.5900000Z   duration_ms: 0.061
+2026-10-18T12:00:03.6000000Z   ...
+2026-10-18T12:00:03.6100000Z # Subtest: half unit
+2026-10-18T12:00:03.6200000Z ok 3 - half unit
+2026-10-18T12:00:03.6300000Z   ---
+2026-10-18T12:00:03.6400000Z   duration_ms: 0.047
+2026-10-18T12:00:03.6500000Z   ...
+2026-10-18T12:00:03.6600000Z # Subtest: two units
+2026-10-18T12:00:03.6700000Z ok 4 - two units
+2026-10-18T12:00:03.6800000Z   ---
+2026-10-18T12:00:03.6900000Z   duration_ms: 0.043
+2026-10-18T12:00:03.7000000Z   ...
+2026-10-18T12:00:03.7100000Z # Subtest: negative unit
+2026-10-18T12:00:03.7200000Z ok 5 - negative unit
+2026-10-18T12:00:03.7300000Z   ---
+2026-10-18T12:00:03.7400000Z   duration_ms: 0.039
+2026-10-18T12:00:03.7500000Z   ...
+2026-10-18T12:00:03.7600000Z # Subtest: quarter unit
+2026-10-18T12:00:03.7700000Z ok 6 - quarter unit
+2026-10-18T12:00:03.7800000Z   ---
+2026-10-18T12:00:03.7900000Z   duration_ms: 0.039
+2026-10-18T12:00:03.8000000Z   ...
+2026-10-18T12:00:03.8100000Z 1..6
+2026-10-18T12:00:03.8200000Z # tests 6
+2026-10-18T12:00:03.8300000Z # suites 0
+2026-10-18T12:00:03.8400000Z # pass 6
+2026-10-18T12:00:03.8500000Z # fail 0
+2026-10-18T12:00:03.8600000Z # cancelled 0
+2026-10-18T12:00:03.8700000Z # skipped 0
+2026-10-18T12:00:03.8800000Z # todo 0
+2026-10-18T12:00:03.8900000Z # duration_ms 51.144
+2026-10-18T12:00:04.0000000Z /Users/runner/work/units-and-phases/units-and-phases/tools/phase-release.mjs:3
+2026-10-18T12:00:04.1000000Z const phaseCount = 5;
+2026-10-18T12:00:04.2000000Z       ^
+2026-10-18T12:00:04.3000000Z SyntaxError: Identifier 'phaseCount' has already been declared
+2026-10-18T12:00:04.4000000Z     at checkSyntax (node:internal/main/check_syntax:74:5)
+2026-10-18T12:00:04.5000000Z 
+2026-10-18T12:00:04.6000000Z Node.js v22.19.0
+2026-10-18T12:00:04.7000000Z ##[error]Process completed with exit code 1.
+2026-10-18T12:00:04.8000000Z Post job cleanup.
+2026-10-18T12:00:04.9000000Z Cleaning up orphan processes

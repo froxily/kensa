@@ -1,0 +1,16 @@
+{
+  "id": "d26-violet-suppressed",
+  "split": "dev",
+  "category": "unknown",
+  "kind": "insufficient",
+  "difficulty": "medium",
+  "ecosystem": "java",
+  "title": "Verifier exits after its output is discarded",
+  "root_cause": "The Maven build succeeds, but the subsequent Java command suppresses both output streams and reports only exit code 1. The evidence does not identify whether the source value, request, or response caused the failure.",
+  "fix_keywords": ["VIOLET_SOURCE"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 39, "end_line": 45, "why": "The Java command suppresses its diagnostics."},
+    {"path": "log", "start_line": 71, "end_line": 77, "why": "The build succeeds before the generic step failure."},
+    {"path": "src/main/java/Violet.java", "start_line": 7, "end_line": 11, "why": "Several operations in the verifier can fail without visible diagnostics."}
+  ]
+}

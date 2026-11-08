@@ -1,0 +1,16 @@
+{
+  "id": "t33-savory-cutoff",
+  "split": "test",
+  "category": "unknown",
+  "kind": "insufficient",
+  "difficulty": "medium",
+  "ecosystem": "java",
+  "title": "Catalog reader output is truncated",
+  "root_cause": "The log is truncated before the catalog reader's output and retains only its nonzero exit. The available evidence does not establish whether the request, response, or another runtime condition caused the failure.",
+  "fix_keywords": [],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 63, "end_line": 65, "why": "Truncation removes the failing command's diagnostic output."},
+    {"path": ".github/workflows/payload-reader.yml", "start_line": 12, "end_line": 15, "why": "The step runs the catalog reader after showing Java settings."},
+    {"path": "tasks/CatalogStatus.java", "start_line": 9, "end_line": 13, "why": "The reader has several possible request and response failure points."}
+  ]
+}

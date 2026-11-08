@@ -1,0 +1,15 @@
+{
+  "id": "d21-kestrel-cmake",
+  "split": "dev",
+  "category": "workflow_path",
+  "kind": "standard",
+  "difficulty": "easy",
+  "ecosystem": "cpp",
+  "title": "CMake includes an unavailable file",
+  "root_cause": "The CMake project includes cmake/CompilerWarnings.cmake, which is absent from the checkout. Configuration fails until the include path is corrected or that file is supplied.",
+  "fix_keywords": ["cmake/CompilerWarnings.cmake"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 70, "end_line": 75, "why": "CMake reports that the requested include file could not be found."},
+    {"path": "CMakeLists.txt", "start_line": 18, "end_line": 19, "why": "The project includes the missing file."}
+  ]
+}

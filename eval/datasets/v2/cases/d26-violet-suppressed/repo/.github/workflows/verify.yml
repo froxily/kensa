@@ -1,0 +1,17 @@
+name: Build and verify
+on: [push]
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Build and run verification
+        run: |
+          mvn -B package
+          java -jar target/violet-1.0.jar > /dev/null 2>&1
+        env:
+          VIOLET_SOURCE: ${{ secrets.VIOLET_SOURCE }}

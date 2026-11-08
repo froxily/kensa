@@ -1,0 +1,72 @@
+2026-10-21T08:30:00.0000000Z Current runner version: '2.328.0'
+2026-10-21T08:30:00.1000000Z ##[group]Operating System
+2026-10-21T08:30:00.2000000Z Ubuntu
+2026-10-21T08:30:00.3000000Z 24.04.3
+2026-10-21T08:30:00.4000000Z LTS
+2026-10-21T08:30:00.5000000Z ##[endgroup]
+2026-10-21T08:30:00.6000000Z ##[group]Runner Image
+2026-10-21T08:30:00.7000000Z Image: ubuntu-24.04
+2026-10-21T08:30:00.8000000Z Version: 20261012.1
+2026-10-21T08:30:00.9000000Z ##[endgroup]
+2026-10-21T08:30:01.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-21T08:30:01.1000000Z Contents: read
+2026-10-21T08:30:01.2000000Z Metadata: read
+2026-10-21T08:30:01.3000000Z ##[endgroup]
+2026-10-21T08:30:01.4000000Z Prepare workflow directory
+2026-10-21T08:30:01.5000000Z Prepare all required actions
+2026-10-21T08:30:01.6000000Z Download action repository 'actions/checkout@v4'
+2026-10-21T08:30:01.7000000Z Download action repository 'actions/setup-java@v4'
+2026-10-21T08:30:01.8000000Z Complete job name: report
+2026-10-21T08:30:02.0000000Z ##[group]Run actions/checkout@v4
+2026-10-21T08:30:02.1000000Z with:
+2026-10-21T08:30:02.2000000Z   repository: woodland-press/willow
+2026-10-21T08:30:02.3000000Z   fetch-depth: 1
+2026-10-21T08:30:02.4000000Z ##[endgroup]
+2026-10-21T08:30:02.5000000Z Syncing repository: woodland-press/willow
+2026-10-21T08:30:02.6000000Z Fetching the repository
+2026-10-21T08:30:02.7000000Z Checking out the ref
+2026-10-21T08:30:02.8000000Z ##[group]Run actions/setup-java@v4
+2026-10-21T08:30:02.9000000Z with:
+2026-10-21T08:30:03.0000000Z   distribution: temurin
+2026-10-21T08:30:03.1000000Z   java-version: 21
+2026-10-21T08:30:03.2000000Z ##[endgroup]
+2026-10-21T08:30:03.3000000Z Resolved Java 21 from tool-cache
+2026-10-21T08:30:03.4000000Z Setting Java 21 as the default
+2026-10-21T08:30:03.5000000Z ##[group]Run mkdir -p classes && javac -d classes src/Willow.java
+2026-10-21T08:30:03.6000000Z mkdir -p classes && javac -d classes src/Willow.java
+2026-10-21T08:30:03.7000000Z shell: /usr/bin/bash -e {0}
+2026-10-21T08:30:03.8000000Z ##[endgroup]
+2026-10-21T08:30:05.0000000Z ##[group]Run mkdir -p out
+2026-10-21T08:30:05.1000000Z mkdir -p out
+2026-10-21T08:30:05.2000000Z java -Xmx32m -cp classes Willow
+2026-10-21T08:30:05.3000000Z shell: /usr/bin/bash -e {0}
+2026-10-21T08:30:05.4000000Z ##[endgroup]
+2026-10-21T08:30:05.4100000Z Built report batch 1
+2026-10-21T08:30:05.4200000Z Built report batch 2
+2026-10-21T08:30:05.4300000Z Built report batch 3
+2026-10-21T08:30:05.4400000Z Built report batch 4
+2026-10-21T08:30:05.4500000Z Built report batch 5
+2026-10-21T08:30:05.4600000Z Built report batch 6
+2026-10-21T08:30:05.4700000Z Built report batch 7
+2026-10-21T08:30:05.4800000Z Built report batch 8
+2026-10-21T08:30:05.4900000Z Built report batch 9
+2026-10-21T08:30:05.5000000Z Built report batch 10
+2026-10-21T08:30:05.5100000Z Built report batch 11
+2026-10-21T08:30:05.5200000Z Built report batch 12
+2026-10-21T08:30:05.5300000Z Built report batch 13
+2026-10-21T08:30:05.5400000Z Built report batch 14
+2026-10-21T08:30:05.5500000Z Built report batch 15
+2026-10-21T08:30:05.5600000Z Built report batch 16
+2026-10-21T08:30:05.5700000Z Built report batch 17
+2026-10-21T08:30:05.5800000Z Built report batch 18
+2026-10-21T08:30:05.5900000Z Built report batch 19
+2026-10-21T08:30:05.6000000Z Built report batch 20
+2026-10-21T08:30:05.6100000Z Built report batch 21
+2026-10-21T08:30:05.6200000Z Built report batch 22
+2026-10-21T08:30:05.6300000Z Built report batch 23
+2026-10-21T08:30:05.6400000Z Built report batch 24
+2026-10-21T08:30:05.7000000Z Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
+2026-10-21T08:30:05.8000000Z     at Willow.main(Willow.java:9)
+2026-10-21T08:30:05.9000000Z ##[error]Process completed with exit code 1.
+2026-10-21T08:30:06.0000000Z Post job cleanup.
+2026-10-21T08:30:06.1000000Z Cleaning up orphan processes

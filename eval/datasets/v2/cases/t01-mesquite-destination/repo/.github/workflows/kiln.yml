@@ -1,0 +1,11 @@
+name: Catalog dispatch
+on: [push]
+jobs:
+  dispatch:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.4'
+      - run: ruby tasks/dispatch.rb

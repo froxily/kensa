@@ -1,0 +1,30 @@
+name: Package verification
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  resolve:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Obtain sources
+        uses: actions/checkout@v4
+      - name: Set Python version
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Poetry
+        run: pipx install poetry==1.8.3
+      - name: Inspect interpreter
+        run: python --version
+      - name: Install dependencies
+        run: poetry install --no-interaction
+      - name: Run checks
+        run: poetry run pytest
+      - name: Archive reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reports
+          path: reports/

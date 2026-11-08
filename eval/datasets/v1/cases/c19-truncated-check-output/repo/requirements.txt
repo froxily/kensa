@@ -1,0 +1,10 @@
+pytest==8.3.3
+# Test tools for archive validation.
+# Use Python 3.12 for CI.
+# No external service is required by the smoke test.
+# Run pytest -v tests to execute the suite.
+# Additional tests may be added under tests/.
+# Keep the test runner pinned for reproducibility.
+# Install using pip install -r requirements.txt.
+# The workflow runs on pull requests and pushes.
+# This file lists direct dependencies only.

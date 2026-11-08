@@ -1,0 +1,16 @@
+{
+  "id": "d20-heron-service",
+  "split": "dev",
+  "category": "db_connectivity",
+  "kind": "masked",
+  "difficulty": "medium",
+  "ecosystem": "kotlin",
+  "title": "Integration test cannot reach the database service",
+  "root_cause": "The job runs on the host and its test connects to 127.0.0.1:3306, but the MySQL service has no port published to the host. The refused connection makes the test and the Gradle task fail.",
+  "fix_keywords": ["ports", "3306"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 74, "end_line": 81, "why": "The test fails with a refused connection at its socket call."},
+    {"path": ".github/workflows/integration.yml", "start_line": 5, "end_line": 16, "why": "The host job starts the service without publishing a port."},
+    {"path": "src/test/kotlin/DatabaseTest.kt", "start_line": 5, "end_line": 9, "why": "The test connects to host loopback port 3306."}
+  ]
+}

@@ -1,0 +1,67 @@
+2026-10-30T13:30:00.0000000Z Current runner version: '2.328.0'
+2026-10-30T13:30:00.1000000Z ##[group]Operating System
+2026-10-30T13:30:00.2000000Z Microsoft Windows Server 2022
+2026-10-30T13:30:00.3000000Z 10.0.20348
+2026-10-30T13:30:00.4000000Z Datacenter
+2026-10-30T13:30:00.5000000Z ##[endgroup]
+2026-10-30T13:30:00.6000000Z ##[group]Runner Image
+2026-10-30T13:30:00.7000000Z Image: windows-2022
+2026-10-30T13:30:00.8000000Z Version: 20261026.1
+2026-10-30T13:30:00.9000000Z ##[endgroup]
+2026-10-30T13:30:01.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-30T13:30:01.1000000Z Contents: read
+2026-10-30T13:30:01.2000000Z Metadata: read
+2026-10-30T13:30:01.3000000Z ##[endgroup]
+2026-10-30T13:30:01.4000000Z Prepare workflow directory
+2026-10-30T13:30:01.5000000Z Prepare all required actions
+2026-10-30T13:30:01.6000000Z Download action repository 'actions/checkout@v4'
+2026-10-30T13:30:01.7000000Z Download action repository 'erlef/setup-beam@v1'
+2026-10-30T13:30:01.8000000Z Complete job name: contracts
+2026-10-30T13:30:02.0000000Z ##[group]Run actions/checkout@v4
+2026-10-30T13:30:02.1000000Z with:
+2026-10-30T13:30:02.2000000Z   repository: field-labs/kohlrabi
+2026-10-30T13:30:02.3000000Z   fetch-depth: 1
+2026-10-30T13:30:02.4000000Z ##[endgroup]
+2026-10-30T13:30:02.5000000Z Syncing repository: field-labs/kohlrabi
+2026-10-30T13:30:02.6000000Z Fetching the repository
+2026-10-30T13:30:02.7000000Z Checking out the ref
+2026-10-30T13:30:02.8000000Z ##[group]Run erlef/setup-beam@v1
+2026-10-30T13:30:02.9000000Z with:
+2026-10-30T13:30:03.0000000Z   otp-version: 27
+2026-10-30T13:30:03.1000000Z   elixir-version: 1.18
+2026-10-30T13:30:03.2000000Z ##[endgroup]
+2026-10-30T13:30:03.3000000Z OTP 27.3 installed
+2026-10-30T13:30:03.4000000Z Elixir 1.18.4 installed
+2026-10-30T13:30:03.5000000Z ##[group]Run elixir ci/risk_review.exs
+2026-10-30T13:30:03.6000000Z elixir ci/risk_review.exs
+2026-10-30T13:30:03.7000000Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-30T13:30:03.8000000Z ##[endgroup]
+2026-10-30T13:30:04.0000000Z ======================== EUnit ========================
+2026-10-30T13:30:04.0100000Z module 'Elixir.RiskTest'
+2026-10-30T13:30:04.0200000Z   'Elixir.RiskTest': a_test...ok
+2026-10-30T13:30:04.0300000Z   'Elixir.RiskTest': b_test...ok
+2026-10-30T13:30:04.0400000Z   'Elixir.RiskTest': c_test...ok
+2026-10-30T13:30:04.0500000Z   'Elixir.RiskTest': d_test...ok
+2026-10-30T13:30:04.0600000Z   'Elixir.RiskTest': e_test...ok
+2026-10-30T13:30:04.0700000Z   'Elixir.RiskTest': f_test...ok
+2026-10-30T13:30:04.0800000Z   'Elixir.RiskTest': g_test...ok
+2026-10-30T13:30:04.0900000Z   'Elixir.RiskTest': h_test...ok
+2026-10-30T13:30:04.1000000Z   'Elixir.RiskTest': i_test...ok
+2026-10-30T13:30:04.1100000Z   'Elixir.RiskTest': j_test...ok
+2026-10-30T13:30:04.1200000Z   'Elixir.RiskTest': k_test...ok
+2026-10-30T13:30:04.1300000Z   'Elixir.RiskTest': l_test...ok
+2026-10-30T13:30:04.1400000Z   'Elixir.RiskTest': m_test...ok
+2026-10-30T13:30:04.1500000Z   'Elixir.RiskTest': denial_test...*failed*
+2026-10-30T13:30:04.1600000Z in function 'Elixir.RiskTest':denial_test/0 (ci/risk_review.exs, line 20)
+2026-10-30T13:30:04.1700000Z in call from eunit_test:'-mf_wrapper/2-fun-0-'/2 (eunit_test.erl, line 273)
+2026-10-30T13:30:04.1800000Z in call from eunit_test:run_testfun/1 (eunit_test.erl, line 71)
+2026-10-30T13:30:04.1900000Z in call from eunit_proc:run_test/1 (eunit_proc.erl, line 531)
+2026-10-30T13:30:04.2000000Z in call from eunit_proc:with_timeout/3 (eunit_proc.erl, line 356)
+2026-10-30T13:30:04.2100000Z **error:{badmatch,warning}
+2026-10-30T13:30:04.2200000Z   output:<<"classifying: package push denied: permission denied\n">>
+2026-10-30T13:30:04.2300000Z   [done in 0.014 s]
+2026-10-30T13:30:04.2400000Z =======================================================
+2026-10-30T13:30:04.2500000Z   Failed: 1.  Skipped: 0.  Passed: 13.
+2026-10-30T13:30:04.2600000Z ##[error]Process completed with exit code 1.
+2026-10-30T13:30:04.2700000Z Post job cleanup.
+2026-10-30T13:30:04.2800000Z Cleaning up orphan processes

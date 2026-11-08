@@ -1,0 +1,17 @@
+{
+  "id": "t04-acacia-status",
+  "split": "test",
+  "category": "github_permissions",
+  "kind": "standard",
+  "difficulty": "easy",
+  "ecosystem": "cpp",
+  "title": "Commit status creation requires write permission",
+  "root_cause": "The workflow token has statuses read permission but the request creates a commit status. GitHub returns 403 and identifies statuses write as the required permission.",
+  "fix_keywords": ["statuses", "write"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 36, "end_line": 46, "why": "The response is forbidden and names the required scope."},
+    {"path": "log", "start_line": 57, "end_line": 62, "why": "The API reports that the integration cannot access the resource."},
+    {"path": ".github/workflows/commit-mark.yml", "start_line": 3, "end_line": 5, "why": "The token has statuses read only."},
+    {"path": ".github/workflows/commit-mark.yml", "start_line": 11, "end_line": 17, "why": "The step posts a status using the workflow token."}
+  ]
+}

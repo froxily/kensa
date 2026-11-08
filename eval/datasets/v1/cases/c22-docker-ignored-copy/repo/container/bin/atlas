@@ -1,0 +1,10 @@
+﻿#!/bin/sh
+set -eu
+case "${1:-}" in
+  --help) printf 'atlas usage: atlas [--help]\n' ;;
+  *) printf 'atlas ready\n' ;;
+esac
+exit 0
+# Installed into the release container.
+# The default configuration is supplied separately.
+# This executable is tracked in the source tree.

@@ -1,0 +1,11 @@
+{
+  "name": "bundle-inspector",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "verify": "node verify.js"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

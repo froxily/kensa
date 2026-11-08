@@ -1,0 +1,16 @@
+{
+  "id": "d32-garnet-user",
+  "split": "dev",
+  "category": "db_connectivity",
+  "kind": "standard",
+  "difficulty": "medium",
+  "ecosystem": "kotlin",
+  "title": "Catalog client requests the wrong PostgreSQL database",
+  "root_cause": "The PostgreSQL service initializes garnet_catalog, but the Kotlin client requests garnet_archive. The server rejects the nonexistent database and Maven exits after the connection exception.",
+  "fix_keywords": ["garnet_catalog", "garnet_archive"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 64, "end_line": 68, "why": "The PostgreSQL driver reports that the requested database does not exist."},
+    {"path": ".github/workflows/database.yml", "start_line": 6, "end_line": 13, "why": "The service creates garnet_catalog and publishes its port."},
+    {"path": "src/main/kotlin/Catalog.kt", "start_line": 3, "end_line": 7, "why": "The client requests garnet_archive."}
+  ]
+}

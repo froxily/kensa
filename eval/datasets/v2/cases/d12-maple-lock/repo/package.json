@@ -1,0 +1,6 @@
+{
+  "name": "maple-checks",
+  "version": "1.0.0",
+  "scripts": {"test": "node check.js"},
+  "dependencies": {"dotenv": "16.4.5"}
+}

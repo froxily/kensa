@@ -1,0 +1,52 @@
+2026-09-14T08:21:00.0000000Z Current runner version: '2.328.1'
+2026-09-14T08:21:01.0000000Z Operating System
+2026-09-14T08:21:02.0000000Z Ubuntu 24.04
+2026-09-14T08:21:03.0000000Z Runner Image
+2026-09-14T08:21:04.0000000Z Image: ubuntu-24.04
+2026-09-14T08:21:05.0000000Z GITHUB_TOKEN Permissions
+2026-09-14T08:21:06.0000000Z Contents: read
+2026-09-14T08:21:07.0000000Z PullRequests: read
+2026-09-14T08:21:08.0000000Z Prepare workflow directory
+2026-09-14T08:21:09.0000000Z Prepare all required actions
+2026-09-14T08:21:10.0000000Z Download action repository actions/checkout@v4
+2026-09-14T08:21:11.0000000Z Download action repository actions/setup-python@v5
+2026-09-14T08:21:12.0000000Z Complete job name: annotate
+2026-09-14T08:21:13.0000000Z ##[group]Run actions/checkout@v4
+2026-09-14T08:21:14.0000000Z with:
+2026-09-14T08:21:15.0000000Z   repository: mossvale/review-lantern
+2026-09-14T08:21:16.0000000Z   clean: true
+2026-09-14T08:21:17.0000000Z   fetch-depth: 1
+2026-09-14T08:21:18.0000000Z ##[endgroup]
+2026-09-14T08:21:19.0000000Z Syncing repository: mossvale/review-lantern
+2026-09-14T08:21:20.0000000Z Initializing the repository
+2026-09-14T08:21:21.0000000Z Fetching the repository
+2026-09-14T08:21:22.0000000Z Checking out the ref
+2026-09-14T08:21:23.0000000Z ##[group]Run actions/setup-python@v5
+2026-09-14T08:21:24.0000000Z with:
+2026-09-14T08:21:25.0000000Z   python-version: 3.12
+2026-09-14T08:21:26.0000000Z ##[endgroup]
+2026-09-14T08:21:27.0000000Z Installed versions
+2026-09-14T08:21:28.0000000Z Successfully set up CPython (3.12.7)
+2026-09-14T08:21:29.0000000Z ##[group]Run pip install -r requirements.txt
+2026-09-14T08:21:30.0000000Z pip install -r requirements.txt
+2026-09-14T08:21:31.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-14T08:21:32.0000000Z ##[endgroup]
+2026-09-14T08:21:33.0000000Z Collecting requests==2.32.3
+2026-09-14T08:21:34.0000000Z Downloading requests-2.32.3-py3-none-any.whl
+2026-09-14T08:21:35.0000000Z Collecting charset-normalizer
+2026-09-14T08:21:36.0000000Z Collecting idna
+2026-09-14T08:21:37.0000000Z Collecting urllib3
+2026-09-14T08:21:38.0000000Z Collecting certifi
+2026-09-14T08:21:39.0000000Z Installing collected packages
+2026-09-14T08:21:40.0000000Z Successfully installed requests-2.32.3 urllib3-2.2.3
+2026-09-14T08:21:41.0000000Z ##[group]Run python comment.py
+2026-09-14T08:21:42.0000000Z python comment.py
+2026-09-14T08:21:43.0000000Z env:
+2026-09-14T08:21:44.0000000Z   GH_TOKEN: ***
+2026-09-14T08:21:45.0000000Z   REPOSITORY: mossvale/review-lantern
+2026-09-14T08:21:46.0000000Z ##[endgroup]
+2026-09-14T08:21:47.0000000Z Traceback (most recent call last):
+2026-09-14T08:21:48.0000000Z   File "comment.py", line 14, in <module>
+2026-09-14T08:21:49.0000000Z     response.raise_for_status()
+2026-09-14T08:21:50.0000000Z requests.exceptions.HTTPError: 403 Client Error: Forbidden for url: https://api.github.com/repos/mossvale/review-lantern/issues/42/comments
+2026-09-14T08:21:51.0000000Z ##[error]Process completed with exit code 1.

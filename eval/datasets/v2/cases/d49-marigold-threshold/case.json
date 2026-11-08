@@ -1,0 +1,16 @@
+{
+  "id": "d49-marigold-threshold",
+  "split": "dev",
+  "category": "test_regression",
+  "kind": "standard",
+  "difficulty": "easy",
+  "ecosystem": "python",
+  "title": "Packing threshold excludes the boundary value",
+  "root_cause": "The implementation assigns the large bucket only when the count is greater than ten. The test expects ten itself to be large, so the assertion fails with small instead.",
+  "fix_keywords": ["bucket_for", "10"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 64, "end_line": 72, "why": "The assertion shows the actual and expected bucket values."},
+    {"path": "packing.py", "start_line": 1, "end_line": 4, "why": "The implementation excludes ten from the large bucket."},
+    {"path": "tests/test_packing.py", "start_line": 10, "end_line": 11, "why": "The test specifies the boundary expectation."}
+  ]
+}

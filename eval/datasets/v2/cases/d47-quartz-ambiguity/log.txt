@@ -1,0 +1,87 @@
+2026-10-30T09:10:00.0000000Z Current runner version: '2.328.0'
+2026-10-30T09:10:00.1000000Z ##[group]Operating System
+2026-10-30T09:10:00.2000000Z macOS
+2026-10-30T09:10:00.3000000Z 15.6
+2026-10-30T09:10:00.4000000Z 24G84
+2026-10-30T09:10:00.5000000Z ##[endgroup]
+2026-10-30T09:10:00.6000000Z ##[group]Runner Image
+2026-10-30T09:10:00.7000000Z Image: macos-15
+2026-10-30T09:10:00.8000000Z Version: 20261026.1
+2026-10-30T09:10:00.9000000Z ##[endgroup]
+2026-10-30T09:10:01.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-30T09:10:01.1000000Z Contents: read
+2026-10-30T09:10:01.2000000Z Metadata: read
+2026-10-30T09:10:01.3000000Z ##[endgroup]
+2026-10-30T09:10:01.4000000Z Prepare workflow directory
+2026-10-30T09:10:01.5000000Z Prepare all required actions
+2026-10-30T09:10:01.6000000Z Download action repository 'actions/checkout@v4'
+2026-10-30T09:10:01.7000000Z Complete job name: tests
+2026-10-30T09:10:02.0000000Z ##[group]Run actions/checkout@v4
+2026-10-30T09:10:02.1000000Z with:
+2026-10-30T09:10:02.2000000Z   repository: mineral-labs/survey
+2026-10-30T09:10:02.3000000Z   fetch-depth: 1
+2026-10-30T09:10:02.4000000Z ##[endgroup]
+2026-10-30T09:10:02.5000000Z Syncing repository: mineral-labs/survey
+2026-10-30T09:10:02.6000000Z Getting Git version info
+2026-10-30T09:10:02.7000000Z git version 2.51.0
+2026-10-30T09:10:02.8000000Z Fetching the repository
+2026-10-30T09:10:02.9000000Z Checking out the ref
+2026-10-30T09:10:03.0000000Z ##[group]Run swift test
+2026-10-30T09:10:03.1000000Z swift test
+2026-10-30T09:10:03.2000000Z shell: /bin/bash -e {0}
+2026-10-30T09:10:03.3000000Z env:
+2026-10-30T09:10:03.4000000Z   SURVEY_SIGNAL_FILE: ***
+2026-10-30T09:10:03.5000000Z ##[endgroup]
+2026-10-30T09:10:04.0000000Z Building for debugging...
+2026-10-30T09:10:04.1000000Z [0/12] Write sources
+2026-10-30T09:10:04.2000000Z [2/12] Write swift-version--file.txt
+2026-10-30T09:10:04.5000000Z [4/14] Compiling Survey Signal.swift
+2026-10-30T09:10:04.6000000Z [5/14] Emitting module Survey
+2026-10-30T09:10:04.7000000Z [6/15] Wrapping AST for Survey for debugging
+2026-10-30T09:10:05.0000000Z [8/17] Compiling SurveyTests SignalTests.swift
+2026-10-30T09:10:05.1000000Z [9/17] Emitting module SurveyTests
+2026-10-30T09:10:05.2000000Z [10/18] Wrapping AST for SurveyTests for debugging
+2026-10-30T09:10:05.3000000Z [11/18] /Users/runner/work/survey/survey/.build/x86_64-apple-macosx/debug/SurveyPackageDiscoveredTests.derived/all-discovered-tests.swift
+2026-10-30T09:10:05.4000000Z [12/18] Write sources
+2026-10-30T09:10:05.5000000Z [14/21] Emitting module SurveyPackageDiscoveredTests
+2026-10-30T09:10:05.6000000Z [15/21] Compiling SurveyPackageDiscoveredTests all-discovered-tests.swift
+2026-10-30T09:10:05.7000000Z [16/21] Compiling SurveyPackageDiscoveredTests SurveyTests.swift
+2026-10-30T09:10:05.8000000Z [17/22] Wrapping AST for SurveyPackageDiscoveredTests for debugging
+2026-10-30T09:10:05.9000000Z [18/22] Write sources
+2026-10-30T09:10:06.0000000Z [20/24] Compiling SurveyPackageTests runner.swift
+2026-10-30T09:10:06.1000000Z [21/24] Emitting module SurveyPackageTests
+2026-10-30T09:10:06.2000000Z [22/25] Wrapping AST for SurveyPackageTests for debugging
+2026-10-30T09:10:06.3000000Z [23/25] Write Objects.LinkFileList
+2026-10-30T09:10:06.5000000Z [24/25] Linking SurveyPackageTests
+2026-10-30T09:10:06.6000000Z Build complete! (2.60s)
+2026-10-30T09:10:06.7000000Z Test Suite 'All tests' started at 2026-10-30 09:10:06.700.
+2026-10-30T09:10:06.7100000Z Test Suite 'SurveyPackageTests.xctest' started at 2026-10-30 09:10:06.710.
+2026-10-30T09:10:06.7200000Z Test Suite 'SignalTests' started at 2026-10-30 09:10:06.720.
+2026-10-30T09:10:06.7300000Z Test Case '-[SurveyTests.SignalTests testCount]' started.
+2026-10-30T09:10:06.7400000Z Test Case '-[SurveyTests.SignalTests testCount]' passed (0.001 seconds).
+2026-10-30T09:10:06.7500000Z Test Case '-[SurveyTests.SignalTests testEmpty]' started.
+2026-10-30T09:10:06.7600000Z Test Case '-[SurveyTests.SignalTests testEmpty]' passed (0.000 seconds).
+2026-10-30T09:10:06.7700000Z Test Case '-[SurveyTests.SignalTests testLowercase]' started.
+2026-10-30T09:10:06.7800000Z Test Case '-[SurveyTests.SignalTests testLowercase]' passed (0.000 seconds).
+2026-10-30T09:10:06.7900000Z Test Case '-[SurveyTests.SignalTests testPrefix]' started.
+2026-10-30T09:10:06.8000000Z Test Case '-[SurveyTests.SignalTests testPrefix]' passed (0.000 seconds).
+2026-10-30T09:10:06.8100000Z Test Case '-[SurveyTests.SignalTests testReplace]' started.
+2026-10-30T09:10:06.8200000Z Test Case '-[SurveyTests.SignalTests testReplace]' passed (0.000 seconds).
+2026-10-30T09:10:06.8300000Z Test Case '-[SurveyTests.SignalTests testSignal]' started.
+2026-10-30T09:10:06.8400000Z /Users/runner/work/survey/survey/Tests/SurveyTests/SignalTests.swift:13: error: -[SurveyTests.SignalTests testSignal] : XCTAssertTrue failed
+2026-10-30T09:10:06.8500000Z Test Case '-[SurveyTests.SignalTests testSignal]' failed (0.001 seconds).
+2026-10-30T09:10:06.8600000Z Test Case '-[SurveyTests.SignalTests testSplit]' started.
+2026-10-30T09:10:06.8700000Z Test Case '-[SurveyTests.SignalTests testSplit]' passed (0.000 seconds).
+2026-10-30T09:10:06.8800000Z Test Case '-[SurveyTests.SignalTests testSuffix]' started.
+2026-10-30T09:10:06.8900000Z Test Case '-[SurveyTests.SignalTests testSuffix]' passed (0.000 seconds).
+2026-10-30T09:10:06.9000000Z Test Case '-[SurveyTests.SignalTests testUppercase]' started.
+2026-10-30T09:10:06.9100000Z Test Case '-[SurveyTests.SignalTests testUppercase]' passed (0.000 seconds).
+2026-10-30T09:10:06.9200000Z Test Suite 'SignalTests' failed at 2026-10-30 09:10:06.920.
+2026-10-30T09:10:06.9300000Z 	 Executed 9 tests, with 1 failure (0 unexpected) in 0.002 (0.003) seconds
+2026-10-30T09:10:06.9400000Z Test Suite 'SurveyPackageTests.xctest' failed at 2026-10-30 09:10:06.940.
+2026-10-30T09:10:06.9500000Z 	 Executed 9 tests, with 1 failure (0 unexpected) in 0.002 (0.003) seconds
+2026-10-30T09:10:06.9600000Z Test Suite 'All tests' failed at 2026-10-30 09:10:06.960.
+2026-10-30T09:10:06.9700000Z 	 Executed 9 tests, with 1 failure (0 unexpected) in 0.002 (0.003) seconds
+2026-10-30T09:10:07.0000000Z ##[error]Process completed with exit code 1.
+2026-10-30T09:10:07.1000000Z Post job cleanup.
+2026-10-30T09:10:07.2000000Z Cleaning up orphan processes

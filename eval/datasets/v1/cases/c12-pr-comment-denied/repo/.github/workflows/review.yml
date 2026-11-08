@@ -1,0 +1,25 @@
+name: Review notes
+on:
+  pull_request:
+    types: [opened, synchronize]
+permissions:
+  contents: read
+  pull-requests: read
+jobs:
+  annotate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch change
+        uses: actions/checkout@v4
+      - name: Python runtime
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install client
+        run: pip install -r requirements.txt
+      - name: Post review note
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPOSITORY: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: python comment.py

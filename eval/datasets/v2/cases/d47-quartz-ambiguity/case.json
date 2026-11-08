@@ -1,0 +1,17 @@
+{
+  "id": "d47-quartz-ambiguity",
+  "split": "dev",
+  "category": "unknown",
+  "kind": "insufficient",
+  "difficulty": "hard",
+  "ecosystem": "swift",
+  "title": "Signal assertion does not distinguish file access from content",
+  "root_cause": "The test reports only that isReady returned false. The masked runtime path might be unreadable or absent, or the file might be readable but contain a value rejected by the code; the available evidence does not distinguish those causes.",
+  "fix_keywords": ["SURVEY_SIGNAL_FILE", "isReady"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 70, "end_line": 74, "why": "The test reports a boolean assertion failure without an underlying file error."},
+    {"path": "Sources/Survey/Signal.swift", "start_line": 4, "end_line": 6, "why": "Both a failed read and a non-ready value return false."},
+    {"path": "Tests/SurveyTests/SignalTests.swift", "start_line": 11, "end_line": 14, "why": "The test reads the runtime path and asserts the combined result."},
+    {"path": ".github/workflows/test.yml", "start_line": 8, "end_line": 10, "why": "The path comes from a secret whose value is unavailable."}
+  ]
+}

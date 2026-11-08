@@ -1,0 +1,16 @@
+name: Publish release
+on:
+  push:
+    tags: ['v*']
+permissions:
+  contents: read
+jobs:
+  release:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: cargo build --release
+      - name: Create release
+        run: gh release create "$GITHUB_REF_NAME" target/release/cedar --title "$GITHUB_REF_NAME" --notes "Binary build"
+        env:
+          GH_TOKEN: ${{ github.token }}

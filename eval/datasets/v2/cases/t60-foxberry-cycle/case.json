@@ -1,0 +1,15 @@
+{
+  "id": "t60-foxberry-cycle",
+  "split": "test",
+  "category": "docker",
+  "kind": "standard",
+  "difficulty": "medium",
+  "ecosystem": "dotnet",
+  "title": "Docker stage copies from itself",
+  "root_cause": "The package stage uses COPY --from=package, creating a dependency on itself. BuildKit detects the cycle and cannot solve the Dockerfile.",
+  "fix_keywords": ["COPY --from=package", "stage"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 61, "end_line": 64, "why": "BuildKit reports the circular stage dependency."},
+    {"path": "deploy/Cycle.Dockerfile", "start_line": 1, "end_line": 4, "why": "The stage name and COPY source are the same."}
+  ]
+}

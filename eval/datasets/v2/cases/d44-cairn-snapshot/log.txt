@@ -1,0 +1,100 @@
+2026-10-27T10:40:00.0000000Z Current runner version: '2.328.0'
+2026-10-27T10:40:00.1000000Z ##[group]Operating System
+2026-10-27T10:40:00.2000000Z Ubuntu
+2026-10-27T10:40:00.3000000Z 22.04.5
+2026-10-27T10:40:00.4000000Z LTS
+2026-10-27T10:40:00.5000000Z ##[endgroup]
+2026-10-27T10:40:00.6000000Z ##[group]Runner Image
+2026-10-27T10:40:00.7000000Z Image: ubuntu-22.04
+2026-10-27T10:40:00.8000000Z Version: 20261019.1
+2026-10-27T10:40:00.9000000Z ##[endgroup]
+2026-10-27T10:40:01.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-27T10:40:01.1000000Z Contents: read
+2026-10-27T10:40:01.2000000Z Metadata: read
+2026-10-27T10:40:01.3000000Z ##[endgroup]
+2026-10-27T10:40:01.4000000Z Prepare workflow directory
+2026-10-27T10:40:01.5000000Z Prepare all required actions
+2026-10-27T10:40:01.6000000Z Download action repository 'actions/checkout@v4'
+2026-10-27T10:40:01.7000000Z Download action repository 'actions/setup-java@v4'
+2026-10-27T10:40:01.8000000Z Download action repository 'gradle/actions@v4'
+2026-10-27T10:40:01.9000000Z Complete job name: snapshot
+2026-10-27T10:40:02.0000000Z ##[group]Run actions/checkout@v4
+2026-10-27T10:40:02.1000000Z with:
+2026-10-27T10:40:02.2000000Z   repository: summit-labs/cairn
+2026-10-27T10:40:02.3000000Z   fetch-depth: 1
+2026-10-27T10:40:02.4000000Z ##[endgroup]
+2026-10-27T10:40:02.5000000Z Syncing repository: summit-labs/cairn
+2026-10-27T10:40:02.6000000Z Fetching the repository
+2026-10-27T10:40:02.7000000Z Checking out the ref
+2026-10-27T10:40:02.8000000Z ##[group]Run actions/setup-java@v4
+2026-10-27T10:40:02.9000000Z with:
+2026-10-27T10:40:03.0000000Z   distribution: temurin
+2026-10-27T10:40:03.1000000Z   java-version: 21
+2026-10-27T10:40:03.2000000Z ##[endgroup]
+2026-10-27T10:40:03.3000000Z Resolved Java 21 from tool-cache
+2026-10-27T10:40:03.4000000Z ##[group]Run gradle/actions/setup-gradle@v4
+2026-10-27T10:40:03.5000000Z with:
+2026-10-27T10:40:03.6000000Z   gradle-version: 8.10.2
+2026-10-27T10:40:03.7000000Z ##[endgroup]
+2026-10-27T10:40:03.8000000Z Gradle 8.10.2 is available on PATH
+2026-10-27T10:40:03.9000000Z ##[group]Run set +e
+2026-10-27T10:40:04.0000000Z set +e
+2026-10-27T10:40:04.1000000Z gradle test
+2026-10-27T10:40:04.2000000Z result=$?
+2026-10-27T10:40:04.3000000Z cat build/snapshot.txt
+2026-10-27T10:40:04.4000000Z exit "$result"
+2026-10-27T10:40:04.5000000Z shell: /usr/bin/bash -e {0}
+2026-10-27T10:40:04.6000000Z ##[endgroup]
+2026-10-27T10:40:05.0000000Z Welcome to Gradle 8.10.2!
+2026-10-27T10:40:05.1000000Z Starting a Gradle Daemon (subsequent builds will be faster)
+2026-10-27T10:40:15.0000000Z > Task :checkKotlinGradlePluginConfigurationErrors SKIPPED
+2026-10-27T10:40:15.1000000Z > Task :compileKotlin NO-SOURCE
+2026-10-27T10:40:15.2000000Z > Task :compileJava NO-SOURCE
+2026-10-27T10:40:15.3000000Z > Task :processResources NO-SOURCE
+2026-10-27T10:40:15.4000000Z > Task :classes UP-TO-DATE
+2026-10-27T10:40:20.0000000Z > Task :compileTestKotlin
+2026-10-27T10:40:20.1000000Z > Task :compileTestJava NO-SOURCE
+2026-10-27T10:40:20.2000000Z > Task :processTestResources NO-SOURCE
+2026-10-27T10:40:20.3000000Z > Task :testClasses UP-TO-DATE
+2026-10-27T10:40:21.0000000Z > Task :test FAILED
+2026-10-27T10:40:21.1000000Z SnapshotTest > buildsSnapshot() STANDARD_OUT
+2026-10-27T10:40:21.1100000Z     built segment 1
+2026-10-27T10:40:21.1200000Z     built segment 2
+2026-10-27T10:40:21.1300000Z     built segment 3
+2026-10-27T10:40:21.1400000Z     built segment 4
+2026-10-27T10:40:21.1500000Z     built segment 5
+2026-10-27T10:40:21.1600000Z     built segment 6
+2026-10-27T10:40:21.1700000Z     built segment 7
+2026-10-27T10:40:21.1800000Z     built segment 8
+2026-10-27T10:40:21.1900000Z     built segment 9
+2026-10-27T10:40:21.2000000Z     built segment 10
+2026-10-27T10:40:21.2100000Z     built segment 11
+2026-10-27T10:40:21.2200000Z     built segment 12
+2026-10-27T10:40:21.2300000Z     built segment 13
+2026-10-27T10:40:21.2400000Z     built segment 14
+2026-10-27T10:40:21.2500000Z     built segment 15
+2026-10-27T10:40:21.2600000Z     built segment 16
+2026-10-27T10:40:21.2700000Z     built segment 17
+2026-10-27T10:40:21.2800000Z     built segment 18
+2026-10-27T10:40:21.2900000Z     built segment 19
+2026-10-27T10:40:21.3000000Z     built segment 20
+2026-10-27T10:40:21.3100000Z     built segment 21
+2026-10-27T10:40:21.3200000Z     built segment 22
+2026-10-27T10:40:21.3300000Z     built segment 23
+2026-10-27T10:40:21.3400000Z     built segment 24
+2026-10-27T10:40:21.4000000Z SnapshotTest > buildsSnapshot() FAILED
+2026-10-27T10:40:21.5000000Z     java.lang.OutOfMemoryError: Java heap space
+2026-10-27T10:40:21.6000000Z         at SnapshotTest.buildsSnapshot(SnapshotTest.kt:10)
+2026-10-27T10:40:21.7000000Z 1 test completed, 1 failed
+2026-10-27T10:40:21.8000000Z FAILURE: Build failed with an exception.
+2026-10-27T10:40:21.9000000Z * What went wrong:
+2026-10-27T10:40:22.0000000Z Execution failed for task ':test'.
+2026-10-27T10:40:22.1000000Z > There were failing tests. See the report at: file:///home/runner/work/cairn/cairn/build/reports/tests/test/index.html
+2026-10-27T10:40:22.2000000Z * Try:
+2026-10-27T10:40:22.3000000Z > Run with --scan to get full insights.
+2026-10-27T10:40:22.4000000Z BUILD FAILED in 17s
+2026-10-27T10:40:22.5000000Z 2 actionable tasks: 2 executed
+2026-10-27T10:40:22.6000000Z cat: build/snapshot.txt: No such file or directory
+2026-10-27T10:40:22.7000000Z ##[error]Process completed with exit code 1.
+2026-10-27T10:40:22.8000000Z Post job cleanup.
+2026-10-27T10:40:22.9000000Z Cleaning up orphan processes

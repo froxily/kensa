@@ -1,0 +1,8 @@
+name: Preset checks
+on: [push]
+jobs:
+  verify:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+      - run: cargo test -- --nocapture --test-threads=1

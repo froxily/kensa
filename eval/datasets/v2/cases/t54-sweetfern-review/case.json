@@ -1,0 +1,16 @@
+{
+  "id": "t54-sweetfern-review",
+  "split": "test",
+  "category": "unknown",
+  "kind": "insufficient",
+  "difficulty": "hard",
+  "ecosystem": "swift",
+  "title": "Review check hides request and response details",
+  "root_cause": "The script emits the same failure for an unsuccessful GitHub request and for a successful response without the expected phrase. The masked token's permissions and the response body are unavailable, so a scope problem and an incorrect content expectation are both plausible.",
+  "fix_keywords": [],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 49, "end_line": 52, "why": "Only the generic review failure and exit are visible."},
+    {"path": "log", "start_line": 23, "end_line": 26, "why": "The token value is masked."},
+    {"path": "jobs/review_check.swift", "start_line": 5, "end_line": 17, "why": "A failed request and a nonmatching body lead to the same result."}
+  ]
+}

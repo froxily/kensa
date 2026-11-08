@@ -1,0 +1,9 @@
+name: Native tests
+on: [push]
+jobs:
+  native:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: cmake -S . -B build && cmake --build build
+      - run: ctest --test-dir build -V

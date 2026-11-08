@@ -1,0 +1,16 @@
+{
+  "id": "t37-calendula-dispatch",
+  "split": "test",
+  "category": "github_permissions",
+  "kind": "misleading",
+  "difficulty": "medium",
+  "ecosystem": "ruby",
+  "title": "Workflow dispatch is denied before diagnostic file error",
+  "root_cause": "The workflow token has actions read permission, but dispatching a workflow requires actions write. The 403 leads the error handler to read a missing diagnostic file, producing a secondary path exception.",
+  "fix_keywords": ["actions", "write"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 51, "end_line": 54, "why": "The API denial occurs before the file exception."},
+    {"path": ".github/workflows/dispatch-check.yml", "start_line": 3, "end_line": 5, "why": "The token grants only actions read."},
+    {"path": "commands/dispatch.rb", "start_line": 12, "end_line": 19, "why": "The script dispatches a workflow and attempts to read diagnostics after a failed response."}
+  ]
+}

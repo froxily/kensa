@@ -1,0 +1,9 @@
+name: Configure C++
+on: [push]
+jobs:
+  configure:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure project
+        run: cmake -S . -B build

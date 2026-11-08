@@ -1,0 +1,16 @@
+{
+  "id": "t52-wood-basil",
+  "split": "test",
+  "category": "missing_env_var",
+  "kind": "masked",
+  "difficulty": "medium",
+  "ecosystem": "cpp",
+  "title": "Catch2 sector check has no environment value",
+  "root_cause": "The sector check requires BASIL_SECTOR, but the workflow does not set it. The environment lookup returns null and Catch2 reports a failed assertion.",
+  "fix_keywords": ["BASIL_SECTOR"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 83, "end_line": 88, "why": "The test output identifies the unset setting."},
+    {"path": "checks/sector_checks.cpp", "start_line": 15, "end_line": 17, "why": "The test requires the environment variable."},
+    {"path": ".github/workflows/catch-sector.yml", "start_line": 10, "end_line": 13, "why": "The test step does not supply the variable."}
+  ]
+}

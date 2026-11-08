@@ -1,0 +1,16 @@
+{
+  "id": "t58-alkanna-summary",
+  "split": "test",
+  "category": "test_regression",
+  "kind": "lookalike",
+  "difficulty": "medium",
+  "ecosystem": "go",
+  "title": "Summary selects the last problem instead of the first",
+  "root_cause": "The summary function selects the last problem, while the test expects the first. The Docker daemon wording is a literal test input and no Docker operation is performed.",
+  "fix_keywords": ["summarize", "problems"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 49, "end_line": 51, "why": "The test compares the last problem with the expected first problem."},
+    {"path": "summary_test.go", "start_line": 8, "end_line": 9, "why": "The function selects the final list element."},
+    {"path": "summary_test.go", "start_line": 18, "end_line": 23, "why": "The Docker wording is supplied directly in the test."}
+  ]
+}

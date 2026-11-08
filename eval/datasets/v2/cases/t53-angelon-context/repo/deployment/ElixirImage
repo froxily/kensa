@@ -1,0 +1,4 @@
+FROM elixir:1.17-alpine
+WORKDIR /srv/greeting
+COPY service/ /srv/greeting/service/
+CMD ["elixir", "service/greet.exs"]

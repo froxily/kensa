@@ -1,0 +1,76 @@
+2026-10-28T08:30:00.0000000Z Current runner version: '2.328.0'
+2026-10-28T08:30:00.1000000Z ##[group]Operating System
+2026-10-28T08:30:00.2000000Z Ubuntu
+2026-10-28T08:30:00.3000000Z 24.04.3
+2026-10-28T08:30:00.4000000Z LTS
+2026-10-28T08:30:00.5000000Z ##[endgroup]
+2026-10-28T08:30:00.6000000Z ##[group]Runner Image
+2026-10-28T08:30:00.7000000Z Image: ubuntu-24.04-arm
+2026-10-28T08:30:00.8000000Z Version: 20261019.1
+2026-10-28T08:30:00.9000000Z ##[endgroup]
+2026-10-28T08:30:01.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-28T08:30:01.1000000Z Contents: read
+2026-10-28T08:30:01.2000000Z Metadata: read
+2026-10-28T08:30:01.3000000Z ##[endgroup]
+2026-10-28T08:30:01.4000000Z Prepare workflow directory
+2026-10-28T08:30:01.5000000Z Prepare all required actions
+2026-10-28T08:30:01.6000000Z Download action repository 'actions/checkout@v4'
+2026-10-28T08:30:01.7000000Z Download action repository 'dtolnay/rust-toolchain@master'
+2026-10-28T08:30:01.8000000Z Complete job name: compile
+2026-10-28T08:30:02.0000000Z ##[group]Run actions/checkout@v4
+2026-10-28T08:30:02.1000000Z with:
+2026-10-28T08:30:02.2000000Z   repository: seed-labs/amaranth
+2026-10-28T08:30:02.3000000Z   fetch-depth: 1
+2026-10-28T08:30:02.4000000Z ##[endgroup]
+2026-10-28T08:30:02.5000000Z Syncing repository: seed-labs/amaranth
+2026-10-28T08:30:02.6000000Z Fetching the repository
+2026-10-28T08:30:02.7000000Z Checking out the ref
+2026-10-28T08:30:02.8000000Z ##[group]Run dtolnay/rust-toolchain@master
+2026-10-28T08:30:02.9000000Z with:
+2026-10-28T08:30:03.0000000Z   toolchain: 1.84.1
+2026-10-28T08:30:03.1000000Z ##[endgroup]
+2026-10-28T08:30:03.2000000Z info: syncing channel updates for '1.84.1-aarch64-unknown-linux-gnu'
+2026-10-28T08:30:04.0000000Z info: default toolchain set to '1.84.1-aarch64-unknown-linux-gnu'
+2026-10-28T08:30:04.1000000Z ##[group]Run rustc --print cfg
+2026-10-28T08:30:04.2000000Z rustc --print cfg
+2026-10-28T08:30:04.3000000Z rustc tools/payload.rs -o payload
+2026-10-28T08:30:04.4000000Z shell: /usr/bin/bash -e {0}
+2026-10-28T08:30:04.5000000Z ##[endgroup]
+2026-10-28T08:30:04.5100000Z debug_assertions
+2026-10-28T08:30:04.5200000Z panic="unwind"
+2026-10-28T08:30:04.5300000Z target_abi=""
+2026-10-28T08:30:04.5400000Z target_arch="aarch64"
+2026-10-28T08:30:04.5500000Z target_endian="little"
+2026-10-28T08:30:04.5600000Z target_env="gnu"
+2026-10-28T08:30:04.5700000Z target_family="unix"
+2026-10-28T08:30:04.5800000Z target_feature="neon"
+2026-10-28T08:30:04.5900000Z target_has_atomic="16"
+2026-10-28T08:30:04.6000000Z target_has_atomic="32"
+2026-10-28T08:30:04.6100000Z target_has_atomic="64"
+2026-10-28T08:30:04.6200000Z target_has_atomic="8"
+2026-10-28T08:30:04.6300000Z target_has_atomic="ptr"
+2026-10-28T08:30:04.6400000Z target_os="linux"
+2026-10-28T08:30:04.6500000Z target_pointer_width="64"
+2026-10-28T08:30:04.6600000Z target_vendor="unknown"
+2026-10-28T08:30:04.6700000Z unix
+2026-10-28T08:30:05.0000000Z error[E0382]: borrow of moved value: `issue`
+2026-10-28T08:30:05.0100000Z  --> tools/payload.rs:4:26
+2026-10-28T08:30:05.0200000Z   |
+2026-10-28T08:30:05.0300000Z 2 |     let issue = String::from("manifest unknown");
+2026-10-28T08:30:05.0400000Z   |         ----- move occurs because `issue` has type `String`, which does not implement the `Copy` trait
+2026-10-28T08:30:05.0410000Z 3 |     let saved = issue;
+2026-10-28T08:30:05.0420000Z   |                 ----- value moved here
+2026-10-28T08:30:05.0430000Z 4 |     println!("{} {} {}", issue, saved, include_str!("../assets/banner.txt"));
+2026-10-28T08:30:05.0440000Z   |                          ^^^^^ value borrowed here after move
+2026-10-28T08:30:05.0450000Z   |
+2026-10-28T08:30:05.0460000Z help: consider cloning the value if the performance cost is acceptable
+2026-10-28T08:30:05.0470000Z   |
+2026-10-28T08:30:05.0480000Z 3 |     let saved = issue.clone();
+2026-10-28T08:30:05.0490000Z   |                      ++++++++
+2026-10-28T08:30:05.0500000Z 
+2026-10-28T08:30:05.0600000Z error: aborting due to 1 previous error
+2026-10-28T08:30:05.0700000Z 
+2026-10-28T08:30:05.0800000Z For more information about this error, try `rustc --explain E0382`.
+2026-10-28T08:30:05.0900000Z ##[error]Process completed with exit code 1.
+2026-10-28T08:30:05.1000000Z Post job cleanup.
+2026-10-28T08:30:05.1100000Z Cleaning up orphan processes

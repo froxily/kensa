@@ -1,0 +1,15 @@
+{
+  "id": "d29-zinnia-bundle",
+  "split": "dev",
+  "category": "dependency_build",
+  "kind": "standard",
+  "difficulty": "easy",
+  "ecosystem": "ruby",
+  "title": "Gem requirements select incompatible Rack versions",
+  "root_cause": "The Gemfile requires Rack 3 while Sinatra 3.1.0 requires Rack 2.2. Bundler cannot resolve both requirements, so installation fails before the application runs.",
+  "fix_keywords": ["rack", "sinatra"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 62, "end_line": 67, "why": "Bundler reports the incompatible Rack constraints."},
+    {"path": "Gemfile", "start_line": 3, "end_line": 4, "why": "The manifest pins Sinatra and directly requires Rack 3."}
+  ]
+}

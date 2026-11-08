@@ -1,0 +1,16 @@
+name: Publish check
+on: [push]
+permissions:
+  contents: read
+  checks: read
+jobs:
+  report:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+      - run: ruby bin/report.rb
+        env:
+          GH_TOKEN: ${{ github.token }}

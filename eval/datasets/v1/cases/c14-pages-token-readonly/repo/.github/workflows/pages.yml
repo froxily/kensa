@@ -1,0 +1,32 @@
+name: Publish handbook
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  pages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout handbook
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Assemble site
+        run: |
+          mkdir -p public
+          cp index.html public/index.html
+      - name: Configure git
+        run: |
+          git config --global user.name "site-bot"
+          git config --global user.email "***"
+      - name: Push site branch
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd public
+          git init
+          git add index.html
+          git commit -m "Publish handbook"
+          git push "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:gh-pages --force
+

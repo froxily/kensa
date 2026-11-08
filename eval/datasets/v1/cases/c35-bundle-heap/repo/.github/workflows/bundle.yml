@@ -1,0 +1,26 @@
+name: Atlas bundle
+on:
+  push:
+  pull_request:
+jobs:
+  bundle:
+    runs-on: ubuntu-latest
+    env:
+      NODE_OPTIONS: --max-old-space-size=256
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+      - name: Fetch dependencies
+        run: npm ci
+      - name: Generate catalog
+        run: npm run catalog
+      - name: Bundle site
+        run: npm run build
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: atlas-site
+          path: dist/

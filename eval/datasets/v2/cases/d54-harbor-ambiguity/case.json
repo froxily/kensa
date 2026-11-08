@@ -1,0 +1,17 @@
+{
+  "id": "d54-harbor-ambiguity",
+  "split": "dev",
+  "category": "unknown",
+  "kind": "insufficient",
+  "difficulty": "hard",
+  "ecosystem": "ruby",
+  "title": "Status assertion cannot distinguish missing file from content",
+  "root_cause": "The test reports only that ready? returned false. The hidden path could refer to a missing or inaccessible file, or the file could be readable with content that the code rejects; the evidence does not distinguish these causes.",
+  "fix_keywords": ["HARBOR_FLAG_FILE", "ready?"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 72, "end_line": 75, "why": "The assertion gives no underlying file or content detail."},
+    {"path": "lib/harbor.rb", "start_line": 2, "end_line": 5, "why": "A failed read and a nonmatching value both return false."},
+    {"path": "test/status_test.rb", "start_line": 17, "end_line": 20, "why": "The test asserts the combined result using the runtime path."},
+    {"path": ".github/workflows/contracts.yml", "start_line": 12, "end_line": 14, "why": "The path comes from a masked secret."}
+  ]
+}

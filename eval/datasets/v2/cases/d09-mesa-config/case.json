@@ -1,0 +1,16 @@
+{
+  "id": "d09-mesa-config",
+  "split": "dev",
+  "category": "missing_env_var",
+  "kind": "misleading",
+  "difficulty": "medium",
+  "ecosystem": "cpp",
+  "title": "Storage initialization stops without its directory setting",
+  "root_cause": "The smoke program requires MESA_DATA_DIR, which the job does not set. Its subsequent storage initialization error is a consequence of that missing environment variable.",
+  "fix_keywords": ["MESA_DATA_DIR"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 44, "end_line": 46, "why": "The missing variable precedes the storage error."},
+    {"path": "src/smoke.cpp", "start_line": 5, "end_line": 8, "why": "The storage message follows the null environment lookup."},
+    {"path": ".github/workflows/smoke.yml", "start_line": 5, "end_line": 9, "why": "The job does not set the required value."}
+  ]
+}

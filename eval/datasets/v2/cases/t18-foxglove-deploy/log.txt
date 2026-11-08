@@ -1,0 +1,57 @@
+2026-09-23T06:30:00.0000000Z Current runner version: '2.329.0'
+2026-09-23T06:30:00.1000000Z ##[group]Operating System
+2026-09-23T06:30:00.2000000Z macOS
+2026-09-23T06:30:00.3000000Z 14.7.6
+2026-09-23T06:30:00.4000000Z ##[endgroup]
+2026-09-23T06:30:00.5000000Z ##[group]Runner Image
+2026-09-23T06:30:00.6000000Z Image: macos-14
+2026-09-23T06:30:00.7000000Z ##[endgroup]
+2026-09-23T06:30:00.8000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-23T06:30:00.9000000Z Contents: read
+2026-09-23T06:30:01.0000000Z Deployments: read
+2026-09-23T06:30:01.1000000Z ##[endgroup]
+2026-09-23T06:30:01.2000000Z Prepare workflow directory
+2026-09-23T06:30:01.3000000Z Prepare all required actions
+2026-09-23T06:30:01.4000000Z Getting action download info
+2026-09-23T06:30:01.5000000Z Download action repository 'actions/checkout@v4'
+2026-09-23T06:30:01.6000000Z Complete job name: request
+2026-09-23T06:30:01.7000000Z ##[group]Run actions/checkout@v4
+2026-09-23T06:30:01.8000000Z with:
+2026-09-23T06:30:01.9000000Z   repository: foxglove-labs/delivery
+2026-09-23T06:30:02.0000000Z   clean: true
+2026-09-23T06:30:02.1000000Z ##[endgroup]
+2026-09-23T06:30:02.2000000Z Syncing repository: foxglove-labs/delivery
+2026-09-23T06:30:02.3000000Z Getting Git version info
+2026-09-23T06:30:02.4000000Z git version 2.49.0
+2026-09-23T06:30:02.5000000Z Checking out the ref
+2026-09-23T06:30:02.6000000Z ##[group]Run swift jobs/deploy.swift
+2026-09-23T06:30:02.7000000Z swift jobs/deploy.swift
+2026-09-23T06:30:02.8000000Z shell: /bin/bash -e {0}
+2026-09-23T06:30:02.9000000Z env:
+2026-09-23T06:30:03.0000000Z   FOXGLOVE_TOKEN: ***
+2026-09-23T06:30:03.1000000Z ##[endgroup]
+2026-09-23T06:30:04.0000000Z stage: prepare
+2026-09-23T06:30:04.0100000Z stage: catalog
+2026-09-23T06:30:04.0200000Z stage: bundle
+2026-09-23T06:30:04.0300000Z stage: inspect
+2026-09-23T06:30:04.0400000Z stage: sign
+2026-09-23T06:30:04.0500000Z stage: reserve
+2026-09-23T06:30:04.0600000Z stage: plan
+2026-09-23T06:30:04.0700000Z stage: preview
+2026-09-23T06:30:04.0800000Z stage: index
+2026-09-23T06:30:04.0900000Z stage: archive
+2026-09-23T06:30:04.1000000Z stage: manifest
+2026-09-23T06:30:04.1100000Z stage: verify
+2026-09-23T06:30:04.1200000Z stage: package
+2026-09-23T06:30:04.1300000Z stage: snapshot
+2026-09-23T06:30:04.1400000Z stage: promote
+2026-09-23T06:30:04.1500000Z stage: notify
+2026-09-23T06:30:04.1600000Z stage: register
+2026-09-23T06:30:04.1700000Z stage: confirm
+2026-09-23T06:30:04.1800000Z stage: audit
+2026-09-23T06:30:04.1900000Z stage: finish
+2026-09-23T06:30:04.3000000Z deployment HTTP 403
+2026-09-23T06:30:04.4000000Z {"message":"Resource not accessible by integration","status":"403"}
+2026-09-23T06:30:04.5000000Z ##[error]Process completed with exit code 1.
+2026-09-23T06:30:04.6000000Z Post job cleanup.
+2026-09-23T06:30:04.7000000Z Cleaning up orphan processes

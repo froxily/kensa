@@ -1,0 +1,4 @@
+FROM php:8.3-cli
+WORKDIR /job
+COPY tools/raster.php ./raster.php
+RUN --mount=type=tmpfs,target=/scratch,size=8388608 php raster.php

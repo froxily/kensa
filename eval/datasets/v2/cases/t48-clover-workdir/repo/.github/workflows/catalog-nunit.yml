@@ -1,0 +1,14 @@
+name: Catalog NUnit
+on: [push]
+jobs:
+  test:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Run catalog checks
+        run: dotnet test CatalogChecks/CatalogChecks.csproj --logger "console;verbosity=normal"
+        env:
+          CLOVER_RUN_DIR: ${{ github.workspace }}\audit\catalogs

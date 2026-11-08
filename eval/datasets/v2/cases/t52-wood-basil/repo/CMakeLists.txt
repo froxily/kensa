@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.16)
+project(SectorChecks LANGUAGES CXX)
+find_package(Catch2 2 REQUIRED)
+add_executable(sector_checks checks/sector_checks.cpp)
+target_link_libraries(sector_checks PRIVATE Catch2::Catch2)

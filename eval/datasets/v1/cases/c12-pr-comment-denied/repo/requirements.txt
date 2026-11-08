@@ -1,0 +1,10 @@
+# Review note client dependencies
+requests==2.32.3
+# The HTTP client also brings its transport dependencies.
+# Pinning the direct dependency keeps local runs reproducible.
+# Install with pip install -r requirements.txt.
+# Python 3.12 is used in CI.
+# The client posts a single issue comment.
+# The token is supplied by the workflow.
+# Do not commit credentials here.
+# Network failures cause the job to fail.

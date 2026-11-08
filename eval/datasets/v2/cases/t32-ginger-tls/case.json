@@ -1,0 +1,16 @@
+{
+  "id": "t32-ginger-tls",
+  "split": "test",
+  "category": "db_connectivity",
+  "kind": "standard",
+  "difficulty": "medium",
+  "ecosystem": "python",
+  "title": "Search client speaks TLS to a plaintext service",
+  "root_cause": "The Elasticsearch service has security disabled and serves HTTP, while the Python client uses an HTTPS URL. The TLS handshake fails before the cluster health request can complete.",
+  "fix_keywords": ["http://", "https://", "19200"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 57, "end_line": 60, "why": "The client reports a TLS handshake error."},
+    {"path": ".github/workflows/search-handshake.yml", "start_line": 6, "end_line": 14, "why": "The service disables security and publishes its HTTP port."},
+    {"path": "inspect_search.py", "start_line": 1, "end_line": 4, "why": "The client uses HTTPS for the service port."}
+  ]
+}

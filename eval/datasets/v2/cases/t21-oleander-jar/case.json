@@ -1,0 +1,15 @@
+{
+  "id": "t21-oleander-jar",
+  "split": "test",
+  "category": "workflow_path",
+  "kind": "standard",
+  "difficulty": "easy",
+  "ecosystem": "java",
+  "title": "Jar command names a missing classes directory",
+  "root_cause": "Compilation writes classes under build/classes, but the jar command changes into target/classes. That directory does not exist, so jar cannot assemble the archive.",
+  "fix_keywords": ["build/classes", "target/classes"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 55, "end_line": 57, "why": "The jar tool reports the missing directory after compilation."},
+    {"path": ".github/workflows/jar-assembly.yml", "start_line": 12, "end_line": 16, "why": "The compilation and archive commands name different output directories."}
+  ]
+}

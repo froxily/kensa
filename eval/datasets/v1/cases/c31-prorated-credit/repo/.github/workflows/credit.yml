@@ -1,0 +1,28 @@
+name: Credit checks
+on:
+  push:
+  pull_request:
+jobs:
+  pricing:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Install tools
+        run: |
+          python -m pip install -U pip
+          pip install -r requirements.txt
+      - name: Exercise credits
+        run: python -m pytest -q
+      - name: Store report
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: credit-results
+          path: results.xml

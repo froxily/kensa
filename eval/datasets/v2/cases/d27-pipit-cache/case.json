@@ -1,0 +1,17 @@
+{
+  "id": "d27-pipit-cache",
+  "split": "dev",
+  "category": "db_connectivity",
+  "kind": "masked",
+  "difficulty": "medium",
+  "ecosystem": "go",
+  "title": "Host test cannot resolve a service container name",
+  "root_cause": "The job runs directly on the runner, but PIPIT_CACHE_ADDR uses the service container's network hostname. The cache is published on the host port, so the test must connect via localhost instead of cache.",
+  "fix_keywords": ["PIPIT_CACHE_ADDR", "127.0.0.1"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 48, "end_line": 50, "why": "The test receives the container hostname as its address."},
+    {"path": "log", "start_line": 70, "end_line": 72, "why": "The test failure shows the hostname lookup error."},
+    {"path": ".github/workflows/cache.yml", "start_line": 5, "end_line": 10, "why": "The runner job publishes the cache service port."},
+    {"path": "cache_test.go", "start_line": 18, "end_line": 21, "why": "The test connects using the configured address."}
+  ]
+}

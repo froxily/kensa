@@ -1,0 +1,15 @@
+{
+  "id": "d53-tamarack-stage",
+  "split": "dev",
+  "category": "docker",
+  "kind": "standard",
+  "difficulty": "medium",
+  "ecosystem": "dotnet",
+  "title": "Runtime stage copies from the wrong build-stage directory",
+  "root_cause": "The build stage publishes to /work/publish, but the runtime stage copies from /out. BuildKit cannot find that path in the build stage and fails the image build.",
+  "fix_keywords": ["/work/publish", "COPY"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 61, "end_line": 75, "why": "The publish succeeds and the following stage copy cannot find /out."},
+    {"path": "Dockerfile", "start_line": 6, "end_line": 9, "why": "The publish and copy use different paths."}
+  ]
+}

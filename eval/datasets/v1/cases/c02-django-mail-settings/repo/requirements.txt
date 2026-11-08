@@ -1,0 +1,10 @@
+Django==5.1.2
+asgiref==3.8.1
+sqlparse==0.5.1
+# Keep dependencies pinned for CI.
+# The application uses Django settings.
+# Email delivery is configured separately.
+# Python 3.12 is the CI interpreter.
+# Update pins together when upgrading.
+# No database driver is needed for checks.
+# Development dependencies live elsewhere.

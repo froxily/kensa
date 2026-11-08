@@ -1,0 +1,29 @@
+name: Contract smoke
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  contract-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout contract
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Show checked in actions
+        run: ls -la .github/actions
+      - name: Check jq
+        run: jq --version
+      - name: Inspect contract
+        uses: ./.github/actions/inspection
+        with:
+          contract: spec/service.json
+      - name: Retain contract
+        uses: actions/upload-artifact@v4
+        with:
+          name: service-contract
+          path: spec/service.json
+          retention-days: 3

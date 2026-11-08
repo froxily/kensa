@@ -1,0 +1,16 @@
+{
+  "id": "t18-foxglove-deploy",
+  "split": "test",
+  "category": "github_permissions",
+  "kind": "standard",
+  "difficulty": "easy",
+  "ecosystem": "swift",
+  "title": "Deployment request is denied by GitHub",
+  "root_cause": "The token has deployments read permission while the script creates a deployment. Creating it requires deployments write permission, so the API rejects the request.",
+  "fix_keywords": ["deployments", "write"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 53, "end_line": 55, "why": "The deployment request receives a 403 denial."},
+    {"path": ".github/workflows/deployment-request.yml", "start_line": 3, "end_line": 5, "why": "The workflow grants deployments read only."},
+    {"path": "jobs/deploy.swift", "start_line": 5, "end_line": 10, "why": "The script posts a deployment using the workflow token."}
+  ]
+}

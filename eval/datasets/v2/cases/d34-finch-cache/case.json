@@ -1,0 +1,16 @@
+{
+  "id": "d34-finch-cache",
+  "split": "dev",
+  "category": "db_connectivity",
+  "kind": "masked",
+  "difficulty": "medium",
+  "ecosystem": "elixir",
+  "title": "Warmup script cannot reach its cache",
+  "root_cause": "The script connects to the local cache port, but the workflow does not start or expose a cache service. The connection is refused and the script exits after reporting the warmup failure.",
+  "fix_keywords": ["FINCH_CACHE_PORT", "cache"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 64, "end_line": 67, "why": "The cache connection refusal appears before the script exits."},
+    {"path": ".github/workflows/warm.yml", "start_line": 5, "end_line": 15, "why": "The job sets a cache port but does not start a service."},
+    {"path": "lib/finch.ex", "start_line": 7, "end_line": 18, "why": "The script connects to the local port and exits on an error."}
+  ]
+}

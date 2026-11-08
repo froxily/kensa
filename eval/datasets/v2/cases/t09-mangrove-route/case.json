@@ -1,0 +1,16 @@
+{
+  "id": "t09-mangrove-route",
+  "split": "test",
+  "category": "missing_env_var",
+  "kind": "misleading",
+  "difficulty": "medium",
+  "ecosystem": "java",
+  "title": "Missing host setting leads to a cache lookup failure",
+  "root_cause": "MANGROVE_CACHE_HOST is absent, so the probe falls back to an invalid hostname instead of the local service address. The later hostname lookup failure is a consequence of that missing variable.",
+  "fix_keywords": ["MANGROVE_CACHE_HOST", "127.0.0.1"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 71, "end_line": 75, "why": "The missing-variable message precedes the connection exception."},
+    {"path": "native/RouteProbe.java", "start_line": 10, "end_line": 18, "why": "An absent value selects the invalid hostname before the connection attempt."},
+    {"path": ".github/workflows/route-probe.yml", "start_line": 6, "end_line": 10, "why": "The service is published on host port 6435."}
+  ]
+}

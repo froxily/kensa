@@ -1,0 +1,12 @@
+name: CMake probe
+on: [push]
+jobs:
+  verify:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure and test
+        run: |
+          cmake -S . -B build-rel
+          cmake --build build-rel --verbose
+          ctest --test-dir build/release --output-on-failure

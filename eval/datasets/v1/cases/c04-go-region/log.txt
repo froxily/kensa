@@ -1,0 +1,56 @@
+2026-09-16T06:15:01.0000000Z Current runner version: '2.321.0'
+2026-09-16T06:15:02.0000000Z ##[group]Operating System
+2026-09-16T06:15:03.0000000Z Ubuntu
+2026-09-16T06:15:04.0000000Z 24.04.1
+2026-09-16T06:15:05.0000000Z ##[endgroup]
+2026-09-16T06:15:06.0000000Z Prepare workflow directory
+2026-09-16T06:15:07.0000000Z Prepare all required actions
+2026-09-16T06:15:08.0000000Z Complete job name: unit
+2026-09-16T06:15:09.0000000Z ##[group]Run actions/checkout@v4
+2026-09-16T06:15:10.0000000Z with:
+2026-09-16T06:15:11.0000000Z   repository: pine-badger/router
+2026-09-16T06:15:12.0000000Z   fetch-depth: 1
+2026-09-16T06:15:13.0000000Z   persist-credentials: true
+2026-09-16T06:15:14.0000000Z ##[endgroup]
+2026-09-16T06:15:15.0000000Z Syncing repository: pine-badger/router
+2026-09-16T06:15:16.0000000Z ##[group]Getting Git version info
+2026-09-16T06:15:17.0000000Z Working directory is '/home/runner/work/router/router'
+2026-09-16T06:15:18.0000000Z [command]/usr/bin/git version
+2026-09-16T06:15:19.0000000Z git version 2.46.1
+2026-09-16T06:15:20.0000000Z ##[endgroup]
+2026-09-16T06:15:21.0000000Z Initializing the repository
+2026-09-16T06:15:22.0000000Z Fetching the repository
+2026-09-16T06:15:23.0000000Z Checking out the ref
+2026-09-16T06:15:24.0000000Z ##[group]Run actions/setup-go@v5
+2026-09-16T06:15:25.0000000Z with:
+2026-09-16T06:15:26.0000000Z   go-version: 1.23
+2026-09-16T06:15:27.0000000Z   cache: true
+2026-09-16T06:15:28.0000000Z ##[endgroup]
+2026-09-16T06:15:29.0000000Z Setup go version spec 1.23
+2026-09-16T06:15:30.0000000Z go version go1.23.1 linux/amd64
+2026-09-16T06:15:31.0000000Z ##[group]Run go mod download
+2026-09-16T06:15:32.0000000Z go mod download
+2026-09-16T06:15:33.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-16T06:15:34.0000000Z ##[endgroup]
+2026-09-16T06:15:35.0000000Z go: no module dependencies to download
+2026-09-16T06:15:36.0000000Z ##[group]Run go vet ./...
+2026-09-16T06:15:37.0000000Z go vet ./...
+2026-09-16T06:15:38.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-16T06:15:39.0000000Z ##[endgroup]
+2026-09-16T06:15:40.0000000Z ##[group]Run go test -v ./...
+2026-09-16T06:15:41.0000000Z go test -v ./...
+2026-09-16T06:15:42.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-16T06:15:43.0000000Z env:
+2026-09-16T06:15:44.0000000Z   SERVICE_MODE: test
+2026-09-16T06:15:45.0000000Z ##[endgroup]
+2026-09-16T06:15:46.0000000Z ?    example.invalid/pine-badger/router/cmd/router [no test files]
+2026-09-16T06:15:47.0000000Z === RUN   TestStartup
+2026-09-16T06:15:48.0000000Z     startup_test.go:24: start: SERVICE_REGION must be set
+2026-09-16T06:15:49.0000000Z --- FAIL: TestStartup (0.00s)
+2026-09-16T06:15:50.0000000Z === RUN   TestRoute
+2026-09-16T06:15:51.0000000Z --- PASS: TestRoute (0.00s)
+2026-09-16T06:15:52.0000000Z FAIL
+2026-09-16T06:15:53.0000000Z FAIL example.invalid/pine-badger/router/internal/server 0.003s
+2026-09-16T06:15:54.0000000Z ?    example.invalid/pine-badger/router/internal/config [no test files]
+2026-09-16T06:15:55.0000000Z FAIL
+2026-09-16T06:15:56.0000000Z ##[error]Process completed with exit code 1.

@@ -1,0 +1,51 @@
+2026-09-15T09:02:00.0000000Z Runner version: 2.322.0
+2026-09-15T09:02:01.0000000Z Repository: moss-harbor/receipts
+2026-09-15T09:02:02.0000000Z Job: receipt
+2026-09-15T09:02:03.0000000Z Image: ubuntu-22.04
+2026-09-15T09:02:04.0000000Z Prepare all required actions
+2026-09-15T09:02:05.0000000Z Download actions/checkout@v4
+2026-09-15T09:02:06.0000000Z Download actions/setup-node@v4
+2026-09-15T09:02:07.0000000Z ##[group]Run actions/checkout@v4
+2026-09-15T09:02:08.0000000Z Fetching moss-harbor/receipts
+2026-09-15T09:02:09.0000000Z git version 2.45.2
+2026-09-15T09:02:10.0000000Z Fetch depth: 1
+2026-09-15T09:02:11.0000000Z Checking out ref
+2026-09-15T09:02:12.0000000Z HEAD is at 21ac039
+2026-09-15T09:02:13.0000000Z ##[endgroup]
+2026-09-15T09:02:14.0000000Z ##[group]Run actions/setup-node@v4
+2026-09-15T09:02:15.0000000Z Found in cache: node 20.17.0
+2026-09-15T09:02:16.0000000Z node: v20.17.0
+2026-09-15T09:02:17.0000000Z npm: 10.8.2
+2026-09-15T09:02:18.0000000Z Cache hit for npm
+2026-09-15T09:02:19.0000000Z ##[endgroup]
+2026-09-15T09:02:20.0000000Z ##[group]Run npm ci
+2026-09-15T09:02:21.0000000Z npm warn deprecated inflight@1.0.6: This module is not supported
+2026-09-15T09:02:22.0000000Z npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+2026-09-15T09:02:23.0000000Z added 267 packages, and audited 268 packages in 4s
+2026-09-15T09:02:24.0000000Z 32 packages are looking for funding
+2026-09-15T09:02:25.0000000Z found 0 vulnerabilities
+2026-09-15T09:02:26.0000000Z ##[endgroup]
+2026-09-15T09:02:27.0000000Z ##[group]Run npm test -- --runInBand
+2026-09-15T09:02:28.0000000Z > moss-receipts@1.2.0 test
+2026-09-15T09:02:29.0000000Z > jest --runInBand
+2026-09-15T09:02:30.0000000Z FAIL ./receipt.test.js
+2026-09-15T09:02:31.0000000Z   ? formats a customer total (2 ms)
+2026-09-15T09:02:32.0000000Z   ? puts the currency before the amount without a gap (3 ms)
+2026-09-15T09:02:33.0000000Z   ? puts the currency before the amount without a gap
+2026-09-15T09:02:34.0000000Z     expect(received).toBe(expected) // Object.is equality
+2026-09-15T09:02:35.0000000Z     Expected: "EUR5.00"
+2026-09-15T09:02:36.0000000Z     Received: "EUR 5.00"
+2026-09-15T09:02:37.0000000Z       7 | test('puts the currency before the amount without a gap', () => {
+2026-09-15T09:02:38.0000000Z     > 8 |   expect(receipt(500, 'EUR')).toBe('EUR5.00');
+2026-09-15T09:02:39.0000000Z         |                               ^
+2026-09-15T09:02:40.0000000Z       9 | });
+2026-09-15T09:02:41.0000000Z       at Object.toBe (receipt.test.js:8:31)
+2026-09-15T09:02:42.0000000Z Test Suites: 1 failed, 1 total
+2026-09-15T09:02:43.0000000Z Tests:       1 failed, 1 passed, 2 total
+2026-09-15T09:02:44.0000000Z Snapshots:   0 total
+2026-09-15T09:02:45.0000000Z Time:        0.41 s
+2026-09-15T09:02:46.0000000Z Ran all test suites.
+2026-09-15T09:02:47.0000000Z Jest returned a nonzero status
+2026-09-15T09:02:47.1000000Z Watch mode is disabled in CI
+2026-09-15T09:02:48.0000000Z ##[endgroup]
+2026-09-15T09:02:49.0000000Z ##[error]Process completed with exit code 1.

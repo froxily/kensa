@@ -1,0 +1,29 @@
+# Local development services. Only PostgreSQL runs in Docker; the backend,
+# frontend and Ollama run natively (see ARCHITECTURE.md / DECISIONS.md D-003).
+name: kensa
+
+services:
+  db:
+    image: pgvector/pgvector:0.8.7-pg18
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:?set POSTGRES_USER in .env}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+      POSTGRES_DB: ${POSTGRES_DB:-kensa}
+    ports:
+      # Loopback only: never reachable from the network.
+      - "127.0.0.1:5433:5432"
+    volumes:
+      # PostgreSQL 18 images keep data under /var/lib/postgresql/<major>/docker,
+      # so the volume mounts the parent directory (not .../data).
+      - kensa-pgdata:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    # Per-container limit instead of a machine-wide .wslconfig cap (DECISIONS.md D-012).
+    mem_limit: 1g
+    shm_size: 256m
+
+volumes:
+  kensa-pgdata:

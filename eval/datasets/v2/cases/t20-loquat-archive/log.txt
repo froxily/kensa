@@ -1,0 +1,78 @@
+2026-09-25T13:00:00.0000000Z Current runner version: '2.329.0'
+2026-09-25T13:00:00.1000000Z ##[group]Runner Image
+2026-09-25T13:00:00.2000000Z Image: ubuntu-24.04-arm
+2026-09-25T13:00:00.3000000Z ##[endgroup]
+2026-09-25T13:00:00.4000000Z Prepare workflow directory
+2026-09-25T13:00:00.5000000Z Prepare all required actions
+2026-09-25T13:00:00.6000000Z Getting action download info
+2026-09-25T13:00:00.7000000Z Download action repository 'actions/checkout@v4'
+2026-09-25T13:00:00.8000000Z Download action repository 'actions/setup-python@v5'
+2026-09-25T13:00:00.9000000Z Complete job name: integration
+2026-09-25T13:00:01.0000000Z ##[group]Initialize containers
+2026-09-25T13:00:01.1000000Z Pull down service image 'mongo:7'
+2026-09-25T13:00:02.0000000Z 7: Pulling from library/mongo
+2026-09-25T13:00:02.1000000Z Status: Downloaded newer image for mongo:7
+2026-09-25T13:00:02.2000000Z Starting service container documentstore
+2026-09-25T13:00:03.0000000Z ##[endgroup]
+2026-09-25T13:00:03.1000000Z ##[group]Run actions/checkout@v4
+2026-09-25T13:00:03.2000000Z with:
+2026-09-25T13:00:03.3000000Z   repository: loquat-labs/archive-index
+2026-09-25T13:00:03.4000000Z ##[endgroup]
+2026-09-25T13:00:03.5000000Z Syncing repository: loquat-labs/archive-index
+2026-09-25T13:00:03.6000000Z Getting Git version info
+2026-09-25T13:00:03.7000000Z git version 2.51.0
+2026-09-25T13:00:03.8000000Z Checking out the ref
+2026-09-25T13:00:03.9000000Z ##[group]Run actions/setup-python@v5
+2026-09-25T13:00:04.0000000Z with:
+2026-09-25T13:00:04.1000000Z   python-version: 3.12
+2026-09-25T13:00:04.2000000Z ##[endgroup]
+2026-09-25T13:00:04.3000000Z Successfully set up CPython (3.12.11)
+2026-09-25T13:00:04.4000000Z ##[group]Run python -m pip install -r archive-requirements.txt
+2026-09-25T13:00:04.5000000Z python -m pip install -r archive-requirements.txt
+2026-09-25T13:00:04.6000000Z shell: /usr/bin/bash -e {0}
+2026-09-25T13:00:04.7000000Z ##[endgroup]
+2026-09-25T13:00:05.0000000Z Collecting pymongo==4.10.1
+2026-09-25T13:00:05.1000000Z Collecting dnspython<3.0.0,>=1.16.0 (from pymongo==4.10.1)
+2026-09-25T13:00:05.2000000Z Installing collected packages: dnspython, pymongo
+2026-09-25T13:00:05.3000000Z Successfully installed dnspython-2.7.0 pymongo-4.10.1
+2026-09-25T13:00:05.4000000Z ##[group]Run python -m unittest -v archive_cases
+2026-09-25T13:00:05.5000000Z python -m unittest -v archive_cases
+2026-09-25T13:00:05.6000000Z shell: /usr/bin/bash -e {0}
+2026-09-25T13:00:05.7000000Z ##[endgroup]
+2026-09-25T13:00:05.8000000Z test_index_available (archive_cases.ArchiveChecks.test_index_available) ... checking section: one
+2026-09-25T13:00:05.8100000Z checking section: two
+2026-09-25T13:00:05.8200000Z checking section: three
+2026-09-25T13:00:05.8300000Z checking section: four
+2026-09-25T13:00:05.8400000Z checking section: five
+2026-09-25T13:00:05.8500000Z checking section: six
+2026-09-25T13:00:05.8600000Z checking section: seven
+2026-09-25T13:00:05.8700000Z checking section: eight
+2026-09-25T13:00:05.8800000Z checking section: nine
+2026-09-25T13:00:05.8900000Z checking section: ten
+2026-09-25T13:00:05.9000000Z checking section: eleven
+2026-09-25T13:00:05.9100000Z checking section: twelve
+2026-09-25T13:00:05.9200000Z checking section: thirteen
+2026-09-25T13:00:05.9300000Z checking section: fourteen
+2026-09-25T13:00:05.9400000Z checking section: fifteen
+2026-09-25T13:00:05.9500000Z checking section: sixteen
+2026-09-25T13:00:05.9600000Z checking section: seventeen
+2026-09-25T13:00:05.9700000Z checking section: eighteen
+2026-09-25T13:00:05.9800000Z checking section: nineteen
+2026-09-25T13:00:05.9900000Z checking section: twenty
+2026-09-25T13:00:08.0000000Z ERROR
+2026-09-25T13:00:08.0100000Z 
+2026-09-25T13:00:08.0200000Z ======================================================================
+2026-09-25T13:00:08.0300000Z ERROR: test_index_available (archive_cases.ArchiveChecks.test_index_available)
+2026-09-25T13:00:08.0400000Z ----------------------------------------------------------------------
+2026-09-25T13:00:08.0500000Z Traceback (most recent call last):
+2026-09-25T13:00:08.0600000Z   File "/home/runner/work/archive-index/archive-index/archive_cases.py", line 10, in test_index_available
+2026-09-25T13:00:08.0700000Z     self.assertTrue(client.admin.command('ping')['ok'])
+2026-09-25T13:00:08.0800000Z pymongo.errors.ServerSelectionTimeoutError: documentstore:27017: [Errno -2] Name or service not known, Timeout: 2.0s
+2026-09-25T13:00:08.0900000Z 
+2026-09-25T13:00:08.1000000Z ----------------------------------------------------------------------
+2026-09-25T13:00:08.1100000Z Ran 1 test in 2.014s
+2026-09-25T13:00:08.1200000Z 
+2026-09-25T13:00:08.1300000Z FAILED (errors=1)
+2026-09-25T13:00:08.1400000Z ##[error]Process completed with exit code 1.
+2026-09-25T13:00:08.1500000Z Stop and remove container: documentstore
+2026-09-25T13:00:08.1600000Z Cleaning up orphan processes

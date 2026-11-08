@@ -1,0 +1,18 @@
+name: Archive suite
+on: [push]
+jobs:
+  integration:
+    runs-on: ubuntu-24.04-arm
+    services:
+      documentstore:
+        image: mongo:7
+        ports:
+          - 27123:27017
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r archive-requirements.txt
+      - name: Run archive suite
+        run: python -m unittest -v archive_cases

@@ -1,0 +1,11 @@
+name: Source collection
+on: [push]
+jobs:
+  collect:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -X importtime scripts/collect.py

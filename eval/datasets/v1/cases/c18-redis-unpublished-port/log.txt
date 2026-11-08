@@ -1,0 +1,50 @@
+2026-09-20T06:30:00.0000000Z Current runner version: '2.323.0'
+2026-09-20T06:30:01.0000000Z Image: ubuntu-24.04
+2026-09-20T06:30:02.0000000Z Starting service redis:7
+2026-09-20T06:30:03.0000000Z Pulling image layers
+2026-09-20T06:30:04.0000000Z Creating service container
+2026-09-20T06:30:05.0000000Z Waiting for service container to be ready
+2026-09-20T06:30:06.0000000Z redis service is healthy
+2026-09-20T06:30:07.0000000Z ##[group]Run actions/checkout@v4
+2026-09-20T06:30:08.0000000Z with:
+2026-09-20T06:30:09.0000000Z   repository: marshlight/queue-ping
+2026-09-20T06:30:10.0000000Z ##[endgroup]
+2026-09-20T06:30:11.0000000Z Syncing repository marshlight/queue-ping
+2026-09-20T06:30:12.0000000Z Fetching source
+2026-09-20T06:30:13.0000000Z Checking out commit
+2026-09-20T06:30:14.0000000Z ##[group]Run actions/setup-go@v5
+2026-09-20T06:30:15.0000000Z with:
+2026-09-20T06:30:16.0000000Z   go-version: 1.22
+2026-09-20T06:30:17.0000000Z   cache: false
+2026-09-20T06:30:18.0000000Z ##[endgroup]
+2026-09-20T06:30:19.0000000Z Setup go version spec 1.22
+2026-09-20T06:30:20.0000000Z Found in cache: 1.22.8
+2026-09-20T06:30:21.0000000Z go version go1.22.8 linux/amd64
+2026-09-20T06:30:22.0000000Z ##[group]Run go mod download
+2026-09-20T06:30:23.0000000Z go mod download
+2026-09-20T06:30:24.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-20T06:30:25.0000000Z ##[endgroup]
+2026-09-20T06:30:26.0000000Z go: downloading github.com/redis/go-redis/v9 v9.7.0
+2026-09-20T06:30:27.0000000Z go: downloading github.com/cespare/xxhash/v2 v2.2.0
+2026-09-20T06:30:28.0000000Z go: downloading github.com/dgryski/go-rendezvous
+2026-09-20T06:30:29.0000000Z ##[group]Run go test -v ./...
+2026-09-20T06:30:30.0000000Z go test -v ./...
+2026-09-20T06:30:31.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-20T06:30:32.0000000Z ##[endgroup]
+2026-09-20T06:30:33.0000000Z === RUN   TestPing
+2026-09-20T06:30:34.0000000Z redis: connection pool: failed to dial after retries
+2026-09-20T06:30:35.0000000Z     queue_test.go:11: dial tcp [::1]:6379: connect: connection refused
+2026-09-20T06:30:36.0000000Z --- FAIL: TestPing (0.23s)
+2026-09-20T06:30:37.0000000Z FAIL
+2026-09-20T06:30:38.0000000Z FAIL example.invalid/marsh/queue 0.235s
+2026-09-20T06:30:39.0000000Z Test command returned a nonzero status
+2026-09-20T06:30:40.0000000Z No connection was established
+2026-09-20T06:30:41.0000000Z The ping assertion did not complete
+2026-09-20T06:30:42.0000000Z Package example.invalid/marsh/queue failed
+2026-09-20T06:30:43.0000000Z Test run ended
+2026-09-20T06:30:44.0000000Z See output above for the failing test
+2026-09-20T06:30:45.0000000Z Service health had succeeded
+2026-09-20T06:30:46.0000000Z Client address was localhost
+2026-09-20T06:30:47.0000000Z Command: go test -v ./...
+2026-09-20T06:30:48.0000000Z Result: FAIL
+2026-09-20T06:30:49.0000000Z ##[error]Process completed with exit code 1.

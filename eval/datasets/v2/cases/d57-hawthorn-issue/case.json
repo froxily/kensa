@@ -1,0 +1,17 @@
+{
+  "id": "d57-hawthorn-issue",
+  "split": "dev",
+  "category": "github_permissions",
+  "kind": "standard",
+  "difficulty": "easy",
+  "ecosystem": "cpp",
+  "title": "Issue update requires token write access",
+  "root_cause": "The workflow token has issues read permission but the request updates an issue. GitHub rejects the PATCH with 403 and identifies issues write as the required permission.",
+  "fix_keywords": ["issues", "write"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 38, "end_line": 44, "why": "The response is 403 and names the required permission."},
+    {"path": "log", "start_line": 61, "end_line": 66, "why": "The response body reports that the integration cannot access the resource."},
+    {"path": ".github/workflows/update.yml", "start_line": 3, "end_line": 5, "why": "The token is limited to issues read."},
+    {"path": ".github/workflows/update.yml", "start_line": 11, "end_line": 17, "why": "The step uses that token for the issue update."}
+  ]
+}

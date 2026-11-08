@@ -1,0 +1,16 @@
+{
+  "id": "d48-iris-config",
+  "split": "dev",
+  "category": "workflow_path",
+  "kind": "masked",
+  "difficulty": "medium",
+  "ecosystem": "node",
+  "title": "Node test reads settings from the wrong directory",
+  "root_cause": "The test opens config/runtime.json, while the available settings file is under settings. The file read raises ENOENT and the Node test runner reports a failed test.",
+  "fix_keywords": ["config/runtime.json", "settings/runtime.json"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 71, "end_line": 79, "why": "The failed test contains the missing-file error."},
+    {"path": "test/settings.test.js", "start_line": 12, "end_line": 15, "why": "The test reads the nonexistent config path."},
+    {"path": "settings/runtime.json", "start_line": 1, "end_line": 1, "why": "The settings file exists under a different directory."}
+  ]
+}

@@ -1,0 +1,32 @@
+name: Verify beacon
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  managed-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get commit
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Provision SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Show source tree
+        run: ls src/Beacon
+      - name: Restore and test
+        run: |
+          dotnet restore src/Beacon/Beacon.sln
+          dotnet test src/Beacon/Beacon.sln --no-restore --verbosity normal
+      - name: Archive results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: '**/TestResults/*.trx'
+          if-no-files-found: ignore

@@ -1,0 +1,26 @@
+name: Catalog connection
+on: [push]
+jobs:
+  catalog:
+    runs-on: ubuntu-22.04
+    services:
+      warehouse:
+        image: postgres:16
+        env:
+          POSTGRES_HOST_AUTH_METHOD: trust
+          POSTGRES_DB: garnet_catalog
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Compile and inspect catalog
+        run: mvn -B compile exec:java

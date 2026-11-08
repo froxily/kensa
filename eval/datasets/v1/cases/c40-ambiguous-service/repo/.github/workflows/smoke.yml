@@ -1,0 +1,26 @@
+name: Service smoke
+on:
+  push:
+  pull_request:
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install dependencies
+        run: npm ci
+      - name: Check configuration
+        run: node check-config.js
+      - name: Exercise service
+        run: npm test
+      - name: Collect diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: smoke-output
+          path: output/
+          if-no-files-found: ignore
+          retention-days: 2

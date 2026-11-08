@@ -1,0 +1,53 @@
+2026-09-18T11:12:01.0000000Z Current runner version: '2.323.0'
+2026-09-18T11:12:02.0000000Z ##[group]Runner Image
+2026-09-18T11:12:03.0000000Z Image: ubuntu-24.04
+2026-09-18T11:12:04.0000000Z ##[endgroup]
+2026-09-18T11:12:05.0000000Z Prepare workflow directory
+2026-09-18T11:12:06.0000000Z Prepare all required actions
+2026-09-18T11:12:07.0000000Z Getting action download info
+2026-09-18T11:12:08.0000000Z Complete job name: resolve
+2026-09-18T11:12:09.0000000Z ##[group]Run actions/checkout@v4
+2026-09-18T11:12:10.0000000Z with:
+2026-09-18T11:12:11.0000000Z   repository: dusk-heron/reed-parser
+2026-09-18T11:12:12.0000000Z   fetch-depth: 1
+2026-09-18T11:12:13.0000000Z   clean: true
+2026-09-18T11:12:14.0000000Z ##[endgroup]
+2026-09-18T11:12:15.0000000Z Syncing repository: dusk-heron/reed-parser
+2026-09-18T11:12:16.0000000Z Initializing the repository
+2026-09-18T11:12:17.0000000Z Fetching the repository
+2026-09-18T11:12:18.0000000Z Checking out the ref
+2026-09-18T11:12:19.0000000Z ##[group]Run actions/setup-python@v5
+2026-09-18T11:12:20.0000000Z with:
+2026-09-18T11:12:21.0000000Z   python-version: 3.12
+2026-09-18T11:12:22.0000000Z   check-latest: false
+2026-09-18T11:12:23.0000000Z ##[endgroup]
+2026-09-18T11:12:24.0000000Z ##[group]Installed versions
+2026-09-18T11:12:25.0000000Z Successfully set up CPython (3.12.6)
+2026-09-18T11:12:26.0000000Z ##[endgroup]
+2026-09-18T11:12:27.0000000Z ##[group]Run pipx install poetry==1.8.3
+2026-09-18T11:12:28.0000000Z pipx install poetry==1.8.3
+2026-09-18T11:12:29.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-18T11:12:30.0000000Z env:
+2026-09-18T11:12:31.0000000Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.6/x64
+2026-09-18T11:12:32.0000000Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.6/x64/lib/pkgconfig
+2026-09-18T11:12:33.0000000Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.6/x64
+2026-09-18T11:12:34.0000000Z ##[endgroup]
+2026-09-18T11:12:35.0000000Z creating virtual environment...
+2026-09-18T11:12:36.0000000Z installing poetry from spec 'poetry==1.8.3'...
+2026-09-18T11:12:37.0000000Z   installed package poetry 1.8.3, installed using Python 3.12.6
+2026-09-18T11:12:38.0000000Z   These apps are now globally available
+2026-09-18T11:12:39.0000000Z     - poetry
+2026-09-18T11:12:40.0000000Z done!
+2026-09-18T11:12:41.0000000Z ##[group]Run python --version
+2026-09-18T11:12:42.0000000Z python --version
+2026-09-18T11:12:43.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-18T11:12:44.0000000Z ##[endgroup]
+2026-09-18T11:12:45.0000000Z Python 3.12.6
+2026-09-18T11:12:46.0000000Z ##[group]Run poetry install --no-interaction
+2026-09-18T11:12:47.0000000Z poetry install --no-interaction
+2026-09-18T11:12:48.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-18T11:12:49.0000000Z ##[endgroup]
+2026-09-18T11:12:50.0000000Z The currently activated Python version 3.12.6 is not supported by the project (>=3.10,<3.12).
+2026-09-18T11:12:51.0000000Z Trying to find and use a compatible version.
+2026-09-18T11:12:52.0000000Z Poetry was unable to find a compatible version. If you have one, you can explicitly use it via the "env use" command.
+2026-09-18T11:12:53.0000000Z ##[error]Process completed with exit code 1.

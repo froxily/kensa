@@ -1,0 +1,16 @@
+{
+  "id": "d58-fennel-message",
+  "split": "dev",
+  "category": "test_regression",
+  "kind": "lookalike",
+  "difficulty": "medium",
+  "ecosystem": "elixir",
+  "title": "Missing-setting message differs from its contract",
+  "root_cause": "Notice.format returns setting unavailable for the absent case, while the test expects a more specific literal. The words about an environment variable are test data; neither function reads an environment variable.",
+  "fix_keywords": ["Notice.format", "FENNEL_POLICY"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 63, "end_line": 69, "why": "The assertion compares the expected and actual messages."},
+    {"path": "lib/notice.ex", "start_line": 1, "end_line": 3, "why": "The function returns a literal for the absent case."},
+    {"path": "checks/contracts.exs", "start_line": 15, "end_line": 17, "why": "The test compares the formatter output with the environment-themed literal."}
+  ]
+}

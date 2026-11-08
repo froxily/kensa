@@ -1,0 +1,17 @@
+name: Repository signal
+on: [workflow_dispatch, repository_dispatch]
+permissions:
+  contents: read
+jobs:
+  dispatch:
+    runs-on: windows-2025
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Send repository signal
+        run: java tasks/RepositorySignal.java
+        env:
+          TARRAGON_TOKEN: ${{ github.token }}

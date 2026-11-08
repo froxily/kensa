@@ -1,0 +1,16 @@
+{
+  "id": "t13-firn-discussion",
+  "split": "test",
+  "category": "github_permissions",
+  "kind": "masked",
+  "difficulty": "medium",
+  "ecosystem": "ruby",
+  "title": "Discussion script cannot add a comment",
+  "root_cause": "The workflow token has discussions read permission, while the GraphQL mutation adds a discussion comment and needs write permission. The API returns a FORBIDDEN error and the script exits nonzero.",
+  "fix_keywords": ["discussions", "write"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 68, "end_line": 71, "why": "The GraphQL denial precedes the script failure."},
+    {"path": ".github/workflows/discussion-graph.yml", "start_line": 3, "end_line": 5, "why": "The job grants discussions read rather than write."},
+    {"path": "jobs/discuss.rb", "start_line": 7, "end_line": 16, "why": "The script submits an addDiscussionComment mutation using the workflow token."}
+  ]
+}

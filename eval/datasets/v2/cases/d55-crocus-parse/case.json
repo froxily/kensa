@@ -1,0 +1,16 @@
+{
+  "id": "d55-crocus-parse",
+  "split": "dev",
+  "category": "dependency_build",
+  "kind": "masked",
+  "difficulty": "medium",
+  "ecosystem": "php",
+  "title": "PHPUnit reports a renderer syntax check failure",
+  "root_cause": "Renderer.php omits a semicolon after the return expression, so PHP cannot parse it. The PHPUnit test runs php -l and fails its exit-code assertion when linting returns 255.",
+  "fix_keywords": ["Renderer.php", "semicolon"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 81, "end_line": 86, "why": "The PHP parser error appears before the PHPUnit failure."},
+    {"path": "src/Renderer.php", "start_line": 3, "end_line": 5, "why": "The return statement lacks its terminator."},
+    {"path": "tests/RendererTest.php", "start_line": 10, "end_line": 14, "why": "The test runs the syntax checker and asserts its exit status."}
+  ]
+}

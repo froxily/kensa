@@ -1,0 +1,27 @@
+name: Receipt suite
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  receipt:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Fetch sources
+        uses: actions/checkout@v4
+      - name: Node runtime
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+      - name: Restore packages
+        run: npm ci
+      - name: Check receipt text
+        run: npm test -- --runInBand
+      - name: Upload coverage
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage
+          path: coverage/
+          if-no-files-found: ignore

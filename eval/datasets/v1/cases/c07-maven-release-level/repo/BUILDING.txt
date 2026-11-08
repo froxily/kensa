@@ -1,0 +1,11 @@
+# Tide index
+
+This module indexes local tide observations.
+
+Build requirements:
+
+- JDK 21
+- Maven 3.9
+
+Run `mvn verify` to compile and test.
+The build targets Java 21 bytecode.

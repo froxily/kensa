@@ -1,0 +1,12 @@
+name: Severity contracts
+on: [push]
+jobs:
+  contracts:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+      - uses: erlef/setup-beam@v1
+        with:
+          otp-version: '27'
+          elixir-version: '1.18'
+      - run: elixir ci/risk_review.exs

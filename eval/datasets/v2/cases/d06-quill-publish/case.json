@@ -1,0 +1,16 @@
+{
+  "id": "d06-quill-publish",
+  "split": "dev",
+  "category": "github_permissions",
+  "kind": "masked",
+  "difficulty": "medium",
+  "ecosystem": "ruby",
+  "title": "Registry push lacks package write permission",
+  "root_cause": "The workflow token has packages read permission but the push requires package write. Authentication succeeds, then the registry rejects the write operation and Docker exits unsuccessfully.",
+  "fix_keywords": ["packages", "write"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 65, "end_line": 68, "why": "The registry rejects the package write during the push."},
+    {"path": ".github/workflows/publish.yml", "start_line": 3, "end_line": 5, "why": "The workflow grants packages only read access."},
+    {"path": ".github/workflows/publish.yml", "start_line": 11, "end_line": 16, "why": "The registry login uses the workflow token before pushing."}
+  ]
+}

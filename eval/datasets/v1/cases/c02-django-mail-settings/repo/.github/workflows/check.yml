@@ -1,0 +1,26 @@
+name: Development checks
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  django-check:
+    runs-on: ubuntu-latest
+    env:
+      DJANGO_SETTINGS_MODULE: config.settings
+      DJANGO_SECRET_KEY: ci-only
+    steps:
+      - name: Fetch sources
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Select interpreter
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Install project
+        run: pip install -r requirements.txt
+      - name: Validate settings
+        run: python manage.py check

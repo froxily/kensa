@@ -1,0 +1,15 @@
+{
+  "id": "t51-lupin-header",
+  "split": "test",
+  "category": "test_regression",
+  "kind": "lookalike",
+  "difficulty": "medium",
+  "ecosystem": "kotlin",
+  "title": "Header parsing drops part of a quota message",
+  "root_cause": "The header function cuts at the first space, so it returns only storage instead of the full phrase expected by the test. The quota wording is literal test data; no storage quota is checked by this code.",
+  "fix_keywords": ["header", "substringBefore"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 44, "end_line": 47, "why": "The assertion compares the full expected phrase with the shortened result."},
+    {"path": "src/test/kotlin/MessageHeaderTest.kt", "start_line": 4, "end_line": 7, "why": "The pure function truncates the literal message at the first space."}
+  ]
+}

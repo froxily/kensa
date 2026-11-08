@@ -1,0 +1,16 @@
+{
+  "id": "d16-sable-port",
+  "split": "dev",
+  "category": "db_connectivity",
+  "kind": "misleading",
+  "difficulty": "medium",
+  "ecosystem": "rust",
+  "title": "Storage test connects to the wrong port",
+  "root_cause": "PostgreSQL is published on host port 5432, but SABLE_DB_ADDR points to port 5433. The connection is refused and the health-check assertion fails as a consequence.",
+  "fix_keywords": ["SABLE_DB_ADDR", "5432"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 49, "end_line": 57, "why": "The configured address and connection refusal precede the assertion failure."},
+    {"path": ".github/workflows/storage.yml", "start_line": 11, "end_line": 12, "why": "The service publishes port 5432."},
+    {"path": ".github/workflows/storage.yml", "start_line": 20, "end_line": 22, "why": "The test is configured to connect to port 5433."}
+  ]
+}

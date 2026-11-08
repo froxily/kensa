@@ -1,0 +1,16 @@
+{
+  "id": "d30-juniper-path",
+  "split": "dev",
+  "category": "workflow_path",
+  "kind": "misleading",
+  "difficulty": "medium",
+  "ecosystem": "php",
+  "title": "Configuration check reports failure after opening the wrong path",
+  "root_cause": "The validation script attempts to read config/settings.ini, but the repository contains config/setting.ini. PHP reports the missing file and the later TAP failure follows from that path mismatch.",
+  "fix_keywords": ["config/settings.ini", "config/setting.ini"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 64, "end_line": 66, "why": "The missing-file warning precedes the failing TAP result."},
+    {"path": "tests/verify.php", "start_line": 21, "end_line": 24, "why": "The script reads the plural path and fails when the open fails."},
+    {"path": "config/setting.ini", "start_line": 1, "end_line": 2, "why": "The existing configuration uses a singular file name."}
+  ]
+}

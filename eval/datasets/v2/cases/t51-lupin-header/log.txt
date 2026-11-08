@@ -1,0 +1,78 @@
+2026-10-26T09:00:00.0000000Z Current runner version: '2.329.0'
+2026-10-26T09:00:00.1000000Z ##[group]Operating System
+2026-10-26T09:00:00.2000000Z Ubuntu 22.04.5 LTS
+2026-10-26T09:00:00.3000000Z ##[endgroup]
+2026-10-26T09:00:00.4000000Z ##[group]Runner Image
+2026-10-26T09:00:00.5000000Z Image: ubuntu-22.04
+2026-10-26T09:00:00.6000000Z ##[endgroup]
+2026-10-26T09:00:00.7000000Z Prepare workflow directory
+2026-10-26T09:00:00.8000000Z Prepare all required actions
+2026-10-26T09:00:00.9000000Z Getting action download info
+2026-10-26T09:00:01.0000000Z Download action repository 'actions/checkout@v4'
+2026-10-26T09:00:01.1000000Z Download action repository 'actions/setup-java@v4'
+2026-10-26T09:00:01.2000000Z Complete job name: verify
+2026-10-26T09:00:01.3000000Z ##[group]Run actions/checkout@v4
+2026-10-26T09:00:01.4000000Z with:
+2026-10-26T09:00:01.5000000Z   repository: lupin-labs/header-checks
+2026-10-26T09:00:01.6000000Z ##[endgroup]
+2026-10-26T09:00:01.7000000Z Syncing repository: lupin-labs/header-checks
+2026-10-26T09:00:01.8000000Z Getting Git version info
+2026-10-26T09:00:01.9000000Z git version 2.51.0
+2026-10-26T09:00:02.0000000Z Checking out the ref
+2026-10-26T09:00:02.1000000Z ##[group]Run actions/setup-java@v4
+2026-10-26T09:00:02.2000000Z with:
+2026-10-26T09:00:02.3000000Z   distribution: temurin
+2026-10-26T09:00:02.4000000Z   java-version: 17
+2026-10-26T09:00:02.5000000Z ##[endgroup]
+2026-10-26T09:00:02.6000000Z Setting Java 17 as the default
+2026-10-26T09:00:02.7000000Z ##[group]Run curl -fsSLo kotlin.zip https://github.com/JetBrains/kotlin/releases/download/v2.0.20/kotlin-compiler-2.0.20.zip
+2026-10-26T09:00:02.8000000Z curl -fsSLo kotlin.zip https://github.com/JetBrains/kotlin/releases/download/v2.0.20/kotlin-compiler-2.0.20.zip
+2026-10-26T09:00:02.9000000Z unzip -q kotlin.zip -d compiler
+2026-10-26T09:00:03.0000000Z curl -fsSLo junit.jar https://repo.maven.apache.org/maven2/junit/junit/4.13.2/junit-4.13.2.jar
+2026-10-26T09:00:03.1000000Z curl -fsSLo hamcrest.jar https://repo.maven.apache.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar
+2026-10-26T09:00:03.2000000Z shell: /usr/bin/bash -e {0}
+2026-10-26T09:00:03.3000000Z ##[endgroup]
+2026-10-26T09:00:08.0000000Z ##[group]Run compiler/kotlinc/bin/kotlinc src/test/kotlin/MessageHeaderTest.kt -classpath junit.jar -include-runtime -d header-checks.jar
+2026-10-26T09:00:08.1000000Z compiler/kotlinc/bin/kotlinc src/test/kotlin/MessageHeaderTest.kt -classpath junit.jar -include-runtime -d header-checks.jar
+2026-10-26T09:00:08.2000000Z java -cp header-checks.jar:junit.jar:hamcrest.jar org.junit.runner.JUnitCore MessageHeaderTest
+2026-10-26T09:00:08.3000000Z shell: /usr/bin/bash -e {0}
+2026-10-26T09:00:08.4000000Z ##[endgroup]
+2026-10-26T09:00:10.0000000Z JUnit version 4.13.2
+2026-10-26T09:00:10.0100000Z ...........E
+2026-10-26T09:00:10.0200000Z Time: 0.011
+2026-10-26T09:00:10.0300000Z There was 1 failure:
+2026-10-26T09:00:10.0400000Z 1) keepsQuotaPhrase(MessageHeaderTest)
+2026-10-26T09:00:10.0500000Z org.junit.ComparisonFailure: expected:<storage[ quota exceeded]> but was:<storage[]>
+2026-10-26T09:00:10.0600000Z 	at org.junit.Assert.assertEquals(Assert.java:117)
+2026-10-26T09:00:10.0700000Z 	at org.junit.Assert.assertEquals(Assert.java:146)
+2026-10-26T09:00:10.0800000Z 	at MessageHeaderTest.keepsQuotaPhrase(MessageHeaderTest.kt:7)
+2026-10-26T09:00:10.0900000Z 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+2026-10-26T09:00:10.1000000Z 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+2026-10-26T09:00:10.1100000Z 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+2026-10-26T09:00:10.1200000Z 	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+2026-10-26T09:00:10.1300000Z 	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+2026-10-26T09:00:10.1400000Z 	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+2026-10-26T09:00:10.1500000Z 	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+2026-10-26T09:00:10.1600000Z 	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+2026-10-26T09:00:10.1700000Z 	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+2026-10-26T09:00:10.1800000Z 	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
+2026-10-26T09:00:10.1900000Z 	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+2026-10-26T09:00:10.2000000Z 	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
+2026-10-26T09:00:10.2100000Z 	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
+2026-10-26T09:00:10.2200000Z 	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+2026-10-26T09:00:10.2300000Z 	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+2026-10-26T09:00:10.2400000Z 	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+2026-10-26T09:00:10.2500000Z 	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+2026-10-26T09:00:10.2600000Z 	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+2026-10-26T09:00:10.2700000Z 	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+2026-10-26T09:00:10.2800000Z 	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+2026-10-26T09:00:10.2900000Z 	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+2026-10-26T09:00:10.3000000Z 	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+2026-10-26T09:00:10.3100000Z 	at org.junit.runner.JUnitCore.runMain(JUnitCore.java:77)
+2026-10-26T09:00:10.3200000Z 	at org.junit.runner.JUnitCore.main(JUnitCore.java:36)
+2026-10-26T09:00:10.3300000Z 
+2026-10-26T09:00:10.3400000Z FAILURES!!!
+2026-10-26T09:00:10.3500000Z Tests run: 11,  Failures: 1
+2026-10-26T09:00:10.3600000Z ##[error]Process completed with exit code 1.
+2026-10-26T09:00:10.3700000Z Post job cleanup.
+2026-10-26T09:00:10.3800000Z Cleaning up orphan processes

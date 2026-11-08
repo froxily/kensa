@@ -1,0 +1,12 @@
+name: Remote check
+on: [push]
+jobs:
+  inspect:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Inspect release data
+        run: node tools/inspect.cjs

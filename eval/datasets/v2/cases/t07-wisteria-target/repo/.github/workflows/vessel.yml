@@ -1,0 +1,14 @@
+name: Image target
+on: [push]
+jobs:
+  target:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Inspect runtime and build
+        run: |
+          node -p 'JSON.stringify(process.versions, null, 2)'
+          docker build --progress=plain --target shipped -f VesselSpec -t wisteria-image .

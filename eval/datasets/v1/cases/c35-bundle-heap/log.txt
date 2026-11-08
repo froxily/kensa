@@ -1,0 +1,53 @@
+2026-09-18T12:00:00.0000000Z Runner version: 2.325.1
+2026-09-18T12:00:01.0000000Z Repository: aster-field/atlas-site
+2026-09-18T12:00:02.0000000Z Job: bundle
+2026-09-18T12:00:03.0000000Z Image: ubuntu-24.04
+2026-09-18T12:00:04.0000000Z Preparing workflow actions
+2026-09-18T12:00:05.0000000Z ##[group]Run actions/checkout@v4
+2026-09-18T12:00:06.0000000Z Syncing repository
+2026-09-18T12:00:07.0000000Z git version 2.46.0
+2026-09-18T12:00:08.0000000Z Fetching commit
+2026-09-18T12:00:09.0000000Z Checking out source
+2026-09-18T12:00:10.0000000Z ##[endgroup]
+2026-09-18T12:00:11.0000000Z ##[group]Run actions/setup-node@v4
+2026-09-18T12:00:12.0000000Z Found node 20.18.0 in cache
+2026-09-18T12:00:13.0000000Z npm version 10.8.2
+2026-09-18T12:00:14.0000000Z Restoring npm cache
+2026-09-18T12:00:15.0000000Z Cache restored successfully
+2026-09-18T12:00:16.0000000Z ##[endgroup]
+2026-09-18T12:00:17.0000000Z ##[group]Run npm ci
+2026-09-18T12:00:18.0000000Z added 84 packages in 3s
+2026-09-18T12:00:19.0000000Z 12 packages are looking for funding
+2026-09-18T12:00:20.0000000Z 2 moderate severity vulnerabilities
+2026-09-18T12:00:21.0000000Z Run npm audit for details
+2026-09-18T12:00:22.0000000Z ##[endgroup]
+2026-09-18T12:00:23.0000000Z ##[group]Run npm run catalog
+2026-09-18T12:00:24.0000000Z > aster-atlas@2.1.0 catalog
+2026-09-18T12:00:25.0000000Z > node catalog.js
+2026-09-18T12:00:26.0000000Z Indexed 18420 entries
+2026-09-18T12:00:27.0000000Z Wrote generated catalog
+2026-09-18T12:00:28.0000000Z ##[endgroup]
+2026-09-18T12:00:29.0000000Z ##[group]Run npm run build
+2026-09-18T12:00:30.0000000Z > aster-atlas@2.1.0 build
+2026-09-18T12:00:31.0000000Z > vite build
+2026-09-18T12:00:32.0000000Z vite v5.4.8 building for production...
+2026-09-18T12:00:33.0000000Z transforming...
+2026-09-18T12:00:34.0000000Z ? 18432 modules transformed.
+2026-09-18T12:00:35.0000000Z rendering chunks...
+2026-09-18T12:00:36.0000000Z <--- Last few GCs --->
+2026-09-18T12:00:37.0000000Z Mark-Compact 253.2 (261.0) -> 251.8 (261.7) MB, 212.5 ms
+2026-09-18T12:00:38.0000000Z Mark-Compact 254.1 (261.7) -> 252.4 (262.2) MB, 229.8 ms
+2026-09-18T12:00:39.0000000Z FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory
+2026-09-18T12:00:40.0000000Z ----- Native stack trace -----
+2026-09-18T12:00:41.0000000Z  1: node::OOMErrorHandler
+2026-09-18T12:00:42.0000000Z  2: v8::Utils::ReportOOMFailure
+2026-09-18T12:00:43.0000000Z  3: v8::internal::Heap::CollectGarbage
+2026-09-18T12:00:44.0000000Z Aborted (core dumped)
+2026-09-18T12:00:45.0000000Z Bundle did not complete
+2026-09-18T12:00:46.0000000Z No dist artifact was produced
+2026-09-18T12:00:47.0000000Z NODE_OPTIONS: --max-old-space-size=256
+2026-09-18T12:00:47.1000000Z Vite did not emit the final chunk manifest
+2026-09-18T12:00:47.2000000Z Build worker received SIGABRT
+2026-09-18T12:00:47.3000000Z Asset upload depends on a successful build
+2026-09-18T12:00:48.0000000Z ##[endgroup]
+2026-09-18T12:00:49.0000000Z ##[error]Process completed with exit code 134.

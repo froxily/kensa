@@ -1,0 +1,27 @@
+name: Container export
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  image:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inspect available space
+        run: df -h
+      - name: Enable builder
+        uses: docker/setup-buildx-action@v3
+      - name: Build image
+        run: docker build -t local/maple-worker .
+      - name: Export image
+        run: docker save local/maple-worker -o worker.tar
+      - name: Upload archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: worker-image
+          path: worker.tar
+          retention-days: 2
+          if-no-files-found: error
+      - name: Print disk usage
+        if: always()
+        run: df -h

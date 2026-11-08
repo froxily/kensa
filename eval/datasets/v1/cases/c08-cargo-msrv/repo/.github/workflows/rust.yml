@@ -1,0 +1,30 @@
+name: Rust verification
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  cargo-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get tree
+        uses: actions/checkout@v4
+      - name: Select Rust
+        uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: 1.75.0
+      - name: Restore cargo cache
+        uses: Swatinem/rust-cache@v2
+      - name: Show tool versions
+        run: cargo --version
+      - name: Fetch packages
+        run: cargo fetch
+      - name: Test crate
+        run: cargo test
+      - name: Save diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: diagnostics
+          path: target/diagnostics

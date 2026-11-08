@@ -1,0 +1,10 @@
+﻿pytest==8.3.5
+coverage==7.8.0
+# Dependencies for CI checks.
+# Keep test tools separate from runtime.
+# Python 3.12 is the supported CI version.
+# Install this file from the repository root.
+# Add new test-only tools below.
+# Pin versions for reproducible checks.
+# Runtime dependencies are managed separately.
+# See the quality job for invocation.

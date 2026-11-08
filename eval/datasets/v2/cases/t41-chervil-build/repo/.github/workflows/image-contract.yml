@@ -1,0 +1,13 @@
+name: Image contract
+on: [push]
+jobs:
+  image:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: erlef/setup-beam@v1
+        with:
+          otp-version: '26.2'
+          elixir-version: '1.16.3'
+      - name: Check image recipe
+        run: mix test --trace

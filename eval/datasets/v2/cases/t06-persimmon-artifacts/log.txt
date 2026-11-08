@@ -1,0 +1,85 @@
+2026-10-27T09:00:00.0000000Z Current runner version: '2.328.0'
+2026-10-27T09:00:00.1000000Z ##[group]Operating System
+2026-10-27T09:00:00.2000000Z Ubuntu
+2026-10-27T09:00:00.3000000Z 24.04.3
+2026-10-27T09:00:00.4000000Z LTS
+2026-10-27T09:00:00.5000000Z ##[endgroup]
+2026-10-27T09:00:00.6000000Z ##[group]Runner Image
+2026-10-27T09:00:00.7000000Z Image: ubuntu-24.04
+2026-10-27T09:00:00.8000000Z Version: 20261019.1
+2026-10-27T09:00:00.9000000Z ##[endgroup]
+2026-10-27T09:00:01.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-27T09:00:01.1000000Z Contents: read
+2026-10-27T09:00:01.2000000Z Metadata: read
+2026-10-27T09:00:01.3000000Z ##[endgroup]
+2026-10-27T09:00:01.4000000Z Prepare workflow directory
+2026-10-27T09:00:01.5000000Z Prepare all required actions
+2026-10-27T09:00:01.6000000Z Download action repository 'actions/checkout@v4'
+2026-10-27T09:00:01.7000000Z Complete job name: image
+2026-10-27T09:00:02.0000000Z ##[group]Run actions/checkout@v4
+2026-10-27T09:00:02.1000000Z with:
+2026-10-27T09:00:02.2000000Z   repository: orchard-systems/persimmon
+2026-10-27T09:00:02.3000000Z   fetch-depth: 1
+2026-10-27T09:00:02.4000000Z ##[endgroup]
+2026-10-27T09:00:02.5000000Z Syncing repository: orchard-systems/persimmon
+2026-10-27T09:00:02.6000000Z Fetching the repository
+2026-10-27T09:00:02.7000000Z Checking out the ref
+2026-10-27T09:00:02.8000000Z ##[group]Run docker build --progress=plain -f SwiftContainer --build-arg REPOSITORY="$GITHUB_REPOSITORY" --secret id=ci_token,env=PERSIMMON_TOKEN -t persimmon-check .
+2026-10-27T09:00:02.9000000Z docker build --progress=plain -f SwiftContainer --build-arg REPOSITORY="$GITHUB_REPOSITORY" --secret id=ci_token,env=PERSIMMON_TOKEN -t persimmon-check .
+2026-10-27T09:00:03.0000000Z shell: /usr/bin/bash -e {0}
+2026-10-27T09:00:03.1000000Z env:
+2026-10-27T09:00:03.2000000Z   PERSIMMON_TOKEN: ***
+2026-10-27T09:00:03.3000000Z ##[endgroup]
+2026-10-27T09:00:03.4000000Z #0 building with "default" instance using docker driver
+2026-10-27T09:00:03.5000000Z #1 [internal] load build definition from SwiftContainer
+2026-10-27T09:00:03.6000000Z #1 transferring dockerfile: 352B done
+2026-10-27T09:00:03.7000000Z #1 DONE 0.0s
+2026-10-27T09:00:03.8000000Z #2 [internal] load metadata for docker.io/library/swift:5.10-jammy
+2026-10-27T09:00:04.2000000Z #2 DONE 0.4s
+2026-10-27T09:00:04.3000000Z #3 [internal] load .dockerignore
+2026-10-27T09:00:04.4000000Z #3 transferring context: 2B done
+2026-10-27T09:00:04.5000000Z #3 DONE 0.0s
+2026-10-27T09:00:04.6000000Z #4 [1/6] FROM docker.io/library/swift:5.10-jammy
+2026-10-27T09:00:06.0000000Z #4 DONE 1.4s
+2026-10-27T09:00:06.1000000Z #5 [2/6] WORKDIR /work
+2026-10-27T09:00:06.2000000Z #5 DONE 0.1s
+2026-10-27T09:00:06.3000000Z #6 [3/6] RUN apt-get update && apt-get install -y gh
+2026-10-27T09:00:06.8000000Z #6 0.5 Get:1 http://archive.ubuntu.com/ubuntu jammy InRelease [270 kB]
+2026-10-27T09:00:07.0000000Z #6 0.7 Get:2 http://security.ubuntu.com/ubuntu jammy-security InRelease [129 kB]
+2026-10-27T09:00:07.4000000Z #6 1.1 Reading package lists...
+2026-10-27T09:00:07.6000000Z #6 1.3 Building dependency tree...
+2026-10-27T09:00:07.8000000Z #6 1.5 Reading state information...
+2026-10-27T09:00:08.0000000Z #6 1.7 The following NEW packages will be installed:
+2026-10-27T09:00:08.1000000Z #6 1.8   gh
+2026-10-27T09:00:08.2000000Z #6 1.9 0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+2026-10-27T09:00:08.3000000Z #6 2.0 Need to get 8,100 kB of archives.
+2026-10-27T09:00:08.5000000Z #6 2.2 Get:1 http://archive.ubuntu.com/ubuntu jammy/universe amd64 gh amd64 2.4.0 [8,100 kB]
+2026-10-27T09:00:09.0000000Z #6 2.7 Setting up gh (2.4.0) ...
+2026-10-27T09:00:09.1000000Z #6 DONE 2.8s
+2026-10-27T09:00:09.2000000Z #7 [4/6] COPY Sources/ Sources/
+2026-10-27T09:00:09.3000000Z #7 DONE 0.1s
+2026-10-27T09:00:09.4000000Z #8 [5/6] RUN swiftc Sources/Probe.swift -o probe
+2026-10-27T09:00:10.0000000Z #8 DONE 0.6s
+2026-10-27T09:00:10.1000000Z #9 [6/6] RUN --mount=type=secret,id=ci_token GH_TOKEN="$(cat /run/secrets/ci_token)" gh api --include "repos/${REPOSITORY}/actions/artifacts"
+2026-10-27T09:00:10.2000000Z #9 0.1 HTTP/2.0 403 Forbidden
+2026-10-27T09:00:10.2100000Z #9 0.1 Content-Type: application/json; charset=utf-8
+2026-10-27T09:00:10.2200000Z #9 0.1 X-Accepted-Github-Permissions: actions=read
+2026-10-27T09:00:10.2300000Z #9 0.1 X-Github-Media-Type: github.v3; format=json
+2026-10-27T09:00:10.2400000Z #9 0.1 X-Ratelimit-Limit: 5000
+2026-10-27T09:00:10.2500000Z #9 0.1 X-Ratelimit-Remaining: 4999
+2026-10-27T09:00:10.2600000Z #9 0.1 
+2026-10-27T09:00:10.2700000Z #9 0.1 {"message":"Resource not accessible by integration","status":"403"}
+2026-10-27T09:00:10.2800000Z #9 0.1 gh: Resource not accessible by integration (HTTP 403)
+2026-10-27T09:00:10.3000000Z #9 ERROR: process "/bin/sh -c GH_TOKEN=\"$(cat /run/secrets/ci_token)\" gh api --include \"repos/${REPOSITORY}/actions/artifacts\"" did not complete successfully: exit code: 1
+2026-10-27T09:00:10.4000000Z ------
+2026-10-27T09:00:10.5000000Z  > [6/6] RUN --mount=type=secret,id=ci_token GH_TOKEN="$(cat /run/secrets/ci_token)" gh api --include "repos/${REPOSITORY}/actions/artifacts":
+2026-10-27T09:00:10.6000000Z 0.1 gh: Resource not accessible by integration (HTTP 403)
+2026-10-27T09:00:10.7000000Z ------
+2026-10-27T09:00:10.8000000Z SwiftContainer:7
+2026-10-27T09:00:10.9000000Z --------------------
+2026-10-27T09:00:11.0000000Z    7 | >>> RUN --mount=type=secret,id=ci_token GH_TOKEN="$(cat /run/secrets/ci_token)" gh api --include "repos/${REPOSITORY}/actions/artifacts"
+2026-10-27T09:00:11.1000000Z --------------------
+2026-10-27T09:00:11.2000000Z ERROR: failed to build: failed to solve: process "/bin/sh -c GH_TOKEN=\"$(cat /run/secrets/ci_token)\" gh api --include \"repos/${REPOSITORY}/actions/artifacts\"" did not complete successfully: exit code: 1
+2026-10-27T09:00:11.3000000Z ##[error]Process completed with exit code 1.
+2026-10-27T09:00:11.4000000Z Post job cleanup.
+2026-10-27T09:00:11.5000000Z Cleaning up orphan processes

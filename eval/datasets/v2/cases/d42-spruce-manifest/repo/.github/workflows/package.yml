@@ -1,0 +1,12 @@
+name: Package check
+on: [push]
+jobs:
+  package:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+      - run: gem install rake -v 13.2.1 --no-document
+      - run: rake --trace package

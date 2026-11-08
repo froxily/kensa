@@ -1,0 +1,1 @@
+Catalog checks run from this directory.

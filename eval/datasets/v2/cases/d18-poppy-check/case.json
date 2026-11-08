@@ -1,0 +1,16 @@
+{
+  "id": "d18-poppy-check",
+  "split": "dev",
+  "category": "github_permissions",
+  "kind": "standard",
+  "difficulty": "easy",
+  "ecosystem": "ruby",
+  "title": "Check creation denied to read-only token",
+  "root_cause": "The job grants the workflow token checks read permission, but creating a check run requires checks write. GitHub rejects the POST request with HTTP 403.",
+  "fix_keywords": ["checks", "write"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 52, "end_line": 53, "why": "The API reports the denied operation."},
+    {"path": ".github/workflows/report.yml", "start_line": 3, "end_line": 5, "why": "Checks permission is restricted to read."},
+    {"path": "bin/report.rb", "start_line": 4, "end_line": 12, "why": "The script posts a check run using the job token."}
+  ]
+}

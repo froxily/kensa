@@ -1,0 +1,16 @@
+{
+  "id": "d40-snowdrop-cutoff",
+  "split": "dev",
+  "category": "unknown",
+  "kind": "insufficient",
+  "difficulty": "medium",
+  "ecosystem": "rust",
+  "title": "Test run output is truncated after listing",
+  "root_cause": "The log ends after the first command lists tests, before the second command's output. The available evidence does not show which test or runtime condition failed, so the cause cannot be established.",
+  "fix_keywords": ["SNOWDROP_INPUT"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 29, "end_line": 34, "why": "The step lists tests and then runs them."},
+    {"path": "log", "start_line": 59, "end_line": 63, "why": "The log ends after the list, before the test run output."},
+    {"path": "src/lib.rs", "start_line": 9, "end_line": 12, "why": "One test depends on runtime input that is not visible in the log."}
+  ]
+}

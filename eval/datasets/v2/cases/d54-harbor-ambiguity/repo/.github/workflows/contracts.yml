@@ -1,0 +1,14 @@
+name: Status contracts
+on: [workflow_dispatch]
+jobs:
+  contracts:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.4'
+      - run: gem install minitest -v 5.25.4 --no-document
+      - run: ruby -Ilib test/status_test.rb --verbose --seed 41
+        env:
+          HARBOR_FLAG_FILE: ${{ secrets.HARBOR_FLAG_FILE }}

@@ -1,0 +1,16 @@
+{
+  "id": "t08-seagrass-source",
+  "split": "test",
+  "category": "missing_env_var",
+  "kind": "standard",
+  "difficulty": "easy",
+  "ecosystem": "python",
+  "title": "Collector starts without its source root",
+  "root_cause": "The collector indexes SEAGRASS_SOURCE_ROOT in the environment, but the job does not set it. Python raises KeyError before the source directory can be inspected.",
+  "fix_keywords": ["SEAGRASS_SOURCE_ROOT"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 74, "end_line": 79, "why": "The traceback identifies the missing environment key."},
+    {"path": "scripts/collect.py", "start_line": 8, "end_line": 11, "why": "The collector requires that key before inspecting the directory."},
+    {"path": ".github/workflows/collector.yml", "start_line": 5, "end_line": 11, "why": "The workflow does not supply the variable."}
+  ]
+}

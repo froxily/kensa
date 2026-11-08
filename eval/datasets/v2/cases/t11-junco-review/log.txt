@@ -1,0 +1,69 @@
+2026-10-27T08:00:00.0000000Z Current runner version: '2.328.0'
+2026-10-27T08:00:00.1000000Z ##[group]Operating System
+2026-10-27T08:00:00.2000000Z macOS
+2026-10-27T08:00:00.3000000Z 14.8
+2026-10-27T08:00:00.4000000Z 23J570
+2026-10-27T08:00:00.5000000Z ##[endgroup]
+2026-10-27T08:00:00.6000000Z ##[group]Runner Image
+2026-10-27T08:00:00.7000000Z Image: macos-14
+2026-10-27T08:00:00.8000000Z Version: 20261019.1
+2026-10-27T08:00:00.9000000Z ##[endgroup]
+2026-10-27T08:00:01.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-27T08:00:01.1000000Z Contents: read
+2026-10-27T08:00:01.2000000Z Metadata: read
+2026-10-27T08:00:01.3000000Z PullRequests: read
+2026-10-27T08:00:01.4000000Z ##[endgroup]
+2026-10-27T08:00:01.5000000Z Prepare workflow directory
+2026-10-27T08:00:01.6000000Z Prepare all required actions
+2026-10-27T08:00:01.7000000Z Download action repository 'actions/checkout@v4'
+2026-10-27T08:00:01.8000000Z Download action repository 'actions/setup-go@v5'
+2026-10-27T08:00:01.9000000Z Complete job name: review
+2026-10-27T08:00:02.0000000Z ##[group]Run actions/checkout@v4
+2026-10-27T08:00:02.1000000Z with:
+2026-10-27T08:00:02.2000000Z   repository: alpine-tools/junco
+2026-10-27T08:00:02.3000000Z   fetch-depth: 1
+2026-10-27T08:00:02.4000000Z ##[endgroup]
+2026-10-27T08:00:02.5000000Z Syncing repository: alpine-tools/junco
+2026-10-27T08:00:02.6000000Z Fetching the repository
+2026-10-27T08:00:02.7000000Z Checking out the ref
+2026-10-27T08:00:02.8000000Z ##[group]Run actions/setup-go@v5
+2026-10-27T08:00:02.9000000Z with:
+2026-10-27T08:00:03.0000000Z   go-version: 1.24
+2026-10-27T08:00:03.1000000Z   cache: false
+2026-10-27T08:00:03.2000000Z ##[endgroup]
+2026-10-27T08:00:03.3000000Z Found in cache @ /Users/runner/hostedtoolcache/go/1.24.7/x64
+2026-10-27T08:00:03.4000000Z Added go to the path
+2026-10-27T08:00:03.5000000Z Successfully set up Go version 1.24
+2026-10-27T08:00:03.6000000Z ##[group]Run go run tasks/submit_review.go
+2026-10-27T08:00:03.7000000Z go run tasks/submit_review.go
+2026-10-27T08:00:03.8000000Z shell: /bin/bash -e {0}
+2026-10-27T08:00:03.9000000Z env:
+2026-10-27T08:00:04.0000000Z   GO111MODULE: off
+2026-10-27T08:00:04.1000000Z   JUNCO_REVIEW_TOKEN: ***
+2026-10-27T08:00:04.2000000Z ##[endgroup]
+2026-10-27T08:00:09.0000000Z read file page 1: HTTP 200
+2026-10-27T08:00:09.1000000Z read file page 2: HTTP 200
+2026-10-27T08:00:09.2000000Z read file page 3: HTTP 200
+2026-10-27T08:00:09.3000000Z read file page 4: HTTP 200
+2026-10-27T08:00:09.4000000Z read file page 5: HTTP 200
+2026-10-27T08:00:09.5000000Z read file page 6: HTTP 200
+2026-10-27T08:00:09.6000000Z read file page 7: HTTP 200
+2026-10-27T08:00:09.7000000Z read file page 8: HTTP 200
+2026-10-27T08:00:09.8000000Z read file page 9: HTTP 200
+2026-10-27T08:00:09.9000000Z read file page 10: HTTP 200
+2026-10-27T08:00:10.0000000Z read file page 11: HTTP 200
+2026-10-27T08:00:10.1000000Z read file page 12: HTTP 200
+2026-10-27T08:00:10.2000000Z read file page 13: HTTP 200
+2026-10-27T08:00:10.3000000Z read file page 14: HTTP 200
+2026-10-27T08:00:10.4000000Z read file page 15: HTTP 200
+2026-10-27T08:00:10.5000000Z read file page 16: HTTP 200
+2026-10-27T08:00:10.6000000Z read file page 17: HTTP 200
+2026-10-27T08:00:10.7000000Z read file page 18: HTTP 200
+2026-10-27T08:00:10.8000000Z read file page 19: HTTP 200
+2026-10-27T08:00:10.9000000Z read file page 20: HTTP 200
+2026-10-27T08:00:11.0000000Z review request: HTTP 403
+2026-10-27T08:00:11.1000000Z {"message":"Resource not accessible by integration","status":"403"}
+2026-10-27T08:00:11.2000000Z exit status 1
+2026-10-27T08:00:11.3000000Z ##[error]Process completed with exit code 1.
+2026-10-27T08:00:11.4000000Z Post job cleanup.
+2026-10-27T08:00:11.5000000Z Cleaning up orphan processes

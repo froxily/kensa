@@ -1,0 +1,16 @@
+{
+  "id": "d10-ember-count",
+  "split": "dev",
+  "category": "test_regression",
+  "kind": "standard",
+  "difficulty": "easy",
+  "ecosystem": "elixir",
+  "title": "Active count includes inactive records",
+  "root_cause": "The count_active function counts every item rather than filtering by the active field. The test supplies one active and one inactive record and receives 2 instead of 1.",
+  "fix_keywords": ["count_active", "active"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 52, "end_line": 60, "why": "ExUnit shows the assertion and values."},
+    {"path": "lib/ember.ex", "start_line": 1, "end_line": 3, "why": "The implementation counts the entire list."},
+    {"path": "test/ember_test.exs", "start_line": 4, "end_line": 6, "why": "The test expects only active records to count."}
+  ]
+}

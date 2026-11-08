@@ -1,0 +1,25 @@
+name: Couch session
+on: [push]
+jobs:
+  authenticate:
+    runs-on: ubuntu-24.04
+    services:
+      bookcase:
+        image: couchdb:3.4
+        env:
+          COUCHDB_USER: demo_reader
+          COUCHDB_PASSWORD: fake-demo-password
+        ports:
+          - 15984:5984
+        options: >-
+          --health-cmd "curl -f http://localhost:5984/_up"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+      - name: Open session
+        run: ruby jobs/session.rb

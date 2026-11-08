@@ -1,0 +1,11 @@
+name: Review status
+on: [workflow_dispatch]
+jobs:
+  inspect:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check review publication
+        run: swift jobs/review_check.swift
+        env:
+          SWEETFERN_TOKEN: ${{ secrets.SWEETFERN_TOKEN }}

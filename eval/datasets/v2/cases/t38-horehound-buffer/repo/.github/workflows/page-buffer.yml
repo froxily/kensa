@@ -1,0 +1,12 @@
+name: Page buffer
+on: [push]
+jobs:
+  render:
+    runs-on: windows-2025
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+      - name: Render booklet
+        run: php -d memory_limit=32M tools/render_booklet.php

@@ -1,0 +1,16 @@
+{
+  "id": "t10-holly-volume",
+  "split": "test",
+  "category": "test_regression",
+  "kind": "standard",
+  "difficulty": "easy",
+  "ecosystem": "go",
+  "title": "Volume function omits the cubic-centimeter conversion",
+  "root_cause": "The function multiplies dimensions in centimeters without converting cubic centimeters to liters. The test expects a ten-centimeter cube to be one liter but receives 1000.",
+  "fix_keywords": ["Liters", "1000"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 63, "end_line": 67, "why": "The JSON test output reports the actual and expected volume."},
+    {"path": "measure/capacity.go", "start_line": 3, "end_line": 6, "why": "The implementation returns the unconverted product."},
+    {"path": "measure/capacity_test.go", "start_line": 10, "end_line": 13, "why": "The test specifies the one-liter expectation."}
+  ]
+}

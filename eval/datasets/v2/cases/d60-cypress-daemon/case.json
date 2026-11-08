@@ -1,0 +1,15 @@
+{
+  "id": "d60-cypress-daemon",
+  "split": "dev",
+  "category": "docker",
+  "kind": "standard",
+  "difficulty": "easy",
+  "ecosystem": "node",
+  "title": "Docker client targets an unavailable daemon endpoint",
+  "root_cause": "The step overrides DOCKER_HOST with a local TCP endpoint where no Docker daemon is listening. The Node tests pass, but docker info cannot connect to the configured daemon and exits unsuccessfully.",
+  "fix_keywords": ["DOCKER_HOST", "2379"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 104, "end_line": 108, "why": "Docker reports that its configured daemon endpoint cannot be reached."},
+    {"path": ".github/workflows/readiness.yml", "start_line": 11, "end_line": 16, "why": "The step sets DOCKER_HOST and calls docker info."}
+  ]
+}

@@ -1,0 +1,60 @@
+2026-10-10T03:00:00.0000000Z Current runner version: '2.329.0'
+2026-10-10T03:00:00.1000000Z ##[group]Operating System
+2026-10-10T03:00:00.2000000Z macOS 14.7.6
+2026-10-10T03:00:00.3000000Z ##[endgroup]
+2026-10-10T03:00:00.4000000Z ##[group]Runner Image
+2026-10-10T03:00:00.5000000Z Image: macos-14
+2026-10-10T03:00:00.6000000Z ##[endgroup]
+2026-10-10T03:00:00.7000000Z Prepare workflow directory
+2026-10-10T03:00:00.8000000Z Prepare all required actions
+2026-10-10T03:00:00.9000000Z Getting action download info
+2026-10-10T03:00:01.0000000Z Download action repository 'actions/checkout@v4'
+2026-10-10T03:00:01.1000000Z Download action repository 'dtolnay/rust-toolchain@master'
+2026-10-10T03:00:01.2000000Z Complete job name: catalog
+2026-10-10T03:00:01.3000000Z ##[group]Run actions/checkout@v4
+2026-10-10T03:00:01.4000000Z with:
+2026-10-10T03:00:01.5000000Z   repository: lovage-labs/catalog-cli
+2026-10-10T03:00:01.6000000Z   clean: true
+2026-10-10T03:00:01.7000000Z ##[endgroup]
+2026-10-10T03:00:01.8000000Z Syncing repository: lovage-labs/catalog-cli
+2026-10-10T03:00:01.9000000Z Getting Git version info
+2026-10-10T03:00:02.0000000Z git version 2.49.0
+2026-10-10T03:00:02.1000000Z Checking out the ref
+2026-10-10T03:00:02.2000000Z ##[group]Run dtolnay/rust-toolchain@master
+2026-10-10T03:00:02.3000000Z with:
+2026-10-10T03:00:02.4000000Z   toolchain: 1.90.0
+2026-10-10T03:00:02.5000000Z ##[endgroup]
+2026-10-10T03:00:02.6000000Z info: syncing channel updates for '1.90.0-x86_64-apple-darwin'
+2026-10-10T03:00:03.0000000Z info: default toolchain set to '1.90.0-x86_64-apple-darwin'
+2026-10-10T03:00:03.1000000Z ##[group]Run cargo test
+2026-10-10T03:00:03.2000000Z cargo test
+2026-10-10T03:00:03.3000000Z cargo build --release --target-dir build-output
+2026-10-10T03:00:03.4000000Z ./target/release/lovage-inspect
+2026-10-10T03:00:03.5000000Z shell: /bin/bash -e {0}
+2026-10-10T03:00:03.6000000Z ##[endgroup]
+2026-10-10T03:00:03.7000000Z    Compiling lovage-inspect v0.2.0 (/Users/runner/work/catalog-cli/catalog-cli/projects/catalog-cli)
+2026-10-10T03:00:04.0000000Z     Finished `test` profile [unoptimized + debuginfo] target(s) in 0.28s
+2026-10-10T03:00:04.1000000Z      Running unittests src/main.rs (target/debug/deps/lovage_inspect-713cf6df453e2d0b)
+2026-10-10T03:00:04.1100000Z 
+2026-10-10T03:00:04.1200000Z running 12 tests
+2026-10-10T03:00:04.1300000Z test tests::shelf_art ... ok
+2026-10-10T03:00:04.1400000Z test tests::shelf_botany ... ok
+2026-10-10T03:00:04.1500000Z test tests::shelf_dash ... ok
+2026-10-10T03:00:04.1600000Z test tests::shelf_digit ... ok
+2026-10-10T03:00:04.1700000Z test tests::shelf_empty ... ok
+2026-10-10T03:00:04.1800000Z test tests::shelf_geology ... ok
+2026-10-10T03:00:04.1900000Z test tests::shelf_literature ... ok
+2026-10-10T03:00:04.2000000Z test tests::shelf_maps ... ok
+2026-10-10T03:00:04.2100000Z test tests::shelf_music ... ok
+2026-10-10T03:00:04.2200000Z test tests::shelf_nonascii ... ok
+2026-10-10T03:00:04.2300000Z test tests::shelf_space ... ok
+2026-10-10T03:00:04.2400000Z test tests::shelf_upper ... ok
+2026-10-10T03:00:04.2500000Z 
+2026-10-10T03:00:04.2600000Z test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-10T03:00:04.2700000Z 
+2026-10-10T03:00:04.3000000Z    Compiling lovage-inspect v0.2.0 (/Users/runner/work/catalog-cli/catalog-cli/projects/catalog-cli)
+2026-10-10T03:00:04.6000000Z     Finished `release` profile [optimized] target(s) in 0.29s
+2026-10-10T03:00:04.7000000Z /Users/runner/work/_temp/runner-script.sh: line 3: ./target/release/lovage-inspect: No such file or directory
+2026-10-10T03:00:04.8000000Z ##[error]Process completed with exit code 127.
+2026-10-10T03:00:04.9000000Z Post job cleanup.
+2026-10-10T03:00:05.0000000Z Cleaning up orphan processes

@@ -1,0 +1,16 @@
+{
+  "id": "t05-kohlrabi-severity",
+  "split": "test",
+  "category": "test_regression",
+  "kind": "lookalike",
+  "difficulty": "medium",
+  "ecosystem": "elixir",
+  "title": "Classifier assigns the wrong severity to a denial message",
+  "root_cause": "The classifier maps text containing denied to warning, while the test expects error. The package-permission wording is only a literal supplied to a pure classifier; no registry operation occurs.",
+  "fix_keywords": ["RiskClassifier", "severity"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 55, "end_line": 64, "why": "EUnit reports the mismatched severity and displays the permission-themed input."},
+    {"path": "lib/risk_classifier.ex", "start_line": 2, "end_line": 4, "why": "The classifier assigns warning to denial text."},
+    {"path": "ci/risk_review.exs", "start_line": 17, "end_line": 20, "why": "The test expects error for a literal message."}
+  ]
+}

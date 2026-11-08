@@ -1,0 +1,16 @@
+{
+  "id": "d04-cedar-release",
+  "split": "dev",
+  "category": "github_permissions",
+  "kind": "standard",
+  "difficulty": "easy",
+  "ecosystem": "rust",
+  "title": "Release creation denied to the job token",
+  "root_cause": "The workflow grants its GitHub token only read access to repository contents. Creating a release requires contents write permission, so the API rejects the createRelease mutation.",
+  "fix_keywords": ["contents", "write"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 47, "end_line": 49, "why": "The release mutation is denied."},
+    {"path": ".github/workflows/release.yml", "start_line": 5, "end_line": 6, "why": "The workflow limits contents permission to read."},
+    {"path": ".github/workflows/release.yml", "start_line": 13, "end_line": 16, "why": "The release command uses the workflow token."}
+  ]
+}

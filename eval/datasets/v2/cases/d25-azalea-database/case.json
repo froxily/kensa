@@ -1,0 +1,16 @@
+{
+  "id": "d25-azalea-database",
+  "split": "dev",
+  "category": "db_connectivity",
+  "kind": "standard",
+  "difficulty": "medium",
+  "ecosystem": "python",
+  "title": "PostgreSQL rejects the requested database name",
+  "root_cause": "The service initializes azalea_data, but the connection string requests azalea_archive. PostgreSQL is reachable and rejects that nonexistent database, causing the integration test to fail.",
+  "fix_keywords": ["AZALEA_DSN", "azalea_data"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 83, "end_line": 91, "why": "The connection error identifies the nonexistent database."},
+    {"path": ".github/workflows/verify.yml", "start_line": 7, "end_line": 13, "why": "The service creates and publishes azalea_data."},
+    {"path": ".github/workflows/verify.yml", "start_line": 25, "end_line": 27, "why": "The test receives a DSN naming azalea_archive."}
+  ]
+}

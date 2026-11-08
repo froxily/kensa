@@ -1,0 +1,99 @@
+2026-10-28T09:30:00.0000000Z Current runner version: '2.328.0'
+2026-10-28T09:30:00.1000000Z ##[group]Operating System
+2026-10-28T09:30:00.2000000Z Microsoft Windows Server 2022
+2026-10-28T09:30:00.3000000Z 10.0.20348
+2026-10-28T09:30:00.4000000Z Datacenter
+2026-10-28T09:30:00.5000000Z ##[endgroup]
+2026-10-28T09:30:00.6000000Z ##[group]Runner Image
+2026-10-28T09:30:00.7000000Z Image: windows-2022
+2026-10-28T09:30:00.8000000Z Version: 20261019.1
+2026-10-28T09:30:00.9000000Z ##[endgroup]
+2026-10-28T09:30:01.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-28T09:30:01.1000000Z Contents: read
+2026-10-28T09:30:01.2000000Z Metadata: read
+2026-10-28T09:30:01.3000000Z ##[endgroup]
+2026-10-28T09:30:01.4000000Z Prepare workflow directory
+2026-10-28T09:30:01.5000000Z Prepare all required actions
+2026-10-28T09:30:01.6000000Z Download action repository 'actions/checkout@v4'
+2026-10-28T09:30:01.7000000Z Download action repository 'actions/setup-java@v4'
+2026-10-28T09:30:01.8000000Z Complete job name: unit
+2026-10-28T09:30:02.0000000Z ##[group]Run actions/checkout@v4
+2026-10-28T09:30:02.1000000Z with:
+2026-10-28T09:30:02.2000000Z   repository: groveworks/elm
+2026-10-28T09:30:02.3000000Z   fetch-depth: 1
+2026-10-28T09:30:02.4000000Z ##[endgroup]
+2026-10-28T09:30:02.5000000Z Syncing repository: groveworks/elm
+2026-10-28T09:30:02.6000000Z Fetching the repository
+2026-10-28T09:30:02.7000000Z Checking out the ref
+2026-10-28T09:30:02.8000000Z ##[group]Run actions/setup-java@v4
+2026-10-28T09:30:02.9000000Z with:
+2026-10-28T09:30:03.0000000Z   distribution: temurin
+2026-10-28T09:30:03.1000000Z   java-version: 21
+2026-10-28T09:30:03.2000000Z ##[endgroup]
+2026-10-28T09:30:03.3000000Z Resolved Java 21 from tool-cache
+2026-10-28T09:30:03.4000000Z Setting Java 21 as the default
+2026-10-28T09:30:03.5000000Z ##[group]Run mvn -B test
+2026-10-28T09:30:03.6000000Z mvn -B test
+2026-10-28T09:30:03.7000000Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-28T09:30:03.8000000Z ##[endgroup]
+2026-10-28T09:30:04.0000000Z [INFO] Scanning for projects...
+2026-10-28T09:30:04.1000000Z [INFO] ---------------------------< org.grove:elm >---------------------------
+2026-10-28T09:30:04.2000000Z [INFO] Building elm 1.0
+2026-10-28T09:30:04.3000000Z [INFO] --------------------------------[ jar ]---------------------------------
+2026-10-28T09:30:04.4000000Z [INFO] --- resources:3.3.1:resources (default-resources) @ elm ---
+2026-10-28T09:30:04.5000000Z [INFO] skip non existing resourceDirectory D:\a\elm\elm\src\main\resources
+2026-10-28T09:30:04.6000000Z [INFO] --- compiler:3.13.0:compile (default-compile) @ elm ---
+2026-10-28T09:30:04.7000000Z [INFO] No sources to compile
+2026-10-28T09:30:04.8000000Z [INFO] --- kotlin:1.9.25:compile (compile) @ elm ---
+2026-10-28T09:30:08.0000000Z [INFO] --- resources:3.3.1:testResources (default-testResources) @ elm ---
+2026-10-28T09:30:08.1000000Z [INFO] skip non existing resourceDirectory D:\a\elm\elm\src\test\resources
+2026-10-28T09:30:08.2000000Z [INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ elm ---
+2026-10-28T09:30:08.3000000Z [INFO] No sources to compile
+2026-10-28T09:30:08.4000000Z [INFO] --- kotlin:1.9.25:test-compile (test-compile) @ elm ---
+2026-10-28T09:30:10.0000000Z [INFO] --- surefire:3.2.5:test (default-test) @ elm ---
+2026-10-28T09:30:10.1000000Z [INFO] Using auto detected provider org.apache.maven.surefire.junit4.JUnit4Provider
+2026-10-28T09:30:10.2000000Z [INFO] -------------------------------------------------------
+2026-10-28T09:30:10.3000000Z [INFO]  T E S T S
+2026-10-28T09:30:10.4000000Z [INFO] -------------------------------------------------------
+2026-10-28T09:30:10.5000000Z [INFO] Running DurationTest
+2026-10-28T09:30:10.5100000Z observed 1 minute(s): 60 ms
+2026-10-28T09:30:10.5200000Z observed 2 minute(s): 120 ms
+2026-10-28T09:30:10.5300000Z observed 3 minute(s): 180 ms
+2026-10-28T09:30:10.5400000Z observed 4 minute(s): 240 ms
+2026-10-28T09:30:10.5500000Z observed 5 minute(s): 300 ms
+2026-10-28T09:30:10.5600000Z observed 6 minute(s): 360 ms
+2026-10-28T09:30:10.5700000Z observed 7 minute(s): 420 ms
+2026-10-28T09:30:10.5800000Z observed 8 minute(s): 480 ms
+2026-10-28T09:30:10.5900000Z observed 9 minute(s): 540 ms
+2026-10-28T09:30:10.6000000Z observed 10 minute(s): 600 ms
+2026-10-28T09:30:10.6100000Z observed 11 minute(s): 660 ms
+2026-10-28T09:30:10.6200000Z observed 12 minute(s): 720 ms
+2026-10-28T09:30:10.6300000Z observed 13 minute(s): 780 ms
+2026-10-28T09:30:10.6400000Z observed 14 minute(s): 840 ms
+2026-10-28T09:30:10.6500000Z observed 15 minute(s): 900 ms
+2026-10-28T09:30:10.6600000Z observed 16 minute(s): 960 ms
+2026-10-28T09:30:10.6700000Z observed 17 minute(s): 1020 ms
+2026-10-28T09:30:10.6800000Z observed 18 minute(s): 1080 ms
+2026-10-28T09:30:10.6900000Z observed 19 minute(s): 1140 ms
+2026-10-28T09:30:10.7000000Z observed 20 minute(s): 1200 ms
+2026-10-28T09:30:10.8000000Z [ERROR] Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.011 s <<< FAILURE! -- in DurationTest
+2026-10-28T09:30:10.9000000Z [ERROR] DurationTest.convertsMinutes -- Time elapsed: 0.005 s <<< FAILURE!
+2026-10-28T09:30:11.0000000Z java.lang.AssertionError: expected:<120000> but was:<120>
+2026-10-28T09:30:11.1000000Z     at org.junit.Assert.fail(Assert.java:89)
+2026-10-28T09:30:11.2000000Z     at org.junit.Assert.failNotEquals(Assert.java:835)
+2026-10-28T09:30:11.3000000Z     at org.junit.Assert.assertEquals(Assert.java:647)
+2026-10-28T09:30:11.4000000Z     at org.junit.Assert.assertEquals(Assert.java:633)
+2026-10-28T09:30:11.5000000Z     at DurationTest.convertsMinutes(DurationTest.kt:10)
+2026-10-28T09:30:11.6000000Z [INFO] Results:
+2026-10-28T09:30:11.7000000Z [ERROR] Failures:
+2026-10-28T09:30:11.8000000Z [ERROR]   DurationTest.convertsMinutes:10 expected:<120000> but was:<120>
+2026-10-28T09:30:11.9000000Z [INFO] Tests run: 1, Failures: 1, Errors: 0, Skipped: 0
+2026-10-28T09:30:12.0000000Z [INFO] ------------------------------------------------------------------------
+2026-10-28T09:30:12.1000000Z [INFO] BUILD FAILURE
+2026-10-28T09:30:12.2000000Z [INFO] ------------------------------------------------------------------------
+2026-10-28T09:30:12.3000000Z [ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.2.5:test (default-test) on project elm: There are test failures.
+2026-10-28T09:30:12.4000000Z [ERROR] Please refer to D:\a\elm\elm\target\surefire-reports for the individual test results.
+2026-10-28T09:30:12.5000000Z [ERROR] -> [Help 1]
+2026-10-28T09:30:12.6000000Z ##[error]Process completed with exit code 1.
+2026-10-28T09:30:12.7000000Z Post job cleanup.
+2026-10-28T09:30:12.8000000Z Cleaning up orphan processes

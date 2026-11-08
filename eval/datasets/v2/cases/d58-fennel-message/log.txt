@@ -1,0 +1,74 @@
+2026-10-28T15:00:00.0000000Z Current runner version: '2.328.0'
+2026-10-28T15:00:00.1000000Z ##[group]Operating System
+2026-10-28T15:00:00.2000000Z macOS
+2026-10-28T15:00:00.3000000Z 15.6
+2026-10-28T15:00:00.4000000Z 24G84
+2026-10-28T15:00:00.5000000Z ##[endgroup]
+2026-10-28T15:00:00.6000000Z ##[group]Runner Image
+2026-10-28T15:00:00.7000000Z Image: macos-15
+2026-10-28T15:00:00.8000000Z Version: 20261019.1
+2026-10-28T15:00:00.9000000Z ##[endgroup]
+2026-10-28T15:00:01.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-28T15:00:01.1000000Z Contents: read
+2026-10-28T15:00:01.2000000Z Metadata: read
+2026-10-28T15:00:01.3000000Z ##[endgroup]
+2026-10-28T15:00:01.4000000Z Prepare workflow directory
+2026-10-28T15:00:01.5000000Z Prepare all required actions
+2026-10-28T15:00:01.6000000Z Download action repository 'actions/checkout@v4'
+2026-10-28T15:00:01.7000000Z Download action repository 'erlef/setup-beam@v1'
+2026-10-28T15:00:01.8000000Z Complete job name: contracts
+2026-10-28T15:00:02.0000000Z ##[group]Run actions/checkout@v4
+2026-10-28T15:00:02.1000000Z with:
+2026-10-28T15:00:02.2000000Z   repository: herb-labs/fennel
+2026-10-28T15:00:02.3000000Z   fetch-depth: 1
+2026-10-28T15:00:02.4000000Z ##[endgroup]
+2026-10-28T15:00:02.5000000Z Syncing repository: herb-labs/fennel
+2026-10-28T15:00:02.6000000Z Fetching the repository
+2026-10-28T15:00:02.7000000Z Checking out the ref
+2026-10-28T15:00:02.8000000Z ##[group]Run erlef/setup-beam@v1
+2026-10-28T15:00:02.9000000Z with:
+2026-10-28T15:00:03.0000000Z   otp-version: 26
+2026-10-28T15:00:03.1000000Z   elixir-version: 1.16
+2026-10-28T15:00:03.2000000Z ##[endgroup]
+2026-10-28T15:00:03.3000000Z OTP 26.2.5 installed
+2026-10-28T15:00:03.4000000Z Elixir 1.16.3 installed
+2026-10-28T15:00:03.5000000Z ##[group]Run elixir checks/contracts.exs
+2026-10-28T15:00:03.6000000Z elixir checks/contracts.exs
+2026-10-28T15:00:03.7000000Z shell: /bin/bash -e {0}
+2026-10-28T15:00:03.8000000Z ##[endgroup]
+2026-10-28T15:00:04.0000000Z 
+2026-10-28T15:00:04.0100000Z NoticeTest [checks/contracts.exs]
+2026-10-28T15:00:04.0200000Z   * test formats amber [L#7]
+2026-10-28T15:00:04.0300000Z   * test formats amber (0.00ms) [L#7]
+2026-10-28T15:00:04.0400000Z   * test formats blue [L#8]
+2026-10-28T15:00:04.0500000Z   * test formats blue (0.00ms) [L#8]
+2026-10-28T15:00:04.0600000Z   * test formats coral [L#9]
+2026-10-28T15:00:04.0700000Z   * test formats coral (0.00ms) [L#9]
+2026-10-28T15:00:04.0800000Z   * test formats dusk [L#10]
+2026-10-28T15:00:04.0900000Z   * test formats dusk (0.00ms) [L#10]
+2026-10-28T15:00:04.1000000Z   * test formats ecru [L#11]
+2026-10-28T15:00:04.1100000Z   * test formats ecru (0.00ms) [L#11]
+2026-10-28T15:00:04.1200000Z   * test formats fern [L#12]
+2026-10-28T15:00:04.1300000Z   * test formats fern (0.00ms) [L#12]
+2026-10-28T15:00:04.1400000Z   * test formats gold [L#13]
+2026-10-28T15:00:04.1500000Z   * test formats gold (0.00ms) [L#13]
+2026-10-28T15:00:04.1600000Z   * test formats hazel [L#14]
+2026-10-28T15:00:04.1700000Z   * test formats hazel (0.00ms) [L#14]
+2026-10-28T15:00:04.1800000Z   * test describes missing setting [L#15]
+2026-10-28T15:00:04.1900000Z   * test describes missing setting (0.1ms) [L#15]
+2026-10-28T15:00:04.2000000Z 
+2026-10-28T15:00:04.2100000Z   1) test describes missing setting (NoticeTest)
+2026-10-28T15:00:04.2200000Z      checks/contracts.exs:15
+2026-10-28T15:00:04.2300000Z      Assertion with == failed
+2026-10-28T15:00:04.2400000Z      code:  assert Notice.format(:absent) == "missing environment variable: FENNEL_POLICY"
+2026-10-28T15:00:04.2500000Z      left:  "setting unavailable"
+2026-10-28T15:00:04.2600000Z      right: "missing environment variable: FENNEL_POLICY"
+2026-10-28T15:00:04.2700000Z      stacktrace:
+2026-10-28T15:00:04.2800000Z        checks/contracts.exs:16: (test)
+2026-10-28T15:00:04.2900000Z 
+2026-10-28T15:00:04.3000000Z Finished in 0.01 seconds (0.00s async, 0.01s sync)
+2026-10-28T15:00:04.3100000Z 9 tests, 1 failure
+2026-10-28T15:00:04.3200000Z Randomized with seed 0
+2026-10-28T15:00:04.3300000Z ##[error]Process completed with exit code 2.
+2026-10-28T15:00:04.3400000Z Post job cleanup.
+2026-10-28T15:00:04.3500000Z Cleaning up orphan processes

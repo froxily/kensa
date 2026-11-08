@@ -1,0 +1,16 @@
+{
+  "id": "t06-persimmon-artifacts",
+  "split": "test",
+  "category": "github_permissions",
+  "kind": "masked",
+  "difficulty": "medium",
+  "ecosystem": "swift",
+  "title": "Image build cannot read workflow artifacts",
+  "root_cause": "The build uses the workflow token to list Actions artifacts, but the workflow grants no actions permission. GitHub rejects the request with 403, and the failed command causes the Docker build to stop.",
+  "fix_keywords": ["actions", "read"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 64, "end_line": 72, "why": "The build output shows the 403 and required actions permission."},
+    {"path": ".github/workflows/assemblage.yml", "start_line": 3, "end_line": 4, "why": "Only contents read is granted, leaving actions permission unset."},
+    {"path": "SwiftContainer", "start_line": 6, "end_line": 7, "why": "The build command queries Actions artifacts using the mounted token."}
+  ]
+}

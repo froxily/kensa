@@ -1,0 +1,16 @@
+{
+  "id": "d45-coast-scope",
+  "split": "dev",
+  "category": "missing_env_var",
+  "kind": "masked",
+  "difficulty": "medium",
+  "ecosystem": "cpp",
+  "title": "CTest scope check lacks its environment setting",
+  "root_cause": "The scope check requires COAST_SCOPE, but the job does not provide it. The executable reports the missing variable and exits nonzero, which CTest summarizes as a failing test.",
+  "fix_keywords": ["COAST_SCOPE"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 97, "end_line": 100, "why": "The test output reports the absent variable before the failure summary."},
+    {"path": "tests/check.cpp", "start_line": 8, "end_line": 12, "why": "The scope test rejects an absent or empty value."},
+    {"path": ".github/workflows/native.yml", "start_line": 5, "end_line": 9, "why": "The workflow runs the tests without providing the variable."}
+  ]
+}

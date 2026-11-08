@@ -1,0 +1,10 @@
+pytest==8.3.3
+requests==2.32.3
+# Dependencies installed by CI for parser tests.
+# Keep versions pinned for reproducibility.
+# Runtime HTTP calls use requests.
+# Tests are collected by pytest.
+# Add new test dependencies here.
+# The parser tests use local fixtures.
+# Network access is not needed at test time.
+# Python 3.11 is used in CI.

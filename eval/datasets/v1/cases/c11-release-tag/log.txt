@@ -1,0 +1,51 @@
+2026-09-14T08:21:01.0000000Z Current runner version: '2.328.1'
+2026-09-14T08:21:02.0000000Z Runner name: 'Hosted Agent'
+2026-09-14T08:21:03.0000000Z Repository: willow-labs/willow-formatter
+2026-09-14T08:21:04.0000000Z Job: release
+2026-09-14T08:21:05.0000000Z Prepare workflow directory
+2026-09-14T08:21:06.0000000Z Prepare all required actions
+2026-09-14T08:21:07.0000000Z Download action repository 'actions/checkout@v4'
+2026-09-14T08:21:08.0000000Z Download action repository 'actions/setup-node@v4'
+2026-09-14T08:21:09.0000000Z ##[group]Run actions/checkout@v4
+2026-09-14T08:21:10.0000000Z with:
+2026-09-14T08:21:11.0000000Z   fetch-depth: 0
+2026-09-14T08:21:12.0000000Z   token: ***
+2026-09-14T08:21:13.0000000Z ##[endgroup]
+2026-09-14T08:21:14.0000000Z Syncing repository: willow-labs/willow-formatter
+2026-09-14T08:21:15.0000000Z git version 2.51.0
+2026-09-14T08:21:16.0000000Z Initialized empty Git repository
+2026-09-14T08:21:17.0000000Z Fetching the repository
+2026-09-14T08:21:18.0000000Z Checking out the ref
+2026-09-14T08:21:19.0000000Z ##[group]Run actions/setup-node@v4
+2026-09-14T08:21:20.0000000Z with:
+2026-09-14T08:21:21.0000000Z   node-version: 22
+2026-09-14T08:21:22.0000000Z   cache: npm
+2026-09-14T08:21:23.0000000Z ##[endgroup]
+2026-09-14T08:21:24.0000000Z Found in cache Node 22.18.0
+2026-09-14T08:21:25.0000000Z npm version: 10.9.3
+2026-09-14T08:21:26.0000000Z Cache restored successfully
+2026-09-14T08:21:27.0000000Z ##[group]Run npm ci
+2026-09-14T08:21:28.0000000Z npm ci
+2026-09-14T08:21:29.0000000Z ##[endgroup]
+2026-09-14T08:21:30.0000000Z up to date, audited 1 package in 410ms
+2026-09-14T08:21:31.0000000Z found 0 vulnerabilities
+2026-09-14T08:21:32.0000000Z npm notice New minor version of npm available
+2026-09-14T08:21:33.0000000Z ##[group]Run npm test
+2026-09-14T08:21:34.0000000Z npm test
+2026-09-14T08:21:35.0000000Z ##[endgroup]
+2026-09-14T08:21:36.0000000Z > willow-formatter@1.4.2 test
+2026-09-14T08:21:37.0000000Z > node --test
+2026-09-14T08:21:38.0000000Z TAP version 13
+2026-09-14T08:21:39.0000000Z ok 1 - normalizes spacing
+2026-09-14T08:21:40.0000000Z 1..1
+2026-09-14T08:21:41.0000000Z # tests 1
+2026-09-14T08:21:42.0000000Z # pass 1
+2026-09-14T08:21:43.0000000Z # fail 0
+2026-09-14T08:21:44.0000000Z ##[group]Run git config user.name 'release-bot'
+2026-09-14T08:21:45.0000000Z git config user.email 'bot@users.noreply.invalid'
+2026-09-14T08:21:46.0000000Z git tag "v$(node -p "require('./package.json').version")"
+2026-09-14T08:21:47.0000000Z git push origin --tags
+2026-09-14T08:21:48.0000000Z ##[endgroup]
+2026-09-14T08:21:49.0000000Z remote: Permission to willow-labs/willow-formatter.git denied to github-actions[bot].
+2026-09-14T08:21:50.0000000Z fatal: unable to access 'https://github.com/willow-labs/willow-formatter/': The requested URL returned error: 403
+2026-09-14T08:21:51.0000000Z ##[error]Process completed with exit code 128.

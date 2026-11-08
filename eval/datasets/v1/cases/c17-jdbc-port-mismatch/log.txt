@@ -1,0 +1,50 @@
+2026-09-19T12:02:00.0000000Z Current runner version: '2.324.1'
+2026-09-19T12:02:01.0000000Z Runner: ubuntu-24.04
+2026-09-19T12:02:02.0000000Z Preparing job verify
+2026-09-19T12:02:03.0000000Z Starting postgres:16
+2026-09-19T12:02:04.0000000Z Port mapping 5544:5432
+2026-09-19T12:02:05.0000000Z Waiting for database health
+2026-09-19T12:02:06.0000000Z Service postgres is healthy
+2026-09-19T12:02:07.0000000Z ##[group]Run actions/checkout@v4
+2026-09-19T12:02:08.0000000Z with:
+2026-09-19T12:02:09.0000000Z   repository: brackenfield/catalog-check
+2026-09-19T12:02:10.0000000Z ##[endgroup]
+2026-09-19T12:02:11.0000000Z Syncing brackenfield/catalog-check
+2026-09-19T12:02:12.0000000Z Fetching commit
+2026-09-19T12:02:13.0000000Z Checkout complete
+2026-09-19T12:02:14.0000000Z ##[group]Run actions/setup-java@v4
+2026-09-19T12:02:15.0000000Z with:
+2026-09-19T12:02:16.0000000Z   distribution: temurin
+2026-09-19T12:02:17.0000000Z   java-version: 21
+2026-09-19T12:02:18.0000000Z ##[endgroup]
+2026-09-19T12:02:19.0000000Z Installed distributions
+2026-09-19T12:02:20.0000000Z Java 21.0.5
+2026-09-19T12:02:21.0000000Z Creating toolchains.xml
+2026-09-19T12:02:22.0000000Z ##[group]Run mvn -B test
+2026-09-19T12:02:23.0000000Z mvn -B test
+2026-09-19T12:02:24.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-19T12:02:25.0000000Z ##[endgroup]
+2026-09-19T12:02:26.0000000Z [INFO] Scanning for projects...
+2026-09-19T12:02:27.0000000Z [INFO] Building catalog-check 1.0
+2026-09-19T12:02:28.0000000Z [INFO] Downloading postgresql-42.7.4.jar
+2026-09-19T12:02:29.0000000Z [INFO] Downloaded postgresql-42.7.4.jar
+2026-09-19T12:02:30.0000000Z [INFO] Compiling 1 source file
+2026-09-19T12:02:31.0000000Z [INFO] --- surefire: test ---
+2026-09-19T12:02:32.0000000Z [INFO] Running CatalogTest
+2026-09-19T12:02:33.0000000Z [ERROR] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0
+2026-09-19T12:02:34.0000000Z [ERROR] CatalogTest.connects: Connection to localhost:5432 refused.
+2026-09-19T12:02:35.0000000Z org.postgresql.util.PSQLException: Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
+2026-09-19T12:02:36.0000000Z Caused by: java.net.ConnectException: Connection refused
+2026-09-19T12:02:37.0000000Z [INFO] Results:
+2026-09-19T12:02:38.0000000Z [ERROR] Errors:
+2026-09-19T12:02:39.0000000Z [ERROR]   CatalogTest.connects:7 PSQL Connection refused
+2026-09-19T12:02:40.0000000Z [INFO] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0
+2026-09-19T12:02:41.0000000Z [INFO] BUILD FAILURE
+2026-09-19T12:02:42.0000000Z [INFO] Total time: 4.8 s
+2026-09-19T12:02:43.0000000Z [ERROR] Failed to execute goal maven-surefire-plugin:test
+2026-09-19T12:02:44.0000000Z [ERROR] Please refer to target/surefire-reports for the individual test results.
+2026-09-19T12:02:45.0000000Z [ERROR] Re-run Maven using the -X switch to enable full debug logging.
+2026-09-19T12:02:46.0000000Z [ERROR] For more information about the errors and possible solutions, see the documentation.
+2026-09-19T12:02:47.0000000Z Test results are available on the runner.
+2026-09-19T12:02:48.0000000Z Maven exited unsuccessfully.
+2026-09-19T12:02:49.0000000Z ##[error]Process completed with exit code 1.

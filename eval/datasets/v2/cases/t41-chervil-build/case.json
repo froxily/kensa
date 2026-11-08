@@ -1,0 +1,16 @@
+{
+  "id": "t41-chervil-build",
+  "split": "test",
+  "category": "docker",
+  "kind": "masked",
+  "difficulty": "medium",
+  "ecosystem": "elixir",
+  "title": "Image test fails during a directory creation layer",
+  "root_cause": "The Dockerfile runs mkdir on /tmp, which already exists in the Alpine base image. The build fails at that layer and the ExUnit test reports a nonzero Docker exit status.",
+  "fix_keywords": ["mkdir", "/tmp"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 57, "end_line": 60, "why": "The build output shows the existing directory error."},
+    {"path": "Probe.Dockerfile", "start_line": 1, "end_line": 6, "why": "The image recipe runs mkdir on the existing directory."},
+    {"path": "test/image_recipe_test.exs", "start_line": 4, "end_line": 7, "why": "The test prints the Docker output and asserts a successful build."}
+  ]
+}

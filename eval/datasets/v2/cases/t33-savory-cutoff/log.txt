@@ -1,0 +1,67 @@
+2026-10-08T10:00:00.0000000Z Current runner version: '2.329.0'
+2026-10-08T10:00:00.1000000Z ##[group]Operating System
+2026-10-08T10:00:00.2000000Z Ubuntu 22.04.5 LTS
+2026-10-08T10:00:00.3000000Z ##[endgroup]
+2026-10-08T10:00:00.4000000Z ##[group]Runner Image
+2026-10-08T10:00:00.5000000Z Image: ubuntu-22.04
+2026-10-08T10:00:00.6000000Z ##[endgroup]
+2026-10-08T10:00:00.7000000Z Prepare workflow directory
+2026-10-08T10:00:00.8000000Z Prepare all required actions
+2026-10-08T10:00:00.9000000Z Getting action download info
+2026-10-08T10:00:01.0000000Z Download action repository 'actions/checkout@v4'
+2026-10-08T10:00:01.1000000Z Download action repository 'actions/setup-java@v4'
+2026-10-08T10:00:01.2000000Z Complete job name: read
+2026-10-08T10:00:01.3000000Z ##[group]Run actions/checkout@v4
+2026-10-08T10:00:01.4000000Z with:
+2026-10-08T10:00:01.5000000Z   repository: savory-labs/catalog-reader
+2026-10-08T10:00:01.6000000Z ##[endgroup]
+2026-10-08T10:00:01.7000000Z Syncing repository: savory-labs/catalog-reader
+2026-10-08T10:00:01.8000000Z Getting Git version info
+2026-10-08T10:00:01.9000000Z git version 2.51.0
+2026-10-08T10:00:02.0000000Z Checking out the ref
+2026-10-08T10:00:02.1000000Z ##[group]Run actions/setup-java@v4
+2026-10-08T10:00:02.2000000Z with:
+2026-10-08T10:00:02.3000000Z   distribution: temurin
+2026-10-08T10:00:02.4000000Z   java-version: 17
+2026-10-08T10:00:02.5000000Z ##[endgroup]
+2026-10-08T10:00:02.6000000Z Setting Java 17 as the default
+2026-10-08T10:00:02.7000000Z ##[group]Run java -XshowSettings:properties -version
+2026-10-08T10:00:02.8000000Z java -XshowSettings:properties -version
+2026-10-08T10:00:02.9000000Z java tasks/CatalogStatus.java
+2026-10-08T10:00:03.0000000Z shell: /usr/bin/bash -e {0}
+2026-10-08T10:00:03.1000000Z ##[endgroup]
+2026-10-08T10:00:03.2000000Z Property settings:
+2026-10-08T10:00:03.2100000Z     file.encoding = UTF-8
+2026-10-08T10:00:03.2200000Z     file.separator = /
+2026-10-08T10:00:03.2300000Z     java.class.path = 
+2026-10-08T10:00:03.2400000Z     java.class.version = 61.0
+2026-10-08T10:00:03.2500000Z     java.home = /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.16/x64
+2026-10-08T10:00:03.2600000Z     java.io.tmpdir = /tmp
+2026-10-08T10:00:03.2700000Z     java.runtime.name = OpenJDK Runtime Environment
+2026-10-08T10:00:03.2800000Z     java.runtime.version = 17.0.16+8
+2026-10-08T10:00:03.2900000Z     java.specification.name = Java Platform API Specification
+2026-10-08T10:00:03.3000000Z     java.specification.vendor = Oracle Corporation
+2026-10-08T10:00:03.3100000Z     java.specification.version = 17
+2026-10-08T10:00:03.3200000Z     java.vendor = Eclipse Adoptium
+2026-10-08T10:00:03.3300000Z     java.version = 17.0.16
+2026-10-08T10:00:03.3400000Z     java.vm.info = mixed mode, sharing
+2026-10-08T10:00:03.3500000Z     java.vm.name = OpenJDK 64-Bit Server VM
+2026-10-08T10:00:03.3600000Z     java.vm.specification.version = 17
+2026-10-08T10:00:03.3700000Z     native.encoding = UTF-8
+2026-10-08T10:00:03.3800000Z     os.arch = amd64
+2026-10-08T10:00:03.3900000Z     os.name = Linux
+2026-10-08T10:00:03.4000000Z     os.version = 6.8.0
+2026-10-08T10:00:03.4100000Z     path.separator = :
+2026-10-08T10:00:03.4200000Z     user.country = US
+2026-10-08T10:00:03.4300000Z     user.dir = /home/runner/work/catalog-reader/catalog-reader
+2026-10-08T10:00:03.4400000Z     user.home = /home/runner
+2026-10-08T10:00:03.4500000Z     user.language = en
+2026-10-08T10:00:03.4600000Z     user.name = runner
+2026-10-08T10:00:03.4700000Z 
+2026-10-08T10:00:03.4800000Z openjdk version "17.0.16" 2025-07-15
+2026-10-08T10:00:03.4900000Z OpenJDK Runtime Environment Temurin-17.0.16+8 (build 17.0.16+8)
+2026-10-08T10:00:03.5000000Z OpenJDK 64-Bit Server VM Temurin-17.0.16+8 (build 17.0.16+8, mixed mode, sharing)
+2026-10-08T10:00:03.6000000Z ##[warning]Log output was truncated due to size limits.
+2026-10-08T10:00:04.0000000Z ##[error]Process completed with exit code 1.
+2026-10-08T10:00:04.1000000Z Post job cleanup.
+2026-10-08T10:00:04.2000000Z Cleaning up orphan processes

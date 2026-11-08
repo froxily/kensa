@@ -1,0 +1,16 @@
+{
+  "id": "d03-tide-rounding",
+  "split": "dev",
+  "category": "test_regression",
+  "kind": "standard",
+  "difficulty": "easy",
+  "ecosystem": "go",
+  "title": "Half-up rounding truncates a midpoint",
+  "root_cause": "HalfUp truncates integer division, returning 1 for 150 cents. The test expects midpoint values to round up to 2 and fails its assertion.",
+  "fix_keywords": ["HalfUp", "round"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 51, "end_line": 53, "why": "The test reports the actual and expected values."},
+    {"path": "round.go", "start_line": 3, "end_line": 5, "why": "The implementation truncates instead of rounding."},
+    {"path": "round_test.go", "start_line": 5, "end_line": 9, "why": "The test specifies the midpoint behavior."}
+  ]
+}

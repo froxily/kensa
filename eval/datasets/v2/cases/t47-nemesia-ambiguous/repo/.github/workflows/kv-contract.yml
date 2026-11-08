@@ -1,0 +1,14 @@
+name: KV contract
+on: [workflow_dispatch]
+jobs:
+  contract:
+    runs-on: windows-2025
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: '1.88.0'
+      - name: Check remote state
+        run: cargo test -- --nocapture
+        env:
+          NEMESIA_KV_ROOT: ${{ secrets.NEMESIA_KV_ROOT }}

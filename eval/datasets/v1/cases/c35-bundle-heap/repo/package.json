@@ -1,0 +1,12 @@
+{
+  "name": "aster-atlas",
+  "version": "2.1.0",
+  "private": true,
+  "scripts": {
+    "catalog": "node catalog.js",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "vite": "5.4.8"
+  }
+}

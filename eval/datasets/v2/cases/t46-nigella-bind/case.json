@@ -1,0 +1,16 @@
+{
+  "id": "t46-nigella-bind",
+  "split": "test",
+  "category": "db_connectivity",
+  "kind": "standard",
+  "difficulty": "medium",
+  "ecosystem": "go",
+  "title": "Etcd listens only on container loopback",
+  "root_cause": "Etcd binds its client listener to loopback inside the service container, while the job reaches it through a published host port. Docker's forwarding reaches the container network interface rather than that loopback listener, so the connections are refused.",
+  "fix_keywords": ["ETCD_LISTEN_CLIENT_URLS", "0.0.0.0"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 49, "end_line": 54, "why": "The health requests repeatedly receive connection refusals."},
+    {"path": ".github/workflows/kv-health.yml", "start_line": 6, "end_line": 13, "why": "The service listens only on its container loopback and publishes the port."},
+    {"path": "settings/nigella-health.txt", "start_line": 1, "end_line": 1, "why": "The job connects through the host port."}
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "t24-walnut-timeout",
+  "split": "test",
+  "category": "oom_timeout",
+  "kind": "standard",
+  "difficulty": "easy",
+  "ecosystem": "dotnet",
+  "title": "Ledger job exceeds its one-minute time limit",
+  "root_cause": "The job allows only one minute while its aggregation step waits for 90 seconds after startup. GitHub cancels the running job when the time limit expires.",
+  "fix_keywords": ["timeout-minutes", "90"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 56, "end_line": 58, "why": "The job exceeds the configured maximum execution time."},
+    {"path": ".github/workflows/ledger-window.yml", "start_line": 4, "end_line": 6, "why": "The job timeout is one minute."},
+    {"path": "LedgerWindow/Program.cs", "start_line": 5, "end_line": 7, "why": "The program waits 90 seconds before completion."}
+  ]
+}

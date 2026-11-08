@@ -1,0 +1,4109 @@
+{
+ "format": 1,
+ "manifest": {
+  "recorded_at": "2026-11-02T14:28:07+00:00",
+  "commit": "65da3ec-dirty",
+  "model": "qwen3:4b-instruct-2507-q4_K_M",
+  "num_ctx": 8192,
+  "embedding_model": "qwen3-embedding:0.6b",
+  "gpu": "NVIDIA GeForce RTX 3050 Laptop GPU, 4096 MiB, 610.62",
+  "configuration": "agent graph, hybrid retrieval, local model (production settings)"
+ },
+ "investigations": [
+  {
+   "id": "cfa7ef90-7181-4ac9-a491-1977a17d61e2",
+   "title": "Frontend build fails an environment check",
+   "source": "sample",
+   "status": "awaiting_approval",
+   "provider": "ollama",
+   "model": "qwen3:4b-instruct-2507-q4_K_M",
+   "rule_category": "missing_env_var",
+   "category": "missing_env_var",
+   "verification_status": "corroborated",
+   "error_code": null,
+   "error_message": null,
+   "created_at": "2026-11-02T14:26:22.905988Z",
+   "started_at": "2026-11-02T14:26:23.452788Z",
+   "finished_at": null,
+   "documents": [
+    {
+     "id": "4461461d-6c52-4945-bf50-5b556c2ec28c",
+     "name": "missing-env-var.log",
+     "line_count": 29,
+     "byte_size": 1680,
+     "redaction_count": 0
+    }
+   ],
+   "diagnosis": {
+    "category": "missing_env_var",
+    "rule_category": "missing_env_var",
+    "summary": "Missing required environment variable VITE_API_BASE_URL",
+    "root_cause": "The frontend build fails because the environment variable VITE_API_BASE_URL is not set in the CI workflow. The script explicitly throws an error when this variable is missing, indicating a configuration gap. This variable is required at build time, and its absence causes the build to halt before proceeding.",
+    "confidence": 0.9,
+    "uncertainty": "The evidence does not specify whether the variable was intended to be set in a specific environment or whether it was omitted due to a fork or workflow misconfiguration.",
+    "recommended_fixes": [
+     "Add VITE_API_BASE_URL to the job's `env:` section, using `${{ secrets.VITE_API_BASE_URL }}` if it's a secret.",
+     "Verify the variable name matches exactly (case-sensitive) in both code and workflow.",
+     "Ensure the workflow runs in an environment that has access to the secret (e.g., environment: production)."
+    ],
+    "verification_status": "corroborated",
+    "verification_notes": [
+     "Cause check: the log states a cause of this kind (L24) and no competing cause. This is strong evidence, not proof."
+    ],
+    "provider": "ollama",
+    "model": "qwen3:4b-instruct-2507-q4_K_M",
+    "prompt_tokens": 1896,
+    "output_tokens": 399,
+    "duration_ms": 15360,
+    "evidence_complete": true,
+    "diagnosis_attempts": 1,
+    "citations": [
+     {
+      "ordinal": 0,
+      "evidence_label": "E1",
+      "line_number": 24,
+      "quote": "Error: Missing required environment variable: VITE_API_BASE_URL",
+      "valid": true,
+      "rejection_reason": null
+     },
+     {
+      "ordinal": 1,
+      "evidence_label": "E2",
+      "line_number": 5,
+      "quote": "Frontend builds (Vite, Next.js, CRA) that embed variables at build time fail in a pre-build check",
+      "valid": true,
+      "rejection_reason": null
+     },
+     {
+      "ordinal": 2,
+      "evidence_label": "E3",
+      "line_number": 10,
+      "quote": "`${{ secrets.NAME }}` and `${{ vars.NAME }}` references. A secret that does not exist evaluates to an empty string, without an error.",
+      "valid": true,
+      "rejection_reason": null
+     },
+     {
+      "ordinal": 3,
+      "evidence_label": "E5",
+      "line_number": 15,
+      "quote": "The variable was added to the code but never to the workflow.",
+      "valid": true,
+      "rejection_reason": null
+     }
+    ]
+   },
+   "evidence": [
+    {
+     "label": "E1",
+     "rank": 1,
+     "score": 0.042199894235854046,
+     "channels": [
+      "signature",
+      "fts",
+      "vector"
+     ],
+     "document_id": "4461461d-6c52-4945-bf50-5b556c2ec28c",
+     "document_name": "missing-env-var.log",
+     "source_type": "log",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "error_window",
+     "step_name": "Run npm run build",
+     "start_line": 18,
+     "end_line": 29,
+     "lines": [
+      "> node scripts/check-env.mjs && vite build",
+      "",
+      "file:///home/runner/work/storefront/storefront/scripts/check-env.mjs:9",
+      "    throw new Error(`Missing required environment variable: ${name}`);",
+      "          ^",
+      "",
+      "Error: Missing required environment variable: VITE_API_BASE_URL",
+      "    at requireEnv (file:///home/runner/work/storefront/storefront/scripts/check-env.mjs:9:11)",
+      "    at file:///home/runner/work/storefront/storefront/scripts/check-env.mjs:14:1",
+      "",
+      "Node.js v24.20.0",
+      "##[error]Process completed with exit code 1."
+     ]
+    },
+    {
+     "label": "E2",
+     "rank": 2,
+     "score": 0.025396825396825397,
+     "channels": [
+      "fts",
+      "vector"
+     ],
+     "document_id": "b08fd1ee-9b37-42f4-aa24-08235eb44383",
+     "document_name": "kb/ci-troubleshooting/missing-environment-variables.md",
+     "source_type": "kb",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "section",
+     "step_name": "Symptoms",
+     "start_line": 3,
+     "end_line": 6,
+     "lines": [
+      "## Symptoms",
+      "- Messages such as \"environment variable X is not set\", \"X is undefined\", `KeyError: 'X'` (Python `os.environ[...]`), `Error: Missing required ...`, or a config loader reporting a missing key.",
+      "- Frontend builds (Vite, Next.js, CRA) that embed variables at build time fail in a pre-build check, or produce a bundle that calls `undefined/api`.",
+      "- A step that worked locally fails only in CI, because the local shell or a `.env` file supplied the value."
+     ]
+    },
+    {
+     "label": "E3",
+     "rank": 3,
+     "score": 0.02462121212121212,
+     "channels": [
+      "fts",
+      "vector"
+     ],
+     "document_id": "b08fd1ee-9b37-42f4-aa24-08235eb44383",
+     "document_name": "kb/ci-troubleshooting/missing-environment-variables.md",
+     "source_type": "kb",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "section",
+     "step_name": "Where to look",
+     "start_line": 8,
+     "end_line": 12,
+     "lines": [
+      "## Where to look",
+      "- The workflow `env:` blocks, at workflow, job and step level. Variables set in one job are not visible in another.",
+      "- `${{ secrets.NAME }}` and `${{ vars.NAME }}` references. A secret that does not exist evaluates to an empty string, without an error.",
+      "- `.env.example` or settings documentation, for the list of required names.",
+      "- Environments with protection rules: secrets scoped to an environment are only available to jobs that declare `environment:`."
+     ]
+    },
+    {
+     "label": "E4",
+     "rank": 4,
+     "score": 0.02462121212121212,
+     "channels": [
+      "fts",
+      "vector"
+     ],
+     "document_id": "b08fd1ee-9b37-42f4-aa24-08235eb44383",
+     "document_name": "kb/ci-troubleshooting/missing-environment-variables.md",
+     "source_type": "kb",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "section",
+     "step_name": "Missing environment variables and secrets",
+     "start_line": 1,
+     "end_line": 1,
+     "lines": [
+      "# Missing environment variables and secrets"
+     ]
+    },
+    {
+     "label": "E5",
+     "rank": 5,
+     "score": 0.02407239819004525,
+     "channels": [
+      "fts",
+      "vector"
+     ],
+     "document_id": "b08fd1ee-9b37-42f4-aa24-08235eb44383",
+     "document_name": "kb/ci-troubleshooting/missing-environment-variables.md",
+     "source_type": "kb",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "section",
+     "step_name": "Common causes",
+     "start_line": 14,
+     "end_line": 18,
+     "lines": [
+      "## Common causes",
+      "- The variable was added to the code but never to the workflow.",
+      "- The secret name differs in case or spelling from the reference.",
+      "- The run comes from a fork: pull requests from forks do not receive repository secrets.",
+      "- A variable is exported in one `run:` step but read in a later step; each step is a new shell. Use `$GITHUB_ENV` to pass it on."
+     ]
+    },
+    {
+     "label": "E6",
+     "rank": 6,
+     "score": 0.023207904141265504,
+     "channels": [
+      "fts",
+      "vector"
+     ],
+     "document_id": "a9763a78-2beb-4a35-b558-1057cd85ec65",
+     "document_name": "kb/ci-troubleshooting/reading-ci-logs.md",
+     "source_type": "kb",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "section",
+     "step_name": "Reading a failed CI log",
+     "start_line": 1,
+     "end_line": 8,
+     "lines": [
+      "# Reading a failed CI log",
+      "",
+      "1. **Find the failing step.** GitHub Actions marks it with `##[error]Process completed with exit code N`. The cause is almost always above that line, inside the same `##[group]`.",
+      "2. **Find the first real error, not the last.** Later errors are often consequences: a failed install produces missing-module errors, and a missing database produces dozens of test errors.",
+      "3. **Separate symptoms from causes.** Ask what would have to be true for the first error to happen, and look for evidence of it in the workflow file and the repository at the failing commit.",
+      "4. **Check what changed.** Recent edits to the workflow, the manifests or lockfiles, and the Dockerfile explain most new failures.",
+      "5. **Know when evidence is insufficient.** If the log is truncated, or only shows a generic exit code, the honest conclusion is that the cause is not established. Name what additional evidence is needed (full log, the workflow file, the failing step with debug logging enabled).",
+      "6. **Exit codes:** 1 is a generic failure; 2 is often a usage error; 126/127 mean not executable / command not found; 137 means killed (often out of memory); 143 means terminated (often cancellation or timeout)."
+     ]
+    },
+    {
+     "label": "E7",
+     "rank": 7,
+     "score": 0.02246661429693637,
+     "channels": [
+      "fts",
+      "vector"
+     ],
+     "document_id": "b08fd1ee-9b37-42f4-aa24-08235eb44383",
+     "document_name": "kb/ci-troubleshooting/missing-environment-variables.md",
+     "source_type": "kb",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "section",
+     "step_name": "Safe fixes",
+     "start_line": 20,
+     "end_line": 22,
+     "lines": [
+      "## Safe fixes",
+      "- Add the variable to the job's `env:`, from `secrets`/`vars` if it is sensitive.",
+      "- Never print secret values to the log to debug them; check whether they are empty instead."
+     ]
+    },
+    {
+     "label": "E8",
+     "rank": 8,
+     "score": 0.022405013709361536,
+     "channels": [
+      "fts",
+      "vector"
+     ],
+     "document_id": "e0050920-8475-4efe-b2c8-0e27bf57a525",
+     "document_name": "kb/ci-troubleshooting/workflow-paths-and-files.md",
+     "source_type": "kb",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "section",
+     "step_name": "Workflow paths and missing files",
+     "start_line": 1,
+     "end_line": 1,
+     "lines": [
+      "# Workflow paths and missing files"
+     ]
+    }
+   ],
+   "signatures": [
+    {
+     "line_number": 24,
+     "kind": "missing_env",
+     "value": "VITE_API_BASE_URL",
+     "category_hint": "missing_env_var",
+     "weight": 3,
+     "excerpt": "Error: Missing required environment variable: VITE_API_BASE_URL"
+    },
+    {
+     "line_number": 29,
+     "kind": "annotation",
+     "value": "Process completed with exit code 1.",
+     "category_hint": null,
+     "weight": 1,
+     "excerpt": "##[error]Process completed with exit code 1."
+    },
+    {
+     "line_number": 29,
+     "kind": "exit_code",
+     "value": "1",
+     "category_hint": null,
+     "weight": 1,
+     "excerpt": "##[error]Process completed with exit code 1."
+    }
+   ],
+   "proposals": [
+    {
+     "id": "d18d7546-1ff7-461b-974f-206cc82bb8dc",
+     "ordinal": 1,
+     "title": "Add VITE_API_BASE_URL to the job's `env:` section, using `${{ secrets.VITE_API_BASE_URL }}` if it's a secret.",
+     "action": "Add VITE_API_BASE_URL to the job's `env:` section, using `${{ secrets.VITE_API_BASE_URL }}` if it's a secret.",
+     "rationale": "",
+     "origin": "model",
+     "target_path": null,
+     "diff": null,
+     "risks": [
+      "A secret must be stored as a repository or environment secret, never written into the workflow file or the repository."
+     ],
+     "validation_steps": [
+      "Re-run the failed job and confirm the step that read the variable passes.",
+      "Confirm the variable is defined for this job without printing secret values."
+     ],
+     "flags": [],
+     "status": "proposed",
+     "decided_at": null,
+     "withdrawn_reason": null,
+     "withdrawn_at": null
+    },
+    {
+     "id": "ffdae64d-6181-416a-87fd-ef8e9f57ce16",
+     "ordinal": 2,
+     "title": "Verify the variable name matches exactly (case-sensitive) in both code and workflow.",
+     "action": "Verify the variable name matches exactly (case-sensitive) in both code and workflow.",
+     "rationale": "",
+     "origin": "model",
+     "target_path": null,
+     "diff": null,
+     "risks": [
+      "A secret must be stored as a repository or environment secret, never written into the workflow file or the repository."
+     ],
+     "validation_steps": [
+      "Re-run the failed job and confirm the step that read the variable passes.",
+      "Confirm the variable is defined for this job without printing secret values."
+     ],
+     "flags": [],
+     "status": "proposed",
+     "decided_at": null,
+     "withdrawn_reason": null,
+     "withdrawn_at": null
+    },
+    {
+     "id": "6d0ec6d4-0f81-4bf4-b9a0-aae37646d60a",
+     "ordinal": 3,
+     "title": "Ensure the workflow runs in an environment that has access to the secret (e.g., environment: production).",
+     "action": "Ensure the workflow runs in an environment that has access to the secret (e.g., environment: production).",
+     "rationale": "",
+     "origin": "model",
+     "target_path": null,
+     "diff": null,
+     "risks": [
+      "A secret must be stored as a repository or environment secret, never written into the workflow file or the repository."
+     ],
+     "validation_steps": [
+      "Re-run the failed job and confirm the step that read the variable passes.",
+      "Confirm the variable is defined for this job without printing secret values."
+     ],
+     "flags": [],
+     "status": "proposed",
+     "decided_at": null,
+     "withdrawn_reason": null,
+     "withdrawn_at": null
+    }
+   ],
+   "decision": null,
+   "github_run": null
+  },
+  {
+   "id": "aa7137a8-3dce-4b84-adae-b945bc356fbe",
+   "title": "npm ci cannot resolve dependencies",
+   "source": "sample",
+   "status": "awaiting_approval",
+   "provider": "ollama",
+   "model": "qwen3:4b-instruct-2507-q4_K_M",
+   "rule_category": "dependency_build",
+   "category": "dependency_build",
+   "verification_status": "corroborated",
+   "error_code": null,
+   "error_message": null,
+   "created_at": "2026-11-02T14:26:41.170665Z",
+   "started_at": "2026-11-02T14:26:41.738535Z",
+   "finished_at": null,
+   "documents": [
+    {
+     "id": "7b5f5cb0-6732-47f9-840d-4b3f37fa031e",
+     "name": "dependency-resolution.log",
+     "line_count": 22,
+     "byte_size": 1512,
+     "redaction_count": 0
+    }
+   ],
+   "diagnosis": {
+    "category": "dependency_build",
+    "rule_category": "dependency_build",
+    "summary": "Peer dependency conflict between react versions in package.json and legacy-tooltip",
+    "root_cause": "The dependency conflict arises because legacy-tooltip@3.1.0 requires react@^17.0.0 or ^18.0.0, but the project uses react@19.3.1. This incompatibility prevents npm from resolving the dependency tree, leading to ERESOLVE. The failure is not due to missing environment variables, permissions, or file paths, but directly to a peer dependency mismatch.",
+    "confidence": 0.9,
+    "uncertainty": "",
+    "recommended_fixes": [
+     "Update legacy-tooltip to a version compatible with react@19.3.1",
+     "Regenerate package-lock.json after updating dependencies",
+     "Verify that all peer dependencies are correctly versioned in package.json"
+    ],
+    "verification_status": "corroborated",
+    "verification_notes": [
+     "Cause check: the log states a cause of this kind (L13) and no competing cause. This is strong evidence, not proof."
+    ],
+    "provider": "ollama",
+    "model": "qwen3:4b-instruct-2507-q4_K_M",
+    "prompt_tokens": 2166,
+    "output_tokens": 356,
+    "duration_ms": 11920,
+    "evidence_complete": true,
+    "diagnosis_attempts": 1,
+    "citations": [
+     {
+      "ordinal": 0,
+      "evidence_label": "E1",
+      "line_number": 13,
+      "quote": "npm error Could not resolve dependency:",
+      "valid": true,
+      "rejection_reason": null
+     },
+     {
+      "ordinal": 1,
+      "evidence_label": "E1",
+      "line_number": 14,
+      "quote": "npm error peer react@\"^17.0.0 || ^18.0.0\" from legacy-tooltip@3.1.0",
+      "valid": true,
+      "rejection_reason": null
+     },
+     {
+      "ordinal": 2,
+      "evidence_label": "E2",
+      "line_number": 4,
+      "quote": "npm: `ERESOLVE unable to resolve dependency tree`, peer-dependency conflicts",
+      "valid": true,
+      "rejection_reason": null
+     },
+     {
+      "ordinal": 3,
+      "evidence_label": "E5",
+      "line_number": 16,
+      "quote": "A dependency upgrade introduced an incompatible peer or transitive requirement.",
+      "valid": true,
+      "rejection_reason": null
+     }
+    ]
+   },
+   "evidence": [
+    {
+     "label": "E1",
+     "rank": 1,
+     "score": 0.04241142252776309,
+     "channels": [
+      "signature",
+      "fts",
+      "vector"
+     ],
+     "document_id": "7b5f5cb0-6732-47f9-840d-4b3f37fa031e",
+     "document_name": "dependency-resolution.log",
+     "source_type": "log",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "error_window",
+     "step_name": "Run npm ci",
+     "start_line": 1,
+     "end_line": 22,
+     "lines": [
+      "##[group]Run npm ci",
+      "npm ci",
+      "shell: /usr/bin/bash -e {0}",
+      "##[endgroup]",
+      "npm error code ERESOLVE",
+      "npm error ERESOLVE could not resolve",
+      "npm error",
+      "npm error While resolving: chart-widgets@0.9.2",
+      "npm error Found: react@19.3.1",
+      "npm error node_modules/react",
+      "npm error   react@\"^19.3.0\" from the root project",
+      "npm error",
+      "npm error Could not resolve dependency:",
+      "npm error peer react@\"^17.0.0 || ^18.0.0\" from legacy-tooltip@3.1.0",
+      "npm error node_modules/legacy-tooltip",
+      "npm error   legacy-tooltip@\"^3.1.0\" from the root project",
+      "npm error",
+      "npm error Fix the upstream dependency conflict, or retry",
+      "npm error this command with --force or --legacy-peer-deps",
+      "npm error to accept an incorrect (and potentially broken) dependency resolution.",
+      "npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-10-02T08_12_00_000Z-debug-0.log",
+      "##[error]Process completed with exit code 1."
+     ]
+    },
+    {
+     "label": "E2",
+     "rank": 2,
+     "score": 0.025396825396825397,
+     "channels": [
+      "fts",
+      "vector"
+     ],
+     "document_id": "1e6c62f7-344c-4f38-b95a-f56c8d6da7ce",
+     "document_name": "kb/ci-troubleshooting/dependency-and-build-failures.md",
+     "source_type": "kb",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "section",
+     "step_name": "Symptoms",
+     "start_line": 3,
+     "end_line": 8,
+     "lines": [
+      "## Symptoms",
+      "- npm: `ERESOLVE unable to resolve dependency tree`, peer-dependency conflicts, `npm ci` complaining that `package-lock.json` is out of sync with `package.json`.",
+      "- pnpm/yarn: frozen-lockfile errors (\"lockfile needs updates\", outdated lockfile).",
+      "- Python: `ResolutionImpossible`, \"No matching distribution found\", `ModuleNotFoundError` at import time, wheels unavailable for the runner's Python version.",
+      "- JVM: Maven \"Could not resolve dependencies\", Gradle \"Could not resolve all files for configuration\".",
+      "- Compilers: TypeScript `error TSxxxx`, Rust \"could not compile\", Go \"undefined:\" or module checksum mismatches."
+     ]
+    },
+    {
+     "label": "E3",
+     "rank": 3,
+     "score": 0.02462121212121212,
+     "channels": [
+      "fts",
+      "vector"
+     ],
+     "document_id": "1e6c62f7-344c-4f38-b95a-f56c8d6da7ce",
+     "document_name": "kb/ci-troubleshooting/dependency-and-build-failures.md",
+     "source_type": "kb",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "section",
+     "step_name": "Dependency resolution and build failures",
+     "start_line": 1,
+     "end_line": 1,
+     "lines": [
+      "# Dependency resolution and build failures"
+     ]
+    },
+    {
+     "label": "E4",
+     "rank": 4,
+     "score": 0.024094202898550725,
+     "channels": [
+      "fts",
+      "vector"
+     ],
+     "document_id": "e0050920-8475-4efe-b2c8-0e27bf57a525",
+     "document_name": "kb/ci-troubleshooting/workflow-paths-and-files.md",
+     "source_type": "kb",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "section",
+     "step_name": "Symptoms",
+     "start_line": 3,
+     "end_line": 8,
+     "lines": [
+      "## Symptoms",
+      "- `No such file or directory`, `ENOENT`, \"Could not open requirements file\".",
+      "- `Can't find 'action.yml'` or \"Unable to resolve action\" for a local or remote action.",
+      "- Artifact upload: \"No files were found with the provided path\".",
+      "- `working-directory` that does not exist, or a script invoked with the wrong relative path.",
+      "- \"module not found\" or \"cannot find package\" errors that are really caused by running in the wrong directory."
+     ]
+    },
+    {
+     "label": "E5",
+     "rank": 5,
+     "score": 0.02407239819004525,
+     "channels": [
+      "fts",
+      "vector"
+     ],
+     "document_id": "1e6c62f7-344c-4f38-b95a-f56c8d6da7ce",
+     "document_name": "kb/ci-troubleshooting/dependency-and-build-failures.md",
+     "source_type": "kb",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "section",
+     "step_name": "Common causes",
+     "start_line": 15,
+     "end_line": 19,
+     "lines": [
+      "## Common causes",
+      "- A dependency upgrade introduced an incompatible peer or transitive requirement.",
+      "- The lockfile was not regenerated after editing the manifest.",
+      "- The CI toolchain version differs from local development.",
+      "- A package was removed from or renamed in the registry, or is a private package that needs a token."
+     ]
+    },
+    {
+     "label": "E6",
+     "rank": 6,
+     "score": 0.023736263736263738,
+     "channels": [
+      "fts",
+      "vector"
+     ],
+     "document_id": "1e6c62f7-344c-4f38-b95a-f56c8d6da7ce",
+     "document_name": "kb/ci-troubleshooting/dependency-and-build-failures.md",
+     "source_type": "kb",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "section",
+     "step_name": "Safe fixes",
+     "start_line": 21,
+     "end_line": 24,
+     "lines": [
+      "## Safe fixes",
+      "- Pin or upgrade to compatible versions and regenerate the lockfile.",
+      "- Align the toolchain version in the workflow with the project's declared version.",
+      "- Avoid forcing resolution (`--force`, `--legacy-peer-deps`) as a permanent fix: it hides real incompatibilities."
+     ]
+    },
+    {
+     "label": "E7",
+     "rank": 7,
+     "score": 0.022120518688024407,
+     "channels": [
+      "fts",
+      "vector"
+     ],
+     "document_id": "2a192996-0b34-4f38-be8d-3e20e82f3e97",
+     "document_name": "kb/ci-troubleshooting/docker-build-and-pull.md",
+     "source_type": "kb",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "section",
+     "step_name": "Common causes",
+     "start_line": 16,
+     "end_line": 20,
+     "lines": [
+      "## Common causes",
+      "- A base image tag that was removed or mistyped (for example a version that was never published).",
+      "- A build context that does not contain the files the Dockerfile copies.",
+      "- A `RUN` step that fails because of a dependency or network issue inside the build.",
+      "- A missing registry login step for a private registry."
+     ]
+    },
+    {
+     "label": "E8",
+     "rank": 8,
+     "score": 0.012121212121212121,
+     "channels": [
+      "vector"
+     ],
+     "document_id": "a9763a78-2beb-4a35-b558-1057cd85ec65",
+     "document_name": "kb/ci-troubleshooting/reading-ci-logs.md",
+     "source_type": "kb",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "section",
+     "step_name": "Reading a failed CI log",
+     "start_line": 1,
+     "end_line": 8,
+     "lines": [
+      "# Reading a failed CI log",
+      "",
+      "1. **Find the failing step.** GitHub Actions marks it with `##[error]Process completed with exit code N`. The cause is almost always above that line, inside the same `##[group]`.",
+      "2. **Find the first real error, not the last.** Later errors are often consequences: a failed install produces missing-module errors, and a missing database produces dozens of test errors.",
+      "3. **Separate symptoms from causes.** Ask what would have to be true for the first error to happen, and look for evidence of it in the workflow file and the repository at the failing commit.",
+      "4. **Check what changed.** Recent edits to the workflow, the manifests or lockfiles, and the Dockerfile explain most new failures.",
+      "5. **Know when evidence is insufficient.** If the log is truncated, or only shows a generic exit code, the honest conclusion is that the cause is not established. Name what additional evidence is needed (full log, the workflow file, the failing step with debug logging enabled).",
+      "6. **Exit codes:** 1 is a generic failure; 2 is often a usage error; 126/127 mean not executable / command not found; 137 means killed (often out of memory); 143 means terminated (often cancellation or timeout)."
+     ]
+    }
+   ],
+   "signatures": [
+    {
+     "line_number": 5,
+     "kind": "npm_error_code",
+     "value": "ERESOLVE",
+     "category_hint": "dependency_build",
+     "weight": 3,
+     "excerpt": "npm error code ERESOLVE"
+    },
+    {
+     "line_number": 13,
+     "kind": "npm_peer",
+     "value": "npm.peer",
+     "category_hint": "dependency_build",
+     "weight": 2,
+     "excerpt": "npm error Could not resolve dependency:"
+    },
+    {
+     "line_number": 22,
+     "kind": "annotation",
+     "value": "Process completed with exit code 1.",
+     "category_hint": null,
+     "weight": 1,
+     "excerpt": "##[error]Process completed with exit code 1."
+    },
+    {
+     "line_number": 22,
+     "kind": "exit_code",
+     "value": "1",
+     "category_hint": null,
+     "weight": 1,
+     "excerpt": "##[error]Process completed with exit code 1."
+    }
+   ],
+   "proposals": [
+    {
+     "id": "8a6ca5a3-5e5c-4ad3-be15-972fda03d56b",
+     "ordinal": 1,
+     "title": "Update legacy-tooltip to a version compatible with react@19.3.1",
+     "action": "Update legacy-tooltip to a version compatible with react@19.3.1",
+     "rationale": "",
+     "origin": "model",
+     "target_path": null,
+     "diff": null,
+     "risks": [
+      "Changing versions or the lockfile can change behaviour elsewhere; review the lockfile diff."
+     ],
+     "validation_steps": [
+      "Reproduce the install or build locally with the same lockfile and tool versions.",
+      "Re-run the failed job and confirm the install and build steps pass."
+     ],
+     "flags": [],
+     "status": "proposed",
+     "decided_at": null,
+     "withdrawn_reason": null,
+     "withdrawn_at": null
+    },
+    {
+     "id": "a56f9ece-439b-4e84-9909-ced17d183fbc",
+     "ordinal": 2,
+     "title": "Regenerate package-lock.json after updating dependencies",
+     "action": "Regenerate package-lock.json after updating dependencies",
+     "rationale": "",
+     "origin": "model",
+     "target_path": null,
+     "diff": null,
+     "risks": [
+      "Changing versions or the lockfile can change behaviour elsewhere; review the lockfile diff."
+     ],
+     "validation_steps": [
+      "Reproduce the install or build locally with the same lockfile and tool versions.",
+      "Re-run the failed job and confirm the install and build steps pass."
+     ],
+     "flags": [],
+     "status": "proposed",
+     "decided_at": null,
+     "withdrawn_reason": null,
+     "withdrawn_at": null
+    },
+    {
+     "id": "4e6ffe0e-c976-4ac0-8d66-7982d665b1b1",
+     "ordinal": 3,
+     "title": "Verify that all peer dependencies are correctly versioned in package.json",
+     "action": "Verify that all peer dependencies are correctly versioned in package.json",
+     "rationale": "",
+     "origin": "model",
+     "target_path": null,
+     "diff": null,
+     "risks": [
+      "Changing versions or the lockfile can change behaviour elsewhere; review the lockfile diff."
+     ],
+     "validation_steps": [
+      "Reproduce the install or build locally with the same lockfile and tool versions.",
+      "Re-run the failed job and confirm the install and build steps pass."
+     ],
+     "flags": [],
+     "status": "proposed",
+     "decided_at": null,
+     "withdrawn_reason": null,
+     "withdrawn_at": null
+    }
+   ],
+   "decision": null,
+   "github_run": null
+  },
+  {
+   "id": "f4287a6f-9f5c-40f2-9542-831ede27856e",
+   "title": "Test setup errors in a Python service",
+   "source": "sample",
+   "status": "awaiting_approval",
+   "provider": "ollama",
+   "model": "qwen3:4b-instruct-2507-q4_K_M",
+   "rule_category": "db_connectivity",
+   "category": "db_connectivity",
+   "verification_status": "corroborated",
+   "error_code": null,
+   "error_message": null,
+   "created_at": "2026-11-02T14:26:59.378698Z",
+   "started_at": "2026-11-02T14:26:59.867185Z",
+   "finished_at": null,
+   "documents": [
+    {
+     "id": "113de319-1e77-49f9-bb44-2037a617076c",
+     "name": "db-connection.log",
+     "line_count": 19,
+     "byte_size": 1484,
+     "redaction_count": 0
+    }
+   ],
+   "diagnosis": {
+    "category": "db_connectivity",
+    "rule_category": "db_connectivity",
+    "summary": "Database service not running or misconfigured, causing connection refusal on localhost:5432",
+    "root_cause": "The test setup fails to connect to a PostgreSQL database because the service is not running or not accessible at 127.0.0.1:5432. This is an infrastructure issue, not a code defect, as the error occurs during setup and matches known symptoms of database connectivity failure. The database service is either missing, misconfigured, or starts after the test attempts to connect.",
+    "confidence": 0.9,
+    "uncertainty": "The workflow file or Docker configuration that defines the database service is not included in the evidence, so we cannot confirm whether the service is defined or mapped correctly.",
+    "recommended_fixes": [
+     "Add a database service in the workflow with ports mapped (e.g., ports: - 5432:5432)",
+     "Include a health check (e.g., --health-cmd pg_isready -U user -d db) to ensure the database is ready before tests start",
+     "Verify environment variables (POSTGRES_USER, POSTGRES_DB, POSTGRES_PASSWORD) match the service configuration"
+    ],
+    "verification_status": "corroborated",
+    "verification_notes": [
+     "Cause check: the log states a cause of this kind (L12, L13) and no competing cause. This is strong evidence, not proof."
+    ],
+    "provider": "ollama",
+    "model": "qwen3:4b-instruct-2507-q4_K_M",
+    "prompt_tokens": 2164,
+    "output_tokens": 483,
+    "duration_ms": 14075,
+    "evidence_complete": true,
+    "diagnosis_attempts": 1,
+    "citations": [
+     {
+      "ordinal": 0,
+      "evidence_label": "E1",
+      "line_number": 12,
+      "quote": "E       psycopg.OperationalError: connection failed: connection to server at \"127.0.0.1\", port 5432 failed: Connection refused",
+      "valid": true,
+      "rejection_reason": null
+     },
+     {
+      "ordinal": 1,
+      "evidence_label": "E1",
+      "line_number": 13,
+      "quote": "E        Is the server running on that host and accepting TCP/IP connections?",
+      "valid": true,
+      "rejection_reason": null
+     },
+     {
+      "ordinal": 2,
+      "evidence_label": "E2",
+      "line_number": 4,
+      "quote": "Connection refused or ECONNREFUSED on 127.0.0.1 or localhost with ports 5432 (PostgreSQL)",
+      "valid": true,
+      "rejection_reason": null
+     },
+     {
+      "ordinal": 3,
+      "evidence_label": "E8",
+      "line_number": 9,
+      "quote": "Distinguish failures (an assertion did not hold) from errors (setup crashed). Many errors in setup usually point at infrastructure (database, network, missing files), not at the code under test.",
+      "valid": true,
+      "rejection_reason": null
+     }
+    ]
+   },
+   "evidence": [
+    {
+     "label": "E1",
+     "rank": 1,
+     "score": 0.04241142252776309,
+     "channels": [
+      "signature",
+      "fts",
+      "vector"
+     ],
+     "document_id": "113de319-1e77-49f9-bb44-2037a617076c",
+     "document_name": "db-connection.log",
+     "source_type": "log",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "error_window",
+     "step_name": "Run uv run pytest -q",
+     "start_line": 6,
+     "end_line": 19,
+     "lines": [
+      "##[endgroup]",
+      "==================================== ERRORS ====================================",
+      "___________________ ERROR at setup of test_create_order ___________________",
+      "",
+      "    def connect(conninfo: str = \"\", **kwargs) -> Connection:",
+      ">       raise last_ex.with_traceback(None)",
+      "E       psycopg.OperationalError: connection failed: connection to server at \"127.0.0.1\", port 5432 failed: Connection refused",
+      "E       \tIs the server running on that host and accepting TCP/IP connections?",
+      "",
+      ".venv/lib/python3.13/site-packages/psycopg/connection.py:118: OperationalError",
+      "=========================== short test summary info ============================",
+      "ERROR tests/test_orders.py::test_create_order - psycopg.OperationalError: connection failed",
+      "1 error in 2.41s",
+      "##[error]Process completed with exit code 1."
+     ]
+    },
+    {
+     "label": "E2",
+     "rank": 2,
+     "score": 0.025396825396825397,
+     "channels": [
+      "fts",
+      "vector"
+     ],
+     "document_id": "8026a45b-7cf0-475b-bf20-914cfea0cce4",
+     "document_name": "kb/ci-troubleshooting/database-connectivity.md",
+     "source_type": "kb",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "section",
+     "step_name": "Symptoms",
+     "start_line": 3,
+     "end_line": 8,
+     "lines": [
+      "## Symptoms",
+      "- `Connection refused` or `ECONNREFUSED` on 127.0.0.1 or localhost with ports 5432 (PostgreSQL), 3306 (MySQL), 6379 (Redis) or 27017 (MongoDB).",
+      "- `could not connect to server`, `Is the server running on that host and accepting TCP/IP connections?`",
+      "- `password authentication failed`, `role \"x\" does not exist`, `database \"x\" does not exist`.",
+      "- JDBC `Communications link failure`; ORMs that time out while acquiring a connection.",
+      "- Many tests failing or erroring at once in setup fixtures: a classic symptom of the database rather than the tests."
+     ]
+    },
+    {
+     "label": "E3",
+     "rank": 3,
+     "score": 0.02480769230769231,
+     "channels": [
+      "fts",
+      "vector"
+     ],
+     "document_id": "8026a45b-7cf0-475b-bf20-914cfea0cce4",
+     "document_name": "kb/ci-troubleshooting/database-connectivity.md",
+     "source_type": "kb",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "section",
+     "step_name": "Where to look",
+     "start_line": 10,
+     "end_line": 14,
+     "lines": [
+      "## Where to look",
+      "- The job's `services:` block: is a database service defined at all? Are its ports mapped (`ports: - 5432:5432`)?",
+      "- The health check options (`--health-cmd pg_isready ...`): without them, tests may start before the database accepts connections.",
+      "- Host names: inside a container job the service is reached by its service name; on the runner host it is `localhost` with mapped ports.",
+      "- Credentials and database name used by the tests compared with the service's environment (`POSTGRES_USER`, `POSTGRES_DB`, `POSTGRES_PASSWORD`)."
+     ]
+    },
+    {
+     "label": "E4",
+     "rank": 4,
+     "score": 0.024428904428904427,
+     "channels": [
+      "fts",
+      "vector"
+     ],
+     "document_id": "8026a45b-7cf0-475b-bf20-914cfea0cce4",
+     "document_name": "kb/ci-troubleshooting/database-connectivity.md",
+     "source_type": "kb",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "section",
+     "step_name": "Common causes",
+     "start_line": 16,
+     "end_line": 20,
+     "lines": [
+      "## Common causes",
+      "- The `services:` block is missing or was removed.",
+      "- No port mapping, or the wrong host name for the job type.",
+      "- The tests start before the database is ready.",
+      "- Mismatched credentials or database names, or migrations not run before tests."
+     ]
+    },
+    {
+     "label": "E5",
+     "rank": 5,
+     "score": 0.02392857142857143,
+     "channels": [
+      "fts",
+      "vector"
+     ],
+     "document_id": "29d31440-82f9-4aed-b19b-e0d8b39b6244",
+     "document_name": "kb/ci-troubleshooting/test-regressions.md",
+     "source_type": "kb",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "section",
+     "step_name": "Symptoms",
+     "start_line": 3,
+     "end_line": 6,
+     "lines": [
+      "## Symptoms",
+      "- pytest: `FAILED tests/x.py::test_y - AssertionError`, a summary line such as `== 3 failed, 120 passed ==`.",
+      "- Jest/Vitest: `Tests: 2 failed`, `expect(received).toBe(expected)` diffs.",
+      "- JUnit/Maven Surefire: `Tests run: 40, Failures: 2`. Go: `--- FAIL: TestX`. Rust: `test result: FAILED`."
+     ]
+    },
+    {
+     "label": "E6",
+     "rank": 6,
+     "score": 0.023705004389815626,
+     "channels": [
+      "fts",
+      "vector"
+     ],
+     "document_id": "a9763a78-2beb-4a35-b558-1057cd85ec65",
+     "document_name": "kb/ci-troubleshooting/reading-ci-logs.md",
+     "source_type": "kb",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "section",
+     "step_name": "Reading a failed CI log",
+     "start_line": 1,
+     "end_line": 8,
+     "lines": [
+      "# Reading a failed CI log",
+      "",
+      "1. **Find the failing step.** GitHub Actions marks it with `##[error]Process completed with exit code N`. The cause is almost always above that line, inside the same `##[group]`.",
+      "2. **Find the first real error, not the last.** Later errors are often consequences: a failed install produces missing-module errors, and a missing database produces dozens of test errors.",
+      "3. **Separate symptoms from causes.** Ask what would have to be true for the first error to happen, and look for evidence of it in the workflow file and the repository at the failing commit.",
+      "4. **Check what changed.** Recent edits to the workflow, the manifests or lockfiles, and the Dockerfile explain most new failures.",
+      "5. **Know when evidence is insufficient.** If the log is truncated, or only shows a generic exit code, the honest conclusion is that the cause is not established. Name what additional evidence is needed (full log, the workflow file, the failing step with debug logging enabled).",
+      "6. **Exit codes:** 1 is a generic failure; 2 is often a usage error; 126/127 mean not executable / command not found; 137 means killed (often out of memory); 143 means terminated (often cancellation or timeout)."
+     ]
+    },
+    {
+     "label": "E7",
+     "rank": 7,
+     "score": 0.02354978354978355,
+     "channels": [
+      "fts",
+      "vector"
+     ],
+     "document_id": "8026a45b-7cf0-475b-bf20-914cfea0cce4",
+     "document_name": "kb/ci-troubleshooting/database-connectivity.md",
+     "source_type": "kb",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "section",
+     "step_name": "Safe fixes",
+     "start_line": 22,
+     "end_line": 23,
+     "lines": [
+      "## Safe fixes",
+      "- Define the service with a health check and port mapping, and point the tests at it through environment variables."
+     ]
+    },
+    {
+     "label": "E8",
+     "rank": 8,
+     "score": 0.02286180853235354,
+     "channels": [
+      "fts",
+      "vector"
+     ],
+     "document_id": "29d31440-82f9-4aed-b19b-e0d8b39b6244",
+     "document_name": "kb/ci-troubleshooting/test-regressions.md",
+     "source_type": "kb",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "section",
+     "step_name": "How to read them",
+     "start_line": 8,
+     "end_line": 11,
+     "lines": [
+      "## How to read them",
+      "- Distinguish failures (an assertion did not hold) from errors (setup crashed). Many errors in setup usually point at infrastructure (database, network, missing files), not at the code under test.",
+      "- Compare the expected and actual values in the assertion diff: an off-by-one, a changed default or a renamed field usually points straight at the change.",
+      "- Check whether the same tests fail consistently or intermittently (flaky tests depend on timing, ordering or external services)."
+     ]
+    }
+   ],
+   "signatures": [
+    {
+     "line_number": 12,
+     "kind": "db_error",
+     "value": "db.server",
+     "category_hint": "db_connectivity",
+     "weight": 3,
+     "excerpt": "E       psycopg.OperationalError: connection failed: connection to server at \"127.0.0.1\", port 5432 failed: Connection refused"
+    },
+    {
+     "line_number": 13,
+     "kind": "db_error",
+     "value": "db.server",
+     "category_hint": "db_connectivity",
+     "weight": 3,
+     "excerpt": "E       \tIs the server running on that host and accepting TCP/IP connections?"
+    },
+    {
+     "line_number": 12,
+     "kind": "python_exception",
+     "value": "psycopg.OperationalError",
+     "category_hint": "db_connectivity",
+     "weight": 1,
+     "excerpt": "E       psycopg.OperationalError: connection failed: connection to server at \"127.0.0.1\", port 5432 failed: Connection refused"
+    },
+    {
+     "line_number": 12,
+     "kind": "connection_refused",
+     "value": "net.refused",
+     "category_hint": "db_connectivity",
+     "weight": 1,
+     "excerpt": "E       psycopg.OperationalError: connection failed: connection to server at \"127.0.0.1\", port 5432 failed: Connection refused"
+    },
+    {
+     "line_number": 17,
+     "kind": "python_exception",
+     "value": "psycopg.OperationalError",
+     "category_hint": "db_connectivity",
+     "weight": 1,
+     "excerpt": "ERROR tests/test_orders.py::test_create_order - psycopg.OperationalError: connection failed"
+    },
+    {
+     "line_number": 19,
+     "kind": "annotation",
+     "value": "Process completed with exit code 1.",
+     "category_hint": null,
+     "weight": 1,
+     "excerpt": "##[error]Process completed with exit code 1."
+    },
+    {
+     "line_number": 19,
+     "kind": "exit_code",
+     "value": "1",
+     "category_hint": null,
+     "weight": 1,
+     "excerpt": "##[error]Process completed with exit code 1."
+    }
+   ],
+   "proposals": [
+    {
+     "id": "75e3dc89-9c74-40e5-8876-58c3e3b48e3c",
+     "ordinal": 1,
+     "title": "Add a database service in the workflow with ports mapped (e.g., ports: - 5432:5432)",
+     "action": "Add a database service in the workflow with ports mapped (e.g., ports: - 5432:5432)",
+     "rationale": "",
+     "origin": "model",
+     "target_path": null,
+     "diff": null,
+     "risks": [
+      "Connection settings differ between service containers and the runner host; check both before changing them."
+     ],
+     "validation_steps": [
+      "Re-run the job and confirm the database service is healthy before the tests start."
+     ],
+     "flags": [],
+     "status": "proposed",
+     "decided_at": null,
+     "withdrawn_reason": null,
+     "withdrawn_at": null
+    },
+    {
+     "id": "12d10331-9e73-48c7-8ea8-ab80114d22f8",
+     "ordinal": 2,
+     "title": "Include a health check (e.g., --health-cmd pg_isready -U user -d db) to ensure the database is ready before tests start",
+     "action": "Include a health check (e.g., --health-cmd pg_isready -U user -d db) to ensure the database is ready before tests start",
+     "rationale": "",
+     "origin": "model",
+     "target_path": null,
+     "diff": null,
+     "risks": [
+      "Connection settings differ between service containers and the runner host; check both before changing them."
+     ],
+     "validation_steps": [
+      "Re-run the job and confirm the database service is healthy before the tests start."
+     ],
+     "flags": [],
+     "status": "proposed",
+     "decided_at": null,
+     "withdrawn_reason": null,
+     "withdrawn_at": null
+    },
+    {
+     "id": "01a1103e-3e96-4c49-93b1-ac265f991939",
+     "ordinal": 3,
+     "title": "Verify environment variables (POSTGRES_USER, POSTGRES_DB, POSTGRES_PASSWORD) match the service configuration",
+     "action": "Verify environment variables (POSTGRES_USER, POSTGRES_DB, POSTGRES_PASSWORD) match the service configuration",
+     "rationale": "",
+     "origin": "model",
+     "target_path": null,
+     "diff": null,
+     "risks": [
+      "Connection settings differ between service containers and the runner host; check both before changing them."
+     ],
+     "validation_steps": [
+      "Re-run the job and confirm the database service is healthy before the tests start."
+     ],
+     "flags": [],
+     "status": "proposed",
+     "decided_at": null,
+     "withdrawn_reason": null,
+     "withdrawn_at": null
+    }
+   ],
+   "decision": null,
+   "github_run": null
+  },
+  {
+   "id": "f4349dc9-943c-4363-84c4-267fb14ec74f",
+   "title": "Process completed with exit code 8.",
+   "source": "upload",
+   "status": "awaiting_approval",
+   "provider": "ollama",
+   "model": "qwen3:4b-instruct-2507-q4_K_M",
+   "rule_category": "missing_env_var",
+   "category": "missing_env_var",
+   "verification_status": "corroborated",
+   "error_code": null,
+   "error_message": null,
+   "created_at": "2026-11-02T14:27:19.727983Z",
+   "started_at": "2026-11-02T14:27:24.847497Z",
+   "finished_at": null,
+   "documents": [
+    {
+     "id": "dfc02dcd-474c-4736-8718-640767eb0522",
+     "name": "job.log",
+     "line_count": 111,
+     "byte_size": 7185,
+     "redaction_count": 0
+    }
+   ],
+   "diagnosis": {
+    "category": "missing_env_var",
+    "rule_category": "missing_env_var",
+    "summary": "Missing environment variable COAST_SCOPE required by test scope",
+    "root_cause": "The test 'scope' failed because the environment variable COAST_SCOPE was not set. This is directly stated in the test output. The failure message 'COAST_SCOPE must be set' indicates a missing required environment variable, which is a known symptom of missing environment variables in CI workflows.",
+    "confidence": 0.9,
+    "uncertainty": "",
+    "recommended_fixes": [
+     "Set the COAST_SCOPE environment variable in the CI workflow",
+     "Verify the variable is defined in the repository's .env or config files",
+     "Add a validation step to check for the variable before running tests"
+    ],
+    "verification_status": "corroborated",
+    "verification_notes": [
+     "Cause check: the log states a cause of this kind (L97) and no competing cause. This is strong evidence, not proof."
+    ],
+    "provider": "ollama",
+    "model": "qwen3:4b-instruct-2507-q4_K_M",
+    "prompt_tokens": 2839,
+    "output_tokens": 327,
+    "duration_ms": 11580,
+    "evidence_complete": true,
+    "diagnosis_attempts": 1,
+    "citations": [
+     {
+      "ordinal": 0,
+      "evidence_label": "E1",
+      "line_number": 97,
+      "quote": "6: COAST_SCOPE must be set",
+      "valid": true,
+      "rejection_reason": null
+     },
+     {
+      "ordinal": 1,
+      "evidence_label": "E4",
+      "line_number": 4,
+      "quote": "Messages such as \"environment variable X is not set\", \"X is undefined\"",
+      "valid": true,
+      "rejection_reason": null
+     },
+     {
+      "ordinal": 2,
+      "evidence_label": "E4",
+      "line_number": 5,
+      "quote": "Frontend builds (Vite, Next.js, CRA) that embed variables at build time fail in a pre-build check",
+      "valid": true,
+      "rejection_reason": null
+     },
+     {
+      "ordinal": 3,
+      "evidence_label": "E3",
+      "line_number": 3,
+      "quote": "Find the failing step. GitHub Actions marks it with ##[error]Process completed with exit code N.",
+      "valid": true,
+      "rejection_reason": null
+     }
+    ]
+   },
+   "evidence": [
+    {
+     "label": "E1",
+     "rank": 1,
+     "score": 0.0,
+     "channels": [
+      "targeted"
+     ],
+     "document_id": "dfc02dcd-474c-4736-8718-640767eb0522",
+     "document_name": "job.log",
+     "source_type": "log",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "step",
+     "step_name": "Run ctest --test-dir build -V",
+     "start_line": 43,
+     "end_line": 102,
+     "lines": [
+      "##[group]Run ctest --test-dir build -V",
+      "ctest --test-dir build -V",
+      "shell: /usr/bin/bash -e {0}",
+      "##[endgroup]",
+      "Internal ctest changing into directory: /home/runner/work/coast/coast/build",
+      "UpdateCTestConfiguration  from :/home/runner/work/coast/coast/build/DartConfiguration.tcl",
+      "UpdateCTestConfiguration  from :/home/runner/work/coast/coast/build/DartConfiguration.tcl",
+      "Test project /home/runner/work/coast/coast/build",
+      "Constructing a list of tests",
+      "Done constructing a list of tests",
+      "Updating test list for fixtures",
+      "Added 0 tests to meet fixture requirements",
+      "Checking test dependency graph...",
+      "Checking test dependency graph end",
+      "test 1",
+      "    Start 1: scan",
+      "1: Test command: /home/runner/work/coast/coast/build/coast_check \"scan\"",
+      "1: Working Directory: /home/runner/work/coast/coast/build",
+      "1: Test timeout computed to be: 10000000",
+      "1: scan ok",
+      "1/6 Test #1: scan .............................   Passed    0.00 sec",
+      "test 2",
+      "    Start 2: trim",
+      "2: Test command: /home/runner/work/coast/coast/build/coast_check \"trim\"",
+      "2: Working Directory: /home/runner/work/coast/coast/build",
+      "2: Test timeout computed to be: 10000000",
+      "2: trim ok",
+      "2/6 Test #2: trim .............................   Passed    0.00 sec",
+      "test 3",
+      "    Start 3: parse",
+      "3: Test command: /home/runner/work/coast/coast/build/coast_check \"parse\"",
+      "3: Working Directory: /home/runner/work/coast/coast/build",
+      "3: Test timeout computed to be: 10000000",
+      "3: parse ok",
+      "3/6 Test #3: parse ............................   Passed    0.00 sec",
+      "test 4",
+      "    Start 4: format",
+      "4: Test command: /home/runner/work/coast/coast/build/coast_check \"format\"",
+      "4: Working Directory: /home/runner/work/coast/coast/build",
+      "4: Test timeout computed to be: 10000000",
+      "4: format ok",
+      "4/6 Test #4: format ...........................   Passed    0.00 sec",
+      "test 5",
+      "    Start 5: index",
+      "5: Test command: /home/runner/work/coast/coast/build/coast_check \"index\"",
+      "5: Working Directory: /home/runner/work/coast/coast/build",
+      "5: Test timeout computed to be: 10000000",
+      "5: index ok",
+      "5/6 Test #5: index ............................   Passed    0.00 sec",
+      "test 6",
+      "    Start 6: scope",
+      "6: Test command: /home/runner/work/coast/coast/build/coast_check \"scope\"",
+      "6: Working Directory: /home/runner/work/coast/coast/build",
+      "6: Test timeout computed to be: 10000000",
+      "6: COAST_SCOPE must be set",
+      "6/6 Test #6: scope ............................***Failed    0.00 sec",
+      "",
+      "83% tests passed, 1 tests failed out of 6",
+      "",
+      "Total Test time (real) =   0.01 sec"
+     ]
+    },
+    {
+     "label": "E2",
+     "rank": 2,
+     "score": 0.02909185532136352,
+     "channels": [
+      "signature",
+      "vector"
+     ],
+     "document_id": "dfc02dcd-474c-4736-8718-640767eb0522",
+     "document_name": "job.log",
+     "source_type": "log",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "error_window",
+     "step_name": "Run ctest --test-dir build -V",
+     "start_line": 103,
+     "end_line": 111,
+     "lines": [
+      "",
+      "The following tests FAILED:",
+      "\t  6 - scope (Failed)",
+      "Errors while running CTest",
+      "Output from these tests are in: /home/runner/work/coast/coast/build/Testing/Temporary/LastTest.log",
+      "Use \"--rerun-failed --output-on-failure\" to re-run the failed cases verbosely.",
+      "##[error]Process completed with exit code 8.",
+      "Post job cleanup.",
+      "Cleaning up orphan processes"
+     ]
+    },
+    {
+     "label": "E3",
+     "rank": 3,
+     "score": 0.013114754098360656,
+     "channels": [
+      "vector"
+     ],
+     "document_id": "a9763a78-2beb-4a35-b558-1057cd85ec65",
+     "document_name": "kb/ci-troubleshooting/reading-ci-logs.md",
+     "source_type": "kb",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "section",
+     "step_name": "Reading a failed CI log",
+     "start_line": 1,
+     "end_line": 8,
+     "lines": [
+      "# Reading a failed CI log",
+      "",
+      "1. **Find the failing step.** GitHub Actions marks it with `##[error]Process completed with exit code N`. The cause is almost always above that line, inside the same `##[group]`.",
+      "2. **Find the first real error, not the last.** Later errors are often consequences: a failed install produces missing-module errors, and a missing database produces dozens of test errors.",
+      "3. **Separate symptoms from causes.** Ask what would have to be true for the first error to happen, and look for evidence of it in the workflow file and the repository at the failing commit.",
+      "4. **Check what changed.** Recent edits to the workflow, the manifests or lockfiles, and the Dockerfile explain most new failures.",
+      "5. **Know when evidence is insufficient.** If the log is truncated, or only shows a generic exit code, the honest conclusion is that the cause is not established. Name what additional evidence is needed (full log, the workflow file, the failing step with debug logging enabled).",
+      "6. **Exit codes:** 1 is a generic failure; 2 is often a usage error; 126/127 mean not executable / command not found; 137 means killed (often out of memory); 143 means terminated (often cancellation or timeout)."
+     ]
+    },
+    {
+     "label": "E4",
+     "rank": 4,
+     "score": 0.0125,
+     "channels": [
+      "vector"
+     ],
+     "document_id": "b08fd1ee-9b37-42f4-aa24-08235eb44383",
+     "document_name": "kb/ci-troubleshooting/missing-environment-variables.md",
+     "source_type": "kb",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "section",
+     "step_name": "Symptoms",
+     "start_line": 3,
+     "end_line": 6,
+     "lines": [
+      "## Symptoms",
+      "- Messages such as \"environment variable X is not set\", \"X is undefined\", `KeyError: 'X'` (Python `os.environ[...]`), `Error: Missing required ...`, or a config loader reporting a missing key.",
+      "- Frontend builds (Vite, Next.js, CRA) that embed variables at build time fail in a pre-build check, or produce a bundle that calls `undefined/api`.",
+      "- A step that worked locally fails only in CI, because the local shell or a `.env` file supplied the value."
+     ]
+    },
+    {
+     "label": "E5",
+     "rank": 5,
+     "score": 0.012307692307692308,
+     "channels": [
+      "vector"
+     ],
+     "document_id": "e0050920-8475-4efe-b2c8-0e27bf57a525",
+     "document_name": "kb/ci-troubleshooting/workflow-paths-and-files.md",
+     "source_type": "kb",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "section",
+     "step_name": "Common causes",
+     "start_line": 16,
+     "end_line": 20,
+     "lines": [
+      "## Common causes",
+      "- A file was renamed or moved but the workflow was not updated.",
+      "- A wrong `working-directory`, or a missing `cd`.",
+      "- Artifacts uploaded from a path that the build never produced.",
+      "- Case-sensitivity: Linux runners distinguish `Docs/` from `docs/`."
+     ]
+    },
+    {
+     "label": "E6",
+     "rank": 6,
+     "score": 0.012121212121212121,
+     "channels": [
+      "vector"
+     ],
+     "document_id": "e0050920-8475-4efe-b2c8-0e27bf57a525",
+     "document_name": "kb/ci-troubleshooting/workflow-paths-and-files.md",
+     "source_type": "kb",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "section",
+     "step_name": "Workflow paths and missing files",
+     "start_line": 1,
+     "end_line": 1,
+     "lines": [
+      "# Workflow paths and missing files"
+     ]
+    },
+    {
+     "label": "E7",
+     "rank": 7,
+     "score": 0.011940298507462687,
+     "channels": [
+      "vector"
+     ],
+     "document_id": "e0050920-8475-4efe-b2c8-0e27bf57a525",
+     "document_name": "kb/ci-troubleshooting/workflow-paths-and-files.md",
+     "source_type": "kb",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "section",
+     "step_name": "Safe fixes",
+     "start_line": 22,
+     "end_line": 23,
+     "lines": [
+      "## Safe fixes",
+      "- Update the workflow path to match the repository, or restore the expected file. Verify against the tree at the failing commit."
+     ]
+    },
+    {
+     "label": "E8",
+     "rank": 8,
+     "score": 0.011764705882352941,
+     "channels": [
+      "vector"
+     ],
+     "document_id": "1e6c62f7-344c-4f38-b95a-f56c8d6da7ce",
+     "document_name": "kb/ci-troubleshooting/dependency-and-build-failures.md",
+     "source_type": "kb",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "section",
+     "step_name": "Where to look",
+     "start_line": 10,
+     "end_line": 13,
+     "lines": [
+      "## Where to look",
+      "- The manifest and lockfile at the failing commit: version ranges, recently bumped packages.",
+      "- The toolchain version the workflow installs (`setup-node`, `setup-python`, `setup-java` versions) compared with what the project expects (`engines`, `requires-python`, toolchain files).",
+      "- Caches restored with a key that no longer matches the lockfile."
+     ]
+    },
+    {
+     "label": "E9",
+     "rank": 9,
+     "score": 0.011594202898550725,
+     "channels": [
+      "vector"
+     ],
+     "document_id": "1e6c62f7-344c-4f38-b95a-f56c8d6da7ce",
+     "document_name": "kb/ci-troubleshooting/dependency-and-build-failures.md",
+     "source_type": "kb",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "section",
+     "step_name": "Dependency resolution and build failures",
+     "start_line": 1,
+     "end_line": 1,
+     "lines": [
+      "# Dependency resolution and build failures"
+     ]
+    }
+   ],
+   "signatures": [
+    {
+     "line_number": 109,
+     "kind": "annotation",
+     "value": "Process completed with exit code 8.",
+     "category_hint": null,
+     "weight": 1,
+     "excerpt": "##[error]Process completed with exit code 8."
+    },
+    {
+     "line_number": 109,
+     "kind": "exit_code",
+     "value": "8",
+     "category_hint": null,
+     "weight": 1,
+     "excerpt": "##[error]Process completed with exit code 8."
+    }
+   ],
+   "proposals": [
+    {
+     "id": "e3dc3963-321c-45c2-b4da-9c11f1e26577",
+     "ordinal": 1,
+     "title": "Set the COAST_SCOPE environment variable in the CI workflow",
+     "action": "Set the COAST_SCOPE environment variable in the CI workflow",
+     "rationale": "",
+     "origin": "model",
+     "target_path": null,
+     "diff": null,
+     "risks": [
+      "A secret must be stored as a repository or environment secret, never written into the workflow file or the repository."
+     ],
+     "validation_steps": [
+      "Re-run the failed job and confirm the step that read the variable passes.",
+      "Confirm the variable is defined for this job without printing secret values."
+     ],
+     "flags": [],
+     "status": "proposed",
+     "decided_at": null,
+     "withdrawn_reason": null,
+     "withdrawn_at": null
+    },
+    {
+     "id": "606806fd-36ea-4b0d-a001-7eefcc88a769",
+     "ordinal": 2,
+     "title": "Verify the variable is defined in the repository's .env or config files",
+     "action": "Verify the variable is defined in the repository's .env or config files",
+     "rationale": "",
+     "origin": "model",
+     "target_path": null,
+     "diff": null,
+     "risks": [
+      "A secret must be stored as a repository or environment secret, never written into the workflow file or the repository."
+     ],
+     "validation_steps": [
+      "Re-run the failed job and confirm the step that read the variable passes.",
+      "Confirm the variable is defined for this job without printing secret values."
+     ],
+     "flags": [],
+     "status": "proposed",
+     "decided_at": null,
+     "withdrawn_reason": null,
+     "withdrawn_at": null
+    },
+    {
+     "id": "e4174293-0f58-44d4-b5e2-33e3d16007a4",
+     "ordinal": 3,
+     "title": "Add a validation step to check for the variable before running tests",
+     "action": "Add a validation step to check for the variable before running tests",
+     "rationale": "",
+     "origin": "model",
+     "target_path": null,
+     "diff": null,
+     "risks": [
+      "A secret must be stored as a repository or environment secret, never written into the workflow file or the repository."
+     ],
+     "validation_steps": [
+      "Re-run the failed job and confirm the step that read the variable passes.",
+      "Confirm the variable is defined for this job without printing secret values."
+     ],
+     "flags": [],
+     "status": "proposed",
+     "decided_at": null,
+     "withdrawn_reason": null,
+     "withdrawn_at": null
+    }
+   ],
+   "decision": null,
+   "github_run": null
+  },
+  {
+   "id": "fd480d9c-36f6-480a-9b64-5324da220efb",
+   "title": "--- FAIL: TestHalfUp (0.00s)",
+   "source": "upload",
+   "status": "awaiting_approval",
+   "provider": "ollama",
+   "model": "qwen3:4b-instruct-2507-q4_K_M",
+   "rule_category": "test_regression",
+   "category": "test_regression",
+   "verification_status": "plausible",
+   "error_code": null,
+   "error_message": null,
+   "created_at": "2026-11-02T14:27:37.958256Z",
+   "started_at": "2026-11-02T14:27:41.505133Z",
+   "finished_at": null,
+   "documents": [
+    {
+     "id": "b5a7a999-8d38-47ab-a901-bd17e35ffa24",
+     "name": "job.log",
+     "line_count": 59,
+     "byte_size": 3079,
+     "redaction_count": 0
+    }
+   ],
+   "diagnosis": {
+    "category": "test_regression",
+    "rule_category": "test_regression",
+    "summary": "Test assertion fails due to incorrect expected output from function",
+    "root_cause": "The test expects `HalfUp(150)` to return 2, but the function implementation returns 150/100 = 1. This mismatch indicates a regression in the test assertion or function logic. The test fails because the actual output does not match the expected value, pointing to a change in behavior or incorrect test expectations.",
+    "confidence": 0.6,
+    "uncertainty": "",
+    "recommended_fixes": [
+     "Review the `HalfUp` function implementation in `round.go` to verify logic correctness",
+     "Update test expectations to match actual behavior of the function",
+     "Ensure test assertions reflect the correct mathematical behavior of rounding"
+    ],
+    "verification_status": "plausible",
+    "verification_notes": [
+     "Cause not confirmed: a failing assertion shows that a test failed, not why: the log cannot show that the code under test changed, and a cause stated in unfamiliar wording would not be recognised."
+    ],
+    "provider": "ollama",
+    "model": "qwen3:4b-instruct-2507-q4_K_M",
+    "prompt_tokens": 1926,
+    "output_tokens": 309,
+    "duration_ms": 11290,
+    "evidence_complete": true,
+    "diagnosis_attempts": 1,
+    "citations": [
+     {
+      "ordinal": 0,
+      "evidence_label": "E1",
+      "line_number": 53,
+      "quote": "--- FAIL: TestHalfUp (0.00s)",
+      "valid": true,
+      "rejection_reason": null
+     },
+     {
+      "ordinal": 1,
+      "evidence_label": "E2",
+      "line_number": 7,
+      "quote": "if got != 2 {",
+      "valid": true,
+      "rejection_reason": null
+     },
+     {
+      "ordinal": 2,
+      "evidence_label": "E7",
+      "line_number": 4,
+      "quote": "return cents / 100",
+      "valid": true,
+      "rejection_reason": null
+     },
+     {
+      "ordinal": 3,
+      "evidence_label": "E3",
+      "line_number": 4,
+      "quote": "- pytest: `FAILED tests/x.py::test_y - AssertionError`",
+      "valid": true,
+      "rejection_reason": null
+     }
+    ]
+   },
+   "evidence": [
+    {
+     "label": "E1",
+     "rank": 1,
+     "score": 0.04220660941972418,
+     "channels": [
+      "signature",
+      "fts",
+      "vector"
+     ],
+     "document_id": "b5a7a999-8d38-47ab-a901-bd17e35ffa24",
+     "document_name": "job.log",
+     "source_type": "log",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "error_window",
+     "step_name": "Run go test -v ./...",
+     "start_line": 47,
+     "end_line": 59,
+     "lines": [
+      "##[group]Run go test -v ./...",
+      "go test -v ./...",
+      "shell: /usr/bin/bash -e {0}",
+      "##[endgroup]",
+      "=== RUN   TestHalfUp",
+      "    round_test.go:8: HalfUp(150) = 1; want 2",
+      "--- FAIL: TestHalfUp (0.00s)",
+      "FAIL",
+      "FAIL\t   example.com/tide\t0.002s",
+      "FAIL",
+      "##[error]Process completed with exit code 1.",
+      "Post job cleanup.",
+      "Cleaning up orphan processes"
+     ]
+    },
+    {
+     "label": "E2",
+     "rank": 2,
+     "score": 0.025422446406052963,
+     "channels": [
+      "fts",
+      "vector"
+     ],
+     "document_id": "c21e3c7e-3555-4f11-912a-01ab4ef71efa",
+     "document_name": "round_test.go",
+     "source_type": "code",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "code",
+     "step_name": "func TestHalfUp(t *testing.T) {",
+     "start_line": 5,
+     "end_line": 10,
+     "lines": [
+      "func TestHalfUp(t *testing.T) {",
+      "    got := HalfUp(150)",
+      "    if got != 2 {",
+      "        t.Fatalf(\"HalfUp(150) = %d; want 2\", got)",
+      "    }",
+      "}"
+     ]
+    },
+    {
+     "label": "E3",
+     "rank": 3,
+     "score": 0.02446311858076564,
+     "channels": [
+      "fts",
+      "vector"
+     ],
+     "document_id": "29d31440-82f9-4aed-b19b-e0d8b39b6244",
+     "document_name": "kb/ci-troubleshooting/test-regressions.md",
+     "source_type": "kb",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "section",
+     "step_name": "Symptoms",
+     "start_line": 3,
+     "end_line": 6,
+     "lines": [
+      "## Symptoms",
+      "- pytest: `FAILED tests/x.py::test_y - AssertionError`, a summary line such as `== 3 failed, 120 passed ==`.",
+      "- Jest/Vitest: `Tests: 2 failed`, `expect(received).toBe(expected)` diffs.",
+      "- JUnit/Maven Surefire: `Tests run: 40, Failures: 2`. Go: `--- FAIL: TestX`. Rust: `test result: FAILED`."
+     ]
+    },
+    {
+     "label": "E4",
+     "rank": 4,
+     "score": 0.024061510628674808,
+     "channels": [
+      "fts",
+      "vector"
+     ],
+     "document_id": "29d31440-82f9-4aed-b19b-e0d8b39b6244",
+     "document_name": "kb/ci-troubleshooting/test-regressions.md",
+     "source_type": "kb",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "section",
+     "step_name": "How to read them",
+     "start_line": 8,
+     "end_line": 11,
+     "lines": [
+      "## How to read them",
+      "- Distinguish failures (an assertion did not hold) from errors (setup crashed). Many errors in setup usually point at infrastructure (database, network, missing files), not at the code under test.",
+      "- Compare the expected and actual values in the assertion diff: an off-by-one, a changed default or a renamed field usually points straight at the change.",
+      "- Check whether the same tests fail consistently or intermittently (flaky tests depend on timing, ordering or external services)."
+     ]
+    },
+    {
+     "label": "E5",
+     "rank": 5,
+     "score": 0.02392857142857143,
+     "channels": [
+      "fts",
+      "vector"
+     ],
+     "document_id": "b08fd1ee-9b37-42f4-aa24-08235eb44383",
+     "document_name": "kb/ci-troubleshooting/missing-environment-variables.md",
+     "source_type": "kb",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "section",
+     "step_name": "Symptoms",
+     "start_line": 3,
+     "end_line": 6,
+     "lines": [
+      "## Symptoms",
+      "- Messages such as \"environment variable X is not set\", \"X is undefined\", `KeyError: 'X'` (Python `os.environ[...]`), `Error: Missing required ...`, or a config loader reporting a missing key.",
+      "- Frontend builds (Vite, Next.js, CRA) that embed variables at build time fail in a pre-build check, or produce a bundle that calls `undefined/api`.",
+      "- A step that worked locally fails only in CI, because the local shell or a `.env` file supplied the value."
+     ]
+    },
+    {
+     "label": "E6",
+     "rank": 6,
+     "score": 0.0125,
+     "channels": [
+      "vector"
+     ],
+     "document_id": "a9763a78-2beb-4a35-b558-1057cd85ec65",
+     "document_name": "kb/ci-troubleshooting/reading-ci-logs.md",
+     "source_type": "kb",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "section",
+     "step_name": "Reading a failed CI log",
+     "start_line": 1,
+     "end_line": 8,
+     "lines": [
+      "# Reading a failed CI log",
+      "",
+      "1. **Find the failing step.** GitHub Actions marks it with `##[error]Process completed with exit code N`. The cause is almost always above that line, inside the same `##[group]`.",
+      "2. **Find the first real error, not the last.** Later errors are often consequences: a failed install produces missing-module errors, and a missing database produces dozens of test errors.",
+      "3. **Separate symptoms from causes.** Ask what would have to be true for the first error to happen, and look for evidence of it in the workflow file and the repository at the failing commit.",
+      "4. **Check what changed.** Recent edits to the workflow, the manifests or lockfiles, and the Dockerfile explain most new failures.",
+      "5. **Know when evidence is insufficient.** If the log is truncated, or only shows a generic exit code, the honest conclusion is that the cause is not established. Name what additional evidence is needed (full log, the workflow file, the failing step with debug logging enabled).",
+      "6. **Exit codes:** 1 is a generic failure; 2 is often a usage error; 126/127 mean not executable / command not found; 137 means killed (often out of memory); 143 means terminated (often cancellation or timeout)."
+     ]
+    },
+    {
+     "label": "E7",
+     "rank": 7,
+     "score": 0.012307692307692308,
+     "channels": [
+      "vector"
+     ],
+     "document_id": "142fa4ff-41da-46ba-8776-d0c50cf60421",
+     "document_name": "round.go",
+     "source_type": "code",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "code",
+     "step_name": "func HalfUp(cents int) int {",
+     "start_line": 3,
+     "end_line": 5,
+     "lines": [
+      "func HalfUp(cents int) int {",
+      "    return cents / 100",
+      "}"
+     ]
+    },
+    {
+     "label": "E8",
+     "rank": 8,
+     "score": 0.012121212121212121,
+     "channels": [
+      "vector"
+     ],
+     "document_id": "e0050920-8475-4efe-b2c8-0e27bf57a525",
+     "document_name": "kb/ci-troubleshooting/workflow-paths-and-files.md",
+     "source_type": "kb",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "section",
+     "step_name": "Common causes",
+     "start_line": 16,
+     "end_line": 20,
+     "lines": [
+      "## Common causes",
+      "- A file was renamed or moved but the workflow was not updated.",
+      "- A wrong `working-directory`, or a missing `cd`.",
+      "- Artifacts uploaded from a path that the build never produced.",
+      "- Case-sensitivity: Linux runners distinguish `Docs/` from `docs/`."
+     ]
+    }
+   ],
+   "signatures": [
+    {
+     "line_number": 53,
+     "kind": "test_failure",
+     "value": "TestHalfUp",
+     "category_hint": "test_regression",
+     "weight": 3,
+     "excerpt": "--- FAIL: TestHalfUp (0.00s)"
+    },
+    {
+     "line_number": 57,
+     "kind": "annotation",
+     "value": "Process completed with exit code 1.",
+     "category_hint": null,
+     "weight": 1,
+     "excerpt": "##[error]Process completed with exit code 1."
+    },
+    {
+     "line_number": 57,
+     "kind": "exit_code",
+     "value": "1",
+     "category_hint": null,
+     "weight": 1,
+     "excerpt": "##[error]Process completed with exit code 1."
+    }
+   ],
+   "proposals": [
+    {
+     "id": "4bfd06df-5116-4f3d-b2a9-c338ec46c3bb",
+     "ordinal": 1,
+     "title": "Edit round_test.go",
+     "action": "The test expects HalfUp(150) to return 2, but the function returns 150/100 = 1. The test assertion is incorrect for the actual function behavior.",
+     "rationale": "The test expects HalfUp(150) to return 2, but the function returns 150/100 = 1. The test assertion is incorrect for the actual function behavior.",
+     "origin": "model",
+     "target_path": "round_test.go",
+     "diff": "--- a/round_test.go\n+++ b/round_test.go\n@@ -5,5 +5,5 @@\n func TestHalfUp(t *testing.T) {\n     got := HalfUp(150)\n-    if got != 2 {\n+    if got != 1 {\n         t.Fatalf(\"HalfUp(150) = %d; want 2\", got)\n     }",
+     "risks": [
+      "Changing the function logic may introduce unintended rounding behavior for other inputs.",
+      "Incorrect test assertion could mask future bugs in the function or test suite.",
+      "Modifying the function without clear documentation may lead to confusion in future maintenance.",
+      "Changing the test instead of the code hides a real regression unless the behaviour change was intended."
+     ],
+     "validation_steps": [
+      "Run the test suite to confirm TestHalfUp passes for input 150.",
+      "Verify that HalfUp(100) returns 1 and HalfUp(150) returns 2 with the new function logic.",
+      "Ensure no other tests are affected by the updated function behavior.",
+      "Run the failing test locally on this commit, then re-run the job."
+     ],
+     "flags": [],
+     "status": "proposed",
+     "decided_at": null,
+     "withdrawn_reason": null,
+     "withdrawn_at": null
+    },
+    {
+     "id": "bd79d5e3-48d0-4f8b-9599-d7f775760dfe",
+     "ordinal": 2,
+     "title": "Edit round.go",
+     "action": "The function currently performs integer division by 100, which correctly yields 1 for 150. No change needed as the logic is correct.",
+     "rationale": "The function currently performs integer division by 100, which correctly yields 1 for 150. No change needed as the logic is correct.",
+     "origin": "model",
+     "target_path": "round.go",
+     "diff": "--- a/round.go\n+++ b/round.go\n@@ -2,4 +2,4 @@\n \n func HalfUp(cents int) int {\n-    return cents / 100\n+    return (cents + 50) / 100\n }",
+     "risks": [
+      "Changing the function logic may introduce unintended rounding behavior for other inputs.",
+      "Incorrect test assertion could mask future bugs in the function or test suite.",
+      "Modifying the function without clear documentation may lead to confusion in future maintenance.",
+      "Changing the test instead of the code hides a real regression unless the behaviour change was intended."
+     ],
+     "validation_steps": [
+      "Run the test suite to confirm TestHalfUp passes for input 150.",
+      "Verify that HalfUp(100) returns 1 and HalfUp(150) returns 2 with the new function logic.",
+      "Ensure no other tests are affected by the updated function behavior.",
+      "Run the failing test locally on this commit, then re-run the job."
+     ],
+     "flags": [],
+     "status": "proposed",
+     "decided_at": null,
+     "withdrawn_reason": null,
+     "withdrawn_at": null
+    },
+    {
+     "id": "9c4474b8-173f-4ebf-8b51-ae21961e5d46",
+     "ordinal": 3,
+     "title": "Review the `HalfUp` function implementation in `round.go` to verify logic correctness",
+     "action": "Review the `HalfUp` function implementation in `round.go` to verify logic correctness",
+     "rationale": "",
+     "origin": "model",
+     "target_path": null,
+     "diff": null,
+     "risks": [
+      "Changing the test instead of the code hides a real regression unless the behaviour change was intended."
+     ],
+     "validation_steps": [
+      "Run the failing test locally on this commit, then re-run the job."
+     ],
+     "flags": [],
+     "status": "proposed",
+     "decided_at": null,
+     "withdrawn_reason": null,
+     "withdrawn_at": null
+    },
+    {
+     "id": "f2257c82-623a-4805-9751-e0041e0225dc",
+     "ordinal": 4,
+     "title": "Update test expectations to match actual behavior of the function",
+     "action": "Update test expectations to match actual behavior of the function",
+     "rationale": "",
+     "origin": "model",
+     "target_path": null,
+     "diff": null,
+     "risks": [
+      "Changing the test instead of the code hides a real regression unless the behaviour change was intended."
+     ],
+     "validation_steps": [
+      "Run the failing test locally on this commit, then re-run the job."
+     ],
+     "flags": [],
+     "status": "proposed",
+     "decided_at": null,
+     "withdrawn_reason": null,
+     "withdrawn_at": null
+    },
+    {
+     "id": "3b58b766-7157-47d7-ae4d-e5935ce40796",
+     "ordinal": 5,
+     "title": "Ensure test assertions reflect the correct mathematical behavior of rounding",
+     "action": "Ensure test assertions reflect the correct mathematical behavior of rounding",
+     "rationale": "",
+     "origin": "model",
+     "target_path": null,
+     "diff": null,
+     "risks": [
+      "Changing the test instead of the code hides a real regression unless the behaviour change was intended."
+     ],
+     "validation_steps": [
+      "Run the failing test locally on this commit, then re-run the job."
+     ],
+     "flags": [],
+     "status": "proposed",
+     "decided_at": null,
+     "withdrawn_reason": null,
+     "withdrawn_at": null
+    }
+   ],
+   "decision": null,
+   "github_run": null
+  },
+  {
+   "id": "ac8f1a3d-fb7b-41f1-818c-7383d6b8c081",
+   "title": "job.log",
+   "source": "upload",
+   "status": "completed",
+   "provider": "ollama",
+   "model": "qwen3:4b-instruct-2507-q4_K_M",
+   "rule_category": "unknown",
+   "category": "unknown",
+   "verification_status": "not_established",
+   "error_code": null,
+   "error_message": null,
+   "created_at": "2026-11-02T14:28:01.532973Z",
+   "started_at": "2026-11-02T14:28:06.036775Z",
+   "finished_at": "2026-11-02T14:28:06.918221Z",
+   "documents": [
+    {
+     "id": "08bd496e-aac6-4663-b3bf-6a842bfe9e87",
+     "name": "job.log",
+     "line_count": 70,
+     "byte_size": 5192,
+     "redaction_count": 0
+    }
+   ],
+   "diagnosis": {
+    "category": "unknown",
+    "rule_category": "unknown",
+    "summary": "Cause not established: the evidence does not show the failure.",
+    "root_cause": "The log (70 lines) shows no failure: no error line, failing exit status or failing test.",
+    "confidence": 0.0,
+    "uncertainty": "The log says it is truncated (L70); the failing step's output may be incomplete.",
+    "recommended_fixes": [
+     "Retrieve the complete log of the failed job, including the failing step's output and exit status, then investigate again."
+    ],
+    "verification_status": "not_established",
+    "verification_notes": [
+     "The log (70 lines) shows no failure: no error line, failing exit status or failing test.",
+     "The log says it is truncated (L70); the failing step's output may be incomplete.",
+     "Kensa abstained without asking the model."
+    ],
+    "provider": "ollama",
+    "model": "qwen3:4b-instruct-2507-q4_K_M",
+    "prompt_tokens": null,
+    "output_tokens": null,
+    "duration_ms": 0,
+    "evidence_complete": false,
+    "diagnosis_attempts": 0,
+    "citations": []
+   },
+   "evidence": [
+    {
+     "label": "E1",
+     "rank": 1,
+     "score": 0.013114754098360656,
+     "channels": [
+      "vector"
+     ],
+     "document_id": "08bd496e-aac6-4663-b3bf-6a842bfe9e87",
+     "document_name": "job.log",
+     "source_type": "log",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "step",
+     "step_name": "Run g++ -v -std=c++17 src/main.cpp -o importer",
+     "start_line": 29,
+     "end_line": 70,
+     "lines": [
+      "##[group]Run g++ -v -std=c++17 src/main.cpp -o importer",
+      "g++ -v -std=c++17 src/main.cpp -o importer",
+      "./importer",
+      "shell: /usr/bin/bash -e {0}",
+      "env:",
+      "  PLUM_INPUT: ***",
+      "##[endgroup]",
+      "Using built-in specs.",
+      "COLLECT_GCC=g++",
+      "COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/13/lto-wrapper",
+      "Target: x86_64-linux-gnu",
+      "Configured with: ../src/configure -v --enable-languages=c,c++ --prefix=/usr",
+      "Thread model: posix",
+      "Supported LTO compression algorithms: zlib zstd",
+      "gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04)",
+      "COLLECT_GCC_OPTIONS='-v' '-std=c++17' '-o' 'importer' '-shared-libgcc' '-mtune=generic' '-march=x86-64'",
+      " /usr/lib/gcc/x86_64-linux-gnu/13/cc1plus -quiet -v -imultiarch x86_64-linux-gnu src/main.cpp -quiet -dumpbase importer-main.cpp -mtune=generic -march=x86-64 -std=c++17 -version -o /tmp/cc1.s",
+      "GNU C++17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)",
+      "compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1",
+      "GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072",
+      "ignoring nonexistent directory \"/usr/local/include/x86_64-linux-gnu\"",
+      "ignoring nonexistent directory \"/usr/lib/gcc/x86_64-linux-gnu/13/../../../../x86_64-linux-gnu/include\"",
+      "#include \"...\" search starts here:",
+      "#include <...> search starts here:",
+      " /usr/include/c++/13",
+      " /usr/include/x86_64-linux-gnu/c++/13",
+      " /usr/include/c++/13/backward",
+      " /usr/lib/gcc/x86_64-linux-gnu/13/include",
+      " /usr/local/include",
+      " /usr/include/x86_64-linux-gnu",
+      " /usr/include",
+      "End of search list.",
+      "GNU C++17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)",
+      "Compiler executable checksum: 2468abcdef0123456789abcdef012345",
+      " as -v --64 -o /tmp/cc1.o /tmp/cc1.s",
+      "GNU assembler version 2.42 (x86_64-linux-gnu) using BFD version 2.42",
+      "COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/",
+      "LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/x86_64-linux-gnu/:/usr/lib/",
+      "COLLECT_GCC_OPTIONS='-v' '-std=c++17' '-o' 'importer' '-shared-libgcc' '-mtune=generic' '-march=x86-64'",
+      " /usr/lib/gcc/x86_64-linux-gnu/13/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/13/liblto_plugin.so -pie -o importer /usr/lib/x86_64-linux-gnu/Scrt1.o /usr/lib/x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/13 /tmp/cc1.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o /usr/lib/x86_64-linux-gnu/crtn.o",
+      "COLLECT_GCC_OPTIONS='-v' '-std=c++17' '-o' 'importer' '-shared-libgcc' '-mtune=generic' '-march=x86-64'",
+      "##[warning]Log truncated"
+     ]
+    },
+    {
+     "label": "E2",
+     "rank": 2,
+     "score": 0.012903225806451613,
+     "channels": [
+      "vector"
+     ],
+     "document_id": "d12b987f-f548-4c20-96b8-34810ef3bb49",
+     "document_name": ".github/workflows/import.yml",
+     "source_type": "workflow_yaml",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "job",
+     "step_name": "job import",
+     "start_line": 4,
+     "end_line": 13,
+     "lines": [
+      "  import:",
+      "    runs-on: ubuntu-24.04",
+      "    steps:",
+      "      - uses: actions/checkout@v4",
+      "      - name: Compile and import",
+      "        run: |",
+      "          g++ -v -std=c++17 src/main.cpp -o importer",
+      "          ./importer",
+      "        env:",
+      "          PLUM_INPUT: ${{ secrets.PLUM_INPUT }}"
+     ]
+    },
+    {
+     "label": "E3",
+     "rank": 3,
+     "score": 0.012698412698412698,
+     "channels": [
+      "vector"
+     ],
+     "document_id": "d12b987f-f548-4c20-96b8-34810ef3bb49",
+     "document_name": ".github/workflows/import.yml",
+     "source_type": "workflow_yaml",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "workflow",
+     "step_name": "workflow settings",
+     "start_line": 1,
+     "end_line": 2,
+     "lines": [
+      "name: Import check",
+      "on: [push]"
+     ]
+    },
+    {
+     "label": "E4",
+     "rank": 4,
+     "score": 0.0125,
+     "channels": [
+      "vector"
+     ],
+     "document_id": "b08fd1ee-9b37-42f4-aa24-08235eb44383",
+     "document_name": "kb/ci-troubleshooting/missing-environment-variables.md",
+     "source_type": "kb",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "section",
+     "step_name": "Symptoms",
+     "start_line": 3,
+     "end_line": 6,
+     "lines": [
+      "## Symptoms",
+      "- Messages such as \"environment variable X is not set\", \"X is undefined\", `KeyError: 'X'` (Python `os.environ[...]`), `Error: Missing required ...`, or a config loader reporting a missing key.",
+      "- Frontend builds (Vite, Next.js, CRA) that embed variables at build time fail in a pre-build check, or produce a bundle that calls `undefined/api`.",
+      "- A step that worked locally fails only in CI, because the local shell or a `.env` file supplied the value."
+     ]
+    },
+    {
+     "label": "E5",
+     "rank": 5,
+     "score": 0.012307692307692308,
+     "channels": [
+      "vector"
+     ],
+     "document_id": "1e6c62f7-344c-4f38-b95a-f56c8d6da7ce",
+     "document_name": "kb/ci-troubleshooting/dependency-and-build-failures.md",
+     "source_type": "kb",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "section",
+     "step_name": "Dependency resolution and build failures",
+     "start_line": 1,
+     "end_line": 1,
+     "lines": [
+      "# Dependency resolution and build failures"
+     ]
+    },
+    {
+     "label": "E6",
+     "rank": 6,
+     "score": 0.012121212121212121,
+     "channels": [
+      "vector"
+     ],
+     "document_id": "1e6c62f7-344c-4f38-b95a-f56c8d6da7ce",
+     "document_name": "kb/ci-troubleshooting/dependency-and-build-failures.md",
+     "source_type": "kb",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "section",
+     "step_name": "Safe fixes",
+     "start_line": 21,
+     "end_line": 24,
+     "lines": [
+      "## Safe fixes",
+      "- Pin or upgrade to compatible versions and regenerate the lockfile.",
+      "- Align the toolchain version in the workflow with the project's declared version.",
+      "- Avoid forcing resolution (`--force`, `--legacy-peer-deps`) as a permanent fix: it hides real incompatibilities."
+     ]
+    },
+    {
+     "label": "E7",
+     "rank": 7,
+     "score": 0.011940298507462687,
+     "channels": [
+      "vector"
+     ],
+     "document_id": "1e6c62f7-344c-4f38-b95a-f56c8d6da7ce",
+     "document_name": "kb/ci-troubleshooting/dependency-and-build-failures.md",
+     "source_type": "kb",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "section",
+     "step_name": "Where to look",
+     "start_line": 10,
+     "end_line": 13,
+     "lines": [
+      "## Where to look",
+      "- The manifest and lockfile at the failing commit: version ranges, recently bumped packages.",
+      "- The toolchain version the workflow installs (`setup-node`, `setup-python`, `setup-java` versions) compared with what the project expects (`engines`, `requires-python`, toolchain files).",
+      "- Caches restored with a key that no longer matches the lockfile."
+     ]
+    },
+    {
+     "label": "E8",
+     "rank": 8,
+     "score": 0.011764705882352941,
+     "channels": [
+      "vector"
+     ],
+     "document_id": "a9763a78-2beb-4a35-b558-1057cd85ec65",
+     "document_name": "kb/ci-troubleshooting/reading-ci-logs.md",
+     "source_type": "kb",
+     "commit_sha": null,
+     "source_url": null,
+     "kind": "section",
+     "step_name": "Reading a failed CI log",
+     "start_line": 1,
+     "end_line": 8,
+     "lines": [
+      "# Reading a failed CI log",
+      "",
+      "1. **Find the failing step.** GitHub Actions marks it with `##[error]Process completed with exit code N`. The cause is almost always above that line, inside the same `##[group]`.",
+      "2. **Find the first real error, not the last.** Later errors are often consequences: a failed install produces missing-module errors, and a missing database produces dozens of test errors.",
+      "3. **Separate symptoms from causes.** Ask what would have to be true for the first error to happen, and look for evidence of it in the workflow file and the repository at the failing commit.",
+      "4. **Check what changed.** Recent edits to the workflow, the manifests or lockfiles, and the Dockerfile explain most new failures.",
+      "5. **Know when evidence is insufficient.** If the log is truncated, or only shows a generic exit code, the honest conclusion is that the cause is not established. Name what additional evidence is needed (full log, the workflow file, the failing step with debug logging enabled).",
+      "6. **Exit codes:** 1 is a generic failure; 2 is often a usage error; 126/127 mean not executable / command not found; 137 means killed (often out of memory); 143 means terminated (often cancellation or timeout)."
+     ]
+    }
+   ],
+   "signatures": [],
+   "proposals": [],
+   "decision": null,
+   "github_run": null
+  }
+ ],
+ "events": {
+  "cfa7ef90-7181-4ac9-a491-1977a17d61e2": [
+   {
+    "seq": 1,
+    "attempt": 1,
+    "node": "pipeline",
+    "event_type": "started",
+    "summary": "Attempt 1 of 3.",
+    "detail": {},
+    "duration_ms": null,
+    "created_at": "2026-11-02T14:26:23.452788Z"
+   },
+   {
+    "seq": 2,
+    "attempt": 1,
+    "node": "collect_evidence",
+    "event_type": "completed",
+    "summary": "1 log, 29 lines, 3 error signatures, 3 failure line(s).",
+    "detail": {},
+    "duration_ms": 15,
+    "created_at": "2026-11-02T14:26:23.511412Z"
+   },
+   {
+    "seq": 3,
+    "attempt": 1,
+    "node": "classify",
+    "event_type": "completed",
+    "summary": "Rule-based hint: missing_env_var (score 3, 100% of signals).",
+    "detail": {
+     "scores": {
+      "missing_env_var": 3
+     },
+     "supporting_lines": [
+      24
+     ]
+    },
+    "duration_ms": null,
+    "created_at": "2026-11-02T14:26:23.523114Z"
+   },
+   {
+    "seq": 4,
+    "attempt": 1,
+    "node": "index",
+    "event_type": "completed",
+    "summary": "Embedded 4 new chunk(s) with qwen3-embedding:0.6b; vector search enabled.",
+    "detail": {
+     "embedded": 4,
+     "embedder": "ollama"
+    },
+    "duration_ms": 547,
+    "created_at": "2026-11-02T14:26:24.092300Z"
+   },
+   {
+    "seq": 5,
+    "attempt": 1,
+    "node": "retrieve",
+    "event_type": "completed",
+    "summary": "Selected 8 evidence excerpts.",
+    "detail": {
+     "evidence": [
+      {
+       "label": "E1",
+       "lines": "18-29",
+       "channels": [
+        "signature",
+        "fts",
+        "vector"
+       ]
+      },
+      {
+       "label": "E2",
+       "lines": "3-6",
+       "channels": [
+        "fts",
+        "vector"
+       ]
+      },
+      {
+       "label": "E3",
+       "lines": "8-12",
+       "channels": [
+        "fts",
+        "vector"
+       ]
+      },
+      {
+       "label": "E4",
+       "lines": "1-1",
+       "channels": [
+        "fts",
+        "vector"
+       ]
+      },
+      {
+       "label": "E5",
+       "lines": "14-18",
+       "channels": [
+        "fts",
+        "vector"
+       ]
+      },
+      {
+       "label": "E6",
+       "lines": "1-8",
+       "channels": [
+        "fts",
+        "vector"
+       ]
+      },
+      {
+       "label": "E7",
+       "lines": "20-22",
+       "channels": [
+        "fts",
+        "vector"
+       ]
+      },
+      {
+       "label": "E8",
+       "lines": "1-1",
+       "channels": [
+        "fts",
+        "vector"
+       ]
+      }
+     ]
+    },
+    "duration_ms": 22,
+    "created_at": "2026-11-02T14:26:24.126484Z"
+   },
+   {
+    "seq": 6,
+    "attempt": 1,
+    "node": "assess_completeness",
+    "event_type": "completed",
+    "summary": "The excerpts include the failure line(s) L24.",
+    "detail": {
+     "notes": [],
+     "status": "sufficient",
+     "key_lines": [
+      24
+     ],
+     "missing_lines": []
+    },
+    "duration_ms": null,
+    "created_at": "2026-11-02T14:26:24.159055Z"
+   },
+   {
+    "seq": 7,
+    "attempt": 1,
+    "node": "diagnose",
+    "event_type": "started",
+    "summary": "Attempt 1: asking ollama (qwen3:4b-instruct-2507-q4_K_M) for a diagnosis.",
+    "detail": {},
+    "duration_ms": null,
+    "created_at": "2026-11-02T14:26:24.189365Z"
+   },
+   {
+    "seq": 8,
+    "attempt": 1,
+    "node": "diagnose",
+    "event_type": "completed",
+    "summary": "Proposed \"missing_env_var\" with 4 citation(s).",
+    "detail": {
+     "model": "qwen3:4b-instruct-2507-q4_K_M",
+     "timings": {
+      "eval_ms": 7409.4,
+      "load_ms": 6627.9,
+      "total_ms": 15077.3,
+      "prompt_eval_ms": 997.9
+     },
+     "attempts": 1,
+     "provider": "ollama",
+     "output_tokens": 399,
+     "prompt_tokens": 1896
+    },
+    "duration_ms": 15379,
+    "created_at": "2026-11-02T14:26:39.568651Z"
+   },
+   {
+    "seq": 9,
+    "attempt": 1,
+    "node": "verify",
+    "event_type": "completed",
+    "summary": "Attempt 1: 4/4 citations verified; status: corroborated.",
+    "detail": {
+     "next": "accept",
+     "notes": [
+      "Cause check: the log states a cause of this kind (L24) and no competing cause. This is strong evidence, not proof."
+     ],
+     "status": "corroborated"
+    },
+    "duration_ms": null,
+    "created_at": "2026-11-02T14:26:39.583606Z"
+   },
+   {
+    "seq": 10,
+    "attempt": 1,
+    "node": "plan_remediation",
+    "event_type": "completed",
+    "summary": "Proposed 3 change(s) for human review (0 with a diff checked against the file).",
+    "detail": {
+     "diffs": 0,
+     "dropped": [],
+     "proposals": 3
+    },
+    "duration_ms": 0,
+    "created_at": "2026-11-02T14:26:39.598950Z"
+   },
+   {
+    "seq": 11,
+    "attempt": 1,
+    "node": "report",
+    "event_type": "completed",
+    "summary": "Report saved: missing_env_var (corroborated). Waiting for a human decision on 3 proposal(s).",
+    "detail": {},
+    "duration_ms": null,
+    "created_at": "2026-11-02T14:26:39.614014Z"
+   }
+  ],
+  "aa7137a8-3dce-4b84-adae-b945bc356fbe": [
+   {
+    "seq": 1,
+    "attempt": 1,
+    "node": "pipeline",
+    "event_type": "started",
+    "summary": "Attempt 1 of 3.",
+    "detail": {},
+    "duration_ms": null,
+    "created_at": "2026-11-02T14:26:41.738535Z"
+   },
+   {
+    "seq": 2,
+    "attempt": 1,
+    "node": "collect_evidence",
+    "event_type": "completed",
+    "summary": "1 log, 22 lines, 4 error signatures, 18 failure line(s).",
+    "detail": {},
+    "duration_ms": 8,
+    "created_at": "2026-11-02T14:26:41.769099Z"
+   },
+   {
+    "seq": 3,
+    "attempt": 1,
+    "node": "classify",
+    "event_type": "completed",
+    "summary": "Rule-based hint: dependency_build (score 5, 100% of signals).",
+    "detail": {
+     "scores": {
+      "dependency_build": 5
+     },
+     "supporting_lines": [
+      5,
+      13
+     ]
+    },
+    "duration_ms": null,
+    "created_at": "2026-11-02T14:26:41.775979Z"
+   },
+   {
+    "seq": 4,
+    "attempt": 1,
+    "node": "index",
+    "event_type": "completed",
+    "summary": "Embedded 2 new chunk(s) with qwen3-embedding:0.6b; vector search enabled.",
+    "detail": {
+     "embedded": 2,
+     "embedder": "ollama"
+    },
+    "duration_ms": 3926,
+    "created_at": "2026-11-02T14:26:45.714309Z"
+   },
+   {
+    "seq": 5,
+    "attempt": 1,
+    "node": "retrieve",
+    "event_type": "completed",
+    "summary": "Selected 8 evidence excerpts.",
+    "detail": {
+     "evidence": [
+      {
+       "label": "E1",
+       "lines": "1-22",
+       "channels": [
+        "signature",
+        "fts",
+        "vector"
+       ]
+      },
+      {
+       "label": "E2",
+       "lines": "3-8",
+       "channels": [
+        "fts",
+        "vector"
+       ]
+      },
+      {
+       "label": "E3",
+       "lines": "1-1",
+       "channels": [
+        "fts",
+        "vector"
+       ]
+      },
+      {
+       "label": "E4",
+       "lines": "3-8",
+       "channels": [
+        "fts",
+        "vector"
+       ]
+      },
+      {
+       "label": "E5",
+       "lines": "15-19",
+       "channels": [
+        "fts",
+        "vector"
+       ]
+      },
+      {
+       "label": "E6",
+       "lines": "21-24",
+       "channels": [
+        "fts",
+        "vector"
+       ]
+      },
+      {
+       "label": "E7",
+       "lines": "16-20",
+       "channels": [
+        "fts",
+        "vector"
+       ]
+      },
+      {
+       "label": "E8",
+       "lines": "1-8",
+       "channels": [
+        "vector"
+       ]
+      }
+     ]
+    },
+    "duration_ms": 15,
+    "created_at": "2026-11-02T14:26:45.742931Z"
+   },
+   {
+    "seq": 6,
+    "attempt": 1,
+    "node": "assess_completeness",
+    "event_type": "completed",
+    "summary": "The excerpts include the failure line(s) L5, L13.",
+    "detail": {
+     "notes": [],
+     "status": "sufficient",
+     "key_lines": [
+      5,
+      13
+     ],
+     "missing_lines": []
+    },
+    "duration_ms": null,
+    "created_at": "2026-11-02T14:26:45.761984Z"
+   },
+   {
+    "seq": 7,
+    "attempt": 1,
+    "node": "diagnose",
+    "event_type": "started",
+    "summary": "Attempt 1: asking ollama (qwen3:4b-instruct-2507-q4_K_M) for a diagnosis.",
+    "detail": {},
+    "duration_ms": null,
+    "created_at": "2026-11-02T14:26:45.779338Z"
+   },
+   {
+    "seq": 8,
+    "attempt": 1,
+    "node": "diagnose",
+    "event_type": "completed",
+    "summary": "Proposed \"dependency_build\" with 4 citation(s).",
+    "detail": {
+     "model": "qwen3:4b-instruct-2507-q4_K_M",
+     "timings": {
+      "eval_ms": 6703.7,
+      "load_ms": 3945.5,
+      "total_ms": 11723.1,
+      "prompt_eval_ms": 1055.2
+     },
+     "attempts": 1,
+     "provider": "ollama",
+     "output_tokens": 356,
+     "prompt_tokens": 2166
+    },
+    "duration_ms": 11930,
+    "created_at": "2026-11-02T14:26:57.710279Z"
+   },
+   {
+    "seq": 9,
+    "attempt": 1,
+    "node": "verify",
+    "event_type": "completed",
+    "summary": "Attempt 1: 4/4 citations verified; status: corroborated.",
+    "detail": {
+     "next": "accept",
+     "notes": [
+      "Cause check: the log states a cause of this kind (L13) and no competing cause. This is strong evidence, not proof."
+     ],
+     "status": "corroborated"
+    },
+    "duration_ms": null,
+    "created_at": "2026-11-02T14:26:57.724476Z"
+   },
+   {
+    "seq": 10,
+    "attempt": 1,
+    "node": "plan_remediation",
+    "event_type": "completed",
+    "summary": "Proposed 3 change(s) for human review (0 with a diff checked against the file).",
+    "detail": {
+     "diffs": 0,
+     "dropped": [],
+     "proposals": 3
+    },
+    "duration_ms": 0,
+    "created_at": "2026-11-02T14:26:57.739351Z"
+   },
+   {
+    "seq": 11,
+    "attempt": 1,
+    "node": "report",
+    "event_type": "completed",
+    "summary": "Report saved: dependency_build (corroborated). Waiting for a human decision on 3 proposal(s).",
+    "detail": {},
+    "duration_ms": null,
+    "created_at": "2026-11-02T14:26:57.755812Z"
+   }
+  ],
+  "f4287a6f-9f5c-40f2-9542-831ede27856e": [
+   {
+    "seq": 1,
+    "attempt": 1,
+    "node": "pipeline",
+    "event_type": "started",
+    "summary": "Attempt 1 of 3.",
+    "detail": {},
+    "duration_ms": null,
+    "created_at": "2026-11-02T14:26:59.867185Z"
+   },
+   {
+    "seq": 2,
+    "attempt": 1,
+    "node": "collect_evidence",
+    "event_type": "completed",
+    "summary": "1 log, 19 lines, 7 error signatures, 7 failure line(s).",
+    "detail": {},
+    "duration_ms": 8,
+    "created_at": "2026-11-02T14:26:59.897447Z"
+   },
+   {
+    "seq": 3,
+    "attempt": 1,
+    "node": "classify",
+    "event_type": "completed",
+    "summary": "Rule-based hint: db_connectivity (score 9, 100% of signals).",
+    "detail": {
+     "scores": {
+      "db_connectivity": 9
+     },
+     "supporting_lines": [
+      12,
+      13,
+      17
+     ]
+    },
+    "duration_ms": null,
+    "created_at": "2026-11-02T14:26:59.903487Z"
+   },
+   {
+    "seq": 4,
+    "attempt": 1,
+    "node": "index",
+    "event_type": "completed",
+    "summary": "Embedded 2 new chunk(s) with qwen3-embedding:0.6b; vector search enabled.",
+    "detail": {
+     "embedded": 2,
+     "embedder": "ollama"
+    },
+    "duration_ms": 3545,
+    "created_at": "2026-11-02T14:27:03.462892Z"
+   },
+   {
+    "seq": 5,
+    "attempt": 1,
+    "node": "retrieve",
+    "event_type": "completed",
+    "summary": "Selected 8 evidence excerpts.",
+    "detail": {
+     "evidence": [
+      {
+       "label": "E1",
+       "lines": "6-19",
+       "channels": [
+        "signature",
+        "fts",
+        "vector"
+       ]
+      },
+      {
+       "label": "E2",
+       "lines": "3-8",
+       "channels": [
+        "fts",
+        "vector"
+       ]
+      },
+      {
+       "label": "E3",
+       "lines": "10-14",
+       "channels": [
+        "fts",
+        "vector"
+       ]
+      },
+      {
+       "label": "E4",
+       "lines": "16-20",
+       "channels": [
+        "fts",
+        "vector"
+       ]
+      },
+      {
+       "label": "E5",
+       "lines": "3-6",
+       "channels": [
+        "fts",
+        "vector"
+       ]
+      },
+      {
+       "label": "E6",
+       "lines": "1-8",
+       "channels": [
+        "fts",
+        "vector"
+       ]
+      },
+      {
+       "label": "E7",
+       "lines": "22-23",
+       "channels": [
+        "fts",
+        "vector"
+       ]
+      },
+      {
+       "label": "E8",
+       "lines": "8-11",
+       "channels": [
+        "fts",
+        "vector"
+       ]
+      }
+     ]
+    },
+    "duration_ms": 12,
+    "created_at": "2026-11-02T14:27:03.488065Z"
+   },
+   {
+    "seq": 6,
+    "attempt": 1,
+    "node": "assess_completeness",
+    "event_type": "completed",
+    "summary": "The excerpts include the failure line(s) L12, L13, L17.",
+    "detail": {
+     "notes": [],
+     "status": "sufficient",
+     "key_lines": [
+      12,
+      13,
+      17
+     ],
+     "missing_lines": []
+    },
+    "duration_ms": null,
+    "created_at": "2026-11-02T14:27:03.503512Z"
+   },
+   {
+    "seq": 7,
+    "attempt": 1,
+    "node": "diagnose",
+    "event_type": "started",
+    "summary": "Attempt 1: asking ollama (qwen3:4b-instruct-2507-q4_K_M) for a diagnosis.",
+    "detail": {},
+    "duration_ms": null,
+    "created_at": "2026-11-02T14:27:03.519684Z"
+   },
+   {
+    "seq": 8,
+    "attempt": 1,
+    "node": "diagnose",
+    "event_type": "completed",
+    "summary": "Proposed \"db_connectivity\" with 4 citation(s).",
+    "detail": {
+     "model": "qwen3:4b-instruct-2507-q4_K_M",
+     "timings": {
+      "eval_ms": 9126.3,
+      "load_ms": 3651.9,
+      "total_ms": 13881.3,
+      "prompt_eval_ms": 1082.2
+     },
+     "attempts": 1,
+     "provider": "ollama",
+     "output_tokens": 483,
+     "prompt_tokens": 2164
+    },
+    "duration_ms": 14084,
+    "created_at": "2026-11-02T14:27:17.603243Z"
+   },
+   {
+    "seq": 9,
+    "attempt": 1,
+    "node": "verify",
+    "event_type": "completed",
+    "summary": "Attempt 1: 4/4 citations verified; status: corroborated.",
+    "detail": {
+     "next": "accept",
+     "notes": [
+      "Cause check: the log states a cause of this kind (L12, L13) and no competing cause. This is strong evidence, not proof."
+     ],
+     "status": "corroborated"
+    },
+    "duration_ms": null,
+    "created_at": "2026-11-02T14:27:17.625527Z"
+   },
+   {
+    "seq": 10,
+    "attempt": 1,
+    "node": "plan_remediation",
+    "event_type": "completed",
+    "summary": "Proposed 3 change(s) for human review (0 with a diff checked against the file).",
+    "detail": {
+     "diffs": 0,
+     "dropped": [],
+     "proposals": 3
+    },
+    "duration_ms": 0,
+    "created_at": "2026-11-02T14:27:17.640589Z"
+   },
+   {
+    "seq": 11,
+    "attempt": 1,
+    "node": "report",
+    "event_type": "completed",
+    "summary": "Report saved: db_connectivity (corroborated). Waiting for a human decision on 3 proposal(s).",
+    "detail": {},
+    "duration_ms": null,
+    "created_at": "2026-11-02T14:27:17.654380Z"
+   }
+  ],
+  "f4349dc9-943c-4363-84c4-267fb14ec74f": [
+   {
+    "seq": 1,
+    "attempt": 1,
+    "node": "pipeline",
+    "event_type": "started",
+    "summary": "Attempt 1 of 3.",
+    "detail": {},
+    "duration_ms": null,
+    "created_at": "2026-11-02T14:27:24.847497Z"
+   },
+   {
+    "seq": 2,
+    "attempt": 1,
+    "node": "collect_evidence",
+    "event_type": "completed",
+    "summary": "1 log, 111 lines, 2 error signatures, 13 failure line(s).",
+    "detail": {},
+    "duration_ms": 12,
+    "created_at": "2026-11-02T14:27:24.885034Z"
+   },
+   {
+    "seq": 3,
+    "attempt": 1,
+    "node": "classify",
+    "event_type": "completed",
+    "summary": "Rule-based hint: missing_env_var (score 3, 100% of signals).",
+    "detail": {
+     "scores": {
+      "missing_env_var": 3
+     },
+     "supporting_lines": [
+      97
+     ]
+    },
+    "duration_ms": null,
+    "created_at": "2026-11-02T14:27:24.891649Z"
+   },
+   {
+    "seq": 4,
+    "attempt": 1,
+    "node": "index",
+    "event_type": "completed",
+    "summary": "Embedded 9 new chunk(s) with qwen3-embedding:0.6b; vector search enabled.",
+    "detail": {
+     "embedded": 9,
+     "embedder": "ollama"
+    },
+    "duration_ms": 713,
+    "created_at": "2026-11-02T14:27:25.623382Z"
+   },
+   {
+    "seq": 5,
+    "attempt": 1,
+    "node": "retrieve",
+    "event_type": "completed",
+    "summary": "Selected 8 evidence excerpts.",
+    "detail": {
+     "evidence": [
+      {
+       "label": "E1",
+       "lines": "103-111",
+       "channels": [
+        "signature",
+        "vector"
+       ]
+      },
+      {
+       "label": "E2",
+       "lines": "1-8",
+       "channels": [
+        "vector"
+       ]
+      },
+      {
+       "label": "E3",
+       "lines": "3-6",
+       "channels": [
+        "vector"
+       ]
+      },
+      {
+       "label": "E4",
+       "lines": "16-20",
+       "channels": [
+        "vector"
+       ]
+      },
+      {
+       "label": "E5",
+       "lines": "1-1",
+       "channels": [
+        "vector"
+       ]
+      },
+      {
+       "label": "E6",
+       "lines": "22-23",
+       "channels": [
+        "vector"
+       ]
+      },
+      {
+       "label": "E7",
+       "lines": "10-13",
+       "channels": [
+        "vector"
+       ]
+      },
+      {
+       "label": "E8",
+       "lines": "1-1",
+       "channels": [
+        "vector"
+       ]
+      }
+     ]
+    },
+    "duration_ms": 9,
+    "created_at": "2026-11-02T14:27:25.645115Z"
+   },
+   {
+    "seq": 6,
+    "attempt": 1,
+    "node": "assess_completeness",
+    "event_type": "info",
+    "summary": "The excerpts miss the failure line(s) L97.",
+    "detail": {
+     "notes": [
+      "The retrieved excerpts miss the failure line(s) L97."
+     ],
+     "status": "missing_lines",
+     "key_lines": [
+      97
+     ],
+     "missing_lines": [
+      97
+     ]
+    },
+    "duration_ms": null,
+    "created_at": "2026-11-02T14:27:25.660161Z"
+   },
+   {
+    "seq": 7,
+    "attempt": 1,
+    "node": "retrieve",
+    "event_type": "completed",
+    "summary": "Targeted retrieval (round 1): added 1 log excerpt(s) covering L97.",
+    "detail": {
+     "evidence": [
+      {
+       "label": "E1",
+       "lines": "43-102",
+       "channels": [
+        "targeted"
+       ]
+      },
+      {
+       "label": "E2",
+       "lines": "103-111",
+       "channels": [
+        "signature",
+        "vector"
+       ]
+      },
+      {
+       "label": "E3",
+       "lines": "1-8",
+       "channels": [
+        "vector"
+       ]
+      },
+      {
+       "label": "E4",
+       "lines": "3-6",
+       "channels": [
+        "vector"
+       ]
+      },
+      {
+       "label": "E5",
+       "lines": "16-20",
+       "channels": [
+        "vector"
+       ]
+      },
+      {
+       "label": "E6",
+       "lines": "1-1",
+       "channels": [
+        "vector"
+       ]
+      },
+      {
+       "label": "E7",
+       "lines": "22-23",
+       "channels": [
+        "vector"
+       ]
+      },
+      {
+       "label": "E8",
+       "lines": "10-13",
+       "channels": [
+        "vector"
+       ]
+      },
+      {
+       "label": "E9",
+       "lines": "1-1",
+       "channels": [
+        "vector"
+       ]
+      }
+     ]
+    },
+    "duration_ms": 5,
+    "created_at": "2026-11-02T14:27:25.680322Z"
+   },
+   {
+    "seq": 8,
+    "attempt": 1,
+    "node": "assess_completeness",
+    "event_type": "completed",
+    "summary": "The excerpts include the failure line(s) L97.",
+    "detail": {
+     "notes": [],
+     "status": "sufficient",
+     "key_lines": [
+      97
+     ],
+     "missing_lines": []
+    },
+    "duration_ms": null,
+    "created_at": "2026-11-02T14:27:25.696721Z"
+   },
+   {
+    "seq": 9,
+    "attempt": 1,
+    "node": "diagnose",
+    "event_type": "started",
+    "summary": "Attempt 1: asking ollama (qwen3:4b-instruct-2507-q4_K_M) for a diagnosis.",
+    "detail": {},
+    "duration_ms": null,
+    "created_at": "2026-11-02T14:27:25.712271Z"
+   },
+   {
+    "seq": 10,
+    "attempt": 1,
+    "node": "diagnose",
+    "event_type": "completed",
+    "summary": "Proposed \"missing_env_var\" with 4 citation(s).",
+    "detail": {
+     "model": "qwen3:4b-instruct-2507-q4_K_M",
+     "timings": {
+      "eval_ms": 6370.4,
+      "load_ms": 3509.6,
+      "total_ms": 11344.1,
+      "prompt_eval_ms": 1443.1
+     },
+     "attempts": 1,
+     "provider": "ollama",
+     "output_tokens": 327,
+     "prompt_tokens": 2839
+    },
+    "duration_ms": 11589,
+    "created_at": "2026-11-02T14:27:37.302338Z"
+   },
+   {
+    "seq": 11,
+    "attempt": 1,
+    "node": "verify",
+    "event_type": "completed",
+    "summary": "Attempt 1: 4/4 citations verified; status: corroborated.",
+    "detail": {
+     "next": "accept",
+     "notes": [
+      "Cause check: the log states a cause of this kind (L97) and no competing cause. This is strong evidence, not proof."
+     ],
+     "status": "corroborated"
+    },
+    "duration_ms": null,
+    "created_at": "2026-11-02T14:27:37.320401Z"
+   },
+   {
+    "seq": 12,
+    "attempt": 1,
+    "node": "plan_remediation",
+    "event_type": "completed",
+    "summary": "Proposed 3 change(s) for human review (0 with a diff checked against the file).",
+    "detail": {
+     "diffs": 0,
+     "dropped": [],
+     "proposals": 3
+    },
+    "duration_ms": 0,
+    "created_at": "2026-11-02T14:27:37.336603Z"
+   },
+   {
+    "seq": 13,
+    "attempt": 1,
+    "node": "report",
+    "event_type": "completed",
+    "summary": "Report saved: missing_env_var (corroborated). Waiting for a human decision on 3 proposal(s).",
+    "detail": {},
+    "duration_ms": null,
+    "created_at": "2026-11-02T14:27:37.352091Z"
+   }
+  ],
+  "fd480d9c-36f6-480a-9b64-5324da220efb": [
+   {
+    "seq": 1,
+    "attempt": 1,
+    "node": "pipeline",
+    "event_type": "started",
+    "summary": "Attempt 1 of 3.",
+    "detail": {},
+    "duration_ms": null,
+    "created_at": "2026-11-02T14:27:41.505133Z"
+   },
+   {
+    "seq": 2,
+    "attempt": 1,
+    "node": "collect_evidence",
+    "event_type": "completed",
+    "summary": "1 log, 59 lines, 3 error signatures, 5 failure line(s).",
+    "detail": {},
+    "duration_ms": 10,
+    "created_at": "2026-11-02T14:27:41.542340Z"
+   },
+   {
+    "seq": 3,
+    "attempt": 1,
+    "node": "classify",
+    "event_type": "completed",
+    "summary": "Rule-based hint: test_regression (score 3, 100% of signals).",
+    "detail": {
+     "scores": {
+      "test_regression": 3
+     },
+     "supporting_lines": [
+      53
+     ]
+    },
+    "duration_ms": null,
+    "created_at": "2026-11-02T14:27:41.550529Z"
+   },
+   {
+    "seq": 4,
+    "attempt": 1,
+    "node": "index",
+    "event_type": "completed",
+    "summary": "Embedded 9 new chunk(s) with qwen3-embedding:0.6b; vector search enabled.",
+    "detail": {
+     "embedded": 9,
+     "embedder": "ollama"
+    },
+    "duration_ms": 678,
+    "created_at": "2026-11-02T14:27:42.246059Z"
+   },
+   {
+    "seq": 5,
+    "attempt": 1,
+    "node": "retrieve",
+    "event_type": "completed",
+    "summary": "Selected 8 evidence excerpts.",
+    "detail": {
+     "evidence": [
+      {
+       "label": "E1",
+       "lines": "47-59",
+       "channels": [
+        "signature",
+        "fts",
+        "vector"
+       ]
+      },
+      {
+       "label": "E2",
+       "lines": "5-10",
+       "channels": [
+        "fts",
+        "vector"
+       ]
+      },
+      {
+       "label": "E3",
+       "lines": "3-6",
+       "channels": [
+        "fts",
+        "vector"
+       ]
+      },
+      {
+       "label": "E4",
+       "lines": "8-11",
+       "channels": [
+        "fts",
+        "vector"
+       ]
+      },
+      {
+       "label": "E5",
+       "lines": "3-6",
+       "channels": [
+        "fts",
+        "vector"
+       ]
+      },
+      {
+       "label": "E6",
+       "lines": "1-8",
+       "channels": [
+        "vector"
+       ]
+      },
+      {
+       "label": "E7",
+       "lines": "3-5",
+       "channels": [
+        "vector"
+       ]
+      },
+      {
+       "label": "E8",
+       "lines": "16-20",
+       "channels": [
+        "vector"
+       ]
+      }
+     ]
+    },
+    "duration_ms": 12,
+    "created_at": "2026-11-02T14:27:42.270585Z"
+   },
+   {
+    "seq": 6,
+    "attempt": 1,
+    "node": "assess_completeness",
+    "event_type": "completed",
+    "summary": "The excerpts include the failure line(s) L53.",
+    "detail": {
+     "notes": [],
+     "status": "sufficient",
+     "key_lines": [
+      53
+     ],
+     "missing_lines": []
+    },
+    "duration_ms": null,
+    "created_at": "2026-11-02T14:27:42.290201Z"
+   },
+   {
+    "seq": 7,
+    "attempt": 1,
+    "node": "diagnose",
+    "event_type": "started",
+    "summary": "Attempt 1: asking ollama (qwen3:4b-instruct-2507-q4_K_M) for a diagnosis.",
+    "detail": {},
+    "duration_ms": null,
+    "created_at": "2026-11-02T14:27:42.311919Z"
+   },
+   {
+    "seq": 8,
+    "attempt": 1,
+    "node": "diagnose",
+    "event_type": "completed",
+    "summary": "Proposed \"test_regression\" with 4 citation(s).",
+    "detail": {
+     "model": "qwen3:4b-instruct-2507-q4_K_M",
+     "timings": {
+      "eval_ms": 5847.5,
+      "load_ms": 4216.5,
+      "total_ms": 11086.9,
+      "prompt_eval_ms": 1002.5
+     },
+     "attempts": 1,
+     "provider": "ollama",
+     "output_tokens": 309,
+     "prompt_tokens": 1926
+    },
+    "duration_ms": 11301,
+    "created_at": "2026-11-02T14:27:53.613570Z"
+   },
+   {
+    "seq": 9,
+    "attempt": 1,
+    "node": "verify",
+    "event_type": "completed",
+    "summary": "Attempt 1: 4/4 citations verified; status: plausible.",
+    "detail": {
+     "next": "accept",
+     "notes": [
+      "Cause not confirmed: a failing assertion shows that a test failed, not why: the log cannot show that the code under test changed, and a cause stated in unfamiliar wording would not be recognised."
+     ],
+     "status": "plausible"
+    },
+    "duration_ms": null,
+    "created_at": "2026-11-02T14:27:53.633911Z"
+   },
+   {
+    "seq": 10,
+    "attempt": 1,
+    "node": "plan_remediation",
+    "event_type": "completed",
+    "summary": "Proposed 5 change(s) for human review (2 with a diff checked against the file).",
+    "detail": {
+     "diffs": 2,
+     "dropped": [],
+     "proposals": 5
+    },
+    "duration_ms": 6212,
+    "created_at": "2026-11-02T14:27:59.859812Z"
+   },
+   {
+    "seq": 11,
+    "attempt": 1,
+    "node": "report",
+    "event_type": "completed",
+    "summary": "Report saved: test_regression (plausible). Waiting for a human decision on 5 proposal(s).",
+    "detail": {},
+    "duration_ms": null,
+    "created_at": "2026-11-02T14:27:59.882550Z"
+   }
+  ],
+  "ac8f1a3d-fb7b-41f1-818c-7383d6b8c081": [
+   {
+    "seq": 1,
+    "attempt": 1,
+    "node": "pipeline",
+    "event_type": "started",
+    "summary": "Attempt 1 of 3.",
+    "detail": {},
+    "duration_ms": null,
+    "created_at": "2026-11-02T14:28:06.036775Z"
+   },
+   {
+    "seq": 2,
+    "attempt": 1,
+    "node": "collect_evidence",
+    "event_type": "completed",
+    "summary": "1 log, 70 lines, 0 error signatures, 0 failure line(s).",
+    "detail": {},
+    "duration_ms": 11,
+    "created_at": "2026-11-02T14:28:06.073139Z"
+   },
+   {
+    "seq": 3,
+    "attempt": 1,
+    "node": "classify",
+    "event_type": "completed",
+    "summary": "Rule-based hint: unknown (score 0, 0% of signals).",
+    "detail": {
+     "scores": {},
+     "supporting_lines": []
+    },
+    "duration_ms": null,
+    "created_at": "2026-11-02T14:28:06.079707Z"
+   },
+   {
+    "seq": 4,
+    "attempt": 1,
+    "node": "index",
+    "event_type": "completed",
+    "summary": "Embedded 6 new chunk(s) with qwen3-embedding:0.6b; vector search enabled.",
+    "detail": {
+     "embedded": 6,
+     "embedder": "ollama"
+    },
+    "duration_ms": 758,
+    "created_at": "2026-11-02T14:28:06.851666Z"
+   },
+   {
+    "seq": 5,
+    "attempt": 1,
+    "node": "retrieve",
+    "event_type": "completed",
+    "summary": "Selected 8 evidence excerpts.",
+    "detail": {
+     "evidence": [
+      {
+       "label": "E1",
+       "lines": "29-70",
+       "channels": [
+        "vector"
+       ]
+      },
+      {
+       "label": "E2",
+       "lines": "4-13",
+       "channels": [
+        "vector"
+       ]
+      },
+      {
+       "label": "E3",
+       "lines": "1-2",
+       "channels": [
+        "vector"
+       ]
+      },
+      {
+       "label": "E4",
+       "lines": "3-6",
+       "channels": [
+        "vector"
+       ]
+      },
+      {
+       "label": "E5",
+       "lines": "1-1",
+       "channels": [
+        "vector"
+       ]
+      },
+      {
+       "label": "E6",
+       "lines": "21-24",
+       "channels": [
+        "vector"
+       ]
+      },
+      {
+       "label": "E7",
+       "lines": "10-13",
+       "channels": [
+        "vector"
+       ]
+      },
+      {
+       "label": "E8",
+       "lines": "1-8",
+       "channels": [
+        "vector"
+       ]
+      }
+     ]
+    },
+    "duration_ms": 9,
+    "created_at": "2026-11-02T14:28:06.869020Z"
+   },
+   {
+    "seq": 6,
+    "attempt": 1,
+    "node": "assess_completeness",
+    "event_type": "info",
+    "summary": "The log does not show a failure; Kensa will not ask the model to guess.",
+    "detail": {
+     "notes": [
+      "The log (70 lines) shows no failure: no error line, failing exit status or failing test.",
+      "The log says it is truncated (L70); the failing step's output may be incomplete."
+     ],
+     "status": "no_failure_shown",
+     "key_lines": [],
+     "missing_lines": []
+    },
+    "duration_ms": null,
+    "created_at": "2026-11-02T14:28:06.886796Z"
+   },
+   {
+    "seq": 7,
+    "attempt": 1,
+    "node": "abstain",
+    "event_type": "completed",
+    "summary": "Cause not established. The log (70 lines) shows no failure: no error line, failing exit status or failing test.",
+    "detail": {},
+    "duration_ms": null,
+    "created_at": "2026-11-02T14:28:06.901828Z"
+   },
+   {
+    "seq": 8,
+    "attempt": 1,
+    "node": "report",
+    "event_type": "completed",
+    "summary": "Report saved: unknown (not_established).",
+    "detail": {},
+    "duration_ms": null,
+    "created_at": "2026-11-02T14:28:06.918221Z"
+   }
+  ]
+ },
+ "documents": {
+  "cfa7ef90-7181-4ac9-a491-1977a17d61e2/4461461d-6c52-4945-bf50-5b556c2ec28c": {
+   "id": "4461461d-6c52-4945-bf50-5b556c2ec28c",
+   "name": "missing-env-var.log",
+   "line_count": 29,
+   "byte_size": 1680,
+   "redaction_count": 0,
+   "lines": [
+    "##[group]Run actions/setup-node@v4",
+    "with:",
+    "  node-version: 24",
+    "  cache: npm",
+    "##[endgroup]",
+    "Found in cache @ /opt/hostedtoolcache/node/24.20.0/x64",
+    "##[group]Run npm ci",
+    "npm ci",
+    "shell: /usr/bin/bash -e {0}",
+    "##[endgroup]",
+    "added 412 packages in 14s",
+    "##[group]Run npm run build",
+    "npm run build",
+    "shell: /usr/bin/bash -e {0}",
+    "##[endgroup]",
+    "",
+    "> storefront@2.3.0 build",
+    "> node scripts/check-env.mjs && vite build",
+    "",
+    "file:///home/runner/work/storefront/storefront/scripts/check-env.mjs:9",
+    "    throw new Error(`Missing required environment variable: ${name}`);",
+    "          ^",
+    "",
+    "Error: Missing required environment variable: VITE_API_BASE_URL",
+    "    at requireEnv (file:///home/runner/work/storefront/storefront/scripts/check-env.mjs:9:11)",
+    "    at file:///home/runner/work/storefront/storefront/scripts/check-env.mjs:14:1",
+    "",
+    "Node.js v24.20.0",
+    "##[error]Process completed with exit code 1."
+   ]
+  },
+  "aa7137a8-3dce-4b84-adae-b945bc356fbe/7b5f5cb0-6732-47f9-840d-4b3f37fa031e": {
+   "id": "7b5f5cb0-6732-47f9-840d-4b3f37fa031e",
+   "name": "dependency-resolution.log",
+   "line_count": 22,
+   "byte_size": 1512,
+   "redaction_count": 0,
+   "lines": [
+    "##[group]Run npm ci",
+    "npm ci",
+    "shell: /usr/bin/bash -e {0}",
+    "##[endgroup]",
+    "npm error code ERESOLVE",
+    "npm error ERESOLVE could not resolve",
+    "npm error",
+    "npm error While resolving: chart-widgets@0.9.2",
+    "npm error Found: react@19.3.1",
+    "npm error node_modules/react",
+    "npm error   react@\"^19.3.0\" from the root project",
+    "npm error",
+    "npm error Could not resolve dependency:",
+    "npm error peer react@\"^17.0.0 || ^18.0.0\" from legacy-tooltip@3.1.0",
+    "npm error node_modules/legacy-tooltip",
+    "npm error   legacy-tooltip@\"^3.1.0\" from the root project",
+    "npm error",
+    "npm error Fix the upstream dependency conflict, or retry",
+    "npm error this command with --force or --legacy-peer-deps",
+    "npm error to accept an incorrect (and potentially broken) dependency resolution.",
+    "npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-10-02T08_12_00_000Z-debug-0.log",
+    "##[error]Process completed with exit code 1."
+   ]
+  },
+  "f4287a6f-9f5c-40f2-9542-831ede27856e/113de319-1e77-49f9-bb44-2037a617076c": {
+   "id": "113de319-1e77-49f9-bb44-2037a617076c",
+   "name": "db-connection.log",
+   "line_count": 19,
+   "byte_size": 1484,
+   "redaction_count": 0,
+   "lines": [
+    "##[group]Run uv run pytest -q",
+    "uv run pytest -q",
+    "shell: /usr/bin/bash -e {0}",
+    "env:",
+    "  DATABASE_URL: postgresql://app:***@localhost:5432/app_test",
+    "##[endgroup]",
+    "==================================== ERRORS ====================================",
+    "___________________ ERROR at setup of test_create_order ___________________",
+    "",
+    "    def connect(conninfo: str = \"\", **kwargs) -> Connection:",
+    ">       raise last_ex.with_traceback(None)",
+    "E       psycopg.OperationalError: connection failed: connection to server at \"127.0.0.1\", port 5432 failed: Connection refused",
+    "E       \tIs the server running on that host and accepting TCP/IP connections?",
+    "",
+    ".venv/lib/python3.13/site-packages/psycopg/connection.py:118: OperationalError",
+    "=========================== short test summary info ============================",
+    "ERROR tests/test_orders.py::test_create_order - psycopg.OperationalError: connection failed",
+    "1 error in 2.41s",
+    "##[error]Process completed with exit code 1."
+   ]
+  },
+  "f4349dc9-943c-4363-84c4-267fb14ec74f/dfc02dcd-474c-4736-8718-640767eb0522": {
+   "id": "dfc02dcd-474c-4736-8718-640767eb0522",
+   "name": "job.log",
+   "line_count": 111,
+   "byte_size": 7185,
+   "redaction_count": 0,
+   "lines": [
+    "Current runner version: '2.328.0'",
+    "##[group]Operating System",
+    "Ubuntu",
+    "24.04.3",
+    "LTS",
+    "##[endgroup]",
+    "##[group]Runner Image",
+    "Image: ubuntu-24.04",
+    "Version: 20261019.1",
+    "##[endgroup]",
+    "##[group]GITHUB_TOKEN Permissions",
+    "Contents: read",
+    "Metadata: read",
+    "##[endgroup]",
+    "Prepare workflow directory",
+    "Prepare all required actions",
+    "Download action repository 'actions/checkout@v4'",
+    "Complete job name: native",
+    "##[group]Run actions/checkout@v4",
+    "with:",
+    "  repository: shoreline-tools/coast",
+    "  fetch-depth: 1",
+    "##[endgroup]",
+    "Syncing repository: shoreline-tools/coast",
+    "Fetching the repository",
+    "Checking out the ref",
+    "##[group]Run cmake -S . -B build && cmake --build build",
+    "cmake -S . -B build && cmake --build build",
+    "shell: /usr/bin/bash -e {0}",
+    "##[endgroup]",
+    "-- The CXX compiler identification is GNU 13.3.0",
+    "-- Detecting CXX compiler ABI info",
+    "-- Detecting CXX compiler ABI info - done",
+    "-- Check for working CXX compiler: /usr/bin/c++ - skipped",
+    "-- Detecting CXX compile features",
+    "-- Detecting CXX compile features - done",
+    "-- Configuring done (0.5s)",
+    "-- Generating done (0.0s)",
+    "-- Build files have been written to: /home/runner/work/coast/coast/build",
+    "[ 50%] Building CXX object CMakeFiles/coast_check.dir/tests/check.cpp.o",
+    "[100%] Linking CXX executable coast_check",
+    "[100%] Built target coast_check",
+    "##[group]Run ctest --test-dir build -V",
+    "ctest --test-dir build -V",
+    "shell: /usr/bin/bash -e {0}",
+    "##[endgroup]",
+    "Internal ctest changing into directory: /home/runner/work/coast/coast/build",
+    "UpdateCTestConfiguration  from :/home/runner/work/coast/coast/build/DartConfiguration.tcl",
+    "UpdateCTestConfiguration  from :/home/runner/work/coast/coast/build/DartConfiguration.tcl",
+    "Test project /home/runner/work/coast/coast/build",
+    "Constructing a list of tests",
+    "Done constructing a list of tests",
+    "Updating test list for fixtures",
+    "Added 0 tests to meet fixture requirements",
+    "Checking test dependency graph...",
+    "Checking test dependency graph end",
+    "test 1",
+    "    Start 1: scan",
+    "1: Test command: /home/runner/work/coast/coast/build/coast_check \"scan\"",
+    "1: Working Directory: /home/runner/work/coast/coast/build",
+    "1: Test timeout computed to be: 10000000",
+    "1: scan ok",
+    "1/6 Test #1: scan .............................   Passed    0.00 sec",
+    "test 2",
+    "    Start 2: trim",
+    "2: Test command: /home/runner/work/coast/coast/build/coast_check \"trim\"",
+    "2: Working Directory: /home/runner/work/coast/coast/build",
+    "2: Test timeout computed to be: 10000000",
+    "2: trim ok",
+    "2/6 Test #2: trim .............................   Passed    0.00 sec",
+    "test 3",
+    "    Start 3: parse",
+    "3: Test command: /home/runner/work/coast/coast/build/coast_check \"parse\"",
+    "3: Working Directory: /home/runner/work/coast/coast/build",
+    "3: Test timeout computed to be: 10000000",
+    "3: parse ok",
+    "3/6 Test #3: parse ............................   Passed    0.00 sec",
+    "test 4",
+    "    Start 4: format",
+    "4: Test command: /home/runner/work/coast/coast/build/coast_check \"format\"",
+    "4: Working Directory: /home/runner/work/coast/coast/build",
+    "4: Test timeout computed to be: 10000000",
+    "4: format ok",
+    "4/6 Test #4: format ...........................   Passed    0.00 sec",
+    "test 5",
+    "    Start 5: index",
+    "5: Test command: /home/runner/work/coast/coast/build/coast_check \"index\"",
+    "5: Working Directory: /home/runner/work/coast/coast/build",
+    "5: Test timeout computed to be: 10000000",
+    "5: index ok",
+    "5/6 Test #5: index ............................   Passed    0.00 sec",
+    "test 6",
+    "    Start 6: scope",
+    "6: Test command: /home/runner/work/coast/coast/build/coast_check \"scope\"",
+    "6: Working Directory: /home/runner/work/coast/coast/build",
+    "6: Test timeout computed to be: 10000000",
+    "6: COAST_SCOPE must be set",
+    "6/6 Test #6: scope ............................***Failed    0.00 sec",
+    "",
+    "83% tests passed, 1 tests failed out of 6",
+    "",
+    "Total Test time (real) =   0.01 sec",
+    "",
+    "The following tests FAILED:",
+    "\t  6 - scope (Failed)",
+    "Errors while running CTest",
+    "Output from these tests are in: /home/runner/work/coast/coast/build/Testing/Temporary/LastTest.log",
+    "Use \"--rerun-failed --output-on-failure\" to re-run the failed cases verbosely.",
+    "##[error]Process completed with exit code 8.",
+    "Post job cleanup.",
+    "Cleaning up orphan processes"
+   ]
+  },
+  "fd480d9c-36f6-480a-9b64-5324da220efb/b5a7a999-8d38-47ab-a901-bd17e35ffa24": {
+   "id": "b5a7a999-8d38-47ab-a901-bd17e35ffa24",
+   "name": "job.log",
+   "line_count": 59,
+   "byte_size": 3079,
+   "redaction_count": 0,
+   "lines": [
+    "Current runner version: '2.328.0'",
+    "##[group]Runner Image Provisioner",
+    "Hosted Compute Agent",
+    "Version: 20260908.1",
+    "##[endgroup]",
+    "##[group]Operating System",
+    "Ubuntu",
+    "24.04.3",
+    "LTS",
+    "##[endgroup]",
+    "##[group]Runner Image",
+    "Image: ubuntu-24.04",
+    "Version: 20260908.1.0",
+    "##[endgroup]",
+    "##[group]GITHUB_TOKEN Permissions",
+    "Contents: read",
+    "Metadata: read",
+    "##[endgroup]",
+    "Prepare workflow directory",
+    "Prepare all required actions",
+    "Getting action download info",
+    "Download action repository 'actions/checkout@v4'",
+    "Download action repository 'actions/setup-go@v5'",
+    "Complete job name: test",
+    "##[group]Run actions/checkout@v4",
+    "with:",
+    "  repository: northshore/tide",
+    "  fetch-depth: 1",
+    "  clean: true",
+    "##[endgroup]",
+    "Syncing repository: northshore/tide",
+    "Getting Git version info",
+    "git version 2.51.0",
+    "Initializing the repository",
+    "Fetching the repository",
+    "Checking out the ref",
+    "##[group]Run actions/setup-go@v5",
+    "with:",
+    "  go-version: 1.23",
+    "  check-latest: false",
+    "  cache: false",
+    "##[endgroup]",
+    "Setup go version spec 1.23",
+    "Found in cache @ /opt/hostedtoolcache/go/1.23.12/x64",
+    "Added go to the path",
+    "Successfully set up Go version 1.23",
+    "##[group]Run go test -v ./...",
+    "go test -v ./...",
+    "shell: /usr/bin/bash -e {0}",
+    "##[endgroup]",
+    "=== RUN   TestHalfUp",
+    "    round_test.go:8: HalfUp(150) = 1; want 2",
+    "--- FAIL: TestHalfUp (0.00s)",
+    "FAIL",
+    "FAIL\t   example.com/tide\t0.002s",
+    "FAIL",
+    "##[error]Process completed with exit code 1.",
+    "Post job cleanup.",
+    "Cleaning up orphan processes"
+   ]
+  },
+  "ac8f1a3d-fb7b-41f1-818c-7383d6b8c081/08bd496e-aac6-4663-b3bf-6a842bfe9e87": {
+   "id": "08bd496e-aac6-4663-b3bf-6a842bfe9e87",
+   "name": "job.log",
+   "line_count": 70,
+   "byte_size": 5192,
+   "redaction_count": 0,
+   "lines": [
+    "Current runner version: '2.328.0'",
+    "##[group]Operating System",
+    "Ubuntu",
+    "24.04.3",
+    "LTS",
+    "##[endgroup]",
+    "##[group]Runner Image",
+    "Image: ubuntu-24.04",
+    "Version: 20261012.1",
+    "##[endgroup]",
+    "##[group]GITHUB_TOKEN Permissions",
+    "Contents: read",
+    "Metadata: read",
+    "##[endgroup]",
+    "Prepare workflow directory",
+    "Prepare all required actions",
+    "Download action repository 'actions/checkout@v4'",
+    "Complete job name: import",
+    "##[group]Run actions/checkout@v4",
+    "with:",
+    "  repository: orchard-ops/plum",
+    "  fetch-depth: 1",
+    "##[endgroup]",
+    "Syncing repository: orchard-ops/plum",
+    "Getting Git version info",
+    "git version 2.51.0",
+    "Fetching the repository",
+    "Checking out the ref",
+    "##[group]Run g++ -v -std=c++17 src/main.cpp -o importer",
+    "g++ -v -std=c++17 src/main.cpp -o importer",
+    "./importer",
+    "shell: /usr/bin/bash -e {0}",
+    "env:",
+    "  PLUM_INPUT: ***",
+    "##[endgroup]",
+    "Using built-in specs.",
+    "COLLECT_GCC=g++",
+    "COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/13/lto-wrapper",
+    "Target: x86_64-linux-gnu",
+    "Configured with: ../src/configure -v --enable-languages=c,c++ --prefix=/usr",
+    "Thread model: posix",
+    "Supported LTO compression algorithms: zlib zstd",
+    "gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04)",
+    "COLLECT_GCC_OPTIONS='-v' '-std=c++17' '-o' 'importer' '-shared-libgcc' '-mtune=generic' '-march=x86-64'",
+    " /usr/lib/gcc/x86_64-linux-gnu/13/cc1plus -quiet -v -imultiarch x86_64-linux-gnu src/main.cpp -quiet -dumpbase importer-main.cpp -mtune=generic -march=x86-64 -std=c++17 -version -o /tmp/cc1.s",
+    "GNU C++17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)",
+    "compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1",
+    "GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072",
+    "ignoring nonexistent directory \"/usr/local/include/x86_64-linux-gnu\"",
+    "ignoring nonexistent directory \"/usr/lib/gcc/x86_64-linux-gnu/13/../../../../x86_64-linux-gnu/include\"",
+    "#include \"...\" search starts here:",
+    "#include <...> search starts here:",
+    " /usr/include/c++/13",
+    " /usr/include/x86_64-linux-gnu/c++/13",
+    " /usr/include/c++/13/backward",
+    " /usr/lib/gcc/x86_64-linux-gnu/13/include",
+    " /usr/local/include",
+    " /usr/include/x86_64-linux-gnu",
+    " /usr/include",
+    "End of search list.",
+    "GNU C++17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)",
+    "Compiler executable checksum: 2468abcdef0123456789abcdef012345",
+    " as -v --64 -o /tmp/cc1.o /tmp/cc1.s",
+    "GNU assembler version 2.42 (x86_64-linux-gnu) using BFD version 2.42",
+    "COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/",
+    "LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/x86_64-linux-gnu/:/usr/lib/",
+    "COLLECT_GCC_OPTIONS='-v' '-std=c++17' '-o' 'importer' '-shared-libgcc' '-mtune=generic' '-march=x86-64'",
+    " /usr/lib/gcc/x86_64-linux-gnu/13/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/13/liblto_plugin.so -pie -o importer /usr/lib/x86_64-linux-gnu/Scrt1.o /usr/lib/x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/13 /tmp/cc1.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o /usr/lib/x86_64-linux-gnu/crtn.o",
+    "COLLECT_GCC_OPTIONS='-v' '-std=c++17' '-o' 'importer' '-shared-libgcc' '-mtune=generic' '-march=x86-64'",
+    "##[warning]Log truncated"
+   ]
+  }
+ },
+ "samples": [
+  {
+   "id": "missing-env-var",
+   "title": "Frontend build fails an environment check",
+   "description": "A Vite build stops in a pre-build script before compiling.",
+   "synthetic": true
+  },
+  {
+   "id": "dependency-resolution",
+   "title": "npm ci cannot resolve dependencies",
+   "description": "Dependency installation fails before any build step runs.",
+   "synthetic": true
+  },
+  {
+   "id": "db-connection",
+   "title": "Test setup errors in a Python service",
+   "description": "pytest errors while setting up a test that needs a database.",
+   "synthetic": true
+  }
+ ]
+}

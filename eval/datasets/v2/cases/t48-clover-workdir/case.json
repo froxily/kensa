@@ -1,0 +1,17 @@
+{
+  "id": "t48-clover-workdir",
+  "split": "test",
+  "category": "workflow_path",
+  "kind": "masked",
+  "difficulty": "medium",
+  "ecosystem": "dotnet",
+  "title": "NUnit process check uses a missing working directory",
+  "root_cause": "The workflow supplies audit/catalogs as the child process working directory, while the checkout contains audit/catalog. Process.Start cannot enter the requested directory and NUnit reports the test as failed.",
+  "fix_keywords": ["audit/catalog", "CLOVER_RUN_DIR"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 44, "end_line": 48, "why": "The test output reports an invalid working directory."},
+    {"path": ".github/workflows/catalog-nunit.yml", "start_line": 11, "end_line": 14, "why": "The workflow supplies the plural directory."},
+    {"path": "CatalogChecks/CatalogProcessTests.cs", "start_line": 6, "end_line": 11, "why": "The test uses that value as the process working directory."},
+    {"path": "audit/catalog/contents.txt", "start_line": 1, "end_line": 1, "why": "The existing catalog directory is singular."}
+  ]
+}

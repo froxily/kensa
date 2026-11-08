@@ -1,0 +1,57 @@
+2026-09-22T08:00:00.0000000Z Current runner version: '2.328.0'
+2026-09-22T08:00:00.1000000Z ##[group]Runner Image Provisioner
+2026-09-22T08:00:00.2000000Z Hosted Compute Agent
+2026-09-22T08:00:00.3000000Z Version: 20260908.1
+2026-09-22T08:00:00.4000000Z ##[endgroup]
+2026-09-22T08:00:00.5000000Z ##[group]Operating System
+2026-09-22T08:00:00.6000000Z Ubuntu
+2026-09-22T08:00:00.7000000Z 22.04.5
+2026-09-22T08:00:00.8000000Z LTS
+2026-09-22T08:00:00.9000000Z ##[endgroup]
+2026-09-22T08:00:01.0000000Z ##[group]Runner Image
+2026-09-22T08:00:01.1000000Z Image: ubuntu-22.04
+2026-09-22T08:00:01.2000000Z Version: 20260908.1
+2026-09-22T08:00:01.3000000Z ##[endgroup]
+2026-09-22T08:00:01.4000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-22T08:00:01.5000000Z Contents: read
+2026-09-22T08:00:01.6000000Z Metadata: read
+2026-09-22T08:00:01.7000000Z ##[endgroup]
+2026-09-22T08:00:01.8000000Z Prepare workflow directory
+2026-09-22T08:00:01.9000000Z Prepare all required actions
+2026-09-22T08:00:02.0000000Z Getting action download info
+2026-09-22T08:00:02.1000000Z Download action repository 'actions/checkout@v4'
+2026-09-22T08:00:02.2000000Z Complete job name: smoke
+2026-09-22T08:00:03.0000000Z ##[group]Run actions/checkout@v4
+2026-09-22T08:00:03.1000000Z with:
+2026-09-22T08:00:03.2000000Z   repository: plateau-lab/mesa
+2026-09-22T08:00:03.3000000Z   clean: true
+2026-09-22T08:00:03.4000000Z   fetch-depth: 1
+2026-09-22T08:00:03.5000000Z ##[endgroup]
+2026-09-22T08:00:03.6000000Z Syncing repository: plateau-lab/mesa
+2026-09-22T08:00:03.7000000Z Getting Git version info
+2026-09-22T08:00:03.8000000Z git version 2.51.0
+2026-09-22T08:00:04.0000000Z Initializing the repository
+2026-09-22T08:00:04.2000000Z Fetching the repository
+2026-09-22T08:00:04.4000000Z Checking out the ref
+2026-09-22T08:00:04.5000000Z ##[group]Run g++ -std=c++17 src/smoke.cpp -o smoke
+2026-09-22T08:00:04.6000000Z g++ -std=c++17 src/smoke.cpp -o smoke
+2026-09-22T08:00:04.7000000Z shell: /usr/bin/bash -e {0}
+2026-09-22T08:00:04.8000000Z ##[endgroup]
+2026-09-22T08:00:05.5000000Z ##[group]Run ./smoke
+2026-09-22T08:00:05.6000000Z ./smoke
+2026-09-22T08:00:05.7000000Z shell: /usr/bin/bash -e {0}
+2026-09-22T08:00:05.8000000Z ##[endgroup]
+2026-09-22T08:00:05.9000000Z MESA_DATA_DIR is not set
+2026-09-22T08:00:06.0000000Z ERROR: failed to open database file
+2026-09-22T08:00:06.1000000Z ##[error]Process completed with exit code 1.
+2026-09-22T08:00:06.2000000Z Post job cleanup.
+2026-09-22T08:00:06.3000000Z [command]/usr/bin/git version
+2026-09-22T08:00:06.4000000Z git version 2.51.0
+2026-09-22T08:00:06.5000000Z Temporarily overriding HOME before making global git config changes
+2026-09-22T08:00:06.6000000Z Adding repository directory to the temporary git global config as a safe directory
+2026-09-22T08:00:06.7000000Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/mesa/mesa
+2026-09-22T08:00:06.8000000Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-09-22T08:00:06.9000000Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-09-22T08:00:07.0000000Z http.https://github.com/.extraheader
+2026-09-22T08:00:07.1000000Z Removing credentials config
+2026-09-22T08:00:07.2000000Z Cleaning up orphan processes

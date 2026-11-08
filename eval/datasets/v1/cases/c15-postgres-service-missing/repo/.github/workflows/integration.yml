@@ -1,0 +1,25 @@
+name: Inventory integration
+on:
+  push:
+  pull_request:
+jobs:
+  integration:
+    runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: postgresql://inventory:***@127.0.0.1:5432/inventory_test
+    steps:
+      - name: Get source
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Check database tests
+        run: pytest -v tests
+      - name: Collect reports
+        if: always()
+        run: echo "Integration run finished"
+    timeout-minutes: 10

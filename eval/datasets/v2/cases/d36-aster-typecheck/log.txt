@@ -1,0 +1,77 @@
+2026-10-19T09:00:00.0000000Z Current runner version: '2.328.0'
+2026-10-19T09:00:00.1000000Z ##[group]Operating System
+2026-10-19T09:00:00.2000000Z Ubuntu
+2026-10-19T09:00:00.3000000Z 22.04.5
+2026-10-19T09:00:00.4000000Z LTS
+2026-10-19T09:00:00.5000000Z ##[endgroup]
+2026-10-19T09:00:00.6000000Z ##[group]Runner Image
+2026-10-19T09:00:00.7000000Z Image: ubuntu-22.04
+2026-10-19T09:00:00.8000000Z Version: 20261012.1
+2026-10-19T09:00:00.9000000Z ##[endgroup]
+2026-10-19T09:00:01.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-19T09:00:01.1000000Z Contents: read
+2026-10-19T09:00:01.2000000Z Metadata: read
+2026-10-19T09:00:01.3000000Z ##[endgroup]
+2026-10-19T09:00:01.4000000Z Prepare workflow directory
+2026-10-19T09:00:01.5000000Z Prepare all required actions
+2026-10-19T09:00:01.6000000Z Download action repository 'actions/checkout@v4'
+2026-10-19T09:00:01.7000000Z Download action repository 'actions/setup-node@v4'
+2026-10-19T09:00:01.8000000Z Complete job name: types
+2026-10-19T09:00:02.0000000Z ##[group]Run actions/checkout@v4
+2026-10-19T09:00:02.1000000Z with:
+2026-10-19T09:00:02.2000000Z   repository: meadow-code/aster
+2026-10-19T09:00:02.3000000Z   fetch-depth: 1
+2026-10-19T09:00:02.4000000Z ##[endgroup]
+2026-10-19T09:00:02.5000000Z Syncing repository: meadow-code/aster
+2026-10-19T09:00:02.6000000Z Getting Git version info
+2026-10-19T09:00:02.7000000Z git version 2.51.0
+2026-10-19T09:00:02.8000000Z Fetching the repository
+2026-10-19T09:00:02.9000000Z Checking out the ref
+2026-10-19T09:00:03.0000000Z ##[group]Run actions/setup-node@v4
+2026-10-19T09:00:03.1000000Z with:
+2026-10-19T09:00:03.2000000Z   node-version: 20
+2026-10-19T09:00:03.3000000Z ##[endgroup]
+2026-10-19T09:00:03.4000000Z Found in cache @ /opt/hostedtoolcache/node/20.19.5/x64
+2026-10-19T09:00:03.5000000Z ##[group]Environment details
+2026-10-19T09:00:03.6000000Z node: v20.19.5
+2026-10-19T09:00:03.7000000Z npm: 10.8.2
+2026-10-19T09:00:03.8000000Z yarn: 1.22.22
+2026-10-19T09:00:03.9000000Z ##[endgroup]
+2026-10-19T09:00:04.0000000Z ##[group]Run npm install --no-audit --no-fund
+2026-10-19T09:00:04.1000000Z npm install --no-audit --no-fund
+2026-10-19T09:00:04.2000000Z shell: /usr/bin/bash -e {0}
+2026-10-19T09:00:04.3000000Z ##[endgroup]
+2026-10-19T09:00:05.0000000Z added 1 package in 700ms
+2026-10-19T09:00:05.1000000Z ##[group]Run npx tsc --noEmit --extendedDiagnostics
+2026-10-19T09:00:05.2000000Z npx tsc --noEmit --extendedDiagnostics
+2026-10-19T09:00:05.3000000Z shell: /usr/bin/bash -e {0}
+2026-10-19T09:00:05.4000000Z ##[endgroup]
+2026-10-19T09:00:07.0000000Z src/report.ts(5,36): error TS2345: Argument of type 'string' is not assignable to parameter of type 'number'.
+2026-10-19T09:00:07.1000000Z Files:                         51
+2026-10-19T09:00:07.2000000Z Lines of Library:           38731
+2026-10-19T09:00:07.3000000Z Lines of Definitions:           0
+2026-10-19T09:00:07.4000000Z Lines of TypeScript:            6
+2026-10-19T09:00:07.5000000Z Lines of JavaScript:            0
+2026-10-19T09:00:07.6000000Z Lines of JSON:                  0
+2026-10-19T09:00:07.7000000Z Lines of Other:                 0
+2026-10-19T09:00:07.8000000Z Identifiers:                43214
+2026-10-19T09:00:07.9000000Z Symbols:                    33715
+2026-10-19T09:00:08.0000000Z Types:                      15701
+2026-10-19T09:00:08.1000000Z Instantiations:              4426
+2026-10-19T09:00:08.2000000Z Memory used:               78519K
+2026-10-19T09:00:08.3000000Z Assignability cache size:    4112
+2026-10-19T09:00:08.4000000Z Identity cache size:            0
+2026-10-19T09:00:08.5000000Z Subtype cache size:             0
+2026-10-19T09:00:08.6000000Z Strict subtype cache size:      0
+2026-10-19T09:00:08.7000000Z I/O Read time:              0.01s
+2026-10-19T09:00:08.8000000Z Parse time:                 0.36s
+2026-10-19T09:00:08.9000000Z ResolveLibrary time:        0.01s
+2026-10-19T09:00:09.0000000Z Program time:               0.41s
+2026-10-19T09:00:09.1000000Z Bind time:                  0.16s
+2026-10-19T09:00:09.2000000Z Check time:                 1.02s
+2026-10-19T09:00:09.3000000Z printTime time:             0.00s
+2026-10-19T09:00:09.4000000Z Emit time:                  0.00s
+2026-10-19T09:00:09.5000000Z Total time:                 1.59s
+2026-10-19T09:00:09.6000000Z ##[error]Process completed with exit code 2.
+2026-10-19T09:00:09.7000000Z Post job cleanup.
+2026-10-19T09:00:09.8000000Z Cleaning up orphan processes

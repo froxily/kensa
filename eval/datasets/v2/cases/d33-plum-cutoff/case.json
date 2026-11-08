@@ -1,0 +1,16 @@
+{
+  "id": "d33-plum-cutoff",
+  "split": "dev",
+  "category": "unknown",
+  "kind": "insufficient",
+  "difficulty": "medium",
+  "ecosystem": "cpp",
+  "title": "Import log ends before the program output",
+  "root_cause": "The available log stops after compiler output and before any output from the importer. Its runtime input and failure details are unavailable, so the cause cannot be established.",
+  "fix_keywords": ["PLUM_INPUT"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 28, "end_line": 34, "why": "The step compiles and then invokes the importer."},
+    {"path": "log", "start_line": 66, "end_line": 70, "why": "The log ends at the truncation marker after compiler output."},
+    {"path": "src/main.cpp", "start_line": 7, "end_line": 16, "why": "The importer checks a runtime value and then opens a file."}
+  ]
+}

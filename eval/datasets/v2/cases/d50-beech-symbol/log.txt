@@ -1,0 +1,79 @@
+2026-10-28T08:10:00.0000000Z Current runner version: '2.328.0'
+2026-10-28T08:10:00.1000000Z ##[group]Operating System
+2026-10-28T08:10:00.2000000Z Ubuntu
+2026-10-28T08:10:00.3000000Z 24.04.3
+2026-10-28T08:10:00.4000000Z LTS
+2026-10-28T08:10:00.5000000Z ##[endgroup]
+2026-10-28T08:10:00.6000000Z ##[group]Runner Image
+2026-10-28T08:10:00.7000000Z Image: ubuntu-24.04
+2026-10-28T08:10:00.8000000Z Version: 20261019.1
+2026-10-28T08:10:00.9000000Z ##[endgroup]
+2026-10-28T08:10:01.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-28T08:10:01.1000000Z Contents: read
+2026-10-28T08:10:01.2000000Z Metadata: read
+2026-10-28T08:10:01.3000000Z ##[endgroup]
+2026-10-28T08:10:01.4000000Z Prepare workflow directory
+2026-10-28T08:10:01.5000000Z Prepare all required actions
+2026-10-28T08:10:01.6000000Z Download action repository 'actions/checkout@v4'
+2026-10-28T08:10:01.7000000Z Download action repository 'actions/setup-java@v4'
+2026-10-28T08:10:01.8000000Z Complete job name: compile
+2026-10-28T08:10:02.0000000Z ##[group]Run actions/checkout@v4
+2026-10-28T08:10:02.1000000Z with:
+2026-10-28T08:10:02.2000000Z   repository: forest-tools/beech
+2026-10-28T08:10:02.3000000Z   fetch-depth: 1
+2026-10-28T08:10:02.4000000Z ##[endgroup]
+2026-10-28T08:10:02.5000000Z Syncing repository: forest-tools/beech
+2026-10-28T08:10:02.6000000Z Fetching the repository
+2026-10-28T08:10:02.7000000Z Checking out the ref
+2026-10-28T08:10:02.8000000Z ##[group]Run actions/setup-java@v4
+2026-10-28T08:10:02.9000000Z with:
+2026-10-28T08:10:03.0000000Z   distribution: temurin
+2026-10-28T08:10:03.1000000Z   java-version: 21
+2026-10-28T08:10:03.2000000Z ##[endgroup]
+2026-10-28T08:10:03.3000000Z Resolved Java 21 from tool-cache
+2026-10-28T08:10:03.4000000Z Setting Java 21 as the default
+2026-10-28T08:10:03.5000000Z Creating toolchains.xml for JDK version 21
+2026-10-28T08:10:03.6000000Z ##[group]Run mvn -B compile
+2026-10-28T08:10:03.7000000Z mvn -B compile
+2026-10-28T08:10:03.8000000Z shell: /usr/bin/bash -e {0}
+2026-10-28T08:10:03.9000000Z ##[endgroup]
+2026-10-28T08:10:04.0000000Z [INFO] Scanning for projects...
+2026-10-28T08:10:04.1000000Z [INFO]
+2026-10-28T08:10:04.2000000Z [INFO] -------------------------< org.forest:beech >-------------------------
+2026-10-28T08:10:04.3000000Z [INFO] Building beech 1.0
+2026-10-28T08:10:04.4000000Z [INFO]   from pom.xml
+2026-10-28T08:10:04.5000000Z [INFO] --------------------------------[ jar ]---------------------------------
+2026-10-28T08:10:04.6000000Z [INFO]
+2026-10-28T08:10:04.7000000Z [INFO] --- resources:3.3.1:resources (default-resources) @ beech ---
+2026-10-28T08:10:04.8000000Z [INFO] skip non existing resourceDirectory /home/runner/work/beech/beech/src/main/resources
+2026-10-28T08:10:04.9000000Z [INFO]
+2026-10-28T08:10:05.0000000Z [INFO] --- compiler:3.13.0:compile (default-compile) @ beech ---
+2026-10-28T08:10:05.1000000Z [INFO] Recompiling the module because of changed source code.
+2026-10-28T08:10:05.2000000Z [INFO] Compiling 2 source files with javac [debug release 21] to target/classes
+2026-10-28T08:10:05.3000000Z [INFO] -------------------------------------------------------------
+2026-10-28T08:10:05.4000000Z [ERROR] COMPILATION ERROR :
+2026-10-28T08:10:05.5000000Z [INFO] -------------------------------------------------------------
+2026-10-28T08:10:05.6000000Z [ERROR] /home/runner/work/beech/beech/src/main/java/com/beech/Summary.java:[5,28] cannot find symbol
+2026-10-28T08:10:05.7000000Z   symbol:   method total()
+2026-10-28T08:10:05.8000000Z   location: variable ledger of type com.beech.Ledger
+2026-10-28T08:10:05.9000000Z [INFO] 1 error
+2026-10-28T08:10:06.0000000Z [INFO] -------------------------------------------------------------
+2026-10-28T08:10:06.1000000Z [INFO] ------------------------------------------------------------------------
+2026-10-28T08:10:06.2000000Z [INFO] BUILD FAILURE
+2026-10-28T08:10:06.3000000Z [INFO] ------------------------------------------------------------------------
+2026-10-28T08:10:06.4000000Z [INFO] Total time:  2.400 s
+2026-10-28T08:10:06.5000000Z [INFO] Finished at: 2026-10-28T08:10:06Z
+2026-10-28T08:10:06.6000000Z [INFO] ------------------------------------------------------------------------
+2026-10-28T08:10:06.7000000Z [ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.13.0:compile (default-compile) on project beech: Compilation failure
+2026-10-28T08:10:06.8000000Z [ERROR] /home/runner/work/beech/beech/src/main/java/com/beech/Summary.java:[5,28] cannot find symbol
+2026-10-28T08:10:06.9000000Z [ERROR]   symbol:   method total()
+2026-10-28T08:10:07.0000000Z [ERROR]   location: variable ledger of type com.beech.Ledger
+2026-10-28T08:10:07.1000000Z [ERROR] -> [Help 1]
+2026-10-28T08:10:07.2000000Z [ERROR]
+2026-10-28T08:10:07.3000000Z [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+2026-10-28T08:10:07.4000000Z [ERROR] Re-run Maven using the -X switch to enable full debug logging.
+2026-10-28T08:10:07.5000000Z [ERROR] For more information about the errors and possible solutions, please read the following articles:
+2026-10-28T08:10:07.6000000Z [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+2026-10-28T08:10:07.7000000Z ##[error]Process completed with exit code 1.
+2026-10-28T08:10:07.8000000Z Post job cleanup.
+2026-10-28T08:10:07.9000000Z Cleaning up orphan processes

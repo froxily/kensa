@@ -1,0 +1,5 @@
+input = File.read!("inputs/segment-labels.txt") |> String.split("\n", trim: true)
+Enum.each(input, fn label -> IO.puts("loading segment: #{label}") end)
+IO.puts("allocating sample block")
+_block = :binary.copy(<<0>>, 13_000_000_000)
+IO.puts("allocation complete")

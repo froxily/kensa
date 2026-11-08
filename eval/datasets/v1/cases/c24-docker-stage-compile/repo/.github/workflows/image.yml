@@ -1,0 +1,25 @@
+﻿name: Image compilation
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  build-image:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Download source
+        uses: actions/checkout@v4
+      - name: Show Docker engine
+        run: docker version
+      - name: Build the container
+        run: docker build --progress=plain -t lantern:ci .
+      - name: Run smoke check
+        run: docker run --rm lantern:ci
+      - name: List resulting layers
+        run: docker history lantern:ci
+      - name: Finish job
+        run: echo complete
+        shell: bash

@@ -1,0 +1,16 @@
+{
+  "id": "c11-release-tag",
+  "split": "dev",
+  "category": "github_permissions",
+  "difficulty": "easy",
+  "kind": "standard",
+  "ecosystem": "node",
+  "title": "Release tag push denied",
+  "root_cause": "The workflow grants its token only contents read access while the release step pushes a tag. GitHub rejects that write with a 403; the job needs contents write permission.",
+  "fix_keywords": ["contents", "write"],
+  "relevant_evidence": [
+    {"path": ".github/workflows/release.yml", "start_line": 6, "end_line": 7, "why": "The workflow restricts contents access to read."},
+    {"path": ".github/workflows/release.yml", "start_line": 25, "end_line": 30, "why": "The release step creates and pushes a tag."},
+    {"path": "log", "start_line": 49, "end_line": 50, "why": "The authenticated push is denied with HTTP 403."}
+  ]
+}

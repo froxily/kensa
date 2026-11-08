@@ -1,0 +1,11 @@
+name: Runtime configuration
+on: [push]
+jobs:
+  validate:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Integration tests
+        run: cargo test --test limits
+        env:
+          RUST_BACKTRACE: '1'

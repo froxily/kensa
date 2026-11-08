@@ -1,0 +1,88 @@
+2026-10-25T08:00:00.0000000Z Current runner version: '2.328.0'
+2026-10-25T08:00:00.1000000Z ##[group]Operating System
+2026-10-25T08:00:00.2000000Z Ubuntu
+2026-10-25T08:00:00.3000000Z 22.04.5
+2026-10-25T08:00:00.4000000Z LTS
+2026-10-25T08:00:00.5000000Z ##[endgroup]
+2026-10-25T08:00:00.6000000Z ##[group]Runner Image
+2026-10-25T08:00:00.7000000Z Image: ubuntu-22.04
+2026-10-25T08:00:00.8000000Z Version: 20261019.1
+2026-10-25T08:00:00.9000000Z ##[endgroup]
+2026-10-25T08:00:01.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-25T08:00:01.1000000Z Contents: read
+2026-10-25T08:00:01.2000000Z Metadata: read
+2026-10-25T08:00:01.3000000Z ##[endgroup]
+2026-10-25T08:00:01.4000000Z Prepare workflow directory
+2026-10-25T08:00:01.5000000Z Prepare all required actions
+2026-10-25T08:00:01.6000000Z Download action repository 'actions/checkout@v4'
+2026-10-25T08:00:01.7000000Z Download action repository 'ruby/setup-ruby@v1'
+2026-10-25T08:00:01.8000000Z Complete job name: package
+2026-10-25T08:00:02.0000000Z ##[group]Run actions/checkout@v4
+2026-10-25T08:00:02.1000000Z with:
+2026-10-25T08:00:02.2000000Z   repository: timber-labs/spruce
+2026-10-25T08:00:02.3000000Z   fetch-depth: 1
+2026-10-25T08:00:02.4000000Z ##[endgroup]
+2026-10-25T08:00:02.5000000Z Syncing repository: timber-labs/spruce
+2026-10-25T08:00:02.6000000Z Fetching the repository
+2026-10-25T08:00:02.7000000Z Checking out the ref
+2026-10-25T08:00:02.8000000Z ##[group]Run ruby/setup-ruby@v1
+2026-10-25T08:00:02.9000000Z with:
+2026-10-25T08:00:03.0000000Z   ruby-version: 3.3
+2026-10-25T08:00:03.1000000Z   bundler-cache: false
+2026-10-25T08:00:03.2000000Z ##[endgroup]
+2026-10-25T08:00:03.3000000Z ##[group]Modifying PATH
+2026-10-25T08:00:03.4000000Z Entries added to PATH:
+2026-10-25T08:00:03.5000000Z   /opt/hostedtoolcache/Ruby/3.3.9/x64/bin
+2026-10-25T08:00:03.6000000Z ##[endgroup]
+2026-10-25T08:00:03.7000000Z ##[group]Print Ruby version
+2026-10-25T08:00:03.8000000Z ruby 3.3.9 (2025-07-24 revision 38531fd73e) [x86_64-linux]
+2026-10-25T08:00:03.9000000Z ##[endgroup]
+2026-10-25T08:00:04.0000000Z ##[group]Run gem install rake -v 13.2.1 --no-document
+2026-10-25T08:00:04.1000000Z gem install rake -v 13.2.1 --no-document
+2026-10-25T08:00:04.2000000Z shell: /usr/bin/bash -e {0}
+2026-10-25T08:00:04.3000000Z ##[endgroup]
+2026-10-25T08:00:05.0000000Z Successfully installed rake-13.2.1
+2026-10-25T08:00:05.1000000Z 1 gem installed
+2026-10-25T08:00:05.2000000Z ##[group]Run rake --trace package
+2026-10-25T08:00:05.3000000Z rake --trace package
+2026-10-25T08:00:05.4000000Z shell: /usr/bin/bash -e {0}
+2026-10-25T08:00:05.5000000Z ##[endgroup]
+2026-10-25T08:00:05.5100000Z ** Invoke package (first_time)
+2026-10-25T08:00:05.5200000Z ** Invoke readiness (first_time)
+2026-10-25T08:00:05.5300000Z ** Execute readiness
+2026-10-25T08:00:05.5400000Z Checking workspace
+2026-10-25T08:00:05.5500000Z ** Invoke metadata (first_time)
+2026-10-25T08:00:05.5600000Z ** Execute metadata
+2026-10-25T08:00:05.5700000Z Checking metadata
+2026-10-25T08:00:05.5800000Z ** Invoke schema (first_time)
+2026-10-25T08:00:05.5900000Z ** Execute schema
+2026-10-25T08:00:05.6000000Z Checking schema
+2026-10-25T08:00:05.6100000Z ** Invoke encoding (first_time)
+2026-10-25T08:00:05.6200000Z ** Execute encoding
+2026-10-25T08:00:05.6300000Z Checking encoding
+2026-10-25T08:00:05.6400000Z ** Invoke names (first_time)
+2026-10-25T08:00:05.6500000Z ** Execute names
+2026-10-25T08:00:05.6600000Z Checking names
+2026-10-25T08:00:05.6700000Z ** Invoke targets (first_time)
+2026-10-25T08:00:05.6800000Z ** Execute targets
+2026-10-25T08:00:05.6900000Z Checking targets
+2026-10-25T08:00:05.7000000Z ** Invoke paths (first_time)
+2026-10-25T08:00:05.7100000Z ** Execute paths
+2026-10-25T08:00:05.7200000Z Checking paths
+2026-10-25T08:00:05.7300000Z ** Invoke formats (first_time)
+2026-10-25T08:00:05.7400000Z ** Execute formats
+2026-10-25T08:00:05.7500000Z Checking formats
+2026-10-25T08:00:05.7550000Z ** Execute package
+2026-10-25T08:00:05.7600000Z rake aborted!
+2026-10-25T08:00:05.7700000Z Don't know how to build task 'input/manifest.json' (See the list of available tasks with `rake --tasks`)
+2026-10-25T08:00:05.7800000Z /opt/hostedtoolcache/Ruby/3.3.9/x64/lib/ruby/gems/3.3.0/gems/rake-13.2.1/lib/rake/task_manager.rb:59:in `[]'
+2026-10-25T08:00:05.7900000Z /home/runner/work/spruce/spruce/Rakefile:11:in `block in <top (required)>'
+2026-10-25T08:00:05.8000000Z /opt/hostedtoolcache/Ruby/3.3.9/x64/lib/ruby/gems/3.3.0/gems/rake-13.2.1/lib/rake/task.rb:281:in `block in execute'
+2026-10-25T08:00:05.8100000Z /opt/hostedtoolcache/Ruby/3.3.9/x64/lib/ruby/gems/3.3.0/gems/rake-13.2.1/lib/rake/task.rb:281:in `each'
+2026-10-25T08:00:05.8200000Z /opt/hostedtoolcache/Ruby/3.3.9/x64/lib/ruby/gems/3.3.0/gems/rake-13.2.1/lib/rake/task.rb:281:in `execute'
+2026-10-25T08:00:05.8300000Z /opt/hostedtoolcache/Ruby/3.3.9/x64/lib/ruby/gems/3.3.0/gems/rake-13.2.1/lib/rake/task.rb:236:in `invoke_prerequisites'
+2026-10-25T08:00:05.8400000Z /opt/hostedtoolcache/Ruby/3.3.9/x64/lib/ruby/gems/3.3.0/gems/rake-13.2.1/lib/rake/task.rb:215:in `invoke_with_call_chain'
+2026-10-25T08:00:05.8500000Z Tasks: TOP => package
+2026-10-25T08:00:05.8600000Z ##[error]Process completed with exit code 1.
+2026-10-25T08:00:05.8700000Z Post job cleanup.
+2026-10-25T08:00:05.8800000Z Cleaning up orphan processes

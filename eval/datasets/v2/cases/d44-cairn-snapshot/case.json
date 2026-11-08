@@ -1,0 +1,16 @@
+{
+  "id": "d44-cairn-snapshot",
+  "split": "dev",
+  "category": "oom_timeout",
+  "kind": "misleading",
+  "difficulty": "medium",
+  "ecosystem": "kotlin",
+  "title": "Snapshot file is absent after the test runs out of heap",
+  "root_cause": "The test retains blocks in a JVM capped at 32 MiB and exhausts its heap before writing the snapshot. The subsequent cat failure is a consequence of the missing output from that interrupted test.",
+  "fix_keywords": ["maxHeapSize", "heap"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 85, "end_line": 97, "why": "The heap error precedes the failed attempt to display the output file."},
+    {"path": "build.gradle.kts", "start_line": 7, "end_line": 11, "why": "The Gradle test JVM has a 32 MiB heap limit."},
+    {"path": "src/test/kotlin/SnapshotTest.kt", "start_line": 8, "end_line": 13, "why": "The test retains blocks before writing the output."}
+  ]
+}

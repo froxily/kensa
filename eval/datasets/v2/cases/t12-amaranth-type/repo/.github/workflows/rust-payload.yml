@@ -1,0 +1,14 @@
+name: Compile payload
+on: [push]
+jobs:
+  compile:
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: '1.84.1'
+      - name: Inspect target and compile
+        run: |
+          rustc --print cfg
+          rustc tools/payload.rs -o payload

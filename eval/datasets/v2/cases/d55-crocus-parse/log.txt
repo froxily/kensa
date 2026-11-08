@@ -1,0 +1,95 @@
+2026-10-29T13:00:00.0000000Z Current runner version: '2.328.0'
+2026-10-29T13:00:00.1000000Z ##[group]Operating System
+2026-10-29T13:00:00.2000000Z macOS
+2026-10-29T13:00:00.3000000Z 15.6
+2026-10-29T13:00:00.4000000Z 24G84
+2026-10-29T13:00:00.5000000Z ##[endgroup]
+2026-10-29T13:00:00.6000000Z ##[group]Runner Image
+2026-10-29T13:00:00.7000000Z Image: macos-15
+2026-10-29T13:00:00.8000000Z Version: 20261026.1
+2026-10-29T13:00:00.9000000Z ##[endgroup]
+2026-10-29T13:00:01.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-29T13:00:01.1000000Z Contents: read
+2026-10-29T13:00:01.2000000Z Metadata: read
+2026-10-29T13:00:01.3000000Z ##[endgroup]
+2026-10-29T13:00:01.4000000Z Prepare workflow directory
+2026-10-29T13:00:01.5000000Z Prepare all required actions
+2026-10-29T13:00:01.6000000Z Download action repository 'actions/checkout@v4'
+2026-10-29T13:00:01.7000000Z Download action repository 'shivammathur/setup-php@v2'
+2026-10-29T13:00:01.8000000Z Complete job name: verify
+2026-10-29T13:00:02.0000000Z ##[group]Run actions/checkout@v4
+2026-10-29T13:00:02.1000000Z with:
+2026-10-29T13:00:02.2000000Z   repository: garden-tools/crocus
+2026-10-29T13:00:02.3000000Z   fetch-depth: 1
+2026-10-29T13:00:02.4000000Z ##[endgroup]
+2026-10-29T13:00:02.5000000Z Syncing repository: garden-tools/crocus
+2026-10-29T13:00:02.6000000Z Fetching the repository
+2026-10-29T13:00:02.7000000Z Checking out the ref
+2026-10-29T13:00:02.8000000Z ##[group]Run shivammathur/setup-php@v2
+2026-10-29T13:00:02.9000000Z with:
+2026-10-29T13:00:03.0000000Z   php-version: 8.3
+2026-10-29T13:00:03.1000000Z ##[endgroup]
+2026-10-29T13:00:03.2000000Z ==> Setup PHP
+2026-10-29T13:00:03.3000000Z ? PHP Installed PHP 8.3
+2026-10-29T13:00:03.4000000Z ==> Setup Tools
+2026-10-29T13:00:03.5000000Z ? composer Added composer
+2026-10-29T13:00:03.6000000Z ##[group]Run composer install --no-interaction --prefer-dist
+2026-10-29T13:00:03.7000000Z composer install --no-interaction --prefer-dist
+2026-10-29T13:00:03.8000000Z shell: /bin/bash -e {0}
+2026-10-29T13:00:03.9000000Z ##[endgroup]
+2026-10-29T13:00:04.0000000Z No composer.lock file present. Updating dependencies to latest instead of installing from lock file.
+2026-10-29T13:00:04.1000000Z Loading composer repositories with package information
+2026-10-29T13:00:05.0000000Z Updating dependencies
+2026-10-29T13:00:05.1000000Z Lock file operations: 26 installs, 0 updates, 0 removals
+2026-10-29T13:00:05.2000000Z   - Locking phpunit/phpunit (10.5.48)
+2026-10-29T13:00:05.3000000Z Writing lock file
+2026-10-29T13:00:05.4000000Z Installing dependencies from lock file (including require-dev)
+2026-10-29T13:00:06.0000000Z Package operations: 26 installs, 0 updates, 0 removals
+2026-10-29T13:00:08.0000000Z Generating autoload files
+2026-10-29T13:00:08.1000000Z ##[group]Run vendor/bin/phpunit --debug tests
+2026-10-29T13:00:08.2000000Z vendor/bin/phpunit --debug tests
+2026-10-29T13:00:08.3000000Z shell: /bin/bash -e {0}
+2026-10-29T13:00:08.4000000Z ##[endgroup]
+2026-10-29T13:00:08.5000000Z PHPUnit Started (PHPUnit 10.5.48 using PHP 8.3.27 (cli) on Darwin)
+2026-10-29T13:00:08.6000000Z Test Runner Configured
+2026-10-29T13:00:08.7000000Z Bootstrap Finished (/Users/runner/work/crocus/crocus/vendor/autoload.php)
+2026-10-29T13:00:08.8000000Z Test Suite Loaded (6 tests)
+2026-10-29T13:00:08.9000000Z Test Runner Started
+2026-10-29T13:00:09.0000000Z Test Suite Sorted
+2026-10-29T13:00:09.1000000Z Test Suite Started (RendererTest, 6 tests)
+2026-10-29T13:00:09.1100000Z Test Preparation Started (RendererTest::testTrim)
+2026-10-29T13:00:09.1200000Z Test Prepared (RendererTest::testTrim)
+2026-10-29T13:00:09.1300000Z Test Passed (RendererTest::testTrim)
+2026-10-29T13:00:09.1400000Z Test Finished (RendererTest::testTrim)
+2026-10-29T13:00:09.1500000Z Test Preparation Started (RendererTest::testUpper)
+2026-10-29T13:00:09.1600000Z Test Prepared (RendererTest::testUpper)
+2026-10-29T13:00:09.1700000Z Test Passed (RendererTest::testUpper)
+2026-10-29T13:00:09.1800000Z Test Finished (RendererTest::testUpper)
+2026-10-29T13:00:09.1900000Z Test Preparation Started (RendererTest::testLower)
+2026-10-29T13:00:09.2000000Z Test Prepared (RendererTest::testLower)
+2026-10-29T13:00:09.2100000Z Test Passed (RendererTest::testLower)
+2026-10-29T13:00:09.2200000Z Test Finished (RendererTest::testLower)
+2026-10-29T13:00:09.2300000Z Test Preparation Started (RendererTest::testPrefix)
+2026-10-29T13:00:09.2400000Z Test Prepared (RendererTest::testPrefix)
+2026-10-29T13:00:09.2500000Z Test Passed (RendererTest::testPrefix)
+2026-10-29T13:00:09.2600000Z Test Finished (RendererTest::testPrefix)
+2026-10-29T13:00:09.2700000Z Test Preparation Started (RendererTest::testLength)
+2026-10-29T13:00:09.2800000Z Test Prepared (RendererTest::testLength)
+2026-10-29T13:00:09.2900000Z Test Passed (RendererTest::testLength)
+2026-10-29T13:00:09.3000000Z Test Finished (RendererTest::testLength)
+2026-10-29T13:00:09.3100000Z Test Preparation Started (RendererTest::testRendererSyntax)
+2026-10-29T13:00:09.3200000Z Test Prepared (RendererTest::testRendererSyntax)
+2026-10-29T13:00:09.3300000Z PHP Parse error:  syntax error, unexpected token "}", expecting ";" in /Users/runner/work/crocus/crocus/src/Renderer.php on line 5
+2026-10-29T13:00:09.3400000Z Errors parsing /Users/runner/work/crocus/crocus/src/Renderer.php
+2026-10-29T13:00:09.3500000Z Test Failed (RendererTest::testRendererSyntax)
+2026-10-29T13:00:09.3600000Z Failed asserting that 255 is identical to 0.
+2026-10-29T13:00:09.3700000Z Test Finished (RendererTest::testRendererSyntax)
+2026-10-29T13:00:09.3800000Z Test Suite Finished (RendererTest, 6 tests)
+2026-10-29T13:00:09.3900000Z Test Runner Execution Finished
+2026-10-29T13:00:09.4000000Z Test Runner Finished
+2026-10-29T13:00:09.4100000Z PHPUnit Finished (Shell Exit Code: 1)
+2026-10-29T13:00:09.4200000Z ##[error]Process completed with exit code 1.
+2026-10-29T13:00:09.4300000Z Post job cleanup.
+2026-10-29T13:00:09.4310000Z [command]/usr/bin/git version
+2026-10-29T13:00:09.4320000Z git version 2.51.0
+2026-10-29T13:00:09.4400000Z Cleaning up orphan processes

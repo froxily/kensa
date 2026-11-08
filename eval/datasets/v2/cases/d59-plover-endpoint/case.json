@@ -1,0 +1,16 @@
+{
+  "id": "d59-plover-endpoint",
+  "split": "dev",
+  "category": "missing_env_var",
+  "kind": "masked",
+  "difficulty": "medium",
+  "ecosystem": "swift",
+  "title": "Export preparation lacks its endpoint",
+  "root_cause": "The script requires PLOVER_ENDPOINT, but the workflow does not provide it. The missing value makes the script print an error and exit nonzero after preparing the labels.",
+  "fix_keywords": ["PLOVER_ENDPOINT"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 81, "end_line": 83, "why": "The script reports the missing endpoint before its exit."},
+    {"path": "scripts/prepare.swift", "start_line": 9, "end_line": 12, "why": "The script rejects an absent or empty endpoint."},
+    {"path": ".github/workflows/prepare.yml", "start_line": 5, "end_line": 11, "why": "The job invokes the script without setting the endpoint."}
+  ]
+}

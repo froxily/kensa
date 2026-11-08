@@ -1,0 +1,16 @@
+{
+  "id": "t03-sundew-mask",
+  "split": "test",
+  "category": "test_regression",
+  "kind": "standard",
+  "difficulty": "easy",
+  "ecosystem": "kotlin",
+  "title": "Mailbox redaction returns the original address",
+  "root_cause": "The redaction function returns its input unchanged. The TestNG assertion expects the local part to be masked and fails when it receives the original address.",
+  "fix_keywords": ["redactMailbox", "mask"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 56, "end_line": 62, "why": "TestNG shows the expected and actual address strings."},
+    {"path": "src/main/kotlin/AddressMask.kt", "start_line": 1, "end_line": 1, "why": "The implementation returns the input unchanged."},
+    {"path": "src/test/kotlin/AddressSpec.kt", "start_line": 13, "end_line": 15, "why": "The test specifies the expected mask."}
+  ]
+}

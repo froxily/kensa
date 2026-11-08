@@ -1,0 +1,50 @@
+2026-09-15T10:12:00.0000000Z Current runner version: '2.329.0'
+2026-09-15T10:12:01.0000000Z Image: ubuntu-24.04
+2026-09-15T10:12:02.0000000Z Prepare workflow directory
+2026-09-15T10:12:03.0000000Z Prepare all required actions
+2026-09-15T10:12:04.0000000Z Getting action download info
+2026-09-15T10:12:05.0000000Z Download action repository 'actions/checkout@v4'
+2026-09-15T10:12:06.0000000Z Download action repository 'actions/setup-dotnet@v4'
+2026-09-15T10:12:07.0000000Z Download action repository 'actions/upload-artifact@v4'
+2026-09-15T10:12:08.0000000Z Complete job name: managed-tests
+2026-09-15T10:12:09.0000000Z ##[group]Run actions/checkout@v4
+2026-09-15T10:12:10.0000000Z with:
+2026-09-15T10:12:11.0000000Z   repository: amber-grove/beacon
+2026-09-15T10:12:12.0000000Z   persist-credentials: false
+2026-09-15T10:12:13.0000000Z   clean: true
+2026-09-15T10:12:14.0000000Z ##[endgroup]
+2026-09-15T10:12:15.0000000Z Syncing repository: amber-grove/beacon
+2026-09-15T10:12:16.0000000Z Initializing the repository
+2026-09-15T10:12:17.0000000Z Fetching the repository
+2026-09-15T10:12:18.0000000Z Checking out the ref
+2026-09-15T10:12:19.0000000Z HEAD is now at 1dc032a Flatten test project
+2026-09-15T10:12:20.0000000Z ##[group]Run actions/setup-dotnet@v4
+2026-09-15T10:12:21.0000000Z with:
+2026-09-15T10:12:22.0000000Z   dotnet-version: 8.0.x
+2026-09-15T10:12:23.0000000Z ##[endgroup]
+2026-09-15T10:12:24.0000000Z Using cached version of dotnet SDK
+2026-09-15T10:12:25.0000000Z dotnet-version: 8.0.413
+2026-09-15T10:12:26.0000000Z ##[group]Run ls src/Beacon
+2026-09-15T10:12:27.0000000Z ls src/Beacon
+2026-09-15T10:12:28.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-15T10:12:29.0000000Z ##[endgroup]
+2026-09-15T10:12:30.0000000Z ArithmeticTests.cs
+2026-09-15T10:12:31.0000000Z Beacon.Tests.csproj
+2026-09-15T10:12:32.0000000Z ##[group]Run dotnet restore src/Beacon/Beacon.sln
+2026-09-15T10:12:33.0000000Z dotnet restore src/Beacon/Beacon.sln
+2026-09-15T10:12:34.0000000Z dotnet test src/Beacon/Beacon.sln --no-restore --verbosity normal
+2026-09-15T10:12:35.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-15T10:12:36.0000000Z ##[endgroup]
+2026-09-15T10:12:37.0000000Z Welcome to .NET 8.0!
+2026-09-15T10:12:38.0000000Z ---------------------
+2026-09-15T10:12:39.0000000Z SDK Version: 8.0.413
+2026-09-15T10:12:40.0000000Z Telemetry
+2026-09-15T10:12:41.0000000Z ---------
+2026-09-15T10:12:42.0000000Z The .NET tools collect usage data.
+2026-09-15T10:12:43.0000000Z ----------------
+2026-09-15T10:12:44.0000000Z Installed an ASP.NET Core HTTPS development certificate.
+2026-09-15T10:12:45.0000000Z MSBUILD : error MSB1009: Project file does not exist.
+2026-09-15T10:12:46.0000000Z Switch: src/Beacon/Beacon.sln
+2026-09-15T10:12:47.0000000Z Restore did not run.
+2026-09-15T10:12:48.0000000Z Test execution was not reached.
+2026-09-15T10:12:49.0000000Z ##[error]Process completed with exit code 1.

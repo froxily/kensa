@@ -1,0 +1,16 @@
+{
+  "id": "d19-alder-silence",
+  "split": "dev",
+  "category": "unknown",
+  "kind": "insufficient",
+  "difficulty": "medium",
+  "ecosystem": "php",
+  "title": "Probe exits with its output suppressed",
+  "root_cause": "The log contains only the probe's exit code because both output streams are redirected. It does not reveal the failure details, so the cause cannot be established.",
+  "fix_keywords": [],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 41, "end_line": 48, "why": "The command suppresses its output and reports only a generic failure."},
+    {"path": "tools/probe.php", "start_line": 2, "end_line": 10, "why": "The script exits unsuccessfully when its input is empty or the request fails."},
+    {"path": ".github/workflows/probe.yml", "start_line": 11, "end_line": 14, "why": "The command discards diagnostic output and uses a secret URL."}
+  ]
+}

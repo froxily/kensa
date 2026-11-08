@@ -1,0 +1,79 @@
+2026-10-10T09:00:00.0000000Z Current runner version: '2.328.0'
+2026-10-10T09:00:00.1000000Z ##[group]Operating System
+2026-10-10T09:00:00.2000000Z Ubuntu
+2026-10-10T09:00:00.3000000Z 22.04.5
+2026-10-10T09:00:00.4000000Z LTS
+2026-10-10T09:00:00.5000000Z ##[endgroup]
+2026-10-10T09:00:00.6000000Z ##[group]Runner Image
+2026-10-10T09:00:00.7000000Z Image: ubuntu-22.04
+2026-10-10T09:00:00.8000000Z Version: 20261005.1
+2026-10-10T09:00:00.9000000Z ##[endgroup]
+2026-10-10T09:00:01.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-10T09:00:01.1000000Z Contents: read
+2026-10-10T09:00:01.2000000Z Metadata: read
+2026-10-10T09:00:01.3000000Z ##[endgroup]
+2026-10-10T09:00:01.4000000Z Prepare workflow directory
+2026-10-10T09:00:01.5000000Z Prepare all required actions
+2026-10-10T09:00:01.6000000Z Download action repository 'actions/checkout@v4'
+2026-10-10T09:00:01.7000000Z Download action repository 'actions/setup-go@v5'
+2026-10-10T09:00:01.8000000Z Complete job name: suite
+2026-10-10T09:00:02.0000000Z ##[group]Starting cache service
+2026-10-10T09:00:02.1000000Z [command]/usr/bin/docker pull redis:7
+2026-10-10T09:00:02.2000000Z 7: Pulling from library/redis
+2026-10-10T09:00:03.0000000Z Status: Downloaded newer image for redis:7
+2026-10-10T09:00:03.1000000Z [command]/usr/bin/docker create --name cache --publish 6379:6379 --health-cmd "redis-cli ping" --health-interval 10s --health-timeout 5s --health-retries 5 redis:7
+2026-10-10T09:00:03.2000000Z [command]/usr/bin/docker start cache
+2026-10-10T09:00:03.3000000Z ##[endgroup]
+2026-10-10T09:00:13.0000000Z cache service is healthy.
+2026-10-10T09:00:13.1000000Z ##[group]Run actions/checkout@v4
+2026-10-10T09:00:13.2000000Z with:
+2026-10-10T09:00:13.3000000Z   repository: reed-labs/pipit
+2026-10-10T09:00:13.4000000Z   fetch-depth: 1
+2026-10-10T09:00:13.5000000Z ##[endgroup]
+2026-10-10T09:00:13.6000000Z Syncing repository: reed-labs/pipit
+2026-10-10T09:00:13.7000000Z Fetching the repository
+2026-10-10T09:00:13.8000000Z Checking out the ref
+2026-10-10T09:00:13.9000000Z ##[group]Run actions/setup-go@v5
+2026-10-10T09:00:14.0000000Z with:
+2026-10-10T09:00:14.1000000Z   go-version: 1.23
+2026-10-10T09:00:14.2000000Z   cache: false
+2026-10-10T09:00:14.3000000Z ##[endgroup]
+2026-10-10T09:00:14.4000000Z Found in cache @ /opt/hostedtoolcache/go/1.23.12/x64
+2026-10-10T09:00:14.5000000Z Added go to the path
+2026-10-10T09:00:14.6000000Z Successfully set up Go version 1.23
+2026-10-10T09:00:14.7000000Z ##[group]Run go test -v ./...
+2026-10-10T09:00:14.8000000Z go test -v ./...
+2026-10-10T09:00:14.9000000Z shell: /usr/bin/bash -e {0}
+2026-10-10T09:00:15.0000000Z env:
+2026-10-10T09:00:15.1000000Z   PIPIT_CACHE_ADDR: cache:6379
+2026-10-10T09:00:15.2000000Z ##[endgroup]
+2026-10-10T09:00:22.0000000Z === RUN   TestNormalize
+2026-10-10T09:00:22.1000000Z === RUN   TestNormalize/a
+2026-10-10T09:00:22.2000000Z === RUN   TestNormalize/b
+2026-10-10T09:00:22.3000000Z === RUN   TestNormalize/c
+2026-10-10T09:00:22.4000000Z === RUN   TestNormalize/d
+2026-10-10T09:00:22.5000000Z === RUN   TestNormalize/e
+2026-10-10T09:00:22.6000000Z === RUN   TestNormalize/f
+2026-10-10T09:00:22.7000000Z === RUN   TestNormalize/g
+2026-10-10T09:00:22.8000000Z === RUN   TestNormalize/h
+2026-10-10T09:00:22.9000000Z === RUN   TestNormalize/i
+2026-10-10T09:00:23.0000000Z --- PASS: TestNormalize (0.00s)
+2026-10-10T09:00:23.1000000Z     --- PASS: TestNormalize/a (0.00s)
+2026-10-10T09:00:23.2000000Z     --- PASS: TestNormalize/b (0.00s)
+2026-10-10T09:00:23.3000000Z     --- PASS: TestNormalize/c (0.00s)
+2026-10-10T09:00:23.4000000Z     --- PASS: TestNormalize/d (0.00s)
+2026-10-10T09:00:23.5000000Z     --- PASS: TestNormalize/e (0.00s)
+2026-10-10T09:00:23.6000000Z     --- PASS: TestNormalize/f (0.00s)
+2026-10-10T09:00:23.7000000Z     --- PASS: TestNormalize/g (0.00s)
+2026-10-10T09:00:23.8000000Z     --- PASS: TestNormalize/h (0.00s)
+2026-10-10T09:00:23.9000000Z     --- PASS: TestNormalize/i (0.00s)
+2026-10-10T09:00:24.0000000Z === RUN   TestCacheReachable
+2026-10-10T09:00:24.1000000Z     cache_test.go:20: dial tcp: lookup cache on 127.0.0.53:53: no such host
+2026-10-10T09:00:24.2000000Z --- FAIL: TestCacheReachable (0.01s)
+2026-10-10T09:00:24.3000000Z FAIL
+2026-10-10T09:00:24.4000000Z FAIL    example.com/pipit    0.014s
+2026-10-10T09:00:24.5000000Z FAIL
+2026-10-10T09:00:24.6000000Z ##[error]Process completed with exit code 1.
+2026-10-10T09:00:24.7000000Z Stop and remove container: cache
+2026-10-10T09:00:24.7500000Z [command]/usr/bin/docker rm --force cache
+2026-10-10T09:00:24.8000000Z Cleaning up orphan processes

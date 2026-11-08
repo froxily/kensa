@@ -1,0 +1,15 @@
+name: Label issue
+on: [workflow_dispatch]
+permissions:
+  issues: read
+jobs:
+  label:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python tools/label.py
+        env:
+          GH_TOKEN: ${{ github.token }}

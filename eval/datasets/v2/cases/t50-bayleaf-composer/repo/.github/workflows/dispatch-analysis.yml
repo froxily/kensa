@@ -1,0 +1,17 @@
+name: Dispatch analysis
+on: [push]
+jobs:
+  inspect:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          tools: composer:v2
+      - name: Install analyzer
+        run: composer install --no-interaction --no-progress
+      - name: Analyze dispatch values
+        run: |
+          composer show --platform
+          vendor/bin/phpstan analyse app --level=6 --no-progress

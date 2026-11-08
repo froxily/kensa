@@ -1,0 +1,17 @@
+name: Discussion update
+on: [workflow_dispatch]
+permissions:
+  contents: read
+  discussions: read
+jobs:
+  discuss:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+      - run: ruby jobs/discuss.rb
+        env:
+          FIRN_DISCUSSION_ID: ${{ secrets.FIRN_DISCUSSION_ID }}
+          FIRN_GRAPH_TOKEN: ${{ github.token }}

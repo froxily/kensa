@@ -1,0 +1,20 @@
+name: Archive inventory
+on: [workflow_dispatch]
+jobs:
+  inventory:
+    runs-on: windows-2025
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+      - name: Download archive
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path inputs | Out-Null
+          curl.exe --fail --location --output inputs/incoming.zip https://assets.example.org/woodruff/incoming.zip
+      - name: Inspect archive
+        shell: pwsh
+        run: |
+          dotnet --info
+          dotnet run --project ArchiveInspector/ArchiveInspector.csproj

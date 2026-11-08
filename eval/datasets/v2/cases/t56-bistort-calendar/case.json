@@ -1,0 +1,16 @@
+{
+  "id": "t56-bistort-calendar",
+  "split": "test",
+  "category": "test_regression",
+  "kind": "standard",
+  "difficulty": "easy",
+  "ecosystem": "python",
+  "title": "Sunday is omitted from weekend closures",
+  "root_cause": "The closure function returns true only for weekday number 5, which is Saturday. The Sunday example expects a closure but receives false.",
+  "fix_keywords": ["closes_on_weekend", "weekday"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 74, "end_line": 80, "why": "The Sunday example expects true and receives false."},
+    {"path": "src/calendar_gate.py", "start_line": 1, "end_line": 2, "why": "The implementation accepts Saturday only."},
+    {"path": "checks/closure_examples.txt", "start_line": 13, "end_line": 16, "why": "The examples require closure on both weekend days."}
+  ]
+}

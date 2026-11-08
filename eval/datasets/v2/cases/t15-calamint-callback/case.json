@@ -1,0 +1,17 @@
+{
+  "id": "t15-calamint-callback",
+  "split": "test",
+  "category": "missing_env_var",
+  "kind": "standard",
+  "difficulty": "medium",
+  "ecosystem": "kotlin",
+  "title": "Callback secret is empty for the job",
+  "root_cause": "The script requires a nonempty CALAMINT_CALLBACK, but the workflow-provided secret is empty in this run. Kotlin's require check throws before the callback can be used.",
+  "fix_keywords": ["CALAMINT_CALLBACK"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 37, "end_line": 39, "why": "The job shows an empty callback environment value."},
+    {"path": "log", "start_line": 64, "end_line": 66, "why": "The script reports the empty callback and exits."},
+    {"path": "scripts/launch.kts", "start_line": 5, "end_line": 6, "why": "The script rejects an empty or absent value."},
+    {"path": ".github/workflows/callback-prep.yml", "start_line": 9, "end_line": 12, "why": "The value is supplied from a workflow secret."}
+  ]
+}

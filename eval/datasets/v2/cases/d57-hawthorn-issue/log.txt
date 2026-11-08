@@ -1,0 +1,69 @@
+2026-10-27T07:00:00.0000000Z Current runner version: '2.328.0'
+2026-10-27T07:00:00.1000000Z ##[group]Operating System
+2026-10-27T07:00:00.2000000Z macOS
+2026-10-27T07:00:00.3000000Z 15.6
+2026-10-27T07:00:00.4000000Z 24G84
+2026-10-27T07:00:00.5000000Z ##[endgroup]
+2026-10-27T07:00:00.6000000Z ##[group]Runner Image
+2026-10-27T07:00:00.7000000Z Image: macos-15
+2026-10-27T07:00:00.8000000Z Version: 20261019.1
+2026-10-27T07:00:00.9000000Z ##[endgroup]
+2026-10-27T07:00:01.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-27T07:00:01.1000000Z Contents: read
+2026-10-27T07:00:01.2000000Z Issues: read
+2026-10-27T07:00:01.3000000Z Metadata: read
+2026-10-27T07:00:01.4000000Z ##[endgroup]
+2026-10-27T07:00:01.5000000Z Prepare workflow directory
+2026-10-27T07:00:01.6000000Z Prepare all required actions
+2026-10-27T07:00:01.7000000Z Download action repository 'actions/checkout@v4'
+2026-10-27T07:00:01.8000000Z Complete job name: update
+2026-10-27T07:00:02.0000000Z ##[group]Run actions/checkout@v4
+2026-10-27T07:00:02.1000000Z with:
+2026-10-27T07:00:02.2000000Z   repository: grove-tools/hawthorn
+2026-10-27T07:00:02.3000000Z   fetch-depth: 1
+2026-10-27T07:00:02.4000000Z ##[endgroup]
+2026-10-27T07:00:02.5000000Z Syncing repository: grove-tools/hawthorn
+2026-10-27T07:00:02.6000000Z Getting Git version info
+2026-10-27T07:00:02.7000000Z git version 2.51.0
+2026-10-27T07:00:02.8000000Z Fetching the repository
+2026-10-27T07:00:02.9000000Z Checking out the ref
+2026-10-27T07:00:03.0000000Z ##[group]Run clang++ -std=c++17 src/note.cpp -o note
+2026-10-27T07:00:03.1000000Z clang++ -std=c++17 src/note.cpp -o note
+2026-10-27T07:00:03.2000000Z ./note > issue.json
+2026-10-27T07:00:03.3000000Z curl -i -sS --fail-with-body -X PATCH -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" -H "Content-Type: application/json" --data-binary @issue.json "https://api.github.com/repos/$GITHUB_REPOSITORY/issues/42"
+2026-10-27T07:00:03.4000000Z shell: /bin/bash -e {0}
+2026-10-27T07:00:03.5000000Z env:
+2026-10-27T07:00:03.6000000Z   GH_TOKEN: ***
+2026-10-27T07:00:03.7000000Z ##[endgroup]
+2026-10-27T07:00:04.5000000Z HTTP/2 403
+2026-10-27T07:00:04.5100000Z date: Tue, 27 Oct 2026 07:00:04 GMT
+2026-10-27T07:00:04.5200000Z content-type: application/json; charset=utf-8
+2026-10-27T07:00:04.5300000Z content-length: 162
+2026-10-27T07:00:04.5400000Z x-github-media-type: github.v3; format=json
+2026-10-27T07:00:04.5500000Z x-github-api-version-selected: 2022-11-28
+2026-10-27T07:00:04.5600000Z x-accepted-github-permissions: issues=write
+2026-10-27T07:00:04.5700000Z x-ratelimit-limit: 5000
+2026-10-27T07:00:04.5800000Z x-ratelimit-remaining: 4998
+2026-10-27T07:00:04.5900000Z x-ratelimit-used: 2
+2026-10-27T07:00:04.6000000Z x-ratelimit-resource: core
+2026-10-27T07:00:04.6100000Z x-ratelimit-reset: 1793088000
+2026-10-27T07:00:04.6200000Z access-control-expose-headers: ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining
+2026-10-27T07:00:04.6300000Z access-control-allow-origin: *
+2026-10-27T07:00:04.6400000Z strict-transport-security: max-age=31536000; includeSubdomains; preload
+2026-10-27T07:00:04.6500000Z x-frame-options: deny
+2026-10-27T07:00:04.6600000Z x-content-type-options: nosniff
+2026-10-27T07:00:04.6700000Z x-xss-protection: 0
+2026-10-27T07:00:04.6800000Z referrer-policy: origin-when-cross-origin, strict-origin-when-cross-origin
+2026-10-27T07:00:04.6900000Z content-security-policy: default-src 'none'
+2026-10-27T07:00:04.7000000Z vary: Accept-Encoding, Accept, X-Requested-With
+2026-10-27T07:00:04.7100000Z server: github.com
+2026-10-27T07:00:04.7200000Z 
+2026-10-27T07:00:04.7300000Z {
+2026-10-27T07:00:04.7400000Z   "message": "Resource not accessible by integration",
+2026-10-27T07:00:04.7500000Z   "documentation_url": "https://docs.github.com/rest/issues/issues#update-an-issue",
+2026-10-27T07:00:04.7600000Z   "status": "403"
+2026-10-27T07:00:04.7700000Z }
+2026-10-27T07:00:04.7800000Z curl: (22) The requested URL returned error: 403
+2026-10-27T07:00:04.7900000Z ##[error]Process completed with exit code 22.
+2026-10-27T07:00:04.8000000Z Post job cleanup.
+2026-10-27T07:00:04.8100000Z Cleaning up orphan processes

@@ -1,0 +1,16 @@
+{
+  "id": "t59-rosewood-spool",
+  "split": "test",
+  "category": "missing_env_var",
+  "kind": "masked",
+  "difficulty": "medium",
+  "ecosystem": "rust",
+  "title": "Spool batch exits without its template identifier",
+  "root_cause": "The Rust program requires a nonempty ROSEWOOD_TEMPLATE_ID, but the workflow does not supply it. The program reports the missing value and the shell wrapper exits with a generic batch failure.",
+  "fix_keywords": ["ROSEWOOD_TEMPLATE_ID"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 51, "end_line": 54, "why": "The missing setting is reported before the wrapper failure."},
+    {"path": "src/main.rs", "start_line": 4, "end_line": 9, "why": "The program rejects an absent or empty template identifier."},
+    {"path": "bin/spool_batch.sh", "start_line": 1, "end_line": 5, "why": "The wrapper converts the program failure into a batch failure."}
+  ]
+}

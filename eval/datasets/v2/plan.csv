@@ -1,0 +1,121 @@
+id_prefix,split,category,kind,note,suggested_ecosystem
+d01,dev,missing_env_var,standard,,python
+d02,dev,oom_timeout,masked,docker build or push,java
+d03,dev,test_regression,standard,,go
+d04,dev,github_permissions,standard,,rust
+d05,dev,test_regression,lookalike,,dotnet
+d06,dev,github_permissions,masked,docker build or push,ruby
+d07,dev,docker,standard,,php
+d08,dev,missing_env_var,standard,,kotlin
+d09,dev,missing_env_var,misleading,,cpp
+d10,dev,test_regression,standard,,elixir
+d11,dev,github_permissions,standard,,swift
+d12,dev,dependency_build,lookalike,,node
+d13,dev,github_permissions,masked,script exit,python
+d14,dev,docker,standard,,java
+d15,dev,missing_env_var,standard,,go
+d16,dev,db_connectivity,misleading,,rust
+d17,dev,oom_timeout,standard,,dotnet
+d18,dev,github_permissions,standard,,ruby
+d19,dev,unknown,insufficient,generic exit,php
+d20,dev,db_connectivity,masked,test runner,kotlin
+d21,dev,workflow_path,standard,,cpp
+d22,dev,missing_env_var,standard,,elixir
+d23,dev,dependency_build,misleading,,swift
+d24,dev,oom_timeout,standard,,node
+d25,dev,db_connectivity,standard,,python
+d26,dev,unknown,insufficient,generic exit,java
+d27,dev,db_connectivity,masked,test runner,go
+d28,dev,workflow_path,standard,,rust
+d29,dev,dependency_build,standard,,dotnet
+d30,dev,workflow_path,misleading,,ruby
+d31,dev,oom_timeout,standard,,php
+d32,dev,db_connectivity,standard,,kotlin
+d33,dev,unknown,insufficient,truncated log,cpp
+d34,dev,db_connectivity,masked,script exit,elixir
+d35,dev,workflow_path,standard,,swift
+d36,dev,dependency_build,standard,,node
+d37,dev,github_permissions,misleading,,python
+d38,dev,oom_timeout,standard,,java
+d39,dev,db_connectivity,standard,,go
+d40,dev,unknown,insufficient,truncated log,rust
+d41,dev,docker,masked,test runner,dotnet
+d42,dev,workflow_path,standard,,ruby
+d43,dev,dependency_build,standard,,php
+d44,dev,oom_timeout,misleading,,kotlin
+d45,dev,missing_env_var,masked,test runner,cpp
+d46,dev,db_connectivity,standard,,elixir
+d47,dev,unknown,insufficient,two equally plausible causes,swift
+d48,dev,workflow_path,masked,test runner,node
+d49,dev,test_regression,standard,,python
+d50,dev,dependency_build,standard,,java
+d51,dev,test_regression,lookalike,,go
+d52,dev,missing_env_var,masked,test runner,rust
+d53,dev,docker,standard,,dotnet
+d54,dev,unknown,insufficient,two equally plausible causes,ruby
+d55,dev,dependency_build,masked,test runner,php
+d56,dev,test_regression,standard,,kotlin
+d57,dev,github_permissions,standard,,cpp
+d58,dev,test_regression,lookalike,,elixir
+d59,dev,missing_env_var,masked,script exit,swift
+d60,dev,docker,standard,,node
+t01,test,missing_env_var,standard,,ruby
+t02,test,oom_timeout,masked,docker build or push,php
+t03,test,test_regression,standard,,kotlin
+t04,test,github_permissions,standard,,cpp
+t05,test,test_regression,lookalike,,elixir
+t06,test,github_permissions,masked,docker build or push,swift
+t07,test,docker,standard,,node
+t08,test,missing_env_var,standard,,python
+t09,test,missing_env_var,misleading,,java
+t10,test,test_regression,standard,,go
+t11,test,github_permissions,standard,,rust
+t12,test,dependency_build,lookalike,,dotnet
+t13,test,github_permissions,masked,script exit,ruby
+t14,test,docker,standard,,php
+t15,test,missing_env_var,standard,,kotlin
+t16,test,db_connectivity,misleading,,cpp
+t17,test,oom_timeout,standard,,elixir
+t18,test,github_permissions,standard,,swift
+t19,test,unknown,insufficient,generic exit,node
+t20,test,db_connectivity,masked,test runner,python
+t21,test,workflow_path,standard,,java
+t22,test,missing_env_var,standard,,go
+t23,test,dependency_build,misleading,,rust
+t24,test,oom_timeout,standard,,dotnet
+t25,test,db_connectivity,standard,,ruby
+t26,test,unknown,insufficient,generic exit,php
+t27,test,db_connectivity,masked,test runner,kotlin
+t28,test,workflow_path,standard,,cpp
+t29,test,dependency_build,standard,,elixir
+t30,test,workflow_path,misleading,,swift
+t31,test,oom_timeout,standard,,node
+t32,test,db_connectivity,standard,,python
+t33,test,unknown,insufficient,truncated log,java
+t34,test,db_connectivity,masked,script exit,go
+t35,test,workflow_path,standard,,rust
+t36,test,dependency_build,standard,,dotnet
+t37,test,github_permissions,misleading,,ruby
+t38,test,oom_timeout,standard,,php
+t39,test,db_connectivity,standard,,kotlin
+t40,test,unknown,insufficient,truncated log,cpp
+t41,test,docker,masked,test runner,elixir
+t42,test,workflow_path,standard,,swift
+t43,test,dependency_build,standard,,node
+t44,test,oom_timeout,misleading,,python
+t45,test,missing_env_var,masked,test runner,java
+t46,test,db_connectivity,standard,,go
+t47,test,unknown,insufficient,two equally plausible causes,rust
+t48,test,workflow_path,masked,test runner,dotnet
+t49,test,test_regression,standard,,ruby
+t50,test,dependency_build,standard,,php
+t51,test,test_regression,lookalike,,kotlin
+t52,test,missing_env_var,masked,test runner,cpp
+t53,test,docker,standard,,elixir
+t54,test,unknown,insufficient,two equally plausible causes,swift
+t55,test,dependency_build,masked,test runner,node
+t56,test,test_regression,standard,,python
+t57,test,github_permissions,standard,,java
+t58,test,test_regression,lookalike,,go
+t59,test,missing_env_var,masked,script exit,rust
+t60,test,docker,standard,,dotnet

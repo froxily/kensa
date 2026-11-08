@@ -1,0 +1,25 @@
+﻿name: Build release container
+on:
+  push:
+    branches: [trunk]
+  pull_request:
+    paths:
+      - 'container/**'
+      - '.dockerignore'
+permissions:
+  contents: read
+jobs:
+  bundle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v4
+      - name: Check context
+        run: ls -la container
+      - name: Assemble image
+        run: docker build -f container/Dockerfile -t atlas:ci .
+      - name: Show image
+        run: docker images atlas
+      - name: Smoke run
+        run: docker run --rm atlas:ci --help

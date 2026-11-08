@@ -1,0 +1,9 @@
+name: Elixir container
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build greeting container
+        run: docker build --progress=plain -f deployment/ElixirImage .

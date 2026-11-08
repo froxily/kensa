@@ -1,0 +1,78 @@
+2026-10-09T08:00:00.0000000Z Current runner version: '2.328.0'
+2026-10-09T08:00:00.1000000Z ##[group]Operating System
+2026-10-09T08:00:00.2000000Z Ubuntu
+2026-10-09T08:00:00.3000000Z 24.04.3
+2026-10-09T08:00:00.4000000Z LTS
+2026-10-09T08:00:00.5000000Z ##[endgroup]
+2026-10-09T08:00:00.6000000Z ##[group]Runner Image
+2026-10-09T08:00:00.7000000Z Image: ubuntu-24.04
+2026-10-09T08:00:00.8000000Z Version: 20261005.1
+2026-10-09T08:00:00.9000000Z ##[endgroup]
+2026-10-09T08:00:01.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-09T08:00:01.1000000Z Contents: read
+2026-10-09T08:00:01.2000000Z Metadata: read
+2026-10-09T08:00:01.3000000Z ##[endgroup]
+2026-10-09T08:00:01.4000000Z Prepare workflow directory
+2026-10-09T08:00:01.5000000Z Prepare all required actions
+2026-10-09T08:00:01.6000000Z Download action repository 'actions/checkout@v4'
+2026-10-09T08:00:01.7000000Z Download action repository 'actions/setup-java@v4'
+2026-10-09T08:00:01.8000000Z Complete job name: verify
+2026-10-09T08:00:02.0000000Z ##[group]Run actions/checkout@v4
+2026-10-09T08:00:02.1000000Z with:
+2026-10-09T08:00:02.2000000Z   repository: blossom-works/violet
+2026-10-09T08:00:02.3000000Z   fetch-depth: 1
+2026-10-09T08:00:02.4000000Z ##[endgroup]
+2026-10-09T08:00:02.5000000Z Syncing repository: blossom-works/violet
+2026-10-09T08:00:02.6000000Z Getting Git version info
+2026-10-09T08:00:02.7000000Z git version 2.51.0
+2026-10-09T08:00:02.8000000Z Fetching the repository
+2026-10-09T08:00:02.9000000Z Checking out the ref
+2026-10-09T08:00:03.0000000Z ##[group]Run actions/setup-java@v4
+2026-10-09T08:00:03.1000000Z with:
+2026-10-09T08:00:03.2000000Z   distribution: temurin
+2026-10-09T08:00:03.3000000Z   java-version: 21
+2026-10-09T08:00:03.4000000Z ##[endgroup]
+2026-10-09T08:00:03.5000000Z Resolved Java 21 from tool-cache
+2026-10-09T08:00:03.6000000Z Setting Java 21 as the default
+2026-10-09T08:00:03.7000000Z Creating toolchains.xml for JDK version 21
+2026-10-09T08:00:03.8000000Z ##[group]Run mvn -B package
+2026-10-09T08:00:03.9000000Z mvn -B package
+2026-10-09T08:00:04.0000000Z java -jar target/violet-1.0.jar > /dev/null 2>&1
+2026-10-09T08:00:04.1000000Z shell: /usr/bin/bash -e {0}
+2026-10-09T08:00:04.2000000Z env:
+2026-10-09T08:00:04.3000000Z   VIOLET_SOURCE: ***
+2026-10-09T08:00:04.4000000Z ##[endgroup]
+2026-10-09T08:00:04.5000000Z [INFO] Scanning for projects...
+2026-10-09T08:00:04.6000000Z [INFO]
+2026-10-09T08:00:04.7000000Z [INFO] --------------------------< org.flora:violet >--------------------------
+2026-10-09T08:00:04.8000000Z [INFO] Building violet 1.0
+2026-10-09T08:00:04.9000000Z [INFO]   from pom.xml
+2026-10-09T08:00:05.0000000Z [INFO] --------------------------------[ jar ]---------------------------------
+2026-10-09T08:00:05.1000000Z [INFO]
+2026-10-09T08:00:05.2000000Z [INFO] --- resources:3.3.1:resources (default-resources) @ violet ---
+2026-10-09T08:00:05.3000000Z [INFO] skip non existing resourceDirectory /home/runner/work/violet/violet/src/main/resources
+2026-10-09T08:00:05.4000000Z [INFO]
+2026-10-09T08:00:05.5000000Z [INFO] --- compiler:3.13.0:compile (default-compile) @ violet ---
+2026-10-09T08:00:05.6000000Z [INFO] Recompiling the module because of changed source code.
+2026-10-09T08:00:05.7000000Z [INFO] Compiling 1 source file with javac [debug release 21] to target/classes
+2026-10-09T08:00:05.8000000Z [INFO]
+2026-10-09T08:00:05.9000000Z [INFO] --- resources:3.3.1:testResources (default-testResources) @ violet ---
+2026-10-09T08:00:06.0000000Z [INFO] skip non existing resourceDirectory /home/runner/work/violet/violet/src/test/resources
+2026-10-09T08:00:06.1000000Z [INFO]
+2026-10-09T08:00:06.2000000Z [INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ violet ---
+2026-10-09T08:00:06.3000000Z [INFO] No sources to compile
+2026-10-09T08:00:06.4000000Z [INFO]
+2026-10-09T08:00:06.5000000Z [INFO] --- surefire:3.2.5:test (default-test) @ violet ---
+2026-10-09T08:00:06.6000000Z [INFO] No tests to run.
+2026-10-09T08:00:06.7000000Z [INFO]
+2026-10-09T08:00:06.8000000Z [INFO] --- jar:3.4.2:jar (default-jar) @ violet ---
+2026-10-09T08:00:06.9000000Z [INFO] Building jar: /home/runner/work/violet/violet/target/violet-1.0.jar
+2026-10-09T08:00:07.0000000Z [INFO] ------------------------------------------------------------------------
+2026-10-09T08:00:07.1000000Z [INFO] BUILD SUCCESS
+2026-10-09T08:00:07.2000000Z [INFO] ------------------------------------------------------------------------
+2026-10-09T08:00:07.3000000Z [INFO] Total time:  2.800 s
+2026-10-09T08:00:07.4000000Z [INFO] Finished at: 2026-10-09T08:00:07Z
+2026-10-09T08:00:07.5000000Z [INFO] ------------------------------------------------------------------------
+2026-10-09T08:00:08.0000000Z ##[error]Process completed with exit code 1.
+2026-10-09T08:00:08.1000000Z Post job cleanup.
+2026-10-09T08:00:08.2000000Z Cleaning up orphan processes

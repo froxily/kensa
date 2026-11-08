@@ -1,0 +1,16 @@
+{
+  "id": "d41-rill-image",
+  "split": "dev",
+  "category": "docker",
+  "kind": "masked",
+  "difficulty": "medium",
+  "ecosystem": "dotnet",
+  "title": "Container test reports an image build failure",
+  "root_cause": "The Dockerfile specifies node:22-alpinee, an invalid base image tag. The Docker build cannot resolve the image, and the test fails because the build exits nonzero.",
+  "fix_keywords": ["node:22-alpinee", "FROM"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 72, "end_line": 82, "why": "BuildKit reports the missing base image within the test output."},
+    {"path": "Dockerfile", "start_line": 1, "end_line": 1, "why": "The base image tag contains the typo."},
+    {"path": "ContainerTests.cs", "start_line": 17, "end_line": 29, "why": "The test runs Docker and asserts a successful exit."}
+  ]
+}

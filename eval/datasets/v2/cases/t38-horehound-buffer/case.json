@@ -1,0 +1,16 @@
+{
+  "id": "t38-horehound-buffer",
+  "split": "test",
+  "category": "oom_timeout",
+  "kind": "standard",
+  "difficulty": "easy",
+  "ecosystem": "php",
+  "title": "Booklet allocation exceeds PHP memory limit",
+  "root_cause": "The process has a 32 MiB PHP memory limit but requests a 48 MiB string buffer. PHP terminates the render when the allocation exceeds that limit.",
+  "fix_keywords": ["memory_limit", "str_repeat"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 54, "end_line": 56, "why": "PHP reports that its allowed memory was exhausted."},
+    {"path": ".github/workflows/page-buffer.yml", "start_line": 10, "end_line": 12, "why": "The command sets a 32 MiB memory limit."},
+    {"path": "tools/render_booklet.php", "start_line": 6, "end_line": 7, "why": "The program requests a 48 MiB string."}
+  ]
+}

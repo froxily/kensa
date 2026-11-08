@@ -1,0 +1,13 @@
+name: Swift index
+on: [push]
+jobs:
+  assemble:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile index client
+        run: |
+          swiftc -print-target-info
+          mkdir -p artifacts/modules
+          swiftc -emit-module -module-name ShelfIndex library/ShelfIndex.swift -emit-module-path artifacts/modules/ShelfIndex.swiftmodule
+          swiftc -typecheck -I artifacts/module client/ReadIndex.swift

@@ -1,0 +1,54 @@
+# Publishes the static replay demo (npm run build:replay) to GitHub Pages. Manual only: it runs
+# when the owner starts it from the Actions tab, never on a push. The replay needs no backend,
+# secrets or model, and THIRD_PARTY_NOTICES.txt ships inside the build, linked from every page.
+# Checked by backend/tests/test_ci_workflow.py. Actions are pinned to full commit SHAs (verified
+# against the tag with `git ls-remote`, 2026-11-03); the comment names the release.
+name: pages
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+      - run: npm run -s build:replay
+      - run: test -s dist-replay/index.html && test -s dist-replay/recording.json && test -s dist-replay/THIRD_PARTY_NOTICES.txt
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: frontend/dist-replay
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    # The only write permissions in either workflow, and only for this job.
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1

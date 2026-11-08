@@ -1,0 +1,55 @@
+2026-09-20T14:00:00.0000000Z Runner version: 2.327.1
+2026-09-20T14:00:01.0000000Z Repository: cedar-vale/indexer
+2026-09-20T14:00:02.0000000Z Job: index-test
+2026-09-20T14:00:03.0000000Z Runner image: ubuntu-24.04
+2026-09-20T14:00:04.0000000Z Resolving workflow actions
+2026-09-20T14:00:05.0000000Z ##[group]Run actions/checkout@v4
+2026-09-20T14:00:06.0000000Z Fetching cedar-vale/indexer
+2026-09-20T14:00:07.0000000Z Checking out commit
+2026-09-20T14:00:08.0000000Z Checkout complete
+2026-09-20T14:00:09.0000000Z ##[endgroup]
+2026-09-20T14:00:10.0000000Z ##[group]Run actions/setup-java@v4
+2026-09-20T14:00:11.0000000Z Installed Java 17.0.12
+2026-09-20T14:00:12.0000000Z Distribution: temurin
+2026-09-20T14:00:13.0000000Z JAVA_HOME set
+2026-09-20T14:00:14.0000000Z ##[endgroup]
+2026-09-20T14:00:15.0000000Z ##[group]Run gradle/actions/wrapper-validation@v4
+2026-09-20T14:00:16.0000000Z All Gradle Wrapper JAR files are valid.
+2026-09-20T14:00:17.0000000Z ##[endgroup]
+2026-09-20T14:00:18.0000000Z ##[group]Run gradle/actions/setup-gradle@v4
+2026-09-20T14:00:19.0000000Z Gradle User Home cache restored
+2026-09-20T14:00:20.0000000Z Configuration complete
+2026-09-20T14:00:21.0000000Z ##[endgroup]
+2026-09-20T14:00:22.0000000Z ##[group]Run ./gradlew test --no-daemon
+2026-09-20T14:00:23.0000000Z To honour the JVM settings a single-use Daemon will be forked.
+2026-09-20T14:00:24.0000000Z Daemon will be stopped at the end of the build
+2026-09-20T14:00:25.0000000Z > Task :compileJava
+2026-09-20T14:00:26.0000000Z > Task :processResources NO-SOURCE
+2026-09-20T14:00:27.0000000Z > Task :classes
+2026-09-20T14:00:28.0000000Z > Task :compileTestJava
+2026-09-20T14:00:29.0000000Z > Task :processTestResources NO-SOURCE
+2026-09-20T14:00:30.0000000Z > Task :testClasses
+2026-09-20T14:00:31.0000000Z > Task :test
+2026-09-20T14:00:32.0000000Z IndexCorpusTest > indexesLargeCorpus() FAILED
+2026-09-20T14:00:33.0000000Z     java.lang.OutOfMemoryError: Java heap space
+2026-09-20T14:00:34.0000000Z         at example.IndexCorpusTest.indexesLargeCorpus(IndexCorpusTest.java:27)
+2026-09-20T14:00:35.0000000Z 1 test completed, 1 failed
+2026-09-20T14:00:36.0000000Z > Task :test FAILED
+2026-09-20T14:00:37.0000000Z FAILURE: Build failed with an exception.
+2026-09-20T14:00:38.0000000Z * What went wrong:
+2026-09-20T14:00:39.0000000Z Execution failed for task ':test'.
+2026-09-20T14:00:40.0000000Z > There were failing tests. See the report at: file:///home/runner/work/indexer/indexer/build/reports/tests/test/index.html
+2026-09-20T14:00:41.0000000Z * Try:
+2026-09-20T14:00:42.0000000Z > Run with --scan to get full insights.
+2026-09-20T14:00:43.0000000Z Deprecated Gradle features were used in this build.
+2026-09-20T14:00:44.0000000Z BUILD FAILED in 18s
+2026-09-20T14:00:45.0000000Z 3 actionable tasks: 3 executed
+2026-09-20T14:00:46.0000000Z Test worker terminated
+2026-09-20T14:00:47.0000000Z Reports may be incomplete
+2026-09-20T14:00:47.1000000Z Gradle returned a failed task status
+2026-09-20T14:00:47.2000000Z Test worker used the configured maximum heap
+2026-09-20T14:00:47.3000000Z No further test tasks remain
+2026-09-20T14:00:47.4000000Z The report task will run on failure
+2026-09-20T14:00:47.5000000Z Gradle process exited
+2026-09-20T14:00:48.0000000Z ##[endgroup]
+2026-09-20T14:00:49.0000000Z ##[error]Process completed with exit code 1.

@@ -1,0 +1,25 @@
+name: Maria probe
+on: [push]
+jobs:
+  probe:
+    runs-on: ubuntu-22.04
+    services:
+      columnstore:
+        image: mariadb:11.4
+        env:
+          MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: 'yes'
+        ports:
+          - 13306:3307
+        options: >-
+          --health-cmd "healthcheck.sh --connect --innodb_initialized"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Run connection probe
+        run: mvn --batch-mode test

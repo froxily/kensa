@@ -1,0 +1,14 @@
+name: Volume checks
+on: [push]
+jobs:
+  verify:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.25'
+          cache: false
+      - run: go test -json measure/capacity.go measure/capacity_test.go
+        env:
+          GO111MODULE: 'off'

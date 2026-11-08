@@ -1,0 +1,15 @@
+{
+  "id": "t29-marjorie-guard",
+  "split": "test",
+  "category": "dependency_build",
+  "kind": "standard",
+  "difficulty": "easy",
+  "ecosystem": "elixir",
+  "title": "String normalization is used in an Elixir guard",
+  "root_cause": "The function guard invokes String.downcase/1, which is not permitted in guards. Elixir rejects the module during compilation.",
+  "fix_keywords": ["String.downcase", "guard"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 53, "end_line": 57, "why": "The compiler identifies the illegal guard call."},
+    {"path": "lib/angle_sheet.ex", "start_line": 5, "end_line": 7, "why": "The guard invokes String.downcase/1."}
+  ]
+}

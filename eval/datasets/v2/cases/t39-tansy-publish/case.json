@@ -1,0 +1,16 @@
+{
+  "id": "t39-tansy-publish",
+  "split": "test",
+  "category": "db_connectivity",
+  "kind": "standard",
+  "difficulty": "medium",
+  "ecosystem": "kotlin",
+  "title": "Published database port points to the wrong container port",
+  "root_cause": "The service maps host port 13306 to container port 3307, while MariaDB listens on container port 3306. The probe connects to the published host port and receives a connection refusal.",
+  "fix_keywords": ["13306:3306", "13306:3307"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 58, "end_line": 64, "why": "The connection attempt is refused."},
+    {"path": ".github/workflows/maria-probe.yml", "start_line": 6, "end_line": 16, "why": "The service maps the host port to container port 3307."},
+    {"path": "src/check/kotlin/PublishedPortTest.kt", "start_line": 5, "end_line": 8, "why": "The test connects to host port 13306."}
+  ]
+}

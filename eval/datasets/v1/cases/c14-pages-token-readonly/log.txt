@@ -1,0 +1,50 @@
+2026-09-16T09:10:00.0000000Z Current runner version: '2.329.0'
+2026-09-16T09:10:01.0000000Z Runner image: ubuntu-24.04
+2026-09-16T09:10:02.0000000Z GITHUB_TOKEN Permissions: Contents read
+2026-09-16T09:10:03.0000000Z Preparing workflow
+2026-09-16T09:10:04.0000000Z Job name: pages
+2026-09-16T09:10:05.0000000Z ##[group]Run actions/checkout@v4
+2026-09-16T09:10:06.0000000Z with:
+2026-09-16T09:10:07.0000000Z   repository: cloudmere/lantern-handbook
+2026-09-16T09:10:08.0000000Z   persist-credentials: false
+2026-09-16T09:10:09.0000000Z ##[endgroup]
+2026-09-16T09:10:10.0000000Z Syncing repository: cloudmere/lantern-handbook
+2026-09-16T09:10:11.0000000Z Getting Git version info
+2026-09-16T09:10:12.0000000Z git version 2.47.0
+2026-09-16T09:10:13.0000000Z Initializing repository
+2026-09-16T09:10:14.0000000Z Fetching the repository
+2026-09-16T09:10:15.0000000Z Checking out main
+2026-09-16T09:10:16.0000000Z ##[group]Run mkdir -p public
+2026-09-16T09:10:17.0000000Z mkdir -p public
+2026-09-16T09:10:18.0000000Z cp index.html public/index.html
+2026-09-16T09:10:19.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-16T09:10:20.0000000Z ##[endgroup]
+2026-09-16T09:10:21.0000000Z ##[group]Run git config --global user.name "site-bot"
+2026-09-16T09:10:22.0000000Z git config --global user.name "site-bot"
+2026-09-16T09:10:23.0000000Z git config --global user.email "***"
+2026-09-16T09:10:24.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-16T09:10:25.0000000Z ##[endgroup]
+2026-09-16T09:10:26.0000000Z ##[group]Run cd public
+2026-09-16T09:10:27.0000000Z cd public
+2026-09-16T09:10:28.0000000Z git init
+2026-09-16T09:10:29.0000000Z git add index.html
+2026-09-16T09:10:30.0000000Z git commit -m "Publish handbook"
+2026-09-16T09:10:31.0000000Z git push *** HEAD:gh-pages --force
+2026-09-16T09:10:32.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-16T09:10:33.0000000Z env:
+2026-09-16T09:10:34.0000000Z   GH_TOKEN: ***
+2026-09-16T09:10:35.0000000Z ##[endgroup]
+2026-09-16T09:10:36.0000000Z hint: Using 'master' as the name for the initial branch.
+2026-09-16T09:10:37.0000000Z hint: This default branch name is subject to change.
+2026-09-16T09:10:38.0000000Z Initialized empty Git repository in public/.git/
+2026-09-16T09:10:39.0000000Z [master (root-commit) 684ac82] Publish handbook
+2026-09-16T09:10:40.0000000Z  1 file changed, 11 insertions(+)
+2026-09-16T09:10:41.0000000Z  create mode 100644 index.html
+2026-09-16T09:10:42.0000000Z Enumerating objects: 3, done.
+2026-09-16T09:10:43.0000000Z Counting objects: 100% (3/3), done.
+2026-09-16T09:10:44.0000000Z Writing objects: 100% (3/3), done.
+2026-09-16T09:10:45.0000000Z Total 3 (delta 0), reused 0 (delta 0)
+2026-09-16T09:10:46.0000000Z remote: Permission to cloudmere/lantern-handbook.git denied to github-actions[bot].
+2026-09-16T09:10:47.0000000Z fatal: unable to access repository: The requested URL returned error: 403
+2026-09-16T09:10:48.0000000Z Deployment branch was not updated.
+2026-09-16T09:10:49.0000000Z ##[error]Process completed with exit code 128.

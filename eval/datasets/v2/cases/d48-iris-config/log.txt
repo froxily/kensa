@@ -1,0 +1,94 @@
+2026-10-31T10:00:00.0000000Z Current runner version: '2.328.0'
+2026-10-31T10:00:00.1000000Z ##[group]Operating System
+2026-10-31T10:00:00.2000000Z Ubuntu
+2026-10-31T10:00:00.3000000Z 24.04.3
+2026-10-31T10:00:00.4000000Z LTS
+2026-10-31T10:00:00.5000000Z ##[endgroup]
+2026-10-31T10:00:00.6000000Z ##[group]Runner Image
+2026-10-31T10:00:00.7000000Z Image: ubuntu-24.04
+2026-10-31T10:00:00.8000000Z Version: 20261026.1
+2026-10-31T10:00:00.9000000Z ##[endgroup]
+2026-10-31T10:00:01.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-31T10:00:01.1000000Z Contents: read
+2026-10-31T10:00:01.2000000Z Metadata: read
+2026-10-31T10:00:01.3000000Z ##[endgroup]
+2026-10-31T10:00:01.4000000Z Prepare workflow directory
+2026-10-31T10:00:01.5000000Z Prepare all required actions
+2026-10-31T10:00:01.6000000Z Download action repository 'actions/checkout@v4'
+2026-10-31T10:00:01.7000000Z Download action repository 'actions/setup-node@v4'
+2026-10-31T10:00:01.8000000Z Complete job name: check
+2026-10-31T10:00:02.0000000Z ##[group]Run actions/checkout@v4
+2026-10-31T10:00:02.1000000Z with:
+2026-10-31T10:00:02.2000000Z   repository: garden-software/iris
+2026-10-31T10:00:02.3000000Z   fetch-depth: 1
+2026-10-31T10:00:02.4000000Z ##[endgroup]
+2026-10-31T10:00:02.5000000Z Syncing repository: garden-software/iris
+2026-10-31T10:00:02.6000000Z Fetching the repository
+2026-10-31T10:00:02.7000000Z Checking out the ref
+2026-10-31T10:00:02.8000000Z ##[group]Run actions/setup-node@v4
+2026-10-31T10:00:02.9000000Z with:
+2026-10-31T10:00:03.0000000Z   node-version: 20
+2026-10-31T10:00:03.1000000Z ##[endgroup]
+2026-10-31T10:00:03.2000000Z Found in cache @ /opt/hostedtoolcache/node/20.19.5/x64
+2026-10-31T10:00:03.3000000Z ##[group]Environment details
+2026-10-31T10:00:03.4000000Z node: v20.19.5
+2026-10-31T10:00:03.5000000Z npm: 10.8.2
+2026-10-31T10:00:03.6000000Z yarn: 1.22.22
+2026-10-31T10:00:03.7000000Z ##[endgroup]
+2026-10-31T10:00:03.8000000Z ##[group]Run node --test
+2026-10-31T10:00:03.9000000Z node --test
+2026-10-31T10:00:04.0000000Z shell: /usr/bin/bash -e {0}
+2026-10-31T10:00:04.1000000Z ##[endgroup]
+2026-10-31T10:00:04.2000000Z TAP version 13
+2026-10-31T10:00:04.2100000Z # Subtest: basename is retained
+2026-10-31T10:00:04.2200000Z ok 1 - basename is retained
+2026-10-31T10:00:04.2300000Z   ---
+2026-10-31T10:00:04.2400000Z   duration_ms: 0.534
+2026-10-31T10:00:04.2500000Z   ...
+2026-10-31T10:00:04.2600000Z # Subtest: extension is retained
+2026-10-31T10:00:04.2700000Z ok 2 - extension is retained
+2026-10-31T10:00:04.2800000Z   ---
+2026-10-31T10:00:04.2900000Z   duration_ms: 0.102
+2026-10-31T10:00:04.3000000Z   ...
+2026-10-31T10:00:04.3100000Z # Subtest: path join is stable
+2026-10-31T10:00:04.3200000Z ok 3 - path join is stable
+2026-10-31T10:00:04.3300000Z   ---
+2026-10-31T10:00:04.3400000Z   duration_ms: 0.084
+2026-10-31T10:00:04.3500000Z   ...
+2026-10-31T10:00:04.3600000Z # Subtest: label is nonempty
+2026-10-31T10:00:04.3700000Z ok 4 - label is nonempty
+2026-10-31T10:00:04.3800000Z   ---
+2026-10-31T10:00:04.3900000Z   duration_ms: 0.076
+2026-10-31T10:00:04.4000000Z   ...
+2026-10-31T10:00:04.4100000Z # Subtest: prefix matches
+2026-10-31T10:00:04.4200000Z ok 5 - prefix matches
+2026-10-31T10:00:04.4300000Z   ---
+2026-10-31T10:00:04.4400000Z   duration_ms: 0.071
+2026-10-31T10:00:04.4500000Z   ...
+2026-10-31T10:00:04.4600000Z # Subtest: reads runtime settings
+2026-10-31T10:00:04.4700000Z not ok 6 - reads runtime settings
+2026-10-31T10:00:04.4800000Z   ---
+2026-10-31T10:00:04.4900000Z   duration_ms: 0.582
+2026-10-31T10:00:04.5000000Z   location: '/home/runner/work/iris/iris/test/settings.test.js:12:1'
+2026-10-31T10:00:04.5100000Z   failureType: 'testCodeFailure'
+2026-10-31T10:00:04.5200000Z   error: "ENOENT: no such file or directory, open 'config/runtime.json'"
+2026-10-31T10:00:04.5300000Z   code: 'ENOENT'
+2026-10-31T10:00:04.5400000Z   stack: |-
+2026-10-31T10:00:04.5500000Z     Object.openSync (node:fs:596:3)
+2026-10-31T10:00:04.5600000Z     readFileSync (node:fs:464:35)
+2026-10-31T10:00:04.5700000Z     TestContext.<anonymous> (/home/runner/work/iris/iris/test/settings.test.js:13:31)
+2026-10-31T10:00:04.5800000Z     Test.runInAsyncScope (node:async_hooks:206:9)
+2026-10-31T10:00:04.5900000Z     Test.run (node:internal/test_runner/test:797:25)
+2026-10-31T10:00:04.6000000Z   ...
+2026-10-31T10:00:04.6100000Z 1..6
+2026-10-31T10:00:04.6200000Z # tests 6
+2026-10-31T10:00:04.6300000Z # suites 0
+2026-10-31T10:00:04.6400000Z # pass 5
+2026-10-31T10:00:04.6500000Z # fail 1
+2026-10-31T10:00:04.6600000Z # cancelled 0
+2026-10-31T10:00:04.6700000Z # skipped 0
+2026-10-31T10:00:04.6800000Z # todo 0
+2026-10-31T10:00:04.6900000Z # duration_ms 76.238
+2026-10-31T10:00:04.7000000Z ##[error]Process completed with exit code 1.
+2026-10-31T10:00:04.8000000Z Post job cleanup.
+2026-10-31T10:00:04.9000000Z Cleaning up orphan processes

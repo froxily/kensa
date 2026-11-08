@@ -1,0 +1,16 @@
+{
+  "id": "d39-ibis-index",
+  "split": "dev",
+  "category": "db_connectivity",
+  "kind": "standard",
+  "difficulty": "medium",
+  "ecosystem": "go",
+  "title": "Cache database index is out of range",
+  "root_cause": "The job configures cache database 64, while the Redis service uses its default of 16 databases. The server accepts the connection but rejects SELECT 64, so the check exits unsuccessfully.",
+  "fix_keywords": ["IBIS_CACHE_DB", "databases"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 68, "end_line": 72, "why": "Redis rejects the requested database index."},
+    {"path": ".github/workflows/cache.yml", "start_line": 22, "end_line": 24, "why": "The job sets the database index to 64."},
+    {"path": "cmd/check/main.go", "start_line": 22, "end_line": 27, "why": "The client selects the configured database and treats an error reply as failure."}
+  ]
+}

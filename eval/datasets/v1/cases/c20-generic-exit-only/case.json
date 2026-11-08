@@ -1,0 +1,4 @@
+{"id":"c20-generic-exit-only","split":"test","category":"unknown","difficulty":"hard","kind":"insufficient","ecosystem":"node","title":"Bundle verification hides its diagnostics","root_cause":"The job log exposes only a generic nonzero exit from verification because its output was redirected to an artifact. The underlying cause cannot be established without the artifact or equivalent diagnostic output.","fix_keywords":["verify.log"],"relevant_evidence":[{"path":".github/workflows/inspect.yml","start_line":19,"end_line":24,"why":"Verification output is redirected and an artifact upload is configured."},{"path":"log","start_line":45,"end_line":50,"why":"The visible failure provides only a generic exit code."}]}
+
+
+

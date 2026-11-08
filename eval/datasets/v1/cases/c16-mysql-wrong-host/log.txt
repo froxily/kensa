@@ -1,0 +1,50 @@
+2026-09-18T07:00:00.0000000Z Current runner version: '2.325.0'
+2026-09-18T07:00:01.0000000Z Image: ubuntu-24.04
+2026-09-18T07:00:02.0000000Z Job: storage
+2026-09-18T07:00:03.0000000Z Starting mysql service container
+2026-09-18T07:00:04.0000000Z Pulling mysql:8.0
+2026-09-18T07:00:05.0000000Z Digest: sha256:***
+2026-09-18T07:00:06.0000000Z Creating container
+2026-09-18T07:00:07.0000000Z Waiting for service health
+2026-09-18T07:00:08.0000000Z mysql service is healthy
+2026-09-18T07:00:09.0000000Z Port 3306 mapped to localhost:3306
+2026-09-18T07:00:10.0000000Z ##[group]Run actions/checkout@v4
+2026-09-18T07:00:11.0000000Z with:
+2026-09-18T07:00:12.0000000Z   repository: reedbank/parcel-ledger
+2026-09-18T07:00:13.0000000Z ##[endgroup]
+2026-09-18T07:00:14.0000000Z Fetching repository reedbank/parcel-ledger
+2026-09-18T07:00:15.0000000Z Checking out commit
+2026-09-18T07:00:16.0000000Z ##[group]Run actions/setup-node@v4
+2026-09-18T07:00:17.0000000Z with:
+2026-09-18T07:00:18.0000000Z   node-version: 20
+2026-09-18T07:00:19.0000000Z ##[endgroup]
+2026-09-18T07:00:20.0000000Z Found in cache: node v20.18.0
+2026-09-18T07:00:21.0000000Z Environment details
+2026-09-18T07:00:22.0000000Z node: v20.18.0
+2026-09-18T07:00:23.0000000Z npm: 10.8.2
+2026-09-18T07:00:24.0000000Z ##[group]Run npm install
+2026-09-18T07:00:25.0000000Z npm install
+2026-09-18T07:00:26.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-18T07:00:27.0000000Z ##[endgroup]
+2026-09-18T07:00:28.0000000Z added 12 packages, and audited 13 packages in 1s
+2026-09-18T07:00:29.0000000Z 2 packages are looking for funding
+2026-09-18T07:00:30.0000000Z found 0 vulnerabilities
+2026-09-18T07:00:31.0000000Z ##[group]Run npm test
+2026-09-18T07:00:32.0000000Z npm test
+2026-09-18T07:00:33.0000000Z ##[endgroup]
+2026-09-18T07:00:34.0000000Z > parcel-ledger@1.0.0 test
+2026-09-18T07:00:35.0000000Z > node --test storage.test.js
+2026-09-18T07:00:36.0000000Z TAP version 13
+2026-09-18T07:00:37.0000000Z not ok 1 - database responds
+2026-09-18T07:00:38.0000000Z   location: storage.test.js:5:1
+2026-09-18T07:00:39.0000000Z   failureType: testCodeFailure
+2026-09-18T07:00:40.0000000Z   error: 'getaddrinfo ENOTFOUND mysql'
+2026-09-18T07:00:41.0000000Z   code: ENOTFOUND
+2026-09-18T07:00:42.0000000Z   stack: |-
+2026-09-18T07:00:43.0000000Z     at Object.createConnection (mysql2/promise.js:19:31)
+2026-09-18T07:00:44.0000000Z     at TestContext.<anonymous> (storage.test.js:6:34)
+2026-09-18T07:00:45.0000000Z 1..1
+2026-09-18T07:00:46.0000000Z # tests 1
+2026-09-18T07:00:47.0000000Z # pass 0
+2026-09-18T07:00:48.0000000Z # fail 1
+2026-09-18T07:00:49.0000000Z ##[error]Process completed with exit code 1.

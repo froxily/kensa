@@ -1,0 +1,93 @@
+2026-10-08T13:10:00.0000000Z Current runner version: '2.328.0'
+2026-10-08T13:10:00.1000000Z ##[group]Operating System
+2026-10-08T13:10:00.2000000Z Ubuntu
+2026-10-08T13:10:00.3000000Z 24.04.3
+2026-10-08T13:10:00.4000000Z LTS
+2026-10-08T13:10:00.5000000Z ##[endgroup]
+2026-10-08T13:10:00.6000000Z ##[group]Runner Image
+2026-10-08T13:10:00.7000000Z Image: ubuntu-24.04
+2026-10-08T13:10:00.8000000Z Version: 20260928.1
+2026-10-08T13:10:00.9000000Z ##[endgroup]
+2026-10-08T13:10:01.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-08T13:10:01.1000000Z Contents: read
+2026-10-08T13:10:01.2000000Z Metadata: read
+2026-10-08T13:10:01.3000000Z ##[endgroup]
+2026-10-08T13:10:01.4000000Z Prepare workflow directory
+2026-10-08T13:10:01.5000000Z Prepare all required actions
+2026-10-08T13:10:01.6000000Z Download action repository 'actions/checkout@v4'
+2026-10-08T13:10:01.7000000Z Download action repository 'actions/setup-python@v5'
+2026-10-08T13:10:01.8000000Z Complete job name: verify
+2026-10-08T13:10:02.0000000Z ##[group]Starting catalog service
+2026-10-08T13:10:02.1000000Z [command]/usr/bin/docker pull postgres:16
+2026-10-08T13:10:02.2000000Z 16: Pulling from library/postgres
+2026-10-08T13:10:03.0000000Z Status: Downloaded newer image for postgres:16
+2026-10-08T13:10:03.1000000Z [command]/usr/bin/docker create --name catalog --publish 5432:5432 -e POSTGRES_HOST_AUTH_METHOD=trust -e POSTGRES_DB=azalea_data --health-cmd "pg_isready -U postgres" --health-interval 10s --health-timeout 5s --health-retries 5 postgres:16
+2026-10-08T13:10:03.2000000Z [command]/usr/bin/docker start catalog
+2026-10-08T13:10:03.3000000Z ##[endgroup]
+2026-10-08T13:10:13.0000000Z catalog service is healthy.
+2026-10-08T13:10:13.1000000Z ##[group]Run actions/checkout@v4
+2026-10-08T13:10:13.2000000Z with:
+2026-10-08T13:10:13.3000000Z   repository: garden-labs/azalea
+2026-10-08T13:10:13.4000000Z   fetch-depth: 1
+2026-10-08T13:10:13.5000000Z ##[endgroup]
+2026-10-08T13:10:13.6000000Z Syncing repository: garden-labs/azalea
+2026-10-08T13:10:13.7000000Z Fetching the repository
+2026-10-08T13:10:13.8000000Z Checking out the ref
+2026-10-08T13:10:13.9000000Z ##[group]Run actions/setup-python@v5
+2026-10-08T13:10:14.0000000Z with:
+2026-10-08T13:10:14.1000000Z   python-version: 3.12
+2026-10-08T13:10:14.2000000Z ##[endgroup]
+2026-10-08T13:10:14.3000000Z Successfully set up CPython (3.12.11)
+2026-10-08T13:10:14.4000000Z ##[group]Run pip install -r requirements.txt
+2026-10-08T13:10:14.5000000Z pip install -r requirements.txt
+2026-10-08T13:10:14.6000000Z shell: /usr/bin/bash -e {0}
+2026-10-08T13:10:14.7000000Z ##[endgroup]
+2026-10-08T13:10:15.0000000Z Collecting pytest==8.3.5 (from -r requirements.txt (line 1))
+2026-10-08T13:10:15.2000000Z Collecting psycopg==3.2.6 (from psycopg[binary]==3.2.6->-r requirements.txt (line 2))
+2026-10-08T13:10:16.0000000Z Installing collected packages: psycopg-binary, psycopg, pytest
+2026-10-08T13:10:17.0000000Z Successfully installed psycopg-3.2.6 psycopg-binary-3.2.6 pytest-8.3.5
+2026-10-08T13:10:17.1000000Z ##[group]Run pytest -v
+2026-10-08T13:10:17.2000000Z pytest -v
+2026-10-08T13:10:17.3000000Z shell: /usr/bin/bash -e {0}
+2026-10-08T13:10:17.4000000Z env:
+2026-10-08T13:10:17.5000000Z   AZALEA_DSN: postgresql://postgres@127.0.0.1:5432/azalea_archive
+2026-10-08T13:10:17.6000000Z ##[endgroup]
+2026-10-08T13:10:18.0000000Z ============================= test session starts ==============================
+2026-10-08T13:10:18.1000000Z platform linux -- Python 3.12.11, pytest-8.3.5, pluggy-1.5.0 -- /opt/hostedtoolcache/Python/3.12.11/x64/bin/python
+2026-10-08T13:10:18.2000000Z cachedir: .pytest_cache
+2026-10-08T13:10:18.3000000Z rootdir: /home/runner/work/azalea/azalea
+2026-10-08T13:10:18.4000000Z collecting ... collected 10 items
+2026-10-08T13:10:18.5000000Z 
+2026-10-08T13:10:18.6000000Z tests/test_catalog.py::test_key_is_lowercase[a] PASSED                   [ 10%]
+2026-10-08T13:10:18.7000000Z tests/test_catalog.py::test_key_is_lowercase[b] PASSED                   [ 20%]
+2026-10-08T13:10:18.8000000Z tests/test_catalog.py::test_key_is_lowercase[c] PASSED                   [ 30%]
+2026-10-08T13:10:18.9000000Z tests/test_catalog.py::test_key_is_lowercase[d] PASSED                   [ 40%]
+2026-10-08T13:10:19.0000000Z tests/test_catalog.py::test_key_is_lowercase[e] PASSED                   [ 50%]
+2026-10-08T13:10:19.1000000Z tests/test_catalog.py::test_key_is_lowercase[f] PASSED                   [ 60%]
+2026-10-08T13:10:19.2000000Z tests/test_catalog.py::test_key_is_lowercase[g] PASSED                   [ 70%]
+2026-10-08T13:10:19.3000000Z tests/test_catalog.py::test_key_is_lowercase[h] PASSED                   [ 80%]
+2026-10-08T13:10:19.4000000Z tests/test_catalog.py::test_key_is_lowercase[i] PASSED                   [ 90%]
+2026-10-08T13:10:19.5000000Z tests/test_catalog.py::test_catalog_connection FAILED                   [100%]
+2026-10-08T13:10:19.6000000Z 
+2026-10-08T13:10:19.7000000Z =================================== FAILURES ===================================
+2026-10-08T13:10:19.8000000Z ___________________________ test_catalog_connection ____________________________
+2026-10-08T13:10:19.9000000Z 
+2026-10-08T13:10:20.0000000Z     def test_catalog_connection():
+2026-10-08T13:10:20.1000000Z >       with psycopg.connect(os.environ["AZALEA_DSN"]) as conn:
+2026-10-08T13:10:20.2000000Z 
+2026-10-08T13:10:20.3000000Z tests/test_catalog.py:13:
+2026-10-08T13:10:20.4000000Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+2026-10-08T13:10:20.5000000Z 
+2026-10-08T13:10:20.6000000Z cls = <class 'psycopg.Connection'>
+2026-10-08T13:10:20.7000000Z conninfo = 'postgresql://postgres@127.0.0.1:5432/azalea_archive'
+2026-10-08T13:10:20.8000000Z 
+2026-10-08T13:10:20.9000000Z >       raise last_ex.with_traceback(None)
+2026-10-08T13:10:21.0000000Z E       psycopg.OperationalError: connection failed: connection to server at "127.0.0.1", port 5432 failed: FATAL:  database "azalea_archive" does not exist
+2026-10-08T13:10:21.1000000Z 
+2026-10-08T13:10:21.2000000Z /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/psycopg/connection.py:119: OperationalError
+2026-10-08T13:10:21.3000000Z =========================== short test summary info ============================
+2026-10-08T13:10:21.4000000Z FAILED tests/test_catalog.py::test_catalog_connection - psycopg.OperationalError: connection failed: FATAL: database "azalea_archive" does not exist
+2026-10-08T13:10:21.5000000Z ========================= 1 failed, 9 passed in 0.22s ==========================
+2026-10-08T13:10:21.6000000Z ##[error]Process completed with exit code 1.
+2026-10-08T13:10:21.7000000Z Stop and remove container: catalog
+2026-10-08T13:10:21.8000000Z Cleaning up orphan processes

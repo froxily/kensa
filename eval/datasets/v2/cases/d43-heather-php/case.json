@@ -1,0 +1,16 @@
+{
+  "id": "d43-heather-php",
+  "split": "dev",
+  "category": "dependency_build",
+  "kind": "standard",
+  "difficulty": "easy",
+  "ecosystem": "php",
+  "title": "Composer rejects the selected PHP version",
+  "root_cause": "The project requires PHP 8.4 or newer within the 8.x range, while the workflow selects PHP 8.3. Composer rejects the platform constraint during dependency resolution.",
+  "fix_keywords": ["php", "8.4"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 64, "end_line": 69, "why": "Composer reports the incompatible PHP platform version."},
+    {"path": "composer.json", "start_line": 4, "end_line": 6, "why": "The project requires PHP 8.4."},
+    {"path": ".github/workflows/resolve.yml", "start_line": 8, "end_line": 11, "why": "The workflow selects PHP 8.3 before resolution."}
+  ]
+}

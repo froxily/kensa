@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+/* Dark mode follows the `dark` class on <html>, set from the user's preference (see features/theme). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans:
+    ui-sans-serif, system-ui, "Segoe UI", "Hiragino Sans", "Yu Gothic UI", "Meiryo", "Noto Sans JP",
+    sans-serif;
+  --font-mono: ui-monospace, "Cascadia Code", "Consolas", "SFMono-Regular", monospace;
+}
+
+/* Secondary text that meets WCAG AA contrast (4.5:1) in both themes; checked by the axe E2E test. */
+@utility text-muted {
+  color: var(--color-zinc-500);
+  @variant dark {
+    color: var(--color-zinc-400);
+  }
+}
+
+@layer base {
+  html {
+    @apply bg-white text-zinc-900 antialiased;
+  }
+  html.dark {
+    @apply bg-zinc-950 text-zinc-100;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-sky-500;
+  }
+}

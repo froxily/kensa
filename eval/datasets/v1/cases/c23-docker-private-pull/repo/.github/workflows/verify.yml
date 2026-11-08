@@ -1,0 +1,26 @@
+﻿name: Verify container
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  pull-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Docker details
+        run: docker info
+      - name: Pull integration image
+        run: docker pull registry.harbor.invalid/mesa/fixture:7
+      - name: Run probe
+        run: docker run --rm registry.harbor.invalid/mesa/fixture:7 probe
+      - name: Print marker
+        run: echo verified
+      - name: List images
+        run: docker image ls
+      - name: Finish
+        run: echo done

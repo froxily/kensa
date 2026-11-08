@@ -1,0 +1,16 @@
+{
+  "id": "d46-oriole-role",
+  "split": "dev",
+  "category": "db_connectivity",
+  "kind": "standard",
+  "difficulty": "medium",
+  "ecosystem": "elixir",
+  "title": "PostgreSQL rejects an unknown role",
+  "root_cause": "The import invokes psql as oriole_reader, but the PostgreSQL service has not created that role. The server is reachable and rejects the login, so the command and job fail.",
+  "fix_keywords": ["oriole_reader", "postgres"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 96, "end_line": 99, "why": "The database reports the nonexistent role and the command exits."},
+    {"path": "lib/oriole.ex", "start_line": 7, "end_line": 12, "why": "The import invokes psql using that role."},
+    {"path": ".github/workflows/import.yml", "start_line": 6, "end_line": 13, "why": "The service publishes PostgreSQL without creating the requested role."}
+  ]
+}

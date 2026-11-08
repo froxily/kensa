@@ -1,0 +1,13 @@
+name: Import check
+on: [push]
+jobs:
+  import:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile and import
+        run: |
+          g++ -v -std=c++17 src/main.cpp -o importer
+          ./importer
+        env:
+          PLUM_INPUT: ${{ secrets.PLUM_INPUT }}

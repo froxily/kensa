@@ -1,0 +1,13 @@
+name: Signoff check
+on: [push]
+jobs:
+  verify:
+    runs-on: ubuntu-22.04-arm
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.23'
+          cache: false
+      - name: Verify document labels
+        run: go test -v ./...

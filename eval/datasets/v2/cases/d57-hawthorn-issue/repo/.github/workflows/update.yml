@@ -1,0 +1,17 @@
+name: Update issue
+on: [workflow_dispatch]
+permissions:
+  contents: read
+  issues: read
+jobs:
+  update:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build payload and update
+        run: |
+          clang++ -std=c++17 src/note.cpp -o note
+          ./note > issue.json
+          curl -i -sS --fail-with-body -X PATCH -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" -H "Content-Type: application/json" --data-binary @issue.json "https://api.github.com/repos/$GITHUB_REPOSITORY/issues/42"
+        env:
+          GH_TOKEN: ${{ github.token }}

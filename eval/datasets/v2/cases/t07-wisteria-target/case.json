@@ -1,0 +1,16 @@
+{
+  "id": "t07-wisteria-target",
+  "split": "test",
+  "category": "docker",
+  "kind": "standard",
+  "difficulty": "easy",
+  "ecosystem": "node",
+  "title": "Docker build requests an undefined target stage",
+  "root_cause": "The build command selects a stage named shipped, but the image recipe defines only build and app. Docker cannot resolve the requested target and stops before building the image.",
+  "fix_keywords": ["--target", "shipped"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 68, "end_line": 72, "why": "BuildKit reports that the requested stage does not exist."},
+    {"path": "VesselSpec", "start_line": 1, "end_line": 7, "why": "The recipe defines build and app rather than shipped."},
+    {"path": ".github/workflows/vessel.yml", "start_line": 11, "end_line": 14, "why": "The build command requests the shipped target."}
+  ]
+}

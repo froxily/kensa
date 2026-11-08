@@ -1,0 +1,16 @@
+{
+  "id": "t22-madrone-signoff",
+  "split": "test",
+  "category": "missing_env_var",
+  "kind": "standard",
+  "difficulty": "easy",
+  "ecosystem": "go",
+  "title": "Signoff check has no signoff value",
+  "root_cause": "The Go test requires MADRONE_SIGNOFF but the workflow does not provide it. The test reports the missing value and fails.",
+  "fix_keywords": ["MADRONE_SIGNOFF"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 57, "end_line": 60, "why": "The failing test names the missing setting."},
+    {"path": "signoff_test.go", "start_line": 16, "end_line": 20, "why": "The test rejects an empty signoff environment variable."},
+    {"path": ".github/workflows/signoff-check.yml", "start_line": 11, "end_line": 13, "why": "The test step runs without supplying the variable."}
+  ]
+}

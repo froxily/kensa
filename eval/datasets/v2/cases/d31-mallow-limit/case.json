@@ -1,0 +1,16 @@
+{
+  "id": "d31-mallow-limit",
+  "split": "dev",
+  "category": "oom_timeout",
+  "kind": "standard",
+  "difficulty": "easy",
+  "ecosystem": "php",
+  "title": "Digest generation exceeds PHP's memory limit",
+  "root_cause": "The job caps PHP memory at 16 MiB while the digest keeps every generated segment in an array. The allocation exceeds that limit and PHP terminates with a fatal memory error.",
+  "fix_keywords": ["memory_limit", "segments"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 64, "end_line": 67, "why": "PHP reports an exhausted memory limit and a fatal exit."},
+    {"path": ".github/workflows/digest.yml", "start_line": 10, "end_line": 11, "why": "The command explicitly sets the memory limit."},
+    {"path": "src/digest.php", "start_line": 3, "end_line": 6, "why": "Generated segments remain in memory."}
+  ]
+}

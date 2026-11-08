@@ -1,0 +1,83 @@
+2026-10-27T11:00:00.0000000Z Current runner version: '2.328.0'
+2026-10-27T11:00:00.1000000Z ##[group]Operating System
+2026-10-27T11:00:00.2000000Z macOS
+2026-10-27T11:00:00.3000000Z 15.6
+2026-10-27T11:00:00.4000000Z 24G84
+2026-10-27T11:00:00.5000000Z ##[endgroup]
+2026-10-27T11:00:00.6000000Z ##[group]Runner Image
+2026-10-27T11:00:00.7000000Z Image: macos-15
+2026-10-27T11:00:00.8000000Z Version: 20261019.1
+2026-10-27T11:00:00.9000000Z ##[endgroup]
+2026-10-27T11:00:01.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-27T11:00:01.1000000Z Contents: read
+2026-10-27T11:00:01.2000000Z Metadata: read
+2026-10-27T11:00:01.3000000Z ##[endgroup]
+2026-10-27T11:00:01.4000000Z Prepare workflow directory
+2026-10-27T11:00:01.5000000Z Prepare all required actions
+2026-10-27T11:00:01.6000000Z Download action repository 'actions/checkout@v4'
+2026-10-27T11:00:01.7000000Z Download action repository 'ruby/setup-ruby@v1'
+2026-10-27T11:00:01.8000000Z Complete job name: contracts
+2026-10-27T11:00:02.0000000Z ##[group]Run actions/checkout@v4
+2026-10-27T11:00:02.1000000Z with:
+2026-10-27T11:00:02.2000000Z   repository: quay-labs/harbor
+2026-10-27T11:00:02.3000000Z   fetch-depth: 1
+2026-10-27T11:00:02.4000000Z ##[endgroup]
+2026-10-27T11:00:02.5000000Z Syncing repository: quay-labs/harbor
+2026-10-27T11:00:02.6000000Z Fetching the repository
+2026-10-27T11:00:02.7000000Z Checking out the ref
+2026-10-27T11:00:02.8000000Z ##[group]Run ruby/setup-ruby@v1
+2026-10-27T11:00:02.9000000Z with:
+2026-10-27T11:00:03.0000000Z   ruby-version: 3.4
+2026-10-27T11:00:03.1000000Z   bundler-cache: false
+2026-10-27T11:00:03.2000000Z ##[endgroup]
+2026-10-27T11:00:03.3000000Z ##[group]Modifying PATH
+2026-10-27T11:00:03.4000000Z Entries added to PATH:
+2026-10-27T11:00:03.5000000Z   /Users/runner/hostedtoolcache/Ruby/3.4.6/x64/bin
+2026-10-27T11:00:03.6000000Z ##[endgroup]
+2026-10-27T11:00:03.7000000Z ##[group]Print Ruby version
+2026-10-27T11:00:03.8000000Z ruby 3.4.6 (2025-08-20 revision d2d6e675d7) [x86_64-darwin24]
+2026-10-27T11:00:03.9000000Z ##[endgroup]
+2026-10-27T11:00:04.0000000Z ##[group]Run gem install minitest -v 5.25.4 --no-document
+2026-10-27T11:00:04.1000000Z gem install minitest -v 5.25.4 --no-document
+2026-10-27T11:00:04.2000000Z shell: /bin/bash -e {0}
+2026-10-27T11:00:04.3000000Z ##[endgroup]
+2026-10-27T11:00:05.0000000Z Successfully installed minitest-5.25.4
+2026-10-27T11:00:05.1000000Z 1 gem installed
+2026-10-27T11:00:05.2000000Z ##[group]Run ruby -Ilib test/status_test.rb --verbose --seed 41
+2026-10-27T11:00:05.3000000Z ruby -Ilib test/status_test.rb --verbose --seed 41
+2026-10-27T11:00:05.4000000Z shell: /bin/bash -e {0}
+2026-10-27T11:00:05.5000000Z env:
+2026-10-27T11:00:05.6000000Z   HARBOR_FLAG_FILE: ***
+2026-10-27T11:00:05.7000000Z ##[endgroup]
+2026-10-27T11:00:05.8000000Z Run options: --verbose --seed 41
+2026-10-27T11:00:05.8100000Z 
+2026-10-27T11:00:05.8200000Z # Running:
+2026-10-27T11:00:05.8300000Z 
+2026-10-27T11:00:05.8400000Z StatusTest#test_name_prefix = 0.00 s = .
+2026-10-27T11:00:05.8500000Z StatusTest#test_decimal = 0.00 s = .
+2026-10-27T11:00:05.8600000Z StatusTest#test_name_length = 0.00 s = .
+2026-10-27T11:00:05.8700000Z StatusTest#test_split_pair = 0.00 s = .
+2026-10-27T11:00:05.8800000Z StatusTest#test_ready_flag = 0.00 s = F
+2026-10-27T11:00:05.8900000Z StatusTest#test_name_case = 0.00 s = .
+2026-10-27T11:00:05.9000000Z StatusTest#test_include = 0.00 s = .
+2026-10-27T11:00:05.9100000Z StatusTest#test_join_names = 0.00 s = .
+2026-10-27T11:00:05.9200000Z StatusTest#test_name_suffix = 0.00 s = .
+2026-10-27T11:00:05.9300000Z StatusTest#test_empty_value = 0.00 s = .
+2026-10-27T11:00:05.9400000Z StatusTest#test_first_char = 0.00 s = .
+2026-10-27T11:00:05.9500000Z StatusTest#test_strip_space = 0.00 s = .
+2026-10-27T11:00:05.9600000Z StatusTest#test_replace = 0.00 s = .
+2026-10-27T11:00:05.9700000Z 
+2026-10-27T11:00:05.9800000Z Finished in 0.006314s, 2058.0931 runs/s, 2374.7228 assertions/s.
+2026-10-27T11:00:05.9900000Z 
+2026-10-27T11:00:06.0000000Z   1) Failure:
+2026-10-27T11:00:06.0100000Z StatusTest#test_ready_flag [test/status_test.rb:19]:
+2026-10-27T11:00:06.0200000Z Expected false to be truthy.
+2026-10-27T11:00:06.0300000Z 
+2026-10-27T11:00:06.0400000Z 13 runs, 15 assertions, 1 failures, 0 errors, 0 skips
+2026-10-27T11:00:06.0500000Z ##[error]Process completed with exit code 1.
+2026-10-27T11:00:06.0600000Z Post job cleanup.
+2026-10-27T11:00:06.0610000Z [command]/usr/bin/git version
+2026-10-27T11:00:06.0620000Z git version 2.51.0
+2026-10-27T11:00:06.0630000Z Temporarily overriding HOME before making global git config changes
+2026-10-27T11:00:06.0640000Z [command]/usr/bin/git config --global --add safe.directory /Users/runner/work/harbor/harbor
+2026-10-27T11:00:06.0700000Z Cleaning up orphan processes

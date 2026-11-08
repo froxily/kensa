@@ -1,0 +1,16 @@
+{
+  "id": "t40-woodruff-truncated",
+  "split": "test",
+  "category": "unknown",
+  "kind": "insufficient",
+  "difficulty": "medium",
+  "ecosystem": "dotnet",
+  "title": "Archive inspection log ends before the result",
+  "root_cause": "The log is truncated before the archive inspector's output, and the downloaded archive is not available in the repository snapshot. Its contents could cause several different failures, so the available evidence does not establish a cause.",
+  "fix_keywords": [],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 84, "end_line": 87, "why": "The log stops at a truncation marker after the SDK information."},
+    {"path": ".github/workflows/archive-inventory.yml", "start_line": 11, "end_line": 20, "why": "The job downloads an archive and runs the inspector after displaying SDK information."},
+    {"path": "ArchiveInspector/Program.cs", "start_line": 4, "end_line": 9, "why": "Archive, entry, and JSON processing can fail for different reasons."}
+  ]
+}

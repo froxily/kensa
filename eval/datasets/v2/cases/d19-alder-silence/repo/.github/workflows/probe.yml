@@ -1,0 +1,14 @@
+name: Endpoint probe
+on: [workflow_dispatch]
+jobs:
+  probe:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+      - name: Run probe
+        run: php tools/probe.php >/dev/null 2>&1
+        env:
+          ALDER_PROBE_URL: ${{ secrets.ALDER_PROBE_URL }}

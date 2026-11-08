@@ -1,0 +1,1 @@
+Headers retain the complete text before a colon.

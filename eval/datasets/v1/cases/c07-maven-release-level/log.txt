@@ -1,0 +1,50 @@
+2026-09-19T12:30:01.0000000Z Current runner version: '2.324.0'
+2026-09-19T12:30:02.0000000Z Image: ubuntu-24.04
+2026-09-19T12:30:03.0000000Z Job: verify
+2026-09-19T12:30:04.0000000Z Prepare actions
+2026-09-19T12:30:05.0000000Z ##[group]Run actions/checkout@v4
+2026-09-19T12:30:06.0000000Z with:
+2026-09-19T12:30:07.0000000Z   repository: blue-tern/tide-index
+2026-09-19T12:30:08.0000000Z   fetch-depth: 2
+2026-09-19T12:30:09.0000000Z ##[endgroup]
+2026-09-19T12:30:10.0000000Z Syncing repository: blue-tern/tide-index
+2026-09-19T12:30:11.0000000Z Fetching two commits
+2026-09-19T12:30:12.0000000Z Checking out the ref
+2026-09-19T12:30:13.0000000Z ##[group]Run actions/setup-java@v4
+2026-09-19T12:30:14.0000000Z with:
+2026-09-19T12:30:15.0000000Z   distribution: temurin
+2026-09-19T12:30:16.0000000Z   java-version: 17
+2026-09-19T12:30:17.0000000Z   cache: maven
+2026-09-19T12:30:18.0000000Z ##[endgroup]
+2026-09-19T12:30:19.0000000Z Installed Java 17.0.12
+2026-09-19T12:30:20.0000000Z Maven cache restored
+2026-09-19T12:30:21.0000000Z ##[group]Run mvn -version
+2026-09-19T12:30:22.0000000Z mvn -version
+2026-09-19T12:30:23.0000000Z ##[endgroup]
+2026-09-19T12:30:24.0000000Z Apache Maven 3.9.9
+2026-09-19T12:30:25.0000000Z Java version: 17.0.12, vendor: Eclipse Adoptium
+2026-09-19T12:30:26.0000000Z OS name: linux, arch: amd64
+2026-09-19T12:30:27.0000000Z ##[group]Run mvn -B verify
+2026-09-19T12:30:28.0000000Z mvn -B verify
+2026-09-19T12:30:29.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-19T12:30:30.0000000Z ##[endgroup]
+2026-09-19T12:30:31.0000000Z [INFO] Scanning for projects...
+2026-09-19T12:30:32.0000000Z [INFO] Building tide-index 1.2.0
+2026-09-19T12:30:33.0000000Z [INFO] --- resources:3.3.1:resources (default-resources) @ tide-index ---
+2026-09-19T12:30:34.0000000Z [INFO] skip non existing resourceDirectory src/main/resources
+2026-09-19T12:30:35.0000000Z [INFO] --- compiler:3.13.0:compile (default-compile) @ tide-index ---
+2026-09-19T12:30:36.0000000Z [INFO] Recompiling the module because of changed source code.
+2026-09-19T12:30:37.0000000Z [INFO] Compiling 6 source files with javac [debug release 21] to target/classes
+2026-09-19T12:30:38.0000000Z [INFO] BUILD FAILURE
+2026-09-19T12:30:39.0000000Z [ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.13.0:compile on project tide-index: Fatal error compiling: error: release version 21 not supported -> [Help 1]
+2026-09-19T12:30:40.0000000Z [ERROR]
+2026-09-19T12:30:41.0000000Z [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+2026-09-19T12:30:42.0000000Z [ERROR] Re-run Maven using the -X switch to enable full debug logging.
+2026-09-19T12:30:43.0000000Z [ERROR]
+2026-09-19T12:30:44.0000000Z [ERROR] For more information about the errors and possible solutions, please read the following articles:
+2026-09-19T12:30:45.0000000Z [ERROR] [Help 1] MojoExecutionException
+2026-09-19T12:30:46.0000000Z [INFO] Total time: 2.013 s
+2026-09-19T12:30:47.0000000Z [INFO] Finished at: 2026-09-19T12:30:47Z
+2026-09-19T12:30:48.0000000Z [INFO] ------------------------------------------------------------------------
+2026-09-19T12:30:49.0000000Z Maven exited with status 1
+2026-09-19T12:30:50.0000000Z ##[error]Process completed with exit code 1.

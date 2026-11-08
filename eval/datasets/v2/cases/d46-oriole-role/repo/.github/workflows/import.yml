@@ -1,0 +1,26 @@
+name: Catalog import
+on: [push]
+jobs:
+  import:
+    runs-on: ubuntu-22.04
+    services:
+      records:
+        image: postgres:16
+        env:
+          POSTGRES_HOST_AUTH_METHOD: trust
+        ports:
+          - 5547:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: erlef/setup-beam@v1
+        with:
+          otp-version: '27'
+          elixir-version: '1.17'
+      - name: Install database client
+        run: sudo apt-get update && sudo apt-get install -y postgresql-client
+      - run: mix run -e 'Oriole.run()'

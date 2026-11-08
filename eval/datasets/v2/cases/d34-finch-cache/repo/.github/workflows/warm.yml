@@ -1,0 +1,15 @@
+name: Cache warmup
+on: [push]
+jobs:
+  warm:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: erlef/setup-beam@v1
+        with:
+          otp-version: '27'
+          elixir-version: '1.17'
+      - name: Warm cache
+        run: mix run -e 'Finch.run()'
+        env:
+          FINCH_CACHE_PORT: '6394'

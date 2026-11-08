@@ -1,0 +1,73 @@
+2026-10-31T11:00:00.0000000Z Current runner version: '2.328.0'
+2026-10-31T11:00:00.1000000Z ##[group]Operating System
+2026-10-31T11:00:00.2000000Z Microsoft Windows Server 2022
+2026-10-31T11:00:00.3000000Z 10.0.20348
+2026-10-31T11:00:00.4000000Z Datacenter
+2026-10-31T11:00:00.5000000Z ##[endgroup]
+2026-10-31T11:00:00.6000000Z ##[group]Runner Image
+2026-10-31T11:00:00.7000000Z Image: windows-2022
+2026-10-31T11:00:00.8000000Z Version: 20261026.1
+2026-10-31T11:00:00.9000000Z ##[endgroup]
+2026-10-31T11:00:01.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-31T11:00:01.1000000Z Contents: read
+2026-10-31T11:00:01.2000000Z Metadata: read
+2026-10-31T11:00:01.3000000Z ##[endgroup]
+2026-10-31T11:00:01.4000000Z Prepare workflow directory
+2026-10-31T11:00:01.5000000Z Prepare all required actions
+2026-10-31T11:00:01.6000000Z Download action repository 'actions/checkout@v4'
+2026-10-31T11:00:01.7000000Z Download action repository 'actions/setup-go@v5'
+2026-10-31T11:00:01.8000000Z Complete job name: verify
+2026-10-31T11:00:02.0000000Z ##[group]Run actions/checkout@v4
+2026-10-31T11:00:02.1000000Z with:
+2026-10-31T11:00:02.2000000Z   repository: winter-grove/holly
+2026-10-31T11:00:02.3000000Z   fetch-depth: 1
+2026-10-31T11:00:02.4000000Z ##[endgroup]
+2026-10-31T11:00:02.5000000Z Syncing repository: winter-grove/holly
+2026-10-31T11:00:02.6000000Z Fetching the repository
+2026-10-31T11:00:02.7000000Z Checking out the ref
+2026-10-31T11:00:02.8000000Z ##[group]Run actions/setup-go@v5
+2026-10-31T11:00:02.9000000Z with:
+2026-10-31T11:00:03.0000000Z   go-version: 1.25
+2026-10-31T11:00:03.1000000Z   cache: false
+2026-10-31T11:00:03.2000000Z ##[endgroup]
+2026-10-31T11:00:03.3000000Z Found in cache @ C:\hostedtoolcache\windows\go\1.25.2\x64
+2026-10-31T11:00:03.4000000Z Added go to the path
+2026-10-31T11:00:03.5000000Z Successfully set up Go version 1.25
+2026-10-31T11:00:03.6000000Z ##[group]Run go test -json measure/capacity.go measure/capacity_test.go
+2026-10-31T11:00:03.7000000Z go test -json measure/capacity.go measure/capacity_test.go
+2026-10-31T11:00:03.8000000Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-31T11:00:03.9000000Z env:
+2026-10-31T11:00:04.0000000Z   GO111MODULE: off
+2026-10-31T11:00:04.1000000Z ##[endgroup]
+2026-10-31T11:00:11.0000000Z {"Time":"2026-10-31T11:00:11Z","Action":"start","Package":"command-line-arguments"}
+2026-10-31T11:00:11.0100000Z {"Time":"2026-10-31T11:00:11.01Z","Action":"run","Package":"command-line-arguments","Test":"TestZeroWidth"}
+2026-10-31T11:00:11.0200000Z {"Time":"2026-10-31T11:00:11.02Z","Action":"output","Package":"command-line-arguments","Test":"TestZeroWidth","Output":"=== RUN   TestZeroWidth\n"}
+2026-10-31T11:00:11.0300000Z {"Time":"2026-10-31T11:00:11.03Z","Action":"output","Package":"command-line-arguments","Test":"TestZeroWidth","Output":"--- PASS: TestZeroWidth (0.00s)\n"}
+2026-10-31T11:00:11.0400000Z {"Time":"2026-10-31T11:00:11.04Z","Action":"pass","Package":"command-line-arguments","Test":"TestZeroWidth","Elapsed":0}
+2026-10-31T11:00:11.0500000Z {"Time":"2026-10-31T11:00:11.05Z","Action":"run","Package":"command-line-arguments","Test":"TestZeroHeight"}
+2026-10-31T11:00:11.0600000Z {"Time":"2026-10-31T11:00:11.06Z","Action":"output","Package":"command-line-arguments","Test":"TestZeroHeight","Output":"=== RUN   TestZeroHeight\n"}
+2026-10-31T11:00:11.0700000Z {"Time":"2026-10-31T11:00:11.07Z","Action":"output","Package":"command-line-arguments","Test":"TestZeroHeight","Output":"--- PASS: TestZeroHeight (0.00s)\n"}
+2026-10-31T11:00:11.0800000Z {"Time":"2026-10-31T11:00:11.08Z","Action":"pass","Package":"command-line-arguments","Test":"TestZeroHeight","Elapsed":0}
+2026-10-31T11:00:11.0900000Z {"Time":"2026-10-31T11:00:11.09Z","Action":"run","Package":"command-line-arguments","Test":"TestZeroDepth"}
+2026-10-31T11:00:11.1000000Z {"Time":"2026-10-31T11:00:11.1Z","Action":"output","Package":"command-line-arguments","Test":"TestZeroDepth","Output":"=== RUN   TestZeroDepth\n"}
+2026-10-31T11:00:11.1100000Z {"Time":"2026-10-31T11:00:11.11Z","Action":"output","Package":"command-line-arguments","Test":"TestZeroDepth","Output":"--- PASS: TestZeroDepth (0.00s)\n"}
+2026-10-31T11:00:11.1200000Z {"Time":"2026-10-31T11:00:11.12Z","Action":"pass","Package":"command-line-arguments","Test":"TestZeroDepth","Elapsed":0}
+2026-10-31T11:00:11.1300000Z {"Time":"2026-10-31T11:00:11.13Z","Action":"run","Package":"command-line-arguments","Test":"TestEmptyBox"}
+2026-10-31T11:00:11.1400000Z {"Time":"2026-10-31T11:00:11.14Z","Action":"output","Package":"command-line-arguments","Test":"TestEmptyBox","Output":"=== RUN   TestEmptyBox\n"}
+2026-10-31T11:00:11.1500000Z {"Time":"2026-10-31T11:00:11.15Z","Action":"output","Package":"command-line-arguments","Test":"TestEmptyBox","Output":"--- PASS: TestEmptyBox (0.00s)\n"}
+2026-10-31T11:00:11.1600000Z {"Time":"2026-10-31T11:00:11.16Z","Action":"pass","Package":"command-line-arguments","Test":"TestEmptyBox","Elapsed":0}
+2026-10-31T11:00:11.1700000Z {"Time":"2026-10-31T11:00:11.17Z","Action":"run","Package":"command-line-arguments","Test":"TestFlatBox"}
+2026-10-31T11:00:11.1800000Z {"Time":"2026-10-31T11:00:11.18Z","Action":"output","Package":"command-line-arguments","Test":"TestFlatBox","Output":"=== RUN   TestFlatBox\n"}
+2026-10-31T11:00:11.1900000Z {"Time":"2026-10-31T11:00:11.19Z","Action":"output","Package":"command-line-arguments","Test":"TestFlatBox","Output":"--- PASS: TestFlatBox (0.00s)\n"}
+2026-10-31T11:00:11.2000000Z {"Time":"2026-10-31T11:00:11.2Z","Action":"pass","Package":"command-line-arguments","Test":"TestFlatBox","Elapsed":0}
+2026-10-31T11:00:11.2100000Z {"Time":"2026-10-31T11:00:11.21Z","Action":"run","Package":"command-line-arguments","Test":"TestCubeInLiters"}
+2026-10-31T11:00:11.2200000Z {"Time":"2026-10-31T11:00:11.22Z","Action":"output","Package":"command-line-arguments","Test":"TestCubeInLiters","Output":"=== RUN   TestCubeInLiters\n"}
+2026-10-31T11:00:11.2300000Z {"Time":"2026-10-31T11:00:11.23Z","Action":"output","Package":"command-line-arguments","Test":"TestCubeInLiters","Output":"    capacity_test.go:12: Liters(10,10,10) = 1000; want 1\n"}
+2026-10-31T11:00:11.2400000Z {"Time":"2026-10-31T11:00:11.24Z","Action":"output","Package":"command-line-arguments","Test":"TestCubeInLiters","Output":"--- FAIL: TestCubeInLiters (0.00s)\n"}
+2026-10-31T11:00:11.2500000Z {"Time":"2026-10-31T11:00:11.25Z","Action":"fail","Package":"command-line-arguments","Test":"TestCubeInLiters","Elapsed":0}
+2026-10-31T11:00:11.2600000Z {"Time":"2026-10-31T11:00:11.26Z","Action":"output","Package":"command-line-arguments","Output":"FAIL\n"}
+2026-10-31T11:00:11.2700000Z {"Time":"2026-10-31T11:00:11.27Z","Action":"output","Package":"command-line-arguments","Output":"FAIL\tcommand-line-arguments\t0.003s\n"}
+2026-10-31T11:00:11.2800000Z {"Time":"2026-10-31T11:00:11.28Z","Action":"fail","Package":"command-line-arguments","Elapsed":0.003}
+2026-10-31T11:00:11.2900000Z ##[error]Process completed with exit code 1.
+2026-10-31T11:00:11.3000000Z Post job cleanup.
+2026-10-31T11:00:11.3100000Z Cleaning up orphan processes

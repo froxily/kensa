@@ -1,0 +1,16 @@
+{
+  "id": "d50-beech-symbol",
+  "split": "dev",
+  "category": "dependency_build",
+  "kind": "standard",
+  "difficulty": "easy",
+  "ecosystem": "java",
+  "title": "Java compilation references an absent method",
+  "root_cause": "Summary calls Ledger.total(), but Ledger does not define that method. The Java compiler cannot resolve the symbol and Maven's compile goal fails.",
+  "fix_keywords": ["Ledger", "total"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 56, "end_line": 60, "why": "The compiler names the missing method and receiver type."},
+    {"path": "src/main/java/com/beech/Summary.java", "start_line": 3, "end_line": 6, "why": "The caller invokes the missing method."},
+    {"path": "src/main/java/com/beech/Ledger.java", "start_line": 3, "end_line": 5, "why": "The class defines size but not total."}
+  ]
+}

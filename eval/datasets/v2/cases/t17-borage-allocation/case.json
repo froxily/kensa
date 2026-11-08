@@ -1,0 +1,16 @@
+{
+  "id": "t17-borage-allocation",
+  "split": "test",
+  "category": "oom_timeout",
+  "kind": "standard",
+  "difficulty": "easy",
+  "ecosystem": "elixir",
+  "title": "Sample allocation exceeds the process memory limit",
+  "root_cause": "The workflow limits virtual memory to 12000000 KiB and the script requests a 13 GB binary. The BEAM allocator cannot satisfy the request and the process exits.",
+  "fix_keywords": ["ulimit", "13_000_000_000"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 55, "end_line": 58, "why": "The allocator reports its failed memory request."},
+    {"path": ".github/workflows/beam-allocation.yml", "start_line": 12, "end_line": 15, "why": "The step sets a virtual-memory limit before starting Elixir."},
+    {"path": "tools/materialize.exs", "start_line": 3, "end_line": 4, "why": "The script requests a large binary allocation."}
+  ]
+}

@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.20)
+project(AniseClock LANGUAGES CXX)
+enable_testing()
+add_executable(clock_probe clock/probe.cpp)
+add_test(NAME clock_probe COMMAND clock_probe)

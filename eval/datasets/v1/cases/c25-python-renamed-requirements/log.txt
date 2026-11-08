@@ -1,0 +1,50 @@
+﻿2026-09-18T10:30:00.0000000Z Current runner version: '2.329.1'
+2026-09-18T10:30:00.1000000Z Image: ubuntu-24.04
+2026-09-18T10:30:00.2000000Z Preparing job quality
+2026-09-18T10:30:00.3000000Z Download action repository 'actions/checkout@v4'
+2026-09-18T10:30:00.4000000Z Download action repository 'actions/setup-python@v5'
+2026-09-18T10:30:00.5000000Z ##[group]Run actions/checkout@v4
+2026-09-18T10:30:00.6000000Z with:
+2026-09-18T10:30:00.7000000Z   repository: alder-press/labeler
+2026-09-18T10:30:00.8000000Z   token: ***
+2026-09-18T10:30:00.9000000Z ##[endgroup]
+2026-09-18T10:30:01.0000000Z Syncing repository: alder-press/labeler
+2026-09-18T10:30:01.1000000Z git version 2.51.0
+2026-09-18T10:30:01.2000000Z Fetching the repository
+2026-09-18T10:30:01.3000000Z HEAD is now at a829b52 Rename test requirements
+2026-09-18T10:30:01.4000000Z ##[group]Run actions/setup-python@v5
+2026-09-18T10:30:01.5000000Z with:
+2026-09-18T10:30:01.6000000Z   python-version: 3.12
+2026-09-18T10:30:01.7000000Z   check-latest: false
+2026-09-18T10:30:01.8000000Z ##[endgroup]
+2026-09-18T10:30:01.9000000Z ##[group]Installed versions
+2026-09-18T10:30:02.0000000Z Successfully set up CPython (3.12.11)
+2026-09-18T10:30:02.1000000Z ##[endgroup]
+2026-09-18T10:30:02.2000000Z ##[group]Run python -m pip install --upgrade pip
+2026-09-18T10:30:02.3000000Z python -m pip install --upgrade pip
+2026-09-18T10:30:02.4000000Z shell: /usr/bin/bash -e {0}
+2026-09-18T10:30:02.5000000Z ##[endgroup]
+2026-09-18T10:30:02.6000000Z Requirement already satisfied: pip in /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages (25.1)
+2026-09-18T10:30:02.7000000Z Collecting pip
+2026-09-18T10:30:02.8000000Z   Downloading pip-25.2-py3-none-any.whl.metadata (4.7 kB)
+2026-09-18T10:30:02.9000000Z Downloading pip-25.2-py3-none-any.whl (1.8 MB)
+2026-09-18T10:30:03.0000000Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 26.4 MB/s eta 0:00:00
+2026-09-18T10:30:03.1000000Z Installing collected packages: pip
+2026-09-18T10:30:03.2000000Z   Attempting uninstall: pip
+2026-09-18T10:30:03.3000000Z     Found existing installation: pip 25.1
+2026-09-18T10:30:03.4000000Z     Uninstalling pip-25.1:
+2026-09-18T10:30:03.5000000Z       Successfully uninstalled pip-25.1
+2026-09-18T10:30:03.6000000Z Successfully installed pip-25.2
+2026-09-18T10:30:03.7000000Z ##[group]Run pip install -r config/requirements-ci.txt
+2026-09-18T10:30:03.8000000Z pip install -r config/requirements-ci.txt
+2026-09-18T10:30:03.9000000Z shell: /usr/bin/bash -e {0}
+2026-09-18T10:30:04.0000000Z env:
+2026-09-18T10:30:04.1000000Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.11/x64
+2026-09-18T10:30:04.2000000Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.11/x64/lib/pkgconfig
+2026-09-18T10:30:04.3000000Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.11/x64
+2026-09-18T10:30:04.4000000Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.11/x64
+2026-09-18T10:30:04.5000000Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.11/x64
+2026-09-18T10:30:04.6000000Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.11/x64/lib
+2026-09-18T10:30:04.7000000Z ##[endgroup]
+2026-09-18T10:30:04.8000000Z ERROR: Could not open requirements file: [Errno 2] No such file or directory: 'config/requirements-ci.txt'
+2026-09-18T10:30:04.9000000Z ##[error]Process completed with exit code 1.

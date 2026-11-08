@@ -1,0 +1,16 @@
+{
+  "id": "t20-loquat-archive",
+  "split": "test",
+  "category": "db_connectivity",
+  "kind": "masked",
+  "difficulty": "medium",
+  "ecosystem": "python",
+  "title": "Archive test cannot contact the document service",
+  "root_cause": "The test uses the service container hostname from a job running on the runner host, where that hostname does not resolve. It needs to connect to localhost on the published port 27123, and unittest reports the resulting connection error.",
+  "fix_keywords": ["127.0.0.1", "27123"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 68, "end_line": 73, "why": "The test traceback shows a hostname resolution failure."},
+    {"path": ".github/workflows/archive-suite.yml", "start_line": 6, "end_line": 10, "why": "The database is published on host port 27123."},
+    {"path": "archive_cases.py", "start_line": 9, "end_line": 10, "why": "The test attempts to use the service container hostname."}
+  ]
+}

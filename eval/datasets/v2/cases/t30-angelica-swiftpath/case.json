@@ -1,0 +1,17 @@
+{
+  "id": "t30-angelica-swiftpath",
+  "split": "test",
+  "category": "workflow_path",
+  "kind": "misleading",
+  "difficulty": "medium",
+  "ecosystem": "swift",
+  "title": "Swift client cannot find the generated module",
+  "root_cause": "The workflow emits ShelfIndex into artifacts/modules but searches artifacts/module when typechecking the client. The compiler's missing-module error follows from that incorrect search path.",
+  "fix_keywords": ["artifacts/modules", "artifacts/module"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 24, "end_line": 26, "why": "The module output and search directory differ."},
+    {"path": "log", "start_line": 50, "end_line": 54, "why": "The compiler reports that it cannot find the module."},
+    {"path": ".github/workflows/swift-index.yml", "start_line": 9, "end_line": 13, "why": "The module is written to the plural directory and searched for in the singular one."},
+    {"path": "library/ShelfIndex.swift", "start_line": 1, "end_line": 4, "why": "The module source is present in the repository."}
+  ]
+}

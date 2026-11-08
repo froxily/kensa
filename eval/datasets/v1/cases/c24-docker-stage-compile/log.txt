@@ -1,0 +1,54 @@
+﻿2026-09-17T07:00:00.0000000Z Current runner version: '2.329.0'
+2026-09-17T07:00:00.1000000Z ##[group]Runner Image
+2026-09-17T07:00:00.2000000Z Image: ubuntu-24.04
+2026-09-17T07:00:00.3000000Z ##[endgroup]
+2026-09-17T07:00:00.4000000Z Preparing actions
+2026-09-17T07:00:00.5000000Z Download action repository 'actions/checkout@v4'
+2026-09-17T07:00:00.6000000Z Complete job name: build-image
+2026-09-17T07:00:00.7000000Z ##[group]Run actions/checkout@v4
+2026-09-17T07:00:00.8000000Z with:
+2026-09-17T07:00:00.9000000Z   repository: lantern-guild/agent
+2026-09-17T07:00:01.0000000Z   token: ***
+2026-09-17T07:00:01.1000000Z ##[endgroup]
+2026-09-17T07:00:01.2000000Z Syncing repository: lantern-guild/agent
+2026-09-17T07:00:01.3000000Z git version 2.51.0
+2026-09-17T07:00:01.4000000Z Initializing the repository
+2026-09-17T07:00:01.5000000Z Fetching the repository
+2026-09-17T07:00:01.6000000Z Checking out the ref
+2026-09-17T07:00:01.7000000Z HEAD is now at d10ca33 Add marker
+2026-09-17T07:00:01.8000000Z ##[group]Run docker version
+2026-09-17T07:00:01.9000000Z docker version
+2026-09-17T07:00:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-17T07:00:02.1000000Z ##[endgroup]
+2026-09-17T07:00:02.2000000Z Client: Docker Engine - Community
+2026-09-17T07:00:02.3000000Z  Version: 28.3.3
+2026-09-17T07:00:02.4000000Z  API version: 1.51
+2026-09-17T07:00:02.5000000Z Server: Docker Engine - Community
+2026-09-17T07:00:02.6000000Z  Engine:
+2026-09-17T07:00:02.7000000Z   Version: 28.3.3
+2026-09-17T07:00:02.8000000Z ##[group]Run docker build --progress=plain -t lantern:ci .
+2026-09-17T07:00:02.9000000Z docker build --progress=plain -t lantern:ci .
+2026-09-17T07:00:03.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-17T07:00:03.1000000Z ##[endgroup]
+2026-09-17T07:00:03.2000000Z #1 [internal] load build definition from Dockerfile
+2026-09-17T07:00:03.3000000Z #1 transferring dockerfile: 298B done
+2026-09-17T07:00:03.4000000Z #1 DONE 0.0s
+2026-09-17T07:00:03.5000000Z #2 [internal] load metadata for docker.io/library/golang:1.24-alpine
+2026-09-17T07:00:03.6000000Z #2 DONE 0.7s
+2026-09-17T07:00:03.7000000Z #3 [internal] load metadata for docker.io/library/alpine:3.21
+2026-09-17T07:00:03.8000000Z #3 DONE 0.4s
+2026-09-17T07:00:03.9000000Z #4 [internal] load build context
+2026-09-17T07:00:04.0000000Z #4 transferring context: 491B done
+2026-09-17T07:00:04.1000000Z #4 DONE 0.0s
+2026-09-17T07:00:04.2000000Z #5 [build 2/5] WORKDIR /src
+2026-09-17T07:00:04.3000000Z #5 DONE 0.1s
+2026-09-17T07:00:04.4000000Z #6 [build 3/5] COPY go.mod ./
+2026-09-17T07:00:04.5000000Z #6 DONE 0.0s
+2026-09-17T07:00:04.6000000Z #7 [build 4/5] COPY cmd/ ./cmd/
+2026-09-17T07:00:04.7000000Z #7 DONE 0.0s
+2026-09-17T07:00:04.8000000Z #8 [build 5/5] RUN go build -o /out/lantern ./cmd
+2026-09-17T07:00:04.9000000Z #8 4.221 # lantern.invalid/agent/cmd
+2026-09-17T07:00:05.0000000Z #8 4.221 cmd/main.go:8:17: undefined: missingLabel
+2026-09-17T07:00:05.1000000Z #8 ERROR: process "/bin/sh -c go build -o /out/lantern ./cmd" did not complete successfully: exit code: 1
+2026-09-17T07:00:05.2000000Z ERROR: failed to build: failed to solve: process exited with code 1
+2026-09-17T07:00:05.3000000Z ##[error]Process completed with exit code 1.

@@ -1,0 +1,9 @@
+name: Mesa smoke
+on: [push]
+jobs:
+  smoke:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: g++ -std=c++17 src/smoke.cpp -o smoke
+      - run: ./smoke

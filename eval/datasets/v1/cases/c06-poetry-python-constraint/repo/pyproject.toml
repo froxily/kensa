@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "reed-parser"
+version = "0.1.0"
+description = "Parser for field notes"
+authors = ["Reed Parser Team"]
+packages = [{include = "reed_parser"}]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.12"
+httpx = "^0.27.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

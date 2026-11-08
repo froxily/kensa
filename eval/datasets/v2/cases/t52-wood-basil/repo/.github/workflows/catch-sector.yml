@@ -1,0 +1,13 @@
+name: Catch sector
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Catch2
+        run: sudo apt-get update && sudo apt-get install -y catch2
+      - name: Build checks
+        run: cmake -S . -B build && cmake --build build
+      - name: Run sector checks
+        run: ./build/sector_checks --reporter console --success

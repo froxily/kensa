@@ -1,0 +1,10 @@
+psycopg[binary]==3.2.3
+pytest==8.3.3
+# Integration dependencies
+# Install with pip install -r requirements.txt
+# CI uses Python 3.11.
+# The binary distribution contains libpq.
+# PostgreSQL must be reachable for tests.
+# Connection settings are supplied by CI.
+# No production credentials belong here.
+# Run locally with pytest -v tests.

@@ -1,0 +1,10 @@
+pytest==8.3.3
+psycopg[binary]==3.2.3
+# Test suite uses direct SQL connections.
+# The database endpoint is supplied by the workflow.
+# Keep the driver version aligned with production.
+# No ORM is required for these tests.
+# Install using pip install -r requirements.txt.
+# Python 3.12 is used in CI.
+# PostgreSQL 16 is the integration target.
+# Local runs may use a separate database.

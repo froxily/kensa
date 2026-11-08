@@ -1,0 +1,86 @@
+2026-10-24T07:00:00.0000000Z Current runner version: '2.328.0'
+2026-10-24T07:00:00.1000000Z ##[group]Operating System
+2026-10-24T07:00:00.2000000Z Ubuntu
+2026-10-24T07:00:00.3000000Z 24.04.3
+2026-10-24T07:00:00.4000000Z LTS
+2026-10-24T07:00:00.5000000Z ##[endgroup]
+2026-10-24T07:00:00.6000000Z ##[group]Runner Image
+2026-10-24T07:00:00.7000000Z Image: ubuntu-24.04
+2026-10-24T07:00:00.8000000Z Version: 20261019.1
+2026-10-24T07:00:00.9000000Z ##[endgroup]
+2026-10-24T07:00:01.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-24T07:00:01.1000000Z Contents: read
+2026-10-24T07:00:01.2000000Z Metadata: read
+2026-10-24T07:00:01.3000000Z ##[endgroup]
+2026-10-24T07:00:01.4000000Z Prepare workflow directory
+2026-10-24T07:00:01.5000000Z Prepare all required actions
+2026-10-24T07:00:01.6000000Z Download action repository 'actions/checkout@v4'
+2026-10-24T07:00:01.7000000Z Download action repository 'actions/setup-dotnet@v4'
+2026-10-24T07:00:01.8000000Z Complete job name: test
+2026-10-24T07:00:02.0000000Z ##[group]Run actions/checkout@v4
+2026-10-24T07:00:02.1000000Z with:
+2026-10-24T07:00:02.2000000Z   repository: brook-labs/rill
+2026-10-24T07:00:02.3000000Z   fetch-depth: 1
+2026-10-24T07:00:02.4000000Z ##[endgroup]
+2026-10-24T07:00:02.5000000Z Syncing repository: brook-labs/rill
+2026-10-24T07:00:02.6000000Z Fetching the repository
+2026-10-24T07:00:02.7000000Z Checking out the ref
+2026-10-24T07:00:02.8000000Z ##[group]Run actions/setup-dotnet@v4
+2026-10-24T07:00:02.9000000Z with:
+2026-10-24T07:00:03.0000000Z   dotnet-version: 8.0.x
+2026-10-24T07:00:03.1000000Z ##[endgroup]
+2026-10-24T07:00:03.2000000Z Using cached dotnet version: 8.0.413
+2026-10-24T07:00:03.3000000Z ##[group]Run dotnet test Rill.Tests.csproj --logger "console;verbosity=detailed"
+2026-10-24T07:00:03.4000000Z dotnet test Rill.Tests.csproj --logger "console;verbosity=detailed"
+2026-10-24T07:00:03.5000000Z shell: /usr/bin/bash -e {0}
+2026-10-24T07:00:03.6000000Z ##[endgroup]
+2026-10-24T07:00:04.0000000Z   Determining projects to restore...
+2026-10-24T07:00:06.0000000Z   Restored /home/runner/work/rill/rill/Rill.Tests.csproj (in 1.7 sec).
+2026-10-24T07:00:07.0000000Z   Rill.Tests -> /home/runner/work/rill/rill/bin/Debug/net8.0/Rill.Tests.dll
+2026-10-24T07:00:07.1000000Z Test run for /home/runner/work/rill/rill/bin/Debug/net8.0/Rill.Tests.dll (.NETCoreApp,Version=v8.0)
+2026-10-24T07:00:07.2000000Z VSTest version 17.11.1 (x64)
+2026-10-24T07:00:07.3000000Z Starting test execution, please wait...
+2026-10-24T07:00:07.4000000Z A total of 1 test files matched the specified pattern.
+2026-10-24T07:00:07.5000000Z [xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.8.2+699d445a1a (64-bit .NET 8.0.20)
+2026-10-24T07:00:07.6000000Z [xUnit.net 00:00:00.06]   Discovering: Rill.Tests
+2026-10-24T07:00:07.7000000Z [xUnit.net 00:00:00.09]   Discovered:  Rill.Tests
+2026-10-24T07:00:07.8000000Z [xUnit.net 00:00:00.10]   Starting:    Rill.Tests
+2026-10-24T07:00:07.9000000Z   Passed ContainerTests.NameIsNotEmpty(name: "a") [< 1 ms]
+2026-10-24T07:00:07.9100000Z   Passed ContainerTests.NameIsNotEmpty(name: "b") [< 1 ms]
+2026-10-24T07:00:07.9200000Z   Passed ContainerTests.NameIsNotEmpty(name: "c") [< 1 ms]
+2026-10-24T07:00:07.9300000Z   Passed ContainerTests.NameIsNotEmpty(name: "d") [< 1 ms]
+2026-10-24T07:00:07.9400000Z   Passed ContainerTests.NameIsNotEmpty(name: "e") [< 1 ms]
+2026-10-24T07:00:07.9500000Z   Passed ContainerTests.NameIsNotEmpty(name: "f") [< 1 ms]
+2026-10-24T07:00:07.9600000Z   Passed ContainerTests.NameIsNotEmpty(name: "g") [< 1 ms]
+2026-10-24T07:00:07.9700000Z   Passed ContainerTests.NameIsNotEmpty(name: "h") [< 1 ms]
+2026-10-24T07:00:08.5000000Z [xUnit.net 00:00:00.80]     ContainerTests.ImageBuilds [FAIL]
+2026-10-24T07:00:08.6000000Z   Failed ContainerTests.ImageBuilds [680 ms]
+2026-10-24T07:00:08.7000000Z   Error Message:
+2026-10-24T07:00:08.8000000Z    Assert.Equal() Failure: Values differ
+2026-10-24T07:00:08.9000000Z Expected: 0
+2026-10-24T07:00:09.0000000Z Actual:   1
+2026-10-24T07:00:09.1000000Z   Stack Trace:
+2026-10-24T07:00:09.2000000Z      at ContainerTests.ImageBuilds() in /home/runner/work/rill/rill/ContainerTests.cs:line 29
+2026-10-24T07:00:09.3000000Z   Standard Output Messages:
+2026-10-24T07:00:09.4000000Z  #0 building with "default" instance using docker driver
+2026-10-24T07:00:09.5000000Z  #1 [internal] load build definition from Dockerfile
+2026-10-24T07:00:09.6000000Z  #1 transferring dockerfile: 98B done
+2026-10-24T07:00:09.7000000Z  #1 DONE 0.0s
+2026-10-24T07:00:09.8000000Z  #2 [internal] load metadata for docker.io/library/node:22-alpinee
+2026-10-24T07:00:09.9000000Z  #2 ERROR: docker.io/library/node:22-alpinee: not found
+2026-10-24T07:00:10.0000000Z  ------
+2026-10-24T07:00:10.1000000Z   > [internal] load metadata for docker.io/library/node:22-alpinee:
+2026-10-24T07:00:10.2000000Z  ------
+2026-10-24T07:00:10.3000000Z  Dockerfile:1
+2026-10-24T07:00:10.4000000Z  --------------------
+2026-10-24T07:00:10.5000000Z     1 | >>> FROM node:22-alpinee
+2026-10-24T07:00:10.6000000Z  --------------------
+2026-10-24T07:00:10.7000000Z  ERROR: failed to build: failed to solve: node:22-alpinee: failed to resolve source metadata for docker.io/library/node:22-alpinee: not found
+2026-10-24T07:00:10.8000000Z [xUnit.net 00:00:01.02]   Finished:    Rill.Tests
+2026-10-24T07:00:10.9000000Z Total tests: 9
+2026-10-24T07:00:11.0000000Z      Passed: 8
+2026-10-24T07:00:11.1000000Z      Failed: 1
+2026-10-24T07:00:11.2000000Z  Total time: 1.4987 Seconds
+2026-10-24T07:00:11.3000000Z ##[error]Process completed with exit code 1.
+2026-10-24T07:00:11.4000000Z Post job cleanup.
+2026-10-24T07:00:11.5000000Z Cleaning up orphan processes

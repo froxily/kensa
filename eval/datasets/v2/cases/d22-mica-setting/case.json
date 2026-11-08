@@ -1,0 +1,16 @@
+{
+  "id": "d22-mica-setting",
+  "split": "dev",
+  "category": "missing_env_var",
+  "kind": "standard",
+  "difficulty": "easy",
+  "ecosystem": "elixir",
+  "title": "Namespace setting absent during the suite",
+  "root_cause": "Mica.namespace requires MICA_NAMESPACE, but the workflow does not provide it. System.fetch_env! raises when the test calls it, so the suite fails.",
+  "fix_keywords": ["MICA_NAMESPACE"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 69, "end_line": 75, "why": "ExUnit reports the missing environment variable and failing test."},
+    {"path": "lib/mica.ex", "start_line": 1, "end_line": 2, "why": "The function requires the variable."},
+    {"path": ".github/workflows/checks.yml", "start_line": 5, "end_line": 12, "why": "The job invokes the suite without supplying the setting."}
+  ]
+}

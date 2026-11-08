@@ -1,0 +1,52 @@
+2026-09-16T10:10:00.0000000Z Runner version: 2.323.2
+2026-09-16T10:10:01.0000000Z Repository: lantern-grove/token-clock
+2026-09-16T10:10:02.0000000Z Job: verify
+2026-09-16T10:10:03.0000000Z Hosted image: ubuntu-24.04
+2026-09-16T10:10:04.0000000Z Prepare job directory
+2026-09-16T10:10:05.0000000Z Download actions/checkout@v4
+2026-09-16T10:10:06.0000000Z Download actions/setup-java@v4
+2026-09-16T10:10:07.0000000Z ##[group]Run actions/checkout@v4
+2026-09-16T10:10:08.0000000Z Syncing repository lantern-grove/token-clock
+2026-09-16T10:10:09.0000000Z Initializing git repository
+2026-09-16T10:10:10.0000000Z Fetching refs
+2026-09-16T10:10:11.0000000Z Checking out 8d21f31
+2026-09-16T10:10:12.0000000Z ##[endgroup]
+2026-09-16T10:10:13.0000000Z ##[group]Run actions/setup-java@v4
+2026-09-16T10:10:14.0000000Z Resolved Java 21 from tool cache
+2026-09-16T10:10:15.0000000Z Setting JAVA_HOME
+2026-09-16T10:10:16.0000000Z Maven cache restored
+2026-09-16T10:10:17.0000000Z ##[endgroup]
+2026-09-16T10:10:18.0000000Z ##[group]Run mvn -B dependency:go-offline
+2026-09-16T10:10:19.0000000Z [INFO] Scanning for projects...
+2026-09-16T10:10:20.0000000Z [INFO] Building token-clock 1.0
+2026-09-16T10:10:21.0000000Z [INFO] Resolving dependencies
+2026-09-16T10:10:22.0000000Z [INFO] Resolved junit-jupiter
+2026-09-16T10:10:23.0000000Z [INFO] BUILD SUCCESS
+2026-09-16T10:10:24.0000000Z ##[endgroup]
+2026-09-16T10:10:25.0000000Z ##[group]Run mvn -B test
+2026-09-16T10:10:26.0000000Z [INFO] Scanning for projects...
+2026-09-16T10:10:27.0000000Z [INFO] Building token-clock 1.0
+2026-09-16T10:10:28.0000000Z [INFO] Compiling 1 source file
+2026-09-16T10:10:29.0000000Z [INFO] Compiling 1 test source file
+2026-09-16T10:10:30.0000000Z [INFO] Using auto detected provider JUnitPlatformProvider
+2026-09-16T10:10:31.0000000Z [INFO] Running example.TokenClockTest
+2026-09-16T10:10:32.0000000Z [ERROR] Tests run: 2, Failures: 1, Errors: 0, Skipped: 0
+2026-09-16T10:10:33.0000000Z [ERROR] example.TokenClockTest.expiresAtBoundary
+2026-09-16T10:10:34.0000000Z org.opentest4j.AssertionFailedError: expected: <false> but was: <true>
+2026-09-16T10:10:35.0000000Z     at example.TokenClockTest.expiresAtBoundary(TokenClockTest.java:8)
+2026-09-16T10:10:36.0000000Z [INFO] Results:
+2026-09-16T10:10:37.0000000Z [ERROR] Failures:
+2026-09-16T10:10:38.0000000Z [ERROR]   TokenClockTest.expiresAtBoundary:8 expected: <false> but was: <true>
+2026-09-16T10:10:39.0000000Z [INFO] Tests run: 2, Failures: 1, Errors: 0, Skipped: 0
+2026-09-16T10:10:40.0000000Z [INFO] BUILD FAILURE
+2026-09-16T10:10:41.0000000Z [INFO] Total time: 4.2 s
+2026-09-16T10:10:42.0000000Z [ERROR] Failed to execute goal maven-surefire-plugin:test
+2026-09-16T10:10:43.0000000Z [ERROR] There are test failures.
+2026-09-16T10:10:44.0000000Z [ERROR] See target/surefire-reports for individual results.
+2026-09-16T10:10:45.0000000Z [ERROR] Re-run Maven using the -X switch for debug logging.
+2026-09-16T10:10:46.0000000Z Test goal returned 1
+2026-09-16T10:10:47.0000000Z Maven finished
+2026-09-16T10:10:47.1000000Z Surefire report directory: target/surefire-reports
+2026-09-16T10:10:47.2000000Z Forked test JVM finished
+2026-09-16T10:10:48.0000000Z ##[endgroup]
+2026-09-16T10:10:49.0000000Z ##[error]Process completed with exit code 1.

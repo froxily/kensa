@@ -1,0 +1,71 @@
+2026-10-26T13:00:00.0000000Z Current runner version: '2.328.0'
+2026-10-26T13:00:00.1000000Z ##[group]Operating System
+2026-10-26T13:00:00.2000000Z Ubuntu
+2026-10-26T13:00:00.3000000Z 24.04.3
+2026-10-26T13:00:00.4000000Z LTS
+2026-10-26T13:00:00.5000000Z ##[endgroup]
+2026-10-26T13:00:00.6000000Z ##[group]Runner Image
+2026-10-26T13:00:00.7000000Z Image: ubuntu-24.04
+2026-10-26T13:00:00.8000000Z Version: 20261019.1
+2026-10-26T13:00:00.9000000Z ##[endgroup]
+2026-10-26T13:00:01.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-26T13:00:01.1000000Z Contents: read
+2026-10-26T13:00:01.2000000Z Metadata: read
+2026-10-26T13:00:01.3000000Z ##[endgroup]
+2026-10-26T13:00:01.4000000Z Prepare workflow directory
+2026-10-26T13:00:01.5000000Z Prepare all required actions
+2026-10-26T13:00:01.6000000Z Download action repository 'actions/checkout@v4'
+2026-10-26T13:00:01.7000000Z Download action repository 'shivammathur/setup-php@v2'
+2026-10-26T13:00:01.8000000Z Complete job name: resolve
+2026-10-26T13:00:02.0000000Z ##[group]Run actions/checkout@v4
+2026-10-26T13:00:02.1000000Z with:
+2026-10-26T13:00:02.2000000Z   repository: upland-labs/heather
+2026-10-26T13:00:02.3000000Z   fetch-depth: 1
+2026-10-26T13:00:02.4000000Z ##[endgroup]
+2026-10-26T13:00:02.5000000Z Syncing repository: upland-labs/heather
+2026-10-26T13:00:02.6000000Z Fetching the repository
+2026-10-26T13:00:02.7000000Z Checking out the ref
+2026-10-26T13:00:02.8000000Z ##[group]Run shivammathur/setup-php@v2
+2026-10-26T13:00:02.9000000Z with:
+2026-10-26T13:00:03.0000000Z   php-version: 8.3
+2026-10-26T13:00:03.1000000Z ##[endgroup]
+2026-10-26T13:00:03.2000000Z ==> Setup PHP
+2026-10-26T13:00:03.3000000Z ? PHP Installed PHP 8.3
+2026-10-26T13:00:03.4000000Z ==> Setup Tools
+2026-10-26T13:00:03.5000000Z ? composer Added composer
+2026-10-26T13:00:03.6000000Z ##[group]Run composer update --no-interaction -vvv
+2026-10-26T13:00:03.7000000Z composer update --no-interaction -vvv
+2026-10-26T13:00:03.8000000Z shell: /usr/bin/bash -e {0}
+2026-10-26T13:00:03.9000000Z ##[endgroup]
+2026-10-26T13:00:04.0000000Z Running 2.8.12 (2025-09-19 13:25:40) with PHP 8.3.27 on Linux / 6.11.0
+2026-10-26T13:00:04.1000000Z Reading ./composer.json (/home/runner/work/heather/heather/composer.json)
+2026-10-26T13:00:04.2000000Z Loading config file ./composer.json (/home/runner/work/heather/heather/composer.json)
+2026-10-26T13:00:04.3000000Z Checked CA file /etc/ssl/certs/ca-certificates.crt: valid
+2026-10-26T13:00:04.4000000Z Executing command (/home/runner/work/heather/heather): 'git' 'branch' '-a' '--no-color' '--no-abbrev' '-v'
+2026-10-26T13:00:04.5000000Z Executing command (/home/runner/work/heather/heather): 'git' 'describe' '--exact-match' '--tags'
+2026-10-26T13:00:04.6000000Z Executing command (/home/runner/work/heather/heather): 'git' 'log' '--pretty=%H' '-n1' 'HEAD' '--no-show-signature'
+2026-10-26T13:00:04.7000000Z Executing command (/home/runner/work/heather/heather): 'git' 'status' '--porcelain' '--untracked-files=no'
+2026-10-26T13:00:04.8000000Z Executing command (/home/runner/work/heather/heather): 'git' 'show-ref' '--tags' '--dereference'
+2026-10-26T13:00:04.9000000Z Executing command (/home/runner/work/heather/heather): 'git' 'branch' '--no-color' '--no-abbrev' '-v'
+2026-10-26T13:00:05.0000000Z Failed to initialize global composer: Composer could not find the config file: /home/runner/.config/composer/composer.json
+2026-10-26T13:00:05.1000000Z To initialize a project, please create a composer.json file. See https://getcomposer.org/basic-usage
+2026-10-26T13:00:05.2000000Z Reading /home/runner/work/heather/heather/vendor/composer/installed.json
+2026-10-26T13:00:05.3000000Z Loading composer repositories with package information
+2026-10-26T13:00:05.4000000Z Updating dependencies
+2026-10-26T13:00:05.5000000Z Built pool.
+2026-10-26T13:00:05.6000000Z Running pool optimizer.
+2026-10-26T13:00:05.7000000Z Pool optimizer completed in 0.000 seconds
+2026-10-26T13:00:05.8000000Z Found 50 package versions referenced in your dependency graph. 0 (0%) were optimized away.
+2026-10-26T13:00:05.9000000Z Generating rules
+2026-10-26T13:00:06.0000000Z Resolving dependencies through SAT
+2026-10-26T13:00:06.1000000Z Looking at all rules.
+2026-10-26T13:00:06.2000000Z 
+2026-10-26T13:00:06.3000000Z Dependency resolution completed in 0.000 seconds
+2026-10-26T13:00:06.4000000Z Your requirements could not be resolved to an installable set of packages.
+2026-10-26T13:00:06.5000000Z 
+2026-10-26T13:00:06.6000000Z   Problem 1
+2026-10-26T13:00:06.7000000Z     - Root composer.json requires php ^8.4 but your php version (8.3.27) does not satisfy that requirement.
+2026-10-26T13:00:06.8000000Z 
+2026-10-26T13:00:06.9000000Z ##[error]Process completed with exit code 2.
+2026-10-26T13:00:07.0000000Z Post job cleanup.
+2026-10-26T13:00:07.1000000Z Cleaning up orphan processes

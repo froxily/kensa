@@ -1,0 +1,16 @@
+{
+  "id": "d17-flint-memory",
+  "split": "dev",
+  "category": "oom_timeout",
+  "kind": "standard",
+  "difficulty": "medium",
+  "ecosystem": "dotnet",
+  "title": "Snapshot exceeds its managed heap limit",
+  "root_cause": "The workflow sets a 32 MiB managed heap limit while the snapshot retains 100 one-megabyte arrays. The process runs out of memory; it needs a larger heap or a smaller working set.",
+  "fix_keywords": ["DOTNET_GCHeapHardLimit", "memory"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 51, "end_line": 56, "why": "The step sets the heap limit and reports out of memory."},
+    {"path": ".github/workflows/snapshot.yml", "start_line": 12, "end_line": 15, "why": "The job sets the managed heap limit for the process."},
+    {"path": "Program.cs", "start_line": 4, "end_line": 8, "why": "The program retains roughly 100 MiB of arrays."}
+  ]
+}

@@ -1,0 +1,30 @@
+name: Portal checks
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  portal-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    defaults:
+      run:
+        working-directory: packages/web
+    steps:
+      - name: Fetch sources
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Select Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Inspect workspace
+        run: ls packages
+        working-directory: .
+      - name: Install portal
+        run: npm install
+      - name: Build portal
+        run: npm run build

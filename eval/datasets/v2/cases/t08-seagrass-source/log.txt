@@ -1,0 +1,80 @@
+2026-10-29T11:20:00.0000000Z Current runner version: '2.328.0'
+2026-10-29T11:20:00.1000000Z ##[group]Operating System
+2026-10-29T11:20:00.2000000Z macOS
+2026-10-29T11:20:00.3000000Z 15.6
+2026-10-29T11:20:00.4000000Z 24G84
+2026-10-29T11:20:00.5000000Z ##[endgroup]
+2026-10-29T11:20:00.6000000Z ##[group]Runner Image
+2026-10-29T11:20:00.7000000Z Image: macos-15
+2026-10-29T11:20:00.8000000Z Version: 20261026.1
+2026-10-29T11:20:00.9000000Z ##[endgroup]
+2026-10-29T11:20:01.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-29T11:20:01.1000000Z Contents: read
+2026-10-29T11:20:01.2000000Z Metadata: read
+2026-10-29T11:20:01.3000000Z ##[endgroup]
+2026-10-29T11:20:01.4000000Z Prepare workflow directory
+2026-10-29T11:20:01.5000000Z Prepare all required actions
+2026-10-29T11:20:01.6000000Z Download action repository 'actions/checkout@v4'
+2026-10-29T11:20:01.7000000Z Download action repository 'actions/setup-python@v5'
+2026-10-29T11:20:01.8000000Z Complete job name: collect
+2026-10-29T11:20:02.0000000Z ##[group]Run actions/checkout@v4
+2026-10-29T11:20:02.1000000Z with:
+2026-10-29T11:20:02.2000000Z   repository: estuary-tools/seagrass
+2026-10-29T11:20:02.3000000Z   fetch-depth: 1
+2026-10-29T11:20:02.4000000Z ##[endgroup]
+2026-10-29T11:20:02.5000000Z Syncing repository: estuary-tools/seagrass
+2026-10-29T11:20:02.6000000Z Fetching the repository
+2026-10-29T11:20:02.7000000Z Checking out the ref
+2026-10-29T11:20:02.8000000Z ##[group]Run actions/setup-python@v5
+2026-10-29T11:20:02.9000000Z with:
+2026-10-29T11:20:03.0000000Z   python-version: 3.13
+2026-10-29T11:20:03.1000000Z ##[endgroup]
+2026-10-29T11:20:03.2000000Z ##[group]Installed versions
+2026-10-29T11:20:03.3000000Z Successfully set up CPython (3.13.7)
+2026-10-29T11:20:03.4000000Z ##[endgroup]
+2026-10-29T11:20:03.5000000Z ##[group]Run python -X importtime scripts/collect.py
+2026-10-29T11:20:03.6000000Z python -X importtime scripts/collect.py
+2026-10-29T11:20:03.7000000Z shell: /bin/bash -e {0}
+2026-10-29T11:20:03.8000000Z ##[endgroup]
+2026-10-29T11:20:03.8100000Z import time: self [us] | cumulative | imported package
+2026-10-29T11:20:03.8200000Z import time:       123 |        123 |   _io
+2026-10-29T11:20:03.8300000Z import time:        34 |         34 |   marshal
+2026-10-29T11:20:03.8400000Z import time:       297 |        297 |   posix
+2026-10-29T11:20:03.8500000Z import time:       215 |        668 | _frozen_importlib_external
+2026-10-29T11:20:03.8600000Z import time:        95 |         95 |   time
+2026-10-29T11:20:03.8700000Z import time:       102 |        197 | zipimport
+2026-10-29T11:20:03.8800000Z import time:        76 |         76 |     _codecs
+2026-10-29T11:20:03.8900000Z import time:       182 |        258 |   codecs
+2026-10-29T11:20:03.9000000Z import time:       301 |        301 |   encodings.aliases
+2026-10-29T11:20:03.9100000Z import time:       526 |       1085 | encodings
+2026-10-29T11:20:03.9200000Z import time:       143 |        143 | encodings.utf_8
+2026-10-29T11:20:03.9300000Z import time:        97 |         97 | _signal
+2026-10-29T11:20:03.9400000Z import time:        57 |         57 |     _abc
+2026-10-29T11:20:03.9500000Z import time:       121 |        178 |   abc
+2026-10-29T11:20:03.9600000Z import time:       154 |        332 | io
+2026-10-29T11:20:03.9700000Z import time:       218 |        218 |       _stat
+2026-10-29T11:20:03.9800000Z import time:       183 |        401 |     stat
+2026-10-29T11:20:03.9900000Z import time:       141 |        141 |     _collections_abc
+2026-10-29T11:20:04.0000000Z import time:       126 |        126 |       genericpath
+2026-10-29T11:20:04.0100000Z import time:       208 |        334 |     posixpath
+2026-10-29T11:20:04.0200000Z import time:       426 |       1302 |   os
+2026-10-29T11:20:04.0300000Z import time:       217 |        217 |   _sitebuiltins
+2026-10-29T11:20:04.0400000Z import time:       465 |       1984 | site
+2026-10-29T11:20:04.0500000Z import time:       763 |        763 |       enum
+2026-10-29T11:20:04.0600000Z import time:       221 |        221 |         _sre
+2026-10-29T11:20:04.0700000Z import time:       392 |        613 |       re._parser
+2026-10-29T11:20:04.0800000Z import time:       211 |        211 |       re._compiler
+2026-10-29T11:20:04.0900000Z import time:       287 |       1874 |     re
+2026-10-29T11:20:04.1000000Z import time:       418 |       2292 |   configparser
+2026-10-29T11:20:04.1100000Z import time:       425 |        425 |   fnmatch
+2026-10-29T11:20:04.1200000Z import time:       768 |       1193 | pathlib
+2026-10-29T11:20:04.1300000Z worker: seagrass
+2026-10-29T11:20:04.1400000Z Traceback (most recent call last):
+2026-10-29T11:20:04.1500000Z   File "/Users/runner/work/seagrass/seagrass/scripts/collect.py", line 10, in <module>
+2026-10-29T11:20:04.1600000Z     root = Path(os.environ["SEAGRASS_SOURCE_ROOT"])
+2026-10-29T11:20:04.1700000Z                 ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+2026-10-29T11:20:04.1800000Z   File "<frozen os>", line 716, in __getitem__
+2026-10-29T11:20:04.1900000Z KeyError: 'SEAGRASS_SOURCE_ROOT'
+2026-10-29T11:20:04.2000000Z ##[error]Process completed with exit code 1.
+2026-10-29T11:20:04.2100000Z Post job cleanup.
+2026-10-29T11:20:04.2200000Z Cleaning up orphan processes

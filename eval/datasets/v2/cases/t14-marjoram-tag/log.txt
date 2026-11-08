@@ -1,0 +1,83 @@
+2026-10-30T08:20:00.0000000Z Current runner version: '2.328.0'
+2026-10-30T08:20:00.1000000Z ##[group]Operating System
+2026-10-30T08:20:00.2000000Z Ubuntu
+2026-10-30T08:20:00.3000000Z 22.04.5
+2026-10-30T08:20:00.4000000Z LTS
+2026-10-30T08:20:00.5000000Z ##[endgroup]
+2026-10-30T08:20:00.6000000Z ##[group]Runner Image
+2026-10-30T08:20:00.7000000Z Image: ubuntu-22.04
+2026-10-30T08:20:00.8000000Z Version: 20261026.1
+2026-10-30T08:20:00.9000000Z ##[endgroup]
+2026-10-30T08:20:01.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-30T08:20:01.1000000Z Contents: read
+2026-10-30T08:20:01.2000000Z Metadata: read
+2026-10-30T08:20:01.3000000Z ##[endgroup]
+2026-10-30T08:20:01.4000000Z Prepare workflow directory
+2026-10-30T08:20:01.5000000Z Prepare all required actions
+2026-10-30T08:20:01.6000000Z Download action repository 'actions/checkout@v4'
+2026-10-30T08:20:01.7000000Z Download action repository 'shivammathur/setup-php@v2'
+2026-10-30T08:20:01.8000000Z Complete job name: image
+2026-10-30T08:20:02.0000000Z ##[group]Run actions/checkout@v4
+2026-10-30T08:20:02.1000000Z with:
+2026-10-30T08:20:02.2000000Z   repository: spiceworks/marjoram
+2026-10-30T08:20:02.3000000Z   fetch-depth: 1
+2026-10-30T08:20:02.4000000Z ##[endgroup]
+2026-10-30T08:20:02.5000000Z Syncing repository: spiceworks/marjoram
+2026-10-30T08:20:02.6000000Z Fetching the repository
+2026-10-30T08:20:02.7000000Z Checking out the ref
+2026-10-30T08:20:02.8000000Z ##[group]Run shivammathur/setup-php@v2
+2026-10-30T08:20:02.9000000Z with:
+2026-10-30T08:20:03.0000000Z   php-version: 8.4
+2026-10-30T08:20:03.1000000Z ##[endgroup]
+2026-10-30T08:20:03.2000000Z ==> Setup PHP
+2026-10-30T08:20:03.3000000Z ? PHP Installed PHP 8.4
+2026-10-30T08:20:03.4000000Z ==> Setup Tools
+2026-10-30T08:20:03.5000000Z ? composer Added composer
+2026-10-30T08:20:03.6000000Z ##[group]Run php -v
+2026-10-30T08:20:03.7000000Z php -v
+2026-10-30T08:20:03.8000000Z php --ri json
+2026-10-30T08:20:03.9000000Z php --ri pcre
+2026-10-30T08:20:04.0000000Z php --ri date
+2026-10-30T08:20:04.1000000Z docker build -f PHPImageSpec -t 'Marjoram/WEB:Latest' .
+2026-10-30T08:20:04.2000000Z shell: /usr/bin/bash -e {0}
+2026-10-30T08:20:04.3000000Z ##[endgroup]
+2026-10-30T08:20:04.3100000Z PHP 8.4.13 (cli) (built: Sep 23 2026 09:15:00) (NTS)
+2026-10-30T08:20:04.3200000Z Copyright (c) The PHP Group
+2026-10-30T08:20:04.3300000Z Zend Engine v4.4.13, Copyright (c) Zend Technologies
+2026-10-30T08:20:04.3400000Z     with Zend OPcache v8.4.13, Copyright (c), by Zend Technologies
+2026-10-30T08:20:04.3500000Z 
+2026-10-30T08:20:04.3600000Z json
+2026-10-30T08:20:04.3700000Z 
+2026-10-30T08:20:04.3800000Z json support => enabled
+2026-10-30T08:20:04.3900000Z 
+2026-10-30T08:20:04.4000000Z pcre
+2026-10-30T08:20:04.4100000Z 
+2026-10-30T08:20:04.4200000Z PCRE (Perl Compatible Regular Expressions) Support => enabled
+2026-10-30T08:20:04.4300000Z PCRE Library Version => 10.45 2025-02-05
+2026-10-30T08:20:04.4400000Z PCRE Unicode Version => 15.0.0
+2026-10-30T08:20:04.4500000Z PCRE JIT Support => enabled
+2026-10-30T08:20:04.4600000Z PCRE JIT Target => x86 64bit (little endian + unaligned)
+2026-10-30T08:20:04.4700000Z 
+2026-10-30T08:20:04.4800000Z Directive => Local Value => Master Value
+2026-10-30T08:20:04.4900000Z pcre.backtrack_limit => 1000000 => 1000000
+2026-10-30T08:20:04.5000000Z pcre.recursion_limit => 100000 => 100000
+2026-10-30T08:20:04.5100000Z pcre.jit => On => On
+2026-10-30T08:20:04.5200000Z 
+2026-10-30T08:20:04.5300000Z date
+2026-10-30T08:20:04.5400000Z 
+2026-10-30T08:20:04.5500000Z date/time support => enabled
+2026-10-30T08:20:04.5600000Z timelib version => 2022.12
+2026-10-30T08:20:04.5700000Z "Olson" Timezone Database Version => 0.system
+2026-10-30T08:20:04.5800000Z Timezone Database => internal
+2026-10-30T08:20:04.5900000Z Default timezone => UTC
+2026-10-30T08:20:04.6000000Z 
+2026-10-30T08:20:04.6100000Z Directive => Local Value => Master Value
+2026-10-30T08:20:04.6200000Z date.default_latitude => 31.7667 => 31.7667
+2026-10-30T08:20:04.6300000Z date.default_longitude => 35.2333 => 35.2333
+2026-10-30T08:20:04.6400000Z date.sunrise_zenith => 90.833333 => 90.833333
+2026-10-30T08:20:04.6500000Z date.sunset_zenith => 90.833333 => 90.833333
+2026-10-30T08:20:04.6600000Z date.timezone => no value => no value
+2026-10-30T08:20:04.7000000Z ERROR: failed to build: invalid tag "Marjoram/WEB:Latest": repository name (Marjoram/WEB) must be lowercase
+2026-10-30T08:20:04.7100000Z ##[error]Process completed with exit code 1.
+2026-10-30T08:20:04.7200000Z Post job cleanup.
+2026-10-30T08:20:04.7300000Z Cleaning up orphan processes

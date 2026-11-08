@@ -1,0 +1,19 @@
+2026-10-04T09:05:00.1000000Z ##[group]Run uv run pytest -q
+2026-10-04T09:05:00.1000000Z uv run pytest -q
+2026-10-04T09:05:00.1000000Z shell: /usr/bin/bash -e {0}
+2026-10-04T09:05:00.1000000Z env:
+2026-10-04T09:05:00.1000000Z   DATABASE_URL: postgresql://app:***@localhost:5432/app_test
+2026-10-04T09:05:00.1000000Z ##[endgroup]
+2026-10-04T09:05:04.2000000Z ==================================== ERRORS ====================================
+2026-10-04T09:05:04.2000000Z ___________________ ERROR at setup of test_create_order ___________________
+2026-10-04T09:05:04.2000000Z
+2026-10-04T09:05:04.2000000Z     def connect(conninfo: str = "", **kwargs) -> Connection:
+2026-10-04T09:05:04.2000000Z >       raise last_ex.with_traceback(None)
+2026-10-04T09:05:04.2000000Z E       psycopg.OperationalError: connection failed: connection to server at "127.0.0.1", port 5432 failed: Connection refused
+2026-10-04T09:05:04.2000000Z E       	Is the server running on that host and accepting TCP/IP connections?
+2026-10-04T09:05:04.2000000Z
+2026-10-04T09:05:04.2000000Z .venv/lib/python3.13/site-packages/psycopg/connection.py:118: OperationalError
+2026-10-04T09:05:04.3000000Z =========================== short test summary info ============================
+2026-10-04T09:05:04.3000000Z ERROR tests/test_orders.py::test_create_order - psycopg.OperationalError: connection failed
+2026-10-04T09:05:04.3000000Z 1 error in 2.41s
+2026-10-04T09:05:04.4000000Z ##[error]Process completed with exit code 1.

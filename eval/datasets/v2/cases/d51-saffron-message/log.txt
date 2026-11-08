@@ -1,0 +1,68 @@
+2026-10-29T10:00:00.0000000Z Current runner version: '2.328.0'
+2026-10-29T10:00:00.1000000Z ##[group]Operating System
+2026-10-29T10:00:00.2000000Z macOS
+2026-10-29T10:00:00.3000000Z 15.6
+2026-10-29T10:00:00.4000000Z 24G84
+2026-10-29T10:00:00.5000000Z ##[endgroup]
+2026-10-29T10:00:00.6000000Z ##[group]Runner Image
+2026-10-29T10:00:00.7000000Z Image: macos-15
+2026-10-29T10:00:00.8000000Z Version: 20261026.1
+2026-10-29T10:00:00.9000000Z ##[endgroup]
+2026-10-29T10:00:01.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-29T10:00:01.1000000Z Contents: read
+2026-10-29T10:00:01.2000000Z Metadata: read
+2026-10-29T10:00:01.3000000Z ##[endgroup]
+2026-10-29T10:00:01.4000000Z Prepare workflow directory
+2026-10-29T10:00:01.5000000Z Prepare all required actions
+2026-10-29T10:00:01.6000000Z Download action repository 'actions/checkout@v4'
+2026-10-29T10:00:01.7000000Z Download action repository 'actions/setup-go@v5'
+2026-10-29T10:00:01.8000000Z Complete job name: contracts
+2026-10-29T10:00:02.0000000Z ##[group]Run actions/checkout@v4
+2026-10-29T10:00:02.1000000Z with:
+2026-10-29T10:00:02.2000000Z   repository: spice-labs/saffron
+2026-10-29T10:00:02.3000000Z   fetch-depth: 1
+2026-10-29T10:00:02.4000000Z ##[endgroup]
+2026-10-29T10:00:02.5000000Z Syncing repository: spice-labs/saffron
+2026-10-29T10:00:02.6000000Z Getting Git version info
+2026-10-29T10:00:02.7000000Z git version 2.51.0
+2026-10-29T10:00:02.8000000Z Fetching the repository
+2026-10-29T10:00:02.9000000Z Checking out the ref
+2026-10-29T10:00:03.0000000Z ##[group]Run actions/setup-go@v5
+2026-10-29T10:00:03.1000000Z with:
+2026-10-29T10:00:03.2000000Z   go-version: 1.24
+2026-10-29T10:00:03.3000000Z   cache: false
+2026-10-29T10:00:03.4000000Z ##[endgroup]
+2026-10-29T10:00:03.5000000Z Found in cache @ /Users/runner/hostedtoolcache/go/1.24.7/x64
+2026-10-29T10:00:03.6000000Z Added go to the path
+2026-10-29T10:00:03.7000000Z Successfully set up Go version 1.24
+2026-10-29T10:00:03.8000000Z ##[group]Run go test -v ./messages
+2026-10-29T10:00:03.9000000Z go test -v ./messages
+2026-10-29T10:00:04.0000000Z shell: /bin/bash -e {0}
+2026-10-29T10:00:04.1000000Z ##[endgroup]
+2026-10-29T10:00:13.0000000Z === RUN   TestIdentityMessages
+2026-10-29T10:00:13.0100000Z === RUN   TestIdentityMessages/a
+2026-10-29T10:00:13.0200000Z === RUN   TestIdentityMessages/b
+2026-10-29T10:00:13.0300000Z === RUN   TestIdentityMessages/c
+2026-10-29T10:00:13.0400000Z === RUN   TestIdentityMessages/d
+2026-10-29T10:00:13.0500000Z === RUN   TestIdentityMessages/e
+2026-10-29T10:00:13.0600000Z === RUN   TestIdentityMessages/f
+2026-10-29T10:00:13.0700000Z === RUN   TestIdentityMessages/g
+2026-10-29T10:00:13.0800000Z === RUN   TestIdentityMessages/h
+2026-10-29T10:00:13.0900000Z --- PASS: TestIdentityMessages (0.00s)
+2026-10-29T10:00:13.1000000Z     --- PASS: TestIdentityMessages/a (0.00s)
+2026-10-29T10:00:13.1100000Z     --- PASS: TestIdentityMessages/b (0.00s)
+2026-10-29T10:00:13.1200000Z     --- PASS: TestIdentityMessages/c (0.00s)
+2026-10-29T10:00:13.1300000Z     --- PASS: TestIdentityMessages/d (0.00s)
+2026-10-29T10:00:13.1400000Z     --- PASS: TestIdentityMessages/e (0.00s)
+2026-10-29T10:00:13.1500000Z     --- PASS: TestIdentityMessages/f (0.00s)
+2026-10-29T10:00:13.1600000Z     --- PASS: TestIdentityMessages/g (0.00s)
+2026-10-29T10:00:13.1700000Z     --- PASS: TestIdentityMessages/h (0.00s)
+2026-10-29T10:00:13.1800000Z === RUN   TestOfflineMessage
+2026-10-29T10:00:13.1900000Z     errors_test.go:16: ErrorMessage(offline) = "service offline"; want "database connection refused"
+2026-10-29T10:00:13.2000000Z --- FAIL: TestOfflineMessage (0.00s)
+2026-10-29T10:00:13.2100000Z FAIL
+2026-10-29T10:00:13.2200000Z FAIL    example.com/saffron/messages    0.003s
+2026-10-29T10:00:13.2300000Z FAIL
+2026-10-29T10:00:13.2400000Z ##[error]Process completed with exit code 1.
+2026-10-29T10:00:13.2500000Z Post job cleanup.
+2026-10-29T10:00:13.2600000Z Cleaning up orphan processes

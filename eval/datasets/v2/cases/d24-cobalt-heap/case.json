@@ -1,0 +1,16 @@
+{
+  "id": "d24-cobalt-heap",
+  "split": "dev",
+  "category": "oom_timeout",
+  "kind": "standard",
+  "difficulty": "easy",
+  "ecosystem": "node",
+  "title": "Index construction exhausts the Node heap",
+  "root_cause": "The workflow limits V8 old space to 32 MB while the indexing process retains batches in memory. Garbage collection cannot reclaim enough space and Node aborts with a heap exhaustion error.",
+  "fix_keywords": ["--max-old-space-size", "heap"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 68, "end_line": 78, "why": "Garbage collection fails to reclaim enough heap and Node reports an out-of-memory fatal error."},
+    {"path": ".github/workflows/index.yml", "start_line": 10, "end_line": 11, "why": "The command sets the V8 heap limit."},
+    {"path": "index.js", "start_line": 1, "end_line": 6, "why": "The process keeps all indexed records in memory."}
+  ]
+}

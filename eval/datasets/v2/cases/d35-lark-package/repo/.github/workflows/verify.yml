@@ -1,0 +1,11 @@
+name: Swift validation
+on: [push]
+jobs:
+  verify:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and test
+        run: |
+          swift build -v
+          swift test --package-path tools/fixtures

@@ -1,0 +1,13 @@
+name: Artifact image
+on: [push]
+permissions:
+  contents: read
+jobs:
+  image:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build image
+        run: docker build --progress=plain -f SwiftContainer --build-arg REPOSITORY="$GITHUB_REPOSITORY" --secret id=ci_token,env=PERSIMMON_TOKEN -t persimmon-check .
+        env:
+          PERSIMMON_TOKEN: ${{ github.token }}

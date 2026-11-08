@@ -1,0 +1,16 @@
+{
+  "id": "t34-teasel-keyspace",
+  "split": "test",
+  "category": "db_connectivity",
+  "kind": "masked",
+  "difficulty": "medium",
+  "ecosystem": "go",
+  "title": "Index probe requests an absent keyspace",
+  "root_cause": "The script asks Cassandra to use the scans keyspace, which is not present in the service. The cqlsh error is followed by a generic script failure.",
+  "fix_keywords": ["scans", "keyspace"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 65, "end_line": 69, "why": "The database reports the absent keyspace before the script fails."},
+    {"path": "tasks/probe_index.go", "start_line": 17, "end_line": 19, "why": "The script invokes cqlsh using scans and exits on failure."},
+    {"path": ".github/workflows/cassandra-index.yml", "start_line": 6, "end_line": 10, "why": "The job starts the Cassandra service and publishes its CQL port."}
+  ]
+}

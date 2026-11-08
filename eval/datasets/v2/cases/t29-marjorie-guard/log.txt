@@ -1,0 +1,58 @@
+2026-10-04T12:30:00.0000000Z Current runner version: '2.329.0'
+2026-10-04T12:30:00.1000000Z ##[group]Operating System
+2026-10-04T12:30:00.2000000Z macOS 14.7.6
+2026-10-04T12:30:00.3000000Z ##[endgroup]
+2026-10-04T12:30:00.4000000Z ##[group]Runner Image
+2026-10-04T12:30:00.5000000Z Image: macos-14
+2026-10-04T12:30:00.6000000Z ##[endgroup]
+2026-10-04T12:30:00.7000000Z Prepare workflow directory
+2026-10-04T12:30:00.8000000Z Prepare all required actions
+2026-10-04T12:30:00.9000000Z Getting action download info
+2026-10-04T12:30:01.0000000Z Download action repository 'actions/checkout@v4'
+2026-10-04T12:30:01.1000000Z Download action repository 'erlef/setup-beam@v1'
+2026-10-04T12:30:01.2000000Z Complete job name: compile
+2026-10-04T12:30:01.3000000Z ##[group]Run actions/checkout@v4
+2026-10-04T12:30:01.4000000Z with:
+2026-10-04T12:30:01.5000000Z   repository: marjorie-labs/angle-sheet
+2026-10-04T12:30:01.6000000Z ##[endgroup]
+2026-10-04T12:30:01.7000000Z Syncing repository: marjorie-labs/angle-sheet
+2026-10-04T12:30:01.8000000Z Getting Git version info
+2026-10-04T12:30:01.9000000Z git version 2.49.0
+2026-10-04T12:30:02.0000000Z Checking out the ref
+2026-10-04T12:30:02.1000000Z ##[group]Run erlef/setup-beam@v1
+2026-10-04T12:30:02.2000000Z with:
+2026-10-04T12:30:02.3000000Z   otp-version: 25.3
+2026-10-04T12:30:02.4000000Z   elixir-version: 1.14.5
+2026-10-04T12:30:02.5000000Z ##[endgroup]
+2026-10-04T12:30:02.6000000Z Using cached OTP version 25.3
+2026-10-04T12:30:02.7000000Z Using cached Elixir version 1.14.5
+2026-10-04T12:30:02.8000000Z ##[group]Run mix compile
+2026-10-04T12:30:02.9000000Z mix compile
+2026-10-04T12:30:03.0000000Z shell: /bin/bash -e {0}
+2026-10-04T12:30:03.1000000Z ##[endgroup]
+2026-10-04T12:30:03.2000000Z Compiling 1 file (.ex)
+2026-10-04T12:30:03.2100000Z warning: variable "b" is unused (if the variable is not meant to be used, prefix it with an underscore)
+2026-10-04T12:30:03.2200000Z   lib/angle_sheet.ex:2: AngleSheet.totals/7
+2026-10-04T12:30:03.2300000Z 
+2026-10-04T12:30:03.2400000Z warning: variable "c" is unused (if the variable is not meant to be used, prefix it with an underscore)
+2026-10-04T12:30:03.2500000Z   lib/angle_sheet.ex:2: AngleSheet.totals/7
+2026-10-04T12:30:03.2600000Z 
+2026-10-04T12:30:03.2700000Z warning: variable "d" is unused (if the variable is not meant to be used, prefix it with an underscore)
+2026-10-04T12:30:03.2800000Z   lib/angle_sheet.ex:2: AngleSheet.totals/7
+2026-10-04T12:30:03.2900000Z 
+2026-10-04T12:30:03.3000000Z warning: variable "e" is unused (if the variable is not meant to be used, prefix it with an underscore)
+2026-10-04T12:30:03.3100000Z   lib/angle_sheet.ex:2: AngleSheet.totals/7
+2026-10-04T12:30:03.3200000Z 
+2026-10-04T12:30:03.3300000Z warning: variable "f" is unused (if the variable is not meant to be used, prefix it with an underscore)
+2026-10-04T12:30:03.3400000Z   lib/angle_sheet.ex:2: AngleSheet.totals/7
+2026-10-04T12:30:03.3500000Z 
+2026-10-04T12:30:03.3600000Z warning: variable "g" is unused (if the variable is not meant to be used, prefix it with an underscore)
+2026-10-04T12:30:03.3700000Z   lib/angle_sheet.ex:2: AngleSheet.totals/7
+2026-10-04T12:30:03.3800000Z 
+2026-10-04T12:30:03.4000000Z == Compilation error in file lib/angle_sheet.ex ==
+2026-10-04T12:30:03.5000000Z ** (CompileError) lib/angle_sheet.ex:6: cannot invoke remote function String.downcase/1 inside guards
+2026-10-04T12:30:03.6000000Z     (elixir 1.14.5) expanding macro: Kernel.==/2
+2026-10-04T12:30:03.7000000Z     lib/angle_sheet.ex:6: AngleSheet.choose/1
+2026-10-04T12:30:03.8000000Z ##[error]Process completed with exit code 1.
+2026-10-04T12:30:03.9000000Z Post job cleanup.
+2026-10-04T12:30:04.0000000Z Cleaning up orphan processes

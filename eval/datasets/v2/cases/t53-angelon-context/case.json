@@ -1,0 +1,17 @@
+{
+  "id": "t53-angelon-context",
+  "split": "test",
+  "category": "docker",
+  "kind": "standard",
+  "difficulty": "medium",
+  "ecosystem": "elixir",
+  "title": "Docker build excludes the source it copies",
+  "root_cause": "The .dockerignore file excludes service, even though the image recipe copies that directory. The source is absent from the build context and BuildKit cannot calculate its checksum.",
+  "fix_keywords": [".dockerignore", "service/"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 40, "end_line": 42, "why": "BuildKit reports that the copy source is not in the context."},
+    {"path": ".dockerignore", "start_line": 1, "end_line": 2, "why": "The ignore file excludes service."},
+    {"path": "deployment/ElixirImage", "start_line": 2, "end_line": 4, "why": "The Dockerfile copies and uses the excluded directory."},
+    {"path": "service/greet.exs", "start_line": 1, "end_line": 1, "why": "The source exists in the checkout."}
+  ]
+}

@@ -1,0 +1,25 @@
+﻿name: Container package
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  image:
+    name: Package image
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Fetch tree
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Inspect engine
+        run: docker version
+      - name: Build service image
+        run: docker build -t quay.local/vale/ledger:ci .
+      - name: Inspect image
+        run: docker image inspect quay.local/vale/ledger:ci
+      - name: Report size
+        run: docker image ls quay.local/vale/ledger:ci

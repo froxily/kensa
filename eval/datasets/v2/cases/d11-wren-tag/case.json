@@ -1,0 +1,16 @@
+{
+  "id": "d11-wren-tag",
+  "split": "dev",
+  "category": "github_permissions",
+  "kind": "standard",
+  "difficulty": "easy",
+  "ecosystem": "swift",
+  "title": "Tag creation lacks repository write access",
+  "root_cause": "The job token has only contents read permission, but creating a Git reference requires contents write. GitHub rejects the tag creation request with a 403.",
+  "fix_keywords": ["contents", "write"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 51, "end_line": 53, "why": "The API rejects the request with a permissions error."},
+    {"path": ".github/workflows/tag.yml", "start_line": 3, "end_line": 4, "why": "The token is restricted to contents read."},
+    {"path": ".github/workflows/tag.yml", "start_line": 11, "end_line": 14, "why": "The job uses the workflow token to create a reference."}
+  ]
+}

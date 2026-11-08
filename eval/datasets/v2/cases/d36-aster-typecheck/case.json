@@ -1,0 +1,15 @@
+{
+  "id": "d36-aster-typecheck",
+  "split": "dev",
+  "category": "dependency_build",
+  "kind": "standard",
+  "difficulty": "easy",
+  "ecosystem": "node",
+  "title": "TypeScript rejects a string argument",
+  "root_cause": "The call to formatCount passes a string even though the function requires a number. TypeScript reports TS2345 and exits unsuccessfully during type checking.",
+  "fix_keywords": ["formatCount", "number"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 49, "end_line": 50, "why": "TypeScript identifies the incompatible argument."},
+    {"path": "src/report.ts", "start_line": 1, "end_line": 5, "why": "The function expects a number and the call passes a string."}
+  ]
+}

@@ -1,0 +1,11 @@
+name: Dotnet cycle
+on: [push]
+jobs:
+  image:
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inspect engine and build
+        run: |
+          docker version
+          docker build --progress=plain -f deploy/Cycle.Dockerfile .

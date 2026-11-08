@@ -1,0 +1,50 @@
+2026-09-22T13:20:00.0000000Z Current runner version: '2.321.1'
+2026-09-22T13:20:01.0000000Z Operating System: Ubuntu
+2026-09-22T13:20:02.0000000Z Image: ubuntu-24.04
+2026-09-22T13:20:03.0000000Z Preparing job inspect
+2026-09-22T13:20:04.0000000Z Preparing actions
+2026-09-22T13:20:05.0000000Z Downloading checkout
+2026-09-22T13:20:06.0000000Z Downloading setup-node
+2026-09-22T13:20:07.0000000Z Downloading upload-artifact
+2026-09-22T13:20:08.0000000Z ##[group]Run actions/checkout@v4
+2026-09-22T13:20:09.0000000Z with:
+2026-09-22T13:20:10.0000000Z   repository: willowreach/bundle-inspector
+2026-09-22T13:20:11.0000000Z   clean: true
+2026-09-22T13:20:12.0000000Z ##[endgroup]
+2026-09-22T13:20:13.0000000Z Syncing repository willowreach/bundle-inspector
+2026-09-22T13:20:14.0000000Z Getting Git version info
+2026-09-22T13:20:15.0000000Z git version 2.47.0
+2026-09-22T13:20:16.0000000Z Temporarily overriding HOME for git configuration
+2026-09-22T13:20:17.0000000Z Adding repository directory to temporary git global config
+2026-09-22T13:20:18.0000000Z Initializing repository
+2026-09-22T13:20:19.0000000Z Disabling automatic garbage collection
+2026-09-22T13:20:20.0000000Z Setting up auth
+2026-09-22T13:20:21.0000000Z Fetching repository
+2026-09-22T13:20:22.0000000Z Determining checkout info
+2026-09-22T13:20:23.0000000Z Checking out the ref
+2026-09-22T13:20:24.0000000Z git log -1 --format=%H
+2026-09-22T13:20:25.0000000Z ##[group]Run actions/setup-node@v4
+2026-09-22T13:20:26.0000000Z with:
+2026-09-22T13:20:27.0000000Z   node-version: 22
+2026-09-22T13:20:28.0000000Z   check-latest: false
+2026-09-22T13:20:29.0000000Z ##[endgroup]
+2026-09-22T13:20:30.0000000Z Found in cache: node v22.11.0
+2026-09-22T13:20:31.0000000Z Environment details
+2026-09-22T13:20:32.0000000Z node: v22.11.0
+2026-09-22T13:20:33.0000000Z npm: 10.9.0
+2026-09-22T13:20:34.0000000Z yarn: 1.22.22
+2026-09-22T13:20:35.0000000Z ##[group]Run npm install
+2026-09-22T13:20:36.0000000Z npm install
+2026-09-22T13:20:37.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-22T13:20:38.0000000Z ##[endgroup]
+2026-09-22T13:20:39.0000000Z up to date, audited 1 package in 420ms
+2026-09-22T13:20:40.0000000Z found 0 vulnerabilities
+2026-09-22T13:20:41.0000000Z npm notice
+2026-09-22T13:20:42.0000000Z npm notice New patch version available
+2026-09-22T13:20:43.0000000Z npm notice
+2026-09-22T13:20:44.0000000Z ##[group]Run npm run verify > verify.log 2>&1
+2026-09-22T13:20:45.0000000Z npm run verify > verify.log 2>&1
+2026-09-22T13:20:46.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-22T13:20:47.0000000Z ##[endgroup]
+2026-09-22T13:20:48.0000000Z Verification command finished unsuccessfully.
+2026-09-22T13:20:49.0000000Z ##[error]Process completed with exit code 1.

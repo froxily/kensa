@@ -1,0 +1,12 @@
+name: Renderer checks
+on: [push]
+jobs:
+  verify:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+      - run: composer install --no-interaction --prefer-dist
+      - run: vendor/bin/phpunit --debug tests

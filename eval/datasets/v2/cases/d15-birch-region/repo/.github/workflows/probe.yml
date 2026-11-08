@@ -1,0 +1,13 @@
+name: Region probe
+on: [push]
+jobs:
+  probe:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.23'
+          cache: false
+      - name: Check region
+        run: go run ./cmd/probe

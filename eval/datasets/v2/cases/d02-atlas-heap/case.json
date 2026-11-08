@@ -1,0 +1,16 @@
+{
+  "id": "d02-atlas-heap",
+  "split": "dev",
+  "category": "oom_timeout",
+  "kind": "masked",
+  "difficulty": "medium",
+  "ecosystem": "java",
+  "title": "Container build exhausts the Java heap",
+  "root_cause": "The image build runs Atlas with a 32 MB heap, while the program retains roughly 100 MB of arrays. The JVM exhausts its heap and the nonzero exit causes the Docker build to fail.",
+  "fix_keywords": ["-Xmx32m", "heap"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 57, "end_line": 60, "why": "The JVM reports a heap exhaustion within the build step."},
+    {"path": "Dockerfile", "start_line": 5, "end_line": 5, "why": "The build limits the JVM heap."},
+    {"path": "src/main/java/Atlas.java", "start_line": 5, "end_line": 6, "why": "The program retains the allocated arrays."}
+  ]
+}

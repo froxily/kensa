@@ -1,0 +1,16 @@
+{
+  "id": "t02-thyme-raster",
+  "split": "test",
+  "category": "oom_timeout",
+  "kind": "masked",
+  "difficulty": "medium",
+  "ecosystem": "php",
+  "title": "Image build fills its scratch filesystem",
+  "root_cause": "The raster script writes pages to an 8 MiB tmpfs mount until it runs out of space. The failed write makes the PHP command exit and the Docker build reports a failed RUN instruction.",
+  "fix_keywords": ["tmpfs", "/scratch"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 82, "end_line": 86, "why": "PHP reports a full scratch filesystem inside the Docker build."},
+    {"path": "ImageRecipe", "start_line": 3, "end_line": 4, "why": "The build mounts an 8 MiB scratch filesystem for the script."},
+    {"path": "tools/raster.php", "start_line": 2, "end_line": 10, "why": "The script writes successive pages to that filesystem."}
+  ]
+}

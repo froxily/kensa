@@ -1,0 +1,50 @@
+2026-09-14T08:21:00.0000000Z Current runner version: '2.330.1'
+2026-09-14T08:21:01.0000000Z Runner name: 'hosted-linux'
+2026-09-14T08:21:02.0000000Z Operating System
+2026-09-14T08:21:03.0000000Z Ubuntu 24.04.3
+2026-09-14T08:21:04.0000000Z Runner Image
+2026-09-14T08:21:05.0000000Z Image: ubuntu-24.04
+2026-09-14T08:21:06.0000000Z GITHUB_TOKEN Permissions
+2026-09-14T08:21:07.0000000Z Contents: read
+2026-09-14T08:21:08.0000000Z Prepare workflow directory
+2026-09-14T08:21:09.0000000Z Prepare all required actions
+2026-09-14T08:21:10.0000000Z Getting action download info
+2026-09-14T08:21:11.0000000Z Download action repository 'actions/checkout@v4'
+2026-09-14T08:21:12.0000000Z Download action repository 'actions/setup-node@v4'
+2026-09-14T08:21:13.0000000Z Complete job name: portal-build
+2026-09-14T08:21:14.0000000Z ##[group]Run actions/checkout@v4
+2026-09-14T08:21:15.0000000Z with:
+2026-09-14T08:21:16.0000000Z   repository: willow-labs/portal-suite
+2026-09-14T08:21:17.0000000Z   fetch-depth: 1
+2026-09-14T08:21:18.0000000Z   clean: true
+2026-09-14T08:21:19.0000000Z ##[endgroup]
+2026-09-14T08:21:20.0000000Z Syncing repository: willow-labs/portal-suite
+2026-09-14T08:21:21.0000000Z Initializing the repository
+2026-09-14T08:21:22.0000000Z Fetching the repository
+2026-09-14T08:21:23.0000000Z Checking out the ref
+2026-09-14T08:21:24.0000000Z HEAD is now at 917a3b2 Move portal into packages
+2026-09-14T08:21:25.0000000Z ##[group]Run actions/setup-node@v4
+2026-09-14T08:21:26.0000000Z with:
+2026-09-14T08:21:27.0000000Z   node-version: 20
+2026-09-14T08:21:28.0000000Z   check-latest: false
+2026-09-14T08:21:29.0000000Z ##[endgroup]
+2026-09-14T08:21:30.0000000Z Found in cache @ /opt/hostedtoolcache/node/20.19.5/x64
+2026-09-14T08:21:31.0000000Z Environment details
+2026-09-14T08:21:32.0000000Z node: v20.19.5
+2026-09-14T08:21:33.0000000Z npm: 10.8.2
+2026-09-14T08:21:34.0000000Z yarn: 1.22.22
+2026-09-14T08:21:35.0000000Z ##[group]Run ls packages
+2026-09-14T08:21:36.0000000Z ls packages
+2026-09-14T08:21:37.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-14T08:21:38.0000000Z ##[endgroup]
+2026-09-14T08:21:39.0000000Z portal
+2026-09-14T08:21:40.0000000Z shared
+2026-09-14T08:21:41.0000000Z ##[group]Run npm install
+2026-09-14T08:21:42.0000000Z npm install
+2026-09-14T08:21:43.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-14T08:21:44.0000000Z ##[endgroup]
+2026-09-14T08:21:45.0000000Z An error occurred trying to start process '/usr/bin/bash' with working directory '/home/runner/work/portal-suite/portal-suite/packages/web'. No such file or directory
+2026-09-14T08:21:46.0000000Z The install command was not started.
+2026-09-14T08:21:46.1000000Z No npm packages were installed.
+2026-09-14T08:21:46.2000000Z Build step was not reached.
+2026-09-14T08:21:47.0000000Z ##[error]Process completed with exit code 1.

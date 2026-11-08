@@ -1,0 +1,11 @@
+{
+  "name": "reed-service-smoke",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "node smoke.js"
+  },
+  "dependencies": {
+    "undici": "6.19.8"
+  }
+}

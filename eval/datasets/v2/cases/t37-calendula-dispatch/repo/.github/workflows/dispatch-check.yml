@@ -1,0 +1,14 @@
+name: Dispatch check
+on: [workflow_dispatch]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  dispatch:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Dispatch workflow
+        run: ruby commands/dispatch.rb
+        env:
+          CALENDULA_TOKEN: ${{ github.token }}

@@ -1,0 +1,95 @@
+2026-10-29T09:40:00.0000000Z Current runner version: '2.328.0'
+2026-10-29T09:40:00.1000000Z ##[group]Operating System
+2026-10-29T09:40:00.2000000Z Ubuntu
+2026-10-29T09:40:00.3000000Z 24.04.3
+2026-10-29T09:40:00.4000000Z LTS
+2026-10-29T09:40:00.5000000Z ##[endgroup]
+2026-10-29T09:40:00.6000000Z ##[group]Runner Image
+2026-10-29T09:40:00.7000000Z Image: ubuntu-24.04-arm
+2026-10-29T09:40:00.8000000Z Version: 20261026.1
+2026-10-29T09:40:00.9000000Z ##[endgroup]
+2026-10-29T09:40:01.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-29T09:40:01.1000000Z Contents: read
+2026-10-29T09:40:01.2000000Z Metadata: read
+2026-10-29T09:40:01.3000000Z ##[endgroup]
+2026-10-29T09:40:01.4000000Z Prepare workflow directory
+2026-10-29T09:40:01.5000000Z Prepare all required actions
+2026-10-29T09:40:01.6000000Z Download action repository 'actions/checkout@v4'
+2026-10-29T09:40:01.7000000Z Complete job name: image
+2026-10-29T09:40:02.0000000Z ##[group]Run actions/checkout@v4
+2026-10-29T09:40:02.1000000Z with:
+2026-10-29T09:40:02.2000000Z   repository: herbary-tools/thyme
+2026-10-29T09:40:02.3000000Z   fetch-depth: 1
+2026-10-29T09:40:02.4000000Z ##[endgroup]
+2026-10-29T09:40:02.5000000Z Syncing repository: herbary-tools/thyme
+2026-10-29T09:40:02.6000000Z Fetching the repository
+2026-10-29T09:40:02.7000000Z Checking out the ref
+2026-10-29T09:40:02.8000000Z ##[group]Run docker build --progress=plain -f ImageRecipe -t thyme-raster .
+2026-10-29T09:40:02.9000000Z docker build --progress=plain -f ImageRecipe -t thyme-raster .
+2026-10-29T09:40:03.0000000Z shell: /usr/bin/bash -e {0}
+2026-10-29T09:40:03.1000000Z ##[endgroup]
+2026-10-29T09:40:03.2000000Z #0 building with "default" instance using docker driver
+2026-10-29T09:40:03.3000000Z #1 [internal] load build definition from ImageRecipe
+2026-10-29T09:40:03.4000000Z #1 transferring dockerfile: 155B done
+2026-10-29T09:40:03.5000000Z #1 DONE 0.0s
+2026-10-29T09:40:03.6000000Z #2 [internal] load metadata for docker.io/library/php:8.3-cli
+2026-10-29T09:40:04.0000000Z #2 DONE 0.4s
+2026-10-29T09:40:04.1000000Z #3 [internal] load .dockerignore
+2026-10-29T09:40:04.2000000Z #3 transferring context: 2B done
+2026-10-29T09:40:04.3000000Z #3 DONE 0.0s
+2026-10-29T09:40:04.4000000Z #4 [1/4] FROM docker.io/library/php:8.3-cli
+2026-10-29T09:40:05.4000000Z #4 DONE 1.0s
+2026-10-29T09:40:05.5000000Z #5 [internal] load build context
+2026-10-29T09:40:05.6000000Z #5 transferring context: 252B done
+2026-10-29T09:40:05.7000000Z #5 DONE 0.0s
+2026-10-29T09:40:05.8000000Z #6 [2/4] WORKDIR /job
+2026-10-29T09:40:05.9000000Z #6 DONE 0.1s
+2026-10-29T09:40:06.0000000Z #7 [3/4] COPY tools/raster.php ./raster.php
+2026-10-29T09:40:06.1000000Z #7 DONE 0.1s
+2026-10-29T09:40:06.2000000Z #8 [4/4] RUN --mount=type=tmpfs,target=/scratch,size=8388608 php raster.php
+2026-10-29T09:40:06.2100000Z #8 0.01 wrote scratch tile 1
+2026-10-29T09:40:06.2200000Z #8 0.02 wrote scratch tile 2
+2026-10-29T09:40:06.2300000Z #8 0.03 wrote scratch tile 3
+2026-10-29T09:40:06.2400000Z #8 0.04 wrote scratch tile 4
+2026-10-29T09:40:06.2500000Z #8 0.05 wrote scratch tile 5
+2026-10-29T09:40:06.2600000Z #8 0.06 wrote scratch tile 6
+2026-10-29T09:40:06.2700000Z #8 0.07 wrote scratch tile 7
+2026-10-29T09:40:06.2800000Z #8 0.08 wrote scratch tile 8
+2026-10-29T09:40:06.2900000Z #8 0.09 wrote scratch tile 9
+2026-10-29T09:40:06.3000000Z #8 0.10 wrote scratch tile 10
+2026-10-29T09:40:06.3100000Z #8 0.11 wrote scratch tile 11
+2026-10-29T09:40:06.3200000Z #8 0.12 wrote scratch tile 12
+2026-10-29T09:40:06.3300000Z #8 0.13 wrote scratch tile 13
+2026-10-29T09:40:06.3400000Z #8 0.14 wrote scratch tile 14
+2026-10-29T09:40:06.3500000Z #8 0.15 wrote scratch tile 15
+2026-10-29T09:40:06.3600000Z #8 0.16 wrote scratch tile 16
+2026-10-29T09:40:06.3700000Z #8 0.17 wrote scratch tile 17
+2026-10-29T09:40:06.3800000Z #8 0.18 wrote scratch tile 18
+2026-10-29T09:40:06.3900000Z #8 0.19 wrote scratch tile 19
+2026-10-29T09:40:06.4000000Z #8 0.20 wrote scratch tile 20
+2026-10-29T09:40:06.4100000Z #8 0.21 wrote scratch tile 21
+2026-10-29T09:40:06.4200000Z #8 0.22 wrote scratch tile 22
+2026-10-29T09:40:06.4300000Z #8 0.23 wrote scratch tile 23
+2026-10-29T09:40:06.4400000Z #8 0.24 wrote scratch tile 24
+2026-10-29T09:40:06.4500000Z #8 0.25 wrote scratch tile 25
+2026-10-29T09:40:06.4600000Z #8 0.26 wrote scratch tile 26
+2026-10-29T09:40:06.4700000Z #8 0.27 wrote scratch tile 27
+2026-10-29T09:40:06.4800000Z #8 0.28 wrote scratch tile 28
+2026-10-29T09:40:06.4900000Z #8 0.29 wrote scratch tile 29
+2026-10-29T09:40:06.5000000Z #8 0.30 wrote scratch tile 30
+2026-10-29T09:40:06.5100000Z #8 0.31 wrote scratch tile 31
+2026-10-29T09:40:06.5200000Z #8 0.32 wrote scratch tile 32
+2026-10-29T09:40:06.5300000Z #8 0.33 PHP Notice:  fwrite(): Write of 262144 bytes failed with errno=28 No space left on device in /job/raster.php on line 7
+2026-10-29T09:40:06.5400000Z #8 ERROR: process "/bin/sh -c php raster.php" did not complete successfully: exit code: 1
+2026-10-29T09:40:06.5500000Z ------
+2026-10-29T09:40:06.5600000Z  > [4/4] RUN --mount=type=tmpfs,target=/scratch,size=8388608 php raster.php:
+2026-10-29T09:40:06.5700000Z 0.33 PHP Notice: fwrite(): Write of 262144 bytes failed with errno=28 No space left on device in /job/raster.php on line 7
+2026-10-29T09:40:06.5800000Z ------
+2026-10-29T09:40:06.5900000Z ImageRecipe:4
+2026-10-29T09:40:06.6000000Z --------------------
+2026-10-29T09:40:06.6100000Z    4 | >>> RUN --mount=type=tmpfs,target=/scratch,size=8388608 php raster.php
+2026-10-29T09:40:06.6200000Z --------------------
+2026-10-29T09:40:06.6300000Z ERROR: failed to build: failed to solve: process "/bin/sh -c php raster.php" did not complete successfully: exit code: 1
+2026-10-29T09:40:06.6400000Z ##[error]Process completed with exit code 1.
+2026-10-29T09:40:06.6500000Z Post job cleanup.
+2026-10-29T09:40:06.6600000Z Cleaning up orphan processes

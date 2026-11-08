@@ -1,0 +1,10 @@
+﻿.git
+node_modules
+coverage
+*.log
+container/bin/
+.tmp
+.cache
+.env
+*.tar
+.DS_Store

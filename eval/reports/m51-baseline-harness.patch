@@ -1,0 +1,131 @@
+Note (2026-11-02, M6 privacy scrub): the one absolute path below had the local user name
+replaced with <owner>. Otherwise this is the patch exactly as applied for the M5.1 baseline run.
+
+diff --git a/backend/src/kensa/evaluation/dataset.py b/backend/src/kensa/evaluation/dataset.py
+index 2714e26..6c4e502 100644
+--- a/backend/src/kensa/evaluation/dataset.py
++++ b/backend/src/kensa/evaluation/dataset.py
+@@ -16,7 +16,7 @@ from kensa.analysis.categories import CATEGORIES
+ 
+ MANIFEST = "MANIFEST.sha256"
+ SPLITS = ("dev", "test")
+-KINDS = ("standard", "misleading", "insufficient")
++KINDS = ("standard", "misleading", "insufficient", "masked", "lookalike")
+ 
+ 
+ class DatasetError(ValueError):
+@@ -102,9 +102,22 @@ def load_case(folder: Path) -> Case:
+     )
+ 
+ 
++def _split_of(folder: Path) -> str | None:
++    try:
++        data = json.loads((folder / "case.json").read_text(encoding="utf-8-sig"))
++    except (OSError, ValueError):
++        return None
++    return data.get("split") if isinstance(data, dict) else None
++
++
+ def load_cases(root: Path, split: str | None = None) -> list[Case]:
+-    cases = [load_case(f) for f in sorted((root / "cases").iterdir()) if f.is_dir()]
+-    return [c for c in cases if split is None or c.split == split]
++    """All cases, validated; or only one split's. A split's cases are read on their own, so
++    another split's files (for example a case still being written) cannot affect it. The full
++    load, used by the quality gates and the freeze, still rejects any unreadable case."""
++    folders = [f for f in sorted((root / "cases").iterdir()) if f.is_dir()]
++    if split is not None:
++        folders = [f for f in folders if _split_of(f) == split]
++    return [load_case(f) for f in folders]
+ 
+ 
+ def _normalised_bytes(path: Path) -> bytes:
+@@ -113,22 +126,49 @@ def _normalised_bytes(path: Path) -> bytes:
+     return path.read_bytes().removeprefix(b"\xef\xbb\xbf").replace(b"\r\n", b"\n")
+ 
+ 
+-def manifest_lines(root: Path) -> list[str]:
+-    files = sorted(p for p in root.rglob("*") if p.is_file() and p.name != MANIFEST)
++def split_manifest_name(split: str) -> str:
++    """A split can be frozen on its own (v2: the dev split, before the test split was written)."""
++    return f"MANIFEST.{split}.sha256"
++
++
++def _hash_lines(root: Path, files: list[Path]) -> list[str]:
+     return [
+         f"{hashlib.sha256(_normalised_bytes(p)).hexdigest()}  {p.relative_to(root).as_posix()}"
+-        for p in files
++        for p in sorted(files)
+     ]
+ 
+ 
+-def verify_frozen(root: Path) -> str:
+-    """Return the manifest digest, or raise if the dataset was never frozen or has changed."""
++def manifest_lines(root: Path) -> list[str]:
++    return _hash_lines(root, [p for p in root.rglob("*") if p.is_file() and p.name != MANIFEST])
++
++
++def split_manifest_lines(root: Path, split: str) -> list[str]:
++    """Every file of the split's cases. Other files are frozen by the full manifest."""
++    folders = [case.folder for case in load_cases(root, split)]
++    return _hash_lines(root, [p for f in folders for p in f.rglob("*") if p.is_file()])
++
++
++def _digest(lines: list[str]) -> str:
++    return hashlib.sha256("\n".join(lines).encode()).hexdigest()[:16]
++
++
++def verify_frozen(root: Path, split: str | None = None) -> str:
++    """Return the manifest digest, or raise if the dataset was never frozen or has changed.
++
++    Before the whole dataset is frozen, a split frozen on its own can be evaluated: its digest
++    is returned with a ``/<split>`` suffix."""
+     manifest = root / MANIFEST
+-    if not manifest.is_file():
++    if manifest.is_file():
++        expected = manifest.read_text(encoding="utf-8").strip().splitlines()
++        actual = manifest_lines(root)
++    elif split is not None and (root / split_manifest_name(split)).is_file():
++        expected = (root / split_manifest_name(split)).read_text("utf-8").strip().splitlines()
++        actual = split_manifest_lines(root, split)
++        if expected == actual:
++            return f"{_digest(actual)}/{split}"
++    else:
+         raise DatasetError("dataset is not frozen (run scripts/freeze_dataset.py)")
+-    expected = manifest.read_text(encoding="utf-8").strip().splitlines()
+-    actual = manifest_lines(root)
+     if expected != actual:
+         changed = sorted(set(expected) ^ set(actual))[:5]
+         raise DatasetError(f"dataset differs from its frozen manifest: {changed}")
+-    return hashlib.sha256("\n".join(actual).encode()).hexdigest()[:16]
++    return _digest(actual)
+diff --git a/scripts/evaluate.py b/scripts/evaluate.py
+index 1cc31f3..b0acf1a 100644
+--- a/scripts/evaluate.py
++++ b/scripts/evaluate.py
+@@ -65,7 +65,7 @@ from kensa.jobs import queue
+ from kensa.retrieval.search import retrieve, vector_query_text
+ 
+ REPO_ROOT = Path(__file__).resolve().parents[1]
+-DATASET = REPO_ROOT / "eval" / "datasets" / "v1"
++DATASET = Path(r'C:/Users/<owner>/Desktop/Kensa/eval/datasets/v2')
+ KNOWLEDGE = REPO_ROOT / "knowledge"
+ REPORTS = REPO_ROOT / "eval" / "reports"
+ RETRIEVAL_CONFIGS: dict[str, frozenset[str]] = {
+@@ -107,7 +107,7 @@ def setup(embedder_name: str) -> tuple[Engine, Settings, Embedder | None, dict[s
+     base = Settings()
+     settings = base.model_copy(
+         update={
+-            "database_url": SecretStr(prepare_database(base, "kensa_eval")),
++            "database_url": SecretStr(prepare_database(base, "kensa_eval_m5")),
+             "embedding_provider": embedder_name,
+             "index_incidents": False,
+         }
+@@ -450,7 +450,7 @@ def main() -> int:
+     if args.limit is not None and args.split == "test":
+         print("The held-out test split always runs in full; --limit is for dev only.")
+         return 2
+-    digest = verify_frozen(DATASET)
++    digest = verify_frozen(DATASET, args.split)
+     cases = load_cases(DATASET, args.split)[: args.limit]
+     print(f"{args.mode} on {args.split}: {len(cases)} cases, dataset {digest}", flush=True)
+     run_name = args.report_name or f"{args.mode}-{args.split}-{datetime.now(UTC):%Y%m%d-%H%M%S}"

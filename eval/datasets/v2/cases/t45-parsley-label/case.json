@@ -1,0 +1,16 @@
+{
+  "id": "t45-parsley-label",
+  "split": "test",
+  "category": "missing_env_var",
+  "kind": "masked",
+  "difficulty": "medium",
+  "ecosystem": "java",
+  "title": "Label contract lacks its environment value",
+  "root_cause": "The label policy requires PARSLEY_ARCHIVE_LABEL, but the job does not supply it. The policy throws inside the JUnit test and the console runner reports a test failure.",
+  "fix_keywords": ["PARSLEY_ARCHIVE_LABEL"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 58, "end_line": 62, "why": "The test traceback identifies the missing value."},
+    {"path": "src/LabelPolicy.java", "start_line": 4, "end_line": 9, "why": "The policy rejects a missing or blank label."},
+    {"path": ".github/workflows/label-console.yml", "start_line": 14, "end_line": 17, "why": "The test step does not supply the label."}
+  ]
+}

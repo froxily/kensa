@@ -1,0 +1,15 @@
+{
+  "id": "t28-anise-builddir",
+  "split": "test",
+  "category": "workflow_path",
+  "kind": "standard",
+  "difficulty": "easy",
+  "ecosystem": "cpp",
+  "title": "CTest runs in a directory that was never built",
+  "root_cause": "CMake generates and builds in build-rel, but CTest is directed to build/release. That directory does not exist and CTest cannot enter it.",
+  "fix_keywords": ["build-rel", "build/release"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 51, "end_line": 54, "why": "CTest reports that its requested directory is missing."},
+    {"path": ".github/workflows/cmake-probe.yml", "start_line": 8, "end_line": 12, "why": "The configuration and CTest commands use different build directories."}
+  ]
+}

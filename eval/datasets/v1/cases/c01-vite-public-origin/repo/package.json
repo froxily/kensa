@@ -1,0 +1,12 @@
+﻿{
+  "name": "aurora-landing",
+  "private": true,
+  "version": "1.2.0",
+  "type": "module",
+  "scripts": {
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "vite": "6.0.7"
+  }
+}

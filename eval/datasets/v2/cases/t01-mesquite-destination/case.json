@@ -1,0 +1,16 @@
+{
+  "id": "t01-mesquite-destination",
+  "split": "test",
+  "category": "missing_env_var",
+  "kind": "standard",
+  "difficulty": "easy",
+  "ecosystem": "ruby",
+  "title": "Dispatch requires a destination setting",
+  "root_cause": "The dispatch script fetches MESQUITE_DESTINATION, but the workflow does not provide it. Ruby raises KeyError after reading the parcel list and the step exits unsuccessfully.",
+  "fix_keywords": ["MESQUITE_DESTINATION"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 64, "end_line": 66, "why": "Ruby reports the missing environment key."},
+    {"path": "tasks/dispatch.rb", "start_line": 4, "end_line": 9, "why": "The script fetches the destination after loading the parcels."},
+    {"path": ".github/workflows/kiln.yml", "start_line": 5, "end_line": 11, "why": "The workflow invokes the script without setting the variable."}
+  ]
+}

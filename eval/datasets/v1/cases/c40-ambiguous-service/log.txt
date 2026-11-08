@@ -1,0 +1,57 @@
+2026-09-23T17:00:00.0000000Z Runner version: 2.330.1
+2026-09-23T17:00:01.0000000Z Repository: reed-shore/service-smoke
+2026-09-23T17:00:02.0000000Z Job: smoke
+2026-09-23T17:00:03.0000000Z Image: ubuntu-24.04
+2026-09-23T17:00:04.0000000Z Preparing workflow
+2026-09-23T17:00:05.0000000Z Resolving action dependencies
+2026-09-23T17:00:06.0000000Z ##[group]Run actions/checkout@v4
+2026-09-23T17:00:07.0000000Z Syncing repository reed-shore/service-smoke
+2026-09-23T17:00:08.0000000Z Initializing repository
+2026-09-23T17:00:09.0000000Z Fetching ref
+2026-09-23T17:00:10.0000000Z Checkout complete
+2026-09-23T17:00:11.0000000Z ##[endgroup]
+2026-09-23T17:00:12.0000000Z ##[group]Run actions/setup-node@v4
+2026-09-23T17:00:13.0000000Z Found node 20.18.0 in tool cache
+2026-09-23T17:00:14.0000000Z node: v20.18.0
+2026-09-23T17:00:15.0000000Z npm: 10.8.2
+2026-09-23T17:00:16.0000000Z ##[endgroup]
+2026-09-23T17:00:17.0000000Z ##[group]Run npm ci
+2026-09-23T17:00:18.0000000Z added 1 package, and audited 2 packages in 1s
+2026-09-23T17:00:19.0000000Z found 0 vulnerabilities
+2026-09-23T17:00:20.0000000Z ##[endgroup]
+2026-09-23T17:00:21.0000000Z ##[group]Run node check-config.js
+2026-09-23T17:00:22.0000000Z Configuration file parsed
+2026-09-23T17:00:23.0000000Z SERVICE_URL is present
+2026-09-23T17:00:24.0000000Z Endpoint health not checked at this stage
+2026-09-23T17:00:25.0000000Z ##[endgroup]
+2026-09-23T17:00:26.0000000Z ##[group]Run npm test
+2026-09-23T17:00:27.0000000Z > reed-service-smoke@1.0.0 test
+2026-09-23T17:00:28.0000000Z > node smoke.js
+2026-09-23T17:00:29.0000000Z Starting service probe
+2026-09-23T17:00:30.0000000Z Target configured via SERVICE_URL
+2026-09-23T17:00:31.0000000Z Diagnostic: endpoint may be unavailable
+2026-09-23T17:00:32.0000000Z Diagnostic: configured URL may be incorrect
+2026-09-23T17:00:33.0000000Z service check failed
+2026-09-23T17:00:34.0000000Z Probe returned status 1
+2026-09-23T17:00:35.0000000Z No response details were recorded
+2026-09-23T17:00:36.0000000Z No connection error details were recorded
+2026-09-23T17:00:37.0000000Z npm error Lifecycle script `test` failed with error:
+2026-09-23T17:00:38.0000000Z npm error code 1
+2026-09-23T17:00:39.0000000Z npm error path /home/runner/work/service-smoke/service-smoke
+2026-09-23T17:00:40.0000000Z npm error workspace reed-service-smoke@1.0.0
+2026-09-23T17:00:41.0000000Z npm error location /home/runner/work/service-smoke/service-smoke
+2026-09-23T17:00:42.0000000Z npm error command failed
+2026-09-23T17:00:43.0000000Z npm error command sh -c node smoke.js
+2026-09-23T17:00:44.0000000Z Test suite did not complete successfully
+2026-09-23T17:00:45.0000000Z No detailed report available
+2026-09-23T17:00:46.0000000Z Shell: /usr/bin/bash -e {0}
+2026-09-23T17:00:47.0000000Z Step finished with failure
+2026-09-23T17:00:47.1000000Z Probe status: failed
+2026-09-23T17:00:47.2000000Z No HTTP status was included
+2026-09-23T17:00:47.3000000Z No exception stack was included
+2026-09-23T17:00:47.4000000Z Diagnostic artifact directory is empty
+2026-09-23T17:00:47.5000000Z Service probe exited
+2026-09-23T17:00:47.6000000Z npm returned a nonzero status
+2026-09-23T17:00:47.7000000Z Failure collection will run next
+2026-09-23T17:00:48.0000000Z ##[endgroup]
+2026-09-23T17:00:49.0000000Z ##[error]Process completed with exit code 1.

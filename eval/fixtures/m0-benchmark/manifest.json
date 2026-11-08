@@ -1,0 +1,10 @@
+{
+  "note": "Synthetic, hand-written CI logs used only to measure resource use and structured-output validity of the local model (M0). Not an accuracy evaluation; the evaluation dataset arrives in M2.",
+  "fixtures": [
+    { "file": "missing-env-var.log", "expected_category": "missing_env_var" },
+    { "file": "dependency-resolution.log", "expected_category": "dependency_build" },
+    { "file": "github-permissions.log", "expected_category": "github_permissions" },
+    { "file": "db-connection.log", "expected_category": "db_connectivity" },
+    { "file": "workflow-path.log", "expected_category": "workflow_path" }
+  ]
+}

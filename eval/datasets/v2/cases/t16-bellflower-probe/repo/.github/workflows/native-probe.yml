@@ -1,0 +1,16 @@
+name: Native probe
+on: [push]
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    services:
+      quarry:
+        image: clickhouse/clickhouse-server:24.8
+        ports:
+          - 48123:8123
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile probe
+        run: g++ checks/probe.cc -o probe
+      - name: Exercise probe
+        run: ./probe

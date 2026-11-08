@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "name": "handbook",
+      "type": "page"
+    }
+  ],
+  "description": "Example bundle"
+}

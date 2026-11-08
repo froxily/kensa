@@ -1,0 +1,17 @@
+name: Inventory audit
+on: [push]
+jobs:
+  inspect:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+      - name: Inspect inventory
+        shell: bash
+        run: |
+          php -m
+          php tasks/inventory.php > /dev/null 2>&1
+        env:
+          NUTMEG_MEASUREMENTS: ${{ secrets.NUTMEG_MEASUREMENTS }}

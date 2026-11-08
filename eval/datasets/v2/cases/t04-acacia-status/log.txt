@@ -1,0 +1,65 @@
+2026-10-28T11:10:00.0000000Z Current runner version: '2.328.0'
+2026-10-28T11:10:00.1000000Z ##[group]Operating System
+2026-10-28T11:10:00.2000000Z Ubuntu
+2026-10-28T11:10:00.3000000Z 22.04.5
+2026-10-28T11:10:00.4000000Z LTS
+2026-10-28T11:10:00.5000000Z ##[endgroup]
+2026-10-28T11:10:00.6000000Z ##[group]Runner Image
+2026-10-28T11:10:00.7000000Z Image: ubuntu-22.04-arm
+2026-10-28T11:10:00.8000000Z Version: 20261019.1
+2026-10-28T11:10:00.9000000Z ##[endgroup]
+2026-10-28T11:10:01.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-28T11:10:01.1000000Z Contents: read
+2026-10-28T11:10:01.2000000Z Metadata: read
+2026-10-28T11:10:01.3000000Z Statuses: read
+2026-10-28T11:10:01.4000000Z ##[endgroup]
+2026-10-28T11:10:01.5000000Z Prepare workflow directory
+2026-10-28T11:10:01.6000000Z Prepare all required actions
+2026-10-28T11:10:01.7000000Z Download action repository 'actions/checkout@v4'
+2026-10-28T11:10:01.8000000Z Complete job name: status
+2026-10-28T11:10:02.0000000Z ##[group]Run actions/checkout@v4
+2026-10-28T11:10:02.1000000Z with:
+2026-10-28T11:10:02.2000000Z   repository: savanna-tools/acacia
+2026-10-28T11:10:02.3000000Z   fetch-depth: 1
+2026-10-28T11:10:02.4000000Z ##[endgroup]
+2026-10-28T11:10:02.5000000Z Syncing repository: savanna-tools/acacia
+2026-10-28T11:10:02.6000000Z Fetching the repository
+2026-10-28T11:10:02.7000000Z Checking out the ref
+2026-10-28T11:10:02.8000000Z ##[group]Run g++ -std=c++17 src/make_status.cc -o make_status
+2026-10-28T11:10:02.9000000Z g++ -std=c++17 src/make_status.cc -o make_status
+2026-10-28T11:10:03.0000000Z ./make_status > mark.json
+2026-10-28T11:10:03.1000000Z GH_TOKEN="$ACACIA_TOKEN" gh api --include --method POST "repos/$GITHUB_REPOSITORY/statuses/$GITHUB_SHA" --input mark.json
+2026-10-28T11:10:03.2000000Z shell: /usr/bin/bash -e {0}
+2026-10-28T11:10:03.3000000Z env:
+2026-10-28T11:10:03.4000000Z   ACACIA_TOKEN: ***
+2026-10-28T11:10:03.5000000Z ##[endgroup]
+2026-10-28T11:10:04.0000000Z HTTP/2.0 403 Forbidden
+2026-10-28T11:10:04.0100000Z Access-Control-Allow-Origin: *
+2026-10-28T11:10:04.0200000Z Access-Control-Expose-Headers: ETag, Link, Location, Retry-After, X-RateLimit-Limit, X-RateLimit-Remaining
+2026-10-28T11:10:04.0300000Z Content-Security-Policy: default-src 'none'
+2026-10-28T11:10:04.0400000Z Content-Type: application/json; charset=utf-8
+2026-10-28T11:10:04.0500000Z Date: Wed, 28 Oct 2026 11:10:04 GMT
+2026-10-28T11:10:04.0600000Z Referrer-Policy: origin-when-cross-origin, strict-origin-when-cross-origin
+2026-10-28T11:10:04.0700000Z Server: github.com
+2026-10-28T11:10:04.0800000Z Strict-Transport-Security: max-age=31536000; includeSubdomains; preload
+2026-10-28T11:10:04.0900000Z Vary: Accept, Accept-Encoding, X-Requested-With
+2026-10-28T11:10:04.1000000Z X-Accepted-Github-Permissions: statuses=write
+2026-10-28T11:10:04.1100000Z X-Content-Type-Options: nosniff
+2026-10-28T11:10:04.1200000Z X-Frame-Options: deny
+2026-10-28T11:10:04.1300000Z X-Github-Api-Version-Selected: 2022-11-28
+2026-10-28T11:10:04.1400000Z X-Github-Media-Type: github.v3; format=json
+2026-10-28T11:10:04.1500000Z X-Ratelimit-Limit: 5000
+2026-10-28T11:10:04.1600000Z X-Ratelimit-Remaining: 4999
+2026-10-28T11:10:04.1700000Z X-Ratelimit-Resource: core
+2026-10-28T11:10:04.1800000Z X-Ratelimit-Used: 1
+2026-10-28T11:10:04.1900000Z X-Xss-Protection: 0
+2026-10-28T11:10:04.2000000Z 
+2026-10-28T11:10:04.2100000Z {
+2026-10-28T11:10:04.2200000Z   "message": "Resource not accessible by integration",
+2026-10-28T11:10:04.2300000Z   "documentation_url": "https://docs.github.com/rest/commits/statuses#create-a-commit-status",
+2026-10-28T11:10:04.2400000Z   "status": "403"
+2026-10-28T11:10:04.2500000Z }
+2026-10-28T11:10:04.2600000Z gh: Resource not accessible by integration (HTTP 403)
+2026-10-28T11:10:04.2700000Z ##[error]Process completed with exit code 1.
+2026-10-28T11:10:04.2800000Z Post job cleanup.
+2026-10-28T11:10:04.2900000Z Cleaning up orphan processes

@@ -1,0 +1,27 @@
+name: Profile verification
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  integration-profile:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout tree
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Install Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+      - name: Compile sources
+        run: mvn -B -DskipTests package
+      - name: Exercise profile
+        env:
+          SPRING_PROFILES_ACTIVE: ci
+        run: mvn -B test

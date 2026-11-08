@@ -1,0 +1,111 @@
+2026-10-28T12:00:00.0000000Z Current runner version: '2.328.0'
+2026-10-28T12:00:00.1000000Z ##[group]Operating System
+2026-10-28T12:00:00.2000000Z Ubuntu
+2026-10-28T12:00:00.3000000Z 24.04.3
+2026-10-28T12:00:00.4000000Z LTS
+2026-10-28T12:00:00.5000000Z ##[endgroup]
+2026-10-28T12:00:00.6000000Z ##[group]Runner Image
+2026-10-28T12:00:00.7000000Z Image: ubuntu-24.04
+2026-10-28T12:00:00.8000000Z Version: 20261019.1
+2026-10-28T12:00:00.9000000Z ##[endgroup]
+2026-10-28T12:00:01.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-28T12:00:01.1000000Z Contents: read
+2026-10-28T12:00:01.2000000Z Metadata: read
+2026-10-28T12:00:01.3000000Z ##[endgroup]
+2026-10-28T12:00:01.4000000Z Prepare workflow directory
+2026-10-28T12:00:01.5000000Z Prepare all required actions
+2026-10-28T12:00:01.6000000Z Download action repository 'actions/checkout@v4'
+2026-10-28T12:00:01.7000000Z Complete job name: native
+2026-10-28T12:00:02.0000000Z ##[group]Run actions/checkout@v4
+2026-10-28T12:00:02.1000000Z with:
+2026-10-28T12:00:02.2000000Z   repository: shoreline-tools/coast
+2026-10-28T12:00:02.3000000Z   fetch-depth: 1
+2026-10-28T12:00:02.4000000Z ##[endgroup]
+2026-10-28T12:00:02.5000000Z Syncing repository: shoreline-tools/coast
+2026-10-28T12:00:02.6000000Z Fetching the repository
+2026-10-28T12:00:02.7000000Z Checking out the ref
+2026-10-28T12:00:02.8000000Z ##[group]Run cmake -S . -B build && cmake --build build
+2026-10-28T12:00:02.9000000Z cmake -S . -B build && cmake --build build
+2026-10-28T12:00:03.0000000Z shell: /usr/bin/bash -e {0}
+2026-10-28T12:00:03.1000000Z ##[endgroup]
+2026-10-28T12:00:03.2000000Z -- The CXX compiler identification is GNU 13.3.0
+2026-10-28T12:00:03.3000000Z -- Detecting CXX compiler ABI info
+2026-10-28T12:00:03.4000000Z -- Detecting CXX compiler ABI info - done
+2026-10-28T12:00:03.5000000Z -- Check for working CXX compiler: /usr/bin/c++ - skipped
+2026-10-28T12:00:03.6000000Z -- Detecting CXX compile features
+2026-10-28T12:00:03.7000000Z -- Detecting CXX compile features - done
+2026-10-28T12:00:03.8000000Z -- Configuring done (0.5s)
+2026-10-28T12:00:03.9000000Z -- Generating done (0.0s)
+2026-10-28T12:00:04.0000000Z -- Build files have been written to: /home/runner/work/coast/coast/build
+2026-10-28T12:00:04.1000000Z [ 50%] Building CXX object CMakeFiles/coast_check.dir/tests/check.cpp.o
+2026-10-28T12:00:04.2000000Z [100%] Linking CXX executable coast_check
+2026-10-28T12:00:04.3000000Z [100%] Built target coast_check
+2026-10-28T12:00:04.4000000Z ##[group]Run ctest --test-dir build -V
+2026-10-28T12:00:04.5000000Z ctest --test-dir build -V
+2026-10-28T12:00:04.6000000Z shell: /usr/bin/bash -e {0}
+2026-10-28T12:00:04.7000000Z ##[endgroup]
+2026-10-28T12:00:04.8000000Z Internal ctest changing into directory: /home/runner/work/coast/coast/build
+2026-10-28T12:00:04.9000000Z UpdateCTestConfiguration  from :/home/runner/work/coast/coast/build/DartConfiguration.tcl
+2026-10-28T12:00:05.0000000Z UpdateCTestConfiguration  from :/home/runner/work/coast/coast/build/DartConfiguration.tcl
+2026-10-28T12:00:05.1000000Z Test project /home/runner/work/coast/coast/build
+2026-10-28T12:00:05.2000000Z Constructing a list of tests
+2026-10-28T12:00:05.3000000Z Done constructing a list of tests
+2026-10-28T12:00:05.4000000Z Updating test list for fixtures
+2026-10-28T12:00:05.5000000Z Added 0 tests to meet fixture requirements
+2026-10-28T12:00:05.6000000Z Checking test dependency graph...
+2026-10-28T12:00:05.7000000Z Checking test dependency graph end
+2026-10-28T12:00:05.8000000Z test 1
+2026-10-28T12:00:05.8100000Z     Start 1: scan
+2026-10-28T12:00:05.8200000Z 1: Test command: /home/runner/work/coast/coast/build/coast_check "scan"
+2026-10-28T12:00:05.8300000Z 1: Working Directory: /home/runner/work/coast/coast/build
+2026-10-28T12:00:05.8400000Z 1: Test timeout computed to be: 10000000
+2026-10-28T12:00:05.8500000Z 1: scan ok
+2026-10-28T12:00:05.8600000Z 1/6 Test #1: scan .............................   Passed    0.00 sec
+2026-10-28T12:00:05.8700000Z test 2
+2026-10-28T12:00:05.8800000Z     Start 2: trim
+2026-10-28T12:00:05.8900000Z 2: Test command: /home/runner/work/coast/coast/build/coast_check "trim"
+2026-10-28T12:00:05.9000000Z 2: Working Directory: /home/runner/work/coast/coast/build
+2026-10-28T12:00:05.9100000Z 2: Test timeout computed to be: 10000000
+2026-10-28T12:00:05.9200000Z 2: trim ok
+2026-10-28T12:00:05.9300000Z 2/6 Test #2: trim .............................   Passed    0.00 sec
+2026-10-28T12:00:05.9400000Z test 3
+2026-10-28T12:00:05.9500000Z     Start 3: parse
+2026-10-28T12:00:05.9600000Z 3: Test command: /home/runner/work/coast/coast/build/coast_check "parse"
+2026-10-28T12:00:05.9700000Z 3: Working Directory: /home/runner/work/coast/coast/build
+2026-10-28T12:00:05.9800000Z 3: Test timeout computed to be: 10000000
+2026-10-28T12:00:05.9900000Z 3: parse ok
+2026-10-28T12:00:06.0000000Z 3/6 Test #3: parse ............................   Passed    0.00 sec
+2026-10-28T12:00:06.0100000Z test 4
+2026-10-28T12:00:06.0200000Z     Start 4: format
+2026-10-28T12:00:06.0300000Z 4: Test command: /home/runner/work/coast/coast/build/coast_check "format"
+2026-10-28T12:00:06.0400000Z 4: Working Directory: /home/runner/work/coast/coast/build
+2026-10-28T12:00:06.0500000Z 4: Test timeout computed to be: 10000000
+2026-10-28T12:00:06.0600000Z 4: format ok
+2026-10-28T12:00:06.0700000Z 4/6 Test #4: format ...........................   Passed    0.00 sec
+2026-10-28T12:00:06.0800000Z test 5
+2026-10-28T12:00:06.0900000Z     Start 5: index
+2026-10-28T12:00:06.1000000Z 5: Test command: /home/runner/work/coast/coast/build/coast_check "index"
+2026-10-28T12:00:06.1100000Z 5: Working Directory: /home/runner/work/coast/coast/build
+2026-10-28T12:00:06.1200000Z 5: Test timeout computed to be: 10000000
+2026-10-28T12:00:06.1300000Z 5: index ok
+2026-10-28T12:00:06.1400000Z 5/6 Test #5: index ............................   Passed    0.00 sec
+2026-10-28T12:00:06.1500000Z test 6
+2026-10-28T12:00:06.1600000Z     Start 6: scope
+2026-10-28T12:00:06.1700000Z 6: Test command: /home/runner/work/coast/coast/build/coast_check "scope"
+2026-10-28T12:00:06.1800000Z 6: Working Directory: /home/runner/work/coast/coast/build
+2026-10-28T12:00:06.1900000Z 6: Test timeout computed to be: 10000000
+2026-10-28T12:00:06.2000000Z 6: COAST_SCOPE must be set
+2026-10-28T12:00:06.2100000Z 6/6 Test #6: scope ............................***Failed    0.00 sec
+2026-10-28T12:00:06.2200000Z 
+2026-10-28T12:00:06.2300000Z 83% tests passed, 1 tests failed out of 6
+2026-10-28T12:00:06.2400000Z 
+2026-10-28T12:00:06.2500000Z Total Test time (real) =   0.01 sec
+2026-10-28T12:00:06.2600000Z 
+2026-10-28T12:00:06.2700000Z The following tests FAILED:
+2026-10-28T12:00:06.2800000Z 	  6 - scope (Failed)
+2026-10-28T12:00:06.2900000Z Errors while running CTest
+2026-10-28T12:00:06.3000000Z Output from these tests are in: /home/runner/work/coast/coast/build/Testing/Temporary/LastTest.log
+2026-10-28T12:00:06.3100000Z Use "--rerun-failed --output-on-failure" to re-run the failed cases verbosely.
+2026-10-28T12:00:06.3200000Z ##[error]Process completed with exit code 8.
+2026-10-28T12:00:06.3300000Z Post job cleanup.
+2026-10-28T12:00:06.3400000Z Cleaning up orphan processes

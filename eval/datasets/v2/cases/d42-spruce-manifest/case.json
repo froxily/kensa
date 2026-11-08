@@ -1,0 +1,16 @@
+{
+  "id": "d42-spruce-manifest",
+  "split": "dev",
+  "category": "workflow_path",
+  "kind": "standard",
+  "difficulty": "medium",
+  "ecosystem": "ruby",
+  "title": "Rake package prerequisite points to the wrong manifest",
+  "root_cause": "The package task invokes input/manifest.json, but the repository contains the manifest under assets. Rake cannot find or build the named file task and aborts.",
+  "fix_keywords": ["input/manifest.json", "assets/manifest.json"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 75, "end_line": 80, "why": "Rake reports the missing file task."},
+    {"path": "Rakefile", "start_line": 10, "end_line": 12, "why": "The package task references the nonexistent path."},
+    {"path": "assets/manifest.json", "start_line": 1, "end_line": 1, "why": "The manifest is present under assets."}
+  ]
+}

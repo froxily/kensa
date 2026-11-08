@@ -1,0 +1,56 @@
+2026-09-21T15:20:00.0000000Z Runner version: 2.328.2
+2026-09-21T15:20:01.0000000Z Repository: thistle-pond/queue
+2026-09-21T15:20:02.0000000Z Job: concurrency
+2026-09-21T15:20:03.0000000Z Image: ubuntu-24.04
+2026-09-21T15:20:04.0000000Z Preparing action downloads
+2026-09-21T15:20:05.0000000Z ##[group]Run actions/checkout@v4
+2026-09-21T15:20:06.0000000Z Syncing thistle-pond/queue
+2026-09-21T15:20:07.0000000Z Fetching repository
+2026-09-21T15:20:08.0000000Z Checkout complete
+2026-09-21T15:20:09.0000000Z ##[endgroup]
+2026-09-21T15:20:10.0000000Z ##[group]Run actions/setup-go@v5
+2026-09-21T15:20:11.0000000Z Setting up Go 1.23
+2026-09-21T15:20:12.0000000Z Found Go in cache
+2026-09-21T15:20:13.0000000Z go version go1.23.1 linux/amd64
+2026-09-21T15:20:14.0000000Z ##[endgroup]
+2026-09-21T15:20:15.0000000Z ##[group]Run go list ./...
+2026-09-21T15:20:16.0000000Z example.invalid/thistle/queue
+2026-09-21T15:20:17.0000000Z Package discovery complete
+2026-09-21T15:20:18.0000000Z ##[endgroup]
+2026-09-21T15:20:19.0000000Z ##[group]Run go test -v -timeout 4m ./...
+2026-09-21T15:20:20.0000000Z === RUN   TestDispatch
+2026-09-21T15:24:20.0000000Z panic: test timed out after 4m0s
+2026-09-21T15:24:20.0100000Z running tests:
+2026-09-21T15:24:20.0200000Z     TestDispatch (4m0s)
+2026-09-21T15:24:20.0300000Z goroutine 18 [running]:
+2026-09-21T15:24:20.0400000Z testing.(*M).startAlarm.func1()
+2026-09-21T15:24:20.0500000Z     /opt/hostedtoolcache/go/1.23.1/x64/src/testing/testing.go:2373
+2026-09-21T15:24:20.0600000Z created by time.goFunc
+2026-09-21T15:24:20.0700000Z     /opt/hostedtoolcache/go/1.23.1/x64/src/time/sleep.go:215
+2026-09-21T15:24:20.0800000Z goroutine 1 [chan receive]:
+2026-09-21T15:24:20.0900000Z testing.(*T).Run(0xc000100340, {0x55c000, 0xc}, 0x567000)
+2026-09-21T15:24:20.1000000Z     /opt/hostedtoolcache/go/1.23.1/x64/src/testing/testing.go:1751
+2026-09-21T15:24:20.1100000Z testing.runTests.func1(0xc000100340)
+2026-09-21T15:24:20.1200000Z     /opt/hostedtoolcache/go/1.23.1/x64/src/testing/testing.go:2168
+2026-09-21T15:24:20.1300000Z goroutine 6 [chan send]:
+2026-09-21T15:24:20.1400000Z example.invalid/thistle/queue.Dispatch(...)
+2026-09-21T15:24:20.1500000Z     /home/runner/work/queue/queue/dispatch.go:6
+2026-09-21T15:24:20.1600000Z example.invalid/thistle/queue.TestDispatch(0xc0001004e0)
+2026-09-21T15:24:20.1700000Z     /home/runner/work/queue/queue/dispatch_test.go:6
+2026-09-21T15:24:20.1800000Z testing.tRunner(0xc0001004e0, 0x567000)
+2026-09-21T15:24:20.1900000Z     /opt/hostedtoolcache/go/1.23.1/x64/src/testing/testing.go:1690
+2026-09-21T15:24:20.2000000Z created by testing.(*T).Run
+2026-09-21T15:24:20.2100000Z     /opt/hostedtoolcache/go/1.23.1/x64/src/testing/testing.go:1743
+2026-09-21T15:24:20.2200000Z FAIL example.invalid/thistle/queue 240.008s
+2026-09-21T15:24:20.2300000Z FAIL
+2026-09-21T15:24:20.2400000Z Test process terminated after timeout
+2026-09-21T15:24:20.2500000Z No test results were written
+2026-09-21T15:24:20.2600000Z Command exited unsuccessfully
+2026-09-21T15:24:20.2610000Z Go test did not reach normal completion
+2026-09-21T15:24:20.2620000Z The timeout stack is printed above
+2026-09-21T15:24:20.2630000Z Package: example.invalid/thistle/queue
+2026-09-21T15:24:20.2640000Z Test: TestDispatch
+2026-09-21T15:24:20.2650000Z Timeout setting: 4m
+2026-09-21T15:24:20.2660000Z Test command exit status: 1
+2026-09-21T15:24:20.2700000Z ##[endgroup]
+2026-09-21T15:24:20.2800000Z ##[error]Process completed with exit code 1.

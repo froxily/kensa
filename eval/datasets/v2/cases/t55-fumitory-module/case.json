@@ -1,0 +1,16 @@
+{
+  "id": "t55-fumitory-module",
+  "split": "test",
+  "category": "dependency_build",
+  "kind": "masked",
+  "difficulty": "medium",
+  "ecosystem": "node",
+  "title": "Ticket test cannot load its identifier dependency",
+  "root_cause": "The ticket module requires nanoid, but package.json does not declare that dependency. The module load fails inside the Mocha test and the test runner reports one failing test.",
+  "fix_keywords": ["nanoid", "package.json"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 61, "end_line": 69, "why": "The failing test contains the missing-module error and require stack."},
+    {"path": "lib/ticket.cjs", "start_line": 1, "end_line": 2, "why": "The ticket code imports nanoid."},
+    {"path": "package.json", "start_line": 1, "end_line": 7, "why": "The manifest does not declare nanoid."}
+  ]
+}

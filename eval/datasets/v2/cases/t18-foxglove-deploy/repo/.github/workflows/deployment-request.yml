@@ -1,0 +1,14 @@
+name: Request deployment
+on: [workflow_dispatch]
+permissions:
+  contents: read
+  deployments: read
+jobs:
+  request:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - name: Submit deployment
+        run: swift jobs/deploy.swift
+        env:
+          FOXGLOVE_TOKEN: ${{ github.token }}

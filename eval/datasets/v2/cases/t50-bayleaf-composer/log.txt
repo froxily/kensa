@@ -1,0 +1,97 @@
+2026-10-25T12:30:00.0000000Z Current runner version: '2.329.0'
+2026-10-25T12:30:00.1000000Z ##[group]Operating System
+2026-10-25T12:30:00.2000000Z macOS 15.6
+2026-10-25T12:30:00.3000000Z ##[endgroup]
+2026-10-25T12:30:00.4000000Z ##[group]Runner Image
+2026-10-25T12:30:00.5000000Z Image: macos-15
+2026-10-25T12:30:00.6000000Z ##[endgroup]
+2026-10-25T12:30:00.7000000Z Prepare workflow directory
+2026-10-25T12:30:00.8000000Z Prepare all required actions
+2026-10-25T12:30:00.9000000Z Getting action download info
+2026-10-25T12:30:01.0000000Z Download action repository 'actions/checkout@v4'
+2026-10-25T12:30:01.1000000Z Download action repository 'shivammathur/setup-php@v2'
+2026-10-25T12:30:01.2000000Z Complete job name: inspect
+2026-10-25T12:30:01.3000000Z ##[group]Run actions/checkout@v4
+2026-10-25T12:30:01.4000000Z with:
+2026-10-25T12:30:01.5000000Z   repository: bayleaf-labs/dispatch-analysis
+2026-10-25T12:30:01.6000000Z ##[endgroup]
+2026-10-25T12:30:01.7000000Z Syncing repository: bayleaf-labs/dispatch-analysis
+2026-10-25T12:30:01.8000000Z Getting Git version info
+2026-10-25T12:30:01.9000000Z git version 2.49.0
+2026-10-25T12:30:02.0000000Z Checking out the ref
+2026-10-25T12:30:02.1000000Z ##[group]Run shivammathur/setup-php@v2
+2026-10-25T12:30:02.2000000Z with:
+2026-10-25T12:30:02.3000000Z   php-version: 8.4
+2026-10-25T12:30:02.4000000Z   tools: composer:v2
+2026-10-25T12:30:02.5000000Z ##[endgroup]
+2026-10-25T12:30:02.6000000Z ==> Setup PHP
+2026-10-25T12:30:02.7000000Z Enabled PHP 8.4
+2026-10-25T12:30:02.8000000Z ==> Setup Tools
+2026-10-25T12:30:02.9000000Z Enabled composer 2.8.9
+2026-10-25T12:30:03.0000000Z ##[group]Run composer install --no-interaction --no-progress
+2026-10-25T12:30:03.1000000Z composer install --no-interaction --no-progress
+2026-10-25T12:30:03.2000000Z shell: /bin/bash -e {0}
+2026-10-25T12:30:03.3000000Z ##[endgroup]
+2026-10-25T12:30:03.4000000Z No composer.lock file present. Updating dependencies to latest instead of installing from lock file.
+2026-10-25T12:30:03.5000000Z Loading composer repositories with package information
+2026-10-25T12:30:03.6000000Z Updating dependencies
+2026-10-25T12:30:03.7000000Z Lock file operations: 1 install, 0 updates, 0 removals
+2026-10-25T12:30:03.8000000Z   - Locking phpstan/phpstan (2.1.25)
+2026-10-25T12:30:03.9000000Z Writing lock file
+2026-10-25T12:30:04.0000000Z Installing dependencies from lock file (including require-dev)
+2026-10-25T12:30:04.1000000Z Package operations: 1 install, 0 updates, 0 removals
+2026-10-25T12:30:04.2000000Z   - Downloading phpstan/phpstan (2.1.25)
+2026-10-25T12:30:04.3000000Z   - Installing phpstan/phpstan (2.1.25): Extracting archive
+2026-10-25T12:30:04.4000000Z Generating autoload files
+2026-10-25T12:30:04.5000000Z ##[group]Run composer show --platform
+2026-10-25T12:30:04.6000000Z composer show --platform
+2026-10-25T12:30:04.7000000Z vendor/bin/phpstan analyse app --level=6 --no-progress
+2026-10-25T12:30:04.8000000Z shell: /bin/bash -e {0}
+2026-10-25T12:30:04.9000000Z ##[endgroup]
+2026-10-25T12:30:05.0000000Z composer              2.8.9     Composer package
+2026-10-25T12:30:05.0100000Z composer-plugin-api   2.6.0     The Composer Plugin API
+2026-10-25T12:30:05.0200000Z composer-runtime-api  2.2.2     The Composer Runtime API
+2026-10-25T12:30:05.0300000Z ext-bcmath            8.4.12    The bcmath PHP extension
+2026-10-25T12:30:05.0400000Z ext-ctype             8.4.12    The ctype PHP extension
+2026-10-25T12:30:05.0500000Z ext-curl              8.4.12    The curl PHP extension
+2026-10-25T12:30:05.0600000Z ext-date              8.4.12    The date PHP extension
+2026-10-25T12:30:05.0700000Z ext-dom               20031129  The dom PHP extension
+2026-10-25T12:30:05.0800000Z ext-fileinfo          8.4.12    The fileinfo PHP extension
+2026-10-25T12:30:05.0900000Z ext-filter            8.4.12    The filter PHP extension
+2026-10-25T12:30:05.1000000Z ext-hash              8.4.12    The hash PHP extension
+2026-10-25T12:30:05.1100000Z ext-iconv             8.4.12    The iconv PHP extension
+2026-10-25T12:30:05.1200000Z ext-json              8.4.12    The json PHP extension
+2026-10-25T12:30:05.1300000Z ext-libxml            8.4.12    The libxml PHP extension
+2026-10-25T12:30:05.1400000Z ext-mbstring          8.4.12    The mbstring PHP extension
+2026-10-25T12:30:05.1500000Z ext-openssl           8.4.12    The openssl PHP extension
+2026-10-25T12:30:05.1600000Z ext-pcre              8.4.12    The pcre PHP extension
+2026-10-25T12:30:05.1700000Z ext-pdo               8.4.12    The PDO PHP extension
+2026-10-25T12:30:05.1800000Z ext-phar              8.4.12    The Phar PHP extension
+2026-10-25T12:30:05.1900000Z ext-reflection        8.4.12    The Reflection PHP extension
+2026-10-25T12:30:05.2000000Z ext-session           8.4.12    The session PHP extension
+2026-10-25T12:30:05.2100000Z ext-simplexml         8.4.12    The SimpleXML PHP extension
+2026-10-25T12:30:05.2200000Z ext-spl               8.4.12    The SPL PHP extension
+2026-10-25T12:30:05.2300000Z ext-tokenizer         8.4.12    The tokenizer PHP extension
+2026-10-25T12:30:05.2400000Z ext-xml               8.4.12    The xml PHP extension
+2026-10-25T12:30:05.2500000Z ext-xmlreader         8.4.12    The xmlreader PHP extension
+2026-10-25T12:30:05.2600000Z ext-xmlwriter         8.4.12    The xmlwriter PHP extension
+2026-10-25T12:30:05.2700000Z ext-zip               1.22.6    The zip PHP extension
+2026-10-25T12:30:05.2800000Z ext-zlib              8.4.12    The zlib PHP extension
+2026-10-25T12:30:05.2900000Z php                   8.4.12    The PHP interpreter
+2026-10-25T12:30:05.3000000Z php-64bit             8.4.12    The PHP interpreter, 64bit
+2026-10-25T12:30:05.4000000Z  ------ -----------------------------------------------------------------------
+2026-10-25T12:30:05.5000000Z   Line   DispatchValues.php
+2026-10-25T12:30:05.6000000Z  ------ -----------------------------------------------------------------------
+2026-10-25T12:30:05.7000000Z   5      Method Bayleaf\DispatchValues::batchLimit() should return int but returns string.
+2026-10-25T12:30:05.8000000Z   6      Method Bayleaf\DispatchValues::isReady() should return bool but returns int.
+2026-10-25T12:30:05.9000000Z   7      Method Bayleaf\DispatchValues::zoneName() should return string but returns int.
+2026-10-25T12:30:06.0000000Z   8      Method Bayleaf\DispatchValues::retryDelay() should return float but returns string.
+2026-10-25T12:30:06.1000000Z   9      Method Bayleaf\DispatchValues::attempts() should return int but returns bool.
+2026-10-25T12:30:06.2000000Z   10     Method Bayleaf\DispatchValues::deadline() should return DateTimeImmutable but returns null.
+2026-10-25T12:30:06.3000000Z  ------ -----------------------------------------------------------------------
+2026-10-25T12:30:06.4000000Z 
+2026-10-25T12:30:06.5000000Z  [ERROR] Found 6 errors
+2026-10-25T12:30:06.6000000Z 
+2026-10-25T12:30:06.7000000Z ##[error]Process completed with exit code 1.
+2026-10-25T12:30:06.8000000Z Post job cleanup.
+2026-10-25T12:30:06.9000000Z Cleaning up orphan processes

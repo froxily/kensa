@@ -1,0 +1,26 @@
+name: Archive validation
+on:
+  push:
+  pull_request:
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Fetch archive source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install test runner
+        run: pip install -r requirements.txt
+      - name: Validate archive
+        run: pytest -v tests
+      - name: Summarize
+        if: always()
+        run: echo "Validation finished"
+    permissions:
+      contents: read

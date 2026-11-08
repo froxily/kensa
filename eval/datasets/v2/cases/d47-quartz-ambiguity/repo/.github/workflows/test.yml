@@ -1,0 +1,10 @@
+name: Signal checks
+on: [workflow_dispatch]
+jobs:
+  tests:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - run: swift test
+        env:
+          SURVEY_SIGNAL_FILE: ${{ secrets.SURVEY_SIGNAL_FILE }}

@@ -1,0 +1,16 @@
+{
+  "id": "t42-bergamot-format",
+  "split": "test",
+  "category": "workflow_path",
+  "kind": "standard",
+  "difficulty": "easy",
+  "ecosystem": "swift",
+  "title": "Swift formatter cannot open its configuration",
+  "root_cause": "The workflow asks swift-format to read .config/bergamot-style.json, while the configuration is checked in under config. The formatter cannot open the requested file and exits.",
+  "fix_keywords": ["config/bergamot-style.json", ".config/bergamot-style.json"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 62, "end_line": 64, "why": "The formatter reports the missing configuration file."},
+    {"path": ".github/workflows/swift-style.yml", "start_line": 8, "end_line": 11, "why": "The lint command supplies the incorrect configuration path."},
+    {"path": "config/bergamot-style.json", "start_line": 1, "end_line": 5, "why": "The configuration exists under config instead."}
+  ]
+}

@@ -1,0 +1,38 @@
+name: Database integration
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  database-tests:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: app_test
+          POSTGRES_PASSWORD: '***'
+          POSTGRES_DB: catalog_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - name: Checkout catalog
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install test packages
+        run: pip install -r requirements.txt
+      - name: Exercise database
+        env:
+          DB_HOST: localhost
+          DB_PASSWORD: '***'
+          DB_NAME: catalog_test
+        run: pytest tests/test_connection.py -v

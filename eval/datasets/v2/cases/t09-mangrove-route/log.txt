@@ -1,0 +1,88 @@
+2026-10-30T10:30:00.0000000Z Current runner version: '2.328.0'
+2026-10-30T10:30:00.1000000Z ##[group]Operating System
+2026-10-30T10:30:00.2000000Z Ubuntu
+2026-10-30T10:30:00.3000000Z 24.04.3
+2026-10-30T10:30:00.4000000Z LTS
+2026-10-30T10:30:00.5000000Z ##[endgroup]
+2026-10-30T10:30:00.6000000Z ##[group]Runner Image
+2026-10-30T10:30:00.7000000Z Image: ubuntu-24.04-arm
+2026-10-30T10:30:00.8000000Z Version: 20261026.1
+2026-10-30T10:30:00.9000000Z ##[endgroup]
+2026-10-30T10:30:01.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-30T10:30:01.1000000Z Contents: read
+2026-10-30T10:30:01.2000000Z Metadata: read
+2026-10-30T10:30:01.3000000Z ##[endgroup]
+2026-10-30T10:30:01.4000000Z Prepare workflow directory
+2026-10-30T10:30:01.5000000Z Prepare all required actions
+2026-10-30T10:30:01.6000000Z Download action repository 'actions/checkout@v4'
+2026-10-30T10:30:01.7000000Z Download action repository 'actions/setup-java@v4'
+2026-10-30T10:30:01.8000000Z Complete job name: route
+2026-10-30T10:30:02.0000000Z ##[group]Starting silo service
+2026-10-30T10:30:02.1000000Z [command]/usr/bin/docker pull memcached:1.6
+2026-10-30T10:30:02.2000000Z 1.6: Pulling from library/memcached
+2026-10-30T10:30:03.0000000Z Status: Downloaded newer image for memcached:1.6
+2026-10-30T10:30:03.1000000Z [command]/usr/bin/docker create --name silo --publish 6435:11211 memcached:1.6
+2026-10-30T10:30:03.2000000Z [command]/usr/bin/docker start silo
+2026-10-30T10:30:03.3000000Z ##[endgroup]
+2026-10-30T10:30:03.4000000Z ##[group]Run actions/checkout@v4
+2026-10-30T10:30:03.5000000Z with:
+2026-10-30T10:30:03.6000000Z   repository: tidal-tools/mangrove
+2026-10-30T10:30:03.7000000Z   fetch-depth: 1
+2026-10-30T10:30:03.8000000Z ##[endgroup]
+2026-10-30T10:30:03.9000000Z Syncing repository: tidal-tools/mangrove
+2026-10-30T10:30:04.0000000Z Fetching the repository
+2026-10-30T10:30:04.1000000Z Checking out the ref
+2026-10-30T10:30:04.2000000Z ##[group]Run actions/setup-java@v4
+2026-10-30T10:30:04.3000000Z with:
+2026-10-30T10:30:04.4000000Z   distribution: temurin
+2026-10-30T10:30:04.5000000Z   java-version: 21
+2026-10-30T10:30:04.6000000Z ##[endgroup]
+2026-10-30T10:30:04.7000000Z Resolved Java 21 from tool-cache
+2026-10-30T10:30:04.8000000Z Setting Java 21 as the default
+2026-10-30T10:30:04.9000000Z ##[group]Run mkdir -p target && javac -d target native/RouteProbe.java
+2026-10-30T10:30:05.0000000Z mkdir -p target && javac -d target native/RouteProbe.java
+2026-10-30T10:30:05.1000000Z shell: /usr/bin/bash -e {0}
+2026-10-30T10:30:05.2000000Z ##[endgroup]
+2026-10-30T10:30:06.0000000Z ##[group]Run java -cp target RouteProbe
+2026-10-30T10:30:06.1000000Z java -cp target RouteProbe
+2026-10-30T10:30:06.2000000Z shell: /usr/bin/bash -e {0}
+2026-10-30T10:30:06.3000000Z ##[endgroup]
+2026-10-30T10:30:06.3100000Z loaded bucket N01
+2026-10-30T10:30:06.3200000Z loaded bucket N02
+2026-10-30T10:30:06.3300000Z loaded bucket N03
+2026-10-30T10:30:06.3400000Z loaded bucket N04
+2026-10-30T10:30:06.3500000Z loaded bucket N05
+2026-10-30T10:30:06.3600000Z loaded bucket N06
+2026-10-30T10:30:06.3700000Z loaded bucket N07
+2026-10-30T10:30:06.3800000Z loaded bucket N08
+2026-10-30T10:30:06.3900000Z loaded bucket N09
+2026-10-30T10:30:06.4000000Z loaded bucket N10
+2026-10-30T10:30:06.4100000Z loaded bucket N11
+2026-10-30T10:30:06.4200000Z loaded bucket N12
+2026-10-30T10:30:06.4300000Z loaded bucket N13
+2026-10-30T10:30:06.4400000Z loaded bucket N14
+2026-10-30T10:30:06.4500000Z loaded bucket N15
+2026-10-30T10:30:06.4600000Z loaded bucket N16
+2026-10-30T10:30:06.4700000Z loaded bucket N17
+2026-10-30T10:30:06.4800000Z loaded bucket N18
+2026-10-30T10:30:06.4900000Z loaded bucket N19
+2026-10-30T10:30:06.5000000Z loaded bucket N20
+2026-10-30T10:30:06.5100000Z loaded bucket N21
+2026-10-30T10:30:06.5200000Z loaded bucket N22
+2026-10-30T10:30:06.5300000Z loaded bucket N23
+2026-10-30T10:30:06.5400000Z loaded bucket N24
+2026-10-30T10:30:06.5500000Z MANGROVE_CACHE_HOST is not set
+2026-10-30T10:30:06.5600000Z Exception in thread "main" java.net.UnknownHostException: mangrove-cache.internal
+2026-10-30T10:30:06.5700000Z     at java.base/java.net.InetAddress$CachedAddresses.get(InetAddress.java:801)
+2026-10-30T10:30:06.5800000Z     at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1533)
+2026-10-30T10:30:06.5900000Z     at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1385)
+2026-10-30T10:30:06.6000000Z     at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:572)
+2026-10-30T10:30:06.6100000Z     at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+2026-10-30T10:30:06.6200000Z     at java.base/java.net.Socket.connect(Socket.java:751)
+2026-10-30T10:30:06.6300000Z     at java.base/java.net.Socket.connect(Socket.java:686)
+2026-10-30T10:30:06.6400000Z     at java.base/java.net.Socket.<init>(Socket.java:555)
+2026-10-30T10:30:06.6500000Z     at java.base/java.net.Socket.<init>(Socket.java:324)
+2026-10-30T10:30:06.6600000Z     at RouteProbe.main(RouteProbe.java:18)
+2026-10-30T10:30:06.6700000Z ##[error]Process completed with exit code 1.
+2026-10-30T10:30:06.6800000Z Stop and remove container: silo
+2026-10-30T10:30:06.6900000Z Cleaning up orphan processes

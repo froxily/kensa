@@ -1,0 +1,16 @@
+{
+  "id": "t57-tarragon-dispatch",
+  "split": "test",
+  "category": "github_permissions",
+  "kind": "standard",
+  "difficulty": "easy",
+  "ecosystem": "java",
+  "title": "Repository dispatch is denied to the workflow token",
+  "root_cause": "The job token has contents read permission, but creating a repository dispatch requires contents write. The API rejects the POST with HTTP 403.",
+  "fix_keywords": ["contents", "write"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 58, "end_line": 61, "why": "The dispatch request is denied after the branch listing."},
+    {"path": ".github/workflows/repository-signal.yml", "start_line": 3, "end_line": 4, "why": "The workflow grants contents read only."},
+    {"path": "tasks/RepositorySignal.java", "start_line": 20, "end_line": 27, "why": "The script posts a repository dispatch with the workflow token."}
+  ]
+}

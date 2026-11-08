@@ -1,0 +1,71 @@
+2026-10-02T08:00:00.0000000Z Current runner version: '2.329.0'
+2026-10-02T08:00:00.1000000Z ##[group]Runner Image
+2026-10-02T08:00:00.2000000Z Image: ubuntu-24.04-arm
+2026-10-02T08:00:00.3000000Z ##[endgroup]
+2026-10-02T08:00:00.4000000Z Prepare workflow directory
+2026-10-02T08:00:00.5000000Z Prepare all required actions
+2026-10-02T08:00:00.6000000Z Getting action download info
+2026-10-02T08:00:00.7000000Z Download action repository 'actions/checkout@v4'
+2026-10-02T08:00:00.8000000Z Download action repository 'actions/setup-java@v4'
+2026-10-02T08:00:00.9000000Z Complete job name: graph
+2026-10-02T08:00:01.0000000Z ##[group]Initialize containers
+2026-10-02T08:00:01.1000000Z Pull down service image 'neo4j:5-community'
+2026-10-02T08:00:03.0000000Z Status: Downloaded newer image for neo4j:5-community
+2026-10-02T08:00:03.1000000Z Starting service container arborgraph
+2026-10-02T08:00:03.2000000Z ##[endgroup]
+2026-10-02T08:00:03.3000000Z ##[group]Run actions/checkout@v4
+2026-10-02T08:00:03.4000000Z with:
+2026-10-02T08:00:03.5000000Z   repository: buckthorn-labs/graph-query
+2026-10-02T08:00:03.6000000Z ##[endgroup]
+2026-10-02T08:00:03.7000000Z Syncing repository: buckthorn-labs/graph-query
+2026-10-02T08:00:03.8000000Z Checking out the ref
+2026-10-02T08:00:03.9000000Z ##[group]Run actions/setup-java@v4
+2026-10-02T08:00:04.0000000Z with:
+2026-10-02T08:00:04.1000000Z   distribution: temurin
+2026-10-02T08:00:04.2000000Z   java-version: 21
+2026-10-02T08:00:04.3000000Z ##[endgroup]
+2026-10-02T08:00:04.4000000Z Setting Java 21 as the default
+2026-10-02T08:00:04.5000000Z ##[group]Run curl -fsSLo kotlin.zip https://github.com/JetBrains/kotlin/releases/download/v2.0.21/kotlin-compiler-2.0.21.zip
+2026-10-02T08:00:04.6000000Z curl -fsSLo kotlin.zip https://github.com/JetBrains/kotlin/releases/download/v2.0.21/kotlin-compiler-2.0.21.zip
+2026-10-02T08:00:04.7000000Z unzip -q kotlin.zip -d compiler
+2026-10-02T08:00:04.8000000Z curl -fsSLo junit-console.jar https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-console-standalone/1.11.3/junit-platform-console-standalone-1.11.3.jar
+2026-10-02T08:00:04.9000000Z shell: /usr/bin/bash -e {0}
+2026-10-02T08:00:05.0000000Z ##[endgroup]
+2026-10-02T08:00:08.0000000Z ##[group]Run timeout 120 bash -c 'until curl -fsS http://127.0.0.1:17474/ >/dev/null; do sleep 2; done'
+2026-10-02T08:00:08.1000000Z timeout 120 bash -c 'until curl -fsS http://127.0.0.1:17474/ >/dev/null; do sleep 2; done'
+2026-10-02T08:00:08.2000000Z shell: /usr/bin/bash -e {0}
+2026-10-02T08:00:08.3000000Z ##[endgroup]
+2026-10-02T08:00:08.4000000Z curl: (7) Failed to connect to 127.0.0.1 port 17474: Couldn't connect to server
+2026-10-02T08:00:11.0000000Z ##[group]Run set -o pipefail
+2026-10-02T08:00:11.1000000Z set -o pipefail
+2026-10-02T08:00:11.2000000Z compiler/kotlinc/bin/kotlinc src/test/kotlin/GraphQueryTest.kt -classpath junit-console.jar -include-runtime -d graph-checks.jar
+2026-10-02T08:00:11.3000000Z java -jar junit-console.jar execute --class-path graph-checks.jar --select-class GraphQueryTest --details verbose --disable-banner --disable-ansi-colors | sed '/^\[/d'
+2026-10-02T08:00:11.4000000Z shell: /usr/bin/bash -e {0}
+2026-10-02T08:00:11.5000000Z ##[endgroup]
+2026-10-02T08:00:14.0000000Z Test plan execution started. Number of static tests: 1
+2026-10-02T08:00:14.1000000Z ╷
+2026-10-02T08:00:14.1100000Z ├─ JUnit Jupiter
+2026-10-02T08:00:14.1200000Z │  ├─ GraphQueryTest
+2026-10-02T08:00:14.1300000Z │  │  ├─ query()
+2026-10-02T08:00:14.1400000Z │  │  │       tags: []
+2026-10-02T08:00:14.1500000Z │  │  │   uniqueId: [engine:junit-jupiter]/[class:GraphQueryTest]/[method:query()]
+2026-10-02T08:00:14.1600000Z │  │  │     parent: [engine:junit-jupiter]/[class:GraphQueryTest]
+2026-10-02T08:00:14.1700000Z │  │  │     source: MethodSource [className = 'GraphQueryTest', methodName = 'query', methodParameterTypes = '']
+2026-10-02T08:00:14.2000000Z {"errors":[{"code":"Neo.ClientError.Database.DatabaseNotFound","message":"Database does not exist. Database name: herbarium"}]}
+2026-10-02T08:00:14.3000000Z │  │  │     caught: org.opentest4j.AssertionFailedError: expected: <200> but was: <404>
+2026-10-02T08:00:14.3100000Z │  │  │               at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+2026-10-02T08:00:14.3200000Z │  │  │               at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+2026-10-02T08:00:14.3300000Z │  │  │               at GraphQueryTest.query(GraphQueryTest.kt:15)
+2026-10-02T08:00:14.3400000Z │  │  │               at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+2026-10-02T08:00:14.3500000Z │  │  │   duration: 152 ms
+2026-10-02T08:00:14.3600000Z │  │  │     status: ✘ FAILED
+2026-10-02T08:00:14.3700000Z │  └─ GraphQueryTest finished after 186 ms.
+2026-10-02T08:00:14.3800000Z └─ JUnit Jupiter finished after 215 ms.
+2026-10-02T08:00:14.3900000Z ├─ JUnit Vintage
+2026-10-02T08:00:14.4000000Z └─ JUnit Vintage finished after 1 ms.
+2026-10-02T08:00:14.4100000Z ├─ JUnit Platform Suite
+2026-10-02T08:00:14.4200000Z └─ JUnit Platform Suite finished after 1 ms.
+2026-10-02T08:00:14.4300000Z Test plan execution finished. Number of all tests: 1
+2026-10-02T08:00:14.6000000Z ##[error]Process completed with exit code 1.
+2026-10-02T08:00:14.7000000Z Stop and remove container: arborgraph
+2026-10-02T08:00:14.8000000Z Cleaning up orphan processes

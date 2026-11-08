@@ -1,0 +1,13 @@
+$stdout.sync = true
+task(:readiness) { raise "workspace missing" unless Dir.exist?("."); puts "Checking workspace" }
+task(:metadata) { raise "metadata missing" unless File.file?("assets/manifest.json"); puts "Checking metadata" }
+task(:schema) { raise "name missing" unless File.read("assets/manifest.json").include?("name"); puts "Checking schema" }
+task(:encoding) { raise "invalid encoding" unless File.read("assets/manifest.json").valid_encoding?; puts "Checking encoding" }
+task(:names) { raise "empty name" if File.basename("assets/manifest.json").empty?; puts "Checking names" }
+task(:targets) { raise "invalid extension" unless File.extname("assets/manifest.json") == ".json"; puts "Checking targets" }
+task(:paths) { raise "assets missing" unless Dir.exist?("assets"); puts "Checking paths" }
+task(:formats) { raise "format missing" unless File.read("assets/manifest.json").include?("archive"); puts "Checking formats" }
+task(:package => [:readiness, :metadata, :schema, :encoding, :names, :targets, :paths, :formats]) do
+  Rake::Task["input/manifest.json"].invoke
+  puts "Package ready"
+end

@@ -1,0 +1,12 @@
+name: Parcel compile
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Build parcel library
+        run: dotnet build ParcelRates/ParcelRates.csproj --verbosity normal

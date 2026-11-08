@@ -1,0 +1,15 @@
+{
+  "id": "t36-hyssop-overload",
+  "split": "test",
+  "category": "dependency_build",
+  "kind": "standard",
+  "difficulty": "easy",
+  "ecosystem": "dotnet",
+  "title": "Parcel library declares duplicate overloads",
+  "root_cause": "The two Cost methods have the same parameter type and therefore the same signature despite using different parameter names. The C# compiler rejects the duplicate declaration.",
+  "fix_keywords": ["Cost", "RateTable.cs"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 54, "end_line": 57, "why": "The compiler reports duplicate member signatures."},
+    {"path": "ParcelRates/RateTable.cs", "start_line": 3, "end_line": 6, "why": "Both methods take one integer argument."}
+  ]
+}

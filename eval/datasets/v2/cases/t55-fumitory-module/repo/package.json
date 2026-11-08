@@ -1,0 +1,7 @@
+{
+  "name": "fumitory-tickets",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {"test": "mocha --reporter spec"},
+  "devDependencies": {"mocha": "^11.1.0"}
+}

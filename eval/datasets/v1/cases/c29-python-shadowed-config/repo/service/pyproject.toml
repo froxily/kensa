@@ -1,0 +1,12 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "quartz-service"
+version = "0.4.0"
+description = "Small status service"
+requires-python = ">=3.10"
+
+[tool.setuptools]
+py-modules = ["status"]

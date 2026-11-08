@@ -1,0 +1,69 @@
+2026-09-18T07:05:00.0000000Z Current runner version: '2.326.0'
+2026-09-18T07:05:01.0000000Z Runner Image: ubuntu-24.04
+2026-09-18T07:05:02.0000000Z Prepare workflow directory
+2026-09-18T07:05:03.0000000Z Prepare all required actions
+2026-09-18T07:05:04.0000000Z Starting postgres service container
+2026-09-18T07:05:05.0000000Z Pulling postgres:16
+2026-09-18T07:05:06.0000000Z Digest: sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+2026-09-18T07:05:07.0000000Z Waiting for all services to be ready
+2026-09-18T07:05:08.0000000Z postgres service is healthy
+2026-09-18T07:05:09.0000000Z ##[group]Run actions/checkout@v4
+2026-09-18T07:05:10.0000000Z with:
+2026-09-18T07:05:11.0000000Z   repository: moss-harbor/ledger
+2026-09-18T07:05:12.0000000Z   fetch-depth: 1
+2026-09-18T07:05:13.0000000Z ##[endgroup]
+2026-09-18T07:05:14.0000000Z Syncing repository: moss-harbor/ledger
+2026-09-18T07:05:15.0000000Z Fetching the repository
+2026-09-18T07:05:16.0000000Z Checking out the ref
+2026-09-18T07:05:17.0000000Z HEAD is now at b3d14c9 Add balance coverage
+2026-09-18T07:05:18.0000000Z ##[group]Run actions/setup-python@v5
+2026-09-18T07:05:19.0000000Z with:
+2026-09-18T07:05:20.0000000Z   python-version: 3.12
+2026-09-18T07:05:21.0000000Z ##[endgroup]
+2026-09-18T07:05:22.0000000Z Successfully set up CPython (3.12.11)
+2026-09-18T07:05:23.0000000Z ##[group]Run pip install -r requirements.txt
+2026-09-18T07:05:24.0000000Z pip install -r requirements.txt
+2026-09-18T07:05:25.0000000Z ##[endgroup]
+2026-09-18T07:05:26.0000000Z Collecting pytest==8.3.3
+2026-09-18T07:05:27.0000000Z Collecting psycopg==3.2.3
+2026-09-18T07:05:28.0000000Z Installing collected packages: psycopg-binary, psycopg, pytest
+2026-09-18T07:05:29.0000000Z Successfully installed psycopg-3.2.3 psycopg-binary-3.2.3 pytest-8.3.3
+2026-09-18T07:05:30.0000000Z ##[group]Run pytest tests -q
+2026-09-18T07:05:31.0000000Z pytest tests -q
+2026-09-18T07:05:32.0000000Z ##[endgroup]
+2026-09-18T07:05:33.0000000Z EEEEEEEEEEEEEEEEEEEEEEEE [100%]
+2026-09-18T07:05:34.0000000Z ==================== ERRORS ====================
+2026-09-18T07:05:35.0000000Z ______ ERROR at setup of test_account_balance[0] ______
+2026-09-18T07:05:36.0000000Z tests/conftest.py:9: in db
+2026-09-18T07:05:37.0000000Z     with psycopg.connect(os.environ["DATABASE_URL"], connect_timeout=2) as conn:
+2026-09-18T07:05:38.0000000Z E   psycopg.OperationalError: connection failed: connection to server at "127.0.0.1", port 5433 failed: Connection refused
+2026-09-18T07:05:39.0000000Z E   Is the server running on that host and accepting TCP/IP connections?
+2026-09-18T07:05:40.0000000Z ______ ERROR at setup of test_account_balance[1] ______
+2026-09-18T07:05:41.0000000Z E   psycopg.OperationalError: connection failed: Connection refused
+2026-09-18T07:05:42.0000000Z ================= short test summary info =================
+2026-09-18T07:05:43.0000000Z ERROR tests/test_balances.py::test_account_balance[0] - psycopg.OperationalError
+2026-09-18T07:05:44.0000000Z ERROR tests/test_balances.py::test_account_balance[1] - psycopg.OperationalError
+2026-09-18T07:05:45.0000000Z ERROR tests/test_balances.py::test_account_balance[2] - psycopg.OperationalError
+2026-09-18T07:05:46.0000000Z ERROR tests/test_balances.py::test_account_balance[3] - psycopg.OperationalError
+2026-09-18T07:05:47.0000000Z ERROR tests/test_balances.py::test_account_balance[4] - psycopg.OperationalError
+2026-09-18T07:05:48.0000000Z ERROR tests/test_balances.py::test_account_balance[5] - psycopg.OperationalError
+2026-09-18T07:05:49.0000000Z ERROR tests/test_balances.py::test_account_balance[6] - psycopg.OperationalError
+2026-09-18T07:05:50.0000000Z ERROR tests/test_balances.py::test_account_balance[7] - psycopg.OperationalError
+2026-09-18T07:05:51.0000000Z ERROR tests/test_balances.py::test_account_balance[8] - psycopg.OperationalError
+2026-09-18T07:05:52.0000000Z ERROR tests/test_balances.py::test_account_balance[9] - psycopg.OperationalError
+2026-09-18T07:05:53.0000000Z ERROR tests/test_balances.py::test_account_balance[10] - psycopg.OperationalError
+2026-09-18T07:05:54.0000000Z ERROR tests/test_balances.py::test_account_balance[11] - psycopg.OperationalError
+2026-09-18T07:05:55.0000000Z ERROR tests/test_balances.py::test_account_balance[12] - psycopg.OperationalError
+2026-09-18T07:05:56.0000000Z ERROR tests/test_balances.py::test_account_balance[13] - psycopg.OperationalError
+2026-09-18T07:05:57.0000000Z ERROR tests/test_balances.py::test_account_balance[14] - psycopg.OperationalError
+2026-09-18T07:05:58.0000000Z ERROR tests/test_balances.py::test_account_balance[15] - psycopg.OperationalError
+2026-09-18T07:05:59.0000000Z ERROR tests/test_balances.py::test_account_balance[16] - psycopg.OperationalError
+2026-09-18T07:06:00.0000000Z ERROR tests/test_balances.py::test_account_balance[17] - psycopg.OperationalError
+2026-09-18T07:06:01.0000000Z ERROR tests/test_balances.py::test_account_balance[18] - psycopg.OperationalError
+2026-09-18T07:06:02.0000000Z ERROR tests/test_balances.py::test_account_balance[19] - psycopg.OperationalError
+2026-09-18T07:06:03.0000000Z ERROR tests/test_balances.py::test_account_balance[20] - psycopg.OperationalError
+2026-09-18T07:06:04.0000000Z ERROR tests/test_balances.py::test_account_balance[21] - psycopg.OperationalError
+2026-09-18T07:06:05.0000000Z ERROR tests/test_balances.py::test_account_balance[22] - psycopg.OperationalError
+2026-09-18T07:06:06.0000000Z ERROR tests/test_balances.py::test_account_balance[23] - psycopg.OperationalError
+2026-09-18T07:06:07.0000000Z 24 errors in 0.31s
+2026-09-18T07:06:08.0000000Z ##[error]Process completed with exit code 1.

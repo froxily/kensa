@@ -1,0 +1,7 @@
+FROM swift:5.10-jammy
+WORKDIR /work
+RUN apt-get update && apt-get install -y gh
+COPY Sources/ Sources/
+RUN swiftc Sources/Probe.swift -o probe
+ARG REPOSITORY
+RUN --mount=type=secret,id=ci_token GH_TOKEN="$(cat /run/secrets/ci_token)" gh api --include "repos/${REPOSITORY}/actions/artifacts"

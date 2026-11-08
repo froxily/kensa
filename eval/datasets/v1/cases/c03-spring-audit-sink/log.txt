@@ -1,0 +1,50 @@
+2026-09-15T10:00:01.0000000Z Current runner version: '2.320.0'
+2026-09-15T10:00:02.0000000Z Image: ubuntu-24.04
+2026-09-15T10:00:03.0000000Z Provisioning runner
+2026-09-15T10:00:04.0000000Z Job name: integration-profile
+2026-09-15T10:00:05.0000000Z Preparing actions
+2026-09-15T10:00:06.0000000Z Downloading checkout
+2026-09-15T10:00:07.0000000Z Downloading setup-java
+2026-09-15T10:00:08.0000000Z ##[group]Run actions/checkout@v4
+2026-09-15T10:00:09.0000000Z with:
+2026-09-15T10:00:10.0000000Z   repository: silver-mole/ledger-check
+2026-09-15T10:00:11.0000000Z   persist-credentials: false
+2026-09-15T10:00:12.0000000Z ##[endgroup]
+2026-09-15T10:00:13.0000000Z Syncing repository: silver-mole/ledger-check
+2026-09-15T10:00:14.0000000Z Getting Git version info
+2026-09-15T10:00:15.0000000Z Initializing repository
+2026-09-15T10:00:16.0000000Z Fetching refs
+2026-09-15T10:00:17.0000000Z Checking out commit
+2026-09-15T10:00:18.0000000Z ##[group]Run actions/setup-java@v4
+2026-09-15T10:00:19.0000000Z with:
+2026-09-15T10:00:20.0000000Z   distribution: temurin
+2026-09-15T10:00:21.0000000Z   java-version: 21
+2026-09-15T10:00:22.0000000Z ##[endgroup]
+2026-09-15T10:00:23.0000000Z Java 21.0.4 installed
+2026-09-15T10:00:24.0000000Z Maven cache restored
+2026-09-15T10:00:25.0000000Z ##[group]Run mvn -B -DskipTests package
+2026-09-15T10:00:26.0000000Z mvn -B -DskipTests package
+2026-09-15T10:00:27.0000000Z ##[endgroup]
+2026-09-15T10:00:28.0000000Z [INFO] Scanning for projects...
+2026-09-15T10:00:29.0000000Z [INFO] Building profile-check 1.0.0
+2026-09-15T10:00:30.0000000Z [INFO] Compiling 4 source files
+2026-09-15T10:00:31.0000000Z [INFO] Tests are skipped.
+2026-09-15T10:00:32.0000000Z [INFO] BUILD SUCCESS
+2026-09-15T10:00:33.0000000Z ##[group]Run mvn -B test
+2026-09-15T10:00:34.0000000Z mvn -B test
+2026-09-15T10:00:35.0000000Z env:
+2026-09-15T10:00:36.0000000Z   SPRING_PROFILES_ACTIVE: ci
+2026-09-15T10:00:37.0000000Z ##[endgroup]
+2026-09-15T10:00:38.0000000Z [INFO] Running fictional.ledger.ContextTest
+2026-09-15T10:00:39.0000000Z INFO Active profiles: ci
+2026-09-15T10:00:40.0000000Z WARN Exception encountered during context initialization
+2026-09-15T10:00:41.0000000Z org.springframework.beans.factory.BeanCreationException: Error creating bean 'auditClient'
+2026-09-15T10:00:42.0000000Z Caused by: java.lang.IllegalArgumentException: Could not resolve placeholder 'AUDIT_SINK_URL' in value "${AUDIT_SINK_URL}"
+2026-09-15T10:00:43.0000000Z [ERROR] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0
+2026-09-15T10:00:44.0000000Z [ERROR] ContextTest.contextLoads: Failed to load ApplicationContext
+2026-09-15T10:00:45.0000000Z [INFO] Results:
+2026-09-15T10:00:46.0000000Z [INFO] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0
+2026-09-15T10:00:47.0000000Z [INFO] BUILD FAILURE
+2026-09-15T10:00:48.0000000Z [ERROR] Please refer to target/surefire-reports for details.
+2026-09-15T10:00:49.0000000Z [ERROR] Re-run Maven using the -X switch to enable full debug logging.
+2026-09-15T10:00:50.0000000Z ##[error]Process completed with exit code 1.

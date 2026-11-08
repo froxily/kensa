@@ -1,0 +1,10 @@
+﻿# No external packages are needed for this service.
+# The application uses the Python standard library.
+# Keep this file in place for the image build.
+# Production dependencies can be pinned below.
+# CI builds use the same dependency list.
+# Package hashes may be added when dependencies exist.
+# The HTTP handler lives in ledger.py.
+# The image uses a non-root user.
+# The listen port is configured in the image.
+# No optional development tools are installed here.

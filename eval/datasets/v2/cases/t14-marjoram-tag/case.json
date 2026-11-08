@@ -1,0 +1,15 @@
+{
+  "id": "t14-marjoram-tag",
+  "split": "test",
+  "category": "docker",
+  "kind": "standard",
+  "difficulty": "easy",
+  "ecosystem": "php",
+  "title": "Docker rejects an uppercase repository name",
+  "root_cause": "The build command tags the image with uppercase characters in the repository name. Docker rejects that invalid image reference before starting the build.",
+  "fix_keywords": ["Marjoram/WEB:Latest", "lowercase"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 80, "end_line": 81, "why": "Docker reports the invalid tag and the lowercase requirement."},
+    {"path": ".github/workflows/seasoning.yml", "start_line": 11, "end_line": 17, "why": "The build command supplies the invalid image tag."}
+  ]
+}

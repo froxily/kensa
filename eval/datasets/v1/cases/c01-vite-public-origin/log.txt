@@ -1,0 +1,52 @@
+2026-09-14T08:21:00.0000000Z Current runner version: '2.329.1'
+2026-09-14T08:21:01.0000000Z Runner name: 'Hosted Agent'
+2026-09-14T08:21:02.0000000Z Operating System
+2026-09-14T08:21:03.0000000Z Ubuntu 24.04.3 LTS
+2026-09-14T08:21:04.0000000Z Runner Image
+2026-09-14T08:21:05.0000000Z Image: ubuntu-24.04
+2026-09-14T08:21:06.0000000Z GITHUB_TOKEN Permissions
+2026-09-14T08:21:07.0000000Z Contents: read
+2026-09-14T08:21:08.0000000Z Prepare workflow directory
+2026-09-14T08:21:09.0000000Z Prepare all required actions
+2026-09-14T08:21:10.0000000Z Complete job name: preview
+2026-09-14T08:21:11.0000000Z ##[group]Run actions/checkout@v4
+2026-09-14T08:21:12.0000000Z with:
+2026-09-14T08:21:13.0000000Z   repository: glassfern/aurora-landing
+2026-09-14T08:21:14.0000000Z   fetch-depth: 1
+2026-09-14T08:21:15.0000000Z Syncing repository: glassfern/aurora-landing
+2026-09-14T08:21:16.0000000Z Getting Git version info
+2026-09-14T08:21:17.0000000Z git version 2.51.0
+2026-09-14T08:21:18.0000000Z Initializing the repository
+2026-09-14T08:21:19.0000000Z Fetching the repository
+2026-09-14T08:21:20.0000000Z Checking out the ref
+2026-09-14T08:21:21.0000000Z ##[endgroup]
+2026-09-14T08:21:22.0000000Z ##[group]Run actions/setup-node@v4
+2026-09-14T08:21:23.0000000Z with:
+2026-09-14T08:21:24.0000000Z   node-version: 22
+2026-09-14T08:21:25.0000000Z   check-latest: false
+2026-09-14T08:21:26.0000000Z Found in cache @ /opt/hostedtoolcache/node/22.19.0/x64
+2026-09-14T08:21:27.0000000Z node: v22.19.0
+2026-09-14T08:21:28.0000000Z npm: 10.9.3
+2026-09-14T08:21:29.0000000Z Using cached Node distribution
+2026-09-14T08:21:30.0000000Z ##[endgroup]
+2026-09-14T08:21:31.0000000Z ##[group]Run npm install
+2026-09-14T08:21:32.0000000Z npm install
+2026-09-14T08:21:33.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-14T08:21:34.0000000Z added 56 packages, and audited 57 packages in 2s
+2026-09-14T08:21:35.0000000Z 7 packages are looking for funding
+2026-09-14T08:21:36.0000000Z run `npm fund` for details
+2026-09-14T08:21:37.0000000Z found 0 vulnerabilities
+2026-09-14T08:21:38.0000000Z ##[endgroup]
+2026-09-14T08:21:39.0000000Z ##[group]Run npm run build
+2026-09-14T08:21:40.0000000Z npm run build
+2026-09-14T08:21:41.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-14T08:21:42.0000000Z > aurora-landing@1.2.0 build
+2026-09-14T08:21:43.0000000Z > vite build
+2026-09-14T08:21:44.0000000Z failed to load config from /home/runner/work/aurora-landing/aurora-landing/vite.config.js
+2026-09-14T08:21:45.0000000Z error during build:
+2026-09-14T08:21:46.0000000Z Error: PUBLIC_ORIGIN is required to build canonical URLs
+2026-09-14T08:21:47.0000000Z     at file:///home/runner/work/aurora-landing/aurora-landing/node_modules/.vite-temp/vite.config.js:4:9
+2026-09-14T08:21:48.0000000Z     at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+2026-09-14T08:21:49.0000000Z     at async loadConfigFromFile (vite/dist/node/chunks/dep.js:49100:12)
+2026-09-14T08:21:50.0000000Z ##[endgroup]
+2026-09-14T08:21:51.0000000Z ##[error]Process completed with exit code 1.

@@ -1,0 +1,15 @@
+{
+  "id": "d07-coral-image",
+  "split": "dev",
+  "category": "docker",
+  "kind": "standard",
+  "difficulty": "medium",
+  "ecosystem": "php",
+  "title": "Dockerfile references an undeclared build stage",
+  "root_cause": "The Dockerfile copies from a stage named assets, but declares only runtime. BuildKit treats assets as an external image and cannot resolve it; the missing stage must be defined or the copy corrected.",
+  "fix_keywords": ["assets", "COPY"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 46, "end_line": 55, "why": "BuildKit attempts to resolve assets as an image and identifies the COPY instruction."},
+    {"path": "Dockerfile", "start_line": 1, "end_line": 4, "why": "Only runtime is declared before the assets reference."}
+  ]
+}

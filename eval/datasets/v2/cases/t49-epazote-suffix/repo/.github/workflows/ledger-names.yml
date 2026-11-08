@@ -1,0 +1,12 @@
+name: Ledger names
+on: [push]
+jobs:
+  names:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.4'
+      - name: Check ledger naming
+        run: ruby -Ilib spec/ledger_names_check.rb --verbose

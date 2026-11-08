@@ -1,0 +1,16 @@
+{
+  "id": "t35-lovage-manifest",
+  "split": "test",
+  "category": "workflow_path",
+  "kind": "standard",
+  "difficulty": "medium",
+  "ecosystem": "rust",
+  "title": "Release executable is launched from the wrong directory",
+  "root_cause": "The release build writes its executable under build-output/release, but the workflow tries to launch it from target/release. The shell cannot find the executable at that path and exits with code 127.",
+  "fix_keywords": ["build-output/release/lovage-inspect", "target/release/lovage-inspect"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 55, "end_line": 59, "why": "The release build completes before the shell reports the missing executable."},
+    {"path": ".github/workflows/catalog-run.yml", "start_line": 14, "end_line": 18, "why": "The build target directory differs from the executable path."},
+    {"path": "projects/catalog-cli/Cargo.toml", "start_line": 1, "end_line": 4, "why": "The package defines the lovage-inspect executable name."}
+  ]
+}

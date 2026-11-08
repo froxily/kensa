@@ -1,0 +1,16 @@
+{
+  "id": "t16-bellflower-probe",
+  "split": "test",
+  "category": "db_connectivity",
+  "kind": "misleading",
+  "difficulty": "medium",
+  "ecosystem": "cpp",
+  "title": "Native query probe reports no results",
+  "root_cause": "The client connects to port 48124, but the ClickHouse service is published on host port 48123. The connection is refused and the later result-count failure is a consequence of the missing connection.",
+  "fix_keywords": ["48123", "48124"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 56, "end_line": 58, "why": "A connection refusal precedes the result-count failure."},
+    {"path": ".github/workflows/native-probe.yml", "start_line": 6, "end_line": 10, "why": "The service is published on host port 48123."},
+    {"path": "checks/probe.cc", "start_line": 9, "end_line": 12, "why": "The client uses port 48124 and reports a count failure on connection error."}
+  ]
+}

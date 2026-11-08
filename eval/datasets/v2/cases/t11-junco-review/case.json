@@ -1,0 +1,16 @@
+{
+  "id": "t11-junco-review",
+  "split": "test",
+  "category": "github_permissions",
+  "kind": "standard",
+  "difficulty": "medium",
+  "ecosystem": "go",
+  "title": "Review creation is denied to the workflow token",
+  "root_cause": "The workflow grants pull-requests read permission, but submitting a review requires pull-requests write. The earlier read requests succeed and GitHub rejects the review creation with 403.",
+  "fix_keywords": ["pull-requests", "write"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 63, "end_line": 67, "why": "The review request is denied after successful reads."},
+    {"path": ".github/workflows/review-submission.yml", "start_line": 3, "end_line": 5, "why": "The job has pull-requests read permission only."},
+    {"path": "tasks/submit_review.go", "start_line": 27, "end_line": 38, "why": "The client posts a review using the configured token."}
+  ]
+}

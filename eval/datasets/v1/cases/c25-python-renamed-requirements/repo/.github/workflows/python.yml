@@ -1,0 +1,27 @@
+﻿name: Python verification
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Select interpreter
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Upgrade installer
+        run: python -m pip install --upgrade pip
+      - name: Install checks
+        run: pip install -r config/requirements-ci.txt
+      - name: Run suite
+        run: pytest -q
+      - name: Show environment
+        run: pip list
+      - name: Finish
+        run: echo done

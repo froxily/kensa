@@ -1,0 +1,15 @@
+{
+  "id": "d01-orbit-config",
+  "split": "dev",
+  "category": "missing_env_var",
+  "kind": "standard",
+  "difficulty": "easy",
+  "ecosystem": "python",
+  "title": "Endpoint missing from the check job",
+  "root_cause": "The check reads ORBIT_ENDPOINT directly from the environment, but the job does not supply it. Python raises KeyError before the endpoint can be printed.",
+  "fix_keywords": ["ORBIT_ENDPOINT"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 54, "end_line": 57, "why": "The traceback identifies the missing environment key."},
+    {"path": ".github/workflows/check.yml", "start_line": 5, "end_line": 11, "why": "The job runs the check without setting the variable."}
+  ]
+}

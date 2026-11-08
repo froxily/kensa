@@ -1,0 +1,16 @@
+{
+  "id": "d35-lark-package",
+  "split": "dev",
+  "category": "workflow_path",
+  "kind": "standard",
+  "difficulty": "easy",
+  "ecosystem": "swift",
+  "title": "Swift test points to a nonexistent package directory",
+  "root_cause": "The workflow directs swift test to tools/fixtures, a directory absent from the checkout. Swift cannot change into that package path and exits before running tests.",
+  "fix_keywords": ["tools/fixtures", "--package-path"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 57, "end_line": 60, "why": "The build completes before Swift reports the missing directory."},
+    {"path": ".github/workflows/verify.yml", "start_line": 8, "end_line": 11, "why": "The test command points to the absent path."},
+    {"path": "Package.swift", "start_line": 1, "end_line": 3, "why": "The package manifest is at the repository root."}
+  ]
+}

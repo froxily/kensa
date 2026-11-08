@@ -1,0 +1,16 @@
+{
+  "id": "t25-celandine-session",
+  "split": "test",
+  "category": "db_connectivity",
+  "kind": "standard",
+  "difficulty": "easy",
+  "ecosystem": "ruby",
+  "title": "CouchDB session rejects the configured password",
+  "root_cause": "The client submits a password different from the one configured for the CouchDB service. The database responds with an authentication failure.",
+  "fix_keywords": ["COUCHDB_PASSWORD", "jobs/session.rb"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 56, "end_line": 58, "why": "CouchDB rejects the submitted credentials."},
+    {"path": ".github/workflows/couch-session.yml", "start_line": 7, "end_line": 11, "why": "The service configures the demo user and password."},
+    {"path": "jobs/session.rb", "start_line": 5, "end_line": 9, "why": "The client submits a different password and exits on a non-success response."}
+  ]
+}

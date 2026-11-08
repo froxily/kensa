@@ -1,0 +1,16 @@
+{
+  "id": "d13-thistle-label",
+  "split": "dev",
+  "category": "github_permissions",
+  "kind": "masked",
+  "difficulty": "medium",
+  "ecosystem": "python",
+  "title": "Label script exits after issue write is denied",
+  "root_cause": "The script uses the job token to add an issue label, but the token has only issues read access. The API returns 403 and the script propagates the failure as exit code 1.",
+  "fix_keywords": ["issues", "write"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 51, "end_line": 53, "why": "The API denial appears before the script's failure message."},
+    {"path": ".github/workflows/label.yml", "start_line": 3, "end_line": 4, "why": "Issues permission is read-only."},
+    {"path": "tools/label.py", "start_line": 5, "end_line": 11, "why": "The script adds a label and exits on the failed command."}
+  ]
+}

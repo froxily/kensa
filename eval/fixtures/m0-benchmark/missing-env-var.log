@@ -1,0 +1,29 @@
+2026-10-01T10:00:00.1000000Z ##[group]Run actions/setup-node@v4
+2026-10-01T10:00:00.2000000Z with:
+2026-10-01T10:00:00.2000000Z   node-version: 24
+2026-10-01T10:00:00.2000000Z   cache: npm
+2026-10-01T10:00:00.3000000Z ##[endgroup]
+2026-10-01T10:00:02.4000000Z Found in cache @ /opt/hostedtoolcache/node/24.20.0/x64
+2026-10-01T10:00:05.1000000Z ##[group]Run npm ci
+2026-10-01T10:00:05.1000000Z npm ci
+2026-10-01T10:00:05.1000000Z shell: /usr/bin/bash -e {0}
+2026-10-01T10:00:05.1000000Z ##[endgroup]
+2026-10-01T10:00:19.7000000Z added 412 packages in 14s
+2026-10-01T10:00:19.9000000Z ##[group]Run npm run build
+2026-10-01T10:00:19.9000000Z npm run build
+2026-10-01T10:00:19.9000000Z shell: /usr/bin/bash -e {0}
+2026-10-01T10:00:19.9000000Z ##[endgroup]
+2026-10-01T10:00:20.6000000Z
+2026-10-01T10:00:20.6000000Z > storefront@2.3.0 build
+2026-10-01T10:00:20.6000000Z > node scripts/check-env.mjs && vite build
+2026-10-01T10:00:20.6000000Z
+2026-10-01T10:00:20.8000000Z file:///home/runner/work/storefront/storefront/scripts/check-env.mjs:9
+2026-10-01T10:00:20.8000000Z     throw new Error(`Missing required environment variable: ${name}`);
+2026-10-01T10:00:20.8000000Z           ^
+2026-10-01T10:00:20.8000000Z
+2026-10-01T10:00:20.8000000Z Error: Missing required environment variable: VITE_API_BASE_URL
+2026-10-01T10:00:20.8000000Z     at requireEnv (file:///home/runner/work/storefront/storefront/scripts/check-env.mjs:9:11)
+2026-10-01T10:00:20.8000000Z     at file:///home/runner/work/storefront/storefront/scripts/check-env.mjs:14:1
+2026-10-01T10:00:20.8000000Z
+2026-10-01T10:00:20.8000000Z Node.js v24.20.0
+2026-10-01T10:00:20.9000000Z ##[error]Process completed with exit code 1.

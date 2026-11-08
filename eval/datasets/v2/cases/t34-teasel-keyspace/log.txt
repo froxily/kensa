@@ -1,0 +1,70 @@
+2026-10-09T14:00:00.0000000Z Current runner version: '2.329.0'
+2026-10-09T14:00:00.1000000Z ##[group]Runner Image
+2026-10-09T14:00:00.2000000Z Image: ubuntu-22.04
+2026-10-09T14:00:00.3000000Z ##[endgroup]
+2026-10-09T14:00:00.4000000Z Prepare workflow directory
+2026-10-09T14:00:00.5000000Z Prepare all required actions
+2026-10-09T14:00:00.6000000Z Getting action download info
+2026-10-09T14:00:00.7000000Z Download action repository 'actions/checkout@v4'
+2026-10-09T14:00:00.8000000Z Download action repository 'actions/setup-go@v5'
+2026-10-09T14:00:00.9000000Z Complete job name: probe
+2026-10-09T14:00:01.0000000Z ##[group]Initialize containers
+2026-10-09T14:00:01.1000000Z Pull down service image 'cassandra:4.1'
+2026-10-09T14:00:04.0000000Z Status: Downloaded newer image for cassandra:4.1
+2026-10-09T14:00:04.1000000Z Starting service container chronicle
+2026-10-09T14:00:04.2000000Z ##[endgroup]
+2026-10-09T14:00:04.3000000Z ##[group]Run actions/checkout@v4
+2026-10-09T14:00:04.4000000Z with:
+2026-10-09T14:00:04.5000000Z   repository: teasel-labs/index-probe
+2026-10-09T14:00:04.6000000Z ##[endgroup]
+2026-10-09T14:00:04.7000000Z Syncing repository: teasel-labs/index-probe
+2026-10-09T14:00:04.8000000Z Checking out the ref
+2026-10-09T14:00:04.9000000Z ##[group]Run actions/setup-go@v5
+2026-10-09T14:00:05.0000000Z with:
+2026-10-09T14:00:05.1000000Z   go-version: 1.22
+2026-10-09T14:00:05.2000000Z   cache: false
+2026-10-09T14:00:05.3000000Z ##[endgroup]
+2026-10-09T14:00:05.4000000Z Found in cache: go 1.22.12
+2026-10-09T14:00:05.5000000Z ##[group]Run python -m pip install cqlsh==6.2.0
+2026-10-09T14:00:05.6000000Z python -m pip install cqlsh==6.2.0
+2026-10-09T14:00:05.7000000Z shell: /usr/bin/bash -e {0}
+2026-10-09T14:00:05.8000000Z ##[endgroup]
+2026-10-09T14:00:06.0000000Z Collecting cqlsh==6.2.0
+2026-10-09T14:00:06.1000000Z Installing collected packages: six, cassandra-driver, cqlsh
+2026-10-09T14:00:06.2000000Z Successfully installed cassandra-driver-3.29.2 cqlsh-6.2.0 six-1.17.0
+2026-10-09T14:00:06.3000000Z ##[group]Run timeout 180 bash -c 'until cqlsh 127.0.0.1 19042 -e "DESCRIBE KEYSPACES" >/dev/null 2>&1; do sleep 5; done'
+2026-10-09T14:00:06.4000000Z timeout 180 bash -c 'until cqlsh 127.0.0.1 19042 -e "DESCRIBE KEYSPACES" >/dev/null 2>&1; do sleep 5; done'
+2026-10-09T14:00:06.5000000Z shell: /usr/bin/bash -e {0}
+2026-10-09T14:00:06.6000000Z ##[endgroup]
+2026-10-09T14:00:46.0000000Z ##[group]Run go run tasks/probe_index.go
+2026-10-09T14:00:46.1000000Z go run tasks/probe_index.go
+2026-10-09T14:00:46.2000000Z shell: /usr/bin/bash -e {0}
+2026-10-09T14:00:46.3000000Z ##[endgroup]
+2026-10-09T14:00:47.0000000Z indexed segment: arc
+2026-10-09T14:00:47.0100000Z indexed segment: bay
+2026-10-09T14:00:47.0200000Z indexed segment: cove
+2026-10-09T14:00:47.0300000Z indexed segment: dell
+2026-10-09T14:00:47.0400000Z indexed segment: edge
+2026-10-09T14:00:47.0500000Z indexed segment: field
+2026-10-09T14:00:47.0600000Z indexed segment: glade
+2026-10-09T14:00:47.0700000Z indexed segment: hill
+2026-10-09T14:00:47.0800000Z indexed segment: inlet
+2026-10-09T14:00:47.0900000Z indexed segment: jetty
+2026-10-09T14:00:47.1000000Z indexed segment: knoll
+2026-10-09T14:00:47.1100000Z indexed segment: ledge
+2026-10-09T14:00:47.1200000Z indexed segment: moor
+2026-10-09T14:00:47.1300000Z indexed segment: narrows
+2026-10-09T14:00:47.1400000Z indexed segment: oasis
+2026-10-09T14:00:47.1500000Z indexed segment: plain
+2026-10-09T14:00:47.1600000Z indexed segment: quay
+2026-10-09T14:00:47.1700000Z indexed segment: ridge
+2026-10-09T14:00:47.1800000Z indexed segment: shore
+2026-10-09T14:00:47.1900000Z indexed segment: terrace
+2026-10-09T14:00:47.2000000Z indexed segment: upland
+2026-10-09T14:00:47.2100000Z indexed segment: vale
+2026-10-09T14:00:48.0000000Z InvalidRequest: Error from server: code=2200 [Invalid query] message="Keyspace 'scans' does not exist"
+2026-10-09T14:00:48.1000000Z index probe failed
+2026-10-09T14:00:48.2000000Z exit status 1
+2026-10-09T14:00:48.3000000Z ##[error]Process completed with exit code 1.
+2026-10-09T14:00:48.4000000Z Stop and remove container: chronicle
+2026-10-09T14:00:48.5000000Z Cleaning up orphan processes

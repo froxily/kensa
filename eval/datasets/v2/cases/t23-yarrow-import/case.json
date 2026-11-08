@@ -1,0 +1,17 @@
+{
+  "id": "t23-yarrow-import",
+  "split": "test",
+  "category": "dependency_build",
+  "kind": "misleading",
+  "difficulty": "medium",
+  "ecosystem": "rust",
+  "title": "Crate check fails before a Docker inspection",
+  "root_cause": "The Rust source imports serde_json, but the crate manifest declares serde and regex without declaring serde_json. Cargo fails to compile; the missing image error is emitted by the shell's Docker inspection trap afterward.",
+  "fix_keywords": ["serde_json", "Cargo.toml"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 48, "end_line": 56, "why": "The unresolved import appears before the Docker error."},
+    {"path": "Cargo.toml", "start_line": 6, "end_line": 8, "why": "The manifest lists dependencies without serde_json."},
+    {"path": "src/main.rs", "start_line": 1, "end_line": 4, "why": "The source imports and uses serde_json."},
+    {"path": ".github/workflows/lexicon-check.yml", "start_line": 9, "end_line": 13, "why": "The Docker command runs as an error trap for cargo check."}
+  ]
+}

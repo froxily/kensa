@@ -1,0 +1,15 @@
+2026-10-03T14:30:10.1000000Z ##[group]Run softprops/action-gh-release@v2
+2026-10-03T14:30:10.1000000Z with:
+2026-10-03T14:30:10.1000000Z   tag_name: v1.8.0
+2026-10-03T14:30:10.1000000Z   files: dist/*.tar.gz
+2026-10-03T14:30:10.1000000Z   token: ***
+2026-10-03T14:30:10.2000000Z ##[endgroup]
+2026-10-03T14:30:11.4000000Z Creating new GitHub release for tag v1.8.0...
+2026-10-03T14:30:11.9000000Z ⚠️ GitHub release failed with status: 403
+2026-10-03T14:30:11.9000000Z {"message":"Resource not accessible by integration","documentation_url":"https://docs.github.com/rest/releases/releases#create-a-release","status":"403"}
+2026-10-03T14:30:11.9000000Z Skip retry — your GitHub token/PAT does not have the required permission to create a release
+2026-10-03T14:30:12.0000000Z ##[error]Resource not accessible by integration
+2026-10-03T14:30:12.1000000Z ##[group]Workflow permissions
+2026-10-03T14:30:12.1000000Z   contents: read
+2026-10-03T14:30:12.1000000Z   metadata: read
+2026-10-03T14:30:12.1000000Z ##[endgroup]

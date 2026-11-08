@@ -1,0 +1,14 @@
+name: Rust verification
+on: [push]
+jobs:
+  verify:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+      - name: List and run tests
+        shell: bash
+        run: |
+          cargo test -- --list
+          cargo test -- --nocapture
+        env:
+          SNOWDROP_INPUT: ${{ secrets.SNOWDROP_INPUT }}

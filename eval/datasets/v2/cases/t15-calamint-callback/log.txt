@@ -1,0 +1,68 @@
+2026-10-31T09:10:00.0000000Z Current runner version: '2.328.0'
+2026-10-31T09:10:00.1000000Z ##[group]Operating System
+2026-10-31T09:10:00.2000000Z macOS
+2026-10-31T09:10:00.3000000Z 15.6
+2026-10-31T09:10:00.4000000Z 24G84
+2026-10-31T09:10:00.5000000Z ##[endgroup]
+2026-10-31T09:10:00.6000000Z ##[group]Runner Image
+2026-10-31T09:10:00.7000000Z Image: macos-15
+2026-10-31T09:10:00.8000000Z Version: 20261026.1
+2026-10-31T09:10:00.9000000Z ##[endgroup]
+2026-10-31T09:10:01.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-31T09:10:01.1000000Z Contents: read
+2026-10-31T09:10:01.2000000Z Metadata: read
+2026-10-31T09:10:01.3000000Z ##[endgroup]
+2026-10-31T09:10:01.4000000Z Prepare workflow directory
+2026-10-31T09:10:01.5000000Z Prepare all required actions
+2026-10-31T09:10:01.6000000Z Download action repository 'actions/checkout@v4'
+2026-10-31T09:10:01.7000000Z Complete job name: prepare
+2026-10-31T09:10:02.0000000Z ##[group]Run actions/checkout@v4
+2026-10-31T09:10:02.1000000Z with:
+2026-10-31T09:10:02.2000000Z   repository: herb-field/calamint
+2026-10-31T09:10:02.3000000Z   fetch-depth: 1
+2026-10-31T09:10:02.4000000Z ##[endgroup]
+2026-10-31T09:10:02.5000000Z Syncing repository: herb-field/calamint
+2026-10-31T09:10:02.6000000Z Fetching the repository
+2026-10-31T09:10:02.7000000Z Checking out the ref
+2026-10-31T09:10:02.8000000Z ##[group]Run brew install kotlin
+2026-10-31T09:10:02.9000000Z brew install kotlin
+2026-10-31T09:10:03.0000000Z shell: /bin/bash -e {0}
+2026-10-31T09:10:03.1000000Z ##[endgroup]
+2026-10-31T09:10:04.0000000Z Warning: kotlin 2.2.20 is already installed and up-to-date.
+2026-10-31T09:10:04.1000000Z To reinstall 2.2.20, run:
+2026-10-31T09:10:04.2000000Z   brew reinstall kotlin
+2026-10-31T09:10:04.3000000Z ##[group]Run kotlinc -script scripts/launch.kts
+2026-10-31T09:10:04.4000000Z kotlinc -script scripts/launch.kts
+2026-10-31T09:10:04.5000000Z shell: /bin/bash -e {0}
+2026-10-31T09:10:04.6000000Z env:
+2026-10-31T09:10:04.7000000Z   CALAMINT_CALLBACK:
+2026-10-31T09:10:04.8000000Z ##[endgroup]
+2026-10-31T09:10:06.0000000Z prepared delivery D01
+2026-10-31T09:10:06.0100000Z prepared delivery D02
+2026-10-31T09:10:06.0200000Z prepared delivery D03
+2026-10-31T09:10:06.0300000Z prepared delivery D04
+2026-10-31T09:10:06.0400000Z prepared delivery D05
+2026-10-31T09:10:06.0500000Z prepared delivery D06
+2026-10-31T09:10:06.0600000Z prepared delivery D07
+2026-10-31T09:10:06.0700000Z prepared delivery D08
+2026-10-31T09:10:06.0800000Z prepared delivery D09
+2026-10-31T09:10:06.0900000Z prepared delivery D10
+2026-10-31T09:10:06.1000000Z prepared delivery D11
+2026-10-31T09:10:06.1100000Z prepared delivery D12
+2026-10-31T09:10:06.1200000Z prepared delivery D13
+2026-10-31T09:10:06.1300000Z prepared delivery D14
+2026-10-31T09:10:06.1400000Z prepared delivery D15
+2026-10-31T09:10:06.1500000Z prepared delivery D16
+2026-10-31T09:10:06.1600000Z prepared delivery D17
+2026-10-31T09:10:06.1700000Z prepared delivery D18
+2026-10-31T09:10:06.1800000Z prepared delivery D19
+2026-10-31T09:10:06.1900000Z prepared delivery D20
+2026-10-31T09:10:06.2000000Z prepared delivery D21
+2026-10-31T09:10:06.2100000Z prepared delivery D22
+2026-10-31T09:10:06.2200000Z prepared delivery D23
+2026-10-31T09:10:06.2300000Z prepared delivery D24
+2026-10-31T09:10:06.2400000Z java.lang.IllegalArgumentException: CALAMINT_CALLBACK is empty
+2026-10-31T09:10:06.2500000Z 	at Launch.<init>(launch.kts:6)
+2026-10-31T09:10:06.2600000Z ##[error]Process completed with exit code 3.
+2026-10-31T09:10:06.2700000Z Post job cleanup.
+2026-10-31T09:10:06.2800000Z Cleaning up orphan processes

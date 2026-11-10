@@ -1,0 +1,40 @@
+2026-09-24T08:43:11.1020300Z Current runner version: '2.329.0'
+2026-09-24T08:43:11.1142300Z ##[group]Runner Image
+2026-09-24T08:43:11.1145300Z Image: ubuntu-24.04
+2026-09-24T08:43:11.1148300Z Version: 20260921.1.0
+2026-09-24T08:43:11.1151300Z ##[endgroup]
+2026-09-24T08:43:11.2080300Z Prepare workflow directory
+2026-09-24T08:43:11.2880300Z Prepare all required actions
+2026-09-24T08:43:11.4970300Z Download action repository 'actions/checkout@v4'
+2026-09-24T08:43:11.7490300Z Complete job name: clojure-test
+2026-09-24T08:43:11.7600300Z ##[group]Run actions/checkout@v4
+2026-09-24T08:43:11.7603300Z with:
+2026-09-24T08:43:11.7606300Z   repository: feldspar-bobbin/spindle-mosaic
+2026-09-24T08:43:11.7609300Z   clean: true
+2026-09-24T08:43:11.7612300Z ##[endgroup]
+2026-09-24T08:43:11.8610300Z Syncing repository: feldspar-bobbin/spindle-mosaic
+2026-09-24T08:43:12.1480300Z [command]/usr/bin/git init /home/runner/work/spindle-mosaic/spindle-mosaic
+2026-09-24T08:43:12.2110300Z Initialized empty Git repository in /home/runner/work/spindle-mosaic/spindle-mosaic/.git/
+2026-09-24T08:43:12.4090300Z Fetching the repository
+2026-09-24T08:43:13.1280300Z Checking out the ref
+2026-09-24T08:43:13.2490300Z ##[group]Run clojure -M:test
+2026-09-24T08:43:13.2493300Z clojure -M:test
+2026-09-24T08:43:13.2510300Z shell: /usr/bin/bash -e {0}
+2026-09-24T08:43:13.2513300Z ##[endgroup]
+2026-09-24T08:43:15.3780300Z Testing mosaic.palette-test
+2026-09-24T08:43:15.3810300Z 
+2026-09-24T08:43:15.3813300Z Testing mosaic.warp-test
+2026-09-24T08:43:15.3890300Z 
+2026-09-24T08:43:15.3893300Z Testing mosaic.weft-test
+2026-09-24T08:43:15.3940300Z 
+2026-09-24T08:43:15.3943300Z FAIL in (expands-weft-in-order) (weft_test.clj:29)
+2026-09-24T08:43:15.3946300Z expected: (= [:indigo :chalk :rust] (expand-weft [:indigo :chalk :rust]))
+2026-09-24T08:43:15.3949300Z   actual: (not (= [:indigo :chalk :rust] [:rust :chalk :indigo]))
+2026-09-24T08:43:15.4020300Z 
+2026-09-24T08:43:15.4023300Z Ran 23 tests containing 55 assertions.
+2026-09-24T08:43:15.4026300Z 1 failures, 0 errors.
+2026-09-24T08:43:15.4650300Z ##[error]Process completed with exit code 1.
+2026-09-24T08:43:15.4740300Z Post job cleanup.
+2026-09-24T08:43:15.5310300Z [command]/usr/bin/git version
+2026-09-24T08:43:15.5400300Z git version 2.51.0
+2026-09-24T08:43:15.6410300Z Cleaning up orphan processes

@@ -123,6 +123,17 @@ RULES: tuple[SignatureRule, ...] = (
         "rust.compile", "compiler_error", _r(r"error: could not compile"), "dependency_build", 3
     ),
     SignatureRule(
+        "composer.unresolvable",
+        "composer_resolution",
+        _r(
+            r"Root composer\.json requires ([^\s,]+)[^\n]*?(?:does not match the constraint|"
+            r"could not be found|does not satisfy)"
+        ),
+        "dependency_build",
+        3,
+        1,
+    ),
+    SignatureRule(
         "maven.goal",
         "build_tool",
         re.compile(r"\[ERROR\] Failed to execute goal"),
@@ -214,9 +225,10 @@ RULES: tuple[SignatureRule, ...] = (
     SignatureRule(
         "docker.pull",
         "docker",
-        _r(r"pull access denied|manifest (?:for \S+ )?not found|manifest unknown"),
+        _r(r"pull access denied for ([^\s,]+)|manifest for (\S+) not found|manifest unknown"),
         "docker",
         3,
+        1,
     ),
     # workflow_path
     SignatureRule(
@@ -311,7 +323,7 @@ _PREFILTER = re.compile(
     r"error|fail|denied|refused|not found|no such|missing|killed|exit code|timed out|timeout|"
     r"canceled|403|memory|enomem|cannot|could not|unable|exception|fatal|forbidden|"
     r"credentials|does not exist|not accessible|no module|no matching|resolutionimpossible|"
-    r"enoent|no space|is the server running|tests:|tests run:|--- fail",
+    r"enoent|no space|is the server running|tests:|tests run:|--- fail|composer\.json requires",
     re.IGNORECASE,
 )
 

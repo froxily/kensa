@@ -1,0 +1,19 @@
+name: Briar report
+on: pull_request
+permissions:
+  contents: read
+  pull-requests: read
+jobs:
+  report:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci
+      - run: npm run build
+      - run: gh pr comment "$PR_NUMBER" --body "Checks complete"
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}

@@ -1,0 +1,54 @@
+2026-09-07T12:08:10.1000000Z Current runner version: '2.328.0'
+2026-09-07T12:08:10.1020000Z ##[group]Runner Image
+2026-09-07T12:08:10.1021000Z Image: ubuntu-24.04
+2026-09-07T12:08:10.1022000Z Version: 20260831.1.0
+2026-09-07T12:08:10.1023000Z ##[endgroup]
+2026-09-07T12:08:10.2030000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-07T12:08:10.2031000Z Contents: read
+2026-09-07T12:08:10.2032000Z Metadata: read
+2026-09-07T12:08:10.2033000Z ##[endgroup]
+2026-09-07T12:08:10.3110000Z Prepare workflow directory
+2026-09-07T12:08:10.5110000Z Prepare all required actions
+2026-09-07T12:08:11.0180000Z Getting action download info
+2026-09-07T12:08:11.6000000Z Complete job name: assets
+2026-09-07T12:08:11.7110000Z ##[group]Run actions/checkout@v4
+2026-09-07T12:08:11.7111000Z with:
+2026-09-07T12:08:11.7112000Z   repository: bracken-works/velvet-trestle
+2026-09-07T12:08:11.7113000Z   fetch-depth: 1
+2026-09-07T12:08:11.7114000Z ##[endgroup]
+2026-09-07T12:08:12.6100000Z Syncing repository: bracken-works/velvet-trestle
+2026-09-07T12:08:13.0080000Z Checking out the ref
+2026-09-07T12:08:13.1210000Z ##[group]Run ruby/setup-ruby@v1
+2026-09-07T12:08:13.1211000Z with:
+2026-09-07T12:08:13.1212000Z   ruby-version: 3.3
+2026-09-07T12:08:13.1213000Z   bundler-cache: true
+2026-09-07T12:08:13.1214000Z ##[endgroup]
+2026-09-07T12:08:25.1320000Z Bundle complete! 23 Gemfile dependencies, 91 gems now installed.
+2026-09-07T12:08:25.3010000Z ##[group]Run bundle exec rails assets:precompile
+2026-09-07T12:08:25.3011000Z [36;1mbundle exec rails assets:precompile[0m
+2026-09-07T12:08:25.3012000Z shell: /usr/bin/bash -e {0}
+2026-09-07T12:08:25.3013000Z env:
+2026-09-07T12:08:25.3014000Z   RAILS_ENV: production
+2026-09-07T12:08:25.3015000Z   SECRET_KEY_BASE_DUMMY: 1
+2026-09-07T12:08:25.3016000Z ##[endgroup]
+2026-09-07T12:08:27.4100000Z yarn install v1.22.22
+2026-09-07T12:08:27.6110000Z [1/4] Resolving packages...
+2026-09-07T12:08:27.8100000Z success Already up-to-date.
+2026-09-07T12:08:27.8110000Z Done in 0.40s.
+2026-09-07T12:08:28.0120000Z yarn run v1.22.22
+2026-09-07T12:08:28.0900000Z $ sass ./app/assets/stylesheets/application.scss ./app/assets/builds/application.css --no-source-map
+2026-09-07T12:08:28.4010000Z Error: Can't find stylesheet to import.
+2026-09-07T12:08:28.4011000Z   ╷
+2026-09-07T12:08:28.4012000Z 3 │ @use "trestle_palette";
+2026-09-07T12:08:28.4013000Z   │ ^^^^^^^^^^^^^^^^^^^^^^
+2026-09-07T12:08:28.4014000Z   ╵
+2026-09-07T12:08:28.4015000Z   app/assets/stylesheets/application.scss 3:1  root stylesheet
+2026-09-07T12:08:28.4210000Z error Command failed with exit code 65.
+2026-09-07T12:08:28.4220000Z info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+2026-09-07T12:08:28.5110000Z rails aborted!
+2026-09-07T12:08:28.5111000Z cssbundling-rails: Command build failed, ensure `yarn build:css` runs without errors
+2026-09-07T12:08:28.5112000Z Tasks: TOP => assets:precompile => css:build
+2026-09-07T12:08:28.5113000Z (See full trace by running task with --trace)
+2026-09-07T12:08:28.6100000Z ##[error]Process completed with exit code 1.
+2026-09-07T12:08:28.6300000Z Post job cleanup.
+2026-09-07T12:08:28.7110000Z Cleaning up orphan processes

@@ -1,0 +1,16 @@
+﻿name: Rust checks
+on: push
+jobs:
+  quick:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check
+        run: cargo check
+  mirror-tests:
+    name: mirror tests
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test
+        run: cargo test

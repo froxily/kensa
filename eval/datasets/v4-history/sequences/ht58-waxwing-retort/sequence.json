@@ -1,0 +1,12 @@
+{
+  "id": "ht58-waxwing-retort",
+  "split": "test",
+  "ecosystem": "packer",
+  "repository": "ravelin-works/waxwing-retort",
+  "entries": [
+    {"id": "e1", "file": "e1.log", "cluster": "a", "relation": "first", "category": "dependency_build", "title": "Provisioner cannot find package", "root_cause": "The image provisioner requests the nonexistent package retort-metrics-agent from the configured apt repositories. The package name in the provisioning script must be corrected.", "differs_from_earlier": ""},
+    {"id": "e2", "file": "e2.log", "cluster": "b", "relation": "first", "category": "docker", "title": "Base image tag does not exist", "root_cause": "The Packer Docker source selects a nonexistent Ubuntu image tag. The source image tag must be corrected.", "differs_from_earlier": ""},
+    {"id": "e3", "file": "e3.log", "cluster": "c", "relation": "first", "category": "workflow_path", "title": "Provisioner script path is missing", "root_cause": "The Packer template references a shell provisioner script that is absent from the checkout. The script path in the template must be corrected.", "differs_from_earlier": ""},
+    {"id": "e4", "file": "e4.log", "cluster": "a", "relation": "recurrence", "category": "dependency_build", "title": "Provisioner cannot find package", "root_cause": "The image provisioner requests the nonexistent package retort-metrics-agent from the configured apt repositories. The package name in the provisioning script must be corrected.", "differs_from_earlier": "A later run uses a different runner and build container, with different apt index output and build timing."}
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "ht46-asterquay-forks",
+  "independent_labels": [
+    {"id": "e1", "cluster": "a", "relation": "first", "category": "oom_timeout"},
+    {"id": "e2", "cluster": "b", "relation": "first", "category": "dependency_build"},
+    {"id": "e3", "cluster": "c", "relation": "lookalike", "category": "test_regression"},
+    {"id": "e4", "cluster": "a", "relation": "recurrence", "category": "oom_timeout"}
+  ],
+  "verdict": "ambiguous",
+  "disputed_fields": ["e3.root_cause"],
+  "reason_category": "ambiguous_evidence",
+  "notes": "Labels and plan agree. The e3 assertion shows expected exit 137 and actual 0, but does not establish that the worker is simulated or whether worker behavior or the expectation is wrong. E1 and e4 show the same test killed with cgroup OOM events; e4 is a materially different run. E3 requires a different fix, and the logs contain no giveaway commentary."
+}

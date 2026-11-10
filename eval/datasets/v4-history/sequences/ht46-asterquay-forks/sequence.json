@@ -1,0 +1,12 @@
+{
+  "id": "ht46-asterquay-forks",
+  "split": "test",
+  "ecosystem": "java",
+  "repository": "asterquay-labs/tideledger",
+  "entries": [
+    {"id": "e1", "file": "e1.log", "cluster": "a", "relation": "first", "category": "oom_timeout", "title": "Surefire fork exceeds the container memory limit", "root_cause": "The BatchReconcileTest fork is killed after the container reaches its memory limit. Reduce its memory use or raise the job's memory limit.", "differs_from_earlier": ""},
+    {"id": "e2", "file": "e2.log", "cluster": "b", "relation": "first", "category": "dependency_build", "title": "Java compilation cannot resolve a method", "root_cause": "The production code calls a method that does not exist on the current LedgerSpan type. Correct the call or provide the method.", "differs_from_earlier": ""},
+    {"id": "e3", "file": "e3.log", "cluster": "c", "relation": "lookalike", "category": "test_regression", "title": "Fork exit status assertion fails", "root_cause": "WorkerExitTest expects exit status 137 but receives 0. Resolve the mismatch between the reported exit status and the test expectation.", "differs_from_earlier": "The same exit status appears in a JUnit assertion, while the Surefire fork remains alive and reports the test result; it is not a container kill."},
+    {"id": "e4", "file": "e4.log", "cluster": "a", "relation": "recurrence", "category": "oom_timeout", "title": "Surefire fork is killed at the memory limit again", "root_cause": "The BatchReconcileTest fork is killed after the container reaches its memory limit. Reduce its memory use or raise the job's memory limit.", "differs_from_earlier": "A later run passes another test first and has different run metadata and memory event counts, but the same test fork again dies at the container limit with exit code 137."}
+  ]
+}

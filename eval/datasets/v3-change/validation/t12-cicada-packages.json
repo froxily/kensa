@@ -1,0 +1,14 @@
+{
+  "id": "t12-cicada-packages",
+  "independent_labels": {
+    "comparability": "comparable",
+    "unverified_factors": [],
+    "category": "github_permissions",
+    "culprit_kind": "workflow",
+    "culprit_paths": [".github/workflows/cicada.yml"]
+  },
+  "verdict": "agree",
+  "disputed_fields": [],
+  "reason_category": "none",
+  "notes": "The matching successful baseline has the same runner and an ahead comparison. The workflow changes packages permission from write to read, and the failed push reports write_package denial. Evidence ranges and recorded run details agree."
+}

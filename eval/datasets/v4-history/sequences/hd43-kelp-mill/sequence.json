@@ -1,0 +1,12 @@
+{
+  "id": "hd43-kelp-mill",
+  "split": "dev",
+  "ecosystem": "node (yarn, vitest)",
+  "repository": "brineglyph/kelp-mill",
+  "entries": [
+    {"id": "e1", "file": "e1.log", "cluster": "a", "relation": "first", "category": "dependency_build", "title": "Immutable install rejects stale lockfile", "root_cause": "The manifest requests a newer version of the tide-index workspace dependency than yarn.lock records. Regenerate and commit the lockfile for the manifest change.", "differs_from_earlier": ""},
+    {"id": "e2", "file": "e2.log", "cluster": "b", "relation": "first", "category": "test_regression", "title": "Berth capacity calculation regression", "root_cause": "The berth capacity calculation includes closed berths in the available total. Correct the calculation to exclude closed berths.", "differs_from_earlier": ""},
+    {"id": "e3", "file": "e3.log", "cluster": "a", "relation": "recurrence", "category": "dependency_build", "title": "Immutable install rejects stale lockfile", "root_cause": "The manifest requests a newer version of the tide-index workspace dependency than yarn.lock records. Regenerate and commit the lockfile for the manifest change.", "differs_from_earlier": "A later pull request and runner report the same unresolved tide-index lockfile change after different checkout and cache output."},
+    {"id": "e4", "file": "e4.log", "cluster": "c", "relation": "first", "category": "missing_env_var", "title": "Missing chart region in build", "root_cause": "The chart build requires KELP_CHART_REGION, which is absent from the workflow environment. Supply that variable to the build step.", "differs_from_earlier": ""}
+  ]
+}

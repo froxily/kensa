@@ -14,3 +14,7 @@ export function formatDateTime(iso: string, locale: Locale): string {
 export function formatPercent(value: number): string {
   return `${String(Math.round(value * 100))}%`;
 }
+
+export function formatNumber(value: number, locale: Locale): string {
+  return new Intl.NumberFormat(locale === "ja" ? "ja-JP" : "en").format(value);
+}

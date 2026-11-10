@@ -1,0 +1,12 @@
+﻿{
+  "id": "ht18-foxglove-foundry",
+  "split": "test",
+  "ecosystem": "rust",
+  "repository": "cairnworks/foxglove-foundry",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"docker","title":"Named Buildx builder is absent","root_cause":"The workflow selects the forge-arm builder without creating it on the fresh runner. Create that builder before selecting it.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"a","relation":"recurrence","category":"docker","title":"Named Buildx builder is absent on another run","root_cause":"The workflow selects the forge-arm builder without creating it on the fresh runner. Create that builder before selecting it.","differs_from_earlier":"A later pull request runs on a different runner and fails while inspecting the same selected builder after a cache restore."},
+    {"id":"e3","file":"e3.log","cluster":"b","relation":"first","category":"docker","title":"Registry denies base image pull","root_cause":"The registry account lacks pull access to the private alloy-base repository. Grant that account read access to the repository.","differs_from_earlier":""},
+    {"id":"e4","file":"e4.log","cluster":"c","relation":"lookalike","category":"docker","title":"Registry denies image push","root_cause":"The registry token has only pull scope, so it cannot push to the foundry-output repository. Issue a token with push scope for that repository.","differs_from_earlier":"Like e3, the registry rejects an image operation with an authorization error, but this push is blocked by token scope rather than repository membership."}
+  ]
+}

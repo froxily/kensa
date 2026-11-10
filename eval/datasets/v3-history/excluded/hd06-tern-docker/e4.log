@@ -1,0 +1,45 @@
+2026-09-23T07:00:00.0000000Z Current runner version: '2.329.0'
+2026-09-23T07:00:01.0000000Z ##[group]Runner Image
+2026-09-23T07:00:02.0000000Z Image: ubuntu-24.04
+2026-09-23T07:00:03.0000000Z Version: 20260920.1
+2026-09-23T07:00:04.0000000Z ##[endgroup]
+2026-09-23T07:00:05.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-23T07:00:06.0000000Z Contents: read
+2026-09-23T07:00:07.0000000Z ##[endgroup]
+2026-09-23T07:00:08.0000000Z Prepare workflow directory
+2026-09-23T07:00:09.0000000Z Prepare all required actions
+2026-09-23T07:00:10.0000000Z Download action repository 'actions/checkout@v4'
+2026-09-23T07:00:11.0000000Z Complete job name: image
+2026-09-23T07:00:12.0000000Z ##[group]Run actions/checkout@v4
+2026-09-23T07:00:13.0000000Z with:
+2026-09-23T07:00:14.0000000Z   repository: tern-harbor/beacon-sail
+2026-09-23T07:00:15.0000000Z   ref: refs/pull/38/merge
+2026-09-23T07:00:16.0000000Z Syncing repository
+2026-09-23T07:00:17.0000000Z git version 2.51.1
+2026-09-23T07:00:18.0000000Z Initializing the repository
+2026-09-23T07:00:19.0000000Z Fetching the repository
+2026-09-23T07:00:20.0000000Z Checking out the ref
+2026-09-23T07:00:21.0000000Z ##[endgroup]
+2026-09-23T07:00:22.0000000Z ##[group]Run docker build --pull -t beacon-sail .
+2026-09-23T07:00:23.0000000Z docker build --pull -t beacon-sail .
+2026-09-23T07:00:24.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-23T07:00:25.0000000Z ##[endgroup]
+2026-09-23T07:00:26.0000000Z #0 building with "default" instance using docker driver
+2026-09-23T07:00:27.0000000Z #1 [internal] load build definition from Dockerfile
+2026-09-23T07:00:28.0000000Z #1 transferring dockerfile: 365B done
+2026-09-23T07:00:29.0000000Z #1 DONE 0.0s
+2026-09-23T07:00:30.0000000Z #2 [auth] library/golang:pull token for registry-1.docker.io
+2026-09-23T07:00:31.0000000Z #2 DONE 0.0s
+2026-09-23T07:00:32.0000000Z #3 [internal] load metadata for docker.io/library/golang:1.23-alpine3.99
+2026-09-23T07:00:33.0000000Z #3 ERROR: docker.io/library/golang:1.23-alpine3.99: not found
+2026-09-23T07:00:34.0000000Z ------
+2026-09-23T07:00:35.0000000Z  > [internal] load metadata for docker.io/library/golang:1.23-alpine3.99:
+2026-09-23T07:00:36.0000000Z ------
+2026-09-23T07:00:37.0000000Z Dockerfile:2
+2026-09-23T07:00:38.0000000Z --------------------
+2026-09-23T07:00:39.0000000Z    2 | >>> FROM golang:1.23-alpine3.99 AS build
+2026-09-23T07:00:40.0000000Z    3 |     WORKDIR /src
+2026-09-23T07:00:41.0000000Z --------------------
+2026-09-23T07:00:42.0000000Z ERROR: failed to build: failed to solve: golang:1.23-alpine3.99: not found
+2026-09-23T07:00:43.0000000Z ##[error]Process completed with exit code 1.
+2026-09-23T07:00:44.0000000Z Post job cleanup.

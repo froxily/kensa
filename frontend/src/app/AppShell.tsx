@@ -41,12 +41,15 @@ export function AppShell() {
               検査
             </span>
           </div>
-          <nav aria-label={strings.nav.label} className="flex gap-1">
+          <nav aria-label={strings.nav.label} className="flex flex-wrap gap-1">
             <NavLink to="/" end className={navLinkClass}>
               {strings.nav.overview}
             </NavLink>
             <NavLink to="/investigations/new" className={navLinkClass}>
               {strings.nav.newInvestigation}
+            </NavLink>
+            <NavLink to="/analytics" className={navLinkClass}>
+              {strings.nav.analytics}
             </NavLink>
           </nav>
           <div className="flex w-full flex-wrap items-center gap-3 lg:ml-auto lg:w-auto">

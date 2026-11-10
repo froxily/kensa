@@ -1,0 +1,47 @@
+2026-09-24T19:35:00.0000000Z Current runner version: '2.329.0'
+2026-09-24T19:35:00.1000000Z ##[group]Runner Image
+2026-09-24T19:35:00.2000000Z Image: ubuntu-22.04
+2026-09-24T19:35:00.3000000Z Version: 20260914.1.0
+2026-09-24T19:35:00.4000000Z ##[endgroup]
+2026-09-24T19:35:00.5000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-24T19:35:00.6000000Z Contents: read
+2026-09-24T19:35:00.7000000Z ##[endgroup]
+2026-09-24T19:35:01.0000000Z Prepare workflow directory
+2026-09-24T19:35:01.4000000Z Prepare all required actions
+2026-09-24T19:35:02.0000000Z Download action repository 'actions/checkout@v4'
+2026-09-24T19:35:02.4000000Z Download action repository 'actions/cache@v4'
+2026-09-24T19:35:02.9000000Z Complete job name: package
+2026-09-24T19:35:03.0000000Z ##[group]Run actions/checkout@v4
+2026-09-24T19:35:03.1000000Z with:
+2026-09-24T19:35:03.2000000Z   repository: russet-parallax/tessera-relay
+2026-09-24T19:35:03.3000000Z   clean: true
+2026-09-24T19:35:03.4000000Z ##[endgroup]
+2026-09-24T19:35:03.8000000Z Syncing repository: russet-parallax/tessera-relay
+2026-09-24T19:35:04.1000000Z Getting Git version info
+2026-09-24T19:35:04.6000000Z Initialized empty Git repository in /home/runner/work/tessera-relay/tessera-relay/.git/
+2026-09-24T19:35:05.3000000Z Fetching the repository
+2026-09-24T19:35:06.0000000Z Checking out the ref
+2026-09-24T19:35:06.3000000Z ##[group]Run actions/cache@v4
+2026-09-24T19:35:06.4000000Z with:
+2026-09-24T19:35:06.5000000Z   path: .schema-cache
+2026-09-24T19:35:06.6000000Z   key: Linux-tessera-schema
+2026-09-24T19:35:06.7000000Z ##[endgroup]
+2026-09-24T19:35:06.9000000Z Cache hit for: Linux-tessera-schema
+2026-09-24T19:35:07.2000000Z Received 8192 of 8192 (100.0%), 0.0 MBs/sec
+2026-09-24T19:35:07.3000000Z Cache Size: ~0 MB (8192 B)
+2026-09-24T19:35:07.4000000Z [command]/usr/bin/tar -xf /home/runner/work/_temp/cache.tzst -P -C /home/runner/work/tessera-relay/tessera-relay --use-compress-program unzstd
+2026-09-24T19:35:07.6000000Z Cache restored successfully
+2026-09-24T19:35:07.7000000Z Cache restored from key: Linux-tessera-schema
+2026-09-24T19:35:07.8000000Z ##[group]Run make release-bundle
+2026-09-24T19:35:07.9000000Z make release-bundle
+2026-09-24T19:35:08.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-24T19:35:08.1000000Z ##[endgroup]
+2026-09-24T19:35:08.2000000Z mkdir -p dist
+2026-09-24T19:35:08.3000000Z cp .schema-cache/v7/manifest.json dist/schema.json
+2026-09-24T19:35:08.4000000Z cp: cannot stat '.schema-cache/v7/manifest.json': No such file or directory
+2026-09-24T19:35:08.5000000Z make: *** [Makefile:55: release-bundle] Error 1
+2026-09-24T19:35:08.6000000Z ##[error]Process completed with exit code 2.
+2026-09-24T19:35:08.8000000Z Post job cleanup.
+2026-09-24T19:35:08.9000000Z Cache hit occurred on the primary key Linux-tessera-schema, not saving cache.
+2026-09-24T19:35:09.1000000Z Post job cleanup.
+2026-09-24T19:35:09.3000000Z Cleaning up orphan processes

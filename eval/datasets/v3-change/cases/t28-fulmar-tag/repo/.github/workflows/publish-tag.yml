@@ -1,0 +1,22 @@
+﻿name: Publish tag
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  publish-tag:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.23'
+          cache: false
+      - run: go test ./...
+      - name: Push tag
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git tag "build-${GITHUB_RUN_NUMBER}"
+          git push origin "build-${GITHUB_RUN_NUMBER}"

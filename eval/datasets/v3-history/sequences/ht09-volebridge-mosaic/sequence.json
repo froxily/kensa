@@ -1,0 +1,12 @@
+﻿{
+  "id": "ht09-volebridge-mosaic",
+  "split": "test",
+  "ecosystem": "ruby",
+  "repository": "volebridge/mosaic-quay",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"oom_timeout","title":"Serial mosaic matrix exceeds job deadline","root_cause":"The mosaic matrix suite runs all 480 expensive rendering cases serially and cannot finish within the 20-minute job timeout. Shard the suite or allocate sufficient job time.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"b","relation":"first","category":"dependency_build","title":"Native contour extension lacks development headers","root_cause":"The contour native extension cannot compile because the runner lacks the libyaml development headers. Install the development package before bundle install.","differs_from_earlier":""},
+    {"id":"e3","file":"e3.log","cluster":"c","relation":"first","category":"missing_env_var","title":"Mosaic export endpoint is unset","root_cause":"The export configuration fetches MOSAIC_QUAY_EXPORT_URL, which is absent from the job environment. Configure that variable for the job.","differs_from_earlier":""},
+    {"id":"e4","file":"e4.log","cluster":"a","relation":"recurrence","category":"oom_timeout","title":"Serial mosaic matrix hits job deadline again","root_cause":"The mosaic matrix suite runs all 480 expensive rendering cases serially and cannot finish within the 20-minute job timeout. Shard the suite or allocate sufficient job time.","differs_from_earlier":"A later run on a different runner reaches another case in the same serial matrix after different setup and output before the job deadline."}
+  ]
+}

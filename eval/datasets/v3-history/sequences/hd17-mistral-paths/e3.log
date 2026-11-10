@@ -1,0 +1,40 @@
+2026-09-10T12:03:00.0000000Z Current runner version: '2.329.0'
+2026-09-10T12:03:01.0000000Z ##[group]Operating System
+2026-09-10T12:03:02.0000000Z Ubuntu 22.04.5 LTS
+2026-09-10T12:03:03.0000000Z ##[endgroup]
+2026-09-10T12:03:04.0000000Z ##[group]Runner Image
+2026-09-10T12:03:05.0000000Z Image: ubuntu-22.04
+2026-09-10T12:03:06.0000000Z Version: 20250907.1
+2026-09-10T12:03:07.0000000Z ##[endgroup]
+2026-09-10T12:03:08.0000000Z Prepare workflow directory
+2026-09-10T12:03:09.0000000Z Prepare all required actions
+2026-09-10T12:03:10.0000000Z Download action repository 'actions/checkout@v4'
+2026-09-10T12:03:11.0000000Z Complete job name: ruby-check (3.3)
+2026-09-10T12:03:12.0000000Z ##[group]Run actions/checkout@v4
+2026-09-10T12:03:13.0000000Z with:
+2026-09-10T12:03:14.0000000Z   repository: orvane/mistral-catalog
+2026-09-10T12:03:15.0000000Z   fetch-depth: 1
+2026-09-10T12:03:16.0000000Z ##[endgroup]
+2026-09-10T12:03:17.0000000Z Syncing repository: orvane/mistral-catalog
+2026-09-10T12:03:18.0000000Z git version 2.50.1
+2026-09-10T12:03:19.0000000Z Initialized empty Git repository
+2026-09-10T12:03:20.0000000Z Fetching the repository
+2026-09-10T12:03:21.0000000Z Checking out the ref
+2026-09-10T12:03:22.0000000Z ##[group]Run ruby --version
+2026-09-10T12:03:23.0000000Z ruby --version
+2026-09-10T12:03:24.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-10T12:03:25.0000000Z ##[endgroup]
+2026-09-10T12:03:26.0000000Z ruby 3.3.9
+2026-09-10T12:03:27.0000000Z ##[group]Run bundle exec rake test
+2026-09-10T12:03:28.0000000Z bundle exec rake test
+2026-09-10T12:03:29.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-10T12:03:30.0000000Z ##[endgroup]
+2026-09-10T12:03:31.0000000Z ##[error]An error occurred trying to start process '/usr/bin/bash' with working directory '/home/runner/work/mistral-catalog/mistral-catalog/components/catalogue'. No such file or directory
+2026-09-10T12:03:32.0000000Z Post job cleanup.
+2026-09-10T12:03:33.0000000Z /usr/bin/git version
+2026-09-10T12:03:34.0000000Z git version 2.50.1
+2026-09-10T12:03:35.0000000Z Temporarily overriding HOME
+2026-09-10T12:03:36.0000000Z Adding repository directory to safe directories
+2026-09-10T12:03:37.0000000Z Removing SSH command configuration
+2026-09-10T12:03:38.0000000Z Removing HTTP extra header
+2026-09-10T12:03:39.0000000Z Cleaning up orphan processes

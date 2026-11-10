@@ -1,0 +1,7 @@
+{
+  "name": "myrtle-formatter",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {"test": "node --test"},
+  "dependencies": {"kleur": "4.1.5"}
+}

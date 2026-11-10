@@ -1,0 +1,16 @@
+﻿{
+  "comparisons": {
+    "a71d3c8e90b245f6d4a8e1c739f0b2d6e5c491ab...5c8a1d9e4b7602f3a6c915de083b4f7a2e6d913c": {
+      "status": "ahead", "merge_base": "a71d3c8e90b245f6d4a8e1c739f0b2d6e5c491ab", "truncated": false,
+      "commits": [
+        {"sha": "5c8a1d9e4b7602f3a6c915de083b4f7a2e6d913c", "message": "Run mirror tests in CI", "date": "2026-10-30T11:12:00Z", "files": [
+          {"path": ".github/workflows/rust-check.yml", "status": "modified", "additions": 7, "deletions": 0, "patch": "@@ -7,3 +7,10 @@ jobs:\n       - uses: actions/checkout@v4\n       - name: Check\n         run: cargo check\n+  mirror-tests:\n+    name: mirror tests\n+    runs-on: ubuntu-24.04\n+    steps:\n+      - uses: actions/checkout@v4\n+      - name: Test\n+        run: cargo test"}
+        ]}
+      ]
+    }
+  },
+  "workflow_blobs": {
+    "a71d3c8e90b245f6d4a8e1c739f0b2d6e5c491ab": "b3f89d1a46c027e5a8f692cbd073e145c6a918df",
+    "5c8a1d9e4b7602f3a6c915de083b4f7a2e6d913c": "d7a42f9c61e30b5d8f174a6c9e23b0f5a61d4c82"
+  }
+}

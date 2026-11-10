@@ -1,0 +1,12 @@
+{
+  "id": "ht33-velvet-trestle",
+  "split": "test",
+  "ecosystem": "ruby (rspec, rails)",
+  "repository": "bracken-works/velvet-trestle",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"test_regression","title":"Fixture violates unique index","root_cause":"The harbor_berths fixtures define two records with the same unique berth code, causing PostgreSQL to reject fixture insertion. Correct the duplicate fixture value.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"b","relation":"first","category":"dependency_build","title":"Asset precompile cannot resolve stylesheet import","root_cause":"The application stylesheet imports a nonexistent trestle_palette partial. Add the missing partial or correct the import.","differs_from_earlier":""},
+    {"id":"e3","file":"e3.log","cluster":"a","relation":"recurrence","category":"test_regression","title":"Fixture violates unique index","root_cause":"The harbor_berths fixtures define two records with the same unique berth code, causing PostgreSQL to reject fixture insertion. Correct the duplicate fixture value.","differs_from_earlier":"A different spec starts the fixture load on a later run, with a different runner image and helper line number."},
+    {"id":"e4","file":"e4.log","cluster":"b","relation":"recurrence","category":"dependency_build","title":"Asset precompile cannot resolve stylesheet import","root_cause":"The application stylesheet imports a nonexistent trestle_palette partial. Add the missing partial or correct the import.","differs_from_earlier":"The production build runs on a later runner with a changed stylesheet line number and different asset output."}
+  ]
+}

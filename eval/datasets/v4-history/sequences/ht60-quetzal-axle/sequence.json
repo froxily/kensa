@@ -1,0 +1,12 @@
+{
+  "id": "ht60-quetzal-axle",
+  "split": "test",
+  "ecosystem": "deno",
+  "repository": "quillhaven/axle-chart",
+  "entries": [
+    {"id": "e1", "file": "e1.log", "cluster": "a", "relation": "first", "category": "dependency_build", "title": "Lockfile integrity mismatch", "root_cause": "The locked integrity hash for the npm package picomatch does not match the downloaded package. Refresh the incorrect lockfile entry against the trusted registry.", "differs_from_earlier": ""},
+    {"id": "e2", "file": "e2.log", "cluster": "b", "relation": "first", "category": "dependency_build", "title": "Chart label type mismatch", "root_cause": "The chart renderer passes a numeric label to formatLabel, which requires a string. Convert the label or correct its type before calling the formatter.", "differs_from_earlier": ""},
+    {"id": "e3", "file": "e3.log", "cluster": "c", "relation": "lookalike", "category": "dependency_build", "title": "Chart limit type mismatch", "root_cause": "The chart renderer passes a string limit to clampLimit, which requires a number. Parse and validate the limit before calling the helper.", "differs_from_earlier": "Like e2, deno check reports TS2345 in the chart renderer, but this concerns a separate argument and helper requiring a different fix."},
+    {"id": "e4", "file": "e4.log", "cluster": "b", "relation": "recurrence", "category": "dependency_build", "title": "Chart label type mismatch", "root_cause": "The chart renderer passes a numeric label to formatLabel, which requires a string. Convert the label or correct its type before calling the formatter.", "differs_from_earlier": "The later run checks another entry point, includes unrelated changes and reports a shifted source line; the same numeric label still reaches formatLabel."}
+  ]
+}

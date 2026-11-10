@@ -1,0 +1,48 @@
+2026-09-23T05:46:10.0100000Z Current runner version: '2.329.0'
+2026-09-23T05:46:10.0200000Z ##[group]Operating System
+2026-09-23T05:46:10.0210000Z Ubuntu
+2026-09-23T05:46:10.0220000Z 24.04.3
+2026-09-23T05:46:10.0230000Z ##[endgroup]
+2026-09-23T05:46:10.0240000Z ##[group]Runner Image
+2026-09-23T05:46:10.0250000Z Image: ubuntu-24.04
+2026-09-23T05:46:10.0260000Z Version: 20260915.1.0
+2026-09-23T05:46:10.0270000Z ##[endgroup]
+2026-09-23T05:46:10.2200000Z Prepare workflow directory
+2026-09-23T05:46:10.5350000Z Prepare all required actions
+2026-09-23T05:46:11.0100000Z Download action repository 'actions/checkout@v4'
+2026-09-23T05:46:11.1250000Z Complete job name: archive-image
+2026-09-23T05:46:11.2140000Z ##[group]Run actions/checkout@v4
+2026-09-23T05:46:11.2150000Z with:
+2026-09-23T05:46:11.2160000Z   repository: sable-fulcrum/cairn-dispatch
+2026-09-23T05:46:11.2170000Z   clean: true
+2026-09-23T05:46:11.2180000Z   fetch-depth: 1
+2026-09-23T05:46:11.2190000Z ##[endgroup]
+2026-09-23T05:46:11.4350000Z Syncing repository: sable-fulcrum/cairn-dispatch
+2026-09-23T05:46:11.5910000Z Getting Git version info
+2026-09-23T05:46:11.7450000Z Initialized empty Git repository in /home/runner/work/cairn-dispatch/cairn-dispatch/.git/
+2026-09-23T05:46:12.0210000Z Fetching the repository
+2026-09-23T05:46:12.9220000Z Checking out the ref
+2026-09-23T05:46:13.0010000Z ##[group]Run docker buildx build --load -f deploy/archive.Dockerfile -t cairn-archive:ci .
+2026-09-23T05:46:13.0020000Z docker buildx build --load -f deploy/archive.Dockerfile -t cairn-archive:ci .
+2026-09-23T05:46:13.0030000Z shell: /usr/bin/bash -e {0}
+2026-09-23T05:46:13.0040000Z ##[endgroup]
+2026-09-23T05:46:13.2250000Z #0 building with "default" instance using docker driver
+2026-09-23T05:46:13.2260000Z #1 [internal] load build definition from archive.Dockerfile
+2026-09-23T05:46:13.2270000Z #1 transferring dockerfile: 321B done
+2026-09-23T05:46:13.2280000Z #1 DONE 0.0s
+2026-09-23T05:46:13.2290000Z #2 [internal] load metadata for docker.io/library/alpine:3.20
+2026-09-23T05:46:14.6000000Z #2 DONE 1.4s
+2026-09-23T05:46:14.6010000Z #3 [internal] load .dockerignore
+2026-09-23T05:46:14.6020000Z #3 transferring context: 62B done
+2026-09-23T05:46:14.6030000Z #3 DONE 0.0s
+2026-09-23T05:46:14.6040000Z #4 [internal] load build context
+2026-09-23T05:46:19.6040000Z #4 transferring context: 5.48GB 5.0s
+2026-09-23T05:46:24.6040000Z #4 transferring context: 10.93GB 10.0s
+2026-09-23T05:46:27.2010000Z #4 ERROR: failed to write /var/lib/docker/tmp/buildkit-mount109446732/fixtures/cairn-snapshot.tar: no space left on device
+2026-09-23T05:46:27.2020000Z ------
+2026-09-23T05:46:27.2030000Z  > [internal] load build context:
+2026-09-23T05:46:27.2040000Z ------
+2026-09-23T05:46:27.2050000Z ERROR: failed to build: failed to solve: ResourceExhausted: failed to write /var/lib/docker/tmp/buildkit-mount109446732/fixtures/cairn-snapshot.tar: no space left on device
+2026-09-23T05:46:27.2170000Z ##[error]Process completed with exit code 1.
+2026-09-23T05:46:27.2310000Z Post job cleanup.
+2026-09-23T05:46:27.3540000Z Cleaning up orphan processes

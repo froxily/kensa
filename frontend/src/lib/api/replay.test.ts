@@ -117,3 +117,34 @@ describe("replay adapter", () => {
     expect(recorded.investigations[1]?.status).toBe("awaiting_approval");
   });
 });
+
+describe("analytics replay", () => {
+  it("returns the new recorded and empty paths and refuses writes", () => {
+    const data = recording();
+    data.analytics = { sample: true };
+    data.repositories = [{ id: "repo" }];
+    data.history = { new: { sample: true } };
+    data.changes = { new: { sample: true } };
+    const replay = createReplay(data);
+    expect(replay("GET", "/api/analytics/dashboard?days=7", undefined)).toEqual({ sample: true });
+    expect(replay("GET", "/api/history/repositories", undefined)).toEqual([{ id: "repo" }]);
+    expect(replay("GET", "/api/investigations/new/history", undefined)).toEqual({ sample: true });
+    expect(replay("GET", "/api/investigations/new/changes", undefined)).toEqual({ sample: true });
+    expect(replay("GET", "/api/investigations/old/history", undefined)).toEqual({
+      matching: false,
+      fingerprints: [],
+      similar: [],
+      resolution: null,
+    });
+    expect(replay("GET", "/api/investigations/old/changes", undefined)).toBeNull();
+    expect(createReplay(recording())("GET", "/api/analytics/dashboard", undefined)).toMatchObject({
+      summary: { runs: 0 },
+    });
+    for (const path of [
+      "/api/history/repositories",
+      "/api/analytics/dashboard",
+      "/api/investigations/new/resolution",
+    ])
+      rejects(() => replay("POST", path, {}), 501);
+  });
+});

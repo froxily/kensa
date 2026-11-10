@@ -1,0 +1,44 @@
+2026-10-06T11:33:20.0100000Z Current runner version: '2.328.0'
+2026-10-06T11:33:20.1100000Z ##[group]Runner Image
+2026-10-06T11:33:20.1110000Z Image: ubuntu-24.04
+2026-10-06T11:33:20.1120000Z Version: 20261004.1.0
+2026-10-06T11:33:20.1130000Z ##[endgroup]
+2026-10-06T11:33:20.2300000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-06T11:33:20.2310000Z Contents: read
+2026-10-06T11:33:20.2320000Z ##[endgroup]
+2026-10-06T11:33:20.3200000Z Prepare workflow directory
+2026-10-06T11:33:20.5100000Z Prepare all required actions
+2026-10-06T11:33:21.0930000Z Job name: integration
+2026-10-06T11:33:21.2200000Z ##[group]Run actions/checkout@v4
+2026-10-06T11:33:21.2210000Z with:
+2026-10-06T11:33:21.2220000Z   repository: pelagic-forge/kelp-collector
+2026-10-06T11:33:21.2230000Z   fetch-depth: 1
+2026-10-06T11:33:21.2240000Z ##[endgroup]
+2026-10-06T11:33:22.0500000Z Syncing repository: pelagic-forge/kelp-collector
+2026-10-06T11:33:22.4700000Z HEAD is now at 7b90d34 Update staging endpoint
+2026-10-06T11:33:22.5300000Z ##[group]Run actions/setup-python@v5
+2026-10-06T11:33:22.5310000Z with:
+2026-10-06T11:33:22.5320000Z   python-version: '3.12'
+2026-10-06T11:33:22.5330000Z ##[endgroup]
+2026-10-06T11:33:23.1210000Z Successfully set up CPython (3.12.7)
+2026-10-06T11:33:23.2010000Z ##[group]Run pip install -r requirements-ci.txt
+2026-10-06T11:33:23.2020000Z shell: /usr/bin/bash -e {0}
+2026-10-06T11:33:23.2030000Z ##[endgroup]
+2026-10-06T11:33:25.3810000Z Successfully installed pytest-8.3.3
+2026-10-06T11:33:25.4300000Z ##[group]Run python -m kelp_collector.push fixtures/lagoon.ndjson
+2026-10-06T11:33:25.4310000Z shell: /usr/bin/bash -e {0}
+2026-10-06T11:33:25.4320000Z env:
+2026-10-06T11:33:25.4330000Z   COLLECTOR_HOST: metrics.kelp.internal
+2026-10-06T11:33:25.4340000Z   COLLECTOR_PORT: 7443
+2026-10-06T11:33:25.4350000Z ##[endgroup]
+2026-10-06T11:33:25.5990000Z Loaded 40 records from fixtures/lagoon.ndjson
+2026-10-06T11:33:25.6100000Z Connecting to database ingest metrics.kelp.internal:7443
+2026-10-06T11:33:25.6310000Z Sending frame: 4912 bytes
+2026-10-06T11:33:25.6330000Z metrics-exporter: listener=7443 protocol=db-ingest status=unsupported action=reset
+2026-10-06T11:33:25.6340000Z Traceback (most recent call last):
+2026-10-06T11:33:25.6350000Z   File "/home/runner/work/kelp-collector/kelp-collector/kelp_collector/push.py", line 91, in main
+2026-10-06T11:33:25.6360000Z     response = sock.recv(4096)
+2026-10-06T11:33:25.6370000Z ConnectionResetError: [Errno 104] Connection reset by peer
+2026-10-06T11:33:25.6550000Z ##[error]Process completed with exit code 1.
+2026-10-06T11:33:25.8000000Z Post job cleanup.
+2026-10-06T11:33:25.9900000Z Cleaning up orphan processes

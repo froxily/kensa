@@ -1,0 +1,42 @@
+2026-09-12T13:00:00.0000000Z Current runner version: '2.328.0'
+2026-09-12T13:00:01.0000000Z ##[group]Runner Image
+2026-09-12T13:00:02.0000000Z Image: ubuntu-24.04
+2026-09-12T13:00:03.0000000Z ##[endgroup]
+2026-09-12T13:00:04.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-12T13:00:05.0000000Z Contents: read
+2026-09-12T13:00:06.0000000Z ##[endgroup]
+2026-09-12T13:00:07.0000000Z Prepare workflow directory
+2026-09-12T13:00:08.0000000Z Prepare all required actions
+2026-09-12T13:00:09.0000000Z Download action repository 'actions/checkout@v4'
+2026-09-12T13:00:10.0000000Z Download action repository 'actions/setup-python@v5'
+2026-09-12T13:00:11.0000000Z Complete job name: install
+2026-09-12T13:00:12.0000000Z ##[group]Run actions/checkout@v4
+2026-09-12T13:00:13.0000000Z with:
+2026-09-12T13:00:14.0000000Z   repository: jasper-auk/estuary-batch
+2026-09-12T13:00:15.0000000Z ##[endgroup]
+2026-09-12T13:00:16.0000000Z Syncing repository: jasper-auk/estuary-batch
+2026-09-12T13:00:17.0000000Z Fetching the repository
+2026-09-12T13:00:18.0000000Z Checking out the ref
+2026-09-12T13:00:19.0000000Z ##[group]Run actions/setup-python@v5
+2026-09-12T13:00:20.0000000Z with:
+2026-09-12T13:00:21.0000000Z   python-version: '3.12'
+2026-09-12T13:00:22.0000000Z ##[endgroup]
+2026-09-12T13:00:23.0000000Z Installed versions
+2026-09-12T13:00:24.0000000Z Successfully set up CPython (3.12.6)
+2026-09-12T13:00:25.0000000Z ##[group]Run python -m pip install -r requirements-dev.txt
+2026-09-12T13:00:26.0000000Z python -m pip install -r requirements-dev.txt
+2026-09-12T13:00:27.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-12T13:00:28.0000000Z ##[endgroup]
+2026-09-12T13:00:29.0000000Z Collecting pytest==8.3.3 (from -r requirements-dev.txt (line 1))
+2026-09-12T13:00:30.0000000Z   Downloading pytest-8.3.3-py3-none-any.whl.metadata
+2026-09-12T13:00:31.0000000Z ERROR: Ignored the following yanked versions: 20.0
+2026-09-12T13:00:32.0000000Z ERROR: Could not find a version that satisfies the requirement packaging==999.0 (from versions: 21.0, 22.0, 23.0, 24.0, 24.1)
+2026-09-12T13:00:33.0000000Z ERROR: No matching distribution found for packaging==999.0
+2026-09-12T13:00:34.0000000Z 
+2026-09-12T13:00:35.0000000Z [notice] A new release of pip is available
+2026-09-12T13:00:36.0000000Z [notice] To update, run: python -m pip install --upgrade pip
+2026-09-12T13:00:37.0000000Z ##[error]Process completed with exit code 1.
+2026-09-12T13:00:38.0000000Z Post job cleanup.
+2026-09-12T13:00:39.0000000Z [command]/usr/bin/git version
+2026-09-12T13:00:40.0000000Z git version 2.46.1
+2026-09-12T13:00:41.0000000Z Cleaning up orphan processes

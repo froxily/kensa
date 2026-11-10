@@ -1,0 +1,45 @@
+2026-10-05T07:31:40.1000000Z Current runner version: '2.330.0'
+2026-10-05T07:31:40.1100000Z ##[group]Runner Image
+2026-10-05T07:31:40.1200000Z Image: ubuntu-24.04
+2026-10-05T07:31:40.1300000Z Version: 20260928.1.0
+2026-10-05T07:31:40.1400000Z ##[endgroup]
+2026-10-05T07:31:40.1500000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-05T07:31:40.1600000Z Contents: read
+2026-10-05T07:31:40.1700000Z Metadata: read
+2026-10-05T07:31:40.1800000Z ##[endgroup]
+2026-10-05T07:31:40.1900000Z Prepare workflow directory
+2026-10-05T07:31:40.2000000Z Prepare all required actions
+2026-10-05T07:31:40.5100000Z Download action repository 'actions/checkout@v4'
+2026-10-05T07:31:40.7800000Z Download action repository 'actions/setup-go@v5'
+2026-10-05T07:31:40.8800000Z Complete job name: integration / dispatch
+2026-10-05T07:31:40.9800000Z ##[group]Run actions/checkout@v4
+2026-10-05T07:31:40.9900000Z with:
+2026-10-05T07:31:41.0000000Z   repository: woodlark-works/ochre-relay
+2026-10-05T07:31:41.0100000Z   fetch-depth: 1
+2026-10-05T07:31:41.0200000Z ##[endgroup]
+2026-10-05T07:31:41.0300000Z Syncing repository: woodlark-works/ochre-relay
+2026-10-05T07:31:41.2500000Z Working directory is '/home/runner/work/ochre-relay/ochre-relay'
+2026-10-05T07:31:41.8200000Z Checking out the ref
+2026-10-05T07:31:42.0300000Z ##[group]Run actions/setup-go@v5
+2026-10-05T07:31:42.0400000Z with:
+2026-10-05T07:31:42.0500000Z   go-version: 1.24.1
+2026-10-05T07:31:42.0600000Z   cache: true
+2026-10-05T07:31:42.0700000Z ##[endgroup]
+2026-10-05T07:31:42.4300000Z go version go1.24.1 linux/amd64
+2026-10-05T07:31:42.5400000Z ##[group]Run go test -count=1 -v -run TestDispatch ./internal/dispatch
+2026-10-05T07:31:42.5500000Z go test -count=1 -v -run TestDispatch ./internal/dispatch
+2026-10-05T07:31:42.5600000Z shell: /usr/bin/bash -e {0}
+2026-10-05T07:31:42.5700000Z ##[endgroup]
+2026-10-05T07:31:48.1000000Z === RUN   TestDispatchHeaders
+2026-10-05T07:31:48.1100000Z --- PASS: TestDispatchHeaders (0.00s)
+2026-10-05T07:31:48.1200000Z === RUN   TestDispatchRetry
+2026-10-05T07:31:48.1300000Z     client_test.go:66: load dispatch config: required environment variable OCHRE_DISPATCH_URL is not set
+2026-10-05T07:31:48.1400000Z --- FAIL: TestDispatchRetry (0.00s)
+2026-10-05T07:31:48.1500000Z FAIL
+2026-10-05T07:31:48.1600000Z FAIL    woodlark-works/ochre-relay/internal/dispatch    0.007s
+2026-10-05T07:31:48.1700000Z FAIL
+2026-10-05T07:31:48.1800000Z ##[error]Process completed with exit code 1.
+2026-10-05T07:31:48.1900000Z Post job cleanup.
+2026-10-05T07:31:48.2000000Z [command]/usr/bin/git version
+2026-10-05T07:31:48.2100000Z git version 2.51.1
+2026-10-05T07:31:48.2200000Z Cleaning up orphan processes

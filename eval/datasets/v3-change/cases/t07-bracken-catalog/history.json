@@ -1,0 +1,13 @@
+{
+  "comparisons": {
+    "bd3159c42e6f087a19c53d8b6702ea4f9c185b73...a46e719c5b28d0f3e792b14c68a5d903f127be64": {
+      "status": "ahead", "merge_base": "bd3159c42e6f087a19c53d8b6702ea4f9c185b73", "truncated": false,
+      "commits": [
+        {"sha": "a46e719c5b28d0f3e792b14c68a5d903f127be64", "message": "Adjust catalog job database setting", "date": "2026-11-08T11:52:00Z", "files": [
+          {"path": ".github/workflows/bracken.yml", "status": "modified", "additions": 1, "deletions": 1, "patch": "@@ -21,7 +21,7 @@ jobs:\n       PGHOST: localhost\n       PGPORT: 5432\n       PGUSER: bracken\n-      PGDATABASE: bracken_catalog\n+      PGDATABASE: bracken_archive\n     steps:\n       - uses: actions/checkout@v4\n       - uses: actions/setup-node@v4"}
+        ]}
+      ]
+    }
+  },
+  "workflow_blobs": {"bd3159c42e6f087a19c53d8b6702ea4f9c185b73": "e38a5f7c420d91b6c3e807a14d5b6f290c71a483", "a46e719c5b28d0f3e792b14c68a5d903f127be64": "f19d4c7a2e6b038d5c1a749e80b362f4a5d9c713"}
+}

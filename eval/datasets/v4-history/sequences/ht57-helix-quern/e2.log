@@ -1,0 +1,45 @@
+2026-09-06T14:11:00.0000000Z Current runner version: '2.328.0'
+2026-09-06T14:11:00.1000000Z ##[group]Runner Image
+2026-09-06T14:11:00.2000000Z Image: ubuntu-24.04
+2026-09-06T14:11:00.3000000Z Version: 20260831.1.0
+2026-09-06T14:11:00.4000000Z ##[endgroup]
+2026-09-06T14:11:00.5000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-06T14:11:00.6000000Z Contents: read
+2026-09-06T14:11:00.7000000Z Metadata: read
+2026-09-06T14:11:00.8000000Z ##[endgroup]
+2026-09-06T14:11:01.0000000Z Prepare workflow directory
+2026-09-06T14:11:01.2000000Z Prepare all required actions
+2026-09-06T14:11:01.4000000Z Getting action download info
+2026-09-06T14:11:02.0000000Z Download action repository 'actions/checkout@v4'
+2026-09-06T14:11:02.2000000Z Complete job name: sampler
+2026-09-06T14:11:02.3000000Z ##[group]Run actions/checkout@v4
+2026-09-06T14:11:02.4000000Z with:
+2026-09-06T14:11:02.5000000Z   repository: helix-quern/tarn-sifter
+2026-09-06T14:11:02.6000000Z   clean: true
+2026-09-06T14:11:02.7000000Z   fetch-depth: 1
+2026-09-06T14:11:02.8000000Z ##[endgroup]
+2026-09-06T14:11:03.0000000Z Syncing repository: helix-quern/tarn-sifter
+2026-09-06T14:11:03.1000000Z ##[group]Getting Git version info
+2026-09-06T14:11:03.2000000Z git version 2.49.1
+2026-09-06T14:11:03.3000000Z ##[endgroup]
+2026-09-06T14:11:03.5000000Z Initializing the repository
+2026-09-06T14:11:04.3000000Z Fetching the repository
+2026-09-06T14:11:05.2000000Z Checking out the ref
+2026-09-06T14:11:05.6000000Z ##[group]Run bazel build //sampler:probe
+2026-09-06T14:11:05.7000000Z bazel build //sampler:probe
+2026-09-06T14:11:05.8000000Z shell: /usr/bin/bash -e {0}
+2026-09-06T14:11:05.9000000Z ##[endgroup]
+2026-09-06T14:11:06.3000000Z Build label: 8.3.1
+2026-09-06T14:11:08.3000000Z INFO: Invocation ID: 4ba28704-01ac-4f94-b4a1-1c3d5a0097e2
+2026-09-06T14:11:08.5000000Z INFO: Reading rc options for 'build' from /home/runner/work/tarn-sifter/tarn-sifter/.bazelrc:
+2026-09-06T14:11:08.6000000Z   Inherited 'common' options: --announce_rc
+2026-09-06T14:11:08.8000000Z Analyzing: target //sampler:probe (1 packages loaded, 0 targets configured)
+2026-09-06T14:11:09.2000000Z ERROR: /home/runner/work/tarn-sifter/tarn-sifter/sampler/BUILD.bazel:19:11: in deps attribute of cc_binary rule //sampler:probe: target '//gauge:schema' is not visible from target '//sampler:probe'. Check the visibility declaration of the former target if you think the dependency is legitimate
+2026-09-06T14:11:09.3000000Z ERROR: /home/runner/work/tarn-sifter/tarn-sifter/sampler/BUILD.bazel:19:11: Analysis of target '//sampler:probe' failed
+2026-09-06T14:11:09.4000000Z ERROR: Analysis of target '//sampler:probe' failed; build aborted
+2026-09-06T14:11:09.5000000Z INFO: Elapsed time: 3.612s
+2026-09-06T14:11:09.6000000Z INFO: 1 process: 1 internal.
+2026-09-06T14:11:09.7000000Z FAILED: Build did NOT complete successfully (2 packages loaded, 4 targets configured)
+2026-09-06T14:11:09.8000000Z ##[error]Process completed with exit code 1.
+2026-09-06T14:11:10.0000000Z Post job cleanup.
+2026-09-06T14:11:10.1000000Z Cleaning up orphan processes

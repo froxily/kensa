@@ -1,0 +1,12 @@
+{
+  "id": "hd32-copper-heron",
+  "split": "dev",
+  "ecosystem": "node (jest)",
+  "repository": "copper-heron/tidebook",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"test_regression","title":"Reservation cutoff includes the closing minute","root_cause":"The reservation cutoff comparison accepts a request exactly at the closing minute, although the cutoff is exclusive. Change the comparison to exclude the closing minute.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"b","relation":"lookalike","category":"test_regression","title":"Reservation capacity ignores a cancellation","root_cause":"The available capacity calculation counts cancelled reservations as occupied. Exclude cancelled reservations from the occupied count.","differs_from_earlier":"The same Jest suite reports a different assertion: available capacity after cancellation, rather than the exclusive closing-minute boundary."},
+    {"id":"e3","file":"e3.log","cluster":"a","relation":"recurrence","category":"test_regression","title":"Reservation cutoff includes the closing minute","root_cause":"The reservation cutoff comparison accepts a request exactly at the closing minute, although the cutoff is exclusive. Change the comparison to exclude the closing minute.","differs_from_earlier":"A later run has additional passing tests and shifted source lines after unrelated edits; the same cutoff boundary still returns true."},
+    {"id":"e4","file":"e4.log","cluster":"c","relation":"first","category":"dependency_build","title":"Jest cannot resolve the installed test environment","root_cause":"The Jest configuration selects jest-environment-jsdom but that package is absent from the project's dependencies. Add the matching jest-environment-jsdom package.","differs_from_earlier":""}
+  ]
+}

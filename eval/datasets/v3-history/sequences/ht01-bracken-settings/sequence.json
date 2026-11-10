@@ -1,0 +1,12 @@
+﻿{
+  "id": "ht01-bracken-settings",
+  "split": "test",
+  "ecosystem": "node",
+  "repository": "bracken-studio/whorl-dispatch",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"missing_env_var","title":"Dispatch origin absent","root_cause":"The job does not supply WHORL_ORIGIN, which the dispatch configuration requires. Provide that variable to the job.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"a","relation":"recurrence","category":"missing_env_var","title":"Dispatch origin absent","root_cause":"The job does not supply WHORL_ORIGIN, which the dispatch configuration requires. Provide that variable to the job.","differs_from_earlier":"A later pull request invokes the configuration through a smoke command after a source line shift."},
+    {"id":"e3","file":"e3.log","cluster":"b","relation":"lookalike","category":"missing_env_var","title":"Dispatch zone absent","root_cause":"The job does not supply WHORL_ZONE, which the dispatch configuration requires. Provide that separate variable to the job.","differs_from_earlier":"The same loader rejects a different required environment variable."},
+    {"id":"e4","file":"e4.log","cluster":"a","relation":"recurrence","category":"missing_env_var","title":"Dispatch origin absent","root_cause":"The job does not supply WHORL_ORIGIN, which the dispatch configuration requires. Provide that variable to the job.","differs_from_earlier":"A later test run loads the settings from a different test file and reports shifted source lines."}
+  ]
+}

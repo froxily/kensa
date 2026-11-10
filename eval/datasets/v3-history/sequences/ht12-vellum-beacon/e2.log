@@ -1,0 +1,48 @@
+﻿2026-09-06T11:32:10.1000000Z Current runner version: '2.329.0'
+2026-09-06T11:32:10.1100000Z ##[group]Runner Image
+2026-09-06T11:32:10.1200000Z Image: ubuntu-24.04
+2026-09-06T11:32:10.1300000Z Version: 20260831.1
+2026-09-06T11:32:10.1400000Z ##[endgroup]
+2026-09-06T11:32:10.1500000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-06T11:32:10.1600000Z Contents: read
+2026-09-06T11:32:10.1700000Z ##[endgroup]
+2026-09-06T11:32:10.2000000Z Prepare workflow directory
+2026-09-06T11:32:10.4200000Z Prepare all required actions
+2026-09-06T11:32:10.9500000Z Job name: unit
+2026-09-06T11:32:11.0500000Z ##[group]Run actions/checkout@v4
+2026-09-06T11:32:11.0600000Z with:
+2026-09-06T11:32:11.0700000Z   repository: copperquay/vellum-beacon
+2026-09-06T11:32:11.0800000Z   fetch-depth: 1
+2026-09-06T11:32:11.0900000Z ##[endgroup]
+2026-09-06T11:32:11.8000000Z Syncing repository: copperquay/vellum-beacon
+2026-09-06T11:32:12.0000000Z Checking out the ref
+2026-09-06T11:32:12.1000000Z HEAD is now at 71be5aa Adjust beacon window
+2026-09-06T11:32:12.2000000Z ##[group]Run actions/setup-node@v4
+2026-09-06T11:32:12.2100000Z with:
+2026-09-06T11:32:12.2200000Z   node-version: 22
+2026-09-06T11:32:12.2300000Z ##[endgroup]
+2026-09-06T11:32:12.6000000Z Found in cache @ /opt/hostedtoolcache/node/22.18.0/x64
+2026-09-06T11:32:12.7000000Z ##[group]Run npm ci
+2026-09-06T11:32:12.7100000Z npm ci
+2026-09-06T11:32:12.7200000Z shell: /usr/bin/bash -e {0}
+2026-09-06T11:32:12.7300000Z ##[endgroup]
+2026-09-06T11:32:15.4000000Z added 42 packages, and audited 43 packages in 2s
+2026-09-06T11:32:15.4100000Z found 0 vulnerabilities
+2026-09-06T11:32:15.5000000Z ##[group]Run npm test
+2026-09-06T11:32:15.5100000Z npm test
+2026-09-06T11:32:15.5200000Z shell: /usr/bin/bash -e {0}
+2026-09-06T11:32:15.5300000Z ##[endgroup]
+2026-09-06T11:32:15.8000000Z > vellum-beacon@1.4.0 test
+2026-09-06T11:32:15.8100000Z > node --test
+2026-09-06T11:32:16.0100000Z ✔ window accepts interior readings (2.3ms)
+2026-09-06T11:32:16.0200000Z ✖ window accepts upper boundary (3.1ms)
+2026-09-06T11:32:16.0300000Z   AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+2026-09-06T11:32:16.0400000Z   false !== true
+2026-09-06T11:32:16.0500000Z       at TestContext.<anonymous> (file:///home/runner/work/vellum-beacon/vellum-beacon/test/window.test.mjs:28:10)
+2026-09-06T11:32:16.0600000Z ✔ window rejects late readings (0.4ms)
+2026-09-06T11:32:16.0700000Z ℹ tests 3
+2026-09-06T11:32:16.0800000Z ℹ pass 2
+2026-09-06T11:32:16.0900000Z ℹ fail 1
+2026-09-06T11:32:16.1000000Z ##[error]Process completed with exit code 1.
+2026-09-06T11:32:16.2000000Z Post job cleanup.
+2026-09-06T11:32:16.3000000Z Cleaning up orphan processes

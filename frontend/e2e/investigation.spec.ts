@@ -117,6 +117,7 @@ for (const [scheme, locale] of [
     for (const [label, path] of [
       ["overview", "/"],
       ["new investigation", "/investigations/new"],
+      ["analytics", "/analytics"],
       ["investigation", `/investigations/${id}`],
     ] as const) {
       await page.goto(path);

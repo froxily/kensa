@@ -1,0 +1,55 @@
+2026-09-23T11:26:04.7654321Z Current runner version: '2.329.0'
+2026-09-23T11:26:04.8654321Z ##[group]Runner Image
+2026-09-23T11:26:04.9654321Z Image: ubuntu-24.04
+2026-09-23T11:26:05.0654321Z Version: 20260914.1.0
+2026-09-23T11:26:05.1654321Z ##[endgroup]
+2026-09-23T11:26:05.2654321Z ##[group]GITHUB_TOKEN Permissions
+2026-09-23T11:26:05.3654321Z Contents: read
+2026-09-23T11:26:05.4654321Z Metadata: read
+2026-09-23T11:26:05.5654321Z ##[endgroup]
+2026-09-23T11:26:05.6654321Z Prepare workflow directory
+2026-09-23T11:26:05.7654321Z Prepare all required actions
+2026-09-23T11:26:06.7654321Z ##[group]Run actions/checkout@v4
+2026-09-23T11:26:06.8654321Z with:
+2026-09-23T11:26:06.9654321Z   repository: copper-heron/siltcompass
+2026-09-23T11:26:07.0654321Z   fetch-depth: 1
+2026-09-23T11:26:07.1654321Z ##[endgroup]
+2026-09-23T11:26:07.7654321Z Syncing repository: copper-heron/siltcompass
+2026-09-23T11:26:08.7654321Z Checking out the ref
+2026-09-23T11:26:09.1654321Z ##[group]Run actions/setup-java@v4
+2026-09-23T11:26:09.2654321Z with:
+2026-09-23T11:26:09.3654321Z   distribution: temurin
+2026-09-23T11:26:09.4654321Z   java-version: 17
+2026-09-23T11:26:09.5654321Z ##[endgroup]
+2026-09-23T11:26:09.9654321Z Setting Java 17 as the default
+2026-09-23T11:26:10.1654321Z ##[group]Run ./gradlew :app:testDebugUnitTest
+2026-09-23T11:26:10.2654321Z ./gradlew :app:testDebugUnitTest
+2026-09-23T11:26:10.3654321Z shell: /usr/bin/bash -e {0}
+2026-09-23T11:26:10.4654321Z ##[endgroup]
+2026-09-23T11:26:16.7654321Z Starting a Gradle Daemon (subsequent builds will be faster)
+2026-09-23T11:26:29.7654321Z > Task :app:preBuild UP-TO-DATE
+2026-09-23T11:26:30.7654321Z > Task :app:mergeDebugResources
+2026-09-23T11:26:31.7654321Z > Task :app:processDebugMainManifest
+2026-09-23T11:26:33.7654321Z > Task :app:processDebugResources
+2026-09-23T11:26:38.7654321Z > Task :app:compileDebugKotlin
+2026-09-23T11:26:40.7654321Z > Task :app:compileDebugUnitTestKotlin
+2026-09-23T11:26:43.7654321Z > Task :app:testDebugUnitTest FAILED
+2026-09-23T11:26:43.8654321Z 
+2026-09-23T11:26:43.9654321Z HeadingFormatterTest > wrapsRoundedHeadingAtFullTurn FAILED
+2026-09-23T11:26:44.0654321Z     org.junit.ComparisonFailure: expected:<[0]> but was:<[360]>
+2026-09-23T11:26:44.1654321Z         at org.junit.Assert.assertEquals(Assert.java:117)
+2026-09-23T11:26:44.2654321Z         at org.junit.Assert.assertEquals(Assert.java:146)
+2026-09-23T11:26:44.3654321Z         at com.copperheron.siltcompass.HeadingFormatterTest.wrapsRoundedHeadingAtFullTurn(HeadingFormatterTest.kt:28)
+2026-09-23T11:26:44.4654321Z 
+2026-09-23T11:26:44.5654321Z 18 tests completed, 1 failed
+2026-09-23T11:26:44.6654321Z FAILURE: Build failed with an exception.
+2026-09-23T11:26:44.7654321Z * What went wrong:
+2026-09-23T11:26:44.8654321Z Execution failed for task ':app:testDebugUnitTest'.
+2026-09-23T11:26:44.9654321Z > There were failing tests. See the report at: file:///home/runner/work/siltcompass/siltcompass/app/build/reports/tests/testDebugUnitTest/index.html
+2026-09-23T11:26:45.0654321Z * Try:
+2026-09-23T11:26:45.1654321Z > Run with --scan to get full insights.
+2026-09-23T11:26:45.2654321Z BUILD FAILED in 35s
+2026-09-23T11:26:45.3654321Z 27 actionable tasks: 27 executed
+2026-09-23T11:26:45.4654321Z ##[error]Process completed with exit code 1.
+2026-09-23T11:26:45.5654321Z Post job cleanup.
+2026-09-23T11:26:45.6654321Z Cleaning up orphan processes

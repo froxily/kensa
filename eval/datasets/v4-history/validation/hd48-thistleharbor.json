@@ -1,0 +1,13 @@
+{
+  "id": "hd48-thistleharbor",
+  "independent_labels": [
+    {"id":"e1","cluster":"a","relation":"first","category":"ambiguous"},
+    {"id":"e2","cluster":"a","relation":"recurrence","category":"ambiguous"},
+    {"id":"e3","cluster":"b","relation":"first","category":"ambiguous"},
+    {"id":"e4","cluster":"c","relation":"first","category":"dependency_build"}
+  ],
+  "verdict": "ambiguous",
+  "disputed_fields": ["e1.category", "e2.category", "e3.category", "e1.root_cause", "e2.root_cause"],
+  "reason_category": "ambiguous_evidence",
+  "notes": "The same lock ID and creation time recur in a materially different run; e3 and e4 require different fixes and match the planned pattern. The allowed categories have no clear fit for a DynamoDB lock conflict or an AWS IAM authorization failure: the former is not a connectivity failure and the latter is not GitHub permissions. The logs show an apply lock persisting for days, but do not establish that the apply was interrupted. No giveaway commentary or timestamp-only recurrence was found."
+}

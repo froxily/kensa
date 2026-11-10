@@ -1,0 +1,19 @@
+﻿{
+  "id": "t28-fulmar-tag",
+  "split": "test",
+  "comparability": "no_baseline",
+  "category": "github_permissions",
+  "culprit_kind": "none",
+  "difficulty": "medium",
+  "ecosystem": "go",
+  "title": "Tag publication denied on the first run",
+  "root_cause": "The first run of the publication workflow reaches the tag push, but its GitHub token has only read access to repository contents. The server rejects the push; granting contents write permission would allow this operation. There is no successful baseline from which to attribute the failure to a change.",
+  "culprit_paths": [],
+  "culprit_commit": null,
+  "unverified_factors": [],
+  "fix_keywords": ["contents", "write"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 69, "end_line": 71, "why": "The remote rejects the tag push for insufficient write access."},
+    {"path": "repo/.github/workflows/publish-tag.yml", "start_line": 5, "end_line": 6, "why": "The workflow grants only read access to repository contents."}
+  ]
+}

@@ -1,0 +1,43 @@
+2026-09-05T09:00:00.0000000Z Current runner version: '2.328.0'
+2026-09-05T09:00:01.0000000Z ##[group]Runner Image
+2026-09-05T09:00:02.0000000Z Image: ubuntu-24.04
+2026-09-05T09:00:03.0000000Z ##[endgroup]
+2026-09-05T09:00:04.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-05T09:00:05.0000000Z Contents: read
+2026-09-05T09:00:06.0000000Z ##[endgroup]
+2026-09-05T09:00:07.0000000Z Prepare workflow directory
+2026-09-05T09:00:08.0000000Z Prepare all required actions
+2026-09-05T09:00:09.0000000Z Download action repository 'actions/checkout@v4'
+2026-09-05T09:00:10.0000000Z Download action repository 'actions/setup-python@v5'
+2026-09-05T09:00:11.0000000Z Complete job name: archive
+2026-09-05T09:00:12.0000000Z ##[group]Run actions/checkout@v4
+2026-09-05T09:00:13.0000000Z with:
+2026-09-05T09:00:14.0000000Z   repository: jasper-auk/estuary-batch
+2026-09-05T09:00:15.0000000Z ##[endgroup]
+2026-09-05T09:00:16.0000000Z Syncing repository: jasper-auk/estuary-batch
+2026-09-05T09:00:17.0000000Z Fetching the repository
+2026-09-05T09:00:18.0000000Z Checking out the ref
+2026-09-05T09:00:19.0000000Z ##[group]Run actions/setup-python@v5
+2026-09-05T09:00:20.0000000Z with:
+2026-09-05T09:00:21.0000000Z   python-version: '3.12'
+2026-09-05T09:00:22.0000000Z ##[endgroup]
+2026-09-05T09:00:23.0000000Z ##[group]Run pip install -e .
+2026-09-05T09:00:24.0000000Z Successfully installed estuary-batch-0.4.0
+2026-09-05T09:00:25.0000000Z ##[endgroup]
+2026-09-05T09:00:26.0000000Z ##[group]Run python -m estuary.archive
+2026-09-05T09:00:27.0000000Z python -m estuary.archive
+2026-09-05T09:00:28.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-05T09:00:29.0000000Z ##[endgroup]
+2026-09-05T09:00:30.0000000Z Traceback (most recent call last):
+2026-09-05T09:00:31.0000000Z   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-09-05T09:00:32.0000000Z   File "<frozen runpy>", line 88, in _run_code
+2026-09-05T09:00:33.0000000Z   File "/home/runner/work/estuary-batch/estuary-batch/estuary/archive.py", line 26, in <module>
+2026-09-05T09:00:34.0000000Z     main()
+2026-09-05T09:00:35.0000000Z   File "/home/runner/work/estuary-batch/estuary-batch/estuary/archive.py", line 14, in main
+2026-09-05T09:00:36.0000000Z     bucket = os.environ["ESTUARY_ARCHIVE_BUCKET"]
+2026-09-05T09:00:37.0000000Z              ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-09-05T09:00:38.0000000Z   File "<frozen os>", line 685, in __getitem__
+2026-09-05T09:00:39.0000000Z KeyError: 'ESTUARY_ARCHIVE_BUCKET'
+2026-09-05T09:00:40.0000000Z ##[error]Process completed with exit code 1.
+2026-09-05T09:00:41.0000000Z Post job cleanup.
+2026-09-05T09:00:42.0000000Z Cleaning up orphan processes

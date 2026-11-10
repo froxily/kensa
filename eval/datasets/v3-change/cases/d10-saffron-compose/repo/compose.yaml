@@ -1,0 +1,3 @@
+services:
+  worker:
+    image: saffron-workers:2.3

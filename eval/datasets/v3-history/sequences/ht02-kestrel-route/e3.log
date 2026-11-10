@@ -1,0 +1,51 @@
+﻿2026-09-16T19:02:22.0010000Z Current runner version: '2.330.0'
+2026-09-16T19:02:22.1010000Z ##[group]Runner Image
+2026-09-16T19:02:22.2010000Z Image: ubuntu-22.04
+2026-09-16T19:02:22.3010000Z Version: 20260913.1
+2026-09-16T19:02:22.4010000Z ##[endgroup]
+2026-09-16T19:02:22.5010000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-16T19:02:22.6010000Z Contents: read
+2026-09-16T19:02:22.7010000Z Metadata: read
+2026-09-16T19:02:22.8010000Z ##[endgroup]
+2026-09-16T19:02:22.9010000Z Prepare workflow directory
+2026-09-16T19:02:23.0010000Z Prepare all required actions
+2026-09-16T19:02:23.1010000Z Download action repository 'actions/checkout@v4'
+2026-09-16T19:02:23.2010000Z Download action repository 'actions/setup-python@v5'
+2026-09-16T19:02:23.3010000Z Complete job name: unit (3.11)
+2026-09-16T19:02:23.4010000Z ##[group]Run actions/checkout@v4
+2026-09-16T19:02:23.5010000Z with:
+2026-09-16T19:02:23.6010000Z   repository: dune-signal/kestrel-route
+2026-09-16T19:02:23.7010000Z   clean: true
+2026-09-16T19:02:23.8010000Z ##[endgroup]
+2026-09-16T19:02:24.0010000Z Fetching the repository
+2026-09-16T19:02:24.2010000Z Checking out the ref
+2026-09-16T19:02:24.4010000Z ##[group]Run actions/setup-python@v5
+2026-09-16T19:02:24.5010000Z with:
+2026-09-16T19:02:24.6010000Z   python-version: '3.11'
+2026-09-16T19:02:24.7010000Z ##[endgroup]
+2026-09-16T19:02:25.0010000Z Successfully set up CPython (3.11.10)
+2026-09-16T19:02:25.1010000Z ##[group]Run python -m pytest tests/unit -v
+2026-09-16T19:02:25.2010000Z python -m pytest tests/unit -v
+2026-09-16T19:02:25.3010000Z shell: /usr/bin/bash -e {0}
+2026-09-16T19:02:25.4010000Z ##[endgroup]
+2026-09-16T19:02:26.0010000Z ============================= test session starts ==============================
+2026-09-16T19:02:26.1010000Z platform linux -- Python 3.11.10, pytest-8.3.3
+2026-09-16T19:02:26.2010000Z rootdir: /home/runner/work/kestrel-route/kestrel-route
+2026-09-16T19:02:26.3010000Z collected 3 items
+2026-09-16T19:02:26.4010000Z tests/unit/test_route_labels.py::test_empty_label PASSED                 [ 33%]
+2026-09-16T19:02:26.5010000Z tests/unit/test_route_labels.py::test_label_joins_segments FAILED       [ 66%]
+2026-09-16T19:02:26.6010000Z tests/unit/test_route_labels.py::test_label_preserves_case PASSED       [100%]
+2026-09-16T19:02:26.7010000Z =================================== FAILURES ===================================
+2026-09-16T19:02:26.8010000Z _______________________ test_label_joins_segments _______________________
+2026-09-16T19:02:26.9010000Z >       assert route_label(['west', 'quay', 'gate']) == 'west / quay / gate'
+2026-09-16T19:02:27.0010000Z E       AssertionError: assert 'west / quay / gate / ' == 'west / quay / gate'
+2026-09-16T19:02:27.1010000Z E         - west / quay / gate
+2026-09-16T19:02:27.2010000Z E         + west / quay / gate / 
+2026-09-16T19:02:27.3010000Z E         ?                   +++
+2026-09-16T19:02:27.4010000Z tests/unit/test_route_labels.py:67: AssertionError
+2026-09-16T19:02:27.5010000Z =========================== short test summary info ============================
+2026-09-16T19:02:27.6010000Z FAILED tests/unit/test_route_labels.py::test_label_joins_segments - AssertionError
+2026-09-16T19:02:27.7010000Z ========================= 1 failed, 2 passed in 0.19s ==========================
+2026-09-16T19:02:27.8010000Z ##[error]Process completed with exit code 1.
+2026-09-16T19:02:27.9010000Z Post job cleanup.
+2026-09-16T19:02:28.0010000Z Cleaning up orphan processes

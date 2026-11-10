@@ -1,0 +1,12 @@
+{
+  "id": "ht38-porcelain-moth",
+  "split": "test",
+  "ecosystem": "python (mypy, ruff)",
+  "repository": "porcelain-moth/aurora-thimble",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"test_regression","title":"Ruff rejects mutable default argument","root_cause":"The collect_spools function uses an empty list as its default argument, violating Ruff rule B006. Replace the mutable default with None and initialize the list inside the function.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"a","relation":"recurrence","category":"test_regression","title":"Ruff rejects mutable default argument","root_cause":"The collect_spools function uses an empty list as its default argument, violating Ruff rule B006. Replace the mutable default with None and initialize the list inside the function.","differs_from_earlier":"A later pull request changes an unrelated documentation file and moves the function down; the same default remains."},
+    {"id":"e3","file":"e3.log","cluster":"b","relation":"first","category":"dependency_build","title":"Package registry cannot be resolved","root_cause":"The configured Python package index host cannot be resolved by the runner, preventing dependency installation. Restore DNS resolution for the configured index.","differs_from_earlier":""},
+    {"id":"e4","file":"e4.log","cluster":"a","relation":"recurrence","category":"test_regression","title":"Ruff rejects mutable default argument","root_cause":"The collect_spools function uses an empty list as its default argument, violating Ruff rule B006. Replace the mutable default with None and initialize the list inside the function.","differs_from_earlier":"A later run checks an expanded source tree after an unrelated test edit; the function is at a different line and retains the same default."}
+  ]
+}

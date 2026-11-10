@@ -1,0 +1,12 @@
+{
+  "comparisons": {
+    "a5d09c3e71b8462f9c034ad5b8e1276f4c90d2ab...3f8a21c9d6e4b078a5c2f13d9e7640ab18c3d5e7": {
+      "status": "ahead", "merge_base": "a5d09c3e71b8462f9c034ad5b8e1276f4c90d2ab", "truncated": false,
+      "commits": [
+        {"sha": "b6c391fa47d2058e9a13c67f042b8d5e7f1a6c90", "message": "Adjust application copy location", "date": "2026-10-29T08:48:00Z", "files": [{"path": "Dockerfile", "status": "modified", "additions": 1, "deletions": 1, "patch": "@@ -2,5 +2,5 @@ FROM python:3.12-slim\n WORKDIR /app\n COPY requirements.txt /app/requirements.txt\n RUN pip install --no-cache-dir -r requirements.txt\n-COPY src/ /app/src/\n+COPY source/ /app/src/\n CMD [\"python\", \"-m\", \"src.kiln\"]"}]},
+        {"sha": "3f8a21c9d6e4b078a5c2f13d9e7640ab18c3d5e7", "message": "Expand operations guide", "date": "2026-10-29T09:08:00Z", "files": [{"path": "docs/operations.md", "status": "modified", "additions": 11, "deletions": 0, "patch": "@@ -1,2 +1,13 @@\n # Operating Kiln\n \n+Build the container from the repository root.\n+Use a local image tag for development.\n+The application starts with Python.\n+The image uses the slim Python base.\n+Dependencies are installed during the build.\n+The source tree is copied into the image.\n+Review build output when a step fails.\n+Keep local tags distinct from release tags.\n+Rebuild after changing dependencies.\n+Run the container to check startup.\n+Use the workflow for repeatable builds."}]}
+      ]
+    }
+  },
+  "workflow_blobs": {"a5d09c3e71b8462f9c034ad5b8e1276f4c90d2ab": "c4e2a789bd0163f5e8a12c47d609b3f5a71e2d84", "3f8a21c9d6e4b078a5c2f13d9e7640ab18c3d5e7": "c4e2a789bd0163f5e8a12c47d609b3f5a71e2d84"}
+}

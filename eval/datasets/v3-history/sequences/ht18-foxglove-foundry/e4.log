@@ -1,0 +1,52 @@
+﻿2026-08-26T18:41:09.3001000Z Current runner version: '2.329.0'
+2026-08-26T18:41:09.3002000Z Runner name: 'GitHub Actions 209'
+2026-08-26T18:41:09.3003000Z ##[group]Operating System
+2026-08-26T18:41:09.3004000Z Ubuntu
+2026-08-26T18:41:09.3005000Z 24.04.3
+2026-08-26T18:41:09.3006000Z ##[endgroup]
+2026-08-26T18:41:09.3007000Z ##[group]Runner Image
+2026-08-26T18:41:09.3008000Z Image: ubuntu-24.04
+2026-08-26T18:41:09.3009000Z Version: 20260817.1.0
+2026-08-26T18:41:09.3010000Z ##[endgroup]
+2026-08-26T18:41:09.3011000Z ##[group]GITHUB_TOKEN Permissions
+2026-08-26T18:41:09.3012000Z Contents: read
+2026-08-26T18:41:09.3013000Z ##[endgroup]
+2026-08-26T18:41:09.3014000Z Prepare workflow directory
+2026-08-26T18:41:09.3015000Z Prepare all required actions
+2026-08-26T18:41:10.3016000Z Download action repository 'actions/checkout@v4'
+2026-08-26T18:41:10.3017000Z Complete job name: publish-image
+2026-08-26T18:41:10.3018000Z ##[group]Run actions/checkout@v4
+2026-08-26T18:41:10.3019000Z with:
+2026-08-26T18:41:10.3020000Z   repository: cairnworks/foxglove-foundry
+2026-08-26T18:41:10.3021000Z   fetch-depth: 1
+2026-08-26T18:41:10.3022000Z ##[endgroup]
+2026-08-26T18:41:10.3023000Z Syncing repository: cairnworks/foxglove-foundry
+2026-08-26T18:41:11.3024000Z Fetching the repository
+2026-08-26T18:41:12.3025000Z Checking out the ref
+2026-08-26T18:41:12.3026000Z HEAD is now at 2a67d1f Prepare image release
+2026-08-26T18:41:12.3027000Z ##[group]Run docker login registry.example.org -u foundry-ci --password-stdin
+2026-08-26T18:41:12.3028000Z shell: /usr/bin/bash -e {0}
+2026-08-26T18:41:12.3029000Z ##[endgroup]
+2026-08-26T18:41:13.3030000Z Login Succeeded
+2026-08-26T18:41:13.3031000Z ##[group]Run docker buildx build --push -t registry.example.org/cairnworks/foundry-output:0.8 .
+2026-08-26T18:41:13.3032000Z shell: /usr/bin/bash -e {0}
+2026-08-26T18:41:13.3033000Z ##[endgroup]
+2026-08-26T18:41:13.8034000Z #0 building with "default" instance using docker driver
+2026-08-26T18:41:13.8035000Z #1 [internal] load build definition from Dockerfile
+2026-08-26T18:41:13.8036000Z #1 transferring dockerfile: 319B done
+2026-08-26T18:41:13.8037000Z #1 DONE 0.0s
+2026-08-26T18:41:14.3038000Z #2 [internal] load metadata for registry.example.org/cairnworks/alloy-base:1.6
+2026-08-26T18:41:14.3039000Z #2 DONE 0.4s
+2026-08-26T18:41:14.8040000Z #3 [1/2] FROM registry.example.org/cairnworks/alloy-base:1.6
+2026-08-26T18:41:14.8041000Z #3 DONE 0.0s
+2026-08-26T18:41:15.3042000Z #4 [2/2] COPY target/release/foundry /usr/local/bin/foundry
+2026-08-26T18:41:15.3043000Z #4 DONE 0.1s
+2026-08-26T18:41:15.8044000Z #5 exporting to image
+2026-08-26T18:41:15.8045000Z #5 pushing layers
+2026-08-26T18:41:16.3046000Z #5 ERROR: unexpected status from POST request to registry.example.org/v2/cairnworks/foundry-output/blobs/uploads/: 403 Forbidden
+2026-08-26T18:41:16.3047000Z #5 registry response: denied: token scope repository:cairnworks/foundry-output:pull does not include push
+2026-08-26T18:41:16.3048000Z ERROR: failed to solve: failed to push registry.example.org/cairnworks/foundry-output:0.8: unexpected status: 403 Forbidden
+2026-08-26T18:41:16.3049000Z ##[error]Process completed with exit code 1.
+2026-08-26T18:41:16.3050000Z Post job cleanup.
+2026-08-26T18:41:16.3051000Z Cleaning up orphan processes
+2026-08-26T18:41:16.3052000Z Complete job

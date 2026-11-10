@@ -1,0 +1,19 @@
+﻿{
+  "id": "d28-ocelot-image",
+  "split": "dev",
+  "comparability": "no_baseline",
+  "category": "docker",
+  "culprit_kind": "none",
+  "difficulty": "easy",
+  "ecosystem": "node",
+  "title": "First container workflow cannot find its base image",
+  "root_cause": "The first run of the container workflow fails because its Dockerfile requests a Node image tag that the registry cannot find. There is no successful earlier run to compare, so the evidence does not identify a change that caused the failure.",
+  "culprit_paths": [],
+  "culprit_commit": null,
+  "unverified_factors": [],
+  "fix_keywords": ["FROM", "node:22-alpine"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 55, "end_line": 59, "why": "BuildKit reports that the requested base image tag cannot be found."},
+    {"path": "repo/Dockerfile", "start_line": 1, "end_line": 1, "why": "The Dockerfile selects the unavailable base image tag."}
+  ]
+}

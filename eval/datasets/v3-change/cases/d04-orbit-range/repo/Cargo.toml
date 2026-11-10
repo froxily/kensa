@@ -1,0 +1,6 @@
+﻿[package]
+name = "orbit-demo"
+version = "0.1.0"
+edition = "2021"
+[dependencies]
+orbit-math = ">=0.1, <0.3"

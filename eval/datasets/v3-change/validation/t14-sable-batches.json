@@ -1,0 +1,14 @@
+{
+  "id": "t14-sable-batches",
+  "independent_labels": {
+    "comparability": "comparable",
+    "unverified_factors": [],
+    "category": "oom_timeout",
+    "culprit_kind": "workflow",
+    "culprit_paths": [".github/workflows/verify.yml"]
+  },
+  "verdict": "agree",
+  "disputed_fields": [],
+  "reason_category": "none",
+  "notes": "The matching successful baseline has the same runner and an ahead comparison. The workflow adds a second sequential batch under the ten-minute limit; the first takes 345 seconds and the job times out during the second. Evidence ranges and recorded changes are consistent."
+}

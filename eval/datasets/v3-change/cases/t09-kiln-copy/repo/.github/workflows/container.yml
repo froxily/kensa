@@ -1,0 +1,9 @@
+name: Container
+on: [push]
+jobs:
+  image:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build image
+        run: docker build --progress=plain -t kiln-app .

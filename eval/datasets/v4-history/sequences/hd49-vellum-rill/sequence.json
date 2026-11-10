@@ -1,0 +1,12 @@
+{
+  "id": "hd49-vellum-rill",
+  "split": "dev",
+  "ecosystem": "kubernetes (helm, kubectl)",
+  "repository": "vellum-rill/gatehouse-chart",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"workflow_path","title":"Gateway host missing from chart values","root_cause":"The deployment values omit gateway.publicHost, which the ingress template requires. Supply the public host in the values used by the release.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"b","relation":"lookalike","category":"workflow_path","title":"Metrics port missing from chart values","root_cause":"The deployment values omit telemetry.listenPort, which the service template requires. Supply the telemetry listen port in the values used by the release.","differs_from_earlier":"The same Helm required-value error now names telemetry.listenPort in the service template, requiring a different value to be supplied."},
+    {"id":"e3","file":"e3.log","cluster":"a","relation":"recurrence","category":"workflow_path","title":"Gateway host missing from chart values","root_cause":"The deployment values omit gateway.publicHost, which the ingress template requires. Supply the public host in the values used by the release.","differs_from_earlier":"A later pull request renders a different values file and release; the missing gateway.publicHost remains the same."},
+    {"id":"e4","file":"e4.log","cluster":"b","relation":"recurrence","category":"workflow_path","title":"Metrics port missing from chart values","root_cause":"The deployment values omit telemetry.listenPort, which the service template requires. Supply the telemetry listen port in the values used by the release.","differs_from_earlier":"A later release render uses a different values file and namespace; telemetry.listenPort is still absent."}
+  ]
+}

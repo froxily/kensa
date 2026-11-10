@@ -1,0 +1,57 @@
+2026-09-26T14:31:02.2222222Z Current runner version: '2.329.0'
+2026-09-26T14:31:02.3222222Z ##[group]Operating System
+2026-09-26T14:31:02.4222222Z Ubuntu
+2026-09-26T14:31:02.5222222Z 24.04.3
+2026-09-26T14:31:02.6222222Z ##[endgroup]
+2026-09-26T14:31:02.7222222Z ##[group]Runner Image
+2026-09-26T14:31:02.8222222Z Image: ubuntu-24.04
+2026-09-26T14:31:02.9222222Z ##[endgroup]
+2026-09-26T14:31:03.2222222Z ##[group]GITHUB_TOKEN Permissions
+2026-09-26T14:31:03.3222222Z Contents: read
+2026-09-26T14:31:03.4222222Z ##[endgroup]
+2026-09-26T14:31:04.2222222Z Prepare workflow directory
+2026-09-26T14:31:05.2222222Z Prepare all required actions
+2026-09-26T14:31:06.2222222Z ##[group]Run actions/checkout@v4
+2026-09-26T14:31:06.3222222Z with:
+2026-09-26T14:31:06.4222222Z   repository: copper-heron/tide-dial
+2026-09-26T14:31:06.5222222Z   clean: true
+2026-09-26T14:31:06.6222222Z ##[endgroup]
+2026-09-26T14:31:07.2222222Z Syncing repository: copper-heron/tide-dial
+2026-09-26T14:31:08.2222222Z Getting Git version info
+2026-09-26T14:31:09.2222222Z Checking out the ref
+2026-09-26T14:31:10.2222222Z ##[group]Run actions/setup-java@v4
+2026-09-26T14:31:10.3222222Z with:
+2026-09-26T14:31:10.4222222Z   distribution: temurin
+2026-09-26T14:31:10.5222222Z   java-version: 17
+2026-09-26T14:31:10.6222222Z ##[endgroup]
+2026-09-26T14:31:11.2222222Z ##[group]Run ./gradlew :app:lintPaidRelease --stacktrace
+2026-09-26T14:31:11.3222222Z ./gradlew :app:lintPaidRelease --stacktrace
+2026-09-26T14:31:11.4222222Z shell: /usr/bin/bash -e {0}
+2026-09-26T14:31:11.5222222Z ##[endgroup]
+2026-09-26T14:31:13.2222222Z Starting a Gradle Daemon (subsequent builds will be faster)
+2026-09-26T14:31:24.2222222Z > Task :app:preBuild UP-TO-DATE
+2026-09-26T14:31:25.2222222Z > Task :app:generatePaidReleaseResValues
+2026-09-26T14:31:26.2222222Z > Task :app:generatePaidReleaseResources
+2026-09-26T14:31:29.2222222Z > Task :app:packagePaidReleaseResources
+2026-09-26T14:31:30.2222222Z > Task :app:parsePaidReleaseLocalResources
+2026-09-26T14:31:38.2222222Z > Task :app:lintAnalyzePaidRelease
+2026-09-26T14:31:40.2222222Z > Task :app:lintReportPaidRelease
+2026-09-26T14:31:40.3222222Z Wrote HTML report to file:///home/runner/work/tide-dial/tide-dial/app/build/reports/lint-results-paidRelease.html
+2026-09-26T14:31:40.4222222Z > Task :app:lintPaidRelease FAILED
+2026-09-26T14:31:40.5222222Z Lint found 1 errors, 0 warnings. First failure:
+2026-09-26T14:31:40.6222222Z /home/runner/work/tide-dial/tide-dial/app/src/paid/res/values/strings.xml:31: Error: "berth_status" is not translated in "fr" (French) [MissingTranslation]
+2026-09-26T14:31:40.7222222Z     <string name="berth_status">Berth status</string>
+2026-09-26T14:31:40.8222222Z             ~~~~~~~~~~~~~~~~~~
+2026-09-26T14:31:40.9222222Z The baseline file was /home/runner/work/tide-dial/tide-dial/app/lint-baseline.xml
+2026-09-26T14:31:41.0222222Z FAILURE: Build failed with an exception.
+2026-09-26T14:31:41.1222222Z * What went wrong:
+2026-09-26T14:31:41.2222222Z Execution failed for task ':app:lintPaidRelease'.
+2026-09-26T14:31:41.3222222Z > Lint found errors in the project; aborting build.
+2026-09-26T14:31:41.4222222Z * Exception is:
+2026-09-26T14:31:41.5222222Z org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':app:lintPaidRelease'.
+2026-09-26T14:31:41.6222222Z 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:130)
+2026-09-26T14:31:41.7222222Z BUILD FAILED in 30s
+2026-09-26T14:31:41.8222222Z 27 actionable tasks: 27 executed
+2026-09-26T14:31:41.9222222Z ##[error]Process completed with exit code 1.
+2026-09-26T14:31:42.2222222Z Post job cleanup.
+2026-09-26T14:31:42.3222222Z Cleaning up orphan processes

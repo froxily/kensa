@@ -1,0 +1,69 @@
+2026-09-28T18:05:31.0012200Z Current runner version: '2.330.0'
+2026-09-28T18:05:31.0032200Z ##[group]Runner Image
+2026-09-28T18:05:31.0033200Z Image: ubuntu-24.04
+2026-09-28T18:05:31.0034200Z Version: 20260921.1.0
+2026-09-28T18:05:31.0035200Z ##[endgroup]
+2026-09-28T18:05:31.0052200Z Prepare workflow directory
+2026-09-28T18:05:31.3012200Z Download action repository 'actions/setup-python@v5'
+2026-09-28T18:05:31.6032200Z Complete job name: integration / python
+2026-09-28T18:05:31.7012200Z ##[group]Run actions/checkout@v4
+2026-09-28T18:05:31.7013200Z with:
+2026-09-28T18:05:31.7014200Z   repository: oriel-sundial/lichen-telemetry
+2026-09-28T18:05:31.7015200Z   fetch-depth: 1
+2026-09-28T18:05:31.7016200Z   persist-credentials: false
+2026-09-28T18:05:31.7017200Z ##[endgroup]
+2026-09-28T18:05:31.9402200Z Working directory is '/home/runner/work/lichen-telemetry/lichen-telemetry'
+2026-09-28T18:05:32.2312200Z [command]/usr/bin/git init /home/runner/work/lichen-telemetry/lichen-telemetry
+2026-09-28T18:05:33.5212200Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-09-28T18:05:33.6202200Z Switched to a new branch 'main'
+2026-09-28T18:05:33.7002200Z ##[group]Run actions/setup-python@v5
+2026-09-28T18:05:33.7003200Z with:
+2026-09-28T18:05:33.7004200Z   python-version: '3.13'
+2026-09-28T18:05:33.7005200Z   check-latest: false
+2026-09-28T18:05:33.7006200Z ##[endgroup]
+2026-09-28T18:05:34.1012200Z Successfully set up CPython (3.13.7)
+2026-09-28T18:05:34.1202200Z ##[group]Run python -m compileall -q src
+2026-09-28T18:05:34.1203200Z python -m compileall -q src
+2026-09-28T18:05:34.1204200Z shell: /usr/bin/bash -e {0}
+2026-09-28T18:05:34.1205200Z ##[endgroup]
+2026-09-28T18:05:34.3502200Z ##[group]Run uv --version
+2026-09-28T18:05:34.3503200Z uv --version
+2026-09-28T18:05:34.3504200Z shell: /usr/bin/bash -e {0}
+2026-09-28T18:05:34.3505200Z ##[endgroup]
+2026-09-28T18:05:34.3902200Z uv 0.8.22
+2026-09-28T18:05:34.4012200Z ##[group]Run python -m unittest discover -s checks
+2026-09-28T18:05:34.4013200Z python -m unittest discover -s checks
+2026-09-28T18:05:34.4014200Z shell: /usr/bin/bash -e {0}
+2026-09-28T18:05:34.4015200Z ##[endgroup]
+2026-09-28T18:05:34.4102200Z ..................
+2026-09-28T18:05:34.4112200Z ----------------------------------------------------------------------
+2026-09-28T18:05:34.4122200Z Ran 18 tests in 0.009s
+2026-09-28T18:05:34.4132200Z OK
+2026-09-28T18:05:34.4142200Z ##[group]Run git log -1 --format=%h
+2026-09-28T18:05:34.4143200Z git log -1 --format=%h
+2026-09-28T18:05:34.4144200Z python --version
+2026-09-28T18:05:34.4145200Z shell: /usr/bin/bash -e {0}
+2026-09-28T18:05:34.4146200Z ##[endgroup]
+2026-09-28T18:05:34.4202200Z b7e41fa
+2026-09-28T18:05:34.4302200Z Python 3.13.7
+2026-09-28T18:05:34.4412200Z ##[group]Run uv sync
+2026-09-28T18:05:34.4413200Z uv sync
+2026-09-28T18:05:34.4414200Z shell: /usr/bin/bash -e {0}
+2026-09-28T18:05:34.4415200Z env:
+2026-09-28T18:05:34.4416200Z   UV_CACHE_DIR: /home/runner/work/_temp/uv-9182
+2026-09-28T18:05:34.4417200Z   UV_PROJECT_ENVIRONMENT: /home/runner/work/_temp/venv-9182
+2026-09-28T18:05:34.4418200Z ##[endgroup]
+2026-09-28T18:05:34.5112200Z Using CPython 3.13.7 interpreter at: /opt/hostedtoolcache/Python/3.13.7/x64/bin/python3
+2026-09-28T18:05:34.5312200Z Creating virtual environment at: /home/runner/work/_temp/venv-9182
+2026-09-28T18:05:38.0242200Z   x No solution found when resolving dependencies:
+2026-09-28T18:05:38.0243200Z   `-> Because lichen-exporter==1.4.0 depends on sundial-codec<3 and
+2026-09-28T18:05:38.0244200Z       your project depends on sundial-codec>=3, we can conclude that
+2026-09-28T18:05:38.0245200Z       lichen-exporter==1.4.0 and your project are incompatible.
+2026-09-28T18:05:38.0246200Z       And because your project depends on lichen-exporter==1.4.0, we can
+2026-09-28T18:05:38.0247200Z       conclude that your project's requirements are unsatisfiable.
+2026-09-28T18:05:38.0412200Z ##[error]Process completed with exit code 1.
+2026-09-28T18:05:38.0912200Z Post job cleanup.
+2026-09-28T18:05:38.1812200Z [command]/usr/bin/git version
+2026-09-28T18:05:38.1882200Z git version 2.52.0
+2026-09-28T18:05:38.2212200Z Temporarily overriding HOME='/home/runner/work/_temp/4e8321' before making global git config changes
+2026-09-28T18:05:38.3212200Z Cleaning up orphan processes

@@ -1,0 +1,12 @@
+{
+  "id": "ht56-lichen-orrery",
+  "split": "test",
+  "ecosystem": "dart",
+  "repository": "cormorant-labs/lichen-orrery",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"dependency_build","title":"Path dependency blocks publishing","root_cause":"The package depends on local path package orrery_palette, which cannot be resolved by pub.dev. Publish that dependency and use a hosted version constraint.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"a","relation":"recurrence","category":"dependency_build","title":"Path dependency still blocks publishing","root_cause":"The package depends on local path package orrery_palette, which cannot be resolved by pub.dev. Publish that dependency and use a hosted version constraint.","differs_from_earlier":"A later release candidate runs on a different runner and resolves a different set of packages."},
+    {"id":"e3","file":"e3.log","cluster":"b","relation":"first","category":"dependency_build","title":"Package version already exists","root_cause":"The publish request attempts to upload lichen_orrery version 0.5.0, which already exists on pub.dev. Increment the package version before publishing.","differs_from_earlier":""},
+    {"id":"e4","file":"e4.log","cluster":"b","relation":"recurrence","category":"dependency_build","title":"Package version still exists","root_cause":"The publish request attempts to upload lichen_orrery version 0.5.0, which already exists on pub.dev. Increment the package version before publishing.","differs_from_earlier":"A later run uses a different runner and resolved dependency set, but attempts to publish the same version."}
+  ]
+}

@@ -1,0 +1,19 @@
+﻿{
+  "id": "t29-selkie-gradle",
+  "split": "test",
+  "comparability": "no_baseline",
+  "category": "workflow_path",
+  "culprit_kind": "none",
+  "difficulty": "medium",
+  "ecosystem": "java",
+  "title": "Build step points to a missing Gradle wrapper",
+  "root_cause": "The build step invokes a Gradle wrapper at a path that does not exist in the checked-out repository. There is no successful candidate run from which to identify a change that introduced the path.",
+  "culprit_paths": [],
+  "culprit_commit": null,
+  "unverified_factors": [],
+  "fix_keywords": ["gradlew", "path"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 55, "end_line": 60, "why": "The build command cannot find the wrapper at the configured path."},
+    {"path": "repo/.github/workflows/build.yml", "start_line": 14, "end_line": 14, "why": "The workflow specifies the missing wrapper path."}
+  ]
+}

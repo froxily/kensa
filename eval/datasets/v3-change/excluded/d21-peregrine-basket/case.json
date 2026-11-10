@@ -1,0 +1,19 @@
+{
+  "id": "d21-peregrine-basket",
+  "split": "dev",
+  "comparability": "partially_comparable",
+  "category": "test_regression",
+  "culprit_kind": "test",
+  "difficulty": "medium",
+  "ecosystem": "ruby",
+  "title": "Delivery threshold expectation fails at the boundary",
+  "root_cause": "The test changed its expected delivery fee at a subtotal of 50 from zero to seven. The basket still waives the fee at that boundary, so the changed assertion fails in an otherwise working test environment.",
+  "culprit_paths": ["test/basket_test.rb"],
+  "culprit_commit": "7e23a96d08c5b41f2a6098bd3c71e45f9a126bc4",
+  "unverified_factors": ["runner_image_unknown"],
+  "fix_keywords": ["assert_equal", "0"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 62, "end_line": 65, "why": "The boundary assertion expected seven but received zero."},
+    {"path": "repo/lib/basket.rb", "start_line": 3, "end_line": 4, "why": "The implementation waives the fee at a subtotal of 50."}
+  ]
+}

@@ -1,0 +1,47 @@
+2026-09-18T10:34:11.1100000Z Current runner version: '2.328.0'
+2026-09-18T10:34:11.1400000Z ##[group]Runner Image Provisioner
+2026-09-18T10:34:11.1700000Z Hosted Compute Agent
+2026-09-18T10:34:11.2000000Z ##[endgroup]
+2026-09-18T10:34:11.2300000Z ##[group]Operating System
+2026-09-18T10:34:11.2600000Z Ubuntu
+2026-09-18T10:34:11.2900000Z 22.04.5
+2026-09-18T10:34:11.3200000Z ##[endgroup]
+2026-09-18T10:34:11.3500000Z ##[group]Runner Image
+2026-09-18T10:34:11.3800000Z Image: ubuntu-22.04
+2026-09-18T10:34:11.4100000Z Version: 20260913.1.0
+2026-09-18T10:34:11.4400000Z ##[endgroup]
+2026-09-18T10:34:11.5700000Z Prepare workflow directory
+2026-09-18T10:34:11.7200000Z Prepare all required actions
+2026-09-18T10:34:12.4200000Z Getting action download info
+2026-09-18T10:34:13.5400000Z Complete job name: compile
+2026-09-18T10:34:13.7200000Z ##[group]Run actions/checkout@v4
+2026-09-18T10:34:13.7500000Z with:
+2026-09-18T10:34:13.7800000Z   repository: gannet-clockworks/escapement-ledger
+2026-09-18T10:34:13.8100000Z   fetch-depth: 1
+2026-09-18T10:34:13.8400000Z ##[endgroup]
+2026-09-18T10:34:14.4200000Z Syncing repository: gannet-clockworks/escapement-ledger
+2026-09-18T10:34:15.2200000Z Checking out the ref
+2026-09-18T10:34:15.4200000Z ##[group]Run actions/setup-java@v4
+2026-09-18T10:34:15.4500000Z with:
+2026-09-18T10:34:15.4800000Z   distribution: temurin
+2026-09-18T10:34:15.5100000Z   java-version: 17
+2026-09-18T10:34:15.5400000Z ##[endgroup]
+2026-09-18T10:34:16.1100000Z Java 17 was installed
+2026-09-18T10:34:16.3100000Z ##[group]Run sbt compile
+2026-09-18T10:34:16.3400000Z sbt compile
+2026-09-18T10:34:16.3700000Z shell: /usr/bin/bash -e {0}
+2026-09-18T10:34:16.4000000Z ##[endgroup]
+2026-09-18T10:34:18.9100000Z [info] welcome to sbt 1.10.2 (Eclipse Adoptium Java 17.0.16)
+2026-09-18T10:34:19.8100000Z [info] loading project definition from /home/runner/work/escapement-ledger/escapement-ledger/project
+2026-09-18T10:34:20.8200000Z [info] loading settings for project escapement-ledger from build.sbt...
+2026-09-18T10:34:21.9200000Z [info] set current project to escapement-ledger (in build file:/home/runner/work/escapement-ledger/escapement-ledger/)
+2026-09-18T10:34:23.0200000Z [info] compiling 19 Scala sources to /home/runner/work/escapement-ledger/escapement-ledger/target/scala-2.13/classes ...
+2026-09-18T10:34:26.1200000Z [error] /home/runner/work/escapement-ledger/escapement-ledger/src/main/scala/clockwork/ReconcileEscapement.scala:41:12: value sealBatch is not a member of clockwork.EscapementLedger
+2026-09-18T10:34:26.1400000Z [error]     ledger.sealBatch(batchId)
+2026-09-18T10:34:26.1600000Z [error]            ^
+2026-09-18T10:34:26.1800000Z [error] one error found
+2026-09-18T10:34:26.2000000Z [error] (Compile / compileIncremental) Compilation failed
+2026-09-18T10:34:26.2200000Z [error] Total time: 5 s, completed Sep 18, 2026, 10:34:26 AM
+2026-09-18T10:34:26.2500000Z ##[error]Process completed with exit code 1.
+2026-09-18T10:34:26.3500000Z Post job cleanup.
+2026-09-18T10:34:26.5500000Z Cleaning up orphan processes

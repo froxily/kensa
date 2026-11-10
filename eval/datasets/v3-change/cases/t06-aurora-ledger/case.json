@@ -1,0 +1,19 @@
+{
+  "id": "t06-aurora-ledger",
+  "split": "test",
+  "comparability": "comparable",
+  "category": "test_regression",
+  "culprit_kind": "source",
+  "difficulty": "medium",
+  "ecosystem": "python",
+  "title": "Credits increase the open ledger total",
+  "root_cause": "The open-entry calculation changed from summing signed amounts to summing their absolute values. Credits therefore increase the total instead of reducing it, causing the existing assertion to fail. Three later commits only expand documentation and configure test discovery.",
+  "culprit_paths": ["ledger_math.py"],
+  "culprit_commit": "b74d1e09c6f823a591e47d3b0a6c85f29e13b7d4",
+  "unverified_factors": [],
+  "fix_keywords": ["abs", "ledger_math.py"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 70, "end_line": 79, "why": "The signed credit produces 115 where the test expects 65."},
+    {"path": "repo/ledger_math.py", "start_line": 1, "end_line": 3, "why": "The calculation applies abs to each open amount."}
+  ]
+}

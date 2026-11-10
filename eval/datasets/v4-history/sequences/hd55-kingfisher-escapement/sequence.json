@@ -1,0 +1,12 @@
+{
+  "id": "hd55-kingfisher-escapement",
+  "split": "dev",
+  "ecosystem": "scala",
+  "repository": "gannet-clockworks/escapement-ledger",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"dependency_build","title":"Dispatch window type mismatch","root_cause":"The dispatch window decoder passes a String to DispatchWindow, which requires a FiniteDuration. The decoder must parse the duration before constructing the window.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"b","relation":"first","category":"dependency_build","title":"Missing ledger method","root_cause":"The reconciliation code calls a nonexistent sealBatch method on EscapementLedger. The call must be updated to the ledger's available API.","differs_from_earlier":""},
+    {"id":"e3","file":"e3.log","cluster":"a","relation":"recurrence","category":"dependency_build","title":"Dispatch window type mismatch","root_cause":"The dispatch window decoder passes a String to DispatchWindow, which requires a FiniteDuration. The decoder must parse the duration before constructing the window.","differs_from_earlier":"A later run compiles more sources on a newer runner; the decoder moved lines and unrelated build output changed."},
+    {"id":"e4","file":"e4.log","cluster":"c","relation":"lookalike","category":"dependency_build","title":"Retention period type mismatch","root_cause":"The retention policy decoder passes a String to RetentionPeriod, which requires a FiniteDuration. Its separate retention setting must be parsed before constructing the period.","differs_from_earlier":"Like e1, this is a String versus FiniteDuration compiler error, but it is in a different decoder and requires fixing the retention setting rather than the dispatch window."}
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "id": "t21-velvet-expiry", "split": "test", "comparability": "partially_comparable", "category": "test_regression", "culprit_kind": "test", "difficulty": "medium", "ecosystem": "kotlin", "title": "Expiry assertion expects an unclamped value",
+  "root_cause": "The test was changed to expect a negative result for an expired value. The implementation clamps negative values to zero, so the new assertion fails. The earlier runner image and baseline log are unavailable.",
+  "culprit_paths": ["src/test/kotlin/ExpiryTest.kt"], "culprit_commit": "af309d627b81ce450a6f193bd274e80c59a1d362", "unverified_factors": ["baseline_log_unavailable", "runner_image_unknown"], "fix_keywords": ["assertEquals", "0"],
+  "relevant_evidence": [{"path": "log", "start_line": 59, "end_line": 63, "why": "The expiry test expected negative one but received zero."}, {"path": "repo/src/main/kotlin/Expiry.kt", "start_line": 1, "end_line": 1, "why": "The function clamps negative inputs to zero."}]
+}

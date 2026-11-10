@@ -1,0 +1,60 @@
+2026-11-08T09:32:03.1023400Z Current runner version: '2.329.0'
+2026-11-08T09:32:03.1130200Z ##[group]Runner Image Provisioner
+2026-11-08T09:32:03.1131000Z Hosted Compute Agent
+2026-11-08T09:32:03.1131800Z Version: 20261028.400
+2026-11-08T09:32:03.1132400Z ##[endgroup]
+2026-11-08T09:32:03.1133000Z ##[group]Operating System
+2026-11-08T09:32:03.1133600Z Ubuntu
+2026-11-08T09:32:03.1134200Z 24.04.3
+2026-11-08T09:32:03.1134800Z LTS
+2026-11-08T09:32:03.1135400Z ##[endgroup]
+2026-11-08T09:32:03.1136000Z ##[group]Runner Image
+2026-11-08T09:32:03.1136600Z Image: ubuntu-24.04
+2026-11-08T09:32:03.1137200Z Version: 20261026.1
+2026-11-08T09:32:03.1137800Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261026.1/images/ubuntu/Ubuntu2404-Readme.md
+2026-11-08T09:32:03.1138400Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261026.1
+2026-11-08T09:32:03.1139000Z ##[endgroup]
+2026-11-08T09:32:03.1140000Z ##[group]GITHUB_TOKEN Permissions
+2026-11-08T09:32:03.1141000Z Contents: read
+2026-11-08T09:32:03.1142000Z Metadata: read
+2026-11-08T09:32:03.1143000Z Packages: write
+2026-11-08T09:32:03.1144000Z ##[endgroup]
+2026-11-08T09:32:03.1150000Z Prepare workflow directory
+2026-11-08T09:32:03.1300000Z Prepare all required actions
+2026-11-08T09:32:04.6300000Z Complete job name: publish
+2026-11-08T09:32:04.8000000Z ##[group]Run actions/checkout@v4
+2026-11-08T09:32:04.8200000Z   repository: vesperfield/cicada
+2026-11-08T09:32:04.8400000Z ##[endgroup]
+2026-11-08T09:32:05.0100000Z Syncing repository: vesperfield/cicada
+2026-11-08T09:32:06.2100000Z Checking out the ref
+2026-11-08T09:32:06.3200000Z 4b8e2a6d9f301c57e842ba6d71f0c9e35a28d614
+2026-11-08T09:32:06.5000000Z ##[group]Run actions/setup-go@v5
+2026-11-08T09:32:06.5200000Z   go-version: 1.23
+2026-11-08T09:32:06.5400000Z ##[endgroup]
+2026-11-08T09:32:07.1000000Z Found in cache @ /opt/hostedtoolcache/go/1.23.12/x64
+2026-11-08T09:32:07.2000000Z go version go1.23.12 linux/amd64
+2026-11-08T09:32:07.3000000Z ##[group]Run go test ./...
+2026-11-08T09:32:07.3200000Z shell: /usr/bin/bash -e {0}
+2026-11-08T09:32:07.3300000Z ##[endgroup]
+2026-11-08T09:32:12.1000000Z ?   	example.org/vesperfield/cicada/cmd/cicada	[no test files]
+2026-11-08T09:32:12.3000000Z ##[group]Run docker/login-action@v3
+2026-11-08T09:32:12.3200000Z   registry: ghcr.io
+2026-11-08T09:32:12.3300000Z   username: vesperfield
+2026-11-08T09:32:12.3400000Z   password: ***
+2026-11-08T09:32:12.3600000Z ##[endgroup]
+2026-11-08T09:32:12.5000000Z Logging into ghcr.io...
+2026-11-08T09:32:12.9000000Z Login Succeeded!
+2026-11-08T09:32:13.0000000Z ##[group]Run docker build -t ghcr.io/vesperfield/cicada:ci .
+2026-11-08T09:32:13.0300000Z ##[endgroup]
+2026-11-08T09:32:13.5000000Z #1 [internal] load build definition from Dockerfile
+2026-11-08T09:32:17.3000000Z #10 exporting to image
+2026-11-08T09:32:17.4000000Z #10 naming to ghcr.io/vesperfield/cicada:ci done
+2026-11-08T09:32:17.4100000Z #10 DONE 0.1s
+2026-11-08T09:32:17.6000000Z ##[group]Run docker push ghcr.io/vesperfield/cicada:ci
+2026-11-08T09:32:17.6300000Z ##[endgroup]
+2026-11-08T09:32:17.8000000Z The push refers to repository [ghcr.io/vesperfield/cicada]
+2026-11-08T09:32:18.8000000Z ci: digest: sha256:ca6a9df5c324e71a8b396b2c0df71386e4ac692185f3bda09e25cf18e4b7d23a size: 528
+2026-11-08T09:32:19.0000000Z Post job cleanup.
+2026-11-08T09:32:19.1000000Z Logging out of ghcr.io
+2026-11-08T09:32:19.2000000Z Post job cleanup.
+2026-11-08T09:32:19.3000000Z Cleaning up orphan processes

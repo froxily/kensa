@@ -1,0 +1,23 @@
+﻿{
+  "comparisons": {
+    "9f18a6c4b50d372e8a417cb0d2e69f351b8c7a24...5c7e18a02db984f3a618ce75b2d049afc13e6b70": {
+      "status": "ahead", "merge_base": "9f18a6c4b50d372e8a417cb0d2e69f351b8c7a24", "truncated": false,
+      "commits": [
+        {"sha": "e12a6b9d478f0c253a1e79bd04cf3628ab651e90", "message": "Rename verification workflow and adjust capacity", "date": "2026-10-13T09:48:00Z", "files": [
+          {"path": ".github/workflows/verify-quillon.yml", "previous_filename": ".github/workflows/quillon-ci.yml", "status": "renamed", "additions": 0, "deletions": 0, "patch": ""},
+          {"path": "measure/capacity.go", "status": "modified", "additions": 1, "deletions": 1, "patch": "@@ -2,4 +2,4 @@\n \n func HasRoom(used, capacity int) bool {\n-    return used < capacity\n+    return used <= capacity\n }"}
+        ]},
+        {"sha": "5c7e18a02db984f3a618ce75b2d049afc13e6b70", "message": "Tidy package description", "date": "2026-10-13T10:18:00Z", "files": [{"path": "README.md", "status": "modified", "additions": 1, "deletions": 1, "patch": "@@ -1,2 +1,2 @@\n # Quillon\n-A small capacity helper.\n+Capacity helpers for Go."}]}
+      ]
+    },
+    "3be270a59d84f106c9a2e3157bf048da6c1e9327...5c7e18a02db984f3a618ce75b2d049afc13e6b70": {"status": "ahead", "merge_base": "3be270a59d84f106c9a2e3157bf048da6c1e9327", "truncated": false, "commits": [
+      {"sha": "9f18a6c4b50d372e8a417cb0d2e69f351b8c7a24", "message": "Clarify package documentation", "date": "2026-10-12T16:08:00Z", "files": [{"path": "README.md", "status": "modified", "additions": 1, "deletions": 1, "patch": "@@ -1,2 +1,2 @@\n # Quillon\n-Go capacity utilities.\n+A small capacity helper."}]},
+      {"sha": "e12a6b9d478f0c253a1e79bd04cf3628ab651e90", "message": "Rename verification workflow and adjust capacity", "date": "2026-10-13T09:48:00Z", "files": [
+        {"path": ".github/workflows/verify-quillon.yml", "previous_filename": ".github/workflows/quillon-ci.yml", "status": "renamed", "additions": 0, "deletions": 0, "patch": ""},
+        {"path": "measure/capacity.go", "status": "modified", "additions": 1, "deletions": 1, "patch": "@@ -2,4 +2,4 @@\n \n func HasRoom(used, capacity int) bool {\n-    return used < capacity\n+    return used <= capacity\n }"}
+      ]},
+      {"sha": "5c7e18a02db984f3a618ce75b2d049afc13e6b70", "message": "Tidy package description", "date": "2026-10-13T10:18:00Z", "files": [{"path": "README.md", "status": "modified", "additions": 1, "deletions": 1, "patch": "@@ -1,2 +1,2 @@\n # Quillon\n-A small capacity helper.\n+Capacity helpers for Go."}]}
+    ]}
+  },
+  "workflow_blobs": {"5c7e18a02db984f3a618ce75b2d049afc13e6b70": "62b31cd8a7f095e4d13bc6a489f027eb534ad168", "9f18a6c4b50d372e8a417cb0d2e69f351b8c7a24": "62b31cd8a7f095e4d13bc6a489f027eb534ad168", "3be270a59d84f106c9a2e3157bf048da6c1e9327": "62b31cd8a7f095e4d13bc6a489f027eb534ad168"}
+}

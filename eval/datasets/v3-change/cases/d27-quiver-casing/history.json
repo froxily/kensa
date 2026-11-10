@@ -1,0 +1,21 @@
+{
+  "comparisons": {
+    "a4d7e19c50bf2683d61a9e04c2f735b8e601da92...c83f12a6bd490e57f263ad9081be745c6d39f021": {
+      "status": "ahead", "merge_base": "a4d7e19c50bf2683d61a9e04c2f735b8e601da92", "truncated": false,
+      "commits": [
+        {"sha": "9e51cb47a208d63f4e7a591bc0d2863f1a75ed94", "message": "Move verification to Linux", "date": "2026-10-30T09:08:00Z", "files": [{"path": ".github/workflows/verify.yml", "status": "modified", "additions": 1, "deletions": 1, "patch": "@@ -3,6 +3,6 @@\n jobs:\n   build:\n-    runs-on: windows-2022\n+    runs-on: ubuntu-24.04\n     steps:\n       - uses: actions/checkout@v4\n       - uses: actions/setup-dotnet@v4"}]},
+        {"sha": "c83f12a6bd490e57f263ad9081be745c6d39f021", "message": "Clarify SDK requirement", "date": "2026-10-30T10:20:00Z", "files": [{"path": "docs/guide.md", "status": "modified", "additions": 1, "deletions": 1, "patch": "@@ -1,3 +1,3 @@\n # Quiver\n \n-Build the project with the .NET SDK.\n+Build the project with the .NET 8 SDK."}]}
+      ]
+    },
+    "7bd28c91f4e6a305d9c178e42a6f0b3d51e8c924...c83f12a6bd490e57f263ad9081be745c6d39f021": {
+      "status": "ahead", "merge_base": "7bd28c91f4e6a305d9c178e42a6f0b3d51e8c924", "truncated": false,
+      "commits": [
+        {"sha": "a4d7e19c50bf2683d61a9e04c2f735b8e601da92", "message": "Update greeting", "date": "2026-10-29T16:10:00Z", "files": [{"path": "src/quiver/Program.cs", "status": "modified", "additions": 1, "deletions": 1, "patch": "@@ -1 +1 @@\n-System.Console.WriteLine(\"Ready\");\n+System.Console.WriteLine(\"Quiver ready\");"}]},
+        {"sha": "9e51cb47a208d63f4e7a591bc0d2863f1a75ed94", "message": "Move verification to Linux", "date": "2026-10-30T09:08:00Z", "files": [{"path": ".github/workflows/verify.yml", "status": "modified", "additions": 1, "deletions": 1, "patch": "@@ -3,6 +3,6 @@\n jobs:\n   build:\n-    runs-on: windows-2022\n+    runs-on: ubuntu-24.04\n     steps:\n       - uses: actions/checkout@v4\n       - uses: actions/setup-dotnet@v4"}]},
+        {"sha": "c83f12a6bd490e57f263ad9081be745c6d39f021", "message": "Clarify SDK requirement", "date": "2026-10-30T10:20:00Z", "files": [{"path": "docs/guide.md", "status": "modified", "additions": 1, "deletions": 1, "patch": "@@ -1,3 +1,3 @@\n # Quiver\n \n-Build the project with the .NET SDK.\n+Build the project with the .NET 8 SDK."}]}
+      ]
+    }
+  },
+  "workflow_blobs": {"c83f12a6bd490e57f263ad9081be745c6d39f021": "f823d1940acb67e251d3f98a06b4e725c91a3d68", "a4d7e19c50bf2683d61a9e04c2f735b8e601da92": "d60b12c43f78a9e051d6c34b2a7f8095e1c6d342", "7bd28c91f4e6a305d9c178e42a6f0b3d51e8c924": "d60b12c43f78a9e051d6c34b2a7f8095e1c6d342"}
+}
+

@@ -1,0 +1,8 @@
+{
+  "name": "impala-manifest",
+  "version": "1.0.0",
+  "description": "Manifest validation tooling",
+  "scripts": {
+    "validate": "node scripts/check-manifest.js"
+  }
+}

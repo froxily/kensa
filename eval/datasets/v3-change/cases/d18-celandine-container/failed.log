@@ -1,0 +1,84 @@
+2026-10-28T10:10:02.1100000Z Current runner version: '2.329.0'
+2026-10-28T10:10:02.1200000Z ##[group]Runner Image Provisioner
+2026-10-28T10:10:02.1300000Z Hosted Compute Agent
+2026-10-28T10:10:02.1400000Z Version: 20261020.1
+2026-10-28T10:10:02.1500000Z ##[endgroup]
+2026-10-28T10:10:02.1600000Z ##[group]Operating System
+2026-10-28T10:10:02.1700000Z Ubuntu
+2026-10-28T10:10:02.1800000Z 24.04.3
+2026-10-28T10:10:02.1900000Z LTS
+2026-10-28T10:10:02.2000000Z ##[endgroup]
+2026-10-28T10:10:02.2100000Z ##[group]Runner Image
+2026-10-28T10:10:02.2200000Z Image: ubuntu-24.04
+2026-10-28T10:10:02.2300000Z Version: 20261026.1
+2026-10-28T10:10:02.2400000Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261026.1/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-28T10:10:02.2500000Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261026.1
+2026-10-28T10:10:02.2600000Z ##[endgroup]
+2026-10-28T10:10:02.2700000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-28T10:10:02.2800000Z Contents: read
+2026-10-28T10:10:02.2900000Z Metadata: read
+2026-10-28T10:10:02.3000000Z ##[endgroup]
+2026-10-28T10:10:02.3100000Z Secret source: Actions
+2026-10-28T10:10:02.3200000Z Prepare workflow directory
+2026-10-28T10:10:02.3300000Z Prepare all required actions
+2026-10-28T10:10:02.3400000Z Getting action download info
+2026-10-28T10:10:03.0100000Z Download action repository 'actions/checkout@v4'
+2026-10-28T10:10:03.1100000Z Complete job name: image
+2026-10-28T10:10:03.2100000Z ##[group]Run actions/checkout@v4
+2026-10-28T10:10:03.2200000Z with:
+2026-10-28T10:10:03.2300000Z   repository: reedworks/celandine
+2026-10-28T10:10:03.2400000Z   clean: true
+2026-10-28T10:10:03.2500000Z   fetch-depth: 1
+2026-10-28T10:10:03.2600000Z ##[endgroup]
+2026-10-28T10:10:03.3100000Z Syncing repository: reedworks/celandine
+2026-10-28T10:10:03.3200000Z ##[group]Getting Git version info
+2026-10-28T10:10:03.3300000Z [command]/usr/bin/git version
+2026-10-28T10:10:03.3400000Z git version 2.51.1
+2026-10-28T10:10:03.3500000Z ##[endgroup]
+2026-10-28T10:10:03.3600000Z Temporarily overriding HOME before making global git config changes
+2026-10-28T10:10:03.3700000Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-28T10:10:03.3800000Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/celandine/celandine
+2026-10-28T10:10:03.3900000Z Deleting the contents of '/home/runner/work/celandine/celandine'
+2026-10-28T10:10:03.4000000Z ##[group]Initializing the repository
+2026-10-28T10:10:03.4100000Z [command]/usr/bin/git init /home/runner/work/celandine/celandine
+2026-10-28T10:10:03.4200000Z Initialized empty Git repository in /home/runner/work/celandine/celandine/.git/
+2026-10-28T10:10:03.4300000Z ##[endgroup]
+2026-10-28T10:10:03.4400000Z ##[group]Fetching the repository
+2026-10-28T10:10:04.0100000Z [command]/usr/bin/git fetch --no-tags --prune --depth=1 origin +b8c731e2d54a09f6c13e892a7d04b5f96e21c8a3:refs/remotes/origin/main
+2026-10-28T10:10:04.1100000Z From https://github.com/reedworks/celandine
+2026-10-28T10:10:04.1200000Z  * [new ref]         b8c731e2d54a09f6c13e892a7d04b5f96e21c8a3 -> origin/main
+2026-10-28T10:10:04.1300000Z ##[endgroup]
+2026-10-28T10:10:04.1400000Z ##[group]Checking out the ref
+2026-10-28T10:10:04.1500000Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-10-28T10:10:04.1600000Z Switched to a new branch 'main'
+2026-10-28T10:10:04.1700000Z ##[endgroup]
+2026-10-28T10:10:04.1800000Z [command]/usr/bin/git log -1 --format=%H
+2026-10-28T10:10:04.1900000Z b8c731e2d54a09f6c13e892a7d04b5f96e21c8a3
+2026-10-28T10:10:04.2000000Z ##[group]Run docker build --progress=plain -t celandine:ci .
+2026-10-28T10:10:04.2100000Z docker build --progress=plain -t celandine:ci .
+2026-10-28T10:10:04.2200000Z shell: /usr/bin/bash -e {0}
+2026-10-28T10:10:04.2300000Z ##[endgroup]
+2026-10-28T10:10:04.3100000Z #0 building with "default" instance using docker driver
+2026-10-28T10:10:04.3200000Z #1 [internal] load build definition from Dockerfile
+2026-10-28T10:10:04.3300000Z #1 transferring dockerfile: 327B done
+2026-10-28T10:10:04.3400000Z #1 DONE 0.0s
+2026-10-28T10:10:04.3500000Z #2 [internal] load metadata for docker.io/library/debian:bookworm-slim-celandine
+2026-10-28T10:10:05.3600000Z #2 ERROR: docker.io/library/debian:bookworm-slim-celandine: not found
+2026-10-28T10:10:05.3700000Z #3 [internal] load metadata for docker.io/library/rust:1.81-bookworm
+2026-10-28T10:10:05.3800000Z #3 CANCELED
+2026-10-28T10:10:05.3900000Z ------
+2026-10-28T10:10:05.4000000Z  > [internal] load metadata for docker.io/library/debian:bookworm-slim-celandine:
+2026-10-28T10:10:05.4100000Z ------
+2026-10-28T10:10:05.4200000Z Dockerfile:6
+2026-10-28T10:10:05.4300000Z --------------------
+2026-10-28T10:10:05.4400000Z    4 |     COPY src ./src
+2026-10-28T10:10:05.4500000Z    5 |     RUN cargo build --release --locked
+2026-10-28T10:10:05.4600000Z    6 | >>> FROM debian:bookworm-slim-celandine
+2026-10-28T10:10:05.4700000Z    7 |     COPY --from=build /work/target/release/celandine /usr/local/bin/celandine
+2026-10-28T10:10:05.4800000Z --------------------
+2026-10-28T10:10:05.4900000Z ERROR: failed to build: failed to solve: debian:bookworm-slim-celandine: failed to resolve source metadata for docker.io/library/debian:bookworm-slim-celandine: not found
+2026-10-28T10:10:05.5000000Z ##[error]Process completed with exit code 1.
+2026-10-28T10:10:05.5100000Z Post job cleanup.
+2026-10-28T10:10:05.5200000Z [command]/usr/bin/git version
+2026-10-28T10:10:05.5300000Z git version 2.51.1
+2026-10-28T10:10:05.5400000Z Cleaning up orphan processes

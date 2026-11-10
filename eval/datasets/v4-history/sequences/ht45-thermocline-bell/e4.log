@@ -1,0 +1,54 @@
+2026-09-24T18:45:20.0100000Z Current runner version: '2.329.0'
+2026-09-24T18:45:20.0200000Z ##[group]Runner Image
+2026-09-24T18:45:20.0300000Z Image: ubuntu-22.04
+2026-09-24T18:45:20.0400000Z Version: 20260914.1.0
+2026-09-24T18:45:20.0500000Z ##[endgroup]
+2026-09-24T18:45:20.0600000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-24T18:45:20.0700000Z Contents: read
+2026-09-24T18:45:20.0800000Z Metadata: read
+2026-09-24T18:45:20.0900000Z ##[endgroup]
+2026-09-24T18:45:20.1000000Z Prepare workflow directory
+2026-09-24T18:45:20.3000000Z Prepare all required actions
+2026-09-24T18:45:20.7000000Z Getting action download info
+2026-09-24T18:45:21.3000000Z Download action repository 'actions/checkout@v4'
+2026-09-24T18:45:21.9000000Z Complete job name: release-build
+2026-09-24T18:45:22.0000000Z ##[group]Run actions/checkout@v4
+2026-09-24T18:45:22.0100000Z with:
+2026-09-24T18:45:22.0200000Z   repository: isobar-workshop/thermocline-bell
+2026-09-24T18:45:22.0300000Z   clean: true
+2026-09-24T18:45:22.0400000Z ##[endgroup]
+2026-09-24T18:45:22.3000000Z Syncing repository: isobar-workshop/thermocline-bell
+2026-09-24T18:45:22.7000000Z Initializing the repository
+2026-09-24T18:45:23.2000000Z Fetching the repository
+2026-09-24T18:45:23.8000000Z Checking out the ref
+2026-09-24T18:45:24.0000000Z ##[group]Run cmake -S . -B out/release -DCMAKE_BUILD_TYPE=Release
+2026-09-24T18:45:24.0100000Z cmake -S . -B out/release -DCMAKE_BUILD_TYPE=Release
+2026-09-24T18:45:24.0200000Z cmake --build out/release --parallel 4 --verbose
+2026-09-24T18:45:24.0300000Z shell: /usr/bin/bash -e {0}
+2026-09-24T18:45:24.0400000Z ##[endgroup]
+2026-09-24T18:45:24.4000000Z -- The CXX compiler identification is GNU 11.4.0
+2026-09-24T18:45:24.8000000Z -- Detecting CXX compiler ABI info - done
+2026-09-24T18:45:25.1000000Z -- Configuring done
+2026-09-24T18:45:25.2000000Z -- Generating done
+2026-09-24T18:45:25.2100000Z -- Build files have been written to: /home/runner/work/thermocline-bell/thermocline-bell/out/release
+2026-09-24T18:45:25.5000000Z [ 20%] Building CXX object CMakeFiles/sounding_core.dir/src/profile.cpp.o
+2026-09-24T18:45:25.5100000Z [ 40%] Building CXX object CMakeFiles/formatting.dir/src/format.cpp.o
+2026-09-24T18:45:26.4000000Z [ 60%] Linking CXX static library libformatting.a
+2026-09-24T18:45:26.5000000Z [ 60%] Built target formatting
+2026-09-24T18:45:26.6000000Z [ 80%] Linking CXX static library libsounding_core.a
+2026-09-24T18:45:26.7000000Z [ 80%] Built target sounding_core
+2026-09-24T18:45:26.8000000Z [ 90%] Building CXX object CMakeFiles/soundings.dir/src/main.cpp.o
+2026-09-24T18:45:27.6000000Z [100%] Linking CXX executable soundings
+2026-09-24T18:45:27.6100000Z /usr/bin/cmake -E cmake_link_script CMakeFiles/soundings.dir/link.txt --verbose=1
+2026-09-24T18:45:27.6200000Z /usr/bin/c++ -O3 -DNDEBUG CMakeFiles/soundings.dir/src/main.cpp.o -o soundings  libsounding_core.a libformatting.a
+2026-09-24T18:45:27.7000000Z /usr/bin/ld: CMakeFiles/soundings.dir/src/main.cpp.o: in function `main':
+2026-09-24T18:45:27.7100000Z main.cpp:(.text.startup+0x104): undefined reference to `isobar::interpolate_depth(double, double, double)'
+2026-09-24T18:45:27.7200000Z collect2: error: ld returned 1 exit status
+2026-09-24T18:45:27.7300000Z gmake[2]: *** [CMakeFiles/soundings.dir/build.make:101: soundings] Error 1
+2026-09-24T18:45:27.7400000Z gmake[1]: *** [CMakeFiles/Makefile2:142: CMakeFiles/soundings.dir/all] Error 2
+2026-09-24T18:45:27.7500000Z gmake: *** [Makefile:91: all] Error 2
+2026-09-24T18:45:27.8000000Z ##[error]Process completed with exit code 2.
+2026-09-24T18:45:27.9000000Z Post job cleanup.
+2026-09-24T18:45:28.0000000Z [command]/usr/bin/git version
+2026-09-24T18:45:28.0100000Z git version 2.43.0
+2026-09-24T18:45:28.1000000Z Cleaning up orphan processes

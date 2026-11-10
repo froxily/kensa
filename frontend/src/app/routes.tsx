@@ -1,3 +1,4 @@
+import { AnalyticsPage } from "../pages/AnalyticsPage";
 import type { RouteObject } from "react-router";
 
 import { InvestigationPage } from "../pages/InvestigationPage";
@@ -12,6 +13,7 @@ export const routes: RouteObject[] = [
     element: <AppShell />,
     children: [
       { index: true, element: <OverviewPage /> },
+      { path: "analytics", element: <AnalyticsPage /> },
       { path: "investigations/new", element: <NewInvestigationPage /> },
       { path: "investigations/:id", element: <InvestigationPage /> },
       { path: "*", element: <NotFoundPage /> },

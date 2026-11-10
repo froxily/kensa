@@ -1,0 +1,48 @@
+2026-09-02T07:10:00.0000000Z Current runner version: '2.328.0'
+2026-09-02T07:10:00.1000000Z Runner name: 'hosted-21'
+2026-09-02T07:10:00.2000000Z ##[group]Operating System
+2026-09-02T07:10:00.3000000Z Ubuntu
+2026-09-02T07:10:00.4000000Z 22.04.5
+2026-09-02T07:10:00.5000000Z ##[endgroup]
+2026-09-02T07:10:00.6000000Z ##[group]Runner Image
+2026-09-02T07:10:00.7000000Z Image: ubuntu-22.04
+2026-09-02T07:10:00.8000000Z Version: 20260824.1
+2026-09-02T07:10:00.9000000Z ##[endgroup]
+2026-09-02T07:10:01.0000000Z Prepare workflow directory
+2026-09-02T07:10:01.1000000Z Prepare all required actions
+2026-09-02T07:10:01.2000000Z Download action repository 'actions/checkout@v4'
+2026-09-02T07:10:01.3000000Z Complete job name: attest
+2026-09-02T07:10:02.0000000Z ##[group]Run actions/checkout@v4
+2026-09-02T07:10:02.1000000Z with:
+2026-09-02T07:10:02.2000000Z   repository: willow-works/attest-gate
+2026-09-02T07:10:02.3000000Z   ref: refs/pull/42/merge
+2026-09-02T07:10:02.4000000Z ##[endgroup]
+2026-09-02T07:10:03.0000000Z Syncing repository: willow-works/attest-gate
+2026-09-02T07:10:03.1000000Z [command]/usr/bin/git version
+2026-09-02T07:10:03.2000000Z git version 2.47.3
+2026-09-02T07:10:04.0000000Z Fetching the repository
+2026-09-02T07:10:05.0000000Z Checking out the ref
+2026-09-02T07:10:05.2000000Z ##[group]Run actions/setup-go@v5
+2026-09-02T07:10:05.3000000Z with:
+2026-09-02T07:10:05.4000000Z   go-version: '1.24'
+2026-09-02T07:10:05.5000000Z ##[endgroup]
+2026-09-02T07:10:06.0000000Z go version go1.24.6 linux/amd64
+2026-09-02T07:10:06.5000000Z ##[group]Run go test ./...
+2026-09-02T07:10:06.6000000Z go test ./...
+2026-09-02T07:10:06.7000000Z shell: /usr/bin/bash -e {0}
+2026-09-02T07:10:06.8000000Z ##[endgroup]
+2026-09-02T07:10:09.0000000Z ok  willow-works/attest-gate/internal/policy  0.019s
+2026-09-02T07:10:09.0500000Z [command]/usr/bin/grep WILLOW_SIGNING_KEY .github/workflows/attest.yml
+2026-09-02T07:10:09.0600000Z       WILLOW_SIGNING_KEY: ${{ secrets.WILLOW_SIGNING_KEY }}
+2026-09-02T07:10:09.1000000Z ##[group]Run go run ./cmd/attest
+2026-09-02T07:10:09.2000000Z go run ./cmd/attest
+2026-09-02T07:10:09.3000000Z env:
+2026-09-02T07:10:09.4000000Z   WILLOW_SIGNING_KEY: 
+2026-09-02T07:10:09.5000000Z   GITHUB_EVENT_NAME: pull_request
+2026-09-02T07:10:09.6000000Z   PR_HEAD_REPOSITORY: contributor-ash/attest-gate
+2026-09-02T07:10:09.7000000Z ##[endgroup]
+2026-09-02T07:10:10.0000000Z attest: WILLOW_SIGNING_KEY is required
+2026-09-02T07:10:10.1000000Z exit status 1
+2026-09-02T07:10:10.2000000Z ##[error]Process completed with exit code 1.
+2026-09-02T07:10:10.3000000Z Post job cleanup.
+2026-09-02T07:10:10.4000000Z Cleaning up orphan processes

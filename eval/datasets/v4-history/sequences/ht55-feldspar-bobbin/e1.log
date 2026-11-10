@@ -1,0 +1,41 @@
+2026-09-02T09:14:01.1034121Z Current runner version: '2.328.0'
+2026-09-02T09:14:01.1145222Z ##[group]Runner Image
+2026-09-02T09:14:01.1147821Z Image: ubuntu-24.04
+2026-09-02T09:14:01.1150110Z Version: 20260824.1.0
+2026-09-02T09:14:01.1152891Z ##[endgroup]
+2026-09-02T09:14:01.1709910Z Prepare workflow directory
+2026-09-02T09:14:01.2073910Z Prepare all required actions
+2026-09-02T09:14:01.4172000Z Download action repository 'actions/checkout@v4'
+2026-09-02T09:14:01.6924100Z Complete job name: clojure-test
+2026-09-02T09:14:01.7100210Z ##[group]Run actions/checkout@v4
+2026-09-02T09:14:01.7101510Z with:
+2026-09-02T09:14:01.7102820Z   repository: feldspar-bobbin/spindle-mosaic
+2026-09-02T09:14:01.7104130Z   clean: true
+2026-09-02T09:14:01.7105990Z ##[endgroup]
+2026-09-02T09:14:01.8167330Z Syncing repository: feldspar-bobbin/spindle-mosaic
+2026-09-02T09:14:01.9277750Z Working directory is '/home/runner/work/spindle-mosaic/spindle-mosaic'
+2026-09-02T09:14:02.1381120Z [command]/usr/bin/git init /home/runner/work/spindle-mosaic/spindle-mosaic
+2026-09-02T09:14:02.2013140Z Initialized empty Git repository in /home/runner/work/spindle-mosaic/spindle-mosaic/.git/
+2026-09-02T09:14:02.5098180Z Fetching the repository
+2026-09-02T09:14:03.1354210Z Checking out the ref
+2026-09-02T09:14:03.2674000Z ##[group]Run clojure -M:test
+2026-09-02T09:14:03.2676010Z clojure -M:test
+2026-09-02T09:14:03.2690060Z shell: /usr/bin/bash -e {0}
+2026-09-02T09:14:03.2692010Z ##[endgroup]
+2026-09-02T09:14:05.4251330Z Testing mosaic.palette-test
+2026-09-02T09:14:05.4291040Z 
+2026-09-02T09:14:05.4322100Z Testing mosaic.warp-test
+2026-09-02T09:14:05.4433100Z 
+2026-09-02T09:14:05.4437010Z FAIL in (expands-repeated-warp) (warp_test.clj:27)
+2026-09-02T09:14:05.4439210Z expected: (= [:indigo :indigo :chalk] (expand-warp [:indigo :indigo :chalk]))
+2026-09-02T09:14:05.4441200Z   actual: (not (= [:indigo :indigo :chalk] [:indigo :chalk]))
+2026-09-02T09:14:05.4490040Z 
+2026-09-02T09:14:05.4494410Z Testing mosaic.weft-test
+2026-09-02T09:14:05.4610020Z 
+2026-09-02T09:14:05.4612050Z Ran 18 tests containing 43 assertions.
+2026-09-02T09:14:05.4613990Z 1 failures, 0 errors.
+2026-09-02T09:14:05.5190010Z ##[error]Process completed with exit code 1.
+2026-09-02T09:14:05.5292020Z Post job cleanup.
+2026-09-02T09:14:05.5832100Z [command]/usr/bin/git version
+2026-09-02T09:14:05.5933210Z git version 2.51.0
+2026-09-02T09:14:05.6975110Z Cleaning up orphan processes

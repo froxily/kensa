@@ -1,0 +1,12 @@
+{
+  "id": "hd54-cinnabar-lock",
+  "split": "dev",
+  "ecosystem": "postgres and mysql service containers",
+  "repository": "tamarisk-labs/cinnabar-lock",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"docker","title":"PostgreSQL health check probes the wrong port","root_cause":"The PostgreSQL service health command probes port 5544 although the server listens on 5432. Change the health check to use the server port.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"b","relation":"lookalike","category":"docker","title":"PostgreSQL health check probes the wrong address","root_cause":"The PostgreSQL service health command connects to 127.0.0.2 while the server only listens on 127.0.0.1. Change the health check host to the listening address.","differs_from_earlier":"Like e1, PostgreSQL never becomes healthy, but the host address is wrong rather than the port."},
+    {"id":"e3","file":"e3.log","cluster":"c","relation":"lookalike","category":"docker","title":"MySQL health check probes the wrong port","root_cause":"The MySQL service health command probes port 3307 while mysqld listens on 3306. Change the MySQL health check to use port 3306.","differs_from_earlier":"Like e1, a database container fails its readiness check, but this is the MySQL service and its own port setting."},
+    {"id":"e4","file":"e4.log","cluster":"a","relation":"recurrence","category":"docker","title":"PostgreSQL health check probes the wrong port","root_cause":"The PostgreSQL service health command probes port 5544 although the server listens on 5432. Change the health check to use the server port.","differs_from_earlier":"A later run uses a different runner, container and retry schedule; PostgreSQL still listens on 5432 while the health check uses 5544."}
+  ]
+}

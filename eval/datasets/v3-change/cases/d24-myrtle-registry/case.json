@@ -1,0 +1,18 @@
+{
+  "id": "d24-myrtle-registry",
+  "split": "dev",
+  "comparability": "identical",
+  "category": "dependency_build",
+  "culprit_kind": "none",
+  "difficulty": "medium",
+  "ecosystem": "node",
+  "title": "Registry response interrupts dependency installation",
+  "root_cause": "The failed run and successful baseline use the same commit. npm could not download a package because the registry returned HTTP 503; the evidence does not identify a repository change that caused the outage.",
+  "culprit_paths": [],
+  "culprit_commit": null,
+  "unverified_factors": [],
+  "fix_keywords": ["registry", "retry"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 55, "end_line": 58, "why": "npm reports a registry service error while fetching a dependency."}
+  ]
+}

@@ -1,0 +1,53 @@
+2026-09-07T09:14:01.0012234Z Current runner version: '2.328.0'
+2026-09-07T09:14:01.1123456Z ##[group]Runner Image
+2026-09-07T09:14:01.1223456Z Image: ubuntu-24.04
+2026-09-07T09:14:01.1323456Z Version: 20260830.1.0
+2026-09-07T09:14:01.1423456Z ##[endgroup]
+2026-09-07T09:14:01.1523456Z ##[group]GITHUB_TOKEN Permissions
+2026-09-07T09:14:01.1623456Z Contents: read
+2026-09-07T09:14:01.1723456Z ##[endgroup]
+2026-09-07T09:14:01.1823456Z Prepare workflow directory
+2026-09-07T09:14:01.1923456Z Prepare all required actions
+2026-09-07T09:14:01.2023456Z Download action repository 'actions/checkout@v4'
+2026-09-07T09:14:01.2123456Z Complete job name: test
+2026-09-07T09:14:02.0012345Z ##[group]Run actions/checkout@v4
+2026-09-07T09:14:02.0112345Z with:
+2026-09-07T09:14:02.0212345Z   repository: fenmere-labs/bracken-loom
+2026-09-07T09:14:02.0312345Z   clean: true
+2026-09-07T09:14:02.0412345Z ##[endgroup]
+2026-09-07T09:14:02.0512345Z Syncing repository: fenmere-labs/bracken-loom
+2026-09-07T09:14:02.0612345Z Getting Git version info
+2026-09-07T09:14:02.0712345Z git version 2.51.0
+2026-09-07T09:14:03.0012345Z Fetching the repository
+2026-09-07T09:14:04.0012345Z Checking out the ref
+2026-09-07T09:14:04.1012345Z ##[group]Run erlef/setup-beam@v1
+2026-09-07T09:14:04.1112345Z with:
+2026-09-07T09:14:04.1212345Z   otp-version: '27.3'
+2026-09-07T09:14:04.1312345Z   elixir-version: '1.18.4'
+2026-09-07T09:14:04.1412345Z ##[endgroup]
+2026-09-07T09:14:05.0012345Z OTP 27.3 has been installed
+2026-09-07T09:14:05.1012345Z Elixir 1.18.4 has been installed
+2026-09-07T09:14:05.2012345Z ##[group]Run mix deps.get
+2026-09-07T09:14:05.2112345Z mix deps.get
+2026-09-07T09:14:05.2212345Z shell: /usr/bin/bash -e {0}
+2026-09-07T09:14:05.2312345Z ##[endgroup]
+2026-09-07T09:14:06.0012345Z Resolving Hex dependencies...
+2026-09-07T09:14:06.1012345Z Resolution completed in 0.112s
+2026-09-07T09:14:06.2012345Z Unchanged:
+2026-09-07T09:14:06.2112345Z   archive_bridge 0.4.2
+2026-09-07T09:14:06.2212345Z All dependencies are up to date
+2026-09-07T09:14:06.3012345Z ##[group]Run mix deps.compile
+2026-09-07T09:14:06.3112345Z mix deps.compile
+2026-09-07T09:14:06.3212345Z shell: /usr/bin/bash -e {0}
+2026-09-07T09:14:06.3312345Z ##[endgroup]
+2026-09-07T09:14:07.0012345Z ==> archive_bridge
+2026-09-07T09:14:07.0112345Z cc -O2 -fPIC -I/usr/lib/erlang/usr/include -c c_src/archive_bridge.c -o priv/archive_bridge.o
+2026-09-07T09:14:07.0212345Z c_src/archive_bridge.c:4:10: fatal error: archive.h: No such file or directory
+2026-09-07T09:14:07.0312345Z     4 | #include <archive.h>
+2026-09-07T09:14:07.0412345Z       |          ^~~~~~~~~~~
+2026-09-07T09:14:07.0512345Z compilation terminated.
+2026-09-07T09:14:07.0612345Z make: *** [Makefile:22: priv/archive_bridge.o] Error 1
+2026-09-07T09:14:07.0712345Z could not compile dependency :archive_bridge, "mix compile" failed.
+2026-09-07T09:14:07.0812345Z ##[error]Process completed with exit code 1.
+2026-09-07T09:14:07.0912345Z Post job cleanup.
+2026-09-07T09:14:07.1012345Z Cleaning up orphan processes

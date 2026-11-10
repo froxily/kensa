@@ -12,14 +12,18 @@ from opentelemetry.instrumentation.sqlalchemy import SQLAlchemyInstrumentor
 
 from kensa import __version__
 from kensa.agents.handler import make_investigate_handler, on_job_outcome
+from kensa.api.analytics import router as analytics_router
 from kensa.api.github import router as github_router
 from kensa.api.health import router as health_router
+from kensa.api.history import router as history_router
 from kensa.api.investigations import router as investigations_router
 from kensa.api.middleware import BodySizeLimitMiddleware, RequireJsonMiddleware
 from kensa.core.config import Settings, get_settings
 from kensa.core.logging import configure_logging
 from kensa.core.telemetry import RequestIdMiddleware, configure_tracing
 from kensa.db.session import build_engine
+from kensa.history.service import make_history_handler
+from kensa.history.sync import SYNC_JOB
 from kensa.investigations.service import INVESTIGATE_JOB, RESUME_JOB
 from kensa.jobs.worker import Worker
 
@@ -37,7 +41,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     @asynccontextmanager
     async def lifespan(_: FastAPI) -> AsyncIterator[None]:
         stop = threading.Event()
-        thread: threading.Thread | None = None
+        threads: list[threading.Thread] = []
         if settings.worker_enabled:
             handler = make_investigate_handler(settings)
             worker = Worker(
@@ -47,14 +51,27 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                 heartbeat_seconds=settings.worker_heartbeat_seconds,
                 poll_seconds=settings.worker_poll_seconds,
                 on_outcome=on_job_outcome,
+                exclude=(SYNC_JOB,),
             )
-            thread = threading.Thread(
-                target=worker.run_forever, args=(stop,), name="kensa-worker", daemon=True
+            # v1.1: history syncs read GitHub, so they run on their own worker: a sync never
+            # delays an investigation, and the agent worker stays without network access.
+            history = Worker(
+                engine,
+                {SYNC_JOB: make_history_handler(settings)},
+                lease_seconds=settings.worker_lease_seconds,
+                heartbeat_seconds=settings.worker_heartbeat_seconds,
+                poll_seconds=settings.worker_poll_seconds,
+                only_handled=True,
             )
-            thread.start()
+            for name, target in (("kensa-worker", worker), ("kensa-history-worker", history)):
+                thread = threading.Thread(
+                    target=target.run_forever, args=(stop,), name=name, daemon=True
+                )
+                thread.start()
+                threads.append(thread)
         yield
         stop.set()
-        if thread is not None:
+        for thread in threads:
             thread.join(timeout=10)
         if provider is not None:
             provider.force_flush()
@@ -92,4 +109,6 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.include_router(health_router, prefix="/api")
     app.include_router(investigations_router, prefix="/api")
     app.include_router(github_router, prefix="/api")
+    app.include_router(history_router, prefix="/api")
+    app.include_router(analytics_router, prefix="/api")
     return app

@@ -1,0 +1,12 @@
+{
+  "id": "hd59-russet-parallax",
+  "split": "dev",
+  "ecosystem": "github actions (cache, artifacts, setup actions)",
+  "repository": "russet-parallax/tessera-relay",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"workflow_path","title":"Restored cache lacks the generated schema","root_cause":"The schema cache key omits the schema revision, so the job restores an old cache that does not contain the generated manifest required by the build. Include the schema revision in the key and regenerate the cache.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"b","relation":"lookalike","category":"workflow_path","title":"Artifact upload finds no files","root_cause":"The upload step points to the obsolete reports directory instead of the directory where the test runner writes results. Correct the artifact path.","differs_from_earlier":"Both failures report a missing path in an Actions job; this one occurs during artifact upload after tests and requires changing the upload path."},
+    {"id":"e3","file":"e3.log","cluster":"a","relation":"recurrence","category":"workflow_path","title":"Restored cache lacks the generated schema","root_cause":"The schema cache key omits the schema revision, so the job restores an old cache that does not contain the generated manifest required by the build. Include the schema revision in the key and regenerate the cache.","differs_from_earlier":"A later run restores the same stale cache; the missing manifest surfaces in a different build command."},
+    {"id":"e4","file":"e4.log","cluster":"a","relation":"recurrence","category":"workflow_path","title":"Restored cache lacks the generated schema","root_cause":"The schema cache key omits the schema revision, so the job restores an old cache that does not contain the generated manifest required by the build. Include the schema revision in the key and regenerate the cache.","differs_from_earlier":"A later run uses another runner image and build target, with the same old cache hit and absent manifest."}
+  ]
+}

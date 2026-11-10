@@ -1,0 +1,40 @@
+2026-09-23T15:40:00.0000000Z Current runner version: '2.329.0'
+2026-09-23T15:40:01.0000000Z ##[group]Operating System
+2026-09-23T15:40:02.0000000Z Ubuntu 22.04.5 LTS
+2026-09-23T15:40:03.0000000Z ##[endgroup]
+2026-09-23T15:40:04.0000000Z ##[group]Runner Image
+2026-09-23T15:40:05.0000000Z Image: ubuntu-22.04
+2026-09-23T15:40:06.0000000Z Version: 20250921.1
+2026-09-23T15:40:07.0000000Z ##[endgroup]
+2026-09-23T15:40:08.0000000Z Prepare workflow directory
+2026-09-23T15:40:09.0000000Z Prepare all required actions
+2026-09-23T15:40:10.0000000Z Download action repository 'actions/checkout@v4'
+2026-09-23T15:40:11.0000000Z Complete job name: typecheck (node 22)
+2026-09-23T15:40:12.0000000Z ##[group]Run actions/checkout@v4
+2026-09-23T15:40:13.0000000Z with:
+2026-09-23T15:40:14.0000000Z   repository: pavonis/umber-console
+2026-09-23T15:40:15.0000000Z   fetch-depth: 1
+2026-09-23T15:40:16.0000000Z ##[endgroup]
+2026-09-23T15:40:17.0000000Z Syncing repository: pavonis/umber-console
+2026-09-23T15:40:18.0000000Z git version 2.50.1
+2026-09-23T15:40:19.0000000Z Initialized empty Git repository
+2026-09-23T15:40:20.0000000Z Fetching the repository
+2026-09-23T15:40:21.0000000Z Checking out the ref
+2026-09-23T15:40:22.0000000Z ##[group]Run npm ci
+2026-09-23T15:40:23.0000000Z npm ci
+2026-09-23T15:40:24.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-23T15:40:25.0000000Z ##[endgroup]
+2026-09-23T15:40:26.0000000Z added 96 packages in 5s
+2026-09-23T15:40:27.0000000Z ##[group]Run npx tsc --noEmit --pretty false
+2026-09-23T15:40:28.0000000Z npx tsc --noEmit --pretty false
+2026-09-23T15:40:29.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-23T15:40:30.0000000Z ##[endgroup]
+2026-09-23T15:40:31.0000000Z src/widget/render.ts(51,16): error TS2345: Argument of type 'number' is not assignable to parameter of type 'string'.
+2026-09-23T15:40:32.0000000Z Found 1 error in src/widget/render.ts:51
+2026-09-23T15:40:33.0000000Z ##[error]Process completed with exit code 2.
+2026-09-23T15:40:34.0000000Z Post job cleanup.
+2026-09-23T15:40:35.0000000Z /usr/bin/git version
+2026-09-23T15:40:36.0000000Z git version 2.50.1
+2026-09-23T15:40:37.0000000Z Temporarily overriding HOME
+2026-09-23T15:40:38.0000000Z Removing HTTP extra header
+2026-09-23T15:40:39.0000000Z Cleaning up orphan processes

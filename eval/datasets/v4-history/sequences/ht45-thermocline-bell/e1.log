@@ -1,0 +1,49 @@
+2026-09-03T09:11:01.1000000Z Current runner version: '2.328.0'
+2026-09-03T09:11:01.1200000Z ##[group]Runner Image
+2026-09-03T09:11:01.1300000Z Image: ubuntu-24.04
+2026-09-03T09:11:01.1400000Z Version: 20260824.1.0
+2026-09-03T09:11:01.1500000Z ##[endgroup]
+2026-09-03T09:11:01.1600000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-03T09:11:01.1700000Z Contents: read
+2026-09-03T09:11:01.1800000Z Metadata: read
+2026-09-03T09:11:01.1900000Z ##[endgroup]
+2026-09-03T09:11:01.2000000Z Prepare workflow directory
+2026-09-03T09:11:01.2500000Z Prepare all required actions
+2026-09-03T09:11:02.1000000Z Getting action download info
+2026-09-03T09:11:02.5000000Z Download action repository 'actions/checkout@v4'
+2026-09-03T09:11:03.0000000Z Complete job name: build
+2026-09-03T09:11:03.1000000Z ##[group]Run actions/checkout@v4
+2026-09-03T09:11:03.1100000Z with:
+2026-09-03T09:11:03.1200000Z   repository: isobar-workshop/thermocline-bell
+2026-09-03T09:11:03.1300000Z   clean: true
+2026-09-03T09:11:03.1400000Z ##[endgroup]
+2026-09-03T09:11:03.4000000Z Syncing repository: isobar-workshop/thermocline-bell
+2026-09-03T09:11:03.6000000Z Initializing the repository
+2026-09-03T09:11:04.1000000Z Fetching the repository
+2026-09-03T09:11:05.0000000Z Checking out the ref
+2026-09-03T09:11:05.2000000Z ##[group]Run cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
+2026-09-03T09:11:05.2100000Z cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
+2026-09-03T09:11:05.2200000Z cmake --build build --parallel 2
+2026-09-03T09:11:05.2300000Z shell: /usr/bin/bash -e {0}
+2026-09-03T09:11:05.2400000Z ##[endgroup]
+2026-09-03T09:11:05.5000000Z -- The CXX compiler identification is GNU 13.3.0
+2026-09-03T09:11:05.8000000Z -- Detecting CXX compiler ABI info - done
+2026-09-03T09:11:06.0000000Z -- Configuring done
+2026-09-03T09:11:06.1000000Z -- Generating done
+2026-09-03T09:11:06.1100000Z -- Build files have been written to: /home/runner/work/thermocline-bell/thermocline-bell/build
+2026-09-03T09:11:06.5000000Z [ 25%] Building CXX object CMakeFiles/sounding_core.dir/src/profile.cpp.o
+2026-09-03T09:11:07.4000000Z [ 50%] Linking CXX static library libsounding_core.a
+2026-09-03T09:11:07.5000000Z [ 50%] Built target sounding_core
+2026-09-03T09:11:07.6000000Z [ 75%] Building CXX object CMakeFiles/soundings.dir/src/main.cpp.o
+2026-09-03T09:11:08.2000000Z [100%] Linking CXX executable soundings
+2026-09-03T09:11:08.3000000Z /usr/bin/ld: CMakeFiles/soundings.dir/src/main.cpp.o: in function `main':
+2026-09-03T09:11:08.3100000Z /home/runner/work/thermocline-bell/thermocline-bell/src/main.cpp:42:(.text+0x138): undefined reference to `isobar::interpolate_depth(double, double, double)'
+2026-09-03T09:11:08.3200000Z collect2: error: ld returned 1 exit status
+2026-09-03T09:11:08.3300000Z gmake[2]: *** [CMakeFiles/soundings.dir/build.make:98: soundings] Error 1
+2026-09-03T09:11:08.3400000Z gmake[1]: *** [CMakeFiles/Makefile2:111: CMakeFiles/soundings.dir/all] Error 2
+2026-09-03T09:11:08.3500000Z gmake: *** [Makefile:91: all] Error 2
+2026-09-03T09:11:08.4000000Z ##[error]Process completed with exit code 2.
+2026-09-03T09:11:08.5000000Z Post job cleanup.
+2026-09-03T09:11:08.6000000Z [command]/usr/bin/git version
+2026-09-03T09:11:08.6100000Z git version 2.51.0
+2026-09-03T09:11:08.7000000Z Cleaning up orphan processes

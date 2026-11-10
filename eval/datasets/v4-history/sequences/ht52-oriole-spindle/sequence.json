@@ -1,0 +1,12 @@
+{
+  "id": "ht52-oriole-spindle",
+  "split": "test",
+  "ecosystem": "python (uv)",
+  "repository": "oriole-foundry/spindle-index",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"dependency_build","title":"Pinned wheel fails hash verification","root_cause":"The committed requirements file contains an incorrect SHA-256 hash for the spindle codec 2.4.1 wheel served by the package source. Verify the intended artifact and update its pinned hash.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"a","relation":"recurrence","category":"dependency_build","title":"Pinned wheel still fails hash verification","root_cause":"The committed requirements file contains an incorrect SHA-256 hash for the spindle codec 2.4.1 wheel served by the package source. Verify the intended artifact and update its pinned hash.","differs_from_earlier":"A later Python version and runner perform a fresh install with a changed dependency count and cache path; the same wheel and hashes are reported."},
+    {"id":"e3","file":"e3.log","cluster":"b","relation":"lookalike","category":"dependency_build","title":"Wheel URL returns not found","root_cause":"The direct URL for the oriole raster 1.8.0 wheel points to an absent artifact on the package host. Restore the wheel at that location or correct the URL in the requirements file.","differs_from_earlier":"The same uv install fails fetching a pinned wheel, but the server returns HTTP 404 for a different artifact instead of returning bytes with the wrong hash."},
+    {"id":"e4","file":"e4.log","cluster":"a","relation":"recurrence","category":"dependency_build","title":"Wheel hash mismatch in verification job","root_cause":"The committed requirements file contains an incorrect SHA-256 hash for the spindle codec 2.4.1 wheel served by the package source. Verify the intended artifact and update its pinned hash.","differs_from_earlier":"A later verification job creates a named virtual environment and uses another requirements path and runner; it encounters the same pinned wheel and hash mismatch."}
+  ]
+}

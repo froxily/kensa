@@ -1,0 +1,51 @@
+﻿2026-09-25T19:38:20.1000000Z Current runner version: '2.329.0'
+2026-09-25T19:38:20.1800000Z ##[group]Runner Image
+2026-09-25T19:38:20.1810000Z Image: ubuntu-24.04
+2026-09-25T19:38:20.1820000Z Version: 20260921.1.0
+2026-09-25T19:38:20.1830000Z ##[endgroup]
+2026-09-25T19:38:20.1910000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-25T19:38:20.1920000Z Contents: read
+2026-09-25T19:38:20.1930000Z Metadata: read
+2026-09-25T19:38:20.1940000Z ##[endgroup]
+2026-09-25T19:38:20.3510000Z Prepare workflow directory
+2026-09-25T19:38:20.6890000Z Download action repository 'actions/checkout@v4'
+2026-09-25T19:38:20.9980000Z Download action repository 'actions/setup-go@v5'
+2026-09-25T19:38:21.3070000Z Complete job name: release
+2026-09-25T19:38:21.4150000Z ##[group]Run actions/checkout@v4
+2026-09-25T19:38:21.4160000Z with:
+2026-09-25T19:38:21.4170000Z   repository: sablekite-labs/tideglass
+2026-09-25T19:38:21.4180000Z   ref: refs/tags/v1.5.1
+2026-09-25T19:38:21.4190000Z ##[endgroup]
+2026-09-25T19:38:21.7990000Z Syncing repository: sablekite-labs/tideglass
+2026-09-25T19:38:23.1020000Z Checking out the ref
+2026-09-25T19:38:23.1710000Z HEAD is now at 6f298ad Fix station summary
+2026-09-25T19:38:23.2880000Z ##[group]Run actions/setup-go@v5
+2026-09-25T19:38:23.2890000Z with:
+2026-09-25T19:38:23.2900000Z   go-version: '1.24'
+2026-09-25T19:38:23.2910000Z ##[endgroup]
+2026-09-25T19:38:24.2910000Z go version go1.24.7 linux/amd64
+2026-09-25T19:38:24.5800000Z Cache restored successfully
+2026-09-25T19:38:24.6410000Z ##[group]Run go test ./...
+2026-09-25T19:38:24.6420000Z go test ./...
+2026-09-25T19:38:24.6430000Z shell: /usr/bin/bash -e {0}
+2026-09-25T19:38:24.6440000Z ##[endgroup]
+2026-09-25T19:38:29.0590000Z ?   sablekite-labs/tideglass/cmd/tideglass  [no test files]
+2026-09-25T19:38:29.0600000Z ok  sablekite-labs/tideglass/internal/soundings  0.019s
+2026-09-25T19:38:29.1510000Z ##[group]Run mkdir -p dist
+2026-09-25T19:38:29.1520000Z mkdir -p dist
+2026-09-25T19:38:29.1530000Z GOOS=linux GOARCH=arm64 go build -trimpath -o dist/tideglass-linux-arm64 ./cmd/tideglass
+2026-09-25T19:38:29.1540000Z shell: /usr/bin/bash -e {0}
+2026-09-25T19:38:29.1550000Z ##[endgroup]
+2026-09-25T19:38:41.2430000Z ##[group]Run gh release upload "$TAG" dist/tideglass-linux-arm64
+2026-09-25T19:38:41.2440000Z gh release upload "$TAG" dist/tideglass-linux-arm64
+2026-09-25T19:38:41.2450000Z shell: /usr/bin/bash -e {0}
+2026-09-25T19:38:41.2460000Z env:
+2026-09-25T19:38:41.2470000Z   TAG: v1.5.1
+2026-09-25T19:38:41.2480000Z   GH_TOKEN: ***
+2026-09-25T19:38:41.2490000Z ##[endgroup]
+2026-09-25T19:38:41.8400000Z HTTP 403: Resource not accessible by integration (https://uploads.github.com/repos/sablekite-labs/tideglass/releases/851706/assets?name=tideglass-linux-arm64)
+2026-09-25T19:38:41.8470000Z ##[error]Process completed with exit code 1.
+2026-09-25T19:38:41.9550000Z Post job cleanup.
+2026-09-25T19:38:42.1000000Z [command]/usr/bin/git version
+2026-09-25T19:38:42.1010000Z git version 2.51.0
+2026-09-25T19:38:42.3010000Z Cleaning up orphan processes

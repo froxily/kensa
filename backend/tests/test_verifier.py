@@ -352,3 +352,28 @@ def test_risky_fixes_are_flagged() -> None:
     assert "Fix 1 flagged for review: force-pushes or rewrites history." in notes
     assert "Fix 2 flagged for review: pipes a download into a shell." in notes
     assert not any(n.startswith("Fix 3") for n in notes)
+
+
+def test_a_diff_alone_never_corroborates_a_cause() -> None:
+    """v1.1 (D-054): a changed line can support a claim, but only the job log can state the
+    cause. A diagnosis citing only a diff hunk is never corroborated, even when the hunk names
+    exactly what the log names."""
+    hunk = EvidenceItem(
+        label="E2",
+        chunk_id=uuid.uuid4(),
+        document_name="diff/.github/workflows/ci.yml",
+        step_name=None,
+        start_line=1,
+        end_line=2,
+        lines=("@@ -10,4 +10,3 @@ jobs:", "-      VITE_API_BASE_URL: https://api.example.test"),
+        score=0.02,
+        channels=("fts",),
+        source_type="diff",
+    )
+    draft = _draft([_cite(2, "VITE_API_BASE_URL: https://api.example.test", "E2")])
+    result = verify(draft, {**EVIDENCE, "E2": hunk}, STRONG_ENV, CAUSES)
+    assert result.citations[0].valid
+    assert result.status != "corroborated"
+    # Citing the log line that states the cause, together with the hunk, may corroborate.
+    both = _draft([_cite(22, "Missing required environment variable"), *draft.citations])
+    assert verify(both, {**EVIDENCE, "E2": hunk}, STRONG_ENV, CAUSES).status == "corroborated"

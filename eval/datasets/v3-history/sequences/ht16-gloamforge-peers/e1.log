@@ -1,0 +1,54 @@
+﻿2026-09-08T09:14:01.0000000Z Current runner version: '2.329.0'
+2026-09-08T09:14:01.1000000Z ##[group]Runner Image
+2026-09-08T09:14:01.2000000Z Image: ubuntu-24.04
+2026-09-08T09:14:01.3000000Z Version: 20260901.1.0
+2026-09-08T09:14:01.4000000Z ##[endgroup]
+2026-09-08T09:14:01.5000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-08T09:14:01.6000000Z Contents: read
+2026-09-08T09:14:01.7000000Z Metadata: read
+2026-09-08T09:14:01.8000000Z ##[endgroup]
+2026-09-08T09:14:02.0000000Z Prepare workflow directory
+2026-09-08T09:14:02.2000000Z Prepare all required actions
+2026-09-08T09:14:03.0000000Z Getting action download info
+2026-09-08T09:14:03.5000000Z Download action repository 'actions/checkout@v4'
+2026-09-08T09:14:04.0000000Z Download action repository 'actions/setup-node@v4'
+2026-09-08T09:14:04.4000000Z Complete job name: verify
+2026-09-08T09:14:04.5000000Z ##[group]Run actions/checkout@v4
+2026-09-08T09:14:04.6000000Z with:
+2026-09-08T09:14:04.7000000Z   repository: gloamforge/harbor-sundial
+2026-09-08T09:14:04.8000000Z   fetch-depth: 1
+2026-09-08T09:14:04.9000000Z ##[endgroup]
+2026-09-08T09:14:05.2000000Z Syncing repository: gloamforge/harbor-sundial
+2026-09-08T09:14:05.4000000Z Initializing the repository
+2026-09-08T09:14:06.1000000Z Fetching the repository
+2026-09-08T09:14:06.9000000Z Checking out the ref
+2026-09-08T09:14:07.2000000Z ##[group]Run actions/setup-node@v4
+2026-09-08T09:14:07.3000000Z with:
+2026-09-08T09:14:07.4000000Z   node-version: 20
+2026-09-08T09:14:07.5000000Z ##[endgroup]
+2026-09-08T09:14:08.0000000Z Found in cache @ /opt/hostedtoolcache/node/20.19.5/x64
+2026-09-08T09:14:08.1000000Z ##[group]Environment details
+2026-09-08T09:14:08.2000000Z node: v20.19.5
+2026-09-08T09:14:08.3000000Z npm: 10.8.2
+2026-09-08T09:14:08.4000000Z ##[endgroup]
+2026-09-08T09:14:08.5000000Z ##[group]Run npm ci
+2026-09-08T09:14:08.6000000Z npm ci
+2026-09-08T09:14:08.7000000Z shell: /usr/bin/bash -e {0}
+2026-09-08T09:14:08.8000000Z ##[endgroup]
+2026-09-08T09:14:10.2000000Z npm error code ERESOLVE
+2026-09-08T09:14:10.3000000Z npm error ERESOLVE could not resolve
+2026-09-08T09:14:10.4000000Z npm error While resolving: @gloamforge/canvas-inspector@3.1.0
+2026-09-08T09:14:10.5000000Z npm error Found: @gloamforge/canvas-core@4.2.0
+2026-09-08T09:14:10.6000000Z npm error node_modules/@gloamforge/canvas-core
+2026-09-08T09:14:10.7000000Z npm error   @gloamforge/canvas-core@"4.2.0" from the root project
+2026-09-08T09:14:10.8000000Z npm error Could not resolve dependency:
+2026-09-08T09:14:10.9000000Z npm error peer @gloamforge/canvas-core@"^3.0.0" from @gloamforge/canvas-inspector@3.1.0
+2026-09-08T09:14:11.0000000Z npm error node_modules/@gloamforge/canvas-inspector
+2026-09-08T09:14:11.1000000Z npm error   @gloamforge/canvas-inspector@"3.1.0" from the root project
+2026-09-08T09:14:11.2000000Z npm error Fix the upstream dependency conflict, or retry
+2026-09-08T09:14:11.3000000Z npm error this command with --force or --legacy-peer-deps
+2026-09-08T09:14:11.4000000Z npm error to accept an incorrect dependency resolution.
+2026-09-08T09:14:11.5000000Z npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-09-08T09_14_08_901Z-debug-0.log
+2026-09-08T09:14:11.6000000Z ##[error]Process completed with exit code 1.
+2026-09-08T09:14:11.7000000Z Post job cleanup.
+2026-09-08T09:14:11.8000000Z Cleaning up orphan processes

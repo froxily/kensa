@@ -1,0 +1,57 @@
+2026-09-03T09:14:01.1051234Z Current runner version: '2.328.0'
+2026-09-03T09:14:01.1201234Z ##[group]Runner Image
+2026-09-03T09:14:01.1211234Z Image: ubuntu-24.04
+2026-09-03T09:14:01.1221234Z Version: 20260830.1.0
+2026-09-03T09:14:01.1231234Z ##[endgroup]
+2026-09-03T09:14:01.1241234Z ##[group]GITHUB_TOKEN Permissions
+2026-09-03T09:14:01.1251234Z Contents: read
+2026-09-03T09:14:01.1261234Z Metadata: read
+2026-09-03T09:14:01.1271234Z ##[endgroup]
+2026-09-03T09:14:01.1281234Z Prepare workflow directory
+2026-09-03T09:14:01.2291234Z Prepare all required actions
+2026-09-03T09:14:01.3301234Z Getting action download info
+2026-09-03T09:14:01.7311234Z Download action repository 'actions/checkout@v4'
+2026-09-03T09:14:02.1221234Z Complete job name: bundle
+2026-09-03T09:14:02.2231234Z ##[group]Run actions/checkout@v4
+2026-09-03T09:14:02.2241234Z with:
+2026-09-03T09:14:02.2251234Z   repository: safflower-labs/gantry-checks
+2026-09-03T09:14:02.2261234Z   clean: true
+2026-09-03T09:14:02.2271234Z   fetch-depth: 1
+2026-09-03T09:14:02.2281234Z ##[endgroup]
+2026-09-03T09:14:02.3311234Z Syncing repository: safflower-labs/gantry-checks
+2026-09-03T09:14:02.4321234Z ##[group]Getting Git version info
+2026-09-03T09:14:02.4331234Z git version 2.51.0
+2026-09-03T09:14:02.4341234Z ##[endgroup]
+2026-09-03T09:14:02.5351234Z Temporarily overriding HOME for git config
+2026-09-03T09:14:02.6361234Z Initializing the repository
+2026-09-03T09:14:02.7371234Z Fetching the repository
+2026-09-03T09:14:03.0381234Z Checking out the ref
+2026-09-03T09:14:03.1391234Z [command]/usr/bin/git log -1 --format=%H
+2026-09-03T09:14:03.1401234Z 1e938ac4d502e297dc49e23f37ad7859f71e96a2
+2026-09-03T09:14:03.2011234Z ##[group]Run pwd; ls tools/gantry; cat Makefile tools/gantry/Makefile
+2026-09-03T09:14:03.2021234Z pwd; ls tools/gantry; cat Makefile tools/gantry/Makefile
+2026-09-03T09:14:03.2031234Z shell: /usr/bin/bash -e {0}
+2026-09-03T09:14:03.2041234Z ##[endgroup]
+2026-09-03T09:14:03.2051234Z /home/runner/work/gantry-checks/gantry-checks
+2026-09-03T09:14:03.2061234Z Makefile  assemble-bundle.sh  check-manifest.sh
+2026-09-03T09:14:03.2071234Z .PHONY: help
+2026-09-03T09:14:03.2081234Z help:
+2026-09-03T09:14:03.2091234Z 	@echo 'See tools/gantry for bundle commands'
+2026-09-03T09:14:03.2101234Z .PHONY: verify-bundle bundle-clean
+2026-09-03T09:14:03.2111234Z verify-bundle:
+2026-09-03T09:14:03.2121234Z 	./assemble-bundle.sh build/bundle
+2026-09-03T09:14:03.2131234Z 	./check-manifest.sh build/bundle/manifest.txt
+2026-09-03T09:14:03.2141234Z bundle-clean:
+2026-09-03T09:14:03.2151234Z 	rm -rf build/bundle
+2026-09-03T09:14:03.2411234Z ##[group]Run make verify-bundle
+2026-09-03T09:14:03.2421234Z [36;1mmake verify-bundle[0m
+2026-09-03T09:14:03.2431234Z shell: /usr/bin/bash -e {0}
+2026-09-03T09:14:03.2441234Z ##[endgroup]
+2026-09-03T09:14:03.2451234Z make: *** No rule to make target 'verify-bundle'.  Stop.
+2026-09-03T09:14:03.2461234Z ##[error]Process completed with exit code 2.
+2026-09-03T09:14:03.3471234Z Post job cleanup.
+2026-09-03T09:14:03.4481234Z [command]/usr/bin/git version
+2026-09-03T09:14:03.4491234Z git version 2.51.0
+2026-09-03T09:14:03.5501234Z Temporarily overriding HOME for git config
+2026-09-03T09:14:03.6511234Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-09-03T09:14:03.7521234Z Cleaning up orphan processes

@@ -1,0 +1,16 @@
+{
+  "comparisons": {
+    "a135bce79d42f608e1a34c9d75b20f861c4e3a92...f28c49e6a5b017d3c94e8a12b760df453c1a9e82": {
+      "status": "ahead", "merge_base": "a135bce79d42f608e1a34c9d75b20f861c4e3a92", "truncated": false,
+      "commits": [
+        {"sha": "c7e452a901b3df68e124c9a0f67d85b231ea409c", "message": "Simplify mean calculation", "date": "2026-10-30T08:58:00Z", "files": [
+          {"path": "src/mean.ts", "status": "modified", "additions": 0, "deletions": 1, "patch": "@@ -1,5 +1,4 @@\n export function mean(values: number[]): number {\n-  if (values.length === 0) return 0;\n   const total = values.reduce((sum, value) => sum + value, 0);\n   return total / values.length;\n }"}
+        ]},
+        {"sha": "f28c49e6a5b017d3c94e8a12b760df453c1a9e82", "message": "Cover single reading", "date": "2026-10-30T09:11:00Z", "files": [
+          {"path": "test/mean.test.ts", "status": "modified", "additions": 4, "deletions": 0, "patch": "@@ -5,4 +5,8 @@\n   it('returns zero for no readings', () => {\n     expect(mean([])).toBe(0);\n   });\n+\n+  it('returns a single reading', () => {\n+    expect(mean([7])).toBe(7);\n+  });\n });"}
+        ]}
+      ]
+    }
+  },
+  "workflow_blobs": {"a135bce79d42f608e1a34c9d75b20f861c4e3a92": "b4a629d7c1e580f392ab0d64e718c5f23a9d416b", "f28c49e6a5b017d3c94e8a12b760df453c1a9e82": "b4a629d7c1e580f392ab0d64e718c5f23a9d416b"}
+}

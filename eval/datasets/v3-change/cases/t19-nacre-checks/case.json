@@ -1,0 +1,20 @@
+﻿{
+  "id": "t19-nacre-checks",
+  "split": "test",
+  "comparability": "partially_comparable",
+  "category": "github_permissions",
+  "culprit_kind": "workflow",
+  "difficulty": "medium",
+  "ecosystem": "java",
+  "title": "Check run creation loses write access",
+  "root_cause": "The rebased workflow changes the token's checks permission from write to read. The build succeeds, but the subsequent check-run creation request needs checks write permission and receives a 403. The histories diverged, so the successful run is only partially comparable.",
+  "culprit_paths": [".github/workflows/verify.yml"],
+  "culprit_commit": "4fdc12a8396b5e70d2381c9af467e0b2d5c39168",
+  "unverified_factors": ["history_diverged"],
+  "fix_keywords": ["checks", "write"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 17, "end_line": 20, "why": "The job token has read access to checks."},
+    {"path": "log", "start_line": 64, "end_line": 78, "why": "Creating a check run fails with a 403 after the build succeeds."},
+    {"path": "repo/.github/workflows/verify.yml", "start_line": 3, "end_line": 5, "why": "The workflow configures the token permissions."}
+  ]
+}

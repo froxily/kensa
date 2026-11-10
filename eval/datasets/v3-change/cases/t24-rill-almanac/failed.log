@@ -1,0 +1,68 @@
+﻿2026-01-02T09:00:02.0012345Z Current runner version: '2.330.0'
+2026-01-02T09:00:02.1012345Z ##[group]Runner Image Provisioner
+2026-01-02T09:00:02.1112345Z Hosted Compute Agent
+2026-01-02T09:00:02.1212345Z Version: 20251210.1
+2026-01-02T09:00:02.1312345Z ##[endgroup]
+2026-01-02T09:00:02.1412345Z ##[group]Operating System
+2026-01-02T09:00:02.1512345Z Ubuntu
+2026-01-02T09:00:02.1612345Z 24.04.3
+2026-01-02T09:00:02.1712345Z LTS
+2026-01-02T09:00:02.1812345Z ##[endgroup]
+2026-01-02T09:00:02.1912345Z ##[group]Runner Image
+2026-01-02T09:00:02.2012345Z Image: ubuntu-24.04
+2026-01-02T09:00:02.2112345Z Version: 20251215.1
+2026-01-02T09:00:02.2212345Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20251215.1/images/ubuntu/Ubuntu2404-Readme.md
+2026-01-02T09:00:02.2312345Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20251215.1
+2026-01-02T09:00:02.2412345Z ##[endgroup]
+2026-01-02T09:00:02.2512345Z ##[group]GITHUB_TOKEN Permissions
+2026-01-02T09:00:02.2612345Z Contents: read
+2026-01-02T09:00:02.2712345Z Metadata: read
+2026-01-02T09:00:02.2812345Z ##[endgroup]
+2026-01-02T09:00:02.2912345Z Secret source: Actions
+2026-01-02T09:00:02.3012345Z Prepare workflow directory
+2026-01-02T09:00:02.3112345Z Prepare all required actions
+2026-01-02T09:00:02.3212345Z Getting action download info
+2026-01-02T09:00:02.3312345Z Download action repository 'actions/checkout@v4'
+2026-01-02T09:00:02.3412345Z Download action repository 'actions/setup-go@v5'
+2026-01-02T09:00:02.3512345Z Complete job name: verify
+2026-01-02T09:00:03.0012345Z ##[group]Run actions/checkout@v4
+2026-01-02T09:00:03.0112345Z with:
+2026-01-02T09:00:03.0212345Z   repository: example-org/rill-almanac
+2026-01-02T09:00:03.0312345Z   clean: true
+2026-01-02T09:00:03.0412345Z   fetch-depth: 1
+2026-01-02T09:00:03.0512345Z ##[endgroup]
+2026-01-02T09:00:03.0612345Z Syncing repository: example-org/rill-almanac
+2026-01-02T09:00:03.0712345Z ##[group]Getting Git version info
+2026-01-02T09:00:03.0812345Z [command]/usr/bin/git version
+2026-01-02T09:00:03.0912345Z git version 2.51.2
+2026-01-02T09:00:03.1012345Z ##[endgroup]
+2026-01-02T09:00:03.1112345Z Initializing the repository
+2026-01-02T09:00:03.1212345Z Fetching the repository
+2026-01-02T09:00:03.1312345Z Checking out the ref
+2026-01-02T09:00:03.1412345Z [command]/usr/bin/git log -1 --format=%H
+2026-01-02T09:00:03.1512345Z a61f9c347b2e580d19a4c6f720e3b895d14c6a08
+2026-01-02T09:00:04.0012345Z ##[group]Run actions/setup-go@v5
+2026-01-02T09:00:04.0112345Z with:
+2026-01-02T09:00:04.0212345Z   go-version: 1.22
+2026-01-02T09:00:04.0312345Z   cache: false
+2026-01-02T09:00:04.0412345Z ##[endgroup]
+2026-01-02T09:00:04.0512345Z Setup go version spec 1.22
+2026-01-02T09:00:04.0612345Z Found in cache @ /opt/hostedtoolcache/go/1.22.12/x64
+2026-01-02T09:00:04.0712345Z Added go to the path
+2026-01-02T09:00:04.0812345Z Successfully set up Go version 1.22
+2026-01-02T09:00:04.0912345Z ##[group]Run go test -v ./...
+2026-01-02T09:00:04.1012345Z go test -v ./...
+2026-01-02T09:00:04.1112345Z shell: /usr/bin/bash -e {0}
+2026-01-02T09:00:04.1212345Z ##[endgroup]
+2026-01-02T09:00:12.0012345Z === RUN   TestCurrentCalendarYear
+2026-01-02T09:00:12.0112345Z     year_test.go:10: current year = 2026, want 2025
+2026-01-02T09:00:12.0212345Z --- FAIL: TestCurrentCalendarYear (0.00s)
+2026-01-02T09:00:12.0312345Z FAIL
+2026-01-02T09:00:12.0412345Z FAIL	example.org/rill-almanac/almanac	0.002s
+2026-01-02T09:00:12.0512345Z FAIL
+2026-01-02T09:00:12.0612345Z ##[error]Process completed with exit code 1.
+2026-01-02T09:00:12.0712345Z Post job cleanup.
+2026-01-02T09:00:12.0812345Z [command]/usr/bin/git version
+2026-01-02T09:00:12.0912345Z git version 2.51.2
+2026-01-02T09:00:12.1012345Z Cleaning up orphan processes
+

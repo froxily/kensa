@@ -1,0 +1,9 @@
+{
+  "comparisons": {
+    "8bc214f9d76a3e501c49b8f2a165ed037c920a6b...7e23a96d08c5b41f2a6098bd3c71e45f9a126bc4": {
+      "status": "ahead", "merge_base": "8bc214f9d76a3e501c49b8f2a165ed037c920a6b", "truncated": false,
+      "commits": [{"sha": "7e23a96d08c5b41f2a6098bd3c71e45f9a126bc4", "message": "Adjust delivery threshold expectation", "date": "2026-11-08T10:05:00Z", "files": [{"path": "test/basket_test.rb", "status": "modified", "additions": 1, "deletions": 1, "patch": "@@ -4,5 +4,5 @@\n class BasketTest < Minitest::Test\n   def test_delivery_at_qualifying_boundary\n-    assert_equal 0, Peregrine::Basket.delivery_fee(50)\n+    assert_equal 7, Peregrine::Basket.delivery_fee(50)\n   end\n end"}]}]
+    }
+  },
+  "workflow_blobs": {"8bc214f9d76a3e501c49b8f2a165ed037c920a6b": "b13f8a9c205e647d18b3a6f420d9c751e83a0b62", "7e23a96d08c5b41f2a6098bd3c71e45f9a126bc4": "b13f8a9c205e647d18b3a6f420d9c751e83a0b62"}
+}

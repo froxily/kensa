@@ -1,0 +1,50 @@
+2026-09-15T15:22:10.1000000Z Current runner version: '2.328.0'
+2026-09-15T15:22:10.1010000Z ##[group]Runner Image
+2026-09-15T15:22:10.1020000Z Image: ubuntu-24.04
+2026-09-15T15:22:10.1030000Z Version: 20260907.1.0
+2026-09-15T15:22:10.1040000Z ##[endgroup]
+2026-09-15T15:22:10.1050000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-15T15:22:10.1060000Z Contents: read
+2026-09-15T15:22:10.1070000Z ##[endgroup]
+2026-09-15T15:22:10.1080000Z Prepare workflow directory
+2026-09-15T15:22:10.3000000Z Prepare all required actions
+2026-09-15T15:22:10.8000000Z Download action repository 'actions/checkout@v4'
+2026-09-15T15:22:11.3000000Z Download action repository 'actions/setup-java@v4'
+2026-09-15T15:22:11.9000000Z Complete job name: audit
+2026-09-15T15:22:12.1000000Z ##[group]Run actions/checkout@v4
+2026-09-15T15:22:12.1010000Z with:
+2026-09-15T15:22:12.1020000Z   repository: brackenquay/lanternforge
+2026-09-15T15:22:12.1030000Z   fetch-depth: 1
+2026-09-15T15:22:12.1040000Z ##[endgroup]
+2026-09-15T15:22:12.4000000Z Syncing repository: brackenquay/lanternforge
+2026-09-15T15:22:13.2000000Z Checking out the ref
+2026-09-15T15:22:13.5000000Z ##[group]Run actions/setup-java@v4
+2026-09-15T15:22:13.5010000Z with:
+2026-09-15T15:22:13.5020000Z   distribution: temurin
+2026-09-15T15:22:13.5030000Z   java-version: 21
+2026-09-15T15:22:13.5040000Z ##[endgroup]
+2026-09-15T15:22:14.6000000Z Java 21 was set up
+2026-09-15T15:22:14.8000000Z ##[group]Run mvn -B net.brackenquay.build:beacon-audit-maven-plugin:1.2.0:check
+2026-09-15T15:22:14.8010000Z mvn -B net.brackenquay.build:beacon-audit-maven-plugin:1.2.0:check
+2026-09-15T15:22:14.8020000Z shell: /usr/bin/bash -e {0}
+2026-09-15T15:22:14.8030000Z ##[endgroup]
+2026-09-15T15:22:16.2000000Z [INFO] Scanning for projects...
+2026-09-15T15:22:16.4000000Z [INFO] ----------------< net.brackenquay:lanternforge >-----------------
+2026-09-15T15:22:16.4010000Z [INFO] Building lanternforge 1.4-SNAPSHOT
+2026-09-15T15:22:16.4020000Z [INFO] --------------------------------[ jar ]---------------------------------
+2026-09-15T15:22:16.6000000Z [INFO] Downloading from central: https://repo.maven.apache.org/maven2/net/brackenquay/build/beacon-audit-maven-plugin/1.2.0/beacon-audit-maven-plugin-1.2.0.pom
+2026-09-15T15:22:16.9000000Z [WARNING] The POM for net.brackenquay.build:beacon-audit-maven-plugin:jar:1.2.0 is missing, no dependency information available
+2026-09-15T15:22:17.0000000Z [INFO] Downloading from central: https://repo.maven.apache.org/maven2/net/brackenquay/build/beacon-audit-maven-plugin/1.2.0/beacon-audit-maven-plugin-1.2.0.jar
+2026-09-15T15:22:17.2000000Z [INFO] ------------------------------------------------------------------------
+2026-09-15T15:22:17.2010000Z [INFO] BUILD FAILURE
+2026-09-15T15:22:17.2020000Z [INFO] ------------------------------------------------------------------------
+2026-09-15T15:22:17.2030000Z [INFO] Total time:  1.092 s
+2026-09-15T15:22:17.2040000Z [INFO] Finished at: 2026-09-15T15:22:17Z
+2026-09-15T15:22:17.2050000Z [INFO] ------------------------------------------------------------------------
+2026-09-15T15:22:17.2060000Z [ERROR] Plugin net.brackenquay.build:beacon-audit-maven-plugin:1.2.0 or one of its dependencies could not be resolved: Could not find artifact net.brackenquay.build:beacon-audit-maven-plugin:jar:1.2.0 in central (https://repo.maven.apache.org/maven2) -> [Help 1]
+2026-09-15T15:22:17.2070000Z [ERROR] Re-run Maven using the -X switch to enable full debug logging.
+2026-09-15T15:22:17.2080000Z [ERROR] For more information about the errors and possible solutions, please read the following articles:
+2026-09-15T15:22:17.2090000Z [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/PluginResolutionException
+2026-09-15T15:22:17.3000000Z ##[error]Process completed with exit code 1.
+2026-09-15T15:22:17.5000000Z Post job cleanup.
+2026-09-15T15:22:17.7000000Z Cleaning up orphan processes

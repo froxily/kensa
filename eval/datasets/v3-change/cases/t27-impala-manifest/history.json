@@ -1,0 +1,14 @@
+{
+  "comparisons": {
+    "b82f0c6d39a51e47b8c216f0d4a7935e61c028ab...a6c91d3e4f507b28c1d69e2fa83b7405d19ec624": {
+      "status": "ahead",
+      "merge_base": "b82f0c6d39a51e47b8c216f0d4a7935e61c028ab",
+      "truncated": false,
+      "commits": [
+        {"sha": "c4e307a8b15d629f03e7a49c81b6d275ea904f13", "message": "Rename manifest workflow", "date": "2026-11-09T08:30:00Z", "files": [{"path": ".github/workflows/manifest-ci.yml", "previous_filename": ".github/workflows/manifest-check.yml", "status": "renamed", "additions": 1, "deletions": 3, "patch": "@@ -1,4 +1,2 @@\n-name: Manifest check\n-env:\n-  IMPALA_MANIFEST_REGION: west\n+name: Manifest CI\n on: [push]"}]},
+        {"sha": "a6c91d3e4f507b28c1d69e2fa83b7405d19ec624", "message": "Clarify manifest package description", "date": "2026-11-09T09:05:00Z", "files": [{"path": "package.json", "status": "modified", "additions": 1, "deletions": 1, "patch": "@@ -1,5 +1,5 @@\n {\n   \"name\": \"impala-manifest\",\n   \"version\": \"1.0.0\",\n-  \"description\": \"Manifest tooling\",\n+  \"description\": \"Manifest validation tooling\",\n   \"scripts\": {"}]}
+      ]
+    }
+  },
+  "workflow_blobs": {"b82f0c6d39a51e47b8c216f0d4a7935e61c028ab": "6ac319df082be754c901a6d3f47e2859bc140d72", "a6c91d3e4f507b28c1d69e2fa83b7405d19ec624": "e381f4b927ac065d3e8b14f6a790c52d1b6e403f"}
+}

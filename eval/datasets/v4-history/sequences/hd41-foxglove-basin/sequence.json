@@ -1,0 +1,12 @@
+{
+  "id": "hd41-foxglove-basin",
+  "split": "dev",
+  "ecosystem": "php",
+  "repository": "foxglove-basin/sluice-ledger",
+  "entries": [
+    {"id": "e1", "file": "e1.log", "cluster": "a", "relation": "first", "category": "db_connectivity", "title": "Test database port refuses connections", "root_cause": "The test configuration points to port 5433, while PostgreSQL is published on port 5432. Correct the test database port.", "differs_from_earlier": ""},
+    {"id": "e2", "file": "e2.log", "cluster": "a", "relation": "recurrence", "category": "db_connectivity", "title": "Test database port still refuses connections", "root_cause": "The test configuration points to port 5433, while PostgreSQL is published on port 5432. Correct the test database port.", "differs_from_earlier": "A later run uses a different runner and test selection, but retains the same mismatched port."},
+    {"id": "e3", "file": "e3.log", "cluster": "b", "relation": "lookalike", "category": "db_connectivity", "title": "Test database rejects the configured role", "root_cause": "The test process uses the sluice_reader role with a password that does not match the PostgreSQL service configuration. Align the test role password with the service.", "differs_from_earlier": "The server is reached on the published port; it rejects the configured role's password instead of refusing a TCP connection."},
+    {"id": "e4", "file": "e4.log", "cluster": "b", "relation": "recurrence", "category": "db_connectivity", "title": "Test database again rejects the configured role", "root_cause": "The test process uses the sluice_reader role with a password that does not match the PostgreSQL service configuration. Align the test role password with the service.", "differs_from_earlier": "A later run executes another test and reports the same role authentication failure through a different stack location."}
+  ]
+}

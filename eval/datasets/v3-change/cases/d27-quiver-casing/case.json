@@ -1,0 +1,19 @@
+{
+  "id": "d27-quiver-casing",
+  "split": "dev",
+  "comparability": "incomparable",
+  "category": "workflow_path",
+  "culprit_kind": "none",
+  "difficulty": "medium",
+  "ecosystem": "dotnet",
+  "title": "Project path casing on Linux",
+  "root_cause": "The workflow refers to src/Quiver/Quiver.csproj, while the directory at the failed commit is src/quiver. The Linux runner cannot resolve that spelling, although the earlier Windows jobs could resolve it on their case-insensitive filesystem. The differing runner labels prevent a fair baseline comparison.",
+  "culprit_paths": [],
+  "culprit_commit": null,
+  "unverified_factors": [],
+  "fix_keywords": ["src/quiver/Quiver.csproj"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 59, "end_line": 64, "why": "The build command names the project and MSBuild reports that it cannot find it."},
+    {"path": "repo/.github/workflows/verify.yml", "start_line": 11, "end_line": 11, "why": "The workflow uses the uppercase directory spelling."}
+  ]
+}

@@ -291,3 +291,175 @@ class AgentEventOut(BaseModel):
     detail: dict[str, Any]
     duration_ms: int | None
     created_at: datetime
+
+
+# ---------------------------------------------------------------------- v1.1: CI history ---
+
+
+class TrackRepositoryIn(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    url: str = Field(min_length=1, max_length=500)
+    history_days: int | None = Field(default=None, ge=1, le=400)
+
+
+class EtlBatchOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: uuid.UUID
+    status: str
+    started_at: datetime
+    finished_at: datetime | None
+    requests_used: int
+    counts: dict[str, int]
+    watermark_after: str | None
+    error_code: str | None
+    message: str | None
+
+
+class TrackedRepositoryOut(BaseModel):
+    id: uuid.UUID
+    owner: str
+    repo: str
+    html_url: str
+    default_branch: str | None
+    history_days: int
+    added_at: datetime
+    last_sync_at: datetime | None
+    # The end of the last complete sync window: runs created before it are all stored.
+    complete_through: str | None
+    runs: int
+    failed_runs: int
+    syncing: bool
+    last_batch: EtlBatchOut | None
+
+
+class SyncOut(BaseModel):
+    job_id: uuid.UUID
+    created: bool
+
+
+class ForgetIn(BaseModel):
+    """Forget repository deletes everything Kensa holds about it; the request must repeat the
+    repository's full name, so it cannot happen by accident."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    confirm: str = Field(min_length=3, max_length=201)
+
+
+class RetentionIn(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    older_than_days: int = Field(ge=1, le=3650)
+    confirm: Literal[True]
+
+
+class PurgeOut(BaseModel):
+    counts: dict[str, int]
+
+
+class DqFindingOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    check: str
+    severity: str
+    entity_key: str
+    detail: str
+    first_seen: datetime
+    last_seen: datetime
+    resolved_at: datetime | None
+    tracked_repository_id: uuid.UUID | None
+    investigation_id: uuid.UUID | None
+
+
+# ------------------------------------------------- v1.1: similar failures (D-051, D-053) ---
+
+
+class FingerprintOut(BaseModel):
+    hash: str
+    role: str
+    category: str
+    rule_id: str
+    subject: str
+    template: str
+    # exact: may claim a recurrence; approximate: similarity only (D-057).
+    kind: Literal["exact", "approximate"]
+    # How many investigations share it; None while history matching is off.
+    occurrences: int | None
+
+
+class SimilarFailureOut(BaseModel):
+    investigation_id: uuid.UUID
+    title: str
+    created_at: datetime
+    match: Literal["same_failure", "related", "similar_text"]
+    score: float
+    earlier: bool
+    category: str
+    diagnosis_category: str | None
+    verification_status: str | None
+    # What the earlier conclusion rests on; history is never evidence for this investigation.
+    provenance: Literal["human_confirmed", "verifier_corroborated", "model_hypothesis", "none"]
+    resolution: str | None
+
+
+class ResolutionIn(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    summary: str = Field(min_length=3, max_length=1000)
+
+
+class ResolutionOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    provenance: str
+    summary: str
+    created_at: datetime
+
+
+class InvestigationHistoryOut(BaseModel):
+    # False: experimental history matching is off, and nothing is matched or counted.
+    matching: bool
+    fingerprints: list[FingerprintOut]
+    similar: list[SimilarFailureOut]
+    resolution: ResolutionOut | None
+
+
+# ----------------------------------------------- v1.1: change-aware investigation (D-054) ---
+
+
+class ChangeFactorOut(BaseModel):
+    name: str
+    state: Literal["same", "different", "unknown", "changed_in_range"]
+    detail: str
+
+
+class ChangeSuspectOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    rank: int
+    path: str
+    change_kind: str
+    score: float
+    # Never "cause": a change is correlated with the failure, or weakly so.
+    status: Literal["correlated", "weak"]
+    signals: dict[str, float]
+    document_id: uuid.UUID | None
+
+
+class ChangesOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    comparability: str
+    reasons: list[str]
+    factors: list[ChangeFactorOut]
+    unverified: list[str]
+    baseline_run_id: int | None
+    baseline_sha: str | None
+    failed_sha: str
+    compare_status: str | None
+    commits: int
+    files: int
+    truncated: bool
+    suspects: list[ChangeSuspectOut]

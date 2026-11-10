@@ -1,0 +1,15 @@
+﻿name: Ruby checks
+on: push
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      # Install the interpreter and bundled gems.
+      # Bundler caches the installed gems.
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+      # Run the startup checks.
+      - run: bundle exec ruby -Itest test/startup_test.rb

@@ -1,0 +1,13 @@
+{
+  "id": "hd16-quartz-composer",
+  "independent_labels": [
+    {"id": "e1", "cluster": "a", "relation": "first", "category": "dependency_build"},
+    {"id": "e2", "cluster": "b", "relation": "lookalike", "category": "dependency_build"},
+    {"id": "e3", "cluster": "c", "relation": "first", "category": "test_regression"},
+    {"id": "e4", "cluster": "a", "relation": "recurrence", "category": "dependency_build"}
+  ],
+  "verdict": "agree",
+  "disputed_fields": [],
+  "reason_category": "none",
+  "notes": "The calendar-core constraint recurs in e4 with a different runner, invocation, and available versions. The tax-rules constraint in e2 needs a separate dependency fix. The PHPUnit assertion in e3 is distinct. Root-cause descriptions match the logs; no giveaway commentary found. The labels and plan pattern agree."
+}

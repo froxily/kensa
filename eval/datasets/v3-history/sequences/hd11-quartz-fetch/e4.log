@@ -1,0 +1,47 @@
+2026-09-19T09:00:00.0000000Z Current runner version: '2.329.0'
+2026-09-19T09:00:00.1000000Z Runner name: 'hosted-18'
+2026-09-19T09:00:00.2000000Z ##[group]Operating System
+2026-09-19T09:00:00.3000000Z Ubuntu
+2026-09-19T09:00:00.4000000Z 24.04.3
+2026-09-19T09:00:00.5000000Z ##[endgroup]
+2026-09-19T09:00:00.6000000Z ##[group]Runner Image
+2026-09-19T09:00:00.7000000Z Image: ubuntu-24.04
+2026-09-19T09:00:00.8000000Z Version: 20260914.1
+2026-09-19T09:00:00.9000000Z ##[endgroup]
+2026-09-19T09:00:01.0000000Z Prepare workflow directory
+2026-09-19T09:00:01.1000000Z Prepare all required actions
+2026-09-19T09:00:01.2000000Z Download action repository 'actions/checkout@v4'
+2026-09-19T09:00:01.3000000Z Complete job name: verify
+2026-09-19T09:00:02.0000000Z ##[group]Run actions/checkout@v4
+2026-09-19T09:00:02.1000000Z with:
+2026-09-19T09:00:02.2000000Z   repository: quartz-labs/relay-fetch
+2026-09-19T09:00:02.3000000Z   clean: true
+2026-09-19T09:00:02.4000000Z ##[endgroup]
+2026-09-19T09:00:03.0000000Z Syncing repository: quartz-labs/relay-fetch
+2026-09-19T09:00:03.1000000Z [command]/usr/bin/git version
+2026-09-19T09:00:03.2000000Z git version 2.51.0
+2026-09-19T09:00:04.0000000Z Fetching the repository
+2026-09-19T09:00:05.0000000Z Checking out the ref
+2026-09-19T09:00:05.2000000Z ##[group]Run actions/setup-node@v4
+2026-09-19T09:00:05.3000000Z with:
+2026-09-19T09:00:05.4000000Z   node-version: 22
+2026-09-19T09:00:05.5000000Z ##[endgroup]
+2026-09-19T09:00:06.0000000Z Found in cache: node 22.19.0
+2026-09-19T09:00:06.5000000Z ##[group]Run npm ci
+2026-09-19T09:00:06.6000000Z npm ci
+2026-09-19T09:00:06.7000000Z shell: /usr/bin/bash -e {0}
+2026-09-19T09:00:06.8000000Z ##[endgroup]
+2026-09-19T09:00:12.0000000Z npm error code 1
+2026-09-19T09:00:12.1000000Z npm error path /home/runner/work/relay-fetch/relay-fetch/node_modules/quartz-raster
+2026-09-19T09:00:12.2000000Z npm error command failed
+2026-09-19T09:00:12.3000000Z npm error command sh -c node-gyp rebuild
+2026-09-19T09:00:12.4000000Z gyp info using node-gyp@11.2.0
+2026-09-19T09:00:12.5000000Z gyp info using node@22.19.0
+2026-09-19T09:00:12.6000000Z make: Entering directory '/home/runner/work/relay-fetch/relay-fetch/node_modules/quartz-raster/build'
+2026-09-19T09:00:12.7000000Z   CXX(target) Release/obj.target/raster/src/raster.o
+2026-09-19T09:00:12.8000000Z make: g++: No such file or directory
+2026-09-19T09:00:12.9000000Z make: *** [raster.target.mk:112: Release/obj.target/raster/src/raster.o] Error 127
+2026-09-19T09:00:13.0000000Z gyp ERR! build error
+2026-09-19T09:00:13.1000000Z ##[error]Process completed with exit code 1.
+2026-09-19T09:00:13.2000000Z Post job cleanup.
+2026-09-19T09:00:13.3000000Z Cleaning up orphan processes

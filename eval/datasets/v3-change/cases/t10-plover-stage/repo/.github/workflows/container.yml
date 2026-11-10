@@ -1,0 +1,9 @@
+name: Container
+on: push
+jobs:
+  container:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build compilation image
+        run: docker build --target builder -t plover-build .

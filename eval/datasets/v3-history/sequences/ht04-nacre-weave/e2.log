@@ -1,0 +1,47 @@
+﻿2026-09-08T16:20:11.1111111Z Current runner version: '2.328.0'
+2026-09-08T16:20:11.2111111Z ##[group]Runner Image
+2026-09-08T16:20:11.3111111Z Image: ubuntu-24.04
+2026-09-08T16:20:11.4111111Z Version: 20260901.1.0
+2026-09-08T16:20:11.5111111Z ##[endgroup]
+2026-09-08T16:20:11.6111111Z ##[group]GITHUB_TOKEN Permissions
+2026-09-08T16:20:11.7111111Z Contents: read
+2026-09-08T16:20:11.8111111Z ##[endgroup]
+2026-09-08T16:20:12.1111111Z Prepare workflow directory
+2026-09-08T16:20:12.2111111Z Prepare all required actions
+2026-09-08T16:20:12.3111111Z Getting action download info
+2026-09-08T16:20:13.1111111Z ##[group]Run actions/checkout@v4
+2026-09-08T16:20:13.2111111Z with:
+2026-09-08T16:20:13.3111111Z   repository: nacre-loom/weft-index
+2026-09-08T16:20:13.4111111Z   clean: true
+2026-09-08T16:20:13.5111111Z ##[endgroup]
+2026-09-08T16:20:14.1111111Z Syncing repository: nacre-loom/weft-index
+2026-09-08T16:20:14.2111111Z [command]/usr/bin/git version
+2026-09-08T16:20:14.3111111Z git version 2.51.0
+2026-09-08T16:20:14.4111111Z Initializing the repository
+2026-09-08T16:20:15.1111111Z Fetching the repository
+2026-09-08T16:20:16.1111111Z Checking out the ref
+2026-09-08T16:20:16.2111111Z [command]/usr/bin/git log -1 --format=%H
+2026-09-08T16:20:16.3111111Z 8bd5458688147adcf22a96f99d7c73dd20aa881c
+2026-09-08T16:20:16.4111111Z ##[group]Run cargo check --workspace
+2026-09-08T16:20:16.5111111Z cargo check --workspace
+2026-09-08T16:20:16.6111111Z shell: /usr/bin/bash -e {0}
+2026-09-08T16:20:16.7111111Z env:
+2026-09-08T16:20:16.8111111Z   CARGO_TERM_COLOR: always
+2026-09-08T16:20:16.9111111Z ##[endgroup]
+2026-09-08T16:20:17.1111111Z     Updating crates.io index
+2026-09-08T16:20:18.1111111Z    Compiling quote v1.0.40
+2026-09-08T16:20:19.1111111Z     Checking weft-index v0.1.0 (/home/runner/work/weft-index/weft-index)
+2026-09-08T16:20:19.2111111Z error[E0609]: no field `shade` on type `SpoolLabel`
+2026-09-08T16:20:19.3111111Z   --> src/spool_format.rs:82:26
+2026-09-08T16:20:19.4111111Z    |
+2026-09-08T16:20:19.5111111Z 82 |     write!(out, "{}", label.shade)?;
+2026-09-08T16:20:19.6111111Z    |                              ^^^^^ unknown field
+2026-09-08T16:20:19.7111111Z    |
+2026-09-08T16:20:19.8111111Z    = note: available fields are: `tone`, `name`
+2026-09-08T16:20:19.9111111Z For more information about this error, try `rustc --explain E0609`.
+2026-09-08T16:20:20.0111111Z error: could not compile `weft-index` (lib) due to 1 previous error
+2026-09-08T16:20:20.1111111Z ##[error]Process completed with exit code 101.
+2026-09-08T16:20:20.2111111Z Post job cleanup.
+2026-09-08T16:20:20.3111111Z [command]/usr/bin/git version
+2026-09-08T16:20:20.4111111Z git version 2.51.0
+2026-09-08T16:20:20.5111111Z Cleaning up orphan processes

@@ -1,0 +1,13 @@
+{
+  "id": "hd06-tern-docker",
+  "independent_labels": [
+    {"id": "e1", "cluster": "a", "relation": "first", "category": "docker"},
+    {"id": "e2", "cluster": "b", "relation": "lookalike", "category": "docker"},
+    {"id": "e3", "cluster": "b", "relation": "recurrence", "category": "docker"},
+    {"id": "e4", "cluster": "a", "relation": "recurrence", "category": "docker"}
+  ],
+  "verdict": "disagree",
+  "disputed_fields": ["e2.relation", "e2.differs_from_earlier"],
+  "reason_category": "label_conflict",
+  "notes": "Both e1 and e2 are Docker build failures reported as not found, but e2 needs a build-context exclusion fixed rather than a base-image tag. I label e2 a lookalike; the sequence and plan label it first, and its differs_from_earlier is empty. The recurrences have substantive run differences, and the root causes match the logs."
+}

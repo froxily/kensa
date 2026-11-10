@@ -1,0 +1,48 @@
+2026-09-14T07:18:21.1234567Z Current runner version: '2.329.0'
+2026-09-14T07:18:21.2234567Z ##[group]Runner Image Provisioner
+2026-09-14T07:18:21.3234567Z Hosted Compute Agent
+2026-09-14T07:18:21.4234567Z ##[endgroup]
+2026-09-14T07:18:21.5234567Z ##[group]Operating System
+2026-09-14T07:18:21.6234567Z Ubuntu
+2026-09-14T07:18:21.7234567Z 24.04.3
+2026-09-14T07:18:21.8234567Z ##[endgroup]
+2026-09-14T07:18:21.9234567Z ##[group]Runner Image
+2026-09-14T07:18:22.0234567Z Image: ubuntu-24.04
+2026-09-14T07:18:22.1234567Z Version: 20260908.1.0
+2026-09-14T07:18:22.2234567Z ##[endgroup]
+2026-09-14T07:18:22.3234567Z Prepare workflow directory
+2026-09-14T07:18:22.4234567Z Prepare all required actions
+2026-09-14T07:18:22.5234567Z Download action repository 'actions/checkout@v4'
+2026-09-14T07:18:22.6234567Z Download action repository 'actions/setup-python@v5'
+2026-09-14T07:18:22.7234567Z Complete job name: lint
+2026-09-14T07:18:22.8234567Z ##[group]Run actions/checkout@v4
+2026-09-14T07:18:22.9234567Z with:
+2026-09-14T07:18:23.0234567Z   repository: porcelain-moth/aurora-thimble
+2026-09-14T07:18:23.1234567Z   clean: true
+2026-09-14T07:18:23.2234567Z ##[endgroup]
+2026-09-14T07:18:23.3234567Z Syncing repository: porcelain-moth/aurora-thimble
+2026-09-14T07:18:23.4234567Z git version 2.51.0
+2026-09-14T07:18:23.5234567Z Fetching the repository
+2026-09-14T07:18:24.1234567Z Checking out the ref
+2026-09-14T07:18:24.2234567Z ##[group]Run actions/setup-python@v5
+2026-09-14T07:18:24.3234567Z with:
+2026-09-14T07:18:24.4234567Z   python-version: '3.12'
+2026-09-14T07:18:24.5234567Z ##[endgroup]
+2026-09-14T07:18:24.6234567Z Successfully set up CPython (3.12.6)
+2026-09-14T07:18:24.7234567Z ##[group]Run python -m pip install ruff==0.6.9
+2026-09-14T07:18:24.8234567Z python -m pip install ruff==0.6.9
+2026-09-14T07:18:24.9234567Z shell: /usr/bin/bash -e {0}
+2026-09-14T07:18:25.0234567Z env:
+2026-09-14T07:18:25.1234567Z   PIP_INDEX_URL: https://packages.porcelain-moth.invalid/simple
+2026-09-14T07:18:25.2234567Z ##[endgroup]
+2026-09-14T07:18:25.3234567Z Looking in indexes: https://packages.porcelain-moth.invalid/simple
+2026-09-14T07:18:25.4234567Z WARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError("<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7f839601e450>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution")': /simple/ruff/
+2026-09-14T07:18:26.4234567Z WARNING: Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError("<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7f839601e690>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution")': /simple/ruff/
+2026-09-14T07:18:28.4234567Z WARNING: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError("<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7f839601e8d0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution")': /simple/ruff/
+2026-09-14T07:18:32.4234567Z WARNING: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError("<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7f839601eb10>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution")': /simple/ruff/
+2026-09-14T07:18:40.4234567Z WARNING: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError("<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7f839601ed50>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution")': /simple/ruff/
+2026-09-14T07:18:40.5234567Z ERROR: Could not find a version that satisfies the requirement ruff==0.6.9 (from versions: none)
+2026-09-14T07:18:40.6234567Z ERROR: No matching distribution found for ruff==0.6.9
+2026-09-14T07:18:40.7234567Z ##[error]Process completed with exit code 1.
+2026-09-14T07:18:40.8234567Z Post job cleanup.
+2026-09-14T07:18:40.9234567Z Cleaning up orphan processes

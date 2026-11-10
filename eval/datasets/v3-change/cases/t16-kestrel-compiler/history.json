@@ -1,0 +1,17 @@
+﻿{
+  "comparisons": {
+    "c9f238b75a4d016e9b3c782f1e56a0d4b7c195e2...a47cb6e081f539d2b7a40cf9e15d6b328aef9014": {
+      "status": "ahead",
+      "merge_base": "c9f238b75a4d016e9b3c782f1e56a0d4b7c195e2",
+      "truncated": false,
+      "commits": [{
+        "sha": "a47cb6e081f539d2b7a40cf9e15d6b328aef9014", "message": "Bump project patch version", "date": "2026-11-08T10:12:00Z",
+        "files": [{"path": "CMakeLists.txt", "status": "modified", "additions": 1, "deletions": 1, "patch": "@@ -1,5 +1,5 @@\n cmake_minimum_required(VERSION 3.20)\n-project(kestrel_routes VERSION 1.4.2 LANGUAGES CXX)\n+project(kestrel_routes VERSION 1.4.3 LANGUAGES CXX)\n add_executable(route_check src/main.cpp)\n target_compile_features(route_check PRIVATE cxx_std_17)\n target_compile_options(route_check PRIVATE -Wall -Wextra -Werror)"}]
+      }]
+    }
+  },
+  "workflow_blobs": {
+    "c9f238b75a4d016e9b3c782f1e56a0d4b7c195e2": "e6b3a290f1c4875d90e12a6b7c3f4589d0ab61e2",
+    "a47cb6e081f539d2b7a40cf9e15d6b328aef9014": "e6b3a290f1c4875d90e12a6b7c3f4589d0ab61e2"
+  }
+}

@@ -1,0 +1,56 @@
+2026-09-14T07:42:00.1000000Z Current runner version: '2.329.0'
+2026-09-14T07:42:00.2000000Z ##[group]Runner Image
+2026-09-14T07:42:00.3000000Z Image: ubuntu-24.04
+2026-09-14T07:42:00.4000000Z Version: 20260913.1.0
+2026-09-14T07:42:00.5000000Z ##[endgroup]
+2026-09-14T07:42:01.1000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-14T07:42:01.2000000Z Contents: read
+2026-09-14T07:42:01.3000000Z ##[endgroup]
+2026-09-14T07:42:02.1000000Z Prepare workflow directory
+2026-09-14T07:42:02.2000000Z Prepare all required actions
+2026-09-14T07:42:03.1000000Z ##[group]Run actions/checkout@v4
+2026-09-14T07:42:03.2000000Z with:
+2026-09-14T07:42:03.3000000Z   repository: asterquay-labs/tideledger
+2026-09-14T07:42:03.4000000Z   fetch-depth: 1
+2026-09-14T07:42:03.5000000Z ##[endgroup]
+2026-09-14T07:42:04.1000000Z Syncing repository: asterquay-labs/tideledger
+2026-09-14T07:42:05.1000000Z Checking out the ref
+2026-09-14T07:42:06.1000000Z ##[group]Run actions/setup-java@v4
+2026-09-14T07:42:06.2000000Z with:
+2026-09-14T07:42:06.3000000Z   distribution: temurin
+2026-09-14T07:42:06.4000000Z   java-version: 21
+2026-09-14T07:42:06.5000000Z ##[endgroup]
+2026-09-14T07:42:08.1000000Z Installed distributions
+2026-09-14T07:42:08.2000000Z   temurin 21.0.8+9
+2026-09-14T07:42:09.1000000Z ##[group]Run mvn -B verify
+2026-09-14T07:42:09.2000000Z mvn -B verify
+2026-09-14T07:42:09.3000000Z shell: /usr/bin/bash -e {0}
+2026-09-14T07:42:09.4000000Z ##[endgroup]
+2026-09-14T07:42:10.1000000Z [INFO] Scanning for projects...
+2026-09-14T07:42:10.2000000Z [INFO] ----------------< labs.asterquay:tideledger >----------------
+2026-09-14T07:42:10.3000000Z [INFO] Building tideledger 1.4.0-SNAPSHOT
+2026-09-14T07:42:11.1000000Z [INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ tideledger ---
+2026-09-14T07:42:11.2000000Z [INFO] Compiling 39 source files with javac [debug release 21] to target/classes
+2026-09-14T07:42:16.1000000Z [INFO] --- maven-surefire-plugin:3.5.2:test (default-test) @ tideledger ---
+2026-09-14T07:42:16.2000000Z [INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+2026-09-14T07:42:17.1000000Z [INFO] -------------------------------------------------------
+2026-09-14T07:42:17.2000000Z [INFO]  T E S T S
+2026-09-14T07:42:17.3000000Z [INFO] -------------------------------------------------------
+2026-09-14T07:42:18.1000000Z [INFO] Running labs.asterquay.ledger.WorkerExitTest
+2026-09-14T07:42:18.2000000Z [ERROR] Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.091 s <<< FAILURE! -- in labs.asterquay.ledger.WorkerExitTest
+2026-09-14T07:42:18.3000000Z [ERROR] labs.asterquay.ledger.WorkerExitTest.reportsKilledWorker -- Time elapsed: 0.019 s <<< FAILURE!
+2026-09-14T07:42:18.4000000Z org.opentest4j.AssertionFailedError: worker process exit code ==> expected: <137> but was: <0>
+2026-09-14T07:42:18.5000000Z 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+2026-09-14T07:42:18.6000000Z 	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+2026-09-14T07:42:18.7000000Z 	at labs.asterquay.ledger.WorkerExitTest.reportsKilledWorker(WorkerExitTest.java:64)
+2026-09-14T07:42:18.8000000Z [INFO] Results:
+2026-09-14T07:42:18.9000000Z [ERROR] Failures:
+2026-09-14T07:42:19.1000000Z [ERROR]   WorkerExitTest.reportsKilledWorker:64 worker process exit code ==> expected: <137> but was: <0>
+2026-09-14T07:42:19.2000000Z [INFO] Tests run: 3, Failures: 1, Errors: 0, Skipped: 0
+2026-09-14T07:42:19.3000000Z [INFO] ------------------------------------------------------------------------
+2026-09-14T07:42:19.4000000Z [INFO] BUILD FAILURE
+2026-09-14T07:42:19.5000000Z [ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.2:test (default-test) on project tideledger: There are test failures.
+2026-09-14T07:42:19.6000000Z [ERROR] See /__w/tideledger/tideledger/target/surefire-reports for the individual test results.
+2026-09-14T07:42:19.7000000Z ##[error]Process completed with exit code 1.
+2026-09-14T07:42:19.8000000Z Post job cleanup.
+2026-09-14T07:42:19.9000000Z Cleaning up orphan processes

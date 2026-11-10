@@ -1,0 +1,43 @@
+2026-09-07T09:11:02.1024311Z Current runner version: '2.328.0'
+2026-09-07T09:11:02.1055311Z ##[group]Runner Image
+2026-09-07T09:11:02.1056311Z Image: ubuntu-24.04
+2026-09-07T09:11:02.1057311Z Version: 20260831.1.0
+2026-09-07T09:11:02.1058311Z ##[endgroup]
+2026-09-07T09:11:02.1060311Z ##[group]GITHUB_TOKEN Permissions
+2026-09-07T09:11:02.1061311Z Contents: read
+2026-09-07T09:11:02.1062311Z Metadata: read
+2026-09-07T09:11:02.1063311Z ##[endgroup]
+2026-09-07T09:11:02.1070311Z Prepare workflow directory
+2026-09-07T09:11:02.2270311Z Prepare all required actions
+2026-09-07T09:11:02.3470311Z Getting action download info
+2026-09-07T09:11:02.7280311Z Complete job name: resolve
+2026-09-07T09:11:02.8290311Z ##[group]Run actions/checkout@v4
+2026-09-07T09:11:02.8291311Z with:
+2026-09-07T09:11:02.8292311Z   repository: oriel-sundial/lichen-telemetry
+2026-09-07T09:11:02.8293311Z   clean: true
+2026-09-07T09:11:02.8294311Z ##[endgroup]
+2026-09-07T09:11:03.0024311Z Syncing repository: oriel-sundial/lichen-telemetry
+2026-09-07T09:11:03.1824311Z Initializing the repository
+2026-09-07T09:11:03.4024311Z Fetching the repository
+2026-09-07T09:11:03.8744311Z Checking out the ref
+2026-09-07T09:11:04.0744311Z ##[group]Run actions/setup-python@v5
+2026-09-07T09:11:04.0745311Z with:
+2026-09-07T09:11:04.0746311Z   python-version: '3.12'
+2026-09-07T09:11:04.0747311Z ##[endgroup]
+2026-09-07T09:11:04.3624311Z Successfully set up CPython (3.12.6)
+2026-09-07T09:11:04.4204311Z ##[group]Run uv lock
+2026-09-07T09:11:04.4205311Z uv lock
+2026-09-07T09:11:04.4206311Z shell: /usr/bin/bash -e {0}
+2026-09-07T09:11:04.4207311Z ##[endgroup]
+2026-09-07T09:11:04.4814311Z Using CPython 3.12.6 interpreter at: /opt/hostedtoolcache/Python/3.12.6/x64/bin/python3
+2026-09-07T09:11:05.0234311Z   x No solution found when resolving dependencies:
+2026-09-07T09:11:05.0235311Z   `-> Because lichen-exporter==1.4.0 depends on sundial-codec<3 and
+2026-09-07T09:11:05.0236311Z       your project depends on sundial-codec>=3, we can conclude that
+2026-09-07T09:11:05.0237311Z       lichen-exporter==1.4.0 and your project are incompatible.
+2026-09-07T09:11:05.0238311Z       And because your project depends on lichen-exporter==1.4.0, we can
+2026-09-07T09:11:05.0239311Z       conclude that your project's requirements are unsatisfiable.
+2026-09-07T09:11:05.0424311Z ##[error]Process completed with exit code 1.
+2026-09-07T09:11:05.0624311Z Post job cleanup.
+2026-09-07T09:11:05.1584311Z [command]/usr/bin/git version
+2026-09-07T09:11:05.1654311Z git version 2.51.0
+2026-09-07T09:11:05.1924311Z Cleaning up orphan processes

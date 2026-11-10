@@ -1,0 +1,12 @@
+{
+  "id": "ht31-saffron-quay",
+  "split": "test",
+  "ecosystem": "python",
+  "repository": "bracken-moor/saffron-quay",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"missing_env_var","title":"Dispatch endpoint missing in staging","root_cause":"The staging job does not provide QUAY_DISPATCH_URL, which the dispatch settings require. Add that variable to the staging environment.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"a","relation":"recurrence","category":"missing_env_var","title":"Dispatch endpoint missing in staging","root_cause":"The staging job does not provide QUAY_DISPATCH_URL, which the dispatch settings require. Add that variable to the staging environment.","differs_from_earlier":"A later pull request runs a different selection of tests and fails at a shifted settings line."},
+    {"id":"e3","file":"e3.log","cluster":"b","relation":"lookalike","category":"missing_env_var","title":"Receipt region missing in staging","root_cause":"The staging job does not provide QUAY_RECEIPT_REGION, which the receipt settings require. Add that separate variable to the staging environment.","differs_from_earlier":"The same settings loader raises a KeyError for the receipt region instead of the dispatch endpoint; the two settings require different environment variables."},
+    {"id":"e4","file":"e4.log","cluster":"a","relation":"recurrence","category":"missing_env_var","title":"Dispatch endpoint missing in staging","root_cause":"The staging job does not provide QUAY_DISPATCH_URL, which the dispatch settings require. Add that variable to the staging environment.","differs_from_earlier":"A later staging run reaches the same missing key through a dispatch client fixture, with different test output and line numbers."}
+  ]
+}

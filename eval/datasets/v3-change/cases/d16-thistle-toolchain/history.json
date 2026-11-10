@@ -1,0 +1,17 @@
+﻿{
+  "comparisons": {
+    "d973fa8c46b120e5a4c7d3981b62fe04a9d735bc...a4c8e20f91b73d65f08a2c9b467de1350f8a62bc": {
+      "status": "ahead", "merge_base": "d973fa8c46b120e5a4c7d3981b62fe04a9d735bc", "truncated": false,
+      "commits": [
+        {"sha": "a4c8e20f91b73d65f08a2c9b467de1350f8a62bc", "message": "Normalize display labels", "date": "2026-11-08T10:18:00Z", "files": [
+          {"path": "thistle.py", "status": "modified", "additions": 2, "deletions": 1, "patch": "@@ -1,2 +1,3 @@\n def display_label(value):\n-    return value.strip()\n+    cleaned = value.strip()\n+    return cleaned.title()"},
+          {"path": "test_thistle.py", "status": "modified", "additions": 2, "deletions": 1, "patch": "@@ -1,4 +1,5 @@\n from thistle import display_label\n \n def test_display_label():\n-    assert display_label(' reed ') == 'reed'\n+    assert display_label(' reed ') == 'Reed'\n+    assert display_label('MOSS') == 'Moss'"}
+        ]}
+      ]
+    }
+  },
+  "workflow_blobs": {
+    "a4c8e20f91b73d65f08a2c9b467de1350f8a62bc": "c4f8b19e603a7d2f54b986c01e3a75d298bf4610",
+    "d973fa8c46b120e5a4c7d3981b62fe04a9d735bc": "c4f8b19e603a7d2f54b986c01e3a75d298bf4610"
+  }
+}

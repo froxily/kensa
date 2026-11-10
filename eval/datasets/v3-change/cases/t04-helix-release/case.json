@@ -1,0 +1,21 @@
+﻿{
+  "id": "t04-helix-release",
+  "split": "test",
+  "comparability": "comparable",
+  "category": "dependency_build",
+  "culprit_kind": "dependency_manifest",
+  "difficulty": "medium",
+  "ecosystem": "java",
+  "title": "Compiler release exceeds the configured JDK",
+  "root_cause": "The Maven manifest raised the compiler release from 21 to 23 while the workflow still selects JDK 21. That compiler cannot target release 23, so compilation stops before verification completes.",
+  "culprit_paths": ["pom.xml"],
+  "culprit_commit": "a26d1e8f90b734c5d2e61a08b49f3c7e15d082ab",
+  "unverified_factors": [],
+  "fix_keywords": ["maven.compiler.release", "21", "23"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 48, "end_line": 50, "why": "The job selects Java 21."},
+    {"path": "log", "start_line": 63, "end_line": 65, "why": "Maven invokes the compiler with release 23."},
+    {"path": "log", "start_line": 72, "end_line": 72, "why": "The compiler reports that release 23 is unsupported."},
+    {"path": "repo/pom.xml", "start_line": 7, "end_line": 7, "why": "The manifest sets the requested release."}
+  ]
+}

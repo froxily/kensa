@@ -1,0 +1,12 @@
+﻿name: Dispatch checks
+on: push
+jobs:
+  dispatch:
+    name: dispatch-check
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm test

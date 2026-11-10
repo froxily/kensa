@@ -1,0 +1,47 @@
+2026-09-23T17:42:00.0000000Z Current runner version: '2.329.0'
+2026-09-23T17:42:00.1000000Z ##[group]Operating System
+2026-09-23T17:42:00.2000000Z Ubuntu
+2026-09-23T17:42:00.3000000Z 24.04.3
+2026-09-23T17:42:00.4000000Z LTS
+2026-09-23T17:42:00.5000000Z ##[endgroup]
+2026-09-23T17:42:00.6000000Z ##[group]Runner Image
+2026-09-23T17:42:00.7000000Z Image: ubuntu-24.04
+2026-09-23T17:42:00.8000000Z Version: 20260920.1.0
+2026-09-23T17:42:00.9000000Z ##[endgroup]
+2026-09-23T17:42:01.0000000Z Prepare workflow directory
+2026-09-23T17:42:01.1000000Z Prepare all required actions
+2026-09-23T17:42:02.0000000Z ##[group]Run actions/checkout@v4
+2026-09-23T17:42:02.1000000Z with:
+2026-09-23T17:42:02.2000000Z   repository: marzipan-fulcrum/loomlight-console
+2026-09-23T17:42:02.3000000Z   persist-credentials: false
+2026-09-23T17:42:02.4000000Z ##[endgroup]
+2026-09-23T17:42:03.0000000Z Syncing repository: marzipan-fulcrum/loomlight-console
+2026-09-23T17:42:04.0000000Z ##[group]Run actions/setup-node@v4
+2026-09-23T17:42:04.1000000Z with:
+2026-09-23T17:42:04.2000000Z   node-version: 22
+2026-09-23T17:42:04.3000000Z   cache: npm
+2026-09-23T17:42:04.4000000Z ##[endgroup]
+2026-09-23T17:42:05.0000000Z ##[group]Run npm ci
+2026-09-23T17:42:05.1000000Z npm ci
+2026-09-23T17:42:05.2000000Z shell: /usr/bin/bash -e {0}
+2026-09-23T17:42:05.3000000Z ##[endgroup]
+2026-09-23T17:42:11.0000000Z added 216 packages, and audited 217 packages in 5s
+2026-09-23T17:42:11.1000000Z 38 packages are looking for funding
+2026-09-23T17:42:11.2000000Z found 0 vulnerabilities
+2026-09-23T17:42:11.3000000Z ##[group]Run npx playwright test e2e/dispatch.spec.ts --project=chromium
+2026-09-23T17:42:11.4000000Z npx playwright test e2e/dispatch.spec.ts --project=chromium
+2026-09-23T17:42:11.5000000Z shell: /usr/bin/bash -e {0}
+2026-09-23T17:42:11.6000000Z ##[endgroup]
+2026-09-23T17:42:13.0000000Z Running 2 tests using 2 workers
+2026-09-23T17:42:13.8000000Z   1) [chromium] e2e/dispatch.spec.ts:12:5 > shows dispatch count
+2026-09-23T17:42:13.9000000Z
+2026-09-23T17:42:14.0000000Z     Error: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1169/chrome-linux/headless_shell
+2026-09-23T17:42:14.1000000Z     Looks like Playwright was just installed or updated.
+2026-09-23T17:42:14.2000000Z     Please run the following command to download new browsers:
+2026-09-23T17:42:14.3000000Z         npx playwright install
+2026-09-23T17:42:14.4000000Z   2) [chromium] e2e/dispatch.spec.ts:19:5 > opens a dispatch
+2026-09-23T17:42:14.5000000Z     Error: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1169/chrome-linux/headless_shell
+2026-09-23T17:42:14.6000000Z   2 failed
+2026-09-23T17:42:14.7000000Z ##[error]Process completed with exit code 1.
+2026-09-23T17:42:14.8000000Z Post job cleanup.
+2026-09-23T17:42:15.0000000Z Cleaning up orphan processes

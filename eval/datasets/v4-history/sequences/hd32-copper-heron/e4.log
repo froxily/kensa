@@ -1,0 +1,53 @@
+2026-09-25T09:31:00.1000000Z Current runner version: '2.329.0'
+2026-09-25T09:31:00.2000000Z ##[group]Runner Image Provisioner
+2026-09-25T09:31:00.2100000Z Hosted Compute Agent
+2026-09-25T09:31:00.2200000Z Version: 20260921.1
+2026-09-25T09:31:00.2300000Z ##[endgroup]
+2026-09-25T09:31:00.3000000Z ##[group]Operating System
+2026-09-25T09:31:00.3100000Z Ubuntu
+2026-09-25T09:31:00.3200000Z 24.04.3
+2026-09-25T09:31:00.3300000Z ##[endgroup]
+2026-09-25T09:31:00.4000000Z ##[group]Runner Image
+2026-09-25T09:31:00.4100000Z Image: ubuntu-24.04
+2026-09-25T09:31:00.4200000Z Version: 20260921.1.0
+2026-09-25T09:31:00.4300000Z ##[endgroup]
+2026-09-25T09:31:00.5000000Z Prepare workflow directory
+2026-09-25T09:31:01.2000000Z Prepare all required actions
+2026-09-25T09:31:01.9000000Z ##[group]Run actions/checkout@v4
+2026-09-25T09:31:01.9100000Z with:
+2026-09-25T09:31:01.9200000Z   repository: copper-heron/tidebook
+2026-09-25T09:31:01.9300000Z   fetch-depth: 1
+2026-09-25T09:31:01.9400000Z ##[endgroup]
+2026-09-25T09:31:02.1000000Z Syncing repository: copper-heron/tidebook
+2026-09-25T09:31:03.2000000Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/211/merge
+2026-09-25T09:31:03.5000000Z ##[group]Run actions/setup-node@v4
+2026-09-25T09:31:03.5100000Z with:
+2026-09-25T09:31:03.5200000Z   node-version: 22
+2026-09-25T09:31:03.5300000Z ##[endgroup]
+2026-09-25T09:31:04.0000000Z Found in cache @ /opt/hostedtoolcache/node/22.19.0/x64
+2026-09-25T09:31:04.1000000Z ##[group]Run npm ci
+2026-09-25T09:31:04.1100000Z npm ci
+2026-09-25T09:31:04.1200000Z shell: /usr/bin/bash -e {0}
+2026-09-25T09:31:04.1300000Z ##[endgroup]
+2026-09-25T09:31:10.2000000Z added 291 packages, and audited 292 packages in 6s
+2026-09-25T09:31:10.2100000Z 35 packages are looking for funding
+2026-09-25T09:31:10.2200000Z found 0 vulnerabilities
+2026-09-25T09:31:10.3000000Z ##[group]Run npm test -- --runInBand
+2026-09-25T09:31:10.3100000Z npm test -- --runInBand
+2026-09-25T09:31:10.3200000Z shell: /usr/bin/bash -e {0}
+2026-09-25T09:31:10.3300000Z ##[endgroup]
+2026-09-25T09:31:10.6000000Z > tidebook@1.5.1 test
+2026-09-25T09:31:10.6100000Z > jest --runInBand
+2026-09-25T09:31:10.9000000Z ● Validation Error:
+2026-09-25T09:31:10.9100000Z 
+2026-09-25T09:31:10.9200000Z   Test environment jest-environment-jsdom cannot be found. Make sure the testEnvironment configuration option points to an existing node module.
+2026-09-25T09:31:10.9300000Z 
+2026-09-25T09:31:10.9400000Z   Configuration Documentation:
+2026-09-25T09:31:10.9500000Z   https://jestjs.io/docs/configuration
+2026-09-25T09:31:10.9600000Z 
+2026-09-25T09:31:10.9700000Z As of Jest 28 "jest-environment-jsdom" is no longer shipped by default, make sure to install it separately.
+2026-09-25T09:31:11.0000000Z ##[error]Process completed with exit code 1.
+2026-09-25T09:31:11.1000000Z Post job cleanup.
+2026-09-25T09:31:11.2000000Z [command]/usr/bin/git version
+2026-09-25T09:31:11.2100000Z git version 2.51.0
+2026-09-25T09:31:11.3000000Z Cleaning up orphan processes

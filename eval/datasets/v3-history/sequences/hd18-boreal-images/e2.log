@@ -1,0 +1,46 @@
+2026-09-06T07:15:00.0000000Z Current runner version: '2.328.0'
+2026-09-06T07:15:01.0000000Z ##[group]Operating System
+2026-09-06T07:15:02.0000000Z Ubuntu 24.04.3 LTS
+2026-09-06T07:15:03.0000000Z ##[endgroup]
+2026-09-06T07:15:04.0000000Z ##[group]Runner Image
+2026-09-06T07:15:05.0000000Z Image: self-hosted
+2026-09-06T07:15:06.0000000Z Runner name: boreal-builder-2
+2026-09-06T07:15:07.0000000Z ##[endgroup]
+2026-09-06T07:15:08.0000000Z Prepare workflow directory
+2026-09-06T07:15:09.0000000Z Prepare all required actions
+2026-09-06T07:15:10.0000000Z Download action repository 'actions/checkout@v4'
+2026-09-06T07:15:11.0000000Z Complete job name: container-check
+2026-09-06T07:15:12.0000000Z ##[group]Run actions/checkout@v4
+2026-09-06T07:15:13.0000000Z with:
+2026-09-06T07:15:14.0000000Z   repository: nacelle/boreal-relay
+2026-09-06T07:15:15.0000000Z   fetch-depth: 1
+2026-09-06T07:15:16.0000000Z ##[endgroup]
+2026-09-06T07:15:17.0000000Z Syncing repository: nacelle/boreal-relay
+2026-09-06T07:15:18.0000000Z git version 2.46.0
+2026-09-06T07:15:19.0000000Z Initialized empty Git repository
+2026-09-06T07:15:20.0000000Z Fetching the repository
+2026-09-06T07:15:21.0000000Z Checking out the ref
+2026-09-06T07:15:22.0000000Z ##[group]Run go test ./...
+2026-09-06T07:15:23.0000000Z go test ./...
+2026-09-06T07:15:24.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-06T07:15:25.0000000Z ##[endgroup]
+2026-09-06T07:15:26.0000000Z ok  nacelle/boreal-relay  0.024s
+2026-09-06T07:15:26.1000000Z ##[group]Run systemctl show docker.service -p ActiveState -p SubState
+2026-09-06T07:15:26.2000000Z systemctl show docker.service -p ActiveState -p SubState
+2026-09-06T07:15:26.3000000Z shell: /usr/bin/bash -e {0}
+2026-09-06T07:15:26.4000000Z ##[endgroup]
+2026-09-06T07:15:26.5000000Z ActiveState=inactive
+2026-09-06T07:15:26.6000000Z SubState=dead
+2026-09-06T07:15:27.0000000Z ##[group]Run docker info
+2026-09-06T07:15:28.0000000Z docker info
+2026-09-06T07:15:29.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-06T07:15:30.0000000Z ##[endgroup]
+2026-09-06T07:15:31.0000000Z Client: Docker Engine - Community
+2026-09-06T07:15:32.0000000Z  Version: 27.5.1
+2026-09-06T07:15:33.0000000Z Server:
+2026-09-06T07:15:34.0000000Z ERROR: Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
+2026-09-06T07:15:35.0000000Z ##[error]Process completed with exit code 1.
+2026-09-06T07:15:36.0000000Z Post job cleanup.
+2026-09-06T07:15:37.0000000Z /usr/bin/git version
+2026-09-06T07:15:38.0000000Z Removing HTTP extra header
+2026-09-06T07:15:39.0000000Z Cleaning up orphan processes

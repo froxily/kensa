@@ -1,0 +1,12 @@
+{
+  "id": "hd42-tarn-lantern",
+  "split": "dev",
+  "ecosystem": "shell and make",
+  "repository": "tarn-lantern/sluice-audit",
+  "entries": [
+    {"id": "e1", "file": "e1.log", "cluster": "a", "relation": "first", "category": "workflow_path", "title": "Audit script missing from checkout", "root_cause": "The audit target invokes scripts/inspect-sluice.sh, which is absent from the checkout. Restore the script at that path or update the target to its actual location.", "differs_from_earlier": ""},
+    {"id": "e2", "file": "e2.log", "cluster": "b", "relation": "lookalike", "category": "workflow_path", "title": "Audit rules file missing", "root_cause": "The audit script exists but cannot read config/tarn-rules.tsv. Restore the rules file or point the script to its actual location.", "differs_from_earlier": "The missing file is the rules input opened by the script, not the script invoked by make."},
+    {"id": "e3", "file": "e3.log", "cluster": "a", "relation": "recurrence", "category": "workflow_path", "title": "Audit script missing from checkout", "root_cause": "The audit target invokes scripts/inspect-sluice.sh, which is absent from the checkout. Restore the script at that path or update the target to its actual location.", "differs_from_earlier": "A later run uses a different runner, checkout and make wrapper, but invokes the same absent script."},
+    {"id": "e4", "file": "e4.log", "cluster": "c", "relation": "first", "category": "test_regression", "title": "Duplicate sluice identifier", "root_cause": "The sluice manifest contains a duplicate identifier rejected by the audit. Correct or remove the duplicate record.", "differs_from_earlier": ""}
+  ]
+}

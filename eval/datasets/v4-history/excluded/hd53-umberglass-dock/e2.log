@@ -1,0 +1,52 @@
+2026-09-09T11:20:01.1111111Z Current runner version: '2.328.0'
+2026-09-09T11:20:01.1121111Z ##[group]Runner Image
+2026-09-09T11:20:01.1131111Z Image: ubuntu-24.04
+2026-09-09T11:20:01.1141111Z Version: 20260901.1.0
+2026-09-09T11:20:01.1151111Z ##[endgroup]
+2026-09-09T11:20:01.1161111Z ##[group]GITHUB_TOKEN Permissions
+2026-09-09T11:20:01.1171111Z Contents: read
+2026-09-09T11:20:01.1181111Z Metadata: read
+2026-09-09T11:20:01.1191111Z ##[endgroup]
+2026-09-09T11:20:01.1201111Z Prepare workflow directory
+2026-09-09T11:20:01.1211111Z Prepare all required actions
+2026-09-09T11:20:01.4011111Z ##[group]Run actions/checkout@v4
+2026-09-09T11:20:01.4021111Z with:
+2026-09-09T11:20:01.4031111Z   repository: tarnwick-labs/umberglass-dock
+2026-09-09T11:20:01.4041111Z   fetch-depth: 1
+2026-09-09T11:20:02.2011111Z Syncing repository: tarnwick-labs/umberglass-dock
+2026-09-09T11:20:02.9021111Z HEAD is now at 91de4f2 Rename dispatch action
+2026-09-09T11:20:02.9031111Z ##[endgroup]
+2026-09-09T11:20:03.0011111Z ##[group]Run actions/setup-node@v4
+2026-09-09T11:20:03.0021111Z with:
+2026-09-09T11:20:03.0031111Z   node-version: 22
+2026-09-09T11:20:03.4451111Z ##[endgroup]
+2026-09-09T11:20:03.4461111Z ##[group]Run npm ci
+2026-09-09T11:20:08.4461111Z added 171 packages, and audited 172 packages in 5s
+2026-09-09T11:20:08.4471111Z found 0 vulnerabilities
+2026-09-09T11:20:08.4481111Z ##[endgroup]
+2026-09-09T11:20:08.4491111Z ##[group]Run npx playwright test --project=chromium
+2026-09-09T11:20:09.1021111Z Running 6 tests using 2 workers
+2026-09-09T11:20:11.7011111Z   ✓  1 [chromium] › e2e/ledger.spec.ts:8:5 › shows ledger (1.8s)
+2026-09-09T11:20:12.9111111Z   ✓  2 [chromium] › e2e/dispatch.spec.ts:24:5 › quotes an oversized parcel (2.9s)
+2026-09-09T11:20:12.9121111Z [chromium] › e2e/dispatch.spec.ts:42:5 › submits dispatch
+2026-09-09T11:20:12.9131111Z [ 'Submit dispatch' ]
+2026-09-09T11:20:18.0481111Z   ✘  3 [chromium] › e2e/dispatch.spec.ts:42:5 › submits dispatch (5.1s)
+2026-09-09T11:20:18.0501111Z   1) [chromium] › e2e/dispatch.spec.ts:42:5 › submits dispatch ─────────────────────────────────
+2026-09-09T11:20:18.0511111Z     Error: locator.click: Timeout 5000ms exceeded.
+2026-09-09T11:20:18.0521111Z     Call log:
+2026-09-09T11:20:18.0531111Z       - waiting for getByRole('button', { name: 'Send dispatch' })
+2026-09-09T11:20:18.0541111Z        46 | await page.goto('/dispatch');
+2026-09-09T11:20:18.0551111Z        47 | await page.getByLabel('Destination').fill('North pier');
+2026-09-09T11:20:18.0561111Z     >  48 | await page.getByRole('button', { name: 'Send dispatch' }).click();
+2026-09-09T11:20:18.0571111Z           |                                                           ^
+2026-09-09T11:20:18.0581111Z        49 | await expect(page.getByText('Dispatch submitted')).toBeVisible();
+2026-09-09T11:20:18.0591111Z     at e2e/dispatch.spec.ts:48:59
+2026-09-09T11:20:18.0601111Z     Error Context: test-results/dispatch-submits-dispatch-chromium/error-context.md
+2026-09-09T11:20:18.0611111Z     attachment #1: screenshot (image/png)
+2026-09-09T11:20:18.0621111Z     test-results/dispatch-submits-dispatch-chromium/test-failed-1.png
+2026-09-09T11:20:18.0631111Z   1 failed
+2026-09-09T11:20:18.0641111Z   5 passed (9.5s)
+2026-09-09T11:20:18.0651111Z ##[error]Process completed with exit code 1.
+2026-09-09T11:20:18.0661111Z ##[endgroup]
+2026-09-09T11:20:18.2011111Z Post job cleanup.
+2026-09-09T11:20:18.3001111Z Cleaning up orphan processes

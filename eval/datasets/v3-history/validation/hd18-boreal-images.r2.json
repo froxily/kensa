@@ -1,0 +1,13 @@
+{
+  "id": "hd18-boreal-images",
+  "independent_labels": [
+    {"id": "e1", "cluster": "a", "relation": "first", "category": "docker"},
+    {"id": "e2", "cluster": "a", "relation": "recurrence", "category": "docker"},
+    {"id": "e3", "cluster": "b", "relation": "first", "category": "docker"},
+    {"id": "e4", "cluster": "c", "relation": "lookalike", "category": "docker"}
+  ],
+  "verdict": "agree",
+  "disputed_fields": [],
+  "reason_category": "none",
+  "notes": "e1 and e2 show the same stopped Docker service on the same runner, with different Docker commands and other run details. e3 and e4 report missing manifests for separate image tags, requiring separate tag or publication fixes. The root causes fit the logs, and no giveaway commentary is apparent."
+}

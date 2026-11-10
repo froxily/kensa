@@ -1,0 +1,93 @@
+2026-09-23T15:22:00.2193810Z Current runner version: '2.329.0'
+2026-09-23T15:22:00.3421180Z Runner name: 'runner-q8f2'
+2026-09-23T15:22:00.4589720Z ##[group]Runner Image
+2026-09-23T15:22:00.5129010Z Image: ubuntu-22.04
+2026-09-23T15:22:00.5652220Z Version: 20260919.2.0
+2026-09-23T15:22:00.6032100Z ##[endgroup]
+2026-09-23T15:22:01.0459720Z ##[group]GITHUB_TOKEN Permissions
+2026-09-23T15:22:01.1058140Z Contents: read
+2026-09-23T15:22:01.1661390Z ##[endgroup]
+2026-09-23T15:22:01.4419290Z Prepare workflow directory
+2026-09-23T15:22:02.0782160Z Prepare all required actions
+2026-09-23T15:22:02.6493200Z Complete job name: verify / unit (21)
+2026-09-23T15:22:03.0174930Z ##[group]Run actions/checkout@v4
+2026-09-23T15:22:03.0651170Z with:
+2026-09-23T15:22:03.1072350Z   repository: asterquay-labs/tideledger
+2026-09-23T15:22:03.1527890Z   ref: refs/pull/184/merge
+2026-09-23T15:22:03.1963200Z   fetch-depth: 1
+2026-09-23T15:22:03.2381930Z ##[endgroup]
+2026-09-23T15:22:03.8540190Z Syncing repository: asterquay-labs/tideledger
+2026-09-23T15:22:04.3731230Z Copying '/home/runner/.gitconfig' to '/home/runner/work/_temp/13fd8e64-5027-43aa-9996-f281b3bd76fa/.gitconfig'
+2026-09-23T15:22:05.0973150Z Checking out the ref
+2026-09-23T15:22:05.6025130Z /usr/bin/git log -1 --format=%H
+2026-09-23T15:22:05.6472120Z 4d9769fa1762398376198bfe068204cd785abc12
+2026-09-23T15:22:05.8819020Z ##[group]Run actions/setup-java@v4
+2026-09-23T15:22:05.9302660Z with:
+2026-09-23T15:22:05.9765000Z   java-version: 21
+2026-09-23T15:22:06.0178700Z   distribution: temurin
+2026-09-23T15:22:06.0602310Z   cache: maven
+2026-09-23T15:22:06.1086940Z ##[endgroup]
+2026-09-23T15:22:07.2491080Z Installed distributions
+2026-09-23T15:22:07.3168440Z   temurin 21.0.9+10
+2026-09-23T15:22:08.4983010Z Cache restored from key: setup-java-Linux-maven-725f1be3
+2026-09-23T15:22:08.8219960Z ##[group]Run echo "Run $GITHUB_RUN_ID, attempt $GITHUB_RUN_ATTEMPT"
+2026-09-23T15:22:08.8663900Z echo "Run $GITHUB_RUN_ID, attempt $GITHUB_RUN_ATTEMPT"
+2026-09-23T15:22:08.9151510Z shell: /usr/bin/bash -e {0}
+2026-09-23T15:22:08.9568840Z ##[endgroup]
+2026-09-23T15:22:09.0351240Z Run 19643852741, attempt 2
+2026-09-23T15:22:09.1723050Z ##[group]Run mvn --batch-mode --no-transfer-progress clean verify
+2026-09-23T15:22:09.2193740Z mvn --batch-mode --no-transfer-progress clean verify
+2026-09-23T15:22:09.2639810Z shell: /usr/bin/bash -e {0}
+2026-09-23T15:22:09.3115530Z ##[endgroup]
+2026-09-23T15:22:10.8822160Z [INFO] Scanning for projects...
+2026-09-23T15:22:11.1300410Z [INFO] Building tideledger 1.5.0-SNAPSHOT
+2026-09-23T15:22:11.1710460Z [INFO]   from pom.xml
+2026-09-23T15:22:11.2114210Z [INFO] --------------------------------[ jar ]---------------------------------
+2026-09-23T15:22:11.7469840Z [INFO] --- clean:3.4.0:clean (default-clean) @ tideledger ---
+2026-09-23T15:22:12.2639610Z [INFO] --- resources:3.3.1:resources (default-resources) @ tideledger ---
+2026-09-23T15:22:12.3158000Z [INFO] Copying 3 resources from src/main/resources to target/classes
+2026-09-23T15:22:13.0273980Z [INFO] --- compiler:3.14.0:compile (default-compile) @ tideledger ---
+2026-09-23T15:22:13.2278160Z [INFO] Recompiling the module because of changed source code.
+2026-09-23T15:22:13.2713040Z [INFO] Compiling 41 source files with javac [debug release 21] to target/classes
+2026-09-23T15:22:19.4845710Z [INFO] --- resources:3.3.1:testResources (default-testResources) @ tideledger ---
+2026-09-23T15:22:19.5371540Z [INFO] Copying 5 resources from src/test/resources to target/test-classes
+2026-09-23T15:22:19.9251390Z [INFO] --- compiler:3.14.0:testCompile (default-testCompile) @ tideledger ---
+2026-09-23T15:22:20.0367410Z [INFO] Compiling 19 source files with javac [debug release 21] to target/test-classes
+2026-09-23T15:22:23.4140800Z [INFO] --- surefire:3.5.2:test (default-test) @ tideledger ---
+2026-09-23T15:22:23.8253970Z [INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+2026-09-23T15:22:24.3748310Z [INFO] -------------------------------------------------------
+2026-09-23T15:22:24.4211730Z [INFO]  T E S T S
+2026-09-23T15:22:24.4626520Z [INFO] -------------------------------------------------------
+2026-09-23T15:22:25.7734060Z [INFO] Running labs.asterquay.ledger.WorkerExitTest
+2026-09-23T15:22:26.0877190Z [INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.287 s -- in labs.asterquay.ledger.WorkerExitTest
+2026-09-23T15:22:26.1726330Z [INFO] Running labs.asterquay.ledger.BatchReconcileTest
+2026-09-23T15:23:39.4291970Z Killed
+2026-09-23T15:23:39.5891670Z [INFO] 
+2026-09-23T15:23:39.6416030Z [INFO] Results:
+2026-09-23T15:23:39.6873220Z [INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0
+2026-09-23T15:23:39.7442690Z [INFO] ------------------------------------------------------------------------
+2026-09-23T15:23:39.7910030Z [INFO] BUILD FAILURE
+2026-09-23T15:23:39.8419540Z [INFO] Total time:  01:29 min
+2026-09-23T15:23:39.8975480Z [INFO] Finished at: 2026-09-23T15:23:39Z
+2026-09-23T15:23:39.9440120Z [INFO] ------------------------------------------------------------------------
+2026-09-23T15:23:40.0080390Z [ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.2:test (default-test) on project tideledger:
+2026-09-23T15:23:40.0548360Z [ERROR] The forked VM terminated without properly saying goodbye. VM crash or System.exit called?
+2026-09-23T15:23:40.1043180Z [ERROR] Command was /bin/sh -c cd '/home/runner/work/tideledger/tideledger' && '/opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64/bin/java' -jar '/home/runner/work/tideledger/tideledger/target/surefire/surefirebooter-20260923152223832_3.jar' '/home/runner/work/tideledger/tideledger/target/surefire' '2026-09-23T15-22-23_741-jvmRun1' 'surefire-20260923152223832_1tmp' 'surefire_0-20260923152223832_2tmp'
+2026-09-23T15:23:40.1512640Z [ERROR] Process Exit Code: 137
+2026-09-23T15:23:40.1985390Z [ERROR] Crashed tests:
+2026-09-23T15:23:40.2405010Z [ERROR] labs.asterquay.ledger.BatchReconcileTest
+2026-09-23T15:23:40.2933410Z [ERROR] Please refer to /home/runner/work/tideledger/tideledger/target/surefire-reports for the individual test results.
+2026-09-23T15:23:40.3690540Z ##[error]Process completed with exit code 1.
+2026-09-23T15:23:40.5631100Z ##[group]Run cat /sys/fs/cgroup/memory.events
+2026-09-23T15:23:40.6086610Z cat /sys/fs/cgroup/memory.events
+2026-09-23T15:23:40.6512970Z shell: /usr/bin/bash -e {0}
+2026-09-23T15:23:40.6961930Z ##[endgroup]
+2026-09-23T15:23:40.7591220Z low 0
+2026-09-23T15:23:40.8018440Z high 0
+2026-09-23T15:23:40.8453270Z max 1043
+2026-09-23T15:23:40.8921850Z oom 2
+2026-09-23T15:23:40.9370120Z oom_kill 1
+2026-09-23T15:23:41.0839200Z Post job cleanup.
+2026-09-23T15:23:41.7118920Z [command]/usr/bin/git version
+2026-09-23T15:23:41.7520400Z git version 2.51.0
+2026-09-23T15:23:42.1203680Z Cleaning up orphan processes

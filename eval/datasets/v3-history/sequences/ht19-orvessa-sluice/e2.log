@@ -1,0 +1,48 @@
+﻿2026-09-18T11:21:00.0000000Z Current runner version: '2.328.0'
+2026-09-18T11:21:00.1000000Z Runner name: 'GitHub Actions 1000942'
+2026-09-18T11:21:00.2000000Z ##[group]Operating System
+2026-09-18T11:21:00.3000000Z Ubuntu 24.04.3 LTS
+2026-09-18T11:21:00.4000000Z ##[endgroup]
+2026-09-18T11:21:00.5000000Z ##[group]Runner Image
+2026-09-18T11:21:00.6000000Z Image: ubuntu-24.04
+2026-09-18T11:21:00.7000000Z ##[endgroup]
+2026-09-18T11:21:01.0000000Z ##[group]Run actions/checkout@v4
+2026-09-18T11:21:01.1000000Z with:
+2026-09-18T11:21:01.2000000Z   repository: quillmarsh/orvessa
+2026-09-18T11:21:01.3000000Z   clean: true
+2026-09-18T11:21:01.4000000Z ##[endgroup]
+2026-09-18T11:21:02.0000000Z Syncing repository: quillmarsh/orvessa
+2026-09-18T11:21:03.0000000Z Initializing the repository
+2026-09-18T11:21:04.0000000Z Checking out the ref
+2026-09-18T11:21:05.0000000Z ##[group]Run actions/setup-dotnet@v4
+2026-09-18T11:21:05.1000000Z with:
+2026-09-18T11:21:05.2000000Z   dotnet-version: 8.0.x
+2026-09-18T11:21:05.3000000Z ##[endgroup]
+2026-09-18T11:21:08.0000000Z Installed dotnet version 8.0.412
+2026-09-18T11:21:08.1000000Z ##[group]Run dotnet test tests/Orvessa.Tests --configuration Release --blame-hang --blame-hang-timeout 2m
+2026-09-18T11:21:08.2000000Z dotnet test tests/Orvessa.Tests --configuration Release --blame-hang --blame-hang-timeout 2m
+2026-09-18T11:21:08.3000000Z shell: /usr/bin/bash -e {0}
+2026-09-18T11:21:08.4000000Z ##[endgroup]
+2026-09-18T11:21:09.0000000Z   Determining projects to restore...
+2026-09-18T11:21:11.0000000Z   Restored /home/runner/work/orvessa/orvessa/src/Orvessa/Orvessa.csproj (in 701 ms).
+2026-09-18T11:21:12.0000000Z   Restored /home/runner/work/orvessa/orvessa/tests/Orvessa.Tests/Orvessa.Tests.csproj (in 1.2 sec).
+2026-09-18T11:21:15.0000000Z   Orvessa -> /home/runner/work/orvessa/orvessa/src/Orvessa/bin/Release/net8.0/Orvessa.dll
+2026-09-18T11:21:17.0000000Z   Orvessa.Tests -> /home/runner/work/orvessa/orvessa/tests/Orvessa.Tests/bin/Release/net8.0/Orvessa.Tests.dll
+2026-09-18T11:21:17.1000000Z Test run for Orvessa.Tests.dll (.NETCoreApp,Version=v8.0)
+2026-09-18T11:21:17.2000000Z VSTest version 17.11.1 (x64)
+2026-09-18T11:21:17.3000000Z Starting test execution, please wait...
+2026-09-18T11:21:17.4000000Z A total of 1 test files matched the specified pattern.
+2026-09-18T11:21:20.0000000Z   Passed Orvessa.Tests.GaugeTests.ReadLevel [21 ms]
+2026-09-18T11:21:21.0000000Z   Passed Orvessa.Tests.SluiceCycleTests.Opens [42 ms]
+2026-09-18T11:21:53.0000000Z The active test run was aborted. Reason: Test host process crashed : Unhandled exception. System.OutOfMemoryException: Exception of type 'System.OutOfMemoryException' was thrown.
+2026-09-18T11:21:53.1000000Z    at System.GC.AllocateNewArray(IntPtr typeHandle, Int32 length, GC_ALLOC_FLAGS flags)
+2026-09-18T11:21:53.2000000Z    at Orvessa.Tests.ReedPulseFixture.MakePayload(Int32 count) in /home/runner/work/orvessa/orvessa/tests/Orvessa.Tests/ReedPulseFixture.cs:line 39
+2026-09-18T11:21:53.3000000Z    at Orvessa.Tests.ReedPulseTests.BulkRoundTrip() in /home/runner/work/orvessa/orvessa/tests/Orvessa.Tests/ReedPulseTests.cs:line 61
+2026-09-18T11:21:53.4000000Z The test running when the crash occurred: Orvessa.Tests.ReedPulseTests.BulkRoundTrip
+2026-09-18T11:21:53.5000000Z Test Run Aborted.
+2026-09-18T11:21:53.6000000Z Total tests: Unknown
+2026-09-18T11:21:53.7000000Z      Passed: 47
+2026-09-18T11:21:53.8000000Z Total time: 36.4 Seconds
+2026-09-18T11:21:53.9000000Z ##[error]Process completed with exit code 1.
+2026-09-18T11:21:54.0000000Z Post job cleanup.
+2026-09-18T11:21:54.1000000Z Cleaning up orphan processes

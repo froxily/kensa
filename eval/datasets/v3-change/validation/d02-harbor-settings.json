@@ -1,0 +1,14 @@
+{
+  "id": "d02-harbor-settings",
+  "independent_labels": {
+    "comparability": "comparable",
+    "unverified_factors": [],
+    "category": "missing_env_var",
+    "culprit_kind": "source",
+    "culprit_paths": ["src/settings.js"]
+  },
+  "verdict": "disagree",
+  "disputed_fields": ["case.json"],
+  "reason_category": "data_inconsistency",
+  "notes": "The labels match the evidence, but case.json says the test process exits before tests can run. failed.log shows the endpoint test ran and failed when endpoint() threw; the test totals report one test and one failure."
+}

@@ -1,0 +1,17 @@
+{
+  "comparisons": {
+    "c47b98a05d6e231f8b7ac4d190ef235a6c082bd9...8e32c46a9f071b5d239ac680e4f17bd92a6c503e": {
+      "status": "diverged", "merge_base": "2d8a760c4e319baf58d026c71f9a3e40b6c185df", "truncated": false,
+      "commits": [
+        {"sha": "6a4b3e19c80d2f715e9a647cb308d42f1b5e96a0", "message": "Limit workflow token access", "date": "2026-11-08T08:05:00Z", "files": [{"path": ".github/workflows/publish.yml", "status": "modified", "additions": 1, "deletions": 1, "patch": "@@ -3,7 +3,7 @@ on:\n   push:\n     branches: [main]\n permissions:\n-  contents: write\n+  contents: read\n jobs:\n   publish:\n     runs-on: ubuntu-24.04"}]},
+        {"sha": "8e32c46a9f071b5d239ac680e4f17bd92a6c503e", "message": "Clarify release documentation", "date": "2026-11-08T09:10:00Z", "files": [{"path": "README.md", "status": "modified", "additions": 1, "deletions": 1, "patch": "@@ -1,3 +1,3 @@\n # Verbena release notes\n \n-Releases are published after checks pass.\n+Changes are published by the release workflow after checks pass."}]}
+      ]
+    },
+    "b81d04e6f3a75c291d8e046baf927c1e65d3a709...8e32c46a9f071b5d239ac680e4f17bd92a6c503e": {"error": "not_found"}
+  },
+  "workflow_blobs": {
+    "8e32c46a9f071b5d239ac680e4f17bd92a6c503e": "f2a906c1d4b875e390a7c2d561eb0834f9a6d12c",
+    "c47b98a05d6e231f8b7ac4d190ef235a6c082bd9": "9d3a71c2e8f064b5a1c9d407e62b3f850a6e142c",
+    "b81d04e6f3a75c291d8e046baf927c1e65d3a709": "9d3a71c2e8f064b5a1c9d407e62b3f850a6e142c"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "hd39-ochre-woodlark",
+  "split": "dev",
+  "ecosystem": "go",
+  "repository": "woodlark-works/ochre-relay",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"missing_env_var","title":"Dispatch endpoint missing from integration job","root_cause":"The integration job does not provide OCHRE_DISPATCH_URL, which the dispatch client configuration requires. Set the dispatch endpoint in that job.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"b","relation":"lookalike","category":"missing_env_var","title":"Archive endpoint missing from integration job","root_cause":"The integration job does not provide OCHRE_ARCHIVE_URL, which the archive client configuration requires. Set the archive endpoint in that job.","differs_from_earlier":"The same configuration validation fails for the archive client and its separate endpoint, rather than the dispatch client."},
+    {"id":"e3","file":"e3.log","cluster":"b","relation":"recurrence","category":"missing_env_var","title":"Archive endpoint still absent","root_cause":"The integration job does not provide OCHRE_ARCHIVE_URL, which the archive client configuration requires. Set the archive endpoint in that job.","differs_from_earlier":"A later run selects another archive test and reports a shifted source line after edits, with different runner and test output."},
+    {"id":"e4","file":"e4.log","cluster":"a","relation":"recurrence","category":"missing_env_var","title":"Dispatch endpoint still absent","root_cause":"The integration job does not provide OCHRE_DISPATCH_URL, which the dispatch client configuration requires. Set the dispatch endpoint in that job.","differs_from_earlier":"A later run selects a different dispatch test and uses a newer Go version; unrelated source edits shifted the configuration line."}
+  ]
+}

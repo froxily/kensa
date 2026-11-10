@@ -1,0 +1,12 @@
+{
+  "id": "ht37-lichen-orbit",
+  "split": "test",
+  "ecosystem": "docker",
+  "repository": "lichen-orbit/pulse-vault",
+  "entries": [
+    {"id": "e1", "file": "e1.log", "cluster": "a", "relation": "first", "category": "docker", "title": "Base image tag is unavailable", "root_cause": "The runtime base image is pinned to a nonexistent Alpine tag. Correct the tag in the runtime FROM instruction.", "differs_from_earlier": ""},
+    {"id": "e2", "file": "e2.log", "cluster": "b", "relation": "lookalike", "category": "docker", "title": "Builder image tag is unavailable", "root_cause": "The build stage references a nonexistent Go image tag. Correct the builder FROM instruction.", "differs_from_earlier": "The same manifest lookup fails for the builder stage and requires a separate image tag fix."},
+    {"id": "e3", "file": "e3.log", "cluster": "c", "relation": "lookalike", "category": "docker", "title": "Base image argument is empty", "root_cause": "The workflow omits the PULSE_RUNTIME_IMAGE build argument required by the runtime FROM instruction. Supply the argument to the build.", "differs_from_earlier": "The runtime image reference is empty because a build argument is absent, rather than an unavailable image tag."},
+    {"id": "e4", "file": "e4.log", "cluster": "d", "relation": "first", "category": "docker", "title": "Build context lacks the container file", "root_cause": "The build command points to a nonexistent container file. Correct the file path passed to buildx.", "differs_from_earlier": ""}
+  ]
+}

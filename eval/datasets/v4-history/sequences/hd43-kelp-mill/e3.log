@@ -1,0 +1,53 @@
+2026-09-16T16:22:00.1000000Z Current runner version: '2.329.0'
+2026-09-16T16:22:00.2000000Z ##[group]Runner Image
+2026-09-16T16:22:00.3000000Z Image: ubuntu-24.04
+2026-09-16T16:22:00.4000000Z Version: 20260908.1.0
+2026-09-16T16:22:00.5000000Z ##[endgroup]
+2026-09-16T16:22:00.6000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-16T16:22:00.7000000Z Contents: read
+2026-09-16T16:22:00.8000000Z Metadata: read
+2026-09-16T16:22:00.9000000Z ##[endgroup]
+2026-09-16T16:22:01.2000000Z Prepare workflow directory
+2026-09-16T16:22:01.4000000Z Prepare all required actions
+2026-09-16T16:22:01.9000000Z Download action repository 'actions/checkout@v4'
+2026-09-16T16:22:02.3000000Z Download action repository 'actions/setup-node@v4'
+2026-09-16T16:22:02.6000000Z Download action repository 'actions/cache@v4'
+2026-09-16T16:22:02.9000000Z Complete job name: checks
+2026-09-16T16:22:03.2000000Z ##[group]Run actions/checkout@v4
+2026-09-16T16:22:03.3000000Z with:
+2026-09-16T16:22:03.4000000Z   repository: brineglyph/kelp-mill
+2026-09-16T16:22:03.5000000Z   fetch-depth: 1
+2026-09-16T16:22:03.6000000Z ##[endgroup]
+2026-09-16T16:22:04.1000000Z Syncing repository: brineglyph/kelp-mill
+2026-09-16T16:22:04.4000000Z git version 2.51.0
+2026-09-16T16:22:05.2000000Z Fetching the repository
+2026-09-16T16:22:06.5000000Z Checking out the ref
+2026-09-16T16:22:07.0000000Z ##[group]Run actions/setup-node@v4
+2026-09-16T16:22:07.1000000Z with:
+2026-09-16T16:22:07.2000000Z   node-version: 22
+2026-09-16T16:22:07.3000000Z   cache: yarn
+2026-09-16T16:22:07.4000000Z ##[endgroup]
+2026-09-16T16:22:07.9000000Z Found in cache @ /opt/hostedtoolcache/node/22.19.0/x64
+2026-09-16T16:22:08.1000000Z ##[group]Environment details
+2026-09-16T16:22:08.2000000Z node: v22.19.0
+2026-09-16T16:22:08.3000000Z npm: 10.9.3
+2026-09-16T16:22:08.4000000Z ##[endgroup]
+2026-09-16T16:22:09.0000000Z Cache not found for input keys: node-cache-Linux-x64-yarn
+2026-09-16T16:22:09.2000000Z ##[group]Run yarn install --immutable
+2026-09-16T16:22:09.3000000Z yarn install --immutable
+2026-09-16T16:22:09.4000000Z shell: /usr/bin/bash -e {0}
+2026-09-16T16:22:09.5000000Z ##[endgroup]
+2026-09-16T16:22:10.1000000Z ➤ YN0000: · Yarn 4.5.1
+2026-09-16T16:22:10.2000000Z ➤ YN0000: ┌ Resolution step
+2026-09-16T16:22:11.0000000Z ➤ YN0085: │ + tide-index@npm:2.4.0
+2026-09-16T16:22:11.1000000Z ➤ YN0085: │ - tide-index@npm:2.3.1
+2026-09-16T16:22:11.2000000Z ➤ YN0000: └ Completed in 0s 891ms
+2026-09-16T16:22:11.3000000Z ➤ YN0000: ┌ Post-resolution validation
+2026-09-16T16:22:11.4000000Z ➤ YN0028: │ The lockfile would have been modified by this install, which is explicitly forbidden.
+2026-09-16T16:22:11.5000000Z ➤ YN0000: └ Completed
+2026-09-16T16:22:11.6000000Z ➤ YN0000: · Failed with errors in 1s 316ms
+2026-09-16T16:22:11.7000000Z ##[error]Process completed with exit code 1.
+2026-09-16T16:22:11.8000000Z Post job cleanup.
+2026-09-16T16:22:12.0000000Z [command]/usr/bin/git version
+2026-09-16T16:22:12.1000000Z git version 2.51.0
+2026-09-16T16:22:12.3000000Z Cleaning up orphan processes

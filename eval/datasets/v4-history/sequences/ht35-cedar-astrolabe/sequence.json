@@ -1,0 +1,12 @@
+{
+  "id": "ht35-cedar-astrolabe",
+  "split": "test",
+  "ecosystem": "node (pnpm)",
+  "repository": "cedar-astrolabe/orbit-ledger",
+  "entries": [
+    {"id": "e1", "file": "e1.log", "cluster": "a", "relation": "first", "category": "dependency_build", "title": "Workspace package absent from install", "root_cause": "The workspace configuration excludes modules/ephemeris-core, so pnpm cannot resolve the workspace dependency @cedar-astrolabe/ephemeris-core required by the console package. Add the module to pnpm-workspace.yaml.", "differs_from_earlier": ""},
+    {"id": "e2", "file": "e2.log", "cluster": "a", "relation": "recurrence", "category": "dependency_build", "title": "Workspace package absent on release branch", "root_cause": "The workspace configuration excludes modules/ephemeris-core, so pnpm cannot resolve the workspace dependency @cedar-astrolabe/ephemeris-core required by the console package. Add the module to pnpm-workspace.yaml.", "differs_from_earlier": "A later release job runs on a newer runner with a different Node version and install flags."},
+    {"id": "e3", "file": "e3.log", "cluster": "a", "relation": "recurrence", "category": "dependency_build", "title": "Workspace package absent during release verification", "root_cause": "The workspace configuration excludes modules/ephemeris-core, so pnpm cannot resolve the workspace dependency @cedar-astrolabe/ephemeris-core required by the console package. Add the module to pnpm-workspace.yaml.", "differs_from_earlier": "A later tag verification runs a filtered install after a separate workspace inspection step."},
+    {"id": "e4", "file": "e4.log", "cluster": "b", "relation": "first", "category": "test_regression", "title": "Orbit label rounding test fails", "root_cause": "The orbit label formatter truncates the calculated altitude instead of rounding it, causing its boundary test to fail. Correct the formatter's rounding logic.", "differs_from_earlier": "The workspace dependency resolves and installation completes; a later unit test fails on an incorrect formatted value."}
+  ]
+}

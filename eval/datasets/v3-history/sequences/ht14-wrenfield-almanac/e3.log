@@ -1,0 +1,51 @@
+﻿2026-09-12T07:08:00.0012345Z Current runner version: '2.328.0'
+2026-09-12T07:08:00.1012345Z ##[group]Runner Image
+2026-09-12T07:08:00.2012345Z Image: ubuntu-24.04
+2026-09-12T07:08:00.3012345Z ##[endgroup]
+2026-09-12T07:08:00.4012345Z Prepare workflow directory
+2026-09-12T07:08:00.5012345Z Prepare all required actions
+2026-09-12T07:08:01.0012345Z ##[group]Run actions/checkout@v4
+2026-09-12T07:08:01.1012345Z with:
+2026-09-12T07:08:01.2012345Z   repository: wrenfield-labs/almanac-panel
+2026-09-12T07:08:01.3012345Z   path: panel
+2026-09-12T07:08:01.4012345Z ##[endgroup]
+2026-09-12T07:08:02.0012345Z Syncing repository: wrenfield-labs/almanac-panel
+2026-09-12T07:08:03.0012345Z Checking out the ref
+2026-09-12T07:08:03.1012345Z ##[group]Run actions/setup-node@v4
+2026-09-12T07:08:03.2012345Z with:
+2026-09-12T07:08:03.3012345Z   node-version: 20
+2026-09-12T07:08:03.4012345Z ##[endgroup]
+2026-09-12T07:08:04.0012345Z Found in cache @ /opt/hostedtoolcache/node/20.19.4/x64
+2026-09-12T07:08:04.1012345Z ##[group]Run npm ci
+2026-09-12T07:08:04.2012345Z npm ci
+2026-09-12T07:08:04.3012345Z shell: /usr/bin/bash -e {0}
+2026-09-12T07:08:04.4012345Z ##[endgroup]
+2026-09-12T07:08:09.0012345Z added 320 packages, and audited 321 packages in 4s
+2026-09-12T07:08:09.1012345Z found 0 vulnerabilities
+2026-09-12T07:08:09.2012345Z ##[group]Run npm test -- --ci --runInBand
+2026-09-12T07:08:09.3012345Z npm test -- --ci --runInBand
+2026-09-12T07:08:09.4012345Z shell: /usr/bin/bash -e {0}
+2026-09-12T07:08:09.5012345Z ##[endgroup]
+2026-09-12T07:08:10.0012345Z > almanac-panel@1.4.2 test
+2026-09-12T07:08:10.1012345Z > jest --ci --runInBand
+2026-09-12T07:08:10.3012345Z PASS src/legend.test.ts
+2026-09-12T07:08:10.5012345Z PASS src/forecastCard.test.ts
+2026-09-12T07:08:10.7012345Z FAIL src/dateCaption.test.ts
+2026-09-12T07:08:10.8012345Z   ● Console
+2026-09-12T07:08:10.9012345Z     console.warn
+2026-09-12T07:08:11.0012345Z       locale-loader: locale fr-FR not found in /usr/share/almanac-locales; using en-US
+2026-09-12T07:08:11.1012345Z   ● date caption › formats a winter date in French
+2026-09-12T07:08:11.2012345Z     expect(received).toMatchSnapshot()
+2026-09-12T07:08:11.3012345Z     Snapshot name: `date caption formats a winter date in French 1`
+2026-09-12T07:08:11.4012345Z     - Expected  - 1
+2026-09-12T07:08:11.5012345Z     + Received  + 1
+2026-09-12T07:08:11.6012345Z     - <time>3 janvier 2027</time>
+2026-09-12T07:08:11.7012345Z     + <time>January 3, 2027</time>
+2026-09-12T07:08:11.8012345Z       at Object.<anonymous> (src/dateCaption.test.ts:31:26)
+2026-09-12T07:08:11.9012345Z Snapshot Summary: 1 snapshot failed from 1 test suite.
+2026-09-12T07:08:12.0012345Z Test Suites: 1 failed, 3 passed, 4 total
+2026-09-12T07:08:12.1012345Z Tests:       1 failed, 15 passed, 16 total
+2026-09-12T07:08:12.2012345Z Time:        1.632 s
+2026-09-12T07:08:12.3012345Z ##[error]Process completed with exit code 1.
+2026-09-12T07:08:12.4012345Z Post job cleanup.
+

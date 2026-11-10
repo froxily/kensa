@@ -1,0 +1,53 @@
+2026-09-02T09:11:01.0000000Z Current runner version: '2.328.0'
+2026-09-02T09:11:01.1100000Z ##[group]Runner Image
+2026-09-02T09:11:01.1200000Z Image: ubuntu-24.04
+2026-09-02T09:11:01.1300000Z Version: 20260824.1.0
+2026-09-02T09:11:01.1400000Z ##[endgroup]
+2026-09-02T09:11:01.2000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-02T09:11:01.2100000Z Contents: read
+2026-09-02T09:11:01.2200000Z Metadata: read
+2026-09-02T09:11:01.2300000Z ##[endgroup]
+2026-09-02T09:11:01.3100000Z Prepare workflow directory
+2026-09-02T09:11:01.4200000Z Prepare all required actions
+2026-09-02T09:11:01.5500000Z Download action repository 'actions/checkout@v4'
+2026-09-02T09:11:02.0100000Z Download action repository 'actions/setup-python@v5'
+2026-09-02T09:11:02.3300000Z Complete job name: install / py312
+2026-09-02T09:11:02.4100000Z ##[group]Run actions/checkout@v4
+2026-09-02T09:11:02.4200000Z with:
+2026-09-02T09:11:02.4300000Z   repository: oriole-foundry/spindle-index
+2026-09-02T09:11:02.4400000Z   clean: true
+2026-09-02T09:11:02.4500000Z   fetch-depth: 1
+2026-09-02T09:11:02.4600000Z ##[endgroup]
+2026-09-02T09:11:02.6200000Z Syncing repository: oriole-foundry/spindle-index
+2026-09-02T09:11:02.7400000Z ##[group]Getting Git version info
+2026-09-02T09:11:02.7500000Z git version 2.50.1
+2026-09-02T09:11:02.7600000Z ##[endgroup]
+2026-09-02T09:11:03.2500000Z Checking out the ref
+2026-09-02T09:11:03.4000000Z ##[group]Run actions/setup-python@v5
+2026-09-02T09:11:03.4100000Z with:
+2026-09-02T09:11:03.4200000Z   python-version: '3.12'
+2026-09-02T09:11:03.4300000Z   cache: 'pip'
+2026-09-02T09:11:03.4400000Z ##[endgroup]
+2026-09-02T09:11:03.6500000Z Successfully set up CPython (3.12.11)
+2026-09-02T09:11:03.7200000Z ##[group]Run uv venv
+2026-09-02T09:11:03.7300000Z uv venv
+2026-09-02T09:11:03.7400000Z shell: /usr/bin/bash -e {0}
+2026-09-02T09:11:03.7500000Z ##[endgroup]
+2026-09-02T09:11:03.8900000Z Using CPython 3.12.11
+2026-09-02T09:11:03.9000000Z Creating virtual environment at: .venv
+2026-09-02T09:11:04.0100000Z ##[group]Run uv pip install --require-hashes -r requirements/ci.txt
+2026-09-02T09:11:04.0200000Z uv pip install --require-hashes -r requirements/ci.txt
+2026-09-02T09:11:04.0300000Z shell: /usr/bin/bash -e {0}
+2026-09-02T09:11:04.0400000Z ##[endgroup]
+2026-09-02T09:11:04.8000000Z Resolved 17 packages in 756ms
+2026-09-02T09:11:05.1200000Z   × Failed to download `spindle-codec==2.4.1`
+2026-09-02T09:11:05.1300000Z   ╰─▶ Hash mismatch for `spindle-codec==2.4.1`
+2026-09-02T09:11:05.1400000Z       Expected:
+2026-09-02T09:11:05.1500000Z         sha256:b7a3240e1d6c8f53a4e91b02cd75983f6d2a40e9c51fb3786a092de43f17bc85
+2026-09-02T09:11:05.1600000Z       Computed:
+2026-09-02T09:11:05.1700000Z         sha256:8c51e20a9f347bd640c12a6e7b394f0d5e8c62a19f074b3d2e61a98c4f5d703b
+2026-09-02T09:11:05.1800000Z ##[error]Process completed with exit code 1.
+2026-09-02T09:11:05.3000000Z Post job cleanup.
+2026-09-02T09:11:05.4500000Z [command]/usr/bin/git version
+2026-09-02T09:11:05.4600000Z git version 2.50.1
+2026-09-02T09:11:05.5500000Z Cleaning up orphan processes

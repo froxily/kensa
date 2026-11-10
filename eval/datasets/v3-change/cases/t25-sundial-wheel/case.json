@@ -1,0 +1,19 @@
+{
+  "id": "t25-sundial-wheel",
+  "split": "test",
+  "comparability": "incomparable",
+  "category": "dependency_build",
+  "culprit_kind": "none",
+  "difficulty": "medium",
+  "ecosystem": "python",
+  "title": "Scheduled successes precede a failed push install",
+  "root_cause": "The push job fails during dependency installation because the requested contour-graph version has no matching distribution. The earlier successful runs used the schedule event, so they do not provide a comparable baseline for assigning a change as the culprit.",
+  "culprit_paths": [],
+  "culprit_commit": null,
+  "unverified_factors": [],
+  "fix_keywords": ["contour-graph", "requirements.txt"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 68, "end_line": 70, "why": "pip reports that the pinned version cannot be resolved and the install step exits unsuccessfully."},
+    {"path": "repo/requirements.txt", "start_line": 1, "end_line": 1, "why": "The requirements file pins the unavailable version."}
+  ]
+}

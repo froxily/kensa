@@ -1,0 +1,1 @@
+﻿{"name":"boreal-atlas","version":"1.0.0","private":true,"scripts":{"bundle":"node scripts/bundle.mjs"}}

@@ -1,0 +1,59 @@
+2026-09-23T16:32:04.1345678Z Current runner version: '2.329.0'
+2026-09-23T16:32:04.2345678Z ##[group]Runner Image
+2026-09-23T16:32:04.3345678Z Image: ubuntu-24.04
+2026-09-23T16:32:04.4345678Z Version: 20260915.1.0
+2026-09-23T16:32:04.5345678Z ##[endgroup]
+2026-09-23T16:32:04.6345678Z ##[group]GITHUB_TOKEN Permissions
+2026-09-23T16:32:04.7345678Z Contents: read
+2026-09-23T16:32:04.8345678Z ##[endgroup]
+2026-09-23T16:32:05.1345678Z Prepare workflow directory
+2026-09-23T16:32:05.4345678Z Prepare all required actions
+2026-09-23T16:32:06.1345678Z Download action repository 'actions/checkout@v4'
+2026-09-23T16:32:06.4345678Z ##[group]Run actions/checkout@v4
+2026-09-23T16:32:06.5345678Z with:
+2026-09-23T16:32:06.6345678Z   repository: mica-viaduct/contour-ledger
+2026-09-23T16:32:06.7345678Z   clean: true
+2026-09-23T16:32:06.8345678Z ##[endgroup]
+2026-09-23T16:32:07.1345678Z Syncing repository: mica-viaduct/contour-ledger
+2026-09-23T16:32:07.4345678Z Initializing the repository
+2026-09-23T16:32:08.1345678Z Fetching the repository
+2026-09-23T16:32:08.8345678Z Checking out the ref
+2026-09-23T16:32:09.1345678Z ##[group]Run actions/setup-java@v4
+2026-09-23T16:32:09.2345678Z with:
+2026-09-23T16:32:09.3345678Z   distribution: temurin
+2026-09-23T16:32:09.4345678Z   java-version: 21
+2026-09-23T16:32:09.5345678Z ##[endgroup]
+2026-09-23T16:32:10.1345678Z Set Java version to 21
+2026-09-23T16:32:10.3345678Z ##[group]Run ./gradlew test --info
+2026-09-23T16:32:10.4345678Z ./gradlew test --info
+2026-09-23T16:32:10.5345678Z shell: /usr/bin/bash -e {0}
+2026-09-23T16:32:10.6345678Z ##[endgroup]
+2026-09-23T16:32:12.1345678Z Starting a Gradle Daemon
+2026-09-23T16:32:14.1345678Z > Task :generateContourIndex
+2026-09-23T16:32:16.1345678Z > Task :compileJava
+2026-09-23T16:32:16.3345678Z > Task :processResources NO-SOURCE
+2026-09-23T16:32:16.5345678Z > Task :classes
+2026-09-23T16:32:18.1345678Z > Task :compileTestJava
+2026-09-23T16:32:18.3345678Z > Task :processTestResources
+2026-09-23T16:32:18.5345678Z > Task :testClasses
+2026-09-23T16:32:19.1345678Z Starting process 'Gradle Test Executor 2'. Command: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21/bin/java -XX:+HeapDumpOnOutOfMemoryError -Xmx256m -jar gradle-worker.jar
+2026-09-23T16:32:45.1345678Z > Task :test
+2026-09-23T16:32:45.2345678Z java.lang.OutOfMemoryError: Java heap space
+2026-09-23T16:32:45.3345678Z Dumping heap to java_pid2194.hprof ...
+2026-09-23T16:32:46.1345678Z Heap dump file created
+2026-09-23T16:32:46.2345678Z ContourLedgerIntegrationTest > searchesAnnualLedger() FAILED
+2026-09-23T16:32:46.3345678Z     java.lang.OutOfMemoryError: Java heap space
+2026-09-23T16:32:46.4345678Z         at io.micaviaduct.ledger.LedgerFixture.retainRows(LedgerFixture.java:89)
+2026-09-23T16:32:46.5345678Z         at io.micaviaduct.ledger.ContourLedgerIntegrationTest.searchesAnnualLedger(ContourLedgerIntegrationTest.java:73)
+2026-09-23T16:32:46.6345678Z > Task :test FAILED
+2026-09-23T16:32:46.7345678Z FAILURE: Build failed with an exception.
+2026-09-23T16:32:46.8345678Z * What went wrong:
+2026-09-23T16:32:46.9345678Z Execution failed for task ':test'.
+2026-09-23T16:32:47.0345678Z > There were failing tests. See the report at: file:///home/runner/work/contour-ledger/contour-ledger/build/reports/tests/test/index.html
+2026-09-23T16:32:47.1345678Z * Try:
+2026-09-23T16:32:47.2345678Z > Run with --scan to get full insights.
+2026-09-23T16:32:47.3345678Z BUILD FAILED in 37s
+2026-09-23T16:32:47.4345678Z 5 actionable tasks: 5 executed
+2026-09-23T16:32:47.5345678Z ##[error]Process completed with exit code 1.
+2026-09-23T16:32:47.6345678Z Post job cleanup.
+2026-09-23T16:32:47.7345678Z Cleaning up orphan processes

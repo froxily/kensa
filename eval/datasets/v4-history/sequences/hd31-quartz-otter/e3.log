@@ -1,0 +1,45 @@
+2026-09-17T11:31:00.1010000Z Current runner version: '2.329.0'
+2026-09-17T11:31:00.1100000Z Runner name: 'audit-otter-01'
+2026-09-17T11:31:00.1200000Z Runner group name: 'audit'
+2026-09-17T11:31:00.1300000Z Machine name: 'audit-otter-01'
+2026-09-17T11:31:00.1400000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-17T11:31:00.1500000Z Contents: read
+2026-09-17T11:31:00.1600000Z Metadata: read
+2026-09-17T11:31:00.1700000Z ##[endgroup]
+2026-09-17T11:31:00.1800000Z Prepare workflow directory
+2026-09-17T11:31:00.2000000Z Prepare all required actions
+2026-09-17T11:31:00.2300000Z Download action repository 'actions/checkout@v4'
+2026-09-17T11:31:01.0000000Z ##[group]Run actions/checkout@v4
+2026-09-17T11:31:01.0100000Z with:
+2026-09-17T11:31:01.0200000Z   repository: velvet-quay/otter-ledger
+2026-09-17T11:31:01.0300000Z   clean: true
+2026-09-17T11:31:01.0400000Z ##[endgroup]
+2026-09-17T11:31:01.2000000Z Syncing repository: velvet-quay/otter-ledger
+2026-09-17T11:31:01.3000000Z ##[group]Getting Git version info
+2026-09-17T11:31:01.3100000Z git version 2.43.0
+2026-09-17T11:31:01.3200000Z ##[endgroup]
+2026-09-17T11:31:02.4000000Z Checking out the ref
+2026-09-17T11:31:02.6000000Z ##[group]Run python -m pytest tests/archive -q
+2026-09-17T11:31:02.6100000Z python -m pytest tests/archive -q
+2026-09-17T11:31:02.6200000Z shell: /usr/bin/bash -e {0}
+2026-09-17T11:31:02.6300000Z ##[endgroup]
+2026-09-17T11:31:03.2000000Z .E...                                                                    [100%]
+2026-09-17T11:31:03.2100000Z ==================================== ERRORS ====================================
+2026-09-17T11:31:03.2200000Z __________________ ERROR at setup of test_wrapped_archive __________________
+2026-09-17T11:31:03.2300000Z 
+2026-09-17T11:31:03.2400000Z     @pytest.fixture
+2026-09-17T11:31:03.2500000Z     def archive_wrapper():
+2026-09-17T11:31:03.2600000Z >       key = os.environ['OTTER_ARCHIVE_KEY']
+2026-09-17T11:31:03.2700000Z               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-09-17T11:31:03.2800000Z 
+2026-09-17T11:31:03.2900000Z tests/archive/conftest.py:21:
+2026-09-17T11:31:03.3000000Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+2026-09-17T11:31:03.3100000Z <frozen os>:714: in __getitem__
+2026-09-17T11:31:03.3200000Z     raise KeyError(key) from None
+2026-09-17T11:31:03.3300000Z E   KeyError: 'OTTER_ARCHIVE_KEY'
+2026-09-17T11:31:03.3400000Z =========================== short test summary info ============================
+2026-09-17T11:31:03.3500000Z ERROR tests/archive/test_wrap.py::test_wrapped_archive - KeyError: 'OTTER_ARCHIVE_KEY'
+2026-09-17T11:31:03.3600000Z 4 passed, 1 error in 0.38s
+2026-09-17T11:31:03.3700000Z ##[error]Process completed with exit code 1.
+2026-09-17T11:31:03.8000000Z Post job cleanup.
+2026-09-17T11:31:04.0000000Z Cleaning up orphan processes

@@ -1,0 +1,7 @@
+﻿{
+  "failed": {"run_id": 9184021732, "run_attempt": 1, "workflow_id": 81204567, "workflow_path": ".github/workflows/verify.yml", "event": "push", "head_branch": "main", "head_sha": "c39a7b84e612f0d59c2a376be481d9f05a6c813b", "created_at": "2026-10-30T10:14:00Z", "conclusion": "failure", "jobs": [{"name": "compile", "conclusion": "failure", "labels": ["ubuntu-24.04"], "runner_image": "ubuntu-24.04", "runner_image_version": "20261026.1"}], "failed_job": "compile"},
+  "candidates": [
+    {"run_id": 9184000027, "run_attempt": 1, "workflow_id": 81204567, "workflow_path": ".github/workflows/verify.yml", "event": "push", "head_branch": "main", "head_sha": "a26d1e8f90b734c5d2e61a08b49f3c7e15d082ab", "created_at": "2026-10-30T09:50:00Z", "conclusion": "failure", "jobs": [{"name": "compile", "conclusion": "failure", "labels": ["ubuntu-24.04"], "runner_image": "ubuntu-24.04", "runner_image_version": "20261026.1"}]},
+    {"run_id": 9183987234, "run_attempt": 1, "workflow_id": 81204567, "workflow_path": ".github/workflows/verify.yml", "event": "push", "head_branch": "main", "head_sha": "79d0a4e3b1c68f52a9e734d06b2c8f1a5e903d67", "created_at": "2026-10-30T09:22:00Z", "conclusion": "success", "jobs": [{"name": "compile", "conclusion": "success", "labels": ["ubuntu-24.04"], "runner_image": "ubuntu-24.04", "runner_image_version": "20261026.1"}]}
+  ]
+}

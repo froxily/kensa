@@ -1,0 +1,13 @@
+﻿{
+  "failed": {
+    "run_id": 9142863105, "run_attempt": 1, "workflow_id": 82413760,
+    "workflow_path": ".github/workflows/container-check.yml", "event": "push", "head_branch": "main",
+    "head_sha": "a43e918d6c2f507b1e8a39c4d7f065b2938edaf1", "created_at": "2026-11-08T10:14:00Z", "conclusion": "failure",
+    "jobs": [{"name": "container", "conclusion": "failure", "labels": ["ubuntu-24.04"], "runner_image": "ubuntu-24.04", "runner_image_version": "20261026.1"}],
+    "failed_job": "container"
+  },
+  "candidates": [
+    {"run_id": 9141850273, "run_attempt": 1, "workflow_id": 82413024, "workflow_path": ".github/workflows/lint.yml", "event": "push", "head_branch": "main", "head_sha": "be267c490a5d38f17c2e6a904bd1538f6e7c219a", "created_at": "2026-11-07T15:10:00Z", "conclusion": "failure", "jobs": [{"name": "lint", "conclusion": "failure", "labels": ["ubuntu-24.04"], "runner_image": "ubuntu-24.04", "runner_image_version": "20261026.1"}]},
+    {"run_id": 9140738421, "run_attempt": 1, "workflow_id": 82413024, "workflow_path": ".github/workflows/lint.yml", "event": "push", "head_branch": "main", "head_sha": "d9c8306fa12b4e7851d3a0c6e92f47b15ac8e623", "created_at": "2026-11-06T09:20:00Z", "conclusion": "failure", "jobs": [{"name": "lint", "conclusion": "failure", "labels": ["ubuntu-24.04"], "runner_image": "ubuntu-24.04", "runner_image_version": "20261026.1"}]}
+  ]
+}

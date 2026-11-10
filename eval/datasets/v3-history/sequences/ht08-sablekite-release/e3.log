@@ -1,0 +1,45 @@
+﻿2026-09-18T11:03:12.1000000Z Current runner version: '2.329.0'
+2026-09-18T11:03:12.2010000Z ##[group]Runner Image
+2026-09-18T11:03:12.2020000Z Image: ubuntu-24.04
+2026-09-18T11:03:12.2030000Z Version: 20260914.1.0
+2026-09-18T11:03:12.2040000Z ##[endgroup]
+2026-09-18T11:03:12.2120000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-18T11:03:12.2130000Z Contents: read
+2026-09-18T11:03:12.2140000Z Metadata: read
+2026-09-18T11:03:12.2150000Z ##[endgroup]
+2026-09-18T11:03:12.3900000Z Prepare workflow directory
+2026-09-18T11:03:12.7300000Z Download action repository 'actions/checkout@v4'
+2026-09-18T11:03:13.0200000Z Download action repository 'actions/setup-go@v5'
+2026-09-18T11:03:13.4170000Z Complete job name: release
+2026-09-18T11:03:13.5020000Z ##[group]Run actions/checkout@v4
+2026-09-18T11:03:13.5030000Z with:
+2026-09-18T11:03:13.5040000Z   repository: sablekite-labs/tideglass
+2026-09-18T11:03:13.5050000Z   ref: refs/tags/v1.5.0
+2026-09-18T11:03:13.5060000Z   fetch-depth: 1
+2026-09-18T11:03:13.5070000Z ##[endgroup]
+2026-09-18T11:03:13.8200000Z Syncing repository: sablekite-labs/tideglass
+2026-09-18T11:03:15.3180000Z Checking out the ref
+2026-09-18T11:03:15.3830000Z HEAD is now at c417be2 Add station summary
+2026-09-18T11:03:15.5100000Z ##[group]Run actions/setup-go@v5
+2026-09-18T11:03:15.5110000Z with:
+2026-09-18T11:03:15.5120000Z   go-version: '1.24'
+2026-09-18T11:03:15.5130000Z   cache: true
+2026-09-18T11:03:15.5140000Z ##[endgroup]
+2026-09-18T11:03:16.3910000Z go version go1.24.6 linux/amd64
+2026-09-18T11:03:16.7000000Z Cache not found for input keys: setup-go-Linux-x64
+2026-09-18T11:03:16.8220000Z ##[group]Run go mod download
+2026-09-18T11:03:16.8230000Z go mod download
+2026-09-18T11:03:16.8240000Z shell: /usr/bin/bash -e {0}
+2026-09-18T11:03:16.8250000Z ##[endgroup]
+2026-09-18T11:03:19.0100000Z ##[group]Run mkdir -p dist
+2026-09-18T11:03:19.0110000Z mkdir -p dist
+2026-09-18T11:03:19.0120000Z GOOS=linux GOARCH=amd64 go build -o dist/tideglass-linux-amd64 ./cmd/tideglass
+2026-09-18T11:03:19.0130000Z shell: /usr/bin/bash -e {0}
+2026-09-18T11:03:19.0140000Z ##[endgroup]
+2026-09-18T11:03:31.2640000Z # sablekite-labs/tideglass/cmd/tideglass
+2026-09-18T11:03:31.2650000Z cmd/tideglass/main.go:78:24: undefined: soundings.RenderStation
+2026-09-18T11:03:31.2720000Z ##[error]Process completed with exit code 1.
+2026-09-18T11:03:31.4010000Z Post job cleanup.
+2026-09-18T11:03:31.6500000Z [command]/usr/bin/git version
+2026-09-18T11:03:31.6520000Z git version 2.51.0
+2026-09-18T11:03:31.8420000Z Cleaning up orphan processes

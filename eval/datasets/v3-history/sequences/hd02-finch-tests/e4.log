@@ -1,0 +1,40 @@
+2026-09-20T16:20:00.0000000Z Current runner version: '2.329.0'
+2026-09-20T16:20:01.0000000Z ##[group]Operating System
+2026-09-20T16:20:02.0000000Z Ubuntu 22.04.5 LTS
+2026-09-20T16:20:03.0000000Z ##[endgroup]
+2026-09-20T16:20:04.0000000Z ##[group]Runner Image
+2026-09-20T16:20:05.0000000Z Image: ubuntu-22.04
+2026-09-20T16:20:06.0000000Z ##[endgroup]
+2026-09-20T16:20:07.0000000Z Prepare workflow directory
+2026-09-20T16:20:08.0000000Z Prepare all required actions
+2026-09-20T16:20:09.0000000Z ##[group]Run actions/checkout@v4
+2026-09-20T16:20:10.0000000Z Syncing repository: marshworks/finch-ledger
+2026-09-20T16:20:11.0000000Z Fetching pull request 44 merge ref
+2026-09-20T16:20:12.0000000Z Checking out the ref
+2026-09-20T16:20:13.0000000Z ##[endgroup]
+2026-09-20T16:20:14.0000000Z ##[group]Run actions/setup-go@v5
+2026-09-20T16:20:15.0000000Z Setup go version spec 1.23
+2026-09-20T16:20:16.0000000Z go version go1.23.2 linux/amd64
+2026-09-20T16:20:17.0000000Z ##[endgroup]
+2026-09-20T16:20:18.0000000Z ##[group]Run go mod download
+2026-09-20T16:20:19.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-20T16:20:20.0000000Z go: downloading golang.org/x/text v0.18.0
+2026-09-20T16:20:21.0000000Z verifying golang.org/x/text@v0.18.0: checksum mismatch
+2026-09-20T16:20:22.0000000Z downloaded module checksum does not match go.sum
+2026-09-20T16:20:23.0000000Z SECURITY ERROR
+2026-09-20T16:20:24.0000000Z This download does NOT match an earlier download recorded in go.sum.
+2026-09-20T16:20:25.0000000Z The bits may have been replaced on the origin server, or an attacker may
+2026-09-20T16:20:26.0000000Z have intercepted the download attempt.
+2026-09-20T16:20:27.0000000Z ##[error]Process completed with exit code 1.
+2026-09-20T16:20:28.0000000Z Post job cleanup.
+2026-09-20T16:20:29.0000000Z [command]/usr/bin/git version
+2026-09-20T16:20:30.0000000Z git version 2.46.0
+2026-09-20T16:20:31.0000000Z Temporarily overriding HOME for git config
+2026-09-20T16:20:32.0000000Z Adding repository directory to temporary git global config
+2026-09-20T16:20:33.0000000Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/finch-ledger/finch-ledger
+2026-09-20T16:20:34.0000000Z [command]/usr/bin/git config --local --name-only --get-regexp core.sshCommand
+2026-09-20T16:20:35.0000000Z [command]/usr/bin/git submodule foreach --recursive git config --local --name-only --get-regexp core.sshCommand
+2026-09-20T16:20:36.0000000Z [command]/usr/bin/git config --local --name-only --get-regexp http.https://github.com/.extraheader
+2026-09-20T16:20:37.0000000Z [command]/usr/bin/git submodule foreach --recursive git config --local --name-only --get-regexp http.https://github.com/.extraheader
+2026-09-20T16:20:38.0000000Z Cleaning up orphan processes
+2026-09-20T16:20:39.0000000Z Complete job

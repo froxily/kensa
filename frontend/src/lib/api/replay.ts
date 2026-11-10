@@ -36,7 +36,11 @@ interface RecordedInvestigation {
 
 /** The file written by scripts/record_replays.py. The UI's own type guards check each response. */
 export interface Recording {
-  format: 1;
+  format: 1 | 2;
+  analytics?: unknown;
+  repositories?: unknown;
+  history?: Record<string, unknown>;
+  changes?: Record<string, unknown>;
   manifest: ReplayManifest;
   investigations: RecordedInvestigation[];
   /** Agent events by investigation id. */
@@ -104,6 +108,68 @@ export function createReplay(recording: Recording): Handler {
       .filter(Boolean)
       .map(decodeURIComponent);
     if (api === "api" && rest.length === 0) {
+      if (method === "GET" && resource === "analytics" && id === "dashboard")
+        return (
+          recording.analytics ?? {
+            history_matching: false,
+            filters: {
+              days: 30,
+              start: "",
+              end: "",
+              repository: null,
+              workflow: null,
+              origins: [],
+            },
+            summary: {
+              runs: 0,
+              failed_runs: 0,
+              failure_rate: null,
+              investigations: 0,
+              corroborated: 0,
+              latency_p50_seconds: null,
+              latency_p95_seconds: null,
+              recurring_failures: null,
+              open_quality_findings: 0,
+            },
+            trends: [],
+            categories: [],
+            workflows: [],
+            recurring: [],
+            freshness: [],
+            quality: [],
+            options: { repositories: [], workflows: [] },
+          }
+        );
+      if (
+        method === "GET" &&
+        resource === "history" &&
+        id === "repositories" &&
+        child === undefined
+      )
+        return recording.repositories ?? [];
+      if (
+        method === "GET" &&
+        resource === "investigations" &&
+        id &&
+        child === "history" &&
+        childId === undefined
+      )
+        return (
+          recording.history?.[id] ?? {
+            matching: false,
+            fingerprints: [],
+            similar: [],
+            resolution: null,
+          }
+        );
+      if (
+        method === "GET" &&
+        resource === "investigations" &&
+        id &&
+        child === "changes" &&
+        childId === undefined
+      )
+        return recording.changes?.[id] ?? null;
       if (method === "GET" && resource === "samples" && id === undefined) return recording.samples;
       if (resource === "investigations" && method === "GET") {
         if (id === undefined) {
@@ -137,7 +203,7 @@ async function fetchRecording(): Promise<Recording> {
   const data: unknown = await fetch(`${import.meta.env.BASE_URL}recording.json`)
     .then((response) => (response.ok ? (response.json() as Promise<unknown>) : null))
     .catch(() => null);
-  if (!isRecord(data) || data.format !== 1) {
+  if (!isRecord(data) || (data.format !== 1 && data.format !== 2)) {
     throw new ApiError(currentMessages().common.unexpectedError, null);
   }
   return data as unknown as Recording;

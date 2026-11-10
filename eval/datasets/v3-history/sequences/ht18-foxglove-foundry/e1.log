@@ -1,0 +1,43 @@
+﻿2026-08-03T09:14:02.1101000Z Current runner version: '2.327.1'
+2026-08-03T09:14:02.1102000Z Runner name: 'GitHub Actions 44'
+2026-08-03T09:14:02.1103000Z ##[group]Operating System
+2026-08-03T09:14:02.1104000Z Ubuntu
+2026-08-03T09:14:02.1105000Z 24.04.2
+2026-08-03T09:14:02.1106000Z ##[endgroup]
+2026-08-03T09:14:02.1107000Z ##[group]Runner Image
+2026-08-03T09:14:02.1108000Z Image: ubuntu-24.04
+2026-08-03T09:14:02.1109000Z Version: 20260726.1.0
+2026-08-03T09:14:02.1110000Z ##[endgroup]
+2026-08-03T09:14:02.1111000Z ##[group]GITHUB_TOKEN Permissions
+2026-08-03T09:14:02.1112000Z Contents: read
+2026-08-03T09:14:02.1113000Z ##[endgroup]
+2026-08-03T09:14:02.1114000Z Prepare workflow directory
+2026-08-03T09:14:02.1115000Z Prepare all required actions
+2026-08-03T09:14:03.1116000Z Download action repository 'actions/checkout@v4'
+2026-08-03T09:14:03.1117000Z Complete job name: image
+2026-08-03T09:14:03.1118000Z ##[group]Run actions/checkout@v4
+2026-08-03T09:14:03.1119000Z with:
+2026-08-03T09:14:03.1120000Z   repository: cairnworks/foxglove-foundry
+2026-08-03T09:14:03.1121000Z   clean: true
+2026-08-03T09:14:03.1122000Z ##[endgroup]
+2026-08-03T09:14:03.1123000Z Syncing repository: cairnworks/foxglove-foundry
+2026-08-03T09:14:03.1124000Z Getting Git version info
+2026-08-03T09:14:03.1125000Z [command]/usr/bin/git version
+2026-08-03T09:14:03.1126000Z git version 2.50.1
+2026-08-03T09:14:04.1127000Z Initializing the repository
+2026-08-03T09:14:04.1128000Z Fetching the repository
+2026-08-03T09:14:05.1129000Z Checking out the ref
+2026-08-03T09:14:05.1130000Z [command]/usr/bin/git checkout --progress --force -B image-ci refs/remotes/origin/image-ci
+2026-08-03T09:14:05.1131000Z Switched to a new branch 'image-ci'
+2026-08-03T09:14:05.1132000Z ##[group]Run docker buildx use forge-arm
+2026-08-03T09:14:05.1133000Z [36;1mdocker buildx use forge-arm[0m
+2026-08-03T09:14:05.1134000Z [36;1mdocker buildx build --platform linux/arm64 --load -t foundry-check .[0m
+2026-08-03T09:14:05.1135000Z shell: /usr/bin/bash -e {0}
+2026-08-03T09:14:05.1136000Z ##[endgroup]
+2026-08-03T09:14:05.6137000Z ERROR: failed to find instance "forge-arm": open /home/runner/.docker/buildx/instances/forge-arm: no such file or directory
+2026-08-03T09:14:05.6138000Z ##[error]Process completed with exit code 1.
+2026-08-03T09:14:05.6139000Z Post job cleanup.
+2026-08-03T09:14:05.6140000Z [command]/usr/bin/git version
+2026-08-03T09:14:05.6141000Z git version 2.50.1
+2026-08-03T09:14:05.6142000Z Cleaning up orphan processes
+2026-08-03T09:14:05.6143000Z Complete job

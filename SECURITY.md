@@ -73,7 +73,7 @@ Kensa is a local, single-operator development tool. It is not designed or harden
 
 | Adversary | Entry point | What they control |
 |---|---|---|
-| Author of CI output or repository content (for example a pull request from a fork) | Logs, workflow files, source files, retrieved incidents | Every line of evidence, including forged error lines and injected instructions |
+| Author of CI output or repository content (for example a pull request from a fork) | Logs, workflow files, source files, retrieved incidents; commit messages and diff hunks (v1.1) | Every line of evidence, including forged error lines and injected instructions |
 | A web page open in the operator's browser | The browser can reach 127.0.0.1 | DNS answers for its own domain; cross-site requests |
 | A hostile network or DNS | GitHub log redirects, name resolution | Redirect targets and resolved addresses |
 | The model | Structured output | Diagnoses, citations, proposed edits |
@@ -92,6 +92,11 @@ Kensa is a local, single-operator development tool. It is not designed or harden
 | DNS rebinding and CSRF from the operator's browser | Trusted `Host` values only; JSON-only state changes; CORS limited to the UI origin |
 | Unsafe or wrong remediation | Read-only proposals; mechanical edit checks; withdrawal of unsafe records; a human decision. Proposals are never shown to be semantically correct |
 | Leakage through traces or stored records | No network exporter; no URLs, prompts or log text in spans; stored-data scan |
+| A forged or misleading change history (v1.1) | Change analysis reads the compare API at import only, within a request budget. Unknown comparability factors are never treated as "same". Suspects are `correlated` or `weak` (a CHECK constraint); diff hunks are redacted, wrapped as data, and can support a claim but never corroborate it |
+| History confirming itself (v1.1, D-051) | Model conclusions are no longer indexed as evidence (`index_incidents` off). Fingerprints are rule-derived. Similar failures and confirmed resolutions are shown apart from the evidence and never change a verification status (tested). A false recurrence claim could still mislead a reader, so history matching is off by default since v1.1.0 (D-057), and only an exact fingerprint may claim a recurrence |
+| Data kept after the owner asks to forget it (v1.1) | Forget repository and retention delete whole investigations with every derived record, LangGraph checkpoints, fingerprint links, change analyses, diff documents and analytics rows; a meta-test fails if a table with `workspace_id` is not covered; only counts remain in `purge_audits` |
+| Personal data in history (v1.1) | Commit authors, e-mail addresses and actor logins are never stored |
+| Request floods against GitHub (v1.1) | Per-sync and per-import request budgets; one active sync per repository; a rate limit ends the batch and nothing reschedules itself |
 | Leakage through the published replay (M6) | The recorder uses its own database and refuses to write if any recorded string matches the secret, signed-URL or local-path checks; the replay build makes no request outside its own files (tested) |
 
 ## Reporting

@@ -25,7 +25,11 @@ BACKEND_DIR = Path(__file__).resolve().parents[1]
 TEST_DB_NAME = "kensa_test"
 _TABLES = (
     "jobs, agent_events, citations, diagnoses, evidence, error_signatures, chunks, documents, "
-    "investigations, repositories"
+    "investigations, repositories, "
+    # v1.1 history
+    "tracked_repositories, etl_batches, ci_runs, ci_jobs, dq_findings, purge_audits, "
+    "failure_fingerprints, investigation_fingerprints, resolutions, change_analyses, "
+    "change_suspects, analytics_daily, analytics_watermarks"
 )
 _CHECKPOINT_TABLES = (
     "langgraph.checkpoints, langgraph.checkpoint_blobs, langgraph.checkpoint_writes"

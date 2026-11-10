@@ -9,10 +9,10 @@ from collections.abc import AsyncIterator
 from typing import Annotated
 from urllib.parse import quote
 
-from fastapi import APIRouter, Header, HTTPException, Query, Request, status
+from fastapi import APIRouter, Header, HTTPException, Query, Request, Response, status
 from fastapi.concurrency import run_in_threadpool
 from fastapi.responses import StreamingResponse
-from sqlalchemy import Engine, func, select
+from sqlalchemy import Engine, case, func, select
 from sqlalchemy.orm import Session
 
 from kensa.agents.pipeline import append_event
@@ -37,6 +37,8 @@ from kensa.api.schemas import (
     SignatureOut,
     WorkflowRunOut,
 )
+from kensa.changes.service import analyze_import
+from kensa.changes.store import save_analysis
 from kensa.core.config import Settings
 from kensa.db.models import (
     AgentEvent,
@@ -109,8 +111,35 @@ def _import_summary(imported: GitHubImport) -> str:
     )
 
 
+def _earlier_import(
+    session: Session, workspace: Workspace, imported: GitHubImport, provider: str
+) -> Investigation | None:
+    """v1.1: the same job attempt (at the same commit), already investigated with the same
+    provider."""
+    return session.scalars(
+        select(Investigation)
+        .join(WorkflowRun, WorkflowRun.investigation_id == Investigation.id)
+        .where(
+            WorkflowRun.workspace_id == workspace.id,
+            WorkflowRun.owner == imported.repo.owner,
+            WorkflowRun.repo == imported.repo.repo,
+            WorkflowRun.run_id == imported.run.id,
+            WorkflowRun.run_attempt == imported.run.run_attempt,
+            WorkflowRun.job_id == imported.job.id,
+            WorkflowRun.head_sha == imported.run.head_sha,
+            Investigation.provider == provider,
+        )
+        .order_by(Investigation.created_at)
+        .limit(1)
+    ).one_or_none()
+
+
 def _create_from_github(
-    body: CreateInvestigation, session: SessionDep, workspace: Workspace, settings: Settings
+    body: CreateInvestigation,
+    session: SessionDep,
+    workspace: Workspace,
+    settings: Settings,
+    response: Response,
 ) -> InvestigationSummary:
     target = body.github
     if target is None:  # guaranteed by CreateInvestigation's validator
@@ -128,11 +157,33 @@ def _create_from_github(
     except GitHubError as exc:
         raise http_error(exc) from exc
     provider = body.provider or settings.inference_provider
+    with session.begin():
+        earlier = _earlier_import(session, workspace, imported, provider)
+        if earlier is not None:
+            # Importing the same job again opens its investigation instead of a duplicate.
+            diagnosis = session.scalars(
+                select(Diagnosis).where(Diagnosis.investigation_id == earlier.id)
+            ).one_or_none()
+            response.status_code = status.HTTP_200_OK
+            return _summary(earlier, diagnosis)
+    changes = None
+    if settings.change_analysis:  # v1.1 (D-054): network, before anything is stored
+        with github_client(settings) as client:
+            changes = analyze_import(client, imported, settings)
     try:
         with session.begin():
             investigation = create_github_investigation(
                 session, workspace.id, imported, provider, settings.llm_model
             )
+            if changes is not None:
+                save_analysis(
+                    session,
+                    workspace.id,
+                    investigation.id,
+                    imported.run.head_sha,
+                    changes,
+                    diff_evidence=settings.change_diff_evidence,
+                )
             append_event(
                 session,
                 workspace_id=workspace.id,
@@ -149,10 +200,14 @@ def _create_from_github(
 
 @router.post("/investigations", status_code=status.HTTP_201_CREATED)
 def create(
-    body: CreateInvestigation, session: SessionDep, workspace: WorkspaceDep, settings: SettingsDep
+    body: CreateInvestigation,
+    session: SessionDep,
+    workspace: WorkspaceDep,
+    settings: SettingsDep,
+    response: Response,
 ) -> InvestigationSummary:
     if body.source == "github":
-        return _create_from_github(body, session, workspace, settings)
+        return _create_from_github(body, session, workspace, settings, response)
     title: str | None = body.title
     if body.sample_id is not None:
         sample = get_sample(body.sample_id)
@@ -202,7 +257,15 @@ def get_investigation(
     documents = session.scalars(
         select(Document)
         .where(Document.investigation_id == investigation.id)
-        .order_by(Document.created_at)
+        # The log first (the UI shows the first document as the log), then a stable order:
+        # a GitHub import saves its log and diff documents in one transaction, so created_at
+        # ties and alone would leave their order to the database.
+        .order_by(
+            case((Document.source_type == "log", 0), else_=1),
+            Document.created_at,
+            Document.name,
+            Document.id,
+        )
     ).all()
     evidence_rows = session.execute(
         select(

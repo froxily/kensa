@@ -1,0 +1,53 @@
+2026-09-08T12:22:00.0000000Z Current runner version: '2.328.0'
+2026-09-08T12:22:00.1000000Z ##[group]Runner Image
+2026-09-08T12:22:00.2000000Z Image: ubuntu-24.04
+2026-09-08T12:22:00.3000000Z Version: 20260906.1.0
+2026-09-08T12:22:00.4000000Z ##[endgroup]
+2026-09-08T12:22:00.5000000Z Prepare workflow directory
+2026-09-08T12:22:00.6000000Z Prepare all required actions
+2026-09-08T12:22:01.0000000Z ##[group]Run actions/checkout@v4
+2026-09-08T12:22:01.1000000Z with:
+2026-09-08T12:22:01.2000000Z   repository: marzipan-fulcrum/loomlight-console
+2026-09-08T12:22:01.3000000Z   clean: true
+2026-09-08T12:22:01.4000000Z ##[endgroup]
+2026-09-08T12:22:02.0000000Z Syncing repository: marzipan-fulcrum/loomlight-console
+2026-09-08T12:22:03.0000000Z ##[group]Run actions/setup-node@v4
+2026-09-08T12:22:03.1000000Z with:
+2026-09-08T12:22:03.2000000Z   node-version: 22
+2026-09-08T12:22:03.3000000Z ##[endgroup]
+2026-09-08T12:22:04.0000000Z ##[group]Run npm ci
+2026-09-08T12:22:04.1000000Z npm ci
+2026-09-08T12:22:04.2000000Z shell: /usr/bin/bash -e {0}
+2026-09-08T12:22:04.3000000Z ##[endgroup]
+2026-09-08T12:22:10.0000000Z added 214 packages, and audited 215 packages in 5s
+2026-09-08T12:22:10.1000000Z found 0 vulnerabilities
+2026-09-08T12:22:10.2000000Z ##[group]Run npx playwright install --with-deps chromium
+2026-09-08T12:22:10.3000000Z npx playwright install --with-deps chromium
+2026-09-08T12:22:10.4000000Z shell: /usr/bin/bash -e {0}
+2026-09-08T12:22:10.5000000Z ##[endgroup]
+2026-09-08T12:22:29.0000000Z Chromium downloaded to /home/runner/.cache/ms-playwright/chromium-1169
+2026-09-08T12:22:29.1000000Z Chromium Headless Shell downloaded to /home/runner/.cache/ms-playwright/chromium_headless_shell-1169
+2026-09-08T12:22:29.2000000Z ##[group]Run npx playwright test e2e/catalog.spec.ts --workers=1
+2026-09-08T12:22:29.3000000Z npx playwright test e2e/catalog.spec.ts --workers=1
+2026-09-08T12:22:29.4000000Z shell: /usr/bin/bash -e {0}
+2026-09-08T12:22:29.5000000Z ##[endgroup]
+2026-09-08T12:22:31.0000000Z Running 1 test using 1 worker
+2026-09-08T12:22:34.2000000Z   1) [chromium] e2e/catalog.spec.ts:8:5 > shows active item count
+2026-09-08T12:22:34.3000000Z
+2026-09-08T12:22:34.4000000Z     Error: expect(locator).toHaveText(expected) failed
+2026-09-08T12:22:34.5000000Z     Locator: getByTestId('catalog-active-count')
+2026-09-08T12:22:34.6000000Z     Expected string: "2 active items"
+2026-09-08T12:22:34.7000000Z     Received string: "3 active items"
+2026-09-08T12:22:34.8000000Z     Call log:
+2026-09-08T12:22:34.9000000Z       - expect.toHaveText with timeout 5000ms
+2026-09-08T12:22:35.0000000Z       - waiting for getByTestId('catalog-active-count')
+2026-09-08T12:22:35.1000000Z         9 x locator resolved to <span data-testid="catalog-active-count">3 active items</span>
+2026-09-08T12:22:35.2000000Z           - unexpected value "3 active items"
+2026-09-08T12:22:35.3000000Z       6 | test('shows active item count', async ({ page }) => {
+2026-09-08T12:22:35.4000000Z       7 |   await page.goto('/catalog?fixture=two-active-one-archived');
+2026-09-08T12:22:35.5000000Z     > 8 |   await expect(page.getByTestId('catalog-active-count')).toHaveText('2 active items');
+2026-09-08T12:22:35.6000000Z         |                                                         ^
+2026-09-08T12:22:35.7000000Z       9 | });
+2026-09-08T12:22:35.8000000Z   1 failed
+2026-09-08T12:22:35.9000000Z ##[error]Process completed with exit code 1.
+2026-09-08T12:22:36.0000000Z Post job cleanup.

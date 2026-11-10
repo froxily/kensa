@@ -1,0 +1,20 @@
+﻿{
+  "id": "d16-thistle-toolchain",
+  "split": "dev",
+  "comparability": "partially_comparable",
+  "category": "dependency_build",
+  "culprit_kind": "runner_image",
+  "difficulty": "hard",
+  "ecosystem": "python",
+  "title": "Native extension fails after runner compiler update",
+  "root_cause": "The newer runner image supplies GCC 14 instead of GCC 13. The native extension calls a C function without a declaration; GCC 14 treats that diagnostic as an error, so its wheel cannot be built. The Python changes in the comparison do not affect the extension build.",
+  "culprit_paths": ["<runner-image>"],
+  "culprit_commit": null,
+  "unverified_factors": ["runner_image_changed"],
+  "fix_keywords": ["GCC", "declaration", "extension"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 37, "end_line": 39, "why": "The runner compiler identifies itself as GCC 14."},
+    {"path": "log", "start_line": 61, "end_line": 65, "why": "The native extension build fails on an implicit function declaration."},
+    {"path": "repo/helper.c", "start_line": 3, "end_line": 7, "why": "The call precedes the function declaration."}
+  ]
+}

@@ -8,7 +8,7 @@ import os
 import socket
 import threading
 import uuid
-from collections.abc import Callable, Mapping
+from collections.abc import Callable, Mapping, Sequence
 from dataclasses import dataclass
 
 import structlog
@@ -72,9 +72,16 @@ class Worker:
         heartbeat_seconds: float = 10.0,
         poll_seconds: float = 1.0,
         on_outcome: OutcomeListener | None = None,
+        only_handled: bool = False,
+        exclude: Sequence[str] = (),
     ) -> None:
         self.engine = engine
         self.handlers = dict(handlers)
+        # By default a worker claims any job, so one of an unknown kind ends dead instead of
+        # waiting forever; ``exclude`` leaves kinds to another worker. A worker with
+        # ``only_handled`` (v1.1: the history worker) claims and reaps only its own kinds.
+        self.kinds: tuple[str, ...] | None = tuple(sorted(self.handlers)) if only_handled else None
+        self.exclude = tuple(sorted(exclude)) or None
         self.owner = owner or default_owner()
         self.lease_seconds = lease_seconds
         self.heartbeat_seconds = heartbeat_seconds
@@ -93,7 +100,7 @@ class Worker:
         """Reap jobs abandoned on their final attempt, then claim and run one job.
         Returns whether a job was claimed."""
         with Session(self.engine) as session, session.begin():
-            reaped = queue.reap_expired(session)
+            reaped = queue.reap_expired(session, self.kinds, self.exclude)
         for job in reaped:
             self._report(
                 JobOutcome(
@@ -107,7 +114,7 @@ class Worker:
             )
 
         with Session(self.engine) as session, session.begin():
-            lease = queue.claim(session, self.owner, self.lease_seconds)
+            lease = queue.claim(session, self.owner, self.lease_seconds, self.kinds, self.exclude)
         if lease is None:
             return False
         self._process(lease)

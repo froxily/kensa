@@ -1,0 +1,12 @@
+{
+  "id": "hd50-bracken-loom",
+  "split": "dev",
+  "ecosystem": "elixir (mix)",
+  "repository": "fenmere-labs/bracken-loom",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"dependency_build","title":"Native dependency cannot find the libarchive header","root_cause":"The runner lacks the libarchive development headers required to compile the archive_bridge dependency's C extension. Install the libarchive development package on the runner.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"b","relation":"first","category":"test_regression","title":"Dispatch window boundary test fails","root_cause":"The dispatch window includes its exclusive closing boundary, causing the boundary test to fail. Correct the closing-boundary comparison in the application.","differs_from_earlier":""},
+    {"id":"e3","file":"e3.log","cluster":"a","relation":"recurrence","category":"dependency_build","title":"Native dependency cannot find the libarchive header","root_cause":"The runner lacks the libarchive development headers required to compile the archive_bridge dependency's C extension. Install the libarchive development package on the runner.","differs_from_earlier":"A later run fetches the dependency and compiles in the test environment on an updated runner image."},
+    {"id":"e4","file":"e4.log","cluster":"a","relation":"recurrence","category":"dependency_build","title":"Native dependency cannot find the libarchive header","root_cause":"The runner lacks the libarchive development headers required to compile the archive_bridge dependency's C extension. Install the libarchive development package on the runner.","differs_from_earlier":"The failure occurs during the test command after a dependency clean, on a different runner image."}
+  ]
+}

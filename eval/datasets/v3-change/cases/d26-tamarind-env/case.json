@@ -1,0 +1,20 @@
+﻿{
+  "id": "d26-tamarind-env",
+  "split": "dev",
+  "comparability": "incomparable",
+  "category": "missing_env_var",
+  "culprit_kind": "none",
+  "difficulty": "medium",
+  "ecosystem": "python",
+  "title": "A required export directory is absent",
+  "root_cause": "The export check exits because TAMARIND_EXPORT_DIR is absent from the job environment. The only successful candidate ran on another branch, so it cannot establish which change introduced the missing configuration.",
+  "culprit_paths": [],
+  "culprit_commit": null,
+  "unverified_factors": [],
+  "fix_keywords": ["TAMARIND_EXPORT_DIR"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 60, "end_line": 65, "why": "The export check reports the missing environment variable and exits."},
+    {"path": "repo/src/export_check.py", "start_line": 5, "end_line": 8, "why": "The check requires the directory setting."}
+  ]
+}
+

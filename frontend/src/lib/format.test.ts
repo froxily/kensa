@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { formatDateTime, formatPercent } from "./format";
+import { formatDateTime, formatNumber, formatPercent } from "./format";
 
 // The day and hour depend on the machine's time zone, so only the shape is fixed.
 const RECORDED = "2026-11-02T14:28:07Z";
@@ -26,5 +26,12 @@ describe("formatDateTime", () => {
 describe("formatPercent", () => {
   it("rounds to a whole percent", () => {
     expect(formatPercent(0.574)).toBe("57%");
+  });
+});
+
+describe("formatNumber", () => {
+  it("formats numbers in English and Japanese", () => {
+    expect(formatNumber(1234567, "en")).toBe("1,234,567");
+    expect(formatNumber(1234567, "ja")).toBe("1,234,567");
   });
 });

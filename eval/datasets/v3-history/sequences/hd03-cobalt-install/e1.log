@@ -1,0 +1,41 @@
+2026-09-01T08:10:00.0000000Z Current runner version: '2.328.0'
+2026-09-01T08:10:01.0000000Z ##[group]Runner Image
+2026-09-01T08:10:02.0000000Z Image: ubuntu-24.04
+2026-09-01T08:10:03.0000000Z Version: 20260824.1
+2026-09-01T08:10:04.0000000Z ##[endgroup]
+2026-09-01T08:10:05.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-01T08:10:06.0000000Z Contents: read
+2026-09-01T08:10:07.0000000Z ##[endgroup]
+2026-09-01T08:10:08.0000000Z Prepare workflow directory
+2026-09-01T08:10:09.0000000Z Prepare all required actions
+2026-09-01T08:10:10.0000000Z Getting action download info
+2026-09-01T08:10:11.0000000Z Download action repository 'actions/checkout@v4'
+2026-09-01T08:10:12.0000000Z Download action repository 'actions/setup-node@v4'
+2026-09-01T08:10:13.0000000Z Complete job name: install
+2026-09-01T08:10:14.0000000Z ##[group]Run actions/checkout@v4
+2026-09-01T08:10:15.0000000Z with:
+2026-09-01T08:10:16.0000000Z   repository: cobalt-labs/parcel-loom
+2026-09-01T08:10:17.0000000Z   fetch-depth: 1
+2026-09-01T08:10:18.0000000Z Syncing repository
+2026-09-01T08:10:19.0000000Z git version 2.51.0
+2026-09-01T08:10:20.0000000Z Temporarily overriding HOME
+2026-09-01T08:10:21.0000000Z Initializing the repository
+2026-09-01T08:10:22.0000000Z Fetching the repository
+2026-09-01T08:10:23.0000000Z Checking out the ref
+2026-09-01T08:10:24.0000000Z ##[endgroup]
+2026-09-01T08:10:25.0000000Z ##[group]Run actions/setup-node@v4
+2026-09-01T08:10:26.0000000Z with:
+2026-09-01T08:10:27.0000000Z   node-version: 20
+2026-09-01T08:10:28.0000000Z Found in cache: node 20.19.4
+2026-09-01T08:10:29.0000000Z ##[endgroup]
+2026-09-01T08:10:30.0000000Z ##[group]Run npm ci
+2026-09-01T08:10:31.0000000Z npm ci
+2026-09-01T08:10:32.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-01T08:10:33.0000000Z ##[endgroup]
+2026-09-01T08:10:35.0000000Z npm error code EUSAGE
+2026-09-01T08:10:36.0000000Z npm error npm ci can only install packages when package.json and package-lock.json are in sync.
+2026-09-01T08:10:37.0000000Z npm error Invalid: lock file's globby@13.2.2 does not satisfy globby@14.0.2
+2026-09-01T08:10:38.0000000Z npm error Clean install a project
+2026-09-01T08:10:39.0000000Z ##[error]Process completed with exit code 1.
+2026-09-01T08:10:40.0000000Z Post job cleanup.
+2026-09-01T08:10:41.0000000Z Cleaning up orphan processes

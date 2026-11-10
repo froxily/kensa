@@ -1,0 +1,53 @@
+﻿2026-09-07T11:02:00.1000000Z Current runner version: '2.328.0'
+2026-09-07T11:02:00.2000000Z ##[group]Runner Image
+2026-09-07T11:02:00.3000000Z Image: ubuntu-22.04
+2026-09-07T11:02:00.4000000Z Version: 20260901.1
+2026-09-07T11:02:00.5000000Z ##[endgroup]
+2026-09-07T11:02:00.6000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-07T11:02:00.7000000Z Contents: read
+2026-09-07T11:02:00.8000000Z ##[endgroup]
+2026-09-07T11:02:01.0000000Z Prepare workflow directory
+2026-09-07T11:02:01.2000000Z Prepare all required actions
+2026-09-07T11:02:01.5000000Z Download action repository 'actions/checkout@v4'
+2026-09-07T11:02:02.0000000Z Complete job name: container
+2026-09-07T11:02:02.2000000Z ##[group]Run actions/checkout@v4
+2026-09-07T11:02:02.3000000Z with:
+2026-09-07T11:02:02.4000000Z   repository: tamarack-labs/rillforge-console
+2026-09-07T11:02:02.5000000Z   clean: true
+2026-09-07T11:02:02.6000000Z ##[endgroup]
+2026-09-07T11:02:03.0000000Z Syncing repository: tamarack-labs/rillforge-console
+2026-09-07T11:02:03.3000000Z Initializing the repository
+2026-09-07T11:02:03.8000000Z Fetching the repository
+2026-09-07T11:02:04.5000000Z Checking out the ref
+2026-09-07T11:02:04.6000000Z ##[group]Run head -n 2 Dockerfile
+2026-09-07T11:02:04.6500000Z FROM node:22-alpine AS bundle
+2026-09-07T11:02:04.7000000Z WORKDIR /app
+2026-09-07T11:02:04.7500000Z ##[endgroup]
+2026-09-07T11:02:04.8000000Z ##[group]Run docker build --progress=plain -t rillforge-console:ci .
+2026-09-07T11:02:04.9000000Z docker build --progress=plain -t rillforge-console:ci .
+2026-09-07T11:02:05.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-07T11:02:05.1000000Z ##[endgroup]
+2026-09-07T11:02:05.3000000Z #0 building with "default" instance using docker driver
+2026-09-07T11:02:05.4000000Z #1 [internal] load build definition from Dockerfile
+2026-09-07T11:02:05.5000000Z #1 transferring dockerfile: 399B done
+2026-09-07T11:02:05.6000000Z #1 DONE 0.0s
+2026-09-07T11:02:05.7000000Z #2 [internal] load metadata for docker.io/library/node:22-alpine
+2026-09-07T11:02:05.8000000Z #3 [bundle 2/2] RUN npm ci && npm run build
+2026-09-07T11:02:06.9000000Z #2 DONE 1.2s
+2026-09-07T11:02:07.2000000Z #3 DONE 1.4s
+2026-09-07T11:02:07.2500000Z #4 [runtime 3/3] COPY --from=bundle /app/dist ./dist
+2026-09-07T11:02:07.2700000Z #4 ERROR: failed to calculate checksum of ref: "/app/dist": not found
+2026-09-07T11:02:07.3000000Z ------
+2026-09-07T11:02:07.4000000Z  > [runtime 3/3] COPY --from=bundle /app/dist ./dist:
+2026-09-07T11:02:07.5000000Z ------
+2026-09-07T11:02:07.6000000Z Dockerfile:11
+2026-09-07T11:02:07.7000000Z --------------------
+2026-09-07T11:02:07.8000000Z   10 |     WORKDIR /app
+2026-09-07T11:02:07.9000000Z   11 | >>> COPY --from=bundle /app/dist ./dist
+2026-09-07T11:02:08.0000000Z   12 |     CMD ["node", "dist/server.js"]
+2026-09-07T11:02:08.1000000Z --------------------
+2026-09-07T11:02:08.2000000Z ERROR: failed to build: failed to solve: failed to compute cache key: failed to calculate checksum of ref: "/app/dist": not found
+2026-09-07T11:02:08.3000000Z ##[error]Process completed with exit code 1.
+2026-09-07T11:02:08.5000000Z Post job cleanup.
+2026-09-07T11:02:08.7000000Z Cleaning up orphan processes
+

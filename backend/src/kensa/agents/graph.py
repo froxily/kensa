@@ -96,6 +96,7 @@ from kensa.agents.state import (
 )
 from kensa.agents.verifier import Verification, verify
 from kensa.analysis.causes import causes_from_json, causes_to_json
+from kensa.changes.store import change_notes, load_analysis, safe_path
 from kensa.core.config import Settings
 from kensa.core.telemetry import traced, tracer
 from kensa.db.models import (
@@ -386,6 +387,45 @@ def _targeted_items(
     return list(items.values())
 
 
+def collect_changes_node(ctx: RunContext, state: GraphState) -> dict[str, Any]:
+    """v1.1 (D-054): read the change analysis stored at import time. Network-free: GitHub was
+    read before the investigation was created. The findings reach the prompt as Kensa's notes
+    (correlation, never proof); diff hunks are retrievable evidence like any other document."""
+    started = time.perf_counter()
+    with Session(ctx.engine) as session:
+        loaded = load_analysis(session, uuid.UUID(state["investigation_id"]))
+    if loaded is None:
+        ctx.emit(
+            state,
+            "collect_changes",
+            "completed",
+            "No change analysis: the log was not imported from a GitHub run.",
+            duration_ms=_ms(started),
+        )
+        return {"change_notes": []}
+    record, suspects = loaded
+    top = suspects[0] if suspects else None
+    summary = f"Runs {record.comparability.replace('_', ' ')}: {record.files} file(s) changed."
+    if top is not None:
+        summary += f" Most correlated: {safe_path(top.path)} ({top.status})."
+    ctx.emit(
+        state,
+        "collect_changes",
+        "completed",
+        summary[:480],
+        detail={
+            "comparability": record.comparability,
+            "unverified": list(record.unverified),
+            "suspects": [
+                {"path": safe_path(s.path), "status": s.status, "score": s.score}
+                for s in suspects[:5]
+            ],
+        },
+        duration_ms=_ms(started),
+    )
+    return {"change_notes": change_notes(record, suspects)}
+
+
 def retrieve_graph_node(ctx: RunContext, state: GraphState) -> dict[str, Any]:
     started = time.perf_counter()
     st = pipeline_state(state)
@@ -487,9 +527,8 @@ def diagnose_graph_node(ctx: RunContext, state: GraphState) -> dict[str, Any]:
     st = pipeline_state(state)
     rule = st.rule or classify_node(st)
     number = state.get("diagnosis_attempt", 0) + 1
-    messages = build_messages(
-        st.title, rule, st.evidence, state["completeness"]["notes"], st.causes
-    )
+    notes = [*state["completeness"]["notes"], *state.get("change_notes", [])]
+    messages = build_messages(st.title, rule, st.evidence, notes, st.causes)
     previous = state.get("attempt")
     if previous and previous["result"] is not None and previous.get("verification"):
         messages = retry_messages(
@@ -897,6 +936,7 @@ def build_graph(ctx: RunContext) -> StateGraph[GraphState]:
 
     graph: StateGraph[GraphState] = StateGraph(GraphState)
     graph.add_node("collect_evidence", bind("collect_evidence", collect_node))
+    graph.add_node("collect_changes", bind("collect_changes", collect_changes_node))
     graph.add_node("retrieve", bind("retrieve", retrieve_graph_node))
     graph.add_node("assess_completeness", bind("assess_completeness", assess_node))
     graph.add_node("diagnose", bind("diagnose", diagnose_graph_node))
@@ -909,7 +949,8 @@ def build_graph(ctx: RunContext) -> StateGraph[GraphState]:
     graph.add_node("finalize", bind("finalize", finalize_node))
 
     graph.add_edge(START, "collect_evidence")
-    graph.add_edge("collect_evidence", "retrieve")
+    graph.add_edge("collect_evidence", "collect_changes")
+    graph.add_edge("collect_changes", "retrieve")
     graph.add_edge("retrieve", "assess_completeness")
     graph.add_conditional_edges(
         "assess_completeness",

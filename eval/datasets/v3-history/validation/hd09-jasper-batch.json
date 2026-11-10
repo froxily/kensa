@@ -1,0 +1,13 @@
+{
+  "id": "hd09-jasper-batch",
+  "independent_labels": [
+    {"id": "e1", "cluster": "a", "relation": "first", "category": "oom_timeout"},
+    {"id": "e2", "cluster": "b", "relation": "first", "category": "missing_env_var"},
+    {"id": "e3", "cluster": "c", "relation": "first", "category": "dependency_build"},
+    {"id": "e4", "cluster": "a", "relation": "recurrence", "category": "oom_timeout"}
+  ],
+  "verdict": "agree",
+  "disputed_fields": [],
+  "reason_category": "none",
+  "notes": "The same test waits for batch_completed until the job limit in e1 and e4; the latter varies the runner, Python version, batch, test count and timeout. e2 lacks ESTUARY_ARCHIVE_BUCKET, and e3 has an unavailable packaging pin. Root causes match the visible evidence; no giveaway commentary found."
+}

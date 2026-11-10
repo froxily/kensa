@@ -1,0 +1,13 @@
+{
+  "id": "ht13-duskmill-strata",
+  "independent_labels": [
+    {"id": "e1", "cluster": "a", "relation": "first", "category": "dependency_build"},
+    {"id": "e2", "cluster": "a", "relation": "recurrence", "category": "dependency_build"},
+    {"id": "e3", "cluster": "a", "relation": "recurrence", "category": "dependency_build"},
+    {"id": "e4", "cluster": "a", "relation": "recurrence", "category": "dependency_build"}
+  ],
+  "verdict": "agree",
+  "disputed_fields": [],
+  "reason_category": "none",
+  "notes": "All four runs fail importing ridgecodec from survey.py after installation. The recurrences vary in runner, checkout path, command or collection output; e3 uses a CLI smoke check. The root cause and plan match the logs, and no giveaway commentary appears."
+}

@@ -1,0 +1,20 @@
+{
+  "id": "d19-verbena-release",
+  "split": "dev",
+  "comparability": "partially_comparable",
+  "category": "github_permissions",
+  "culprit_kind": "workflow",
+  "difficulty": "medium",
+  "ecosystem": "node",
+  "title": "Release creation denied after workflow permission change",
+  "root_cause": "A commit on the rebased history reduced the workflow token's contents permission from write to read. The release creation command needs contents write access, so GitHub rejects the request with HTTP 403.",
+  "culprit_paths": [".github/workflows/publish.yml"],
+  "culprit_commit": "6a4b3e19c80d2f715e9a647cb308d42f1b5e96a0",
+  "unverified_factors": ["history_diverged"],
+  "fix_keywords": ["contents", "write"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 16, "end_line": 18, "why": "The workflow token has read-only contents permission."},
+    {"path": "log", "start_line": 64, "end_line": 71, "why": "The release publishing command receives a GitHub API 403."},
+    {"path": "repo/.github/workflows/publish.yml", "start_line": 5, "end_line": 6, "why": "The workflow explicitly limits contents permission."}
+  ]
+}

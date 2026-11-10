@@ -1,0 +1,13 @@
+{
+  "id": "hd04-marble-java",
+  "independent_labels": [
+    {"id": "e1", "cluster": "a", "relation": "first", "category": "test_regression"},
+    {"id": "e2", "cluster": "b", "relation": "lookalike", "category": "test_regression"},
+    {"id": "e3", "cluster": "c", "relation": "first", "category": "missing_env_var"},
+    {"id": "e4", "cluster": "d", "relation": "lookalike", "category": "missing_env_var"}
+  ],
+  "verdict": "ambiguous",
+  "disputed_fields": ["e1.root_cause", "e2.root_cause", "e2.cluster", "e2.relation"],
+  "reason_category": "ambiguous_evidence",
+  "notes": "The labels match the plan and sequence, but the two monetary assertions do not establish the stated implementations or prove separate fixes: a shared rounding defect is also possible. The tests do not show tax truncation or per-item discount rounding. The two missing endpoint variables clearly require distinct settings. No recurrences or giveaway commentary are present."
+}

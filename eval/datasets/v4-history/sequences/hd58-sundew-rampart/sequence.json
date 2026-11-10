@@ -1,0 +1,12 @@
+{
+  "id": "hd58-sundew-rampart",
+  "split": "dev",
+  "ecosystem": "ansible",
+  "repository": "sundew-works/rampart-provisioner",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"dependency_build","title":"APT lock blocks package provisioning","root_cause":"An unattended apt process holds the dpkg frontend lock when Ansible tries to install the rampart packages. Provisioning must wait for the other package operation to finish before installing.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"b","relation":"first","category":"dependency_build","title":"Privilege escalation requires a password","root_cause":"The provisioning account cannot run sudo without a password and Ansible has no become password. Configure passwordless escalation for the account or provide the become password.","differs_from_earlier":""},
+    {"id":"e3","file":"e3.log","cluster":"c","relation":"first","category":"workflow_path","title":"Template source is missing","root_cause":"The rampart configuration task references a template source that is absent from the role's template search paths. Restore the template or correct the source path.","differs_from_earlier":""},
+    {"id":"e4","file":"e4.log","cluster":"a","relation":"recurrence","category":"dependency_build","title":"APT lock blocks package provisioning again","root_cause":"An unattended apt process holds the dpkg frontend lock when Ansible tries to install the rampart packages. Provisioning must wait for the other package operation to finish before installing.","differs_from_earlier":"A later run uses a different runner and target, includes a directory task and uses diff mode; a different unattended-upgrades process owns the same lock."}
+  ]
+}

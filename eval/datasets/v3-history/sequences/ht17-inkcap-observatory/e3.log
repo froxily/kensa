@@ -1,0 +1,46 @@
+﻿2026-09-15T16:31:04.1100000Z Current runner version: '2.329.0'
+2026-09-15T16:31:04.1300000Z ##[group]Runner Image Provisioner
+2026-09-15T16:31:04.1400000Z Hosted Compute Agent
+2026-09-15T16:31:04.1500000Z ##[endgroup]
+2026-09-15T16:31:04.1600000Z ##[group]Operating System
+2026-09-15T16:31:04.1700000Z Ubuntu 22.04.5 LTS
+2026-09-15T16:31:04.1800000Z ##[endgroup]
+2026-09-15T16:31:04.1900000Z ##[group]Runner Image
+2026-09-15T16:31:04.2000000Z Image: ubuntu-22.04
+2026-09-15T16:31:04.2100000Z Version: 20260908.1.0
+2026-09-15T16:31:04.2200000Z ##[endgroup]
+2026-09-15T16:31:04.2300000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-15T16:31:04.2400000Z Contents: read
+2026-09-15T16:31:04.2500000Z Metadata: read
+2026-09-15T16:31:04.2600000Z ##[endgroup]
+2026-09-15T16:31:04.2700000Z Prepare workflow directory
+2026-09-15T16:31:04.3800000Z Prepare all required actions
+2026-09-15T16:31:04.5000000Z Download action repository 'actions/checkout@v4'
+2026-09-15T16:31:04.8100000Z Download action repository 'actions/cache@v4'
+2026-09-15T16:31:05.0300000Z Complete job name: verify (21)
+2026-09-15T16:31:05.1000000Z ##[group]Run actions/checkout@v4
+2026-09-15T16:31:05.1100000Z with:
+2026-09-15T16:31:05.1200000Z   repository: inkcap-works/meridian-observatory
+2026-09-15T16:31:05.1300000Z   ref: refs/pull/84/merge
+2026-09-15T16:31:05.1400000Z   fetch-depth: 1
+2026-09-15T16:31:05.1500000Z ##[endgroup]
+2026-09-15T16:31:05.3000000Z Syncing repository: inkcap-works/meridian-observatory
+2026-09-15T16:31:05.6000000Z Initializing the repository
+2026-09-15T16:31:06.0000000Z Fetching the repository
+2026-09-15T16:31:06.3000000Z Checking out the ref
+2026-09-15T16:31:06.4300000Z [command]/usr/bin/git log -1 --format=%H
+2026-09-15T16:31:06.4500000Z c73b6a59e4f1280d739a1e654c2b0df8a9c43167
+2026-09-15T16:31:06.5100000Z ##[group]Run actions/cache@v4
+2026-09-15T16:31:06.5200000Z with:
+2026-09-15T16:31:06.5300000Z   path: ~/.m2/repository
+2026-09-15T16:31:06.5400000Z   key: Linux-maven-observatory-21
+2026-09-15T16:31:06.5500000Z ##[endgroup]
+2026-09-15T16:31:06.8000000Z Cache not found for input keys: Linux-maven-observatory-21
+2026-09-15T16:31:06.9000000Z ##[group]Run ./.github/actions/prepare-starlens
+2026-09-15T16:31:06.9100000Z ##[endgroup]
+2026-09-15T16:31:06.9200000Z ##[error]Can't find 'action.yml', 'action.yaml' or 'Dockerfile' under '/home/runner/work/meridian-observatory/meridian-observatory/.github/actions/prepare-starlens'. Did you forget to run actions/checkout before running your local action?
+2026-09-15T16:31:07.0000000Z Post job cleanup.
+2026-09-15T16:31:07.2000000Z [command]/usr/bin/git version
+2026-09-15T16:31:07.2100000Z git version 2.48.1
+2026-09-15T16:31:07.3500000Z Cleaning up orphan processes
+2026-09-15T16:31:07.4000000Z Complete job

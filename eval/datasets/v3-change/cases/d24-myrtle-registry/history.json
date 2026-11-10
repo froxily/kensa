@@ -1,0 +1,8 @@
+{
+  "comparisons": {
+    "a6f3c82d914be507c2d0a18f6e4b93c741d528af...a6f3c82d914be507c2d0a18f6e4b93c741d528af": {
+      "status": "identical", "merge_base": "a6f3c82d914be507c2d0a18f6e4b93c741d528af", "truncated": false, "commits": []
+    }
+  },
+  "workflow_blobs": {"a6f3c82d914be507c2d0a18f6e4b93c741d528af": "b3d709ac65e1284f90a6c2d15e8f439b671c0dae"}
+}

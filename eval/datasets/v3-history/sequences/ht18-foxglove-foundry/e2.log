@@ -1,0 +1,45 @@
+﻿2026-08-11T15:20:11.4001000Z Current runner version: '2.328.0'
+2026-08-11T15:20:11.4002000Z Runner name: 'GitHub Actions 182'
+2026-08-11T15:20:11.4003000Z ##[group]Operating System
+2026-08-11T15:20:11.4004000Z Ubuntu
+2026-08-11T15:20:11.4005000Z 22.04.5
+2026-08-11T15:20:11.4006000Z ##[endgroup]
+2026-08-11T15:20:11.4007000Z ##[group]Runner Image
+2026-08-11T15:20:11.4008000Z Image: ubuntu-22.04
+2026-08-11T15:20:11.4009000Z Version: 20260803.1.0
+2026-08-11T15:20:11.4010000Z ##[endgroup]
+2026-08-11T15:20:11.4011000Z ##[group]GITHUB_TOKEN Permissions
+2026-08-11T15:20:11.4012000Z Contents: read
+2026-08-11T15:20:11.4013000Z ##[endgroup]
+2026-08-11T15:20:11.4014000Z Prepare workflow directory
+2026-08-11T15:20:11.4015000Z Prepare all required actions
+2026-08-11T15:20:12.4016000Z Download action repository 'actions/checkout@v4'
+2026-08-11T15:20:12.4017000Z Download action repository 'actions/cache@v4'
+2026-08-11T15:20:12.4018000Z Complete job name: image (pull_request)
+2026-08-11T15:20:12.4019000Z ##[group]Run actions/checkout@v4
+2026-08-11T15:20:12.4020000Z with:
+2026-08-11T15:20:12.4021000Z   repository: cairnworks/foxglove-foundry
+2026-08-11T15:20:12.4022000Z   ref: refs/pull/73/merge
+2026-08-11T15:20:12.4023000Z ##[endgroup]
+2026-08-11T15:20:12.4024000Z Syncing repository: cairnworks/foxglove-foundry
+2026-08-11T15:20:13.4025000Z Fetching the repository
+2026-08-11T15:20:14.4026000Z Checking out the ref
+2026-08-11T15:20:14.4027000Z HEAD is now at 7d18a2b Merge pull request
+2026-08-11T15:20:14.4028000Z ##[group]Run actions/cache@v4
+2026-08-11T15:20:14.4029000Z with:
+2026-08-11T15:20:14.4030000Z   path: ~/.cargo/registry
+2026-08-11T15:20:14.4031000Z   key: cargo-linux-foundry-73
+2026-08-11T15:20:14.4032000Z ##[endgroup]
+2026-08-11T15:20:14.4033000Z Cache not found for input keys: cargo-linux-foundry-73
+2026-08-11T15:20:14.4034000Z ##[group]Run docker buildx inspect forge-arm --bootstrap
+2026-08-11T15:20:14.4035000Z [36;1mdocker buildx inspect forge-arm --bootstrap[0m
+2026-08-11T15:20:14.4036000Z [36;1mdocker buildx build --builder forge-arm --platform linux/arm64 .[0m
+2026-08-11T15:20:14.4037000Z shell: /usr/bin/bash -e {0}
+2026-08-11T15:20:14.4038000Z ##[endgroup]
+2026-08-11T15:20:14.9039000Z ERROR: failed to find instance "forge-arm": open /home/runner/.docker/buildx/instances/forge-arm: no such file or directory
+2026-08-11T15:20:14.9040000Z ##[error]Process completed with exit code 1.
+2026-08-11T15:20:14.9041000Z Post job cleanup.
+2026-08-11T15:20:14.9042000Z [command]/usr/bin/git version
+2026-08-11T15:20:14.9043000Z git version 2.48.1
+2026-08-11T15:20:14.9044000Z Cleaning up orphan processes
+2026-08-11T15:20:14.9045000Z Complete job

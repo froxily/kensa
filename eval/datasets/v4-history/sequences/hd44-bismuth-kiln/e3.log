@@ -1,0 +1,47 @@
+2026-09-18T13:05:31.1211100Z Current runner version: '2.328.0'
+2026-09-18T13:05:31.1213200Z ##[group]Runner Image Provisioner
+2026-09-18T13:05:31.1215300Z Hosted Compute Agent
+2026-09-18T13:05:31.1217400Z Version: 20260908.1
+2026-09-18T13:05:31.1219500Z ##[endgroup]
+2026-09-18T13:05:31.1221600Z ##[group]Operating System
+2026-09-18T13:05:31.1223700Z Ubuntu
+2026-09-18T13:05:31.1225800Z 24.04.3
+2026-09-18T13:05:31.1227900Z ##[endgroup]
+2026-09-18T13:05:31.1230000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-18T13:05:31.1232100Z Contents: write
+2026-09-18T13:05:31.1234200Z Metadata: read
+2026-09-18T13:05:31.1236300Z PullRequests: read
+2026-09-18T13:05:31.1238400Z ##[endgroup]
+2026-09-18T13:05:31.1240500Z Prepare workflow directory
+2026-09-18T13:05:31.4210000Z Prepare all required actions
+2026-09-18T13:05:31.9780000Z Download action repository 'actions/checkout@v4'
+2026-09-18T13:05:32.4590000Z Complete job name: release-preview
+2026-09-18T13:05:32.5630000Z ##[group]Run actions/checkout@v4
+2026-09-18T13:05:32.5632100Z with:
+2026-09-18T13:05:32.5634200Z   repository: isobar-foundry/bismuth-kiln
+2026-09-18T13:05:32.5636300Z   fetch-depth: 0
+2026-09-18T13:05:32.5638400Z   token: ***
+2026-09-18T13:05:32.5640500Z ##[endgroup]
+2026-09-18T13:05:32.8020000Z Syncing repository: isobar-foundry/bismuth-kiln
+2026-09-18T13:05:32.9130000Z [command]/usr/bin/git version
+2026-09-18T13:05:32.9180000Z git version 2.51.0
+2026-09-18T13:05:33.3610000Z Fetching the repository
+2026-09-18T13:05:34.2070000Z Checking out the ref
+2026-09-18T13:05:34.2510000Z HEAD is now at 8e1b4c2 Add release preview
+2026-09-18T13:05:34.2910000Z ##[group]Run git describe --tags --always
+2026-09-18T13:05:34.2912100Z [36;1mgit describe --tags --always[0m
+2026-09-18T13:05:34.2914200Z shell: /usr/bin/bash -e {0}
+2026-09-18T13:05:34.2916300Z ##[endgroup]
+2026-09-18T13:05:34.3080000Z v2.4.1-3-g8e1b4c2
+2026-09-18T13:05:34.3520000Z ##[group]Run gh pr comment 183 --body 'Release preview is ready.'
+2026-09-18T13:05:34.3522100Z [36;1mgh pr comment 183 --body 'Release preview is ready.'[0m
+2026-09-18T13:05:34.3524200Z shell: /usr/bin/bash -e {0}
+2026-09-18T13:05:34.3526300Z env:
+2026-09-18T13:05:34.3528400Z   GH_TOKEN: ***
+2026-09-18T13:05:34.3530500Z ##[endgroup]
+2026-09-18T13:05:35.0090000Z GraphQL: Resource not accessible by integration (addComment)
+2026-09-18T13:05:35.0170000Z ##[error]Process completed with exit code 1.
+2026-09-18T13:05:35.0390000Z Post job cleanup.
+2026-09-18T13:05:35.1670000Z [command]/usr/bin/git version
+2026-09-18T13:05:35.1720000Z git version 2.51.0
+2026-09-18T13:05:35.2740000Z Cleaning up orphan processes

@@ -1,0 +1,57 @@
+2026-09-13T11:30:00.1000000Z Current runner version: '2.329.0'
+2026-09-13T11:30:00.2000000Z ##[group]Runner Image
+2026-09-13T11:30:00.3000000Z Image: ubuntu-24.04
+2026-09-13T11:30:00.4000000Z Version: 20260907.1.0
+2026-09-13T11:30:00.5000000Z ##[endgroup]
+2026-09-13T11:30:00.6000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-13T11:30:00.7000000Z Contents: read
+2026-09-13T11:30:00.8000000Z ##[endgroup]
+2026-09-13T11:30:01.1000000Z Prepare workflow directory
+2026-09-13T11:30:01.4000000Z Prepare all required actions
+2026-09-13T11:30:02.1000000Z Download action repository 'actions/checkout@v4'
+2026-09-13T11:30:02.4000000Z Download action repository 'hashicorp/setup-terraform@v3'
+2026-09-13T11:30:03.1000000Z Complete job name: plan
+2026-09-13T11:30:03.4000000Z ##[group]Run actions/checkout@v4
+2026-09-13T11:30:03.5000000Z with:
+2026-09-13T11:30:03.6000000Z   repository: thistleharbor/estuary-infra
+2026-09-13T11:30:03.7000000Z   clean: true
+2026-09-13T11:30:03.8000000Z ##[endgroup]
+2026-09-13T11:30:04.1000000Z Syncing repository: thistleharbor/estuary-infra
+2026-09-13T11:30:05.1000000Z Initialized empty Git repository in /home/runner/work/estuary-infra/estuary-infra/.git/
+2026-09-13T11:30:06.1000000Z Checking out the ref
+2026-09-13T11:30:06.4000000Z ##[group]Run hashicorp/setup-terraform@v3
+2026-09-13T11:30:06.5000000Z with:
+2026-09-13T11:30:06.6000000Z   terraform_version: 1.9.8
+2026-09-13T11:30:06.7000000Z ##[endgroup]
+2026-09-13T11:30:08.1000000Z Terraform CLI version 1.9.8
+2026-09-13T11:30:08.4000000Z ##[group]Run terraform init -input=false -no-color
+2026-09-13T11:30:08.5000000Z terraform init -input=false -no-color
+2026-09-13T11:30:08.6000000Z shell: /usr/bin/bash -e {0}
+2026-09-13T11:30:08.7000000Z ##[endgroup]
+2026-09-13T11:30:09.1000000Z Initializing the backend...
+2026-09-13T11:30:09.8000000Z Successfully configured the backend "s3"!
+2026-09-13T11:30:10.1000000Z Initializing provider plugins...
+2026-09-13T11:30:11.1000000Z - Installing integrations/github v6.3.0...
+2026-09-13T11:30:12.1000000Z - Installed integrations/github v6.3.0 (signed by a HashiCorp partner)
+2026-09-13T11:30:12.4000000Z Terraform has been successfully initialized!
+2026-09-13T11:30:12.7000000Z ##[group]Run terraform apply -auto-approve -input=false -no-color
+2026-09-13T11:30:12.8000000Z terraform apply -auto-approve -input=false -no-color
+2026-09-13T11:30:12.9000000Z shell: /usr/bin/bash -e {0}
+2026-09-13T11:30:12.9500000Z env:
+2026-09-13T11:30:12.9600000Z   GITHUB_TOKEN: ***
+2026-09-13T11:30:13.0000000Z ##[endgroup]
+2026-09-13T11:30:13.3000000Z Acquiring state lock. This may take a few moments...
+2026-09-13T11:30:14.1000000Z github_repository_file.estuary: Modifying... [id=estuary-infra:status.json]
+2026-09-13T11:30:14.6000000Z Apply failed. Terraform encountered an error while applying this plan.
+2026-09-13T11:30:14.7000000Z 
+2026-09-13T11:30:14.8000000Z Error: PUT https://api.github.com/repos/thistleharbor/estuary-infra/contents/status.json: 403 Resource not accessible by integration
+2026-09-13T11:30:14.9000000Z X-Accepted-GitHub-Permissions: contents=write
+2026-09-13T11:30:15.0000000Z   with github_repository_file.estuary,
+2026-09-13T11:30:15.1000000Z   on repository.tf line 14, in resource "github_repository_file" "estuary":
+2026-09-13T11:30:15.2000000Z   14: resource "github_repository_file" "estuary" {
+2026-09-13T11:30:15.3000000Z 
+2026-09-13T11:30:15.4000000Z Releasing state lock. This may take a few moments...
+2026-09-13T11:30:15.8000000Z ##[error]Terraform exited with code 1.
+2026-09-13T11:30:15.9000000Z ##[error]Process completed with exit code 1.
+2026-09-13T11:30:16.1000000Z Post job cleanup.
+2026-09-13T11:30:16.3000000Z Cleaning up orphan processes

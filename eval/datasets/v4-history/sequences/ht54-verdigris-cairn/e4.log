@@ -1,0 +1,55 @@
+2026-09-24T19:07:41.0200000Z Current runner version: '2.329.0'
+2026-09-24T19:07:41.1200000Z ##[group]Runner Image Provisioner
+2026-09-24T19:07:41.2200000Z Hosted Compute Agent
+2026-09-24T19:07:41.3200000Z Version: 20260915.1
+2026-09-24T19:07:41.4200000Z ##[endgroup]
+2026-09-24T19:07:41.5200000Z ##[group]Operating System
+2026-09-24T19:07:41.6200000Z Ubuntu
+2026-09-24T19:07:41.7200000Z 22.04.5
+2026-09-24T19:07:41.8200000Z LTS
+2026-09-24T19:07:41.9200000Z ##[endgroup]
+2026-09-24T19:07:42.0200000Z ##[group]Runner Image
+2026-09-24T19:07:42.1200000Z Image: ubuntu-22.04
+2026-09-24T19:07:42.2200000Z Version: 20260920.1.0
+2026-09-24T19:07:42.3200000Z ##[endgroup]
+2026-09-24T19:07:42.4200000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-24T19:07:42.5200000Z Contents: read
+2026-09-24T19:07:42.6200000Z Metadata: read
+2026-09-24T19:07:42.7200000Z ##[endgroup]
+2026-09-24T19:07:42.8200000Z Prepare workflow directory
+2026-09-24T19:07:43.0200000Z Prepare all required actions
+2026-09-24T19:07:43.2200000Z Download action repository 'actions/checkout@v4' (SHA: 11bd71901bbe5b1630ceea73d27597364c9af683)
+2026-09-24T19:07:43.4200000Z Complete job name: integration (postgres-16)
+2026-09-24T19:07:43.6200000Z ##[group]Checking docker version
+2026-09-24T19:07:43.8200000Z /usr/bin/docker version --format '{{.Server.APIVersion}}'
+2026-09-24T19:07:44.0200000Z '1.48'
+2026-09-24T19:07:44.2200000Z ##[endgroup]
+2026-09-24T19:07:44.4200000Z ##[group]Clean up resources from previous jobs
+2026-09-24T19:07:44.6200000Z /usr/bin/docker container prune --force --filter label=2da31b
+2026-09-24T19:07:44.8200000Z /usr/bin/docker network prune --force --filter label=2da31b
+2026-09-24T19:07:45.0200000Z ##[endgroup]
+2026-09-24T19:07:45.2200000Z ##[group]Create local container network
+2026-09-24T19:07:45.4200000Z /usr/bin/docker network create --label 2da31b github_network_41b68f
+2026-09-24T19:07:45.6200000Z ##[endgroup]
+2026-09-24T19:07:45.8200000Z ##[group]Starting catalog service container
+2026-09-24T19:07:46.0200000Z /usr/bin/docker pull postgres:16.6
+2026-09-24T19:07:47.2200000Z Status: Downloaded newer image for postgres:16.6
+2026-09-24T19:07:47.4200000Z /usr/bin/docker create --name catalog_883 --label 2da31b --network github_network_41b68f --network-alias catalog -e POSTGRES_USER=cairn_owner -e POSTGRES_PASSWORD=*** -e PGPASSWORD=*** -e POSTGRES_DB=cairn_catalog_ci --health-cmd "psql -h 127.0.0.1 -U cairn_probe -d cairn_catalog_ci -c 'SELECT 1'" --health-interval 4s --health-timeout 2s --health-retries 4 postgres:16.6
+2026-09-24T19:07:47.6200000Z /usr/bin/docker start catalog_883
+2026-09-24T19:07:47.8200000Z ##[endgroup]
+2026-09-24T19:07:48.0200000Z ##[group]Waiting for all services to be ready
+2026-09-24T19:07:52.0200000Z catalog service is starting, waiting 2 seconds before checking again.
+2026-09-24T19:07:54.0200000Z catalog service is starting, waiting 4 seconds before checking again.
+2026-09-24T19:08:02.0200000Z ##[error]Failed to initialize container catalog
+2026-09-24T19:08:02.2200000Z ##[group]Print service container logs: catalog_883
+2026-09-24T19:08:02.4200000Z PostgreSQL init process complete; ready for start up.
+2026-09-24T19:08:02.6200000Z 2026-09-24 19:07:50.094 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2026-09-24T19:08:02.8200000Z 2026-09-24 19:07:50.122 UTC [1] LOG:  database system is ready to accept connections
+2026-09-24T19:08:03.0200000Z 2026-09-24 19:07:52.151 UTC [49] FATAL:  role "cairn_probe" does not exist
+2026-09-24T19:08:03.2200000Z 2026-09-24 19:07:56.198 UTC [56] FATAL:  role "cairn_probe" does not exist
+2026-09-24T19:08:03.4200000Z 2026-09-24 19:08:00.247 UTC [63] FATAL:  role "cairn_probe" does not exist
+2026-09-24T19:08:03.6200000Z ##[endgroup]
+2026-09-24T19:08:03.8200000Z ##[error]One or more containers failed to start.
+2026-09-24T19:08:04.0200000Z Remove container: catalog_883
+2026-09-24T19:08:04.2200000Z Remove container network: github_network_41b68f
+2026-09-24T19:08:04.4200000Z Cleaning up orphan processes

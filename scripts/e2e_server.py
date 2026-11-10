@@ -27,7 +27,8 @@ BACKEND = Path(__file__).resolve().parents[1] / "backend"
 TRUNCATE = text(
     "TRUNCATE jobs, agent_events, citations, diagnoses, evidence, error_signatures, chunks, "
     "documents, investigations, langgraph.checkpoints, langgraph.checkpoint_blobs, "
-    "langgraph.checkpoint_writes RESTART IDENTITY CASCADE"
+    "langgraph.checkpoint_writes, failure_fingerprints, tracked_repositories, analytics_daily, "
+    "analytics_watermarks, purge_audits, dq_findings RESTART IDENTITY CASCADE"
 )
 
 

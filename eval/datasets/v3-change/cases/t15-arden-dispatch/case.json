@@ -1,0 +1,20 @@
+﻿{
+  "id": "t15-arden-dispatch",
+  "split": "test",
+  "comparability": "partially_comparable",
+  "category": "missing_env_var",
+  "culprit_kind": "workflow",
+  "difficulty": "medium",
+  "ecosystem": "node",
+  "title": "Dispatch checks lose their region setting",
+  "root_cause": "The workflow stopped supplying ARDEN_DISPATCH_REGION to the test step. The dispatch configuration requires a nonempty region at startup, so the test process exits before running its assertions. The earlier successful run has no available job log, limiting verification of its environment.",
+  "culprit_paths": [".github/workflows/dispatch.yml"],
+  "culprit_commit": "9b4c18e527a0d63f892be147c65a30d1f8e249ab",
+  "unverified_factors": ["baseline_log_unavailable"],
+  "fix_keywords": ["ARDEN_DISPATCH_REGION"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 61, "end_line": 65, "why": "The Node test process fails while loading the required region setting."},
+    {"path": "repo/src/settings.js", "start_line": 1, "end_line": 5, "why": "The configuration requires a nonempty environment variable."}
+  ]
+}
+

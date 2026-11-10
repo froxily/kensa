@@ -1,0 +1,12 @@
+{
+  "id": "ht36-celadon-ferry",
+  "split": "test",
+  "ecosystem": "java (gradle)",
+  "repository": "ferryglass/celadon-ledger",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"dependency_build","title":"Test worker crashes in native compression library","root_cause":"The test runtime loads version 1.4.2 of the native tidepack library, whose JNI compression call crashes the JVM. Upgrade or replace that native library.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"b","relation":"first","category":"dependency_build","title":"Schema generation cannot read its input","root_cause":"The generateLedgerTypes task points to a schema file that is absent at the configured path. Restore the schema or correct the task input path.","differs_from_earlier":""},
+    {"id":"e3","file":"e3.log","cluster":"b","relation":"recurrence","category":"dependency_build","title":"Schema generation cannot read its input","root_cause":"The generateLedgerTypes task points to a schema file that is absent at the configured path. Restore the schema or correct the task input path.","differs_from_earlier":"A later run uses a different runner and build cache state; the same generator input is still absent."},
+    {"id":"e4","file":"e4.log","cluster":"a","relation":"recurrence","category":"dependency_build","title":"Test worker crashes in native compression library","root_cause":"The test runtime loads version 1.4.2 of the native tidepack library, whose JNI compression call crashes the JVM. Upgrade or replace that native library.","differs_from_earlier":"A later test worker crashes on another runner, with a different process and native address, in the same library function."}
+  ]
+}

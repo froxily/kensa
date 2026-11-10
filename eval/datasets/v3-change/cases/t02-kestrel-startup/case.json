@@ -1,0 +1,19 @@
+﻿{
+  "id": "t02-kestrel-startup",
+  "split": "test",
+  "comparability": "comparable",
+  "category": "missing_env_var",
+  "culprit_kind": "source",
+  "difficulty": "medium",
+  "ecosystem": "ruby",
+  "title": "Startup requires a deployment region",
+  "root_cause": "The settings module replaced its local region default with an unconditional fetch of KESTREL_REGION. The workflow does not supply that variable, so loading the module raises KeyError before the startup test can run.",
+  "culprit_paths": ["lib/kestrel_settings.rb"],
+  "culprit_commit": "d4e8b1c627fa3059e16d4b892a7c0f53b9e2146d",
+  "unverified_factors": [],
+  "fix_keywords": ["KESTREL_REGION", "ENV.fetch"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 62, "end_line": 66, "why": "Loading settings fails because the required environment key is absent."},
+    {"path": "repo/lib/kestrel_settings.rb", "start_line": 1, "end_line": 2, "why": "The module fetches the setting during load."}
+  ]
+}

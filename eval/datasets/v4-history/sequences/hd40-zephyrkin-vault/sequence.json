@@ -1,0 +1,12 @@
+{
+  "id": "hd40-zephyrkin-vault",
+  "split": "dev",
+  "ecosystem": "dotnet",
+  "repository": "zephyrkin/murmurvault",
+  "entries": [
+    {"id": "e1", "file": "e1.log", "cluster": "a", "relation": "first", "category": "test_regression", "title": "Expiry cutoff test fails", "root_cause": "LeaseExpiryTests.ExpiresAtCutoff expects true but receives false. The expiry behavior at the cutoff must satisfy the test.", "differs_from_earlier": ""},
+    {"id": "e2", "file": "e2.log", "cluster": "b", "relation": "first", "category": "dependency_build", "title": "Referenced project is missing", "root_cause": "Fallowspire references Ravelwort.Contracts.csproj at a path where it does not exist, leaving the Ravelwort namespace and ArchiveRecord type unresolved. Restore the referenced project or correct its path.", "differs_from_earlier": ""},
+    {"id": "e3", "file": "e3.log", "cluster": "c", "relation": "first", "category": "missing_env_var", "title": "Archive endpoint is not configured", "root_cause": "The archive integration test requires the FALLOWSPIRE_ARCHIVE_URL environment variable, which the job does not provide. Configure the endpoint for the job.", "differs_from_earlier": ""},
+    {"id": "e4", "file": "e4.log", "cluster": "a", "relation": "recurrence", "category": "test_regression", "title": "Expiry cutoff test fails", "root_cause": "LeaseExpiryTests.ExpiresAtCutoff expects true but receives false. The expiry behavior at the cutoff must satisfy the test.", "differs_from_earlier": "The later run uses SDK 9.0.101 instead of 8.0.404, a different runner and checkout, and has changed test counts, timings and source line numbers."}
+  ]
+}

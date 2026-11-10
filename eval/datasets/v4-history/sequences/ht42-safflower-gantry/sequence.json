@@ -1,0 +1,12 @@
+{
+  "id": "ht42-safflower-gantry",
+  "split": "test",
+  "ecosystem": "shell and make",
+  "repository": "safflower-labs/gantry-checks",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"workflow_path","title":"Make runs outside the build directory","root_cause":"The workflow runs make from the repository root, but the requested target is in the tools/gantry Makefile. Set the step working directory to tools/gantry.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"b","relation":"lookalike","category":"workflow_path","title":"Misspelled make target","root_cause":"The workflow invokes the nonexistent target verify-bundel instead of verify-bundle in the tools/gantry Makefile. Correct the target spelling.","differs_from_earlier":"Make is run in the correct directory and finds the Makefile, but the requested target is misspelled."},
+    {"id":"e3","file":"e3.log","cluster":"a","relation":"recurrence","category":"workflow_path","title":"Make runs outside the build directory","root_cause":"The workflow runs make from the repository root, but the requested target is in the tools/gantry Makefile. Set the step working directory to tools/gantry.","differs_from_earlier":"A later run uses a newer runner and a different make target after checkout; the step still starts in the repository root."},
+    {"id":"e4","file":"e4.log","cluster":"c","relation":"first","category":"test_regression","title":"Bundle manifest check fails","root_cause":"The generated bundle manifest omits the required index entry, causing the manifest validation script to fail. Correct the bundle manifest generation.","differs_from_earlier":""}
+  ]
+}

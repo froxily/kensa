@@ -1,0 +1,13 @@
+{
+  "id": "ht17-inkcap-observatory",
+  "independent_labels": [
+    {"id": "e1", "cluster": "a", "relation": "first", "category": "workflow_path"},
+    {"id": "e2", "cluster": "b", "relation": "first", "category": "dependency_build"},
+    {"id": "e3", "cluster": "a", "relation": "recurrence", "category": "workflow_path"},
+    {"id": "e4", "cluster": "c", "relation": "lookalike", "category": "dependency_build"}
+  ],
+  "verdict": "disagree",
+  "disputed_fields": ["e2.category", "e4.category", "e1.root_cause", "e2.root_cause", "e3.root_cause", "e4.root_cause"],
+  "reason_category": "label_conflict",
+  "notes": "e2 and e4 fail Java compilation, not tests; dependency_build is the closest available category for these build failures. The logs do not establish the claimed setup-starlens location or the replacement bearing and declinationDegrees accessors. The plan pattern and cluster relations agree; e3 includes a different runner, PR and cache step, and e4 reports a different missing method and receiver. No giveaway commentary found."
+}

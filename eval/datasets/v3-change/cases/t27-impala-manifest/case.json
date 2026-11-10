@@ -1,0 +1,19 @@
+{
+  "id": "t27-impala-manifest",
+  "split": "test",
+  "comparability": "incomparable",
+  "category": "missing_env_var",
+  "culprit_kind": "none",
+  "difficulty": "medium",
+  "ecosystem": "node",
+  "title": "Manifest validation after a workflow rename",
+  "root_cause": "The manifest validation command exits because IMPALA_MANIFEST_REGION is absent or empty. The earlier successful run used a different workflow path, so it is not a comparable baseline and the responsible change cannot be attributed from this comparison.",
+  "culprit_paths": [],
+  "culprit_commit": null,
+  "unverified_factors": [],
+  "fix_keywords": ["IMPALA_MANIFEST_REGION"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 62, "end_line": 63, "why": "The validation command reports the required variable and exits unsuccessfully."},
+    {"path": "repo/scripts/check-manifest.js", "start_line": 3, "end_line": 6, "why": "The validation script requires a nonempty region."}
+  ]
+}

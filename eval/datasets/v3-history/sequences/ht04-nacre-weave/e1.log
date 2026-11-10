@@ -1,0 +1,49 @@
+﻿2026-09-03T09:14:00.1023400Z Current runner version: '2.328.0'
+2026-09-03T09:14:00.2023400Z ##[group]Runner Image
+2026-09-03T09:14:00.3023400Z Image: ubuntu-24.04
+2026-09-03T09:14:00.4023400Z Version: 20260824.1.0
+2026-09-03T09:14:00.5023400Z ##[endgroup]
+2026-09-03T09:14:00.6023400Z ##[group]GITHUB_TOKEN Permissions
+2026-09-03T09:14:00.7023400Z Contents: read
+2026-09-03T09:14:00.8023400Z ##[endgroup]
+2026-09-03T09:14:01.1023400Z Prepare workflow directory
+2026-09-03T09:14:01.2023400Z Prepare all required actions
+2026-09-03T09:14:01.3023400Z Getting action download info
+2026-09-03T09:14:02.1023400Z ##[group]Run actions/checkout@v4
+2026-09-03T09:14:02.2023400Z with:
+2026-09-03T09:14:02.3023400Z   repository: nacre-loom/weft-index
+2026-09-03T09:14:02.4023400Z   fetch-depth: 1
+2026-09-03T09:14:02.5023400Z ##[endgroup]
+2026-09-03T09:14:03.1023400Z Syncing repository: nacre-loom/weft-index
+2026-09-03T09:14:03.2023400Z [command]/usr/bin/git version
+2026-09-03T09:14:03.3023400Z git version 2.51.0
+2026-09-03T09:14:03.4023400Z Initializing the repository
+2026-09-03T09:14:04.1023400Z Fetching the repository
+2026-09-03T09:14:05.1023400Z Checking out the ref
+2026-09-03T09:14:05.2023400Z [command]/usr/bin/git log -1 --format=%H
+2026-09-03T09:14:05.3023400Z 91e3f46c3d4ba5b33b8d0e20e9df0d9bd157a7e4
+2026-09-03T09:14:05.4023400Z ##[group]Run rustup show
+2026-09-03T09:14:05.5023400Z rustup show
+2026-09-03T09:14:05.6023400Z cargo check --workspace
+2026-09-03T09:14:05.7023400Z shell: /usr/bin/bash -e {0}
+2026-09-03T09:14:05.8023400Z ##[endgroup]
+2026-09-03T09:14:06.1023400Z Default host: x86_64-unknown-linux-gnu
+2026-09-03T09:14:06.2023400Z active toolchain: stable-x86_64-unknown-linux-gnu (default)
+2026-09-03T09:14:06.3023400Z rustc 1.89.0 (29483883e 2025-08-04)
+2026-09-03T09:14:07.1023400Z     Updating crates.io index
+2026-09-03T09:14:08.1023400Z    Compiling proc-macro2 v1.0.101
+2026-09-03T09:14:09.1023400Z     Checking weft-index v0.1.0 (/home/runner/work/weft-index/weft-index)
+2026-09-03T09:14:09.2023400Z error[E0609]: no field `span` on type `ThreadSegment`
+2026-09-03T09:14:09.3023400Z   --> src/segment_builder.rs:47:31
+2026-09-03T09:14:09.4023400Z    |
+2026-09-03T09:14:09.5023400Z 47 |         widths.push(segment.span);
+2026-09-03T09:14:09.6023400Z    |                               ^^^^ unknown field
+2026-09-03T09:14:09.7023400Z    |
+2026-09-03T09:14:09.8023400Z    = note: available fields are: `width`, `offset`
+2026-09-03T09:14:09.9023400Z For more information about this error, try `rustc --explain E0609`.
+2026-09-03T09:14:10.0023400Z error: could not compile `weft-index` (lib) due to 1 previous error
+2026-09-03T09:14:10.1023400Z ##[error]Process completed with exit code 101.
+2026-09-03T09:14:10.2023400Z Post job cleanup.
+2026-09-03T09:14:10.3023400Z [command]/usr/bin/git version
+2026-09-03T09:14:10.4023400Z git version 2.51.0
+2026-09-03T09:14:10.5023400Z Cleaning up orphan processes

@@ -1,0 +1,47 @@
+2026-09-02T05:00:00.0000000Z Current runner version: '2.328.0'
+2026-09-02T05:00:00.1000000Z Runner name: 'hosted-11'
+2026-09-02T05:00:00.2000000Z ##[group]Operating System
+2026-09-02T05:00:00.3000000Z Ubuntu
+2026-09-02T05:00:00.4000000Z 24.04.3
+2026-09-02T05:00:00.5000000Z ##[endgroup]
+2026-09-02T05:00:00.6000000Z ##[group]Runner Image
+2026-09-02T05:00:00.7000000Z Image: ubuntu-24.04
+2026-09-02T05:00:00.8000000Z Version: 20260824.1
+2026-09-02T05:00:00.9000000Z ##[endgroup]
+2026-09-02T05:00:01.0000000Z Prepare workflow directory
+2026-09-02T05:00:01.1000000Z Prepare all required actions
+2026-09-02T05:00:01.2000000Z Download action repository 'actions/checkout@v4'
+2026-09-02T05:00:01.3000000Z Complete job name: integration
+2026-09-02T05:00:02.0000000Z ##[group]Run actions/checkout@v4
+2026-09-02T05:00:02.1000000Z with:
+2026-09-02T05:00:02.2000000Z   repository: boreal-atelier/archive-index
+2026-09-02T05:00:02.3000000Z   ref: refs/pull/12/merge
+2026-09-02T05:00:02.4000000Z ##[endgroup]
+2026-09-02T05:00:03.0000000Z Syncing repository: boreal-atelier/archive-index
+2026-09-02T05:00:03.1000000Z [command]/usr/bin/git version
+2026-09-02T05:00:03.2000000Z git version 2.51.0
+2026-09-02T05:00:04.0000000Z Fetching the repository
+2026-09-02T05:00:05.0000000Z Checking out the ref
+2026-09-02T05:00:05.2000000Z ##[group]Run actions/setup-java@v4
+2026-09-02T05:00:05.3000000Z with:
+2026-09-02T05:00:05.4000000Z   distribution: temurin
+2026-09-02T05:00:05.5000000Z   java-version: '21'
+2026-09-02T05:00:05.6000000Z ##[endgroup]
+2026-09-02T05:00:06.0000000Z Java 21 was installed
+2026-09-02T05:00:06.5000000Z ##[group]Run ./gradlew integrationTest
+2026-09-02T05:00:06.6000000Z ./gradlew integrationTest
+2026-09-02T05:00:06.7000000Z shell: /usr/bin/bash -e {0}
+2026-09-02T05:00:06.8000000Z ##[endgroup]
+2026-09-02T05:00:12.0000000Z > Task :compileJava
+2026-09-02T05:00:14.0000000Z > Task :expandArchiveFixtures
+2026-09-02T05:01:10.0000000Z fixture generations retained: 1, 2, 3, 4
+2026-09-02T05:01:10.1000000Z workspace filesystem: 100% used
+2026-09-02T05:01:10.2000000Z > Task :expandArchiveFixtures FAILED
+2026-09-02T05:01:10.3000000Z FAILURE: Build failed with an exception.
+2026-09-02T05:01:10.4000000Z * What went wrong:
+2026-09-02T05:01:10.5000000Z Execution failed for task ':expandArchiveFixtures'.
+2026-09-02T05:01:10.6000000Z > java.io.IOException: No space left on device
+2026-09-02T05:01:10.7000000Z BUILD FAILED in 1m 4s
+2026-09-02T05:01:10.8000000Z ##[error]Process completed with exit code 1.
+2026-09-02T05:01:10.9000000Z Post job cleanup.
+2026-09-02T05:01:11.0000000Z Cleaning up orphan processes

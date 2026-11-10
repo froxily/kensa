@@ -1,0 +1,51 @@
+2026-09-23T09:48:32.1000000Z Current runner version: '2.330.0'
+2026-09-23T09:48:32.1200000Z ##[group]Runner Image
+2026-09-23T09:48:32.1300000Z Image: ubuntu-22.04
+2026-09-23T09:48:32.1400000Z Version: 20260920.1.0
+2026-09-23T09:48:32.1500000Z ##[endgroup]
+2026-09-23T09:48:32.1600000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-23T09:48:32.1700000Z Contents: read
+2026-09-23T09:48:32.1800000Z ##[endgroup]
+2026-09-23T09:48:32.2200000Z Prepare workflow directory
+2026-09-23T09:48:32.3100000Z Prepare all required actions
+2026-09-23T09:48:32.4500000Z Download action repository 'actions/checkout@v4'
+2026-09-23T09:48:32.7000000Z Download action repository 'actions/cache@v4'
+2026-09-23T09:48:33.0100000Z Complete job name: compile (jdk-21)
+2026-09-23T09:48:33.1000000Z ##[group]Run actions/checkout@v4
+2026-09-23T09:48:33.1100000Z with:
+2026-09-23T09:48:33.1200000Z   repository: inkcap-works/meridian-observatory
+2026-09-23T09:48:33.1300000Z   ref: refs/pull/91/merge
+2026-09-23T09:48:33.1400000Z ##[endgroup]
+2026-09-23T09:48:33.3000000Z Syncing repository: inkcap-works/meridian-observatory
+2026-09-23T09:48:33.5000000Z Fetching the repository
+2026-09-23T09:48:33.9000000Z Checking out the ref
+2026-09-23T09:48:34.0000000Z ##[group]Run actions/cache@v4
+2026-09-23T09:48:34.0100000Z with:
+2026-09-23T09:48:34.0200000Z   path: ~/.gradle/caches
+2026-09-23T09:48:34.0300000Z   key: Linux-gradle-observatory-91
+2026-09-23T09:48:34.0400000Z ##[endgroup]
+2026-09-23T09:48:34.5000000Z Cache not found for input keys: Linux-gradle-observatory-91
+2026-09-23T09:48:34.8000000Z ##[group]Run ./gradlew classes --console=plain
+2026-09-23T09:48:34.8100000Z ./gradlew classes --console=plain
+2026-09-23T09:48:34.8200000Z shell: /usr/bin/bash -e {0}
+2026-09-23T09:48:34.8300000Z ##[endgroup]
+2026-09-23T09:48:38.0000000Z Starting a Gradle Daemon (subsequent builds will be faster)
+2026-09-23T09:48:41.2000000Z > Task :compileJava
+2026-09-23T09:48:41.2100000Z /home/runner/work/meridian-observatory/meridian-observatory/src/main/java/org/inkcap/observatory/MeridianProjector.java:57: error: cannot find symbol
+2026-09-23T09:48:41.2200000Z         double offset = calibration.getDeclination();
+2026-09-23T09:48:41.2300000Z                                    ^
+2026-09-23T09:48:41.2400000Z   symbol:   method getDeclination()
+2026-09-23T09:48:41.2500000Z   location: variable calibration of type CalibrationProfile
+2026-09-23T09:48:41.2600000Z 1 error
+2026-09-23T09:48:41.2700000Z > Task :compileJava FAILED
+2026-09-23T09:48:41.3000000Z FAILURE: Build failed with an exception.
+2026-09-23T09:48:41.3100000Z * What went wrong:
+2026-09-23T09:48:41.3200000Z Execution failed for task ':compileJava'.
+2026-09-23T09:48:41.3300000Z > Compilation failed; see the compiler error output for details.
+2026-09-23T09:48:41.3400000Z * Try:
+2026-09-23T09:48:41.3500000Z > Run with --scan to get full insights.
+2026-09-23T09:48:41.3600000Z BUILD FAILED in 6s
+2026-09-23T09:48:41.3700000Z 1 actionable task: 1 executed
+2026-09-23T09:48:41.4000000Z ##[error]Process completed with exit code 1.
+2026-09-23T09:48:41.5000000Z Post job cleanup.
+2026-09-23T09:48:41.6000000Z Cleaning up orphan processes

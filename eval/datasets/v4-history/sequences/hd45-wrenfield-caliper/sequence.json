@@ -1,0 +1,12 @@
+{
+  "id": "hd45-wrenfield-caliper",
+  "split": "dev",
+  "ecosystem": "c++ (cmake, gcc)",
+  "repository": "wrenfield-labs/caliper-mesh",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"oom_timeout","title":"Build volume runs out of space","root_cause":"The build volume lacks space for the compiler's assembly output. Increase or free space on the build volume.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"b","relation":"lookalike","category":"oom_timeout","title":"Compiler exhausts open file limit","root_cause":"The build process exhausts its file descriptor limit while GCC reads headers. Raise the per-process descriptor limit.","differs_from_earlier":"Like e1, GCC cannot complete compilation due to an exhausted resource, but this run exhausts file descriptors rather than disk space."},
+    {"id":"e3","file":"e3.log","cluster":"c","relation":"first","category":"test_regression","title":"Mesh bounds assertion fails","root_cause":"The bounds calculation returns an incorrect maximum for a negative-coordinate mesh. Correct the bounds calculation.","differs_from_earlier":""},
+    {"id":"e4","file":"e4.log","cluster":"a","relation":"recurrence","category":"oom_timeout","title":"Build volume runs out of space again","root_cause":"The build volume lacks space for the compiler's assembly output. Increase or free space on the build volume.","differs_from_earlier":"A later build fails in a different translation unit and reports the space error from the assembler; the build directory is again on a full volume."}
+  ]
+}

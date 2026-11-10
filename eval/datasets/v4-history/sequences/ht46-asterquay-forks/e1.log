@@ -1,0 +1,59 @@
+2026-09-03T09:14:00.1000000Z Current runner version: '2.328.0'
+2026-09-03T09:14:00.2000000Z ##[group]Runner Image
+2026-09-03T09:14:00.3000000Z Image: ubuntu-24.04
+2026-09-03T09:14:00.4000000Z Version: 20260830.1.0
+2026-09-03T09:14:00.5000000Z ##[endgroup]
+2026-09-03T09:14:01.1000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-03T09:14:01.2000000Z Contents: read
+2026-09-03T09:14:01.3000000Z ##[endgroup]
+2026-09-03T09:14:02.1000000Z Prepare workflow directory
+2026-09-03T09:14:02.2000000Z Prepare all required actions
+2026-09-03T09:14:03.1000000Z ##[group]Run actions/checkout@v4
+2026-09-03T09:14:03.2000000Z with:
+2026-09-03T09:14:03.3000000Z   repository: asterquay-labs/tideledger
+2026-09-03T09:14:03.4000000Z   fetch-depth: 1
+2026-09-03T09:14:03.5000000Z ##[endgroup]
+2026-09-03T09:14:04.1000000Z Syncing repository: asterquay-labs/tideledger
+2026-09-03T09:14:05.1000000Z Checking out the ref
+2026-09-03T09:14:06.1000000Z ##[group]Run actions/setup-java@v4
+2026-09-03T09:14:06.2000000Z with:
+2026-09-03T09:14:06.3000000Z   distribution: temurin
+2026-09-03T09:14:06.4000000Z   java-version: 21
+2026-09-03T09:14:06.5000000Z ##[endgroup]
+2026-09-03T09:14:08.1000000Z Installed distributions
+2026-09-03T09:14:08.2000000Z   temurin 21.0.8+9
+2026-09-03T09:14:09.1000000Z ##[group]Run mvn -B verify
+2026-09-03T09:14:09.2000000Z mvn -B verify
+2026-09-03T09:14:09.3000000Z shell: /usr/bin/bash -e {0}
+2026-09-03T09:14:09.4000000Z ##[endgroup]
+2026-09-03T09:14:11.1000000Z [INFO] Scanning for projects...
+2026-09-03T09:14:11.5000000Z [INFO] ----------------< labs.asterquay:tideledger >----------------
+2026-09-03T09:14:11.6000000Z [INFO] Building tideledger 1.4.0-SNAPSHOT
+2026-09-03T09:14:12.1000000Z [INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ tideledger ---
+2026-09-03T09:14:14.1000000Z [INFO] Compiling 38 source files with javac [debug release 21] to target/classes
+2026-09-03T09:14:19.1000000Z [INFO] --- maven-surefire-plugin:3.5.2:test (default-test) @ tideledger ---
+2026-09-03T09:14:19.2000000Z [INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+2026-09-03T09:14:20.1000000Z [INFO] -------------------------------------------------------
+2026-09-03T09:14:20.2000000Z [INFO]  T E S T S
+2026-09-03T09:14:20.3000000Z [INFO] -------------------------------------------------------
+2026-09-03T09:14:21.1000000Z [INFO] Running labs.asterquay.ledger.BatchReconcileTest
+2026-09-03T09:15:02.1000000Z Killed
+2026-09-03T09:15:02.2000000Z [INFO] ------------------------------------------------------------------------
+2026-09-03T09:15:02.3000000Z [INFO] BUILD FAILURE
+2026-09-03T09:15:02.4000000Z [INFO] ------------------------------------------------------------------------
+2026-09-03T09:15:02.5000000Z [ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.2:test (default-test) on project tideledger:
+2026-09-03T09:15:02.6000000Z [ERROR] The forked VM terminated without properly saying goodbye. VM crash or System.exit called?
+2026-09-03T09:15:02.7000000Z [ERROR] Process Exit Code: 137
+2026-09-03T09:15:02.8000000Z [ERROR] Crashed tests: labs.asterquay.ledger.BatchReconcileTest
+2026-09-03T09:15:02.9000000Z [ERROR] See /__w/tideledger/tideledger/target/surefire-reports for the individual test results.
+2026-09-03T09:15:03.1000000Z ##[error]Process completed with exit code 1.
+2026-09-03T09:15:03.2000000Z ##[group]Run cat /sys/fs/cgroup/memory.events
+2026-09-03T09:15:03.3000000Z cat /sys/fs/cgroup/memory.events
+2026-09-03T09:15:03.4000000Z ##[endgroup]
+2026-09-03T09:15:03.5000000Z low 0
+2026-09-03T09:15:03.6000000Z high 0
+2026-09-03T09:15:03.7000000Z max 782
+2026-09-03T09:15:03.8000000Z oom 1
+2026-09-03T09:15:03.9000000Z oom_kill 1
+2026-09-03T09:15:04.1000000Z Post job cleanup.
+2026-09-03T09:15:04.2000000Z Cleaning up orphan processes

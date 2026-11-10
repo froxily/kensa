@@ -1,0 +1,14 @@
+{
+  "id": "d02-harbor-settings",
+  "independent_labels": {
+    "comparability": "comparable",
+    "unverified_factors": [],
+    "category": "missing_env_var",
+    "culprit_kind": "source",
+    "culprit_paths": ["src/settings.js"]
+  },
+  "verdict": "agree",
+  "disputed_fields": [],
+  "reason_category": "none",
+  "notes": "The matching successful baseline has the same runner and an ahead comparison. The source change requires HARBOR_ENDPOINT while the unchanged workflow supplies HARBOR_URL; the cited evidence lines support this."
+}

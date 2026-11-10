@@ -1,0 +1,48 @@
+2026-09-02T09:10:01.1123456Z Current runner version: '2.329.0'
+2026-09-02T09:10:01.1323456Z ##[group]Runner Image
+2026-09-02T09:10:01.1423456Z Image: ubuntu-22.04
+2026-09-02T09:10:01.1523456Z Version: 20260823.1.0
+2026-09-02T09:10:01.1623456Z ##[endgroup]
+2026-09-02T09:10:01.1723456Z ##[group]GITHUB_TOKEN Permissions
+2026-09-02T09:10:01.1823456Z Contents: read
+2026-09-02T09:10:01.1923456Z Metadata: read
+2026-09-02T09:10:01.2023456Z ##[endgroup]
+2026-09-02T09:10:01.2123456Z Prepare workflow directory
+2026-09-02T09:10:01.2223456Z Prepare all required actions
+2026-09-02T09:10:01.2323456Z Getting action download info
+2026-09-02T09:10:01.2423456Z Download action repository 'actions/checkout@v4'
+2026-09-02T09:10:01.2523456Z Download action repository 'actions/setup-node@v4'
+2026-09-02T09:10:01.2623456Z Complete job name: release-check
+2026-09-02T09:10:01.2723456Z ##[group]Run actions/checkout@v4
+2026-09-02T09:10:01.2823456Z with:
+2026-09-02T09:10:01.2923456Z   repository: cedar-astrolabe/orbit-ledger
+2026-09-02T09:10:01.3023456Z   fetch-depth: 1
+2026-09-02T09:10:01.3123456Z   persist-credentials: false
+2026-09-02T09:10:01.3223456Z ##[endgroup]
+2026-09-02T09:10:01.3323456Z Syncing repository: cedar-astrolabe/orbit-ledger
+2026-09-02T09:10:01.3423456Z Initializing the repository
+2026-09-02T09:10:01.3523456Z Fetching the repository
+2026-09-02T09:10:02.3623456Z Checking out the ref
+2026-09-02T09:10:02.3723456Z ##[group]Run actions/setup-node@v4
+2026-09-02T09:10:02.3823456Z with:
+2026-09-02T09:10:02.3923456Z   node-version: 20
+2026-09-02T09:10:02.4023456Z ##[endgroup]
+2026-09-02T09:10:02.4123456Z Found in cache @ /opt/hostedtoolcache/node/20.19.4/x64
+2026-09-02T09:10:02.4223456Z ##[group]Environment details
+2026-09-02T09:10:02.4323456Z node: v20.19.4
+2026-09-02T09:10:02.4423456Z npm: 10.8.2
+2026-09-02T09:10:02.4523456Z ##[endgroup]
+2026-09-02T09:10:02.4623456Z ##[group]Run corepack enable
+2026-09-02T09:10:02.4723456Z corepack enable
+2026-09-02T09:10:02.4823456Z pnpm install --frozen-lockfile
+2026-09-02T09:10:02.4923456Z shell: /usr/bin/bash -e {0}
+2026-09-02T09:10:02.5023456Z ##[endgroup]
+2026-09-02T09:10:03.5123456Z Scope: all 3 workspace projects
+2026-09-02T09:10:03.5223456Z /home/runner/work/orbit-ledger/orbit-ledger/apps/console:
+2026-09-02T09:10:03.5323456Z  ERR_PNPM_WORKSPACE_PKG_NOT_FOUND  In apps/console: "@cedar-astrolabe/ephemeris-core@workspace:*" is in the dependencies but no package named "@cedar-astrolabe/ephemeris-core" is present in the workspace
+2026-09-02T09:10:03.5423456Z 
+2026-09-02T09:10:03.5523456Z This error happened while installing a direct dependency of /home/runner/work/orbit-ledger/orbit-ledger/apps/console
+2026-09-02T09:10:03.5623456Z Packages found in the workspace: orbit-ledger, @cedar-astrolabe/console, @cedar-astrolabe/ui
+2026-09-02T09:10:03.5723456Z ##[error]Process completed with exit code 1.
+2026-09-02T09:10:03.5823456Z Post job cleanup.
+2026-09-02T09:10:03.5923456Z Cleaning up orphan processes

@@ -1,0 +1,45 @@
+2026-09-08T16:30:00.0000000Z Current runner version: '2.328.0'
+2026-09-08T16:30:01.0000000Z ##[group]Runner Image
+2026-09-08T16:30:02.0000000Z Image: ubuntu-24.04
+2026-09-08T16:30:03.0000000Z ##[endgroup]
+2026-09-08T16:30:04.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-08T16:30:05.0000000Z Contents: read
+2026-09-08T16:30:06.0000000Z Packages: read
+2026-09-08T16:30:07.0000000Z ##[endgroup]
+2026-09-08T16:30:08.0000000Z Prepare workflow directory
+2026-09-08T16:30:09.0000000Z Prepare all required actions
+2026-09-08T16:30:10.0000000Z Download action repository 'actions/checkout@v4'
+2026-09-08T16:30:11.0000000Z Download action repository 'actions/setup-node@v4'
+2026-09-08T16:30:12.0000000Z Complete job name: publish
+2026-09-08T16:30:13.0000000Z ##[group]Run actions/checkout@v4
+2026-09-08T16:30:14.0000000Z with:
+2026-09-08T16:30:15.0000000Z   repository: lantern-marten/tide-client
+2026-09-08T16:30:16.0000000Z ##[endgroup]
+2026-09-08T16:30:17.0000000Z Syncing repository: lantern-marten/tide-client
+2026-09-08T16:30:18.0000000Z Fetching the repository
+2026-09-08T16:30:19.0000000Z Checking out the ref
+2026-09-08T16:30:20.0000000Z ##[group]Run actions/setup-node@v4
+2026-09-08T16:30:21.0000000Z with:
+2026-09-08T16:30:22.0000000Z   node-version: 22
+2026-09-08T16:30:23.0000000Z   registry-url: https://npm.pkg.github.com
+2026-09-08T16:30:24.0000000Z ##[endgroup]
+2026-09-08T16:30:25.0000000Z ##[group]Run npm ci
+2026-09-08T16:30:26.0000000Z added 94 packages in 4s
+2026-09-08T16:30:27.0000000Z ##[endgroup]
+2026-09-08T16:30:28.0000000Z ##[group]Run npm run build
+2026-09-08T16:30:29.0000000Z > tide-client@1.4.1 build
+2026-09-08T16:30:30.0000000Z > tsc -p tsconfig.json
+2026-09-08T16:30:31.0000000Z ##[endgroup]
+2026-09-08T16:30:32.0000000Z ##[group]Run npm publish
+2026-09-08T16:30:33.0000000Z env:
+2026-09-08T16:30:34.0000000Z   NODE_AUTH_TOKEN: ***
+2026-09-08T16:30:35.0000000Z ##[endgroup]
+2026-09-08T16:30:36.0000000Z npm notice Publishing to https://npm.pkg.github.com/ with tag latest
+2026-09-08T16:30:37.0000000Z npm error code E403
+2026-09-08T16:30:38.0000000Z npm error 403 403 Forbidden - PUT https://npm.pkg.github.com/@lantern-marten%2ftide-client - permission_denied: write_package
+2026-09-08T16:30:39.0000000Z ##[error]Process completed with exit code 1.
+2026-09-08T16:30:40.0000000Z ##[group]Run cat publish-report.txt
+2026-09-08T16:30:41.0000000Z cat: publish-report.txt: No such file or directory
+2026-09-08T16:30:42.0000000Z ##[error]Process completed with exit code 1.
+2026-09-08T16:30:43.0000000Z Post job cleanup.
+2026-09-08T16:30:44.0000000Z Cleaning up orphan processes

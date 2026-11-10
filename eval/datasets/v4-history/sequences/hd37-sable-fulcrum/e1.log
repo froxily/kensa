@@ -1,0 +1,49 @@
+2026-09-03T07:14:01.1032140Z Current runner version: '2.328.0'
+2026-09-03T07:14:01.1742000Z ##[group]Runner Image Provisioner
+2026-09-03T07:14:01.1744300Z Hosted Compute Agent
+2026-09-03T07:14:01.1746800Z ##[endgroup]
+2026-09-03T07:14:01.1750000Z ##[group]Operating System
+2026-09-03T07:14:01.1752000Z Ubuntu
+2026-09-03T07:14:01.1754000Z 24.04.3
+2026-09-03T07:14:01.1756000Z ##[endgroup]
+2026-09-03T07:14:01.1758000Z ##[group]Runner Image
+2026-09-03T07:14:01.1760000Z Image: ubuntu-24.04
+2026-09-03T07:14:01.1762000Z Version: 20260823.1.0
+2026-09-03T07:14:01.1764000Z ##[endgroup]
+2026-09-03T07:14:01.1881000Z Prepare workflow directory
+2026-09-03T07:14:01.3211000Z Prepare all required actions
+2026-09-03T07:14:01.7711000Z Download action repository 'actions/checkout@v4'
+2026-09-03T07:14:02.0871000Z Complete job name: worker-image
+2026-09-03T07:14:02.2051000Z ##[group]Run actions/checkout@v4
+2026-09-03T07:14:02.2053000Z with:
+2026-09-03T07:14:02.2055000Z   repository: sable-fulcrum/cairn-dispatch
+2026-09-03T07:14:02.2057000Z   clean: true
+2026-09-03T07:14:02.2059000Z   fetch-depth: 1
+2026-09-03T07:14:02.2061000Z ##[endgroup]
+2026-09-03T07:14:02.4711000Z Syncing repository: sable-fulcrum/cairn-dispatch
+2026-09-03T07:14:02.5321000Z Getting Git version info
+2026-09-03T07:14:02.7991000Z Initialized empty Git repository in /home/runner/work/cairn-dispatch/cairn-dispatch/.git/
+2026-09-03T07:14:03.3921000Z Fetching the repository
+2026-09-03T07:14:04.0181000Z Checking out the ref
+2026-09-03T07:14:04.0731000Z ##[group]Run docker buildx build --load -f deploy/worker.Dockerfile -t cairn-worker:ci .
+2026-09-03T07:14:04.0734000Z docker buildx build --load -f deploy/worker.Dockerfile -t cairn-worker:ci .
+2026-09-03T07:14:04.0751000Z shell: /usr/bin/bash -e {0}
+2026-09-03T07:14:04.0753000Z ##[endgroup]
+2026-09-03T07:14:04.3321000Z #0 building with "default" instance using docker driver
+2026-09-03T07:14:04.3324000Z #1 [internal] load build definition from worker.Dockerfile
+2026-09-03T07:14:04.3326000Z #1 transferring dockerfile: 413B done
+2026-09-03T07:14:04.3328000Z #1 DONE 0.0s
+2026-09-03T07:14:04.3330000Z #2 [internal] load metadata for docker.io/sablefulcrum/worker-runtime:3.8.14
+2026-09-03T07:14:05.6041000Z #2 ERROR: docker.io/sablefulcrum/worker-runtime:3.8.14: not found
+2026-09-03T07:14:05.6044000Z ------
+2026-09-03T07:14:05.6046000Z  > [internal] load metadata for docker.io/sablefulcrum/worker-runtime:3.8.14:
+2026-09-03T07:14:05.6048000Z ------
+2026-09-03T07:14:05.6050000Z worker.Dockerfile:1
+2026-09-03T07:14:05.6052000Z --------------------
+2026-09-03T07:14:05.6054000Z    1 | >>> FROM sablefulcrum/worker-runtime:3.8.14
+2026-09-03T07:14:05.6056000Z    2 |     WORKDIR /srv/worker
+2026-09-03T07:14:05.6058000Z --------------------
+2026-09-03T07:14:05.6060000Z ERROR: failed to build: failed to solve: sablefulcrum/worker-runtime:3.8.14: failed to resolve source metadata for docker.io/sablefulcrum/worker-runtime:3.8.14: docker.io/sablefulcrum/worker-runtime:3.8.14: not found
+2026-09-03T07:14:05.6181000Z ##[error]Process completed with exit code 1.
+2026-09-03T07:14:05.6321000Z Post job cleanup.
+2026-09-03T07:14:05.7611000Z Cleaning up orphan processes

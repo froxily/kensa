@@ -1,0 +1,57 @@
+2026-09-24T03:47:55.1312345Z Current runner version: '2.329.0'
+2026-09-24T03:47:55.1412345Z ##[group]Runner Image Provisioner
+2026-09-24T03:47:55.1512345Z Hosted Compute Agent
+2026-09-24T03:47:55.1612345Z Version: 20260918.1
+2026-09-24T03:47:55.1712345Z ##[endgroup]
+2026-09-24T03:47:55.1812345Z ##[group]Operating System
+2026-09-24T03:47:55.1912345Z Ubuntu
+2026-09-24T03:47:55.2012345Z 22.04.5
+2026-09-24T03:47:55.2112345Z ##[endgroup]
+2026-09-24T03:47:55.2212345Z ##[group]Runner Image
+2026-09-24T03:47:55.2312345Z Image: ubuntu-22.04
+2026-09-24T03:47:55.2412345Z Version: 20260920.1.0
+2026-09-24T03:47:55.2512345Z ##[endgroup]
+2026-09-24T03:47:55.2612345Z ##[group]GITHUB_TOKEN Permissions
+2026-09-24T03:47:55.2712345Z Actions: read
+2026-09-24T03:47:55.2812345Z Contents: read
+2026-09-24T03:47:55.2912345Z Metadata: read
+2026-09-24T03:47:55.3012345Z ##[endgroup]
+2026-09-24T03:47:55.3112345Z Prepare workflow directory
+2026-09-24T03:47:55.3212345Z Prepare all required actions
+2026-09-24T03:47:55.3312345Z Download action repository 'actions/checkout@v4'
+2026-09-24T03:47:55.3412345Z Download action repository 'actions/upload-artifact@v4'
+2026-09-24T03:47:56.1112345Z Complete job name: integration (postgres)
+2026-09-24T03:47:56.1212345Z ##[group]Checking docker version
+2026-09-24T03:47:56.1312345Z /usr/bin/docker version --format '{{.Server.APIVersion}}'
+2026-09-24T03:47:56.1412345Z '1.47'
+2026-09-24T03:47:56.1512345Z Docker daemon API version: '1.47'
+2026-09-24T03:47:56.1612345Z ##[endgroup]
+2026-09-24T03:47:56.1712345Z ##[group]Create local container network
+2026-09-24T03:47:56.1812345Z /usr/bin/docker network create --label 2fdc81 github_network_4702
+2026-09-24T03:47:56.1912345Z 427ac85bfe29
+2026-09-24T03:47:56.2012345Z ##[endgroup]
+2026-09-24T03:47:56.2112345Z ##[group]Starting postgres service container
+2026-09-24T03:47:56.2212345Z /usr/bin/docker pull postgres:16
+2026-09-24T03:47:57.2212345Z Status: Downloaded newer image for postgres:16
+2026-09-24T03:47:57.2312345Z /usr/bin/docker create --name pg_4702 --network github_network_4702 --health-cmd "pg_isready -h 127.0.0.1 -p 5544" --health-interval 10s --health-timeout 5s --health-retries 4 -e POSTGRES_DB=lockyard -e POSTGRES_HOST_AUTH_METHOD=trust postgres:16
+2026-09-24T03:47:57.2412345Z 4eb07d94b613
+2026-09-24T03:47:57.2512345Z /usr/bin/docker start 4eb07d94b613
+2026-09-24T03:47:57.2612345Z 4eb07d94b613
+2026-09-24T03:47:57.2712345Z ##[endgroup]
+2026-09-24T03:47:57.2812345Z ##[group]Waiting for all services to be ready
+2026-09-24T03:47:57.2912345Z /usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" 4eb07d94b613
+2026-09-24T03:47:57.3012345Z starting
+2026-09-24T03:47:57.3112345Z postgres service is starting, waiting 2 seconds before checking again.
+2026-09-24T03:48:04.3112345Z postgres service is starting, waiting 8 seconds before checking again.
+2026-09-24T03:48:28.3112345Z postgres service is starting, waiting 32 seconds before checking again.
+2026-09-24T03:49:00.3112345Z unhealthy
+2026-09-24T03:49:00.3212345Z ##[error]Failed to initialize container postgres: container is unhealthy.
+2026-09-24T03:49:00.3312345Z ##[group]postgres service container logs
+2026-09-24T03:49:00.3412345Z 2026-09-24 03:47:59.006 UTC [1] LOG:  starting PostgreSQL 16.10 on x86_64-pc-linux-gnu, compiled by gcc, 64-bit
+2026-09-24T03:49:00.3512345Z 2026-09-24 03:47:59.007 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2026-09-24T03:49:00.3612345Z 2026-09-24 03:47:59.019 UTC [1] LOG:  database system is ready to accept connections
+2026-09-24T03:49:00.3712345Z ##[endgroup]
+2026-09-24T03:49:00.3812345Z ##[error]One or more containers failed to start.
+2026-09-24T03:49:00.3912345Z Stop and remove container: pg_4702
+2026-09-24T03:49:00.4012345Z Remove container network: github_network_4702
+2026-09-24T03:49:00.4112345Z Cleaning up orphan processes

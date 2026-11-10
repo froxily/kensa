@@ -1,0 +1,89 @@
+2026-11-08T10:00:02.0610000Z Current runner version: '2.330.0'
+2026-11-08T10:00:02.1100000Z ##[group]Runner Image
+2026-11-08T10:00:02.1110000Z Image: ubuntu-24.04
+2026-11-08T10:00:02.1120000Z Version: 20261026.1
+2026-11-08T10:00:02.1130000Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261026.1/images/ubuntu/Ubuntu2404-Readme.md
+2026-11-08T10:00:02.1140000Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261026.1
+2026-11-08T10:00:02.1150000Z ##[endgroup]
+2026-11-08T10:00:02.1460000Z ##[group]GITHUB_TOKEN Permissions
+2026-11-08T10:00:02.1470000Z Contents: read
+2026-11-08T10:00:02.1480000Z Metadata: read
+2026-11-08T10:00:02.1490000Z ##[endgroup]
+2026-11-08T10:00:02.2000000Z Prepare workflow directory
+2026-11-08T10:00:02.3300000Z Prepare all required actions
+2026-11-08T10:00:03.1200000Z Download action repository 'actions/checkout@v4'
+2026-11-08T10:00:03.6100000Z Download action repository 'actions/setup-node@v4'
+2026-11-08T10:00:04.0200000Z Complete job name: catalog
+2026-11-08T10:00:04.1100000Z ##[group]Checking docker version
+2026-11-08T10:00:04.2010000Z Docker daemon API version: '1.48'
+2026-11-08T10:00:04.2020000Z ##[endgroup]
+2026-11-08T10:00:04.3000000Z ##[group]Create local container network
+2026-11-08T10:00:04.3010000Z /usr/bin/docker network create github_network_2edb43
+2026-11-08T10:00:04.4000000Z ##[endgroup]
+2026-11-08T10:00:04.4200000Z ##[group]Starting postgres service container
+2026-11-08T10:00:04.4210000Z /usr/bin/docker pull postgres:16
+2026-11-08T10:00:08.4900000Z Status: Downloaded newer image for postgres:16
+2026-11-08T10:00:08.5200000Z /usr/bin/docker create --name postgres_service --network github_network_2edb43 -p 5432:5432 -e POSTGRES_USER=bracken -e POSTGRES_HOST_AUTH_METHOD=trust -e POSTGRES_DB=bracken_catalog --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5 postgres:16
+2026-11-08T10:00:08.8700000Z /usr/bin/docker start postgres_service
+2026-11-08T10:00:09.1010000Z ##[endgroup]
+2026-11-08T10:00:09.1100000Z ##[group]Waiting for all services to be ready
+2026-11-08T10:00:19.2330000Z postgres service is healthy.
+2026-11-08T10:00:19.2340000Z ##[endgroup]
+2026-11-08T10:00:19.3100000Z ##[group]Run actions/checkout@v4
+2026-11-08T10:00:19.3110000Z with:
+2026-11-08T10:00:19.3120000Z   repository: bellwether-labs/bracken-catalog
+2026-11-08T10:00:19.3130000Z   ref: bd3159c42e6f087a19c53d8b6702ea4f9c185b73
+2026-11-08T10:00:19.3140000Z ##[endgroup]
+2026-11-08T10:00:19.4200000Z Syncing repository: bellwether-labs/bracken-catalog
+2026-11-08T10:00:19.8100000Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-11-08T10:00:19.8500000Z Switched to a new branch 'main'
+2026-11-08T10:00:19.8510000Z branch 'main' set up to track 'origin/main'.
+2026-11-08T10:00:20.0030000Z ##[group]Run actions/setup-node@v4
+2026-11-08T10:00:20.0040000Z with:
+2026-11-08T10:00:20.0050000Z   node-version: 20
+2026-11-08T10:00:20.0060000Z ##[endgroup]
+2026-11-08T10:00:20.0700000Z Found in cache @ /opt/hostedtoolcache/node/20.19.5/x64
+2026-11-08T10:00:20.0710000Z ##[group]Environment details
+2026-11-08T10:00:20.0720000Z node: v20.19.5
+2026-11-08T10:00:20.0730000Z npm: 10.8.2
+2026-11-08T10:00:20.0740000Z ##[endgroup]
+2026-11-08T10:00:20.2000000Z ##[group]Run npm install
+2026-11-08T10:00:20.2010000Z npm install
+2026-11-08T10:00:20.2020000Z shell: /usr/bin/bash -e {0}
+2026-11-08T10:00:20.2030000Z env:
+2026-11-08T10:00:20.2040000Z   PGHOST: localhost
+2026-11-08T10:00:20.2050000Z   PGPORT: 5432
+2026-11-08T10:00:20.2060000Z   PGUSER: bracken
+2026-11-08T10:00:20.2070000Z   PGDATABASE: bracken_catalog
+2026-11-08T10:00:20.2080000Z ##[endgroup]
+2026-11-08T10:00:22.3400000Z added 14 packages, and audited 15 packages in 2s
+2026-11-08T10:00:22.3410000Z found 0 vulnerabilities
+2026-11-08T10:00:22.4600000Z ##[group]Run npm test
+2026-11-08T10:00:22.4610000Z npm test
+2026-11-08T10:00:22.4620000Z shell: /usr/bin/bash -e {0}
+2026-11-08T10:00:22.4630000Z env:
+2026-11-08T10:00:22.4640000Z   PGHOST: localhost
+2026-11-08T10:00:22.4650000Z   PGPORT: 5432
+2026-11-08T10:00:22.4660000Z   PGUSER: bracken
+2026-11-08T10:00:22.4670000Z   PGDATABASE: bracken_catalog
+2026-11-08T10:00:22.4680000Z ##[endgroup]
+2026-11-08T10:00:22.6300000Z > bracken-catalog-checks@1.0.0 test
+2026-11-08T10:00:22.6310000Z > node --test
+2026-11-08T10:00:22.7010000Z TAP version 13
+2026-11-08T10:00:22.8400000Z # Subtest: connects to the catalog database
+2026-11-08T10:00:22.8410000Z ok 1 - connects to the catalog database
+2026-11-08T10:00:22.8420000Z   ---
+2026-11-08T10:00:22.8430000Z   duration_ms: 23.617
+2026-11-08T10:00:22.8440000Z   ...
+2026-11-08T10:00:22.8450000Z 1..1
+2026-11-08T10:00:22.8460000Z # tests 1
+2026-11-08T10:00:22.8470000Z # suites 0
+2026-11-08T10:00:22.8480000Z # pass 1
+2026-11-08T10:00:22.8490000Z # fail 0
+2026-11-08T10:00:22.8500000Z # cancelled 0
+2026-11-08T10:00:22.8510000Z # skipped 0
+2026-11-08T10:00:22.8520000Z # todo 0
+2026-11-08T10:00:22.8530000Z # duration_ms 147.921
+2026-11-08T10:00:23.3400000Z Stop and remove container: postgres_service
+2026-11-08T10:00:23.5900000Z Remove container network: github_network_2edb43
+2026-11-08T10:00:23.7100000Z Cleaning up orphan processes

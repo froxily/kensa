@@ -1,0 +1,57 @@
+﻿2026-09-09T11:32:14.1120000Z Current runner version: '2.328.0'
+2026-09-09T11:32:14.1420000Z ##[group]Runner Image
+2026-09-09T11:32:14.1430000Z Image: ubuntu-24.04
+2026-09-09T11:32:14.1440000Z Version: 20260906.1.0
+2026-09-09T11:32:14.1450000Z ##[endgroup]
+2026-09-09T11:32:14.1520000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-09T11:32:14.1530000Z Contents: read
+2026-09-09T11:32:14.1540000Z Metadata: read
+2026-09-09T11:32:14.1550000Z ##[endgroup]
+2026-09-09T11:32:14.2540000Z Prepare workflow directory
+2026-09-09T11:32:14.4910000Z Prepare all required actions
+2026-09-09T11:32:15.0320000Z Download action repository 'actions/checkout@v4'
+2026-09-09T11:32:15.3510000Z Download action repository 'actions/setup-node@v4'
+2026-09-09T11:32:15.4950000Z Complete job name: verify
+2026-09-09T11:32:15.5220000Z ##[group]Run actions/checkout@v4
+2026-09-09T11:32:15.5230000Z with:
+2026-09-09T11:32:15.5240000Z   repository: pumice-labs/windmill-ledger
+2026-09-09T11:32:15.5250000Z   clean: true
+2026-09-09T11:32:15.5260000Z ##[endgroup]
+2026-09-09T11:32:15.6560000Z Syncing repository: pumice-labs/windmill-ledger
+2026-09-09T11:32:15.9870000Z Fetching the repository
+2026-09-09T11:32:16.4330000Z Checking out the ref
+2026-09-09T11:32:16.7100000Z ##[group]Run actions/setup-node@v4
+2026-09-09T11:32:16.7110000Z with:
+2026-09-09T11:32:16.7120000Z   node-version: 20
+2026-09-09T11:32:16.7130000Z ##[endgroup]
+2026-09-09T11:32:17.2040000Z Found in cache @ /opt/hostedtoolcache/node/20.19.4/x64
+2026-09-09T11:32:17.4180000Z node: v20.19.4
+2026-09-09T11:32:17.4190000Z yarn: 1.22.22
+2026-09-09T11:32:17.4500000Z ##[group]Run yarn --silent install --frozen-lockfile
+2026-09-09T11:32:17.4510000Z yarn --silent install --frozen-lockfile
+2026-09-09T11:32:17.4520000Z shell: /usr/bin/bash -e {0}
+2026-09-09T11:32:17.4530000Z ##[endgroup]
+2026-09-09T11:32:21.9800000Z ##[group]Run yarn --silent vitest run
+2026-09-09T11:32:21.9810000Z yarn --silent vitest run
+2026-09-09T11:32:21.9820000Z shell: /usr/bin/bash -e {0}
+2026-09-09T11:32:21.9830000Z ##[endgroup]
+2026-09-09T11:32:22.8110000Z  RUN  v2.1.9 /home/runner/work/windmill-ledger/windmill-ledger
+2026-09-09T11:32:23.0520000Z  ❯ src/settlement/rounding.test.ts (4 tests | 1 failed) 13ms
+2026-09-09T11:32:23.0530000Z    × rounds a positive half-cent up 8ms
+2026-09-09T11:32:23.0540000Z      → expected 100 to be 101 // Object.is equality
+2026-09-09T11:32:23.0550000Z  ✓ src/settlement/entries.test.ts (7 tests) 8ms
+2026-09-09T11:32:23.0560000Z  FAIL  src/settlement/rounding.test.ts > rounds a positive half-cent up
+2026-09-09T11:32:23.0570000Z AssertionError: expected 100 to be 101 // Object.is equality
+2026-09-09T11:32:23.0580000Z  ❯ src/settlement/rounding.test.ts:24:35
+2026-09-09T11:32:23.0590000Z      22|   it('rounds a positive half-cent up', () => {
+2026-09-09T11:32:23.0600000Z      23|     const cents = settlementCents(1.005)
+2026-09-09T11:32:23.0610000Z      24|     expect(cents).toBe(101)
+2026-09-09T11:32:23.0620000Z        |                                   ^
+2026-09-09T11:32:23.0630000Z      25|   })
+2026-09-09T11:32:23.0640000Z  Test Files  1 failed | 1 passed (2)
+2026-09-09T11:32:23.0650000Z       Tests  1 failed | 10 passed (11)
+2026-09-09T11:32:23.0660000Z    Duration  702ms
+2026-09-09T11:32:23.1730000Z error Command failed with exit code 1.
+2026-09-09T11:32:23.2050000Z ##[error]Process completed with exit code 1.
+2026-09-09T11:32:23.2140000Z Post job cleanup.
+2026-09-09T11:32:23.3600000Z Cleaning up orphan processes

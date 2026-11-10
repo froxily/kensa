@@ -1,0 +1,12 @@
+{
+  "id": "hd53-umberglass-dock",
+  "split": "dev",
+  "ecosystem": "node (playwright, e2e)",
+  "repository": "tarnwick-labs/umberglass-dock",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"oom_timeout","title":"Dispatch quote request does not finish","root_cause":"The oversized quote handler holds the non-reentrant rate-table mutex while refreshOversizeRates waits to acquire the same mutex, leaving the request pending. Remove the nested acquisition.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"b","relation":"first","category":"test_regression","title":"Dispatch page button selector is stale","root_cause":"The dispatch test selects the former Send dispatch button name, but the page now exposes the button as Submit dispatch. Update the dispatch page selector.","differs_from_earlier":""},
+    {"id":"e3","file":"e3.log","cluster":"c","relation":"lookalike","category":"test_regression","title":"Ledger page button selector is stale","root_cause":"The ledger test selects the former Export ledger button name, but the page now exposes the button as Download ledger. Update the ledger page selector.","differs_from_earlier":"Like e2, a button locator times out, but this is a different page and selector requiring a separate correction."},
+    {"id":"e4","file":"e4.log","cluster":"a","relation":"recurrence","category":"oom_timeout","title":"Dispatch quote request still does not finish","root_cause":"The oversized quote handler holds the non-reentrant rate-table mutex while refreshOversizeRates waits to acquire the same mutex, leaving the request pending. Remove the nested acquisition.","differs_from_earlier":"A later run uses another worker, a changed test line and a longer test timeout; the same oversized parcel quote request remains pending."}
+  ]
+}

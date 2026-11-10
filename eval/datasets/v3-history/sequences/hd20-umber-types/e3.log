@@ -1,0 +1,40 @@
+2026-09-13T10:30:00.0000000Z Current runner version: '2.329.0'
+2026-09-13T10:30:01.0000000Z ##[group]Operating System
+2026-09-13T10:30:02.0000000Z Ubuntu 24.04.3 LTS
+2026-09-13T10:30:03.0000000Z ##[endgroup]
+2026-09-13T10:30:04.0000000Z ##[group]Runner Image
+2026-09-13T10:30:05.0000000Z Image: ubuntu-24.04
+2026-09-13T10:30:06.0000000Z Version: 20250907.1
+2026-09-13T10:30:07.0000000Z ##[endgroup]
+2026-09-13T10:30:08.0000000Z Prepare workflow directory
+2026-09-13T10:30:09.0000000Z Prepare all required actions
+2026-09-13T10:30:10.0000000Z Download action repository 'actions/checkout@v4'
+2026-09-13T10:30:11.0000000Z Complete job name: build
+2026-09-13T10:30:12.0000000Z ##[group]Run actions/checkout@v4
+2026-09-13T10:30:13.0000000Z with:
+2026-09-13T10:30:14.0000000Z   repository: pavonis/umber-console
+2026-09-13T10:30:15.0000000Z   fetch-depth: 1
+2026-09-13T10:30:16.0000000Z ##[endgroup]
+2026-09-13T10:30:17.0000000Z Syncing repository: pavonis/umber-console
+2026-09-13T10:30:18.0000000Z git version 2.51.0
+2026-09-13T10:30:19.0000000Z Initialized empty Git repository
+2026-09-13T10:30:20.0000000Z Fetching the repository
+2026-09-13T10:30:21.0000000Z Checking out the ref
+2026-09-13T10:30:22.0000000Z ##[group]Run npm ci
+2026-09-13T10:30:23.0000000Z npm ci
+2026-09-13T10:30:24.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-13T10:30:25.0000000Z ##[endgroup]
+2026-09-13T10:30:26.0000000Z added 94 packages in 4s
+2026-09-13T10:30:27.0000000Z ##[group]Run npm run build
+2026-09-13T10:30:28.0000000Z npm run build
+2026-09-13T10:30:29.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-13T10:30:30.0000000Z ##[endgroup]
+2026-09-13T10:30:31.0000000Z > umber-console@1.1.0 build
+2026-09-13T10:30:32.0000000Z > tsc && vite build
+2026-09-13T10:30:33.0000000Z src/widget/render.ts(44,16): error TS2345: Argument of type 'number' is not assignable to parameter of type 'string'.
+2026-09-13T10:30:34.0000000Z ##[error]Process completed with exit code 2.
+2026-09-13T10:30:35.0000000Z Post job cleanup.
+2026-09-13T10:30:36.0000000Z /usr/bin/git version
+2026-09-13T10:30:37.0000000Z git version 2.51.0
+2026-09-13T10:30:38.0000000Z Removing HTTP extra header
+2026-09-13T10:30:39.0000000Z Cleaning up orphan processes

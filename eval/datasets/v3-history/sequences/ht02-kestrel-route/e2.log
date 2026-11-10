@@ -1,0 +1,45 @@
+﻿2026-09-08T13:34:10.0010000Z Current runner version: '2.329.0'
+2026-09-08T13:34:10.1010000Z ##[group]Runner Image
+2026-09-08T13:34:10.2010000Z Image: ubuntu-24.04
+2026-09-08T13:34:10.3010000Z Version: 20260906.1
+2026-09-08T13:34:10.4010000Z ##[endgroup]
+2026-09-08T13:34:10.5010000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-08T13:34:10.6010000Z Contents: read
+2026-09-08T13:34:10.7010000Z Metadata: read
+2026-09-08T13:34:10.8010000Z ##[endgroup]
+2026-09-08T13:34:10.9010000Z Prepare workflow directory
+2026-09-08T13:34:11.0010000Z Prepare all required actions
+2026-09-08T13:34:11.1010000Z Download action repository 'actions/checkout@v4'
+2026-09-08T13:34:11.2010000Z Download action repository 'actions/setup-python@v5'
+2026-09-08T13:34:11.3010000Z Complete job name: unit
+2026-09-08T13:34:11.4010000Z ##[group]Run actions/checkout@v4
+2026-09-08T13:34:11.5010000Z with:
+2026-09-08T13:34:11.6010000Z   repository: dune-signal/kestrel-route
+2026-09-08T13:34:11.7010000Z   fetch-depth: 1
+2026-09-08T13:34:11.8010000Z ##[endgroup]
+2026-09-08T13:34:12.0010000Z Fetching the repository
+2026-09-08T13:34:12.2010000Z Checking out the ref
+2026-09-08T13:34:12.4010000Z ##[group]Run actions/setup-python@v5
+2026-09-08T13:34:12.5010000Z with:
+2026-09-08T13:34:12.6010000Z   python-version: '3.12'
+2026-09-08T13:34:12.7010000Z ##[endgroup]
+2026-09-08T13:34:13.0010000Z Successfully set up CPython (3.12.7)
+2026-09-08T13:34:13.1010000Z ##[group]Run python -m pytest tests/unit -q
+2026-09-08T13:34:13.2010000Z python -m pytest tests/unit -q
+2026-09-08T13:34:13.3010000Z shell: /usr/bin/bash -e {0}
+2026-09-08T13:34:13.4010000Z ##[endgroup]
+2026-09-08T13:34:14.0010000Z .......F...                                                              [100%]
+2026-09-08T13:34:14.1010000Z =================================== FAILURES ===================================
+2026-09-08T13:34:14.2010000Z _______________________ test_label_preserves_case _______________________
+2026-09-08T13:34:14.3010000Z     def test_label_preserves_case():
+2026-09-08T13:34:14.4010000Z >       assert route_label(['East', 'bay']) == 'East / bay'
+2026-09-08T13:34:14.5010000Z E       AssertionError: assert 'EAST / BAY' == 'East / bay'
+2026-09-08T13:34:14.6010000Z E         - East / bay
+2026-09-08T13:34:14.7010000Z E         + EAST / BAY
+2026-09-08T13:34:14.8010000Z tests/unit/test_route_labels.py:51: AssertionError
+2026-09-08T13:34:14.9010000Z =========================== short test summary info ============================
+2026-09-08T13:34:15.0010000Z FAILED tests/unit/test_route_labels.py::test_label_preserves_case - AssertionError
+2026-09-08T13:34:15.1010000Z 1 failed, 10 passed in 0.28s
+2026-09-08T13:34:15.2010000Z ##[error]Process completed with exit code 1.
+2026-09-08T13:34:15.3010000Z Post job cleanup.
+2026-09-08T13:34:15.4010000Z Cleaning up orphan processes

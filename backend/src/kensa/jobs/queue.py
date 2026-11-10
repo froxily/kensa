@@ -14,6 +14,7 @@ All times come from the database clock (``now()``), never from the workers' cloc
 
 import random
 import uuid
+from collections.abc import Sequence
 from dataclasses import dataclass, field
 from typing import Any, Literal
 
@@ -98,8 +99,10 @@ _CLAIM = text(
     """
     WITH next AS (
         SELECT id FROM jobs
-        WHERE (status = 'queued' AND run_after <= now())
-           OR (status = 'running' AND lease_expires_at < now() AND attempts < max_attempts)
+        WHERE ((status = 'queued' AND run_after <= now())
+               OR (status = 'running' AND lease_expires_at < now() AND attempts < max_attempts))
+          AND (CAST(:kinds AS text[]) IS NULL OR kind = ANY(CAST(:kinds AS text[])))
+          AND (CAST(:exclude AS text[]) IS NULL OR NOT kind = ANY(CAST(:exclude AS text[])))
         ORDER BY run_after, created_at
         FOR UPDATE SKIP LOCKED
         LIMIT 1
@@ -119,8 +122,22 @@ _CLAIM = text(
 )
 
 
-def claim(session: Session, owner: str, lease_seconds: float) -> Lease | None:
-    row = session.execute(_CLAIM, {"owner": owner, "lease_seconds": lease_seconds}).one_or_none()
+def claim(
+    session: Session,
+    owner: str,
+    lease_seconds: float,
+    kinds: Sequence[str] | None = None,
+    exclude: Sequence[str] | None = None,
+) -> Lease | None:
+    """Claim the next due job. ``kinds`` limits it to those kinds; ``exclude`` skips kinds
+    (v1.1: the history worker takes only syncs, the agent worker everything else)."""
+    params = {
+        "owner": owner,
+        "lease_seconds": lease_seconds,
+        "kinds": _kinds(kinds),
+        "exclude": _kinds(exclude),
+    }
+    row = session.execute(_CLAIM, params).one_or_none()
     if row is None:
         return None
     return Lease(
@@ -148,14 +165,24 @@ _REAP = text(
     SET status = 'dead', last_error = 'worker_lost: lease expired on the final attempt',
         lease_owner = NULL, lease_expires_at = NULL, finished_at = now(), updated_at = now()
     WHERE status = 'running' AND lease_expires_at < now() AND attempts >= max_attempts
+      AND (CAST(:kinds AS text[]) IS NULL OR kind = ANY(CAST(:kinds AS text[])))
+      AND (CAST(:exclude AS text[]) IS NULL OR NOT kind = ANY(CAST(:exclude AS text[])))
     RETURNING id, investigation_id, attempts
     """
 )
 
 
-def reap_expired(session: Session) -> list[ReapedJob]:
-    """Jobs whose worker died on their last allowed attempt: they will never be reclaimed."""
-    return [ReapedJob(r.id, r.investigation_id, r.attempts) for r in session.execute(_REAP)]
+def reap_expired(
+    session: Session, kinds: Sequence[str] | None = None, exclude: Sequence[str] | None = None
+) -> list[ReapedJob]:
+    """Jobs whose worker died on their last allowed attempt: they will never be reclaimed.
+    ``kinds`` and ``exclude`` work as in ``claim``, so each worker reports its own jobs."""
+    rows = session.execute(_REAP, {"kinds": _kinds(kinds), "exclude": _kinds(exclude)})
+    return [ReapedJob(r.id, r.investigation_id, r.attempts) for r in rows]
+
+
+def _kinds(kinds: Sequence[str] | None) -> list[str] | None:
+    return None if kinds is None else sorted(kinds)
 
 
 # Every statement below ends in the same fence: the caller's owner and attempt must still hold

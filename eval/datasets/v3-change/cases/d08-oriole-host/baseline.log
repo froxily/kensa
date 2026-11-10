@@ -1,0 +1,54 @@
+2026-10-28T12:00:01.0000000Z Current runner version: '2.330.0'
+2026-10-28T12:00:01.1000000Z ##[group]Runner Image
+2026-10-28T12:00:01.2000000Z Image: ubuntu-24.04
+2026-10-28T12:00:01.3000000Z Version: 20261026.1
+2026-10-28T12:00:01.4000000Z Included Software: https://github.com/actions/runner-images
+2026-10-28T12:00:01.5000000Z ##[endgroup]
+2026-10-28T12:00:01.6000000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-28T12:00:01.7000000Z Contents: read
+2026-10-28T12:00:01.8000000Z Metadata: read
+2026-10-28T12:00:01.9000000Z ##[endgroup]
+2026-10-28T12:00:02.0000000Z Prepare workflow directory
+2026-10-28T12:00:02.1000000Z Prepare all required actions
+2026-10-28T12:00:02.2000000Z Download action repository 'actions/checkout@v4'
+2026-10-28T12:00:02.3000000Z Download action repository 'ruby/setup-ruby@v1'
+2026-10-28T12:00:02.4000000Z Complete job name: database
+2026-10-28T12:00:02.5000000Z ##[group]Checking docker version
+2026-10-28T12:00:02.6000000Z /usr/bin/docker version --format '{{.Server.APIVersion}}'
+2026-10-28T12:00:02.7000000Z '1.48'
+2026-10-28T12:00:02.8000000Z ##[endgroup]
+2026-10-28T12:00:02.9000000Z ##[group]Pull down action image
+2026-10-28T12:00:03.0000000Z /usr/bin/docker pull postgres:16
+2026-10-28T12:00:03.1000000Z 16: Pulling from library/postgres
+2026-10-28T12:00:03.2000000Z Status: Downloaded newer image for postgres:16
+2026-10-28T12:00:03.3000000Z ##[endgroup]
+2026-10-28T12:00:03.4000000Z ##[group]Create and start service containers
+2026-10-28T12:00:03.5000000Z /usr/bin/docker create --name postgres -p 5432:5432 postgres:16
+2026-10-28T12:00:03.6000000Z /usr/bin/docker start postgres
+2026-10-28T12:00:03.7000000Z ##[endgroup]
+2026-10-28T12:00:03.8000000Z ##[group]Waiting for all services to be ready
+2026-10-28T12:00:03.9000000Z postgres service is healthy.
+2026-10-28T12:00:04.0000000Z ##[endgroup]
+2026-10-28T12:00:04.1000000Z ##[group]Run actions/checkout@v4
+2026-10-28T12:00:04.2000000Z Syncing repository: oriole-works/oriole-store
+2026-10-28T12:00:04.3000000Z Fetching the repository
+2026-10-28T12:00:04.4000000Z Checking out the ref
+2026-10-28T12:00:04.5000000Z /usr/bin/git log -1 --format=%H
+2026-10-28T12:00:04.6000000Z a5e027c49b613d8f21e07a9c3486b2d5f9a103ce
+2026-10-28T12:00:04.7000000Z ##[endgroup]
+2026-10-28T12:00:04.8000000Z ##[group]Run ruby/setup-ruby@v1
+2026-10-28T12:00:04.9000000Z Using Ruby 3.3.6
+2026-10-28T12:00:05.0000000Z ##[endgroup]
+2026-10-28T12:00:05.1000000Z ##[group]Run gem install pg -v 1.5.9
+2026-10-28T12:00:05.2000000Z Building native extensions. This could take a while...
+2026-10-28T12:00:05.3000000Z Successfully installed pg-1.5.9
+2026-10-28T12:00:05.4000000Z 1 gem installed
+2026-10-28T12:00:05.5000000Z ##[endgroup]
+2026-10-28T12:00:05.6000000Z ##[group]Run ruby check_oriole.rb
+2026-10-28T12:00:05.7000000Z ruby check_oriole.rb
+2026-10-28T12:00:05.8000000Z shell: /usr/bin/bash -e {0}
+2026-10-28T12:00:05.9000000Z ##[endgroup]
+2026-10-28T12:00:06.0000000Z query passed
+2026-10-28T12:00:06.1000000Z Post job cleanup.
+2026-10-28T12:00:06.2000000Z Stop and remove container: postgres
+2026-10-28T12:00:06.3000000Z Cleaning up orphan processes

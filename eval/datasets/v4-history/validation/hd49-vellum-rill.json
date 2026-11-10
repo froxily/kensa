@@ -1,0 +1,13 @@
+{
+  "id": "hd49-vellum-rill",
+  "independent_labels": [
+    {"id": "e1", "cluster": "a", "relation": "first", "category": "workflow_path"},
+    {"id": "e2", "cluster": "b", "relation": "lookalike", "category": "workflow_path"},
+    {"id": "e3", "cluster": "a", "relation": "recurrence", "category": "workflow_path"},
+    {"id": "e4", "cluster": "b", "relation": "recurrence", "category": "workflow_path"}
+  ],
+  "verdict": "agree",
+  "disputed_fields": [],
+  "reason_category": "none",
+  "notes": "The ingress requires gateway.publicHost in e1 and e3; the service requires telemetry.listenPort in e2 and e4, requiring a different value. Later runs render different values files and include different steps. Root-cause descriptions match the errors; no giveaway commentary found. workflow_path is the closest available category for the chart configuration failures."
+}

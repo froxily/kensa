@@ -1,0 +1,63 @@
+2026-09-20T16:03:00.1234567Z Current runner version: '2.329.0'
+2026-09-20T16:03:00.2148765Z ##[group]Runner Image
+2026-09-20T16:03:00.2234567Z Image: ubuntu-24.04
+2026-09-20T16:03:00.2334567Z Version: 20260914.1.0
+2026-09-20T16:03:00.2434567Z ##[endgroup]
+2026-09-20T16:03:00.3284567Z Prepare workflow directory
+2026-09-20T16:03:00.4324567Z Download action repository 'actions/checkout@v4'
+2026-09-20T16:03:00.7194567Z Download action repository 'erlef/setup-beam@v1'
+2026-09-20T16:03:01.1034567Z Complete job name: test (OTP 28)
+2026-09-20T16:03:01.2134567Z ##[group]Run actions/checkout@v4
+2026-09-20T16:03:01.2234567Z with:
+2026-09-20T16:03:01.2334567Z   repository: fenmere-labs/bracken-loom
+2026-09-20T16:03:01.2434567Z   ref: refs/pull/184/merge
+2026-09-20T16:03:01.2534567Z   fetch-depth: 1
+2026-09-20T16:03:01.2634567Z ##[endgroup]
+2026-09-20T16:03:01.4734567Z [command]/usr/bin/git version
+2026-09-20T16:03:01.4934567Z git version 2.52.0
+2026-09-20T16:03:01.5434567Z Temporarily overriding HOME='/home/runner/work/_temp/b412f821-a314-48dc-b0aa-9db64258be03'
+2026-09-20T16:03:02.5134567Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/184/merge
+2026-09-20T16:03:02.7734567Z HEAD is now at 6ad492b Merge 8bf441d into a2f72c1
+2026-09-20T16:03:02.9134567Z ##[group]Run erlef/setup-beam@v1
+2026-09-20T16:03:02.9234567Z with:
+2026-09-20T16:03:02.9334567Z   otp-version: '28.0'
+2026-09-20T16:03:02.9434567Z   elixir-version: '1.19.0'
+2026-09-20T16:03:02.9534567Z ##[endgroup]
+2026-09-20T16:03:08.2134567Z OTP 28.0 has been installed
+2026-09-20T16:03:10.8434567Z Elixir 1.19.0 has been installed
+2026-09-20T16:03:11.1034567Z ##[group]Run mix deps.get
+2026-09-20T16:03:11.1134567Z mix deps.get
+2026-09-20T16:03:11.1234567Z shell: /usr/bin/bash -e {0}
+2026-09-20T16:03:11.1334567Z env:
+2026-09-20T16:03:11.1434567Z   MIX_ENV: test
+2026-09-20T16:03:11.1534567Z ##[endgroup]
+2026-09-20T16:03:12.3934567Z Resolving Hex dependencies...
+2026-09-20T16:03:12.6834567Z Resolution completed in 0.267s
+2026-09-20T16:03:12.6934567Z Unchanged:
+2026-09-20T16:03:12.7034567Z   archive_bridge 0.4.2
+2026-09-20T16:03:12.7134567Z   jason 1.4.4
+2026-09-20T16:03:12.7234567Z   telemetry 1.3.0
+2026-09-20T16:03:13.1534567Z * Getting archive_bridge (Hex package)
+2026-09-20T16:03:13.7834567Z * Getting telemetry (Hex package)
+2026-09-20T16:03:14.3534567Z * Getting jason (Hex package)
+2026-09-20T16:03:14.6134567Z ##[group]Run MIX_ENV=test mix deps.compile
+2026-09-20T16:03:14.6234567Z MIX_ENV=test mix deps.compile
+2026-09-20T16:03:14.6334567Z shell: /usr/bin/bash -e {0}
+2026-09-20T16:03:14.6434567Z ##[endgroup]
+2026-09-20T16:03:15.1434567Z ==> telemetry
+2026-09-20T16:03:15.6834567Z Compiling 5 files (.erl)
+2026-09-20T16:03:16.0734567Z Generated telemetry app
+2026-09-20T16:03:16.0934567Z ==> archive_bridge
+2026-09-20T16:03:16.1034567Z mkdir -p priv
+2026-09-20T16:03:16.1134567Z cc -O2 -fPIC -I/usr/lib/erlang/usr/include -c c_src/archive_bridge.c -o priv/archive_bridge.o
+2026-09-20T16:03:16.2434567Z c_src/archive_bridge.c:4:10: fatal error: archive.h: No such file or directory
+2026-09-20T16:03:16.2534567Z     4 | #include <archive.h>
+2026-09-20T16:03:16.2634567Z       |          ^~~~~~~~~~~
+2026-09-20T16:03:16.2734567Z compilation terminated.
+2026-09-20T16:03:16.2834567Z make: *** [Makefile:22: priv/archive_bridge.o] Error 1
+2026-09-20T16:03:16.3034567Z could not compile dependency :archive_bridge, "mix compile" failed.
+2026-09-20T16:03:16.3334567Z ##[error]Process completed with exit code 1.
+2026-09-20T16:03:16.5734567Z Post job cleanup.
+2026-09-20T16:03:16.8334567Z [command]/usr/bin/git version
+2026-09-20T16:03:16.8434567Z git version 2.52.0
+2026-09-20T16:03:17.1034567Z Cleaning up orphan processes

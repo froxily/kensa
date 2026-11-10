@@ -1,0 +1,43 @@
+2026-09-07T11:21:12.1021140Z Current runner version: '2.328.0'
+2026-09-07T11:21:12.1142220Z ##[group]Runner Image
+2026-09-07T11:21:12.1145220Z Image: ubuntu-24.04
+2026-09-07T11:21:12.1148220Z Version: 20260901.1.0
+2026-09-07T11:21:12.1151220Z ##[endgroup]
+2026-09-07T11:21:12.2011220Z Prepare workflow directory
+2026-09-07T11:21:12.2811250Z Prepare all required actions
+2026-09-07T11:21:12.5030300Z Download action repository 'actions/checkout@v4'
+2026-09-07T11:21:12.7240200Z Complete job name: palette-test
+2026-09-07T11:21:12.7361020Z ##[group]Run actions/checkout@v4
+2026-09-07T11:21:12.7364010Z with:
+2026-09-07T11:21:12.7367010Z   repository: feldspar-bobbin/spindle-mosaic
+2026-09-07T11:21:12.7369010Z   fetch-depth: 1
+2026-09-07T11:21:12.7371010Z ##[endgroup]
+2026-09-07T11:21:12.8430300Z Syncing repository: feldspar-bobbin/spindle-mosaic
+2026-09-07T11:21:13.1233300Z [command]/usr/bin/git init /home/runner/work/spindle-mosaic/spindle-mosaic
+2026-09-07T11:21:13.1922210Z Initialized empty Git repository in /home/runner/work/spindle-mosaic/spindle-mosaic/.git/
+2026-09-07T11:21:13.3220300Z Fetching the repository
+2026-09-07T11:21:13.9870210Z Checking out the ref
+2026-09-07T11:21:14.1023400Z ##[group]Run clojure -M:test -n mosaic.palette-test
+2026-09-07T11:21:14.1027120Z clojure -M:test -n mosaic.palette-test
+2026-09-07T11:21:14.1040130Z shell: /usr/bin/bash -e {0}
+2026-09-07T11:21:14.1043200Z ##[endgroup]
+2026-09-07T11:21:16.2124500Z Testing mosaic.palette-test
+2026-09-07T11:21:16.2252400Z 
+2026-09-07T11:21:16.2256010Z ERROR in (decode-empty-palette) (Numbers.java:1095)
+2026-09-07T11:21:16.2259010Z expected: (= [] (decode-palette ""))
+2026-09-07T11:21:16.2262220Z   actual: java.lang.NullPointerException: Cannot invoke "Object.getClass()" because "x" is null
+2026-09-07T11:21:16.2265200Z  at clojure.lang.Numbers.ops (Numbers.java:1095)
+2026-09-07T11:21:16.2268110Z     clojure.lang.Numbers.inc (Numbers.java:139)
+2026-09-07T11:21:16.2270220Z     mosaic.palette$decode_palette.invokeStatic (palette.clj:19)
+2026-09-07T11:21:16.2272220Z     mosaic.palette$decode_palette.invoke (palette.clj:16)
+2026-09-07T11:21:16.2274220Z     mosaic.palette_test$fn__311.invokeStatic (palette_test.clj:32)
+2026-09-07T11:21:16.2276220Z     clojure.test$test_var$fn__9856.invoke (test.clj:717)
+2026-09-07T11:21:16.2278220Z     clojure.test$test_var.invokeStatic (test.clj:717)
+2026-09-07T11:21:16.2297110Z 
+2026-09-07T11:21:16.2299920Z Ran 7 tests containing 16 assertions.
+2026-09-07T11:21:16.2302020Z 0 failures, 1 errors.
+2026-09-07T11:21:16.2989110Z ##[error]Process completed with exit code 1.
+2026-09-07T11:21:16.3082220Z Post job cleanup.
+2026-09-07T11:21:16.3642120Z [command]/usr/bin/git version
+2026-09-07T11:21:16.3720100Z git version 2.51.0
+2026-09-07T11:21:16.4842110Z Cleaning up orphan processes

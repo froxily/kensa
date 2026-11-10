@@ -1,0 +1,72 @@
+﻿2026-10-28T09:14:03.0012451Z Current runner version: '2.329.0'
+2026-10-28T09:14:03.0031924Z ##[group]Runner Image Provisioner
+2026-10-28T09:14:03.0032701Z Hosted Compute Agent
+2026-10-28T09:14:03.0033510Z Version: 20261020.501
+2026-10-28T09:14:03.0034365Z ##[endgroup]
+2026-10-28T09:14:03.0035104Z ##[group]Operating System
+2026-10-28T09:14:03.0035931Z Ubuntu
+2026-10-28T09:14:03.0036721Z 24.04.3
+2026-10-28T09:14:03.0037490Z LTS
+2026-10-28T09:14:03.0038250Z ##[endgroup]
+2026-10-28T09:14:03.0039013Z ##[group]Runner Image
+2026-10-28T09:14:03.0039751Z Image: ubuntu-24.04
+2026-10-28T09:14:03.0040513Z Version: 20261026.1
+2026-10-28T09:14:03.0041367Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261026.1/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-28T09:14:03.0042131Z ##[endgroup]
+2026-10-28T09:14:03.0042882Z ##[group]GITHUB_TOKEN Permissions
+2026-10-28T09:14:03.0043689Z Contents: read
+2026-10-28T09:14:03.0044440Z Metadata: read
+2026-10-28T09:14:03.0045211Z ##[endgroup]
+2026-10-28T09:14:03.0045992Z Secret source: Actions
+2026-10-28T09:14:03.1277814Z Prepare workflow directory
+2026-10-28T09:14:03.1982511Z Prepare all required actions
+2026-10-28T09:14:03.2391073Z Getting action download info
+2026-10-28T09:14:03.5663251Z Download action repository 'actions/checkout@v4'
+2026-10-28T09:14:03.9396140Z Download action repository 'actions/setup-python@v5'
+2026-10-28T09:14:04.2448022Z Complete job name: export-check
+2026-10-28T09:14:04.3218427Z ##[group]Run actions/checkout@v4
+2026-10-28T09:14:04.3219314Z with:
+2026-10-28T09:14:04.3220075Z   repository: acacia-labs/tamarind-export
+2026-10-28T09:14:04.3220894Z   clean: true
+2026-10-28T09:14:04.3221628Z   fetch-depth: 1
+2026-10-28T09:14:04.3222429Z ##[endgroup]
+2026-10-28T09:14:04.4880310Z Syncing repository: acacia-labs/tamarind-export
+2026-10-28T09:14:04.4881517Z ##[group]Getting Git version info
+2026-10-28T09:14:04.4882220Z [command]/usr/bin/git version
+2026-10-28T09:14:04.4882904Z git version 2.51.1
+2026-10-28T09:14:04.4883605Z ##[endgroup]
+2026-10-28T09:14:04.6894920Z ##[group]Fetching the repository
+2026-10-28T09:14:05.0950841Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-10-28T09:14:05.1024902Z Switched to a new branch 'main'
+2026-10-28T09:14:05.1032217Z ##[endgroup]
+2026-10-28T09:14:05.1140150Z [command]/usr/bin/git log -1 --format=%H
+2026-10-28T09:14:05.1150021Z a74c3e9160b5d82f4916ca37e2b80f95d1647abc
+2026-10-28T09:14:05.1738755Z ##[group]Run actions/setup-python@v5
+2026-10-28T09:14:05.1739620Z with:
+2026-10-28T09:14:05.1740376Z   python-version: 3.12
+2026-10-28T09:14:05.1741152Z   check-latest: false
+2026-10-28T09:14:05.1741871Z ##[endgroup]
+2026-10-28T09:14:05.2693358Z Successfully set up CPython (3.12.11)
+2026-10-28T09:14:05.3107619Z ##[group]Run python -m unittest discover -s tests -v
+2026-10-28T09:14:05.3108507Z python -m unittest discover -s tests -v
+2026-10-28T09:14:05.3109342Z shell: /usr/bin/bash -e {0}
+2026-10-28T09:14:05.3110061Z ##[endgroup]
+2026-10-28T09:14:05.3592703Z test_environment_mapping_available (test_export_check.ExportCheckTests.test_environment_mapping_available) ... ok
+2026-10-28T09:14:05.3593764Z 
+2026-10-28T09:14:05.3594506Z ----------------------------------------------------------------------
+2026-10-28T09:14:05.3595230Z Ran 1 test in 0.000s
+2026-10-28T09:14:05.3595962Z 
+2026-10-28T09:14:05.3596679Z OK
+2026-10-28T09:14:05.3724110Z ##[group]Run python src/export_check.py
+2026-10-28T09:14:05.3725060Z python src/export_check.py
+2026-10-28T09:14:05.3725817Z shell: /usr/bin/bash -e {0}
+2026-10-28T09:14:05.3726552Z ##[endgroup]
+2026-10-28T09:14:05.3954920Z TAMARIND_EXPORT_DIR is required
+2026-10-28T09:14:05.3990631Z ##[error]Process completed with exit code 1.
+2026-10-28T09:14:05.4051974Z Post job cleanup.
+2026-10-28T09:14:05.5106382Z [command]/usr/bin/git version
+2026-10-28T09:14:05.5121695Z git version 2.51.1
+2026-10-28T09:14:05.5215043Z Temporarily overriding HOME before making global git config changes
+2026-10-28T09:14:05.5220054Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-28T09:14:05.5301172Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/tamarind-export/tamarind-export
+2026-10-28T09:14:05.5502813Z Cleaning up orphan processes

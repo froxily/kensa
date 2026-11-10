@@ -1,0 +1,41 @@
+2026-09-08T11:22:00.0100000Z Current runner version: '2.328.0'
+2026-09-08T11:22:00.0200000Z ##[group]Runner Image Provisioner
+2026-09-08T11:22:00.0300000Z Hosted Compute Agent
+2026-09-08T11:22:00.0400000Z Version: 20260824.1
+2026-09-08T11:22:00.0500000Z ##[endgroup]
+2026-09-08T11:22:00.0600000Z ##[group]Operating System
+2026-09-08T11:22:00.0700000Z Ubuntu
+2026-09-08T11:22:00.0800000Z 24.04.3
+2026-09-08T11:22:00.0900000Z ##[endgroup]
+2026-09-08T11:22:00.1000000Z ##[group]Runner Image
+2026-09-08T11:22:00.1100000Z Image: ubuntu-24.04
+2026-09-08T11:22:00.1200000Z Version: 20260906.1.0
+2026-09-08T11:22:00.1300000Z ##[endgroup]
+2026-09-08T11:22:00.1400000Z Prepare workflow directory
+2026-09-08T11:22:00.1500000Z Prepare all required actions
+2026-09-08T11:22:01.1500000Z Download action repository 'actions/checkout@v4'
+2026-09-08T11:22:02.1500000Z Complete job name: provision
+2026-09-08T11:22:02.2500000Z ##[group]Run actions/checkout@v4
+2026-09-08T11:22:02.2600000Z with:
+2026-09-08T11:22:02.2700000Z   repository: sundew-works/rampart-provisioner
+2026-09-08T11:22:02.2800000Z   fetch-depth: 1
+2026-09-08T11:22:02.2900000Z ##[endgroup]
+2026-09-08T11:22:02.3900000Z Syncing repository: sundew-works/rampart-provisioner
+2026-09-08T11:22:03.3900000Z Checking out the ref
+2026-09-08T11:22:03.4900000Z ##[group]Run ansible-playbook -i inventory/staging.yml provision.yml
+2026-09-08T11:22:03.5000000Z ansible-playbook -i inventory/staging.yml provision.yml
+2026-09-08T11:22:03.5100000Z shell: /usr/bin/bash -e {0}
+2026-09-08T11:22:03.5200000Z ##[endgroup]
+2026-09-08T11:22:04.5200000Z PLAY [Configure rampart hosts] *************************************************
+2026-09-08T11:22:04.6200000Z TASK [Gathering Facts] *********************************************************
+2026-09-08T11:22:06.6200000Z ok: [rampart-stage-2]
+2026-09-08T11:22:06.7200000Z TASK [rampart : Refresh apt metadata] ******************************************
+2026-09-08T11:22:07.7200000Z fatal: [rampart-stage-2]: FAILED! => {"msg": "Missing sudo password"}
+2026-09-08T11:22:07.8200000Z PLAY RECAP *********************************************************************
+2026-09-08T11:22:07.9200000Z rampart-stage-2            : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0
+2026-09-08T11:22:08.0200000Z ##[error]Process completed with exit code 2.
+2026-09-08T11:22:08.1200000Z Post job cleanup.
+2026-09-08T11:22:08.2200000Z [command]/usr/bin/git version
+2026-09-08T11:22:08.3200000Z git version 2.51.0
+2026-09-08T11:22:08.4200000Z Temporarily overriding HOME for git config
+2026-09-08T11:22:08.5200000Z Cleaning up orphan processes

@@ -1,0 +1,50 @@
+2026-09-14T08:12:03.4512345Z Current runner version: '2.328.0'
+2026-09-14T08:12:03.4561123Z ##[group]Runner Image
+2026-09-14T08:12:03.4562250Z Image: ubuntu-24.04
+2026-09-14T08:12:03.4563110Z Version: 20260907.1.0
+2026-09-14T08:12:03.4564210Z ##[endgroup]
+2026-09-14T08:12:03.4591210Z ##[group]GITHUB_TOKEN Permissions
+2026-09-14T08:12:03.4592340Z Contents: read
+2026-09-14T08:12:03.4593210Z Metadata: read
+2026-09-14T08:12:03.4594120Z ##[endgroup]
+2026-09-14T08:12:03.4601230Z Prepare workflow directory
+2026-09-14T08:12:03.5021230Z Prepare all required actions
+2026-09-14T08:12:03.8911230Z Download action repository 'actions/checkout@v4'
+2026-09-14T08:12:04.1121230Z Download action repository 'actions/setup-python@v5'
+2026-09-14T08:12:04.3511230Z Complete job name: staging-tests
+2026-09-14T08:12:04.4211230Z ##[group]Run actions/checkout@v4
+2026-09-14T08:12:04.4212230Z with:
+2026-09-14T08:12:04.4213230Z   repository: bracken-moor/saffron-quay
+2026-09-14T08:12:04.4214230Z   clean: true
+2026-09-14T08:12:04.4215230Z ##[endgroup]
+2026-09-14T08:12:05.1231230Z Syncing repository: bracken-moor/saffron-quay
+2026-09-14T08:12:05.5211230Z Checking out the ref
+2026-09-14T08:12:05.8211230Z ##[group]Run actions/setup-python@v5
+2026-09-14T08:12:05.8212230Z with:
+2026-09-14T08:12:05.8213230Z   python-version: 3.12
+2026-09-14T08:12:05.8214230Z ##[endgroup]
+2026-09-14T08:12:06.1231230Z Successfully set up CPython (3.12.6)
+2026-09-14T08:12:06.2011230Z ##[group]Run pytest tests/staging -q
+2026-09-14T08:12:06.2012230Z [36;1mpytest tests/staging -q[0m
+2026-09-14T08:12:06.2013230Z shell: /usr/bin/bash -e {0}
+2026-09-14T08:12:06.2014230Z env:
+2026-09-14T08:12:06.2015230Z   QUAY_ENV: staging
+2026-09-14T08:12:06.2016230Z ##[endgroup]
+2026-09-14T08:12:07.3211230Z ...F..                                                                   [100%]
+2026-09-14T08:12:07.3212230Z =================================== FAILURES ===================================
+2026-09-14T08:12:07.3213230Z __________________________ test_dispatch_settings ___________________________
+2026-09-14T08:12:07.3214230Z     def test_dispatch_settings():
+2026-09-14T08:12:07.3215230Z >       assert load_dispatch_settings().url.startswith("https://")
+2026-09-14T08:12:07.3216230Z tests/staging/test_dispatch_config.py:14:
+2026-09-14T08:12:07.3217230Z saffron_quay/settings.py:27: in load_dispatch_settings
+2026-09-14T08:12:07.3218230Z     url = os.environ["QUAY_DISPATCH_URL"]
+2026-09-14T08:12:07.3219230Z <frozen os>:685: in __getitem__
+2026-09-14T08:12:07.3220230Z E   KeyError: 'QUAY_DISPATCH_URL'
+2026-09-14T08:12:07.3221230Z =========================== short test summary info ============================
+2026-09-14T08:12:07.3222230Z FAILED tests/staging/test_dispatch_config.py::test_dispatch_settings - KeyError: 'QUAY_DISPATCH_URL'
+2026-09-14T08:12:07.3223230Z 1 failed, 5 passed in 0.28s
+2026-09-14T08:12:07.4511230Z ##[error]Process completed with exit code 1.
+2026-09-14T08:12:07.5111230Z Post job cleanup.
+2026-09-14T08:12:07.6311230Z [command]/usr/bin/git version
+2026-09-14T08:12:07.6331230Z git version 2.51.0
+2026-09-14T08:12:07.7411230Z Cleaning up orphan processes

@@ -1,0 +1,56 @@
+﻿2026-09-10T16:22:30.1040000Z Current runner version: '2.329.0'
+2026-09-10T16:22:30.1720000Z ##[group]Runner Image
+2026-09-10T16:22:30.1730000Z Image: ubuntu-22.04
+2026-09-10T16:22:30.1740000Z Version: 20260907.1.0
+2026-09-10T16:22:30.1750000Z ##[endgroup]
+2026-09-10T16:22:30.1820000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-10T16:22:30.1830000Z Contents: read
+2026-09-10T16:22:30.1840000Z Metadata: read
+2026-09-10T16:22:30.1850000Z ##[endgroup]
+2026-09-10T16:22:30.3010000Z Prepare workflow directory
+2026-09-10T16:22:30.8720000Z Download action repository 'actions/checkout@v4'
+2026-09-10T16:22:31.1950000Z Download action repository 'actions/setup-go@v5'
+2026-09-10T16:22:31.5440000Z Complete job name: release
+2026-09-10T16:22:31.6500000Z ##[group]Run actions/checkout@v4
+2026-09-10T16:22:31.6510000Z with:
+2026-09-10T16:22:31.6520000Z   repository: sablekite-labs/tideglass
+2026-09-10T16:22:31.6530000Z   ref: refs/tags/v1.4.1
+2026-09-10T16:22:31.6540000Z ##[endgroup]
+2026-09-10T16:22:32.0450000Z Syncing repository: sablekite-labs/tideglass
+2026-09-10T16:22:33.7550000Z Checking out the ref
+2026-09-10T16:22:33.8190000Z HEAD is now at 853d42a Adjust output formatting
+2026-09-10T16:22:33.9500000Z ##[group]Run actions/setup-go@v5
+2026-09-10T16:22:33.9510000Z with:
+2026-09-10T16:22:33.9520000Z   go-version: '1.24'
+2026-09-10T16:22:33.9530000Z ##[endgroup]
+2026-09-10T16:22:34.7420000Z go version go1.24.6 linux/amd64
+2026-09-10T16:22:34.9810000Z Cache restored successfully
+2026-09-10T16:22:35.0300000Z ##[group]Run go test ./...
+2026-09-10T16:22:35.0310000Z go test ./...
+2026-09-10T16:22:35.0320000Z shell: /usr/bin/bash -e {0}
+2026-09-10T16:22:35.0330000Z ##[endgroup]
+2026-09-10T16:22:40.2530000Z ok  sablekite-labs/tideglass/internal/soundings  0.014s
+2026-09-10T16:22:40.2540000Z ?   sablekite-labs/tideglass/cmd/tideglass  [no test files]
+2026-09-10T16:22:40.3270000Z ##[group]Run mkdir -p dist
+2026-09-10T16:22:40.3280000Z mkdir -p dist
+2026-09-10T16:22:40.3290000Z go build -o dist/tideglass-linux-amd64 ./cmd/tideglass
+2026-09-10T16:22:40.3300000Z ##[endgroup]
+2026-09-10T16:22:44.1260000Z ##[group]Run gh release upload v1.4.1 dist/tideglass-linux-amd64
+2026-09-10T16:22:44.1270000Z gh release upload v1.4.1 dist/tideglass-linux-amd64
+2026-09-10T16:22:44.1280000Z env:
+2026-09-10T16:22:44.1290000Z   GH_TOKEN: ***
+2026-09-10T16:22:44.1300000Z ##[endgroup]
+2026-09-10T16:22:44.8020000Z HTTP 403: Resource not accessible by integration (https://uploads.github.com/repos/sablekite-labs/tideglass/releases/845219/assets?name=tideglass-linux-amd64)
+2026-09-10T16:22:44.8120000Z ##[error]Process completed with exit code 1.
+2026-09-10T16:22:44.8130000Z ##[warning]Step failed but continue-on-error was set.
+2026-09-10T16:22:44.9050000Z ##[group]Run gh release download v1.4.1 --pattern 'tideglass-linux-amd64' --dir verify
+2026-09-10T16:22:44.9060000Z gh release download v1.4.1 --pattern 'tideglass-linux-amd64' --dir verify
+2026-09-10T16:22:44.9070000Z sha256sum verify/tideglass-linux-amd64
+2026-09-10T16:22:44.9080000Z shell: /usr/bin/bash -e {0}
+2026-09-10T16:22:44.9090000Z env:
+2026-09-10T16:22:44.9100000Z   GH_TOKEN: ***
+2026-09-10T16:22:44.9110000Z ##[endgroup]
+2026-09-10T16:22:45.4020000Z no assets match the file pattern
+2026-09-10T16:22:45.4100000Z ##[error]Process completed with exit code 1.
+2026-09-10T16:22:45.5510000Z Post job cleanup.
+2026-09-10T16:22:45.8030000Z Cleaning up orphan processes

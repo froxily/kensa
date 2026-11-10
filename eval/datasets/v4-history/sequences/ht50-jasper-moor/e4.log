@@ -1,0 +1,83 @@
+2026-09-24T16:44:00.6241020Z Current runner version: '2.331.0'
+2026-09-24T16:44:00.9128000Z ##[group]Operating System
+2026-09-24T16:44:00.9131010Z Ubuntu
+2026-09-24T16:44:00.9133500Z 24.04.3
+2026-09-24T16:44:00.9138410Z ##[endgroup]
+2026-09-24T16:44:00.9140100Z ##[group]Runner Image
+2026-09-24T16:44:00.9141880Z Image: ubuntu-24.04
+2026-09-24T16:44:00.9143590Z Version: 20260920.1.0
+2026-09-24T16:44:00.9145100Z ##[endgroup]
+2026-09-24T16:44:01.1504020Z Prepare workflow directory
+2026-09-24T16:44:01.8605510Z Download action repository 'actions/checkout@v4'
+2026-09-24T16:44:02.1409040Z Download action repository 'actions/cache@v4'
+2026-09-24T16:44:02.4901130Z Complete job name: dependency-check
+2026-09-24T16:44:02.6310800Z ##[group]Run actions/checkout@v4
+2026-09-24T16:44:02.6313500Z with:
+2026-09-24T16:44:02.6315600Z   repository: jasper-moor/tideledger
+2026-09-24T16:44:02.6317800Z   persist-credentials: false
+2026-09-24T16:44:02.6320010Z ##[endgroup]
+2026-09-24T16:44:02.9851100Z Syncing repository: jasper-moor/tideledger
+2026-09-24T16:44:03.0193240Z Working directory is '/home/runner/work/tideledger/tideledger'
+2026-09-24T16:44:04.2863000Z Fetching the repository
+2026-09-24T16:44:05.4139840Z Checking out the ref
+2026-09-24T16:44:05.8819100Z ##[group]Run actions/cache@v4
+2026-09-24T16:44:05.8821410Z with:
+2026-09-24T16:44:05.8823610Z   path: deps
+2026-09-24T16:44:05.8825780Z   key: linux-mix-deps-7394
+2026-09-24T16:44:05.8827720Z ##[endgroup]
+2026-09-24T16:44:06.1045580Z Cache hit for: linux-mix-deps-7394
+2026-09-24T16:44:06.3902130Z Received 956382 of 956382 (100.0%), 3.2 MBs/sec
+2026-09-24T16:44:06.5136470Z [command]/usr/bin/tar -xf /home/runner/work/_temp/86bd2c41-55a4-480d-9ce3-9c879bc97ee4/cache.tzst -P -C /home/runner/work/tideledger/tideledger --use-compress-program unzstd
+2026-09-24T16:44:06.7456120Z Cache restored successfully
+2026-09-24T16:44:06.9017310Z ##[group]Run erlef/setup-beam@v1
+2026-09-24T16:44:06.9019930Z with:
+2026-09-24T16:44:06.9022300Z   otp-version: '27.2.4'
+2026-09-24T16:44:06.9024700Z   elixir-version: '1.18.3'
+2026-09-24T16:44:06.9026800Z ##[endgroup]
+2026-09-24T16:44:12.3516640Z OTP 27.2.4 has been installed
+2026-09-24T16:44:15.8444290Z Elixir 1.18.3 has been installed
+2026-09-24T16:44:16.1102180Z ##[group]Run mix local.hex --force
+2026-09-24T16:44:16.1105410Z mix local.hex --force
+2026-09-24T16:44:16.1108030Z mix local.rebar --force
+2026-09-24T16:44:16.1110610Z mix deps.get --check-locked
+2026-09-24T16:44:16.1112800Z shell: /usr/bin/bash -e {0}
+2026-09-24T16:44:16.1114910Z ##[endgroup]
+2026-09-24T16:44:17.3345100Z * creating /home/runner/.mix/archives/hex-2.3.0
+2026-09-24T16:44:19.1788100Z Resolving Hex dependencies...
+2026-09-24T16:44:19.2911820Z Resolution completed in 0.146s
+2026-09-24T16:44:19.2914100Z Unchanged:
+2026-09-24T16:44:19.2916120Z   decimal 2.3.0
+2026-09-24T16:44:19.2918110Z   ezstd 1.1.0
+2026-09-24T16:44:19.3000000Z ##[group]Run mix deps
+2026-09-24T16:44:19.3010000Z mix deps
+2026-09-24T16:44:19.3020000Z shell: /usr/bin/bash -e {0}
+2026-09-24T16:44:19.3030000Z env:
+2026-09-24T16:44:19.3040000Z   MIX_ENV: test
+2026-09-24T16:44:19.3050000Z ##[endgroup]
+2026-09-24T16:44:19.3200000Z * decimal 2.3.0 (Hex package) (mix)
+2026-09-24T16:44:19.3210000Z   locked at 2.3.0
+2026-09-24T16:44:19.3220000Z   the dependency is not compiled
+2026-09-24T16:44:19.3230000Z * ezstd 1.1.0 (Hex package) (mix)
+2026-09-24T16:44:19.3240000Z   locked at 1.1.0
+2026-09-24T16:44:19.3250000Z   the dependency is not compiled
+2026-09-24T16:44:19.4410170Z ##[group]Run mix deps.compile
+2026-09-24T16:44:19.4412240Z mix deps.compile
+2026-09-24T16:44:19.4414110Z shell: /usr/bin/bash -e {0}
+2026-09-24T16:44:19.4415910Z env:
+2026-09-24T16:44:19.4417800Z   MIX_ENV: test
+2026-09-24T16:44:19.4419520Z ##[endgroup]
+2026-09-24T16:44:20.1184210Z ==> decimal
+2026-09-24T16:44:20.2831220Z Compiling 4 files (.ex)
+2026-09-24T16:44:21.4934090Z Generated decimal app
+2026-09-24T16:44:21.6128990Z ==> ezstd
+2026-09-24T16:44:21.7514300Z clang -O2 -fPIC -I/usr/lib/erlang/usr/include -c c_src/ezstd_nif.c -o c_src/ezstd_nif.o
+2026-09-24T16:44:21.8584490Z c_src/ezstd_nif.c:8:10: fatal error: zlib.h: No such file or directory
+2026-09-24T16:44:21.8586890Z     8 | #include <zlib.h>
+2026-09-24T16:44:21.8589040Z       |          ^~~~~~~~
+2026-09-24T16:44:21.8590810Z 1 error generated.
+2026-09-24T16:44:21.8629990Z make: *** [Makefile:37: priv/ezstd_nif.so] Error 1
+2026-09-24T16:44:21.8943280Z ** (Mix) Could not compile dependency :ezstd
+2026-09-24T16:44:21.9260300Z ##[error]Process completed with exit code 1.
+2026-09-24T16:44:22.0454920Z Post job cleanup.
+2026-09-24T16:44:22.2103130Z Cache hit occurred on the primary key linux-mix-deps-7394, not saving cache.
+2026-09-24T16:44:22.3810010Z Cleaning up orphan processes

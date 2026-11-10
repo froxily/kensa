@@ -1,0 +1,14 @@
+{
+  "id": "d21-peregrine-basket",
+  "independent_labels": {
+    "comparability": "partially_comparable",
+    "unverified_factors": ["runner_image_unknown"],
+    "category": "test_regression",
+    "culprit_kind": "test",
+    "culprit_paths": ["test/basket_test.rb"]
+  },
+  "verdict": "disagree",
+  "disputed_fields": ["runs.json", "baseline.log"],
+  "reason_category": "data_inconsistency",
+  "notes": "The labels match the recorded run metadata, but baseline.log lines 11-13 explicitly identify the runner image as ubuntu-24.04 and version 20261026.1, while runs.json records both as null. The supposedly unknown image is therefore available in the supplied evidence."
+}

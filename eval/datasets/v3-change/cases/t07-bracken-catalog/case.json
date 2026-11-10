@@ -1,0 +1,19 @@
+{
+  "id": "t07-bracken-catalog",
+  "split": "test",
+  "comparability": "comparable",
+  "category": "db_connectivity",
+  "culprit_kind": "workflow",
+  "difficulty": "medium",
+  "ecosystem": "node",
+  "title": "Catalog job connects to an absent database",
+  "root_cause": "The workflow changed PGDATABASE from bracken_catalog to bracken_archive while the PostgreSQL service still initializes bracken_catalog. The client reaches PostgreSQL but the requested database does not exist, so the connection fails before the test can query it.",
+  "culprit_paths": [".github/workflows/bracken.yml"],
+  "culprit_commit": "a46e719c5b28d0f3e792b14c68a5d903f127be64",
+  "unverified_factors": [],
+  "fix_keywords": ["PGDATABASE", "bracken_catalog"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 73, "end_line": 80, "why": "The test fails during connection because PostgreSQL cannot find the requested database."},
+    {"path": "repo/.github/workflows/bracken.yml", "start_line": 9, "end_line": 12, "why": "The service initializes a different database name."}
+  ]
+}

@@ -1,0 +1,68 @@
+﻿2026-11-06T10:20:05.1200000Z Current runner version: '2.329.0'
+2026-11-06T10:20:05.1220000Z ##[group]Runner Image Provisioner
+2026-11-06T10:20:05.1230000Z Hosted Compute Agent
+2026-11-06T10:20:05.1240000Z Version: 20261029.375
+2026-11-06T10:20:05.1250000Z ##[endgroup]
+2026-11-06T10:20:05.1260000Z ##[group]Operating System
+2026-11-06T10:20:05.1270000Z Ubuntu
+2026-11-06T10:20:05.1280000Z 24.04.3
+2026-11-06T10:20:05.1290000Z LTS
+2026-11-06T10:20:05.1300000Z ##[endgroup]
+2026-11-06T10:20:05.1310000Z ##[group]Runner Image
+2026-11-06T10:20:05.1320000Z Image: ubuntu-24.04
+2026-11-06T10:20:05.1330000Z Version: 20261026.1
+2026-11-06T10:20:05.1340000Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261026.1/images/ubuntu/Ubuntu2404-Readme.md
+2026-11-06T10:20:05.1350000Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261026.1
+2026-11-06T10:20:05.1360000Z ##[endgroup]
+2026-11-06T10:20:05.1370000Z ##[group]GITHUB_TOKEN Permissions
+2026-11-06T10:20:05.1380000Z Contents: read
+2026-11-06T10:20:05.1390000Z Metadata: read
+2026-11-06T10:20:05.1400000Z ##[endgroup]
+2026-11-06T10:20:05.1410000Z Secret source: Actions
+2026-11-06T10:20:05.1420000Z Prepare workflow directory
+2026-11-06T10:20:05.1430000Z Prepare all required actions
+2026-11-06T10:20:05.1440000Z Getting action download info
+2026-11-06T10:20:05.1450000Z Download action repository 'actions/checkout@v4'
+2026-11-06T10:20:05.1460000Z Download action repository 'actions/setup-java@v4'
+2026-11-06T10:20:05.1470000Z Complete job name: assemble
+2026-11-06T10:20:05.1480000Z ##[group]Run actions/checkout@v4
+2026-11-06T10:20:05.1490000Z with:
+2026-11-06T10:20:05.1500000Z   fetch-depth: 1
+2026-11-06T10:20:05.1510000Z   persist-credentials: true
+2026-11-06T10:20:05.1520000Z ##[endgroup]
+2026-11-06T10:20:05.1530000Z Syncing repository: fulmar-labs/indexer
+2026-11-06T10:20:05.1540000Z ##[group]Getting Git version info
+2026-11-06T10:20:05.1550000Z git version 2.51.1
+2026-11-06T10:20:05.1560000Z ##[endgroup]
+2026-11-06T10:20:05.1570000Z Temporarily overriding HOME for git config
+2026-11-06T10:20:05.1580000Z Initializing the repository
+2026-11-06T10:20:05.1590000Z Fetching the repository
+2026-11-06T10:20:05.1600000Z Checking out the ref
+2026-11-06T10:20:05.1610000Z [command]/usr/bin/git log -1 --format=%H
+2026-11-06T10:20:05.1620000Z 8fa32c1d794b6e503ac2d097e6b45138c27fd019
+2026-11-06T10:20:05.1630000Z ##[group]Run actions/setup-java@v4
+2026-11-06T10:20:05.1640000Z with:
+2026-11-06T10:20:05.1650000Z   distribution: temurin
+2026-11-06T10:20:05.1660000Z   java-version: 21
+2026-11-06T10:20:05.1670000Z   check-latest: false
+2026-11-06T10:20:05.1680000Z ##[endgroup]
+2026-11-06T10:20:05.1690000Z ##[group]Installed distributions
+2026-11-06T10:20:05.1700000Z Resolved Java 21 from tool-cache
+2026-11-06T10:20:05.1710000Z Setting Java 21 as the default
+2026-11-06T10:20:05.1720000Z ##[endgroup]
+2026-11-06T10:20:05.1730000Z Creating toolchains.xml for JDK version 21
+2026-11-06T10:20:05.1740000Z ##[group]Run javac -d out src/AtlasIndex.java
+2026-11-06T10:20:05.1750000Z javac -d out src/AtlasIndex.java
+2026-11-06T10:20:05.1760000Z shell: /usr/bin/bash -e {0}
+2026-11-06T10:20:05.1770000Z ##[endgroup]
+2026-11-06T10:20:06.1780000Z ##[group]Run java -Xmx256m -cp out AtlasIndex
+2026-11-06T10:20:06.1790000Z java -Xmx256m -cp out AtlasIndex
+2026-11-06T10:20:06.1800000Z shell: /usr/bin/bash -e {0}
+2026-11-06T10:20:06.1810000Z ##[endgroup]
+2026-11-06T10:20:08.1820000Z Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
+2026-11-06T10:20:08.1830000Z 	at AtlasIndex.main(AtlasIndex.java:8)
+2026-11-06T10:20:08.1840000Z ##[error]Process completed with exit code 1.
+2026-11-06T10:20:08.1850000Z Post job cleanup.
+2026-11-06T10:20:08.1860000Z [command]/usr/bin/git version
+2026-11-06T10:20:08.1870000Z git version 2.51.1
+2026-11-06T10:20:08.1880000Z Cleaning up orphan processes

@@ -48,4 +48,19 @@ describe("locale catalogs", () => {
     );
     expect(untranslated.map(([key]) => key)).toEqual([]);
   });
+
+  // A file written in a legacy code page turns every non-ASCII character into "?" (v1.1).
+  it.each(LOCALES)("%s has no characters lost to an encoding", (locale) => {
+    const damaged = [...leaves(CATALOG[locale])].filter(
+      ([, text]) => /\?\?|�|^\?+$/.test(text) || text.startsWith("﻿"),
+    );
+    expect(damaged.map(([key]) => key)).toEqual([]);
+  });
+
+  it("writes every Japanese string except names in Japanese script", () => {
+    const latinOnly = [...leaves(CATALOG.ja)].filter(
+      ([key, text]) => !SAME_IN_EVERY_LOCALE.has(key) && !/[぀-ヿ一-鿿]/.test(text),
+    );
+    expect(latinOnly.map(([key]) => key)).toEqual([]);
+  });
 });

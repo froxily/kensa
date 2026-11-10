@@ -1,0 +1,13 @@
+{
+  "id": "hd18-boreal-images",
+  "independent_labels": {
+    "e1": {"cluster": "a", "relation": "first", "category": "docker"},
+    "e2": {"cluster": "a", "relation": "recurrence", "category": "docker"},
+    "e3": {"cluster": "b", "relation": "first", "category": "docker"},
+    "e4": {"cluster": "c", "relation": "lookalike", "category": "docker"}
+  },
+  "verdict": "ambiguous",
+  "disputed_fields": ["e1.root_cause", "e2.root_cause"],
+  "reason_category": "ambiguous_evidence",
+  "notes": "The labels fit the plan and the observed errors. Both socket errors occur on the same named self-hosted runner, but cannot establish that the daemon was stopped; another socket or connection configuration problem could produce the same message. The proposed shared cause and fix are therefore plausible but unconfirmed. e2 differs from e1 in the Docker command and surrounding steps. The two registry failures name different images and tags and require separate corrections. No giveaway commentary appears in the logs."
+}

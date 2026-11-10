@@ -1,0 +1,13 @@
+{
+  "id": "ht10-tamarack-sonar",
+  "independent_labels": [
+    {"id": "e1", "cluster": "a", "relation": "first", "category": "workflow_path"},
+    {"id": "e2", "cluster": "a", "relation": "recurrence", "category": "workflow_path"},
+    {"id": "e3", "cluster": "b", "relation": "first", "category": "dependency_build"},
+    {"id": "e4", "cluster": "b", "relation": "recurrence", "category": "dependency_build"}
+  ],
+  "verdict": "agree",
+  "disputed_fields": [],
+  "reason_category": "none",
+  "notes": "e1 and e2 fail to start in the absent build directory. e3 and e4 show the pulse function defined in a separately compiled object but omitted from the sonar link, requiring a target source change. Recurrences differ in runner, checkout or build configuration and output; no giveaway commentary found. Labels and plan agree."
+}

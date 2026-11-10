@@ -1,0 +1,48 @@
+2026-09-28T18:06:23.1000000Z Current runner version: '2.329.0'
+2026-09-28T18:06:23.2000000Z ##[group]Runner Image
+2026-09-28T18:06:23.3000000Z Image: ubuntu-24.04
+2026-09-28T18:06:23.4000000Z Version: 20260920.1.0
+2026-09-28T18:06:23.5000000Z ##[endgroup]
+2026-09-28T18:06:23.6000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-28T18:06:23.7000000Z Contents: read
+2026-09-28T18:06:23.8000000Z Metadata: read
+2026-09-28T18:06:23.9000000Z ##[endgroup]
+2026-09-28T18:06:24.0000000Z Prepare workflow directory
+2026-09-28T18:06:24.2000000Z Prepare all required actions
+2026-09-28T18:06:24.9000000Z Download action repository 'actions/checkout@v4'
+2026-09-28T18:06:25.4000000Z Download action repository 'actions/setup-go@v5'
+2026-09-28T18:06:25.8000000Z Complete job name: build-release
+2026-09-28T18:06:26.0000000Z ##[group]Run actions/checkout@v4
+2026-09-28T18:06:26.1000000Z with:
+2026-09-28T18:06:26.2000000Z   repository: polderkite/tarnsignal
+2026-09-28T18:06:26.3000000Z   path: source
+2026-09-28T18:06:26.4000000Z   fetch-depth: 1
+2026-09-28T18:06:26.5000000Z ##[endgroup]
+2026-09-28T18:06:26.8000000Z Syncing repository: polderkite/tarnsignal
+2026-09-28T18:06:27.1000000Z Working directory is '/home/runner/work/tarnsignal/tarnsignal/source'
+2026-09-28T18:06:28.0000000Z Initialized empty Git repository in /home/runner/work/tarnsignal/tarnsignal/source/.git/
+2026-09-28T18:06:29.2000000Z Checking out the ref
+2026-09-28T18:06:29.4000000Z ##[group]Run actions/setup-go@v5
+2026-09-28T18:06:29.5000000Z with:
+2026-09-28T18:06:29.6000000Z   go-version: 1.24.x
+2026-09-28T18:06:29.7000000Z   cache-dependency-path: source/go.sum
+2026-09-28T18:06:29.8000000Z ##[endgroup]
+2026-09-28T18:06:30.6000000Z Setup go version spec 1.24.x
+2026-09-28T18:06:30.8000000Z Found in cache @ /opt/hostedtoolcache/go/1.24.6/x64
+2026-09-28T18:06:31.0000000Z go version go1.24.6 linux/amd64
+2026-09-28T18:06:31.4000000Z Cache restored successfully
+2026-09-28T18:06:31.5000000Z ##[group]Run go build -trimpath -tags tidal_icu -o ../out/tarnsignal ./cmd/tarnsignal
+2026-09-28T18:06:31.6000000Z go build -trimpath -tags tidal_icu -o ../out/tarnsignal ./cmd/tarnsignal
+2026-09-28T18:06:31.7000000Z shell: /usr/bin/bash -e {0}
+2026-09-28T18:06:31.8000000Z ##[endgroup]
+2026-09-28T18:06:32.2000000Z go: downloading golang.org/x/text v0.23.0
+2026-09-28T18:06:33.9000000Z package github.com/polderkite/tarnsignal/cmd/tarnsignal
+2026-09-28T18:06:34.0000000Z 	imports github.com/polderkite/tarnsignal/internal/echoweave: build constraints exclude all Go files in /home/runner/work/tarnsignal/tarnsignal/source/internal/echoweave
+2026-09-28T18:06:34.1000000Z ##[error]Process completed with exit code 1.
+2026-09-28T18:06:34.2000000Z Post job cleanup.
+2026-09-28T18:06:34.3000000Z [command]/usr/bin/git version
+2026-09-28T18:06:34.4000000Z git version 2.51.0
+2026-09-28T18:06:34.5000000Z Temporarily overriding HOME='/home/runner/work/_temp/39e4' before making global git config changes
+2026-09-28T18:06:34.6000000Z Adding repository directory to the temporary git global config as a safe directory
+2026-09-28T18:06:34.7000000Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/tarnsignal/tarnsignal/source
+2026-09-28T18:06:34.8000000Z Cleaning up orphan processes

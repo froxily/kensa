@@ -1,0 +1,13 @@
+{
+  "id": "ht02-kestrel-route",
+  "independent_labels": [
+    {"id": "e1", "cluster": "a", "relation": "first", "category": "test_regression"},
+    {"id": "e2", "cluster": "b", "relation": "lookalike", "category": "test_regression"},
+    {"id": "e3", "cluster": "a", "relation": "recurrence", "category": "test_regression"},
+    {"id": "e4", "cluster": "c", "relation": "first", "category": "missing_env_var"}
+  ],
+  "verdict": "agree",
+  "disputed_fields": [],
+  "reason_category": "none",
+  "notes": "e1 and e3 show the same trailing separator on different inputs; e3 also changes the runner, Python version and test output. e2 instead changes letter case and requires a separate correction. e4 fails on an unset fixture directory variable. The labels and plan match, root causes fit the logs, and no giveaway commentary is present."
+}

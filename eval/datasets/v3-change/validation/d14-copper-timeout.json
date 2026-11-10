@@ -1,0 +1,14 @@
+{
+  "id": "d14-copper-timeout",
+  "independent_labels": {
+    "comparability": "comparable",
+    "unverified_factors": [],
+    "category": "oom_timeout",
+    "culprit_kind": "workflow",
+    "culprit_paths": [".github/workflows/build.yml"]
+  },
+  "verdict": "disagree",
+  "disputed_fields": ["failed.log", "plan.csv"],
+  "reason_category": "data_inconsistency",
+  "notes": "The labels and cited evidence agree with the timeout change. However, the plan requires the log to mention a harmlessly changed source file; failed.log does not mention Copper/Program.cs, the only changed source file."
+}

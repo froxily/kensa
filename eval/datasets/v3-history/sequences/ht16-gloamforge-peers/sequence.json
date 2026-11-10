@@ -1,0 +1,12 @@
+﻿{
+  "id": "ht16-gloamforge-peers",
+  "split": "test",
+  "ecosystem": "node",
+  "repository": "gloamforge/harbor-sundial",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"dependency_build","title":"Canvas adapter peer conflict","root_cause":"The root project pins @gloamforge/canvas-core 4.2.0 while @gloamforge/canvas-inspector 3.1.0 requires canvas-core ^3.0.0. Align the inspector and core versions.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"b","relation":"lookalike","category":"dependency_build","title":"Timeline adapter peer conflict","root_cause":"The root project pins @gloamforge/timeline-core 5.0.0 while @gloamforge/timeline-ruler 2.4.0 requires timeline-core ^4.0.0. Align the ruler and timeline core versions.","differs_from_earlier":"The same npm peer resolution error involves the timeline packages, which require a separate dependency alignment."},
+    {"id":"e3","file":"e3.log","cluster":"c","relation":"first","category":"workflow_path","title":"Missing build configuration","root_cause":"The build command points to config/harbor.build.mjs, but the checked-out repository contains config/harbor.bundle.mjs instead. Correct the configuration path in the build script.","differs_from_earlier":""},
+    {"id":"e4","file":"e4.log","cluster":"a","relation":"recurrence","category":"dependency_build","title":"Canvas adapter peer conflict returns","root_cause":"The root project pins @gloamforge/canvas-core 4.2.0 while @gloamforge/canvas-inspector 3.1.0 requires canvas-core ^3.0.0. Align the inspector and core versions.","differs_from_earlier":"A later pull request on a different runner fails during npm install instead of npm ci; the same incompatible canvas package versions are reported."}
+  ]
+}

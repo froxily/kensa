@@ -5,7 +5,7 @@ adding a value is a one-line migration.
 """
 
 import uuid
-from datetime import datetime
+from datetime import date, datetime
 from typing import Any
 
 from pgvector.sqlalchemy import Vector
@@ -15,6 +15,7 @@ from sqlalchemy import (
     Boolean,
     CheckConstraint,
     Computed,
+    Date,
     DateTime,
     Float,
     ForeignKey,
@@ -37,7 +38,8 @@ EMBEDDING_DIM = 1024
 # Seeded by the baseline migration; the single local operator works in this workspace.
 DEFAULT_WORKSPACE_ID = uuid.UUID("00000000-0000-0000-0000-000000000001")
 
-SOURCE_TYPES = ("log", "workflow_yaml", "code", "doc", "incident", "kb")
+# v1.1: "diff" holds the hunks of a change correlated with a failure (D-054).
+SOURCE_TYPES = ("log", "workflow_yaml", "code", "doc", "incident", "kb", "diff")
 INVESTIGATION_SOURCES = ("paste", "upload", "sample", "github")
 INVESTIGATION_STATUSES = ("queued", "running", "awaiting_approval", "completed", "failed")
 PROVIDERS = ("ollama", "mock")
@@ -49,6 +51,42 @@ JOB_STATUSES = ("queued", "running", "succeeded", "dead")
 PROPOSAL_STATUSES = ("proposed", "approved", "rejected", "withdrawn")
 PROPOSAL_ORIGINS = ("model", "template")
 DECISIONS = ("approved", "rejected")
+# v1.1 (D-051, D-052): where a history row came from. Analytics shows real observations by
+# default and keeps fixtures loaded for evaluation or the replay apart.
+DATA_ORIGINS = ("github_live", "eval_synthetic")
+BATCH_STATUSES = ("running", "succeeded", "partial", "rate_limited", "failed")
+DQ_SEVERITIES = ("info", "warning", "error")
+PURGE_ACTIONS = ("forget_repository", "retention")
+FINGERPRINT_ROLES = ("primary", "secondary")
+# D-051: "human_confirmed" now; v1.3 adds the outcome of a later CI run.
+RESOLUTION_PROVENANCE = ("human_confirmed",)
+CHANGE_COMPARABILITY = (
+    "comparable",
+    "partially_comparable",
+    "incomparable",
+    "identical",
+    "no_baseline",
+    "history_unavailable",
+)
+SUSPECT_STATUSES = ("correlated", "weak")  # never "cause" (D-054)
+ANALYTICS_SOURCES = ("ci", "investigation")
+# Real observations (github_live, pasted) and everything else, kept apart (D-051).
+ANALYTICS_ORIGINS = ("github_live", "pasted", "sample", "eval_synthetic", "replay")
+CHANGE_KINDS = (
+    "workflow",
+    "dependency_manifest",
+    "lockfile",
+    "build_config",
+    "env_declaration",
+    "source",
+    "test",
+    "docs",
+    "other",
+    "runner_image",
+)
+
+
+FINGERPRINT_KINDS = ("exact", "approximate")
 
 
 def _in(column: str, values: tuple[str, ...]) -> str:
@@ -402,7 +440,12 @@ class WorkflowRun(Base):
     """The GitHub Actions run and failed job an investigation was imported from (M4)."""
 
     __tablename__ = "workflow_runs"
-    __table_args__ = (CheckConstraint(_in("log_source", ("github", "pasted")), name="log_source"),)
+    __table_args__ = (
+        CheckConstraint(_in("log_source", ("github", "pasted")), name="log_source"),
+        # v1.1: finds an earlier import of the same job, and every investigation of a repository
+        # (Forget repository).
+        Index("ix_workflow_runs_run", "workspace_id", "owner", "repo", "run_id"),
+    )
 
     id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
     workspace_id: Mapped[uuid.UUID] = _workspace_fk()
@@ -473,3 +516,347 @@ class Job(Base):
         DateTime(timezone=True), server_default=func.now(), onupdate=func.now()
     )
     finished_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+
+
+# --------------------------------------------------------------------- v1.1: CI history ---
+
+
+class TrackedRepository(Base):
+    """A public GitHub repository whose workflow history Kensa keeps (v1.1, D-052).
+
+    ``sync_state`` holds the incremental cursor: the date up to which runs are complete, an
+    unfinished listing window, and runs that were still in progress at the last sync."""
+
+    __tablename__ = "tracked_repositories"
+    __table_args__ = (
+        UniqueConstraint("workspace_id", "owner", "repo", name="uq_tracked_repositories_name"),
+        CheckConstraint("history_days BETWEEN 1 AND 400", name="history_days"),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
+    workspace_id: Mapped[uuid.UUID] = _workspace_fk()
+    owner: Mapped[str] = mapped_column(String(100))
+    repo: Mapped[str] = mapped_column(String(100))
+    default_branch: Mapped[str | None] = mapped_column(String(300))
+    history_days: Mapped[int] = mapped_column(Integer, server_default="30")
+    sync_state: Mapped[dict[str, Any]] = mapped_column(JSONB, server_default=text("'{}'::jsonb"))
+    added_at: Mapped[datetime] = _created_at()
+    last_sync_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+
+
+class EtlBatch(Base):
+    """One incremental load: what it read, what it changed, and how far it got."""
+
+    __tablename__ = "etl_batches"
+    __table_args__ = (
+        CheckConstraint(_in("status", BATCH_STATUSES), name="status"),
+        Index("ix_etl_batches_repository_started", "tracked_repository_id", "started_at"),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
+    workspace_id: Mapped[uuid.UUID] = _workspace_fk()
+    tracked_repository_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("tracked_repositories.id", ondelete="CASCADE")
+    )
+    kind: Mapped[str] = mapped_column(String(32))
+    status: Mapped[str] = mapped_column(String(16), server_default="running")
+    started_at: Mapped[datetime] = _created_at()
+    finished_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    watermark_before: Mapped[str | None] = mapped_column(String(40))
+    watermark_after: Mapped[str | None] = mapped_column(String(40))
+    counts: Mapped[dict[str, Any]] = mapped_column(JSONB, server_default=text("'{}'::jsonb"))
+    requests_used: Mapped[int] = mapped_column(Integer, server_default="0")
+    error_code: Mapped[str | None] = mapped_column(String(64))
+    message: Mapped[str | None] = mapped_column(String(300))
+
+
+class CiRun(Base):
+    """One attempt of a workflow run, as GitHub reported it. Natural key: run id + attempt."""
+
+    __tablename__ = "ci_runs"
+    __table_args__ = (
+        UniqueConstraint(
+            "tracked_repository_id", "run_id", "run_attempt", name="uq_ci_runs_attempt"
+        ),
+        CheckConstraint(_in("data_origin", DATA_ORIGINS), name="data_origin"),
+        CheckConstraint("run_attempt >= 1", name="run_attempt"),
+        Index(
+            "ix_ci_runs_workflow",
+            "tracked_repository_id",
+            "workflow_id",
+            "head_branch",
+            "gh_created_at",
+        ),
+        Index("ix_ci_runs_sha", "tracked_repository_id", "head_sha"),
+        Index("ix_ci_runs_workspace_created", "workspace_id", "gh_created_at"),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
+    workspace_id: Mapped[uuid.UUID] = _workspace_fk()
+    tracked_repository_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("tracked_repositories.id", ondelete="CASCADE")
+    )
+    batch_id: Mapped[uuid.UUID | None] = mapped_column(
+        ForeignKey("etl_batches.id", ondelete="SET NULL")
+    )
+    run_id: Mapped[int] = mapped_column(BigInteger)
+    run_attempt: Mapped[int] = mapped_column(Integer)
+    run_number: Mapped[int] = mapped_column(Integer)
+    workflow_id: Mapped[int] = mapped_column(BigInteger)
+    workflow_path: Mapped[str] = mapped_column(String(300))
+    workflow_name: Mapped[str] = mapped_column(String(300))
+    event: Mapped[str] = mapped_column(String(50))
+    head_branch: Mapped[str | None] = mapped_column(String(300))
+    head_sha: Mapped[str] = mapped_column(String(40))
+    status: Mapped[str] = mapped_column(String(32))
+    conclusion: Mapped[str | None] = mapped_column(String(32))
+    gh_created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    run_started_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    gh_updated_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    jobs_synced: Mapped[bool] = mapped_column(Boolean, server_default="false")
+    data_origin: Mapped[str] = mapped_column(String(16), server_default="github_live")
+    ingested_at: Mapped[datetime] = _created_at()
+
+
+class CiJob(Base):
+    """A job of one run attempt. GitHub gives every attempt's jobs their own ids."""
+
+    __tablename__ = "ci_jobs"
+    __table_args__ = (UniqueConstraint("workspace_id", "job_id", name="uq_ci_jobs_job"),)
+
+    id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
+    workspace_id: Mapped[uuid.UUID] = _workspace_fk()
+    ci_run_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("ci_runs.id", ondelete="CASCADE"), index=True
+    )
+    job_id: Mapped[int] = mapped_column(BigInteger)
+    name: Mapped[str] = mapped_column(String(300))
+    status: Mapped[str] = mapped_column(String(32))
+    conclusion: Mapped[str | None] = mapped_column(String(32))
+    started_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    labels: Mapped[list[str]] = mapped_column(ARRAY(Text), server_default="{}")
+    steps: Mapped[list[Any]] = mapped_column(JSONB, server_default=text("'[]'::jsonb"))
+
+
+class DqFinding(Base):
+    """A data-quality problem found by a check; resolved when a later check no longer finds it."""
+
+    __tablename__ = "dq_findings"
+    __table_args__ = (
+        UniqueConstraint("workspace_id", "check", "entity_key", name="uq_dq_findings_entity"),
+        CheckConstraint(_in("severity", DQ_SEVERITIES), name="severity"),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
+    workspace_id: Mapped[uuid.UUID] = _workspace_fk()
+    tracked_repository_id: Mapped[uuid.UUID | None] = mapped_column(
+        ForeignKey("tracked_repositories.id", ondelete="CASCADE"), index=True
+    )
+    investigation_id: Mapped[uuid.UUID | None] = mapped_column(
+        ForeignKey("investigations.id", ondelete="CASCADE"), index=True
+    )
+    check: Mapped[str] = mapped_column(String(48))
+    severity: Mapped[str] = mapped_column(String(16))
+    entity_key: Mapped[str] = mapped_column(String(300))
+    detail: Mapped[str] = mapped_column(String(500))
+    first_seen: Mapped[datetime] = _created_at()
+    last_seen: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    resolved_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+
+
+class PurgeAudit(Base):
+    """That a purge happened, and how much it removed. It names nothing it deleted: the scope is
+    a SHA-256 digest (of ``owner/repo``, or of the retention cutoff)."""
+
+    __tablename__ = "purge_audits"
+    __table_args__ = (CheckConstraint(_in("action", PURGE_ACTIONS), name="action"),)
+
+    id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
+    workspace_id: Mapped[uuid.UUID] = _workspace_fk()
+    action: Mapped[str] = mapped_column(String(32))
+    scope_digest: Mapped[str] = mapped_column(String(64))
+    counts: Mapped[dict[str, Any]] = mapped_column(JSONB, server_default=text("'{}'::jsonb"))
+    created_at: Mapped[datetime] = _created_at()
+
+
+# --------------------------------------------------- v1.1: failure fingerprints (D-053) ---
+
+
+class FailureFingerprint(Base):
+    """A kind of failure, named by a deterministic hash of rule-derived facts (see
+    ``kensa.analysis.fingerprint``). Never derived from model output."""
+
+    __tablename__ = "failure_fingerprints"
+    __table_args__ = (
+        UniqueConstraint("workspace_id", "version", "hash", name="uq_failure_fingerprints_hash"),
+        Index("ix_failure_fingerprints_tsv", "tsv", postgresql_using="gin"),
+        CheckConstraint(_in("kind", FINGERPRINT_KINDS), name="kind"),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
+    workspace_id: Mapped[uuid.UUID] = _workspace_fk()
+    version: Mapped[int] = mapped_column(Integer)
+    hash: Mapped[str] = mapped_column(String(64))
+    category: Mapped[str] = mapped_column(String(32))
+    rule_id: Mapped[str] = mapped_column(String(100))
+    subject: Mapped[str] = mapped_column(String(200))
+    template: Mapped[str] = mapped_column(String(240))
+    # exact: may claim a recurrence; approximate: only finds similar failures (D-057).
+    kind: Mapped[str] = mapped_column(String(16), server_default="exact")
+    tsv: Mapped[str] = mapped_column(
+        TSVECTOR,
+        Computed("to_tsvector('simple'::regconfig, subject || ' ' || template)", persisted=True),
+    )
+    created_at: Mapped[datetime] = _created_at()
+
+
+class InvestigationFingerprint(Base):
+    __tablename__ = "investigation_fingerprints"
+    __table_args__ = (
+        UniqueConstraint(
+            "investigation_id", "fingerprint_id", name="uq_investigation_fingerprints_link"
+        ),
+        CheckConstraint(_in("role", FINGERPRINT_ROLES), name="role"),
+        Index("ix_investigation_fingerprints_fingerprint", "fingerprint_id", "role"),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
+    workspace_id: Mapped[uuid.UUID] = _workspace_fk()
+    investigation_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("investigations.id", ondelete="CASCADE"), index=True
+    )
+    fingerprint_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("failure_fingerprints.id", ondelete="CASCADE")
+    )
+    role: Mapped[str] = mapped_column(String(16))
+    created_at: Mapped[datetime] = _created_at()
+
+
+class Resolution(Base):
+    """How a failure was resolved, as the operator confirmed it (D-051: ``human_confirmed``).
+    Shown with similar failures later; it never changes a diagnosis or its status."""
+
+    __tablename__ = "resolutions"
+    __table_args__ = (CheckConstraint(_in("provenance", RESOLUTION_PROVENANCE), name="provenance"),)
+
+    id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
+    workspace_id: Mapped[uuid.UUID] = _workspace_fk()
+    investigation_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("investigations.id", ondelete="CASCADE"), index=True
+    )
+    provenance: Mapped[str] = mapped_column(String(32))
+    summary: Mapped[str] = mapped_column(String(1000))
+    created_at: Mapped[datetime] = _created_at()
+    superseded_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+
+
+# ---------------------------------------------- v1.1: change-aware investigation (D-054) ---
+
+
+class ChangeAnalysisRecord(Base):
+    """How a failed run compares with an earlier successful run, factor by factor."""
+
+    __tablename__ = "change_analyses"
+    __table_args__ = (
+        CheckConstraint(_in("comparability", CHANGE_COMPARABILITY), name="comparability"),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
+    workspace_id: Mapped[uuid.UUID] = _workspace_fk()
+    investigation_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("investigations.id", ondelete="CASCADE"), unique=True
+    )
+    comparability: Mapped[str] = mapped_column(String(32))
+    reasons: Mapped[list[str]] = mapped_column(ARRAY(Text), server_default="{}")
+    factors: Mapped[list[Any]] = mapped_column(JSONB, server_default=text("'[]'::jsonb"))
+    unverified: Mapped[list[str]] = mapped_column(ARRAY(Text), server_default="{}")
+    baseline_run_id: Mapped[int | None] = mapped_column(BigInteger)
+    baseline_sha: Mapped[str | None] = mapped_column(String(40))
+    failed_sha: Mapped[str] = mapped_column(String(40))
+    compare_status: Mapped[str | None] = mapped_column(String(20))
+    commits: Mapped[int] = mapped_column(Integer, server_default="0")
+    files: Mapped[int] = mapped_column(Integer, server_default="0")
+    truncated: Mapped[bool] = mapped_column(Boolean, server_default="false")
+    created_at: Mapped[datetime] = _created_at()
+
+
+class ChangeSuspect(Base):
+    """A change correlated with the failure. Its status is ``correlated`` or ``weak``; the
+    CHECK constraint has no value meaning "the cause" (D-054)."""
+
+    __tablename__ = "change_suspects"
+    __table_args__ = (
+        UniqueConstraint("analysis_id", "rank", name="uq_change_suspects_rank"),
+        CheckConstraint(_in("status", SUSPECT_STATUSES), name="status"),
+        CheckConstraint(_in("change_kind", CHANGE_KINDS), name="change_kind"),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
+    workspace_id: Mapped[uuid.UUID] = _workspace_fk()
+    analysis_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("change_analyses.id", ondelete="CASCADE"), index=True
+    )
+    rank: Mapped[int] = mapped_column(Integer)
+    path: Mapped[str] = mapped_column(String(500))
+    change_kind: Mapped[str] = mapped_column(String(32))
+    score: Mapped[float] = mapped_column(Float)
+    status: Mapped[str] = mapped_column(String(16))
+    signals: Mapped[dict[str, Any]] = mapped_column(JSONB, server_default=text("'{}'::jsonb"))
+    document_id: Mapped[uuid.UUID | None] = mapped_column(
+        ForeignKey("documents.id", ondelete="SET NULL")
+    )
+
+
+# ----------------------------------------------------------- v1.1: analytics (D-055) ---
+
+
+class AnalyticsDaily(Base):
+    """Daily counts per repository, workflow, category and data origin, recomputed per day from
+    CI history and investigations (``kensa.analytics.refresh``). Counts only: nothing here can
+    rebuild a log or a diagnosis."""
+
+    __tablename__ = "analytics_daily"
+    __table_args__ = (
+        UniqueConstraint(
+            "workspace_id",
+            "day",
+            "source",
+            "repository",
+            "workflow",
+            "category",
+            "data_origin",
+            name="uq_analytics_daily_key",
+        ),
+        CheckConstraint(_in("source", ANALYTICS_SOURCES), name="source"),
+        CheckConstraint(_in("data_origin", ANALYTICS_ORIGINS), name="data_origin"),
+        Index("ix_analytics_daily_workspace_day", "workspace_id", "day"),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
+    workspace_id: Mapped[uuid.UUID] = _workspace_fk()
+    day: Mapped[date] = mapped_column(Date)
+    source: Mapped[str] = mapped_column(String(16))
+    repository: Mapped[str] = mapped_column(String(201))
+    workflow: Mapped[str] = mapped_column(String(300))
+    category: Mapped[str] = mapped_column(String(32))
+    data_origin: Mapped[str] = mapped_column(String(16))
+    runs: Mapped[int] = mapped_column(Integer, server_default="0")
+    failed_runs: Mapped[int] = mapped_column(Integer, server_default="0")
+    investigations: Mapped[int] = mapped_column(Integer, server_default="0")
+    corroborated: Mapped[int] = mapped_column(Integer, server_default="0")
+    latency_p50_ms: Mapped[int | None] = mapped_column(Integer)
+    latency_p95_ms: Mapped[int | None] = mapped_column(Integer)
+    refreshed_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+
+
+class AnalyticsWatermark(Base):
+    """When a workspace's analytics were last refreshed (investigations changed since are
+    refreshed next)."""
+
+    __tablename__ = "analytics_watermarks"
+
+    workspace_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("workspaces.id", ondelete="CASCADE"), primary_key=True
+    )
+    refreshed_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))

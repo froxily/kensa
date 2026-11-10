@@ -1,0 +1,12 @@
+{
+  "id": "hd56-gyroscope-whorl",
+  "split": "dev",
+  "ecosystem": "flutter",
+  "repository": "whorlkin/gyroscope-whorl",
+  "entries": [
+    {"id": "e1", "file": "e1.log", "cluster": "a", "relation": "first", "category": "dependency_build", "title": "Removed color parameter in dial widget", "root_cause": "The MireDial widget passes the removed trackColor named argument to ArcGauge. The call must use the current paint parameter instead.", "differs_from_earlier": ""},
+    {"id": "e2", "file": "e2.log", "cluster": "a", "relation": "recurrence", "category": "dependency_build", "title": "Removed color parameter in dial widget", "root_cause": "The MireDial widget passes the removed trackColor named argument to ArcGauge. The call must use the current paint parameter instead.", "differs_from_earlier": "A later Android bundle build encounters the same argument error at a shifted source line with different build output and duration."},
+    {"id": "e3", "file": "e3.log", "cluster": "b", "relation": "first", "category": "dependency_build", "title": "Missing required radius argument", "root_cause": "The waypoint overlay constructs HaloRing without its required radius argument. The overlay must supply a radius.", "differs_from_earlier": ""},
+    {"id": "e4", "file": "e4.log", "cluster": "b", "relation": "recurrence", "category": "dependency_build", "title": "Missing required radius argument", "root_cause": "The waypoint overlay constructs HaloRing without its required radius argument. The overlay must supply a radius.", "differs_from_earlier": "A later APK build reports the same missing argument at a shifted source line with different build output and duration."}
+  ]
+}

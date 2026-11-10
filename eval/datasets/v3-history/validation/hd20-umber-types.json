@@ -1,0 +1,13 @@
+{
+  "id": "hd20-umber-types",
+  "independent_labels": [
+    {"id": "e1", "cluster": "a", "relation": "first", "category": "dependency_build"},
+    {"id": "e2", "cluster": "b", "relation": "first", "category": "github_permissions"},
+    {"id": "e3", "cluster": "a", "relation": "recurrence", "category": "dependency_build"},
+    {"id": "e4", "cluster": "a", "relation": "recurrence", "category": "dependency_build"}
+  ],
+  "verdict": "ambiguous",
+  "disputed_fields": ["e1.root_cause", "e2.root_cause", "e3.root_cause", "e4.root_cause"],
+  "reason_category": "ambiguous_evidence",
+  "notes": "The labels and plan agree, and the recurrence logs differ beyond timestamps. The TypeScript diagnostics do not identify renderWidget or WidgetId, so those specific root-cause claims cannot be verified. The 403 indicates an integration access problem but does not establish that granting contents write permission alone will fix it. No giveaway commentary found."
+}

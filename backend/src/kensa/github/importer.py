@@ -82,6 +82,7 @@ class RunInfo:
     workflow_path: str
     html_url: str
     created_at: str
+    workflow_id: int | None = None  # v1.1: finds comparable earlier runs
 
 
 @dataclass(frozen=True)
@@ -98,6 +99,7 @@ class JobInfo:
     conclusion: str | None
     html_url: str
     failed_steps: tuple[StepInfo, ...]
+    labels: tuple[str, ...] | None = None  # v1.1: runner labels, for comparability
 
 
 @dataclass(frozen=True)
@@ -105,6 +107,7 @@ class FetchedFile:
     path: str
     source_type: str
     content: str
+    blob_sha: str | None = None  # v1.1: the file's version, for workflow-file identity
 
 
 @dataclass
@@ -147,6 +150,7 @@ def run_info(data: dict[str, Any]) -> RunInfo:
         workflow_path=str(data.get("path") or ""),
         html_url=str(data.get("html_url") or ""),
         created_at=str(data.get("created_at") or ""),
+        workflow_id=int(data["workflow_id"]) if data.get("workflow_id") else None,
     )
 
 
@@ -162,6 +166,9 @@ def job_info(data: dict[str, Any]) -> JobInfo:
         conclusion=data.get("conclusion"),
         html_url=str(data.get("html_url") or ""),
         failed_steps=steps,
+        labels=tuple(str(label)[:100] for label in (data.get("labels") or [])[:20])
+        if isinstance(data.get("labels"), list)
+        else None,
     )
 
 
@@ -317,7 +324,10 @@ def fetch_files(
         if text is None:
             missing.append(path)
             continue
-        files.append(FetchedFile(path, source_type_for(path), text))
+        blob = data.get("sha") if data is not None else None
+        files.append(
+            FetchedFile(path, source_type_for(path), text, blob if isinstance(blob, str) else None)
+        )
     return files, missing
 
 

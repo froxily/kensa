@@ -1,0 +1,46 @@
+﻿2026-10-09T14:12:00.1000000Z Current runner version: '2.328.0'
+2026-10-09T14:12:00.3000000Z ##[group]Runner Image Provisioner
+2026-10-09T14:12:00.4000000Z Hosted Compute Agent
+2026-10-09T14:12:00.5000000Z Image: ubuntu-24.04
+2026-10-09T14:12:00.6000000Z ##[endgroup]
+2026-10-09T14:12:00.7000000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-09T14:12:00.8000000Z Contents: read
+2026-10-09T14:12:00.9000000Z ##[endgroup]
+2026-10-09T14:12:01.0000000Z Prepare workflow directory
+2026-10-09T14:12:01.5000000Z Prepare all required actions
+2026-10-09T14:12:02.1000000Z Complete job name: matrix
+2026-10-09T14:12:02.4000000Z ##[group]Run actions/checkout@v4
+2026-10-09T14:12:02.5000000Z with:
+2026-10-09T14:12:02.6000000Z   repository: volebridge/mosaic-quay
+2026-10-09T14:12:02.7000000Z ##[endgroup]
+2026-10-09T14:12:03.0000000Z Syncing repository: volebridge/mosaic-quay
+2026-10-09T14:12:04.0000000Z Fetching the repository
+2026-10-09T14:12:05.5000000Z Checking out the ref
+2026-10-09T14:12:06.0000000Z ##[group]Run ruby/setup-ruby@v1
+2026-10-09T14:12:06.1000000Z with:
+2026-10-09T14:12:06.2000000Z   ruby-version: '3.3'
+2026-10-09T14:12:06.3000000Z   bundler-cache: true
+2026-10-09T14:12:06.4000000Z ##[endgroup]
+2026-10-09T14:12:13.0000000Z ruby 3.3.5 installed
+2026-10-09T14:12:13.5000000Z bundle install --jobs 4
+2026-10-09T14:12:15.0000000Z Fetching gem metadata from https://rubygems.org/.
+2026-10-09T14:12:17.0000000Z Resolving dependencies...
+2026-10-09T14:12:19.0000000Z Installing quay-contour 0.4.2 with native extensions
+2026-10-09T14:12:20.1000000Z Gem::Ext::BuildError: ERROR: Failed to build gem native extension.
+2026-10-09T14:12:20.2000000Z
+2026-10-09T14:12:20.3000000Z     current directory: /home/runner/work/mosaic-quay/mosaic-quay/vendor/bundle/ruby/3.3.0/gems/quay-contour-0.4.2/ext/quay_contour
+2026-10-09T14:12:20.4000000Z /opt/hostedtoolcache/Ruby/3.3.5/x64/bin/ruby extconf.rb
+2026-10-09T14:12:20.5000000Z checking for yaml.h... no
+2026-10-09T14:12:20.6000000Z yaml.h is missing. Please install the libyaml development headers.
+2026-10-09T14:12:20.7000000Z *** extconf.rb failed ***
+2026-10-09T14:12:20.8000000Z Could not create Makefile due to some reason, probably lack of necessary
+2026-10-09T14:12:20.9000000Z libraries and/or headers. Check the mkmf.log file for more details.
+2026-10-09T14:12:21.0000000Z
+2026-10-09T14:12:21.1000000Z An error occurred while installing quay-contour (0.4.2), and Bundler cannot continue.
+2026-10-09T14:12:21.2000000Z In Gemfile:
+2026-10-09T14:12:21.3000000Z   quay-contour
+2026-10-09T14:12:21.4000000Z ##[error]The process '/opt/hostedtoolcache/Ruby/3.3.5/x64/bin/bundle' failed with exit code 5
+2026-10-09T14:12:21.5000000Z Post job cleanup.
+2026-10-09T14:12:21.7000000Z [command]/usr/bin/git version
+2026-10-09T14:12:21.8000000Z git version 2.51.0
+2026-10-09T14:12:22.0000000Z Cleaning up orphan processes

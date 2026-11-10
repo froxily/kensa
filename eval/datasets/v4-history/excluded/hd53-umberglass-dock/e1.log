@@ -1,0 +1,50 @@
+2026-09-03T09:14:01.1081432Z Current runner version: '2.328.0'
+2026-09-03T09:14:01.1121432Z ##[group]Runner Image
+2026-09-03T09:14:01.1131432Z Image: ubuntu-24.04
+2026-09-03T09:14:01.1141432Z Version: 20260824.1.0
+2026-09-03T09:14:01.1151432Z ##[endgroup]
+2026-09-03T09:14:01.1201432Z ##[group]GITHUB_TOKEN Permissions
+2026-09-03T09:14:01.1211432Z Contents: read
+2026-09-03T09:14:01.1221432Z Metadata: read
+2026-09-03T09:14:01.1231432Z ##[endgroup]
+2026-09-03T09:14:01.1271432Z Prepare workflow directory
+2026-09-03T09:14:01.1481432Z Prepare all required actions
+2026-09-03T09:14:01.6011432Z ##[group]Run actions/checkout@v4
+2026-09-03T09:14:01.6021432Z with:
+2026-09-03T09:14:01.6031432Z   repository: tarnwick-labs/umberglass-dock
+2026-09-03T09:14:01.6041432Z   clean: true
+2026-09-03T09:14:02.0081432Z Syncing repository: tarnwick-labs/umberglass-dock
+2026-09-03T09:14:02.9451432Z HEAD is now at 682be74 Adjust parcel summary
+2026-09-03T09:14:02.9461432Z ##[endgroup]
+2026-09-03T09:14:03.0121432Z ##[group]Run actions/setup-node@v4
+2026-09-03T09:14:03.0131432Z with:
+2026-09-03T09:14:03.0141432Z   node-version: 22
+2026-09-03T09:14:03.5071432Z ##[endgroup]
+2026-09-03T09:14:03.5101432Z ##[group]Run npm ci
+2026-09-03T09:14:09.3101432Z added 171 packages, and audited 172 packages in 5s
+2026-09-03T09:14:09.3111432Z 23 packages are looking for funding
+2026-09-03T09:14:09.3121432Z found 0 vulnerabilities
+2026-09-03T09:14:09.3131432Z ##[endgroup]
+2026-09-03T09:14:09.3151432Z ##[group]Run npx playwright test --project=chromium
+2026-09-03T09:14:10.1081432Z Running 6 tests using 2 workers
+2026-09-03T09:14:12.6741432Z   ✓  1 [chromium] › e2e/ledger.spec.ts:8:5 › shows ledger (1.7s)
+2026-09-03T09:14:13.8031432Z   ✓  2 [chromium] › e2e/dispatch.spec.ts:9:5 › opens dispatch (2.8s)
+2026-09-03T09:14:14.1001432Z [quote-server] request=q17 POST /api/dispatch/quote size=oversized
+2026-09-03T09:14:14.1011432Z [quote-server] request=q17 acquired rate-table mutex
+2026-09-03T09:14:14.1021432Z [quote-server] request=q17 refreshOversizeRates waiting for rate-table mutex (owner=q17, non-reentrant)
+2026-09-03T09:14:43.8841432Z   ✘  3 [chromium] › e2e/dispatch.spec.ts:24:5 › quotes an oversized parcel (30.0s)
+2026-09-03T09:14:44.0021432Z   1) [chromium] › e2e/dispatch.spec.ts:24:5 › quotes an oversized parcel ──────────────────────
+2026-09-03T09:14:44.0031432Z     Test timeout of 30000ms exceeded.
+2026-09-03T09:14:44.0041432Z     Error: page.waitForResponse: Test timeout of 30000ms exceeded.
+2026-09-03T09:14:44.0051432Z        31 | await page.getByLabel('Parcel size').selectOption('oversized');
+2026-09-03T09:14:44.0061432Z        32 | const quote = page.waitForResponse('**/api/dispatch/quote');
+2026-09-03T09:14:44.0071432Z        33 | await page.getByRole('button', { name: 'Get quote' }).click();
+2026-09-03T09:14:44.0081432Z     >  34 | await quote;
+2026-09-03T09:14:44.0091432Z        35 | await expect(page.getByTestId('quote-total')).toBeVisible();
+2026-09-03T09:14:44.0101432Z     at e2e/dispatch.spec.ts:34:9
+2026-09-03T09:14:44.0111432Z   1 failed
+2026-09-03T09:14:44.0121432Z   5 passed (34.2s)
+2026-09-03T09:14:44.0251432Z ##[error]Process completed with exit code 1.
+2026-09-03T09:14:44.0271432Z ##[endgroup]
+2026-09-03T09:14:44.2001432Z Post job cleanup.
+2026-09-03T09:14:44.3051432Z Cleaning up orphan processes

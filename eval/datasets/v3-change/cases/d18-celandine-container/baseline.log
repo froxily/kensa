@@ -1,0 +1,96 @@
+2026-10-27T15:00:02.1100000Z Current runner version: '2.329.0'
+2026-10-27T15:00:02.1200000Z ##[group]Runner Image Provisioner
+2026-10-27T15:00:02.1300000Z Hosted Compute Agent
+2026-10-27T15:00:02.1400000Z Version: 20261020.1
+2026-10-27T15:00:02.1500000Z ##[endgroup]
+2026-10-27T15:00:02.1600000Z ##[group]Operating System
+2026-10-27T15:00:02.1700000Z Ubuntu
+2026-10-27T15:00:02.1800000Z 24.04.3
+2026-10-27T15:00:02.1900000Z LTS
+2026-10-27T15:00:02.2000000Z ##[endgroup]
+2026-10-27T15:00:02.2100000Z ##[group]Runner Image
+2026-10-27T15:00:02.2200000Z Image: ubuntu-24.04
+2026-10-27T15:00:02.2300000Z Version: 20261026.1
+2026-10-27T15:00:02.2400000Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261026.1/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-27T15:00:02.2500000Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261026.1
+2026-10-27T15:00:02.2600000Z ##[endgroup]
+2026-10-27T15:00:02.2700000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-27T15:00:02.2800000Z Contents: read
+2026-10-27T15:00:02.2900000Z Metadata: read
+2026-10-27T15:00:02.3000000Z ##[endgroup]
+2026-10-27T15:00:02.3100000Z Secret source: Actions
+2026-10-27T15:00:02.3200000Z Prepare workflow directory
+2026-10-27T15:00:02.3300000Z Prepare all required actions
+2026-10-27T15:00:02.3400000Z Getting action download info
+2026-10-27T15:00:03.0100000Z Download action repository 'actions/checkout@v4'
+2026-10-27T15:00:03.1100000Z Complete job name: image
+2026-10-27T15:00:03.2100000Z ##[group]Run actions/checkout@v4
+2026-10-27T15:00:03.2200000Z with:
+2026-10-27T15:00:03.2300000Z   repository: reedworks/celandine
+2026-10-27T15:00:03.2400000Z   clean: true
+2026-10-27T15:00:03.2500000Z   fetch-depth: 1
+2026-10-27T15:00:03.2600000Z ##[endgroup]
+2026-10-27T15:00:03.3100000Z Syncing repository: reedworks/celandine
+2026-10-27T15:00:03.3200000Z ##[group]Getting Git version info
+2026-10-27T15:00:03.3300000Z [command]/usr/bin/git version
+2026-10-27T15:00:03.3400000Z git version 2.51.1
+2026-10-27T15:00:03.3500000Z ##[endgroup]
+2026-10-27T15:00:03.3600000Z Temporarily overriding HOME before making global git config changes
+2026-10-27T15:00:03.3700000Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-27T15:00:03.3800000Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/celandine/celandine
+2026-10-27T15:00:03.3900000Z Deleting the contents of '/home/runner/work/celandine/celandine'
+2026-10-27T15:00:03.4000000Z ##[group]Initializing the repository
+2026-10-27T15:00:03.4100000Z [command]/usr/bin/git init /home/runner/work/celandine/celandine
+2026-10-27T15:00:03.4200000Z Initialized empty Git repository in /home/runner/work/celandine/celandine/.git/
+2026-10-27T15:00:03.4300000Z ##[endgroup]
+2026-10-27T15:00:03.4400000Z ##[group]Fetching the repository
+2026-10-27T15:00:04.0100000Z [command]/usr/bin/git fetch --no-tags --prune --depth=1 origin +c349ab62f08d71e5a43c9b867f120d5e6a2c784b:refs/remotes/origin/main
+2026-10-27T15:00:04.1100000Z From https://github.com/reedworks/celandine
+2026-10-27T15:00:04.1200000Z  * [new ref]         c349ab62f08d71e5a43c9b867f120d5e6a2c784b -> origin/main
+2026-10-27T15:00:04.1300000Z ##[endgroup]
+2026-10-27T15:00:04.1400000Z ##[group]Checking out the ref
+2026-10-27T15:00:04.1500000Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-10-27T15:00:04.1600000Z Switched to a new branch 'main'
+2026-10-27T15:00:04.1700000Z ##[endgroup]
+2026-10-27T15:00:04.1800000Z [command]/usr/bin/git log -1 --format=%H
+2026-10-27T15:00:04.1900000Z c349ab62f08d71e5a43c9b867f120d5e6a2c784b
+2026-10-27T15:00:04.2000000Z ##[group]Run docker build --progress=plain -t celandine:ci .
+2026-10-27T15:00:04.2100000Z docker build --progress=plain -t celandine:ci .
+2026-10-27T15:00:04.2200000Z shell: /usr/bin/bash -e {0}
+2026-10-27T15:00:04.2300000Z ##[endgroup]
+2026-10-27T15:00:04.3100000Z #0 building with "default" instance using docker driver
+2026-10-27T15:00:04.3200000Z #1 [internal] load build definition from Dockerfile
+2026-10-27T15:00:04.3300000Z #1 transferring dockerfile: 312B done
+2026-10-27T15:00:04.3400000Z #1 DONE 0.0s
+2026-10-27T15:00:04.3500000Z #2 [internal] load metadata for docker.io/library/debian:bookworm
+2026-10-27T15:00:05.3600000Z #2 DONE 1.0s
+2026-10-27T15:00:05.3700000Z #3 [internal] load metadata for docker.io/library/rust:1.81-bookworm
+2026-10-27T15:00:05.3800000Z #3 DONE 1.0s
+2026-10-27T15:00:05.3900000Z #4 [internal] load .dockerignore
+2026-10-27T15:00:05.4000000Z #4 transferring context: 2B done
+2026-10-27T15:00:05.4100000Z #4 DONE 0.0s
+2026-10-27T15:00:06.4200000Z #5 [build 1/5] FROM docker.io/library/rust:1.81-bookworm
+2026-10-27T15:00:11.4300000Z #5 DONE 5.0s
+2026-10-27T15:00:11.4400000Z #6 [build 2/5] WORKDIR /work
+2026-10-27T15:00:11.4500000Z #6 DONE 0.0s
+2026-10-27T15:00:11.4600000Z #7 [build 3/5] COPY Cargo.toml Cargo.lock ./
+2026-10-27T15:00:11.4700000Z #7 DONE 0.0s
+2026-10-27T15:00:11.4800000Z #8 [build 4/5] COPY src ./src
+2026-10-27T15:00:11.4900000Z #8 DONE 0.0s
+2026-10-27T15:00:11.5000000Z #9 [build 5/5] RUN cargo build --release --locked
+2026-10-27T15:00:11.5100000Z #9 0.217    Compiling celandine v0.1.0 (/work)
+2026-10-27T15:00:12.5200000Z #9 1.038     Finished `release` profile [optimized] target(s) in 0.82s
+2026-10-27T15:00:12.5300000Z #9 DONE 1.1s
+2026-10-27T15:00:12.5400000Z #10 [stage-1 1/2] FROM docker.io/library/debian:bookworm
+2026-10-27T15:00:12.5500000Z #10 DONE 0.0s
+2026-10-27T15:00:12.5600000Z #11 [stage-1 2/2] COPY --from=build /work/target/release/celandine /usr/local/bin/celandine
+2026-10-27T15:00:12.5700000Z #11 DONE 0.0s
+2026-10-27T15:00:12.5800000Z #12 exporting to image
+2026-10-27T15:00:12.5900000Z #12 exporting layers done
+2026-10-27T15:00:12.6000000Z #12 naming to docker.io/library/celandine:ci done
+2026-10-27T15:00:12.6100000Z #12 DONE 0.0s
+2026-10-27T15:00:12.6200000Z Post job cleanup.
+2026-10-27T15:00:12.6300000Z [command]/usr/bin/git version
+2026-10-27T15:00:12.6400000Z git version 2.51.1
+2026-10-27T15:00:12.6500000Z Cleaning up orphan processes
+2026-10-27T15:00:12.6600000Z Complete job: image

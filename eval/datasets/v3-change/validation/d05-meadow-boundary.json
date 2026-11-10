@@ -1,0 +1,14 @@
+{
+  "id": "d05-meadow-boundary",
+  "independent_labels": {
+    "comparability": "comparable",
+    "unverified_factors": [],
+    "category": "test_regression",
+    "culprit_kind": "source",
+    "culprit_paths": ["capacity.go"]
+  },
+  "verdict": "agree",
+  "disputed_fields": [],
+  "reason_category": "none",
+  "notes": "The matching successful baseline has the same runner and an ahead comparison. The change from <= to < rejects equal capacity, matching the failed test; the later test change only alters its message and adds a comment. The cited evidence lines and recorded history are consistent."
+}

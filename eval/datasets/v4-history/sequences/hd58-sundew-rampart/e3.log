@@ -1,0 +1,42 @@
+2026-09-14T14:02:00.1010000Z Current runner version: '2.329.0'
+2026-09-14T14:02:00.1020000Z ##[group]Runner Image Provisioner
+2026-09-14T14:02:00.1030000Z Hosted Compute Agent
+2026-09-14T14:02:00.1040000Z Version: 20260907.1
+2026-09-14T14:02:00.1050000Z ##[endgroup]
+2026-09-14T14:02:00.1060000Z ##[group]Operating System
+2026-09-14T14:02:00.1070000Z Ubuntu
+2026-09-14T14:02:00.1080000Z 24.04.3
+2026-09-14T14:02:00.1090000Z ##[endgroup]
+2026-09-14T14:02:00.1100000Z ##[group]Runner Image
+2026-09-14T14:02:00.1110000Z Image: ubuntu-24.04
+2026-09-14T14:02:00.1120000Z Version: 20260913.1.0
+2026-09-14T14:02:00.1130000Z ##[endgroup]
+2026-09-14T14:02:00.1140000Z Prepare workflow directory
+2026-09-14T14:02:00.1150000Z Prepare all required actions
+2026-09-14T14:02:01.1150000Z Download action repository 'actions/checkout@v4'
+2026-09-14T14:02:02.1150000Z Complete job name: provision
+2026-09-14T14:02:02.2150000Z ##[group]Run actions/checkout@v4
+2026-09-14T14:02:02.2160000Z with:
+2026-09-14T14:02:02.2170000Z   repository: sundew-works/rampart-provisioner
+2026-09-14T14:02:02.2180000Z   clean: true
+2026-09-14T14:02:02.2190000Z ##[endgroup]
+2026-09-14T14:02:02.3190000Z Syncing repository: sundew-works/rampart-provisioner
+2026-09-14T14:02:03.3190000Z Checking out the ref
+2026-09-14T14:02:03.4190000Z ##[group]Run ansible-playbook -i inventory/staging.yml provision.yml
+2026-09-14T14:02:03.4200000Z ansible-playbook -i inventory/staging.yml provision.yml
+2026-09-14T14:02:03.4210000Z shell: /usr/bin/bash -e {0}
+2026-09-14T14:02:03.4220000Z ##[endgroup]
+2026-09-14T14:02:04.4220000Z PLAY [Configure rampart hosts] *************************************************
+2026-09-14T14:02:04.5220000Z TASK [Gathering Facts] *********************************************************
+2026-09-14T14:02:06.5220000Z ok: [rampart-stage-2]
+2026-09-14T14:02:06.6220000Z TASK [rampart : Install base packages] ******************************************
+2026-09-14T14:02:09.6220000Z ok: [rampart-stage-2]
+2026-09-14T14:02:09.7220000Z TASK [rampart : Render service configuration] *********************************
+2026-09-14T14:02:10.7220000Z fatal: [rampart-stage-2]: FAILED! => {"changed": false, "msg": "Could not find or access 'rampart.conf.j2'\nSearched in:\n\t/home/runner/work/rampart-provisioner/rampart-provisioner/roles/rampart/templates/rampart.conf.j2\n\t/home/runner/work/rampart-provisioner/rampart-provisioner/roles/rampart/tasks/rampart.conf.j2 on the Ansible Controller."}
+2026-09-14T14:02:10.8220000Z PLAY RECAP *********************************************************************
+2026-09-14T14:02:10.9220000Z rampart-stage-2            : ok=2    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0
+2026-09-14T14:02:11.0220000Z ##[error]Process completed with exit code 2.
+2026-09-14T14:02:11.1220000Z Post job cleanup.
+2026-09-14T14:02:11.2220000Z [command]/usr/bin/git version
+2026-09-14T14:02:11.3220000Z git version 2.51.0
+2026-09-14T14:02:11.4220000Z Cleaning up orphan processes

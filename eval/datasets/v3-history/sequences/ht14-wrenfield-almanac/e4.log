@@ -1,0 +1,50 @@
+﻿2026-09-21T16:41:00.0012345Z Current runner version: '2.329.0'
+2026-09-21T16:41:00.1012345Z ##[group]Operating System
+2026-09-21T16:41:00.2012345Z Ubuntu 24.04.3 LTS
+2026-09-21T16:41:00.3012345Z ##[endgroup]
+2026-09-21T16:41:00.4012345Z ##[group]Runner Image
+2026-09-21T16:41:00.5012345Z Image: ubuntu-24.04
+2026-09-21T16:41:00.6012345Z ##[endgroup]
+2026-09-21T16:41:00.7012345Z Prepare workflow directory
+2026-09-21T16:41:00.8012345Z Prepare all required actions
+2026-09-21T16:41:01.0012345Z ##[group]Run actions/checkout@v4
+2026-09-21T16:41:01.1012345Z with:
+2026-09-21T16:41:01.2012345Z   repository: wrenfield-labs/almanac-panel
+2026-09-21T16:41:01.3012345Z   clean: true
+2026-09-21T16:41:01.4012345Z ##[endgroup]
+2026-09-21T16:41:02.0012345Z Syncing repository: wrenfield-labs/almanac-panel
+2026-09-21T16:41:03.0012345Z Checking out the ref
+2026-09-21T16:41:03.1012345Z ##[group]Run actions/setup-node@v4
+2026-09-21T16:41:03.2012345Z with:
+2026-09-21T16:41:03.3012345Z   node-version: 20
+2026-09-21T16:41:03.4012345Z ##[endgroup]
+2026-09-21T16:41:04.0012345Z Found in cache @ /opt/hostedtoolcache/node/20.19.5/x64
+2026-09-21T16:41:04.1012345Z ##[group]Run npm ci
+2026-09-21T16:41:04.2012345Z npm ci
+2026-09-21T16:41:04.3012345Z shell: /usr/bin/bash -e {0}
+2026-09-21T16:41:04.4012345Z ##[endgroup]
+2026-09-21T16:41:09.0012345Z added 322 packages, and audited 323 packages in 4s
+2026-09-21T16:41:09.1012345Z found 0 vulnerabilities
+2026-09-21T16:41:09.2012345Z ##[group]Run npm test -- --ci
+2026-09-21T16:41:09.3012345Z npm test -- --ci
+2026-09-21T16:41:09.4012345Z shell: /usr/bin/bash -e {0}
+2026-09-21T16:41:09.5012345Z ##[endgroup]
+2026-09-21T16:41:10.0012345Z > almanac-panel@1.5.0 test
+2026-09-21T16:41:10.1012345Z > jest --ci
+2026-09-21T16:41:10.7012345Z PASS src/dateCaption.test.ts
+2026-09-21T16:41:10.8012345Z PASS src/legend.test.ts
+2026-09-21T16:41:11.0012345Z FAIL src/forecastCard.test.ts
+2026-09-21T16:41:11.1012345Z   ● forecast card › renders a freezing temperature
+2026-09-21T16:41:11.2012345Z     expect(received).toMatchSnapshot()
+2026-09-21T16:41:11.3012345Z     Snapshot name: `forecast card renders a freezing temperature 1`
+2026-09-21T16:41:11.4012345Z     - Expected  - 1
+2026-09-21T16:41:11.5012345Z     + Received  + 1
+2026-09-21T16:41:11.6012345Z     - <span class="temperature">-4 °C</span>
+2026-09-21T16:41:11.7012345Z     + <span class="temperature">-4</span>
+2026-09-21T16:41:11.8012345Z       at Object.<anonymous> (src/forecastCard.test.ts:43:32)
+2026-09-21T16:41:11.9012345Z Snapshot Summary: 1 snapshot failed from 1 test suite.
+2026-09-21T16:41:12.0012345Z Test Suites: 1 failed, 4 passed, 5 total
+2026-09-21T16:41:12.1012345Z Tests:       1 failed, 20 passed, 21 total
+2026-09-21T16:41:12.2012345Z Time:        2.071 s
+2026-09-21T16:41:12.3012345Z ##[error]Process completed with exit code 1.
+2026-09-21T16:41:12.4012345Z Post job cleanup.

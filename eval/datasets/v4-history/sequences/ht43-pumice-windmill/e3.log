@@ -1,0 +1,47 @@
+﻿2026-09-17T14:08:43.3100000Z Current runner version: '2.329.0'
+2026-09-17T14:08:43.3300000Z ##[group]Runner Image
+2026-09-17T14:08:43.3310000Z Image: ubuntu-22.04
+2026-09-17T14:08:43.3320000Z Version: 20260913.1.0
+2026-09-17T14:08:43.3330000Z ##[endgroup]
+2026-09-17T14:08:43.3500000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-17T14:08:43.3510000Z Contents: read
+2026-09-17T14:08:43.3520000Z Metadata: read
+2026-09-17T14:08:43.3530000Z ##[endgroup]
+2026-09-17T14:08:43.4500000Z Prepare workflow directory
+2026-09-17T14:08:43.6920000Z Prepare all required actions
+2026-09-17T14:08:44.0080000Z Download action repository 'actions/checkout@v4'
+2026-09-17T14:08:44.3510000Z Download action repository 'actions/setup-node@v4'
+2026-09-17T14:08:44.7100000Z Complete job name: verify (pull_request)
+2026-09-17T14:08:44.7450000Z ##[group]Run actions/checkout@v4
+2026-09-17T14:08:44.7460000Z with:
+2026-09-17T14:08:44.7470000Z   repository: pumice-labs/windmill-ledger
+2026-09-17T14:08:44.7480000Z   fetch-depth: 1
+2026-09-17T14:08:44.7490000Z ##[endgroup]
+2026-09-17T14:08:44.8800000Z Syncing repository: pumice-labs/windmill-ledger
+2026-09-17T14:08:45.0150000Z Getting Git version info
+2026-09-17T14:08:45.0900000Z Temporarily overriding HOME before making global git config changes
+2026-09-17T14:08:45.4400000Z Fetching the repository
+2026-09-17T14:08:45.9200000Z Checking out the ref
+2026-09-17T14:08:46.1900000Z ##[group]Run actions/setup-node@v4
+2026-09-17T14:08:46.1910000Z with:
+2026-09-17T14:08:46.1920000Z   node-version: 18.19.1
+2026-09-17T14:08:46.1930000Z   check-latest: false
+2026-09-17T14:08:46.1940000Z ##[endgroup]
+2026-09-17T14:08:46.6800000Z Found in cache @ /opt/hostedtoolcache/node/18.19.1/x64
+2026-09-17T14:08:46.7000000Z ##[group]Environment details
+2026-09-17T14:08:46.7800000Z node: v18.19.1
+2026-09-17T14:08:46.8500000Z npm: 10.2.4
+2026-09-17T14:08:46.9400000Z yarn: 1.22.22
+2026-09-17T14:08:46.9410000Z ##[endgroup]
+2026-09-17T14:08:46.9800000Z ##[group]Run yarn --silent install --frozen-lockfile --non-interactive
+2026-09-17T14:08:46.9810000Z yarn --silent install --frozen-lockfile --non-interactive
+2026-09-17T14:08:46.9820000Z shell: /usr/bin/bash -e {0}
+2026-09-17T14:08:46.9830000Z ##[endgroup]
+2026-09-17T14:08:47.3820000Z error windmill-ledger@2.4.1: The engine "node" is incompatible with this module. Expected version ">=20". Got "18.19.1"
+2026-09-17T14:08:47.3830000Z error Found incompatible module.
+2026-09-17T14:08:47.3840000Z info Visit https://yarnpkg.com/en/docs/cli/install for documentation about this command.
+2026-09-17T14:08:47.4140000Z ##[error]Process completed with exit code 1.
+2026-09-17T14:08:47.4270000Z Post job cleanup.
+2026-09-17T14:08:47.5110000Z [command]/usr/bin/git version
+2026-09-17T14:08:47.5150000Z git version 2.50.1
+2026-09-17T14:08:47.6000000Z Cleaning up orphan processes

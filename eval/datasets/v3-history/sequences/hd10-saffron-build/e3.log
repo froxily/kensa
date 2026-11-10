@@ -1,0 +1,41 @@
+2026-09-15T11:00:00.0000000Z Current runner version: '2.328.0'
+2026-09-15T11:00:01.0000000Z ##[group]Runner Image
+2026-09-15T11:00:02.0000000Z Image: ubuntu-24.04
+2026-09-15T11:00:03.0000000Z ##[endgroup]
+2026-09-15T11:00:04.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-15T11:00:05.0000000Z Contents: read
+2026-09-15T11:00:06.0000000Z ##[endgroup]
+2026-09-15T11:00:07.0000000Z Prepare workflow directory
+2026-09-15T11:00:08.0000000Z Prepare all required actions
+2026-09-15T11:00:09.0000000Z Download action repository 'actions/checkout@v4'
+2026-09-15T11:00:10.0000000Z Download action repository 'actions/setup-dotnet@v4'
+2026-09-15T11:00:11.0000000Z Complete job name: build
+2026-09-15T11:00:12.0000000Z ##[group]Run actions/checkout@v4
+2026-09-15T11:00:13.0000000Z with:
+2026-09-15T11:00:14.0000000Z   repository: saffron-ibis/quay-ledger
+2026-09-15T11:00:15.0000000Z ##[endgroup]
+2026-09-15T11:00:16.0000000Z Syncing repository: saffron-ibis/quay-ledger
+2026-09-15T11:00:17.0000000Z Fetching the repository
+2026-09-15T11:00:18.0000000Z Checking out the ref
+2026-09-15T11:00:19.0000000Z ##[group]Run actions/setup-dotnet@v4
+2026-09-15T11:00:20.0000000Z with:
+2026-09-15T11:00:21.0000000Z   dotnet-version: 8.0.x
+2026-09-15T11:00:22.0000000Z ##[endgroup]
+2026-09-15T11:00:23.0000000Z Installed SDK 8.0.403
+2026-09-15T11:00:24.0000000Z ##[group]Run dotnet build QuayLedger.sln
+2026-09-15T11:00:25.0000000Z dotnet build QuayLedger.sln
+2026-09-15T11:00:26.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-15T11:00:27.0000000Z ##[endgroup]
+2026-09-15T11:00:28.0000000Z   Determining projects to restore...
+2026-09-15T11:00:29.0000000Z   Restored /home/runner/work/quay-ledger/quay-ledger/src/QuayLedger.csproj (in 1.1 sec).
+2026-09-15T11:00:30.0000000Z /home/runner/work/quay-ledger/quay-ledger/src/QuayTotals.cs(27,21): error CS0266: Cannot implicitly convert type 'decimal' to 'int'. An explicit conversion exists (are you missing a cast?) [/home/runner/work/quay-ledger/quay-ledger/src/QuayLedger.csproj]
+2026-09-15T11:00:31.0000000Z 
+2026-09-15T11:00:32.0000000Z Build FAILED.
+2026-09-15T11:00:33.0000000Z 
+2026-09-15T11:00:34.0000000Z /home/runner/work/quay-ledger/quay-ledger/src/QuayTotals.cs(27,21): error CS0266: Cannot implicitly convert type 'decimal' to 'int'. An explicit conversion exists (are you missing a cast?) [/home/runner/work/quay-ledger/quay-ledger/src/QuayLedger.csproj]
+2026-09-15T11:00:35.0000000Z     0 Warning(s)
+2026-09-15T11:00:36.0000000Z     1 Error(s)
+2026-09-15T11:00:37.0000000Z Time Elapsed 00:00:04.31
+2026-09-15T11:00:38.0000000Z ##[error]Process completed with exit code 1.
+2026-09-15T11:00:39.0000000Z Post job cleanup.
+2026-09-15T11:00:40.0000000Z Cleaning up orphan processes

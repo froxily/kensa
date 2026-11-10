@@ -1,0 +1,51 @@
+2026-09-15T06:41:18.4567890Z Current runner version: '2.329.0'
+2026-09-15T06:41:18.5567890Z ##[group]Runner Image
+2026-09-15T06:41:18.6567890Z Image: ubuntu-22.04
+2026-09-15T06:41:18.7567890Z Version: 20260907.1.0
+2026-09-15T06:41:18.8567890Z ##[endgroup]
+2026-09-15T06:41:18.9567890Z ##[group]GITHUB_TOKEN Permissions
+2026-09-15T06:41:19.0567890Z Contents: read
+2026-09-15T06:41:19.1567890Z Metadata: read
+2026-09-15T06:41:19.2567890Z ##[endgroup]
+2026-09-15T06:41:19.3567890Z Prepare workflow directory
+2026-09-15T06:41:19.4567890Z Prepare all required actions
+2026-09-15T06:41:20.4567890Z ##[group]Run actions/checkout@v4
+2026-09-15T06:41:20.5567890Z with:
+2026-09-15T06:41:20.6567890Z   repository: copper-heron/siltcompass
+2026-09-15T06:41:20.7567890Z   clean: true
+2026-09-15T06:41:20.8567890Z ##[endgroup]
+2026-09-15T06:41:21.4567890Z Syncing repository: copper-heron/siltcompass
+2026-09-15T06:41:22.4567890Z Checking out the ref
+2026-09-15T06:41:22.8567890Z ##[group]Run actions/setup-java@v4
+2026-09-15T06:41:22.9567890Z with:
+2026-09-15T06:41:23.0567890Z   java-version: 17
+2026-09-15T06:41:23.1567890Z   distribution: temurin
+2026-09-15T06:41:23.2567890Z ##[endgroup]
+2026-09-15T06:41:23.6567890Z Setting Java 17 as the default
+2026-09-15T06:41:23.8567890Z ##[group]Run ./gradlew :app:assembleRelease --stacktrace
+2026-09-15T06:41:23.9567890Z ./gradlew :app:assembleRelease --stacktrace
+2026-09-15T06:41:24.0567890Z shell: /usr/bin/bash -e {0}
+2026-09-15T06:41:24.1567890Z ##[endgroup]
+2026-09-15T06:41:29.4567890Z Starting a Gradle Daemon (subsequent builds will be faster)
+2026-09-15T06:41:40.4567890Z > Task :app:preBuild UP-TO-DATE
+2026-09-15T06:41:40.5567890Z > Task :app:preReleaseBuild UP-TO-DATE
+2026-09-15T06:41:41.4567890Z > Task :app:generateReleaseResValues
+2026-09-15T06:41:42.4567890Z > Task :app:extractDeepLinksRelease
+2026-09-15T06:41:43.4567890Z > Task :app:processReleaseMainManifest
+2026-09-15T06:41:44.4567890Z > Task :app:mergeReleaseResources FAILED
+2026-09-15T06:41:44.5567890Z /home/runner/work/siltcompass/siltcompass/app/src/main/res/values/strings.xml:16:4: Duplicate resources
+2026-09-15T06:41:44.6567890Z /home/runner/work/siltcompass/siltcompass/app/src/main/res/values/harbor.xml:7:4: string/berth_caption is originally defined here
+2026-09-15T06:41:44.7567890Z FAILURE: Build failed with an exception.
+2026-09-15T06:41:44.8567890Z * What went wrong:
+2026-09-15T06:41:44.9567890Z Execution failed for task ':app:mergeReleaseResources'.
+2026-09-15T06:41:45.0567890Z > [string/berth_caption] /home/runner/work/siltcompass/siltcompass/app/src/main/res/values/strings.xml	[string/berth_caption] /home/runner/work/siltcompass/siltcompass/app/src/main/res/values/harbor.xml: Error: Duplicate resources
+2026-09-15T06:41:45.1567890Z * Exception is:
+2026-09-15T06:41:45.2567890Z org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':app:mergeReleaseResources'.
+2026-09-15T06:41:45.3567890Z 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:130)
+2026-09-15T06:41:45.4567890Z 	at org.gradle.internal.Try$Failure.ifSuccessfulOrElse(Try.java:282)
+2026-09-15T06:41:45.5567890Z Caused by: com.android.ide.common.resources.MergingException: Duplicate resources
+2026-09-15T06:41:45.6567890Z BUILD FAILED in 21s
+2026-09-15T06:41:45.7567890Z 5 actionable tasks: 5 executed
+2026-09-15T06:41:45.8567890Z ##[error]Process completed with exit code 1.
+2026-09-15T06:41:45.9567890Z Post job cleanup.
+2026-09-15T06:41:46.0567890Z Cleaning up orphan processes

@@ -1,0 +1,12 @@
+{
+  "id": "ht45-thermocline-bell",
+  "split": "test",
+  "ecosystem": "c++ (cmake, gcc)",
+  "repository": "isobar-workshop/thermocline-bell",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"dependency_build","title":"Missing depth interpolation implementation","root_cause":"The soundings executable calls isobar::interpolate_depth, but the translation unit defining it is absent from the sounding_core library target.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"b","relation":"lookalike","category":"dependency_build","title":"Missing tide table implementation","root_cause":"The soundings executable calls isobar::load_tide_table, but the translation unit defining it is absent from the tide_tables library target.","differs_from_earlier":"The linker reports a different undefined symbol from a different library target; adding the tide table source fixes this failure rather than adding the interpolation source."},
+    {"id":"e3","file":"e3.log","cluster":"c","relation":"first","category":"test_regression","title":"Sounding range assertion fails","root_cause":"The range calculation returns a negative span for a reversed pair of soundings, violating the range test's expected nonnegative result.","differs_from_earlier":""},
+    {"id":"e4","file":"e4.log","cluster":"a","relation":"recurrence","category":"dependency_build","title":"Depth interpolation remains unlinked","root_cause":"The soundings executable calls isobar::interpolate_depth, but the translation unit defining it is absent from the sounding_core library target.","differs_from_earlier":"A later release build uses a different runner, build directory and source line, and the link command contains an additional library."}
+  ]
+}

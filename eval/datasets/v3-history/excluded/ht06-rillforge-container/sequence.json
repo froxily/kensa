@@ -1,0 +1,12 @@
+﻿{
+  "id": "ht06-rillforge-container",
+  "split": "test",
+  "ecosystem": "node",
+  "repository": "tamarack-labs/rillforge-console",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"docker","title":"Runtime base tag unavailable","root_cause":"The Dockerfile references a nonexistent Node runtime image tag, node:22.8.4-alpine. Select an available runtime tag.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"b","relation":"first","category":"docker","title":"Build output missing from bundle stage","root_cause":"The runtime stage copies /app/dist from the bundle stage, but that path is absent. Correct the build output or COPY source path.","differs_from_earlier":""},
+    {"id":"e3","file":"e3.log","cluster":"b","relation":"recurrence","category":"docker","title":"Build output missing from bundle stage","root_cause":"The runtime stage copies /app/dist from the bundle stage, but that path is absent. Correct the build output or COPY source path.","differs_from_earlier":"A later run uses a different runner and build context; the failing COPY appears at a shifted Dockerfile line."},
+    {"id":"e4","file":"e4.log","cluster":"a","relation":"recurrence","category":"docker","title":"Runtime base tag unavailable","root_cause":"The Dockerfile references a nonexistent Node runtime image tag, node:22.8.4-alpine. Select an available runtime tag.","differs_from_earlier":"A later build uses a different runner and context and reaches the metadata failure in a different output order."}
+  ]
+}

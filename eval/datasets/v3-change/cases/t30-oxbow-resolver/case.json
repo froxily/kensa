@@ -1,0 +1,19 @@
+﻿{
+  "id": "t30-oxbow-resolver",
+  "split": "test",
+  "comparability": "history_unavailable",
+  "category": "dependency_build",
+  "culprit_kind": "none",
+  "difficulty": "medium",
+  "ecosystem": "python",
+  "title": "Dependency installation fails after history becomes unavailable",
+  "root_cause": "The failed job cannot install the requested version of packaging because the package index has no matching distribution. The baseline used a different version, but its commit is unavailable to the compare API, so the introducing commit cannot be identified.",
+  "culprit_paths": [],
+  "culprit_commit": null,
+  "unverified_factors": [],
+  "fix_keywords": ["packaging", "requirements.txt"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 52, "end_line": 53, "why": "pip reports that the pinned requirement has no matching distribution."},
+    {"path": "repo/requirements.txt", "start_line": 1, "end_line": 1, "why": "The checked-in requirements file requests that version."}
+  ]
+}

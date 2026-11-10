@@ -1,0 +1,49 @@
+2026-09-21T07:42:05.1000000Z Current runner version: '2.329.0'
+2026-09-21T07:42:05.2000000Z ##[group]Runner Image
+2026-09-21T07:42:05.3000000Z Image: ubuntu-22.04
+2026-09-21T07:42:05.4000000Z Version: 20260913.1.0
+2026-09-21T07:42:05.5000000Z ##[endgroup]
+2026-09-21T07:42:05.6000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-21T07:42:05.7000000Z Actions: read
+2026-09-21T07:42:05.8000000Z Contents: read
+2026-09-21T07:42:05.9000000Z Metadata: read
+2026-09-21T07:42:06.0000000Z ##[endgroup]
+2026-09-21T07:42:06.1000000Z Prepare workflow directory
+2026-09-21T07:42:06.3000000Z Prepare all required actions
+2026-09-21T07:42:07.0000000Z Download action repository 'actions/checkout@v4'
+2026-09-21T07:42:07.5000000Z Download action repository 'actions/setup-go@v5'
+2026-09-21T07:42:08.1000000Z Complete job name: unit (1.24)
+2026-09-21T07:42:08.2000000Z ##[group]Run actions/checkout@v4
+2026-09-21T07:42:08.3000000Z with:
+2026-09-21T07:42:08.4000000Z   repository: polderkite/tarnsignal
+2026-09-21T07:42:08.5000000Z   clean: true
+2026-09-21T07:42:08.6000000Z   fetch-depth: 1
+2026-09-21T07:42:08.7000000Z ##[endgroup]
+2026-09-21T07:42:09.0000000Z Syncing repository: polderkite/tarnsignal
+2026-09-21T07:42:09.3000000Z Working directory is '/home/runner/work/tarnsignal/tarnsignal'
+2026-09-21T07:42:10.5000000Z Initialized empty Git repository in /home/runner/work/tarnsignal/tarnsignal/.git/
+2026-09-21T07:42:11.7000000Z Checking out the ref
+2026-09-21T07:42:11.9000000Z ##[group]Run actions/setup-go@v5
+2026-09-21T07:42:12.0000000Z with:
+2026-09-21T07:42:12.1000000Z   go-version: 1.24.x
+2026-09-21T07:42:12.2000000Z   cache: true
+2026-09-21T07:42:12.3000000Z ##[endgroup]
+2026-09-21T07:42:13.0000000Z Setup go version spec 1.24.x
+2026-09-21T07:42:13.2000000Z Found in cache @ /opt/hostedtoolcache/go/1.24.6/x64
+2026-09-21T07:42:13.4000000Z go version go1.24.6 linux/amd64
+2026-09-21T07:42:13.8000000Z Cache not found.
+2026-09-21T07:42:14.0000000Z ##[group]Run go test -count=1 -tags tidal_sqlite ./cmd/...
+2026-09-21T07:42:14.1000000Z go test -count=1 -tags tidal_sqlite ./cmd/...
+2026-09-21T07:42:14.2000000Z shell: /usr/bin/bash -e {0}
+2026-09-21T07:42:14.3000000Z ##[endgroup]
+2026-09-21T07:42:14.6000000Z go: downloading github.com/mattn/go-sqlite3 v1.14.24
+2026-09-21T07:42:15.9000000Z package github.com/polderkite/tarnsignal/cmd/tarnsignal
+2026-09-21T07:42:16.0000000Z 	imports github.com/polderkite/tarnsignal/internal/shoalindex: build constraints exclude all Go files in /home/runner/work/tarnsignal/tarnsignal/internal/shoalindex
+2026-09-21T07:42:16.1000000Z ##[error]Process completed with exit code 1.
+2026-09-21T07:42:16.2000000Z Post job cleanup.
+2026-09-21T07:42:16.4000000Z [command]/usr/bin/git version
+2026-09-21T07:42:16.5000000Z git version 2.50.1
+2026-09-21T07:42:16.6000000Z Temporarily overriding HOME='/home/runner/work/_temp/39e3' before making global git config changes
+2026-09-21T07:42:16.7000000Z Adding repository directory to the temporary git global config as a safe directory
+2026-09-21T07:42:16.8000000Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/tarnsignal/tarnsignal
+2026-09-21T07:42:17.0000000Z Cleaning up orphan processes

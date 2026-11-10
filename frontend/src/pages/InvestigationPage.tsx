@@ -6,6 +6,8 @@ import { Badge } from "../components/ui/Badge";
 import { buttonPrimary } from "../components/ui/button";
 import { Spinner } from "../components/ui/Spinner";
 import { StatusBadge } from "../features/investigations/components/Badges";
+import { ChangesPanel } from "../features/investigations/components/ChangesPanel";
+import { HistoryPanel } from "../features/investigations/components/HistoryPanel";
 import { GitHubRunCard } from "../features/investigations/components/GitHubRunCard";
 import { DiagnosisReport } from "../features/investigations/components/DiagnosisReport";
 import { RemediationReview } from "../features/investigations/components/RemediationReview";
@@ -119,6 +121,12 @@ export function InvestigationPage() {
               onShowEvidence={showEvidence}
             />
           )}
+          <ChangesPanel
+            investigationId={id}
+            evidence={data.evidence}
+            onShowEvidence={showEvidence}
+          />
+          <HistoryPanel investigationId={id} />
           {(data.proposals.length > 0 || data.decision !== null) && (
             <RemediationReview
               investigationId={id}

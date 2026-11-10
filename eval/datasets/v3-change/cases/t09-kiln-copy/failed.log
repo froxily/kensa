@@ -1,0 +1,75 @@
+2026-10-29T09:10:02.1000000Z Current runner version: '2.330.0'
+2026-10-29T09:10:02.1100000Z ##[group]Runner Image Provisioner
+2026-10-29T09:10:02.1200000Z Hosted Compute Agent
+2026-10-29T09:10:02.1300000Z Version: 20261020.1
+2026-10-29T09:10:02.1400000Z ##[endgroup]
+2026-10-29T09:10:02.1500000Z ##[group]Operating System
+2026-10-29T09:10:02.1600000Z Ubuntu
+2026-10-29T09:10:02.1700000Z 24.04.3
+2026-10-29T09:10:02.1800000Z LTS
+2026-10-29T09:10:02.1900000Z ##[endgroup]
+2026-10-29T09:10:02.2000000Z ##[group]Runner Image
+2026-10-29T09:10:02.2100000Z Image: ubuntu-24.04
+2026-10-29T09:10:02.2200000Z Version: 20261026.1
+2026-10-29T09:10:02.2300000Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261026.1/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-29T09:10:02.2400000Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261026.1
+2026-10-29T09:10:02.2500000Z ##[endgroup]
+2026-10-29T09:10:02.2600000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-29T09:10:02.2700000Z Contents: read
+2026-10-29T09:10:02.2800000Z Metadata: read
+2026-10-29T09:10:02.2900000Z ##[endgroup]
+2026-10-29T09:10:02.3000000Z Secret source: Actions
+2026-10-29T09:10:02.3100000Z Prepare workflow directory
+2026-10-29T09:10:02.3200000Z Prepare all required actions
+2026-10-29T09:10:02.3300000Z Getting action download info
+2026-10-29T09:10:02.5000000Z Download action repository 'actions/checkout@v4'
+2026-10-29T09:10:03.0000000Z Complete job name: image
+2026-10-29T09:10:03.1000000Z ##[group]Run actions/checkout@v4
+2026-10-29T09:10:03.1100000Z with:
+2026-10-29T09:10:03.1200000Z   repository: clayworks/kiln
+2026-10-29T09:10:03.1300000Z   clean: true
+2026-10-29T09:10:03.1400000Z   fetch-depth: 1
+2026-10-29T09:10:03.1500000Z ##[endgroup]
+2026-10-29T09:10:03.2000000Z Syncing repository: clayworks/kiln
+2026-10-29T09:10:03.2100000Z ##[group]Getting Git version info
+2026-10-29T09:10:03.2200000Z git version 2.51.0
+2026-10-29T09:10:03.2300000Z ##[endgroup]
+2026-10-29T09:10:03.3000000Z Initializing the repository
+2026-10-29T09:10:03.4000000Z Fetching the repository
+2026-10-29T09:10:04.0000000Z Checking out the ref
+2026-10-29T09:10:04.1000000Z [command]/usr/bin/git log -1 --format=%H
+2026-10-29T09:10:04.1100000Z 3f8a21c9d6e4b078a5c2f13d9e7640ab18c3d5e7
+2026-10-29T09:10:04.2000000Z ##[group]Run docker build --progress=plain -t kiln-app .
+2026-10-29T09:10:04.2100000Z docker build --progress=plain -t kiln-app .
+2026-10-29T09:10:04.2200000Z shell: /usr/bin/bash -e {0}
+2026-10-29T09:10:04.2300000Z ##[endgroup]
+2026-10-29T09:10:04.4000000Z #0 building with "default" instance using docker driver
+2026-10-29T09:10:04.5000000Z #1 [internal] load build definition from Dockerfile
+2026-10-29T09:10:04.5100000Z #1 transferring dockerfile: 213B done
+2026-10-29T09:10:04.5200000Z #1 DONE 0.0s
+2026-10-29T09:10:04.7000000Z #2 [internal] load metadata for docker.io/library/python:3.12-slim
+2026-10-29T09:10:05.0000000Z #2 DONE 0.3s
+2026-10-29T09:10:05.1000000Z #3 [internal] load .dockerignore
+2026-10-29T09:10:05.1100000Z #3 transferring context: 2B done
+2026-10-29T09:10:05.1200000Z #3 DONE 0.0s
+2026-10-29T09:10:05.2000000Z #4 [internal] load build context
+2026-10-29T09:10:05.2100000Z #4 transferring context: 1.19kB done
+2026-10-29T09:10:05.2200000Z #4 DONE 0.0s
+2026-10-29T09:10:05.3000000Z #5 [5/5] COPY source/ /app/src/
+2026-10-29T09:10:05.3100000Z #5 ERROR: failed to calculate checksum of ref: "/source": not found
+2026-10-29T09:10:05.3200000Z ------
+2026-10-29T09:10:05.3300000Z  > [5/5] COPY source/ /app/src/:
+2026-10-29T09:10:05.3400000Z ------
+2026-10-29T09:10:05.3500000Z Dockerfile:5
+2026-10-29T09:10:05.3600000Z --------------------
+2026-10-29T09:10:05.3700000Z    3 |     COPY requirements.txt /app/requirements.txt
+2026-10-29T09:10:05.3800000Z    4 |     RUN pip install --no-cache-dir -r requirements.txt
+2026-10-29T09:10:05.3900000Z    5 | >>> COPY source/ /app/src/
+2026-10-29T09:10:05.4000000Z    6 |     CMD ["python", "-m", "src.kiln"]
+2026-10-29T09:10:05.4100000Z --------------------
+2026-10-29T09:10:05.4200000Z ERROR: failed to build: failed to solve: failed to compute cache key: failed to calculate checksum of ref: "/source": not found
+2026-10-29T09:10:05.5000000Z ##[error]Process completed with exit code 1.
+2026-10-29T09:10:05.6000000Z Post job cleanup.
+2026-10-29T09:10:05.7000000Z [command]/usr/bin/git version
+2026-10-29T09:10:05.7100000Z git version 2.51.0
+2026-10-29T09:10:05.8000000Z Cleaning up orphan processes

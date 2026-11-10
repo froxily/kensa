@@ -1,0 +1,15 @@
+{
+  "comparisons": {
+    "a62f4b9e078c13d5a9e62c714f3b805d926ce148...f29a8c7d61e4305b9a2d8f47c106e53a7b9d0241": {
+      "status": "ahead", "merge_base": "a62f4b9e078c13d5a9e62c714f3b805d926ce148", "truncated": false,
+      "commits": [
+        {"sha": "b74d1e09c6f823a591e47d3b0a6c85f29e13b7d4", "message": "Normalize open entry amounts", "date": "2026-10-30T08:50:00Z", "files": [{"path": "ledger_math.py", "status": "modified", "additions": 1, "deletions": 1, "patch": "@@ -1,3 +1,3 @@\n def outstanding(entries):\n     \"\"\"Total signed amounts for entries that are still open.\"\"\"\n-    return sum(entry[\"amount\"] for entry in entries if not entry[\"settled\"])\n+    return sum(abs(entry[\"amount\"]) for entry in entries if not entry[\"settled\"])"}]},
+        {"sha": "c03a9f5b871e42d6a1390bc75e6f28a4d901b3e7", "message": "Expand ledger usage notes", "date": "2026-10-30T09:05:00Z", "files": [{"path": "README.md", "status": "modified", "additions": 13, "deletions": 0, "patch": "@@ -1,3 +1,16 @@\n # Aurora ledger\n \n The ledger helper totals open entries.\n+Amounts are signed: credits reduce the open total.\n+Settled entries are excluded.\n+\n+## Local checks\n+\n+Install pytest in a virtual environment.\n+Run `python -m pytest -v` from the repository root.\n+The test suite covers credits and an empty ledger.\n+\n+## Data shape\n+\n+Each entry has an integer amount.\n+Each entry has a boolean settled flag."}]},
+        {"sha": "d4817b3e6a0c925f8d124be609ac73f5e219b4c6", "message": "Document return type", "date": "2026-10-30T09:35:00Z", "files": [{"path": "README.md", "status": "modified", "additions": 1, "deletions": 0, "patch": "@@ -14,3 +14,4 @@\n \n Each entry has an integer amount.\n Each entry has a boolean settled flag.\n+The helper returns an integer."}]},
+        {"sha": "f29a8c7d61e4305b9a2d8f47c106e53a7b9d0241", "message": "Select the tests directory", "date": "2026-10-30T10:10:00Z", "files": [{"path": "pytest.ini", "status": "added", "additions": 2, "deletions": 0, "patch": "@@ -0,0 +1,2 @@\n+[pytest]\n+testpaths = tests"}]}
+      ]
+    }
+  },
+  "workflow_blobs": {"a62f4b9e078c13d5a9e62c714f3b805d926ce148": "e8c2614fa073bd95c4283f7610ab9d5e4c732f16", "f29a8c7d61e4305b9a2d8f47c106e53a7b9d0241": "e8c2614fa073bd95c4283f7610ab9d5e4c732f16"}
+}
+

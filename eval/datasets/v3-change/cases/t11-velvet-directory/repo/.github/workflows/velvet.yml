@@ -1,0 +1,15 @@
+﻿name: Velvet checks
+on: push
+jobs:
+  verify-velvet:
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: ./client-shell
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install
+      - run: npm test

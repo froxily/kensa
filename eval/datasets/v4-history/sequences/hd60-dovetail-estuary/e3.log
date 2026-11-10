@@ -1,0 +1,45 @@
+2026-09-12T15:40:11.1000000Z Current runner version: '2.328.0'
+2026-09-12T15:40:11.1100000Z ##[group]Runner Image
+2026-09-12T15:40:11.1200000Z Image: ubuntu-24.04
+2026-09-12T15:40:11.1300000Z Version: 20260907.1.0
+2026-09-12T15:40:11.1400000Z ##[endgroup]
+2026-09-12T15:40:11.1500000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-12T15:40:11.1600000Z Contents: read
+2026-09-12T15:40:11.1700000Z ##[endgroup]
+2026-09-12T15:40:11.1800000Z Prepare workflow directory
+2026-09-12T15:40:11.1900000Z Prepare all required actions
+2026-09-12T15:40:11.2000000Z Getting action download info
+2026-09-12T15:40:11.2100000Z ##[group]Run actions/checkout@v4
+2026-09-12T15:40:11.2200000Z with:
+2026-09-12T15:40:11.2300000Z   repository: dovetail-estuary/silt-index
+2026-09-12T15:40:11.2400000Z   fetch-depth: 1
+2026-09-12T15:40:11.2500000Z ##[endgroup]
+2026-09-12T15:40:11.2600000Z Syncing repository: dovetail-estuary/silt-index
+2026-09-12T15:40:11.2700000Z ##[group]Getting Git version info
+2026-09-12T15:40:11.2800000Z git version 2.51.0
+2026-09-12T15:40:11.2900000Z ##[endgroup]
+2026-09-12T15:40:12.1000000Z ##[group]Checking out the ref
+2026-09-12T15:40:12.1100000Z HEAD is now at 64c02eb Add reader
+2026-09-12T15:40:12.1200000Z ##[endgroup]
+2026-09-12T15:40:12.1300000Z ##[group]Run denoland/setup-deno@v2
+2026-09-12T15:40:12.1400000Z with:
+2026-09-12T15:40:12.1500000Z   deno-version: v2.4.5
+2026-09-12T15:40:12.1600000Z ##[endgroup]
+2026-09-12T15:40:13.1000000Z Deno was installed successfully
+2026-09-12T15:40:13.1100000Z ##[group]Run deno fmt --check
+2026-09-12T15:40:13.1200000Z deno fmt --check
+2026-09-12T15:40:13.1300000Z shell: /usr/bin/bash -e {0}
+2026-09-12T15:40:13.1400000Z ##[endgroup]
+2026-09-12T15:40:13.1500000Z Checked 10 files
+2026-09-12T15:40:13.1600000Z ##[group]Run deno task check:reader
+2026-09-12T15:40:13.1700000Z deno task check:reader
+2026-09-12T15:40:13.1800000Z shell: /usr/bin/bash -e {0}
+2026-09-12T15:40:13.1900000Z ##[endgroup]
+2026-09-12T15:40:13.2000000Z Task check:reader deno check src/reader.ts
+2026-09-12T15:40:13.2100000Z error: Module not found "file:///home/runner/work/silt-index/silt-index/src/schema.ts".
+2026-09-12T15:40:13.2200000Z     at file:///home/runner/work/silt-index/silt-index/src/reader.ts:2:30
+2026-09-12T15:40:13.2300000Z ##[error]Process completed with exit code 1.
+2026-09-12T15:40:13.2400000Z Post job cleanup.
+2026-09-12T15:40:13.2500000Z [command]/usr/bin/git version
+2026-09-12T15:40:13.2600000Z git version 2.51.0
+2026-09-12T15:40:13.2700000Z Cleaning up orphan processes

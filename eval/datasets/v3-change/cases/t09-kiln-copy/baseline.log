@@ -1,0 +1,68 @@
+2026-10-28T16:30:02.1000000Z Current runner version: '2.330.0'
+2026-10-28T16:30:02.1100000Z ##[group]Runner Image Provisioner
+2026-10-28T16:30:02.1200000Z Hosted Compute Agent
+2026-10-28T16:30:02.1300000Z Version: 20261020.1
+2026-10-28T16:30:02.1400000Z ##[endgroup]
+2026-10-28T16:30:02.1500000Z ##[group]Operating System
+2026-10-28T16:30:02.1600000Z Ubuntu
+2026-10-28T16:30:02.1700000Z 24.04.3
+2026-10-28T16:30:02.1800000Z LTS
+2026-10-28T16:30:02.1900000Z ##[endgroup]
+2026-10-28T16:30:02.2000000Z ##[group]Runner Image
+2026-10-28T16:30:02.2100000Z Image: ubuntu-24.04
+2026-10-28T16:30:02.2200000Z Version: 20261026.1
+2026-10-28T16:30:02.2300000Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261026.1/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-28T16:30:02.2400000Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261026.1
+2026-10-28T16:30:02.2500000Z ##[endgroup]
+2026-10-28T16:30:02.2600000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-28T16:30:02.2700000Z Contents: read
+2026-10-28T16:30:02.2800000Z Metadata: read
+2026-10-28T16:30:02.2900000Z ##[endgroup]
+2026-10-28T16:30:02.3000000Z Secret source: Actions
+2026-10-28T16:30:02.3100000Z Prepare workflow directory
+2026-10-28T16:30:02.3200000Z Prepare all required actions
+2026-10-28T16:30:02.3300000Z Getting action download info
+2026-10-28T16:30:02.5000000Z Download action repository 'actions/checkout@v4'
+2026-10-28T16:30:03.0000000Z Complete job name: image
+2026-10-28T16:30:03.1000000Z ##[group]Run actions/checkout@v4
+2026-10-28T16:30:03.1100000Z with:
+2026-10-28T16:30:03.1200000Z   repository: clayworks/kiln
+2026-10-28T16:30:03.1300000Z   clean: true
+2026-10-28T16:30:03.1400000Z   fetch-depth: 1
+2026-10-28T16:30:03.1500000Z ##[endgroup]
+2026-10-28T16:30:03.2000000Z Syncing repository: clayworks/kiln
+2026-10-28T16:30:03.2100000Z git version 2.51.0
+2026-10-28T16:30:03.3000000Z Initializing the repository
+2026-10-28T16:30:03.4000000Z Fetching the repository
+2026-10-28T16:30:04.0000000Z Checking out the ref
+2026-10-28T16:30:04.1000000Z [command]/usr/bin/git log -1 --format=%H
+2026-10-28T16:30:04.1100000Z a5d09c3e71b8462f9c034ad5b8e1276f4c90d2ab
+2026-10-28T16:30:04.2000000Z ##[group]Run docker build --progress=plain -t kiln-app .
+2026-10-28T16:30:04.2100000Z docker build --progress=plain -t kiln-app .
+2026-10-28T16:30:04.2200000Z shell: /usr/bin/bash -e {0}
+2026-10-28T16:30:04.2300000Z ##[endgroup]
+2026-10-28T16:30:04.4000000Z #0 building with "default" instance using docker driver
+2026-10-28T16:30:04.5000000Z #1 [internal] load build definition from Dockerfile
+2026-10-28T16:30:04.5200000Z #1 DONE 0.0s
+2026-10-28T16:30:04.7000000Z #2 [internal] load metadata for docker.io/library/python:3.12-slim
+2026-10-28T16:30:05.0000000Z #2 DONE 0.3s
+2026-10-28T16:30:05.1000000Z #3 [internal] load .dockerignore
+2026-10-28T16:30:05.1200000Z #3 DONE 0.0s
+2026-10-28T16:30:05.2000000Z #4 [internal] load build context
+2026-10-28T16:30:05.2200000Z #4 DONE 0.0s
+2026-10-28T16:30:06.1000000Z #5 [1/5] FROM docker.io/library/python:3.12-slim
+2026-10-28T16:30:07.2000000Z #5 DONE 1.1s
+2026-10-28T16:30:07.3000000Z #6 [2/5] WORKDIR /app
+2026-10-28T16:30:07.4000000Z #6 DONE 0.1s
+2026-10-28T16:30:07.5000000Z #7 [3/5] COPY requirements.txt /app/requirements.txt
+2026-10-28T16:30:07.6000000Z #7 DONE 0.1s
+2026-10-28T16:30:07.7000000Z #8 [4/5] RUN pip install --no-cache-dir -r requirements.txt
+2026-10-28T16:30:10.8000000Z #8 DONE 3.1s
+2026-10-28T16:30:10.9000000Z #9 [5/5] COPY src/ /app/src/
+2026-10-28T16:30:11.0000000Z #9 DONE 0.1s
+2026-10-28T16:30:11.1000000Z #10 exporting to image
+2026-10-28T16:30:11.2000000Z #10 exporting layers 0.1s done
+2026-10-28T16:30:11.3000000Z #10 naming to docker.io/library/kiln-app done
+2026-10-28T16:30:11.3100000Z #10 DONE 0.2s
+2026-10-28T16:30:11.4000000Z Post job cleanup.
+2026-10-28T16:30:11.5000000Z Cleaning up orphan processes

@@ -1,0 +1,55 @@
+2026-09-23T18:05:20.0100000Z Current runner version: '2.329.0'
+2026-09-23T18:05:20.1100000Z ##[group]Runner Image Provisioner
+2026-09-23T18:05:20.2100000Z Hosted Compute Agent
+2026-09-23T18:05:20.3100000Z ##[endgroup]
+2026-09-23T18:05:20.4100000Z ##[group]Operating System
+2026-09-23T18:05:20.5100000Z Ubuntu
+2026-09-23T18:05:20.6100000Z 24.04.3
+2026-09-23T18:05:20.7100000Z ##[endgroup]
+2026-09-23T18:05:20.8100000Z ##[group]Runner Image
+2026-09-23T18:05:20.9100000Z Image: ubuntu-24.04
+2026-09-23T18:05:21.0100000Z ##[endgroup]
+2026-09-23T18:05:21.1100000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-23T18:05:21.2100000Z Contents: read
+2026-09-23T18:05:21.3100000Z ##[endgroup]
+2026-09-23T18:05:21.4100000Z Prepare workflow directory
+2026-09-23T18:05:21.5100000Z Prepare all required actions
+2026-09-23T18:05:21.6100000Z Getting action download info
+2026-09-23T18:05:21.7100000Z Download action repository 'actions/checkout@v4'
+2026-09-23T18:05:21.8100000Z Complete job name: catalog
+2026-09-23T18:05:21.9100000Z ##[group]Run actions/checkout@v4
+2026-09-23T18:05:22.0100000Z with:
+2026-09-23T18:05:22.1100000Z   repository: moonwort-labs/pulley-index
+2026-09-23T18:05:22.2100000Z   fetch-depth: 1
+2026-09-23T18:05:22.3100000Z ##[endgroup]
+2026-09-23T18:05:22.4100000Z Syncing repository: moonwort-labs/pulley-index
+2026-09-23T18:05:22.5100000Z [command]/usr/bin/git init /home/runner/work/pulley-index/pulley-index
+2026-09-23T18:05:22.6100000Z Initialized empty Git repository in /home/runner/work/pulley-index/pulley-index/.git/
+2026-09-23T18:05:22.7100000Z Fetching the repository
+2026-09-23T18:05:23.8100000Z Checking out the ref
+2026-09-23T18:05:23.9100000Z [command]/usr/bin/git log -1 --format=%H
+2026-09-23T18:05:24.0100000Z c13c8cc264009259ee6dd18be0331b8ec9d257f1
+2026-09-23T18:05:24.1100000Z ##[group]Run bazel build --jobs=2 //catalog:compiled_index
+2026-09-23T18:05:24.2100000Z bazel build --jobs=2 //catalog:compiled_index
+2026-09-23T18:05:24.3100000Z shell: /usr/bin/bash -e {0}
+2026-09-23T18:05:24.4100000Z ##[endgroup]
+2026-09-23T18:05:24.5100000Z Extracting Bazel installation...
+2026-09-23T18:05:25.6100000Z Starting local Bazel server and connecting to it...
+2026-09-23T18:05:27.7100000Z Computing main repo mapping:
+2026-09-23T18:05:28.8100000Z Loading: 0 packages loaded
+2026-09-23T18:05:29.9100000Z Analyzing: target //catalog:compiled_index (5 packages loaded, 8 targets configured)
+2026-09-23T18:05:31.0100000Z INFO: Analyzed target //catalog:compiled_index (43 packages loaded, 198 targets configured).
+2026-09-23T18:05:31.1100000Z [4 / 11] checking cached actions
+2026-09-23T18:05:32.2100000Z [8 / 11] Compiling catalog/index.yaml; 1s linux-sandbox
+2026-09-23T18:05:32.3100000Z ERROR: /home/runner/work/pulley-index/pulley-index/catalog/BUILD.bazel:23:12: Compiling catalog/index.yaml failed: (Exit 1): catalogc failed: error executing CatalogCompile command (from target //catalog:compiled_index) bazel-out/k8-opt-exec-ST-a828a81199fe/bin/tools/catalogc --input catalog/index.yaml --output catalog/generated/index.bin
+2026-09-23T18:05:32.4100000Z Use --sandbox_debug to see verbose messages from the sandbox and retain the sandbox build root for debugging
+2026-09-23T18:05:32.5100000Z catalogc: open catalog/generated/index.bin: Read-only file system
+2026-09-23T18:05:32.6100000Z Target //catalog:compiled_index failed to build
+2026-09-23T18:05:32.7100000Z INFO: Elapsed time: 8.404s, Critical Path: 1.04s
+2026-09-23T18:05:32.8100000Z INFO: 9 processes: 9 internal.
+2026-09-23T18:05:32.9100000Z ERROR: Build did NOT complete successfully
+2026-09-23T18:05:33.0100000Z ##[error]Process completed with exit code 1.
+2026-09-23T18:05:33.1100000Z Post job cleanup.
+2026-09-23T18:05:33.2100000Z [command]/usr/bin/git version
+2026-09-23T18:05:33.3100000Z git version 2.51.1
+2026-09-23T18:05:33.4100000Z Cleaning up orphan processes

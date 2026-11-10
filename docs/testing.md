@@ -46,8 +46,18 @@ recorded HTTP fixtures (respx) stand in for GitHub. Areas with the most tests:
   - `test_remediation.py`: diff path traversal.
   - `test_api_investigations.py`: oversized input and workspace isolation.
 - **The evaluation harness** (`test_evaluation.py`): dataset freezing and the metrics.
+- **History and ETL (v1.1)** (`test_history.py`):
+  - incremental, idempotent sync against a fake GitHub (a re-sync changes nothing; an interrupted sync resumes from its cursor; a rate limit ends the batch)
+  - the request budget, the data-quality checks (each seeded defect is found), import de-duplication
+  - Forget repository and retention as full cascades: a marker written into every derived record (log chunks, quotes, evidence, events, proposals, LangGraph checkpoints, incident documents, fingerprint templates) is found in no column of any table afterwards, analytics rows go too (`test_analytics.py`), and a meta-test fails if any table with `workspace_id` is not covered
+- **Fingerprints (v1.1)** (`test_fingerprints.py`): recurrences with different noise match, look-alikes do not, a wrong earlier diagnosis cannot change a later status, and resolutions never change a diagnosis.
+- **Change-aware investigation (v1.1)** (`test_changes.py`): every comparability factor and the precedence, unknown never treated as same, suspects never stated as causes, diff evidence never corroborating, the GitHub source's budget.
+- **Analytics (v1.1)** (`test_analytics.py`): an idempotent and incremental daily refresh, origins kept apart, the dashboard API and its workspace isolation.
+- **Migrations** (`test_migrations.py`): a round trip, the models matching the migrations, and a database written by v1.0 upgrading with every row unchanged.
+- **No execution paths (v1.1)** (`test_security.py`): history, change, analytics, fingerprint and remediation code imports no process, shell, code-evaluation or deserialisation module (an AST check).
 - **The replay recording** (`test_replay_recording.py`, `test_record_replays.py`):
-  - written without Kensa's verifier, it checks every recorded log line, evidence block, error signature and citation (all 20) against the sample logs, the knowledge notes and the v2 dev cases
+  - written without Kensa's verifier, it checks every recorded log line, evidence block, error signature and citation against the sample logs, the knowledge notes, the v2 dev cases and the v3-change dev case's patches
+  - format 2 (v1.1): only the synthetic change case carries a change analysis, its suspects are correlations, every run has its similar failures, and the dashboard counts the recorded runs
   - it fails if the recording is edited by hand: altered quotes, evidence lines and statuses were each caught when tried
   - the recorder refuses to write secrets, signed URLs or this machine's paths
 - **The repository** (`test_repository.py`): nothing the app or its evaluation reads is git-ignored.
@@ -67,7 +77,7 @@ Tests marked `db` use the local PostgreSQL. Each creates its own data, so they n
   - a sample investigation end to end, through to the citation that opens its log line
   - redaction of a pasted secret
   - the skip link
-  - axe on the main pages in **English and Japanese, light and dark**
+  - axe on the main pages, the analytics dashboard included, in **English and Japanese, light and dark**
 - **`replay.spec.ts`** (also runs alone, with no backend, database or model: `npm --prefix frontend run e2e:replay`):
   - the replay build shows the recorded runs, labelled as a replay, and makes **no request outside its own files** (every request is recorded and checked)
   - every page, a citation, an approval and the language switch still work with **every request outside the replay's own files blocked**, with no page or console errors
@@ -98,6 +108,8 @@ On a machine that already runs Kensa's database, give the clone's database its o
 - **The live model.** Live runs are measured separately:
   - `scripts/live_check.py`
   - the evaluation harness (`scripts/evaluate.py`, see [evaluation.md](evaluation.md))
+  - the v3 harness (`scripts/evaluate_v3.py`: change analysis, fingerprints, and the model ablation with `--llm`)
+- **Scale.** `scripts/benchmark_analytics.py` measures the analytics refresh and the dashboard on 50,000 synthetic runs (`eval/reports/v11-analytics-benchmark.md`).
   - the replay recorder (`scripts/record_replays.py`)
 - **Live GitHub.** The client is tested against recorded fixtures. M4's anonymous live check is in `eval/reports/m4-live-github-anonymous.md`. The authenticated run's reports hold a real repository's logs and are not published.
 - **The GitHub Actions workflow** (`.github/workflows/ci.yml`) mirrors these steps.

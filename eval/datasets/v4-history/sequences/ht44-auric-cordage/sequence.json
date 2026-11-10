@@ -1,0 +1,12 @@
+{
+  "id": "ht44-auric-cordage",
+  "split": "test",
+  "ecosystem": "release tooling (gh, actions permissions)",
+  "repository": "mistral-skein/auric-cordage",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"github_permissions","title":"Release asset upload lacks contents write permission","root_cause":"The workflow token has contents read permission, so GitHub rejects release asset uploads. Grant contents write to the publishing job.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"a","relation":"recurrence","category":"github_permissions","title":"Release asset upload lacks contents write permission","root_cause":"The workflow token has contents read permission, so GitHub rejects release asset uploads. Grant contents write to the publishing job.","differs_from_earlier":"A later tag uploads a different archive from another runner; the same token permission prevents the upload."},
+    {"id":"e3","file":"e3.log","cluster":"b","relation":"lookalike","category":"github_permissions","title":"Release asset upload blocked by immutable release","root_cause":"The target release is immutable and cannot accept additional assets. Attach the asset before publishing or create a new release.","differs_from_earlier":"The token has contents write access, but this published release is immutable; granting token permission does not permit adding an asset."},
+    {"id":"e4","file":"e4.log","cluster":"c","relation":"first","category":"missing_env_var","title":"Manifest signing configuration missing","root_cause":"The manifest creation step requires CORDAGE_MANIFEST_PROFILE, but the job does not supply it. Configure that variable for the job.","differs_from_earlier":""}
+  ]
+}

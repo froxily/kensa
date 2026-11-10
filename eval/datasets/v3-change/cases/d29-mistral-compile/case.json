@@ -1,0 +1,18 @@
+﻿{
+  "id": "d29-mistral-compile",
+  "split": "dev",
+  "comparability": "no_baseline",
+  "category": "dependency_build",
+  "culprit_kind": "none",
+  "difficulty": "medium",
+  "ecosystem": "rust",
+  "title": "Rust library fails to compile on a pull request",
+  "root_cause": "The Rust compiler cannot resolve the function `normalize_heading` called by the library, so the build stops before tests run. Earlier candidate runs all failed, leaving no successful baseline from which to attribute the error to a change.",
+  "culprit_paths": [],
+  "culprit_commit": null,
+  "unverified_factors": [],
+  "fix_keywords": ["normalize_heading"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 52, "end_line": 59, "why": "The compiler identifies an unresolved function and stops compilation."}
+  ]
+}

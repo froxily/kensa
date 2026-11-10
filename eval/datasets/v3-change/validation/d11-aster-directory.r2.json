@@ -1,0 +1,14 @@
+{
+  "id": "d11-aster-directory",
+  "independent_labels": {
+    "comparability": "comparable",
+    "unverified_factors": [],
+    "category": "workflow_path",
+    "culprit_kind": "workflow",
+    "culprit_paths": ["aster/text.py", "tests/test_text.py", "tests/__init__.py"]
+  },
+  "verdict": "disagree",
+  "disputed_fields": ["culprit_paths"],
+  "reason_category": "label_conflict",
+  "notes": "The move removes all three tracked files from legacy; tests/__init__.py is also part of the change that removes the old working directory. Leaving that file at its original path would preserve legacy/tests and thus legacy. The case lists only the other two moved files."
+}

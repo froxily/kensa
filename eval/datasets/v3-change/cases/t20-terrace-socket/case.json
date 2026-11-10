@@ -1,0 +1,19 @@
+﻿{
+  "id": "t20-terrace-socket",
+  "split": "test",
+  "comparability": "partially_comparable",
+  "category": "db_connectivity",
+  "culprit_kind": "workflow",
+  "difficulty": "medium",
+  "ecosystem": "ruby",
+  "title": "Database probe selects a host socket",
+  "root_cause": "The workflow changed PGHOST from the loopback address to a local Unix socket directory. PostgreSQL runs in a service container with a published TCP port, so that socket is not present on the runner and the probe cannot connect.",
+  "culprit_paths": [".github/workflows/terrace.yml"],
+  "culprit_commit": "3e2f4b619a70d8c5e13a6b249f8d071c5a92e364",
+  "unverified_factors": ["runner_labels_unknown"],
+  "fix_keywords": ["PGHOST", "127.0.0.1"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 60, "end_line": 67, "why": "The job sets a socket directory and the client cannot find the PostgreSQL socket."},
+    {"path": "log", "start_line": 32, "end_line": 36, "why": "The PostgreSQL service publishes its port and becomes healthy."}
+  ]
+}

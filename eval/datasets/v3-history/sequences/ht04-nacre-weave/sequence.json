@@ -1,0 +1,12 @@
+{
+  "id": "ht04-nacre-weave",
+  "split": "test",
+  "ecosystem": "rust",
+  "repository": "nacre-loom/weft-index",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"dependency_build","title":"Unknown field in segment builder","root_cause":"The segment builder accesses `span` on `ThreadSegment`, but that type has no such field.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"b","relation":"lookalike","category":"dependency_build","title":"Unknown field in spool formatter","root_cause":"The spool formatter accesses `shade` on `SpoolLabel`, but that type has no such field.","differs_from_earlier":"Both are Rust E0609 field errors, but they affect different types and require changes to different field accesses."},
+    {"id":"e3","file":"e3.log","cluster":"c","relation":"first","category":"dependency_build","title":"Unavailable reedframe version","root_cause":"The reedframe requirement `^0.9` has no matching version in the searched crates.io index.","differs_from_earlier":""},
+    {"id":"e4","file":"e4.log","cluster":"d","relation":"lookalike","category":"dependency_build","title":"Unavailable shuttletree version","root_cause":"The shuttletree requirement `^0.6` has no matching version in the searched crates.io index.","differs_from_earlier":"Both are Cargo version selection errors, but a different dependency requirement must be corrected."}
+  ]
+}

@@ -1,0 +1,10 @@
+﻿{
+  "id": "t24-rill-almanac", "split": "test", "comparability": "identical", "category": "test_regression", "culprit_kind": "none", "difficulty": "medium", "ecosystem": "go",
+  "title": "Calendar assertion ages past its fixed year",
+  "root_cause": "The failed run and the successful baseline use the same commit. The test compares the current UTC year to a fixed value of 2025, so it passes in 2025 and fails after the calendar turns to 2026. No change in the compared range caused the failure.",
+  "culprit_paths": [], "culprit_commit": null, "unverified_factors": [], "fix_keywords": ["time.Now", "2025"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 56, "end_line": 59, "why": "The calendar test reports the current year and its fixed expectation."},
+    {"path": "repo/almanac/year_test.go", "start_line": 8, "end_line": 11, "why": "The test reads the current time and expects a fixed year."}
+  ]
+}

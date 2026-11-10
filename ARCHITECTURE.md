@@ -1,6 +1,6 @@
 # Architecture
 
-> **Status:** M1 (functional MVP) is built. Sections marked *(planned, Mx)* describe the approved design and are not built yet. Decisions and their rationale are in `DECISIONS.md`.
+> **Status:** v1.1.0 is released (failure intelligence; historical recurrence matching is experimental and off by default). Sections marked *(planned, Mx)* describe the approved design and are not built yet. Decisions and their rationale are in `DECISIONS.md`.
 
 ## System overview
 
@@ -21,7 +21,7 @@ flowchart LR
 | `core` | Settings (loopback-only Ollama URL), JSON logging |
 | `db` | SQLAlchemy models, sync engine (D-015), health probe; Alembic migrations in `backend/alembic` |
 | `ingestion` | Normalisation and limits, line-preserving secret redaction, CI-log-aware chunking; YAML, Markdown and code chunkers (M2) |
-| `analysis` | Error-signature rules, rule classifier, the 8 failure categories |
+| `analysis` | Error-signature rules, rule classifier, the 8 failure categories; failure fingerprints (v1.1) |
 | `indexing` | Repositories, scoped documents, incremental re-indexing, knowledge notes, pending embeddings (M2) |
 | `retrieval` | Signature, full-text and vector channels, weighted RRF fusion, scope, tail fallback |
 | `inference` | `InferenceProvider` seam: `MockProvider` (rules only), `OllamaProvider` (httpx, D-017); embedders (Ollama, hashing) |
@@ -29,7 +29,10 @@ flowchart LR
 | `jobs` | Leased PostgreSQL job queue and worker |
 | `investigations` | Create and retry services, bundled samples |
 | `github` (M4) | Read-only GitHub client (`client.py`), URL and redirect rules (`urls.py`), public-address-only transport (`net.py`), run import (`importer.py`) |
-| `evaluation` | Frozen-dataset loading and verification, retrieval metrics (M2) |
+| `evaluation` | Frozen-dataset loading and verification, retrieval metrics (M2); v3 case and sequence loaders (v1.1) |
+| `history` (v1.1) | Tracked repositories, the budgeted history reader and incremental sync, data-quality checks, similar failures and resolutions, Forget and retention |
+| `changes` (v1.1) | Change-aware investigation: baseline choice, comparability factors, ranked suspects, diff documents |
+| `analytics` (v1.1) | The daily aggregate, its incremental refresh, and the dashboard queries |
 
 ## Request flow (built in M1)
 
@@ -237,7 +240,7 @@ flowchart LR
   - Components read the active language through `useStrings()`. The choice persists in the browser and sets `<html lang>`.
   - Model output, evidence and verifier notes are data, so they stay in English, with a note in Japanese.
 - **Replay build** (`npm run build:replay`, Vite mode `replay`):
-  - **Data:** `scripts/record_replays.py` runs the real app in its production settings against its own database, and saves the API's responses to `frontend/replay/recording.json`. It refuses to write anything that matches the secret, signed-URL or local-path checks.
+  - **Data:** `scripts/record_replays.py` runs the real app in its production settings against its own database, and saves the API's responses to `frontend/replay/recording.json`. Format 2 (v1.1) adds each run's history (recorded in the default settings, so with matching off) and change analysis, and the dashboard; the one change analysis comes from a synthetic v3-change dev case, and the replay labels it so. It refuses to write anything that matches the secret, signed-URL or local-path checks.
   - **Answers:** in the replay build, `lib/api/client.ts` answers from that file instead of HTTP (`lib/api/replay.ts`). A decision changes an in-memory copy by the backend's rules, and everything else is refused.
   - **Hosting:** static, with hash routing and no proxy. A banner, a badge and the status pill say it is a replay.
   - **Separation:** the recording ships only in this build. The normal build contains the small adapter as an unused chunk.
@@ -249,6 +252,29 @@ flowchart LR
   BUILD --> UI["Same React UI<br/>lib/api answers from the recording"]
 ```
 
+## Failure intelligence (v1.1, D-051 to D-057)
+
+```mermaid
+flowchart LR
+  GH["api.github.com<br/>(GET only, budgeted)"] -- "runs, jobs" --> SYNC["history worker<br/>incremental, idempotent sync"]
+  SYNC --> CI[("ci_runs, ci_jobs<br/>etl_batches, dq_findings")]
+  GH -- "compare base...head" --> IMP["GitHub import<br/>change analysis"]
+  IMP --> CH[("change_analyses<br/>change_suspects<br/>diff documents")]
+  CH -- "notes, citable hunks<br/>(support only)" --> AG["agent graph<br/>collect_changes"]
+  NEW["any new investigation"] -- "rule-derived" --> FP[("failure_fingerprints<br/>investigation_fingerprints")]
+  FP -- "only if KENSA_HISTORY_MATCHING<br/>(experimental, off)" --> SIM["History panel<br/>recurrences, similar failures<br/>(history, not evidence)"]
+  CI --> AD[("analytics_daily")]
+  NEW --> AD
+  AD --> DASH["/analytics dashboard"]
+```
+
+- **History** (D-052): a dedicated worker syncs tracked public repositories. Runs and jobs are upserted on their natural keys, a cursor lets a sync resume, and every sync has a request budget. A rate limit ends the batch; nothing reschedules itself. Commit authors and actor logins are never stored.
+- **Fingerprints** (D-053, D-057): built from signatures and stated causes only, versioned (version 3), with everything that varies between recurrences masked. An *exact* fingerprint is built from a subject the log names; only a shared exact primary fingerprint is a recurrence ("same failure"). *Approximate* ones only rank similar failures, listed apart. They never reach the evidence or the prompt.
+- **History matching is experimental and off by default** (`KENSA_HISTORY_MATCHING=false`, D-057): it missed its held-out recall targets (precision 1.000, recall 0.349, Recall@5 0.892). Fingerprints are still recorded for every investigation, but while it is off the history endpoint returns no matches and no occurrence counts, and the dashboard neither counts nor lists recurring failures.
+- **Changes** (D-054): at import, Kensa compares the failed run with the last comparable success. Each comparability factor is `same`, `different` or `unknown`, and unknown is never treated as same. Suspects are `correlated` or `weak`, never a cause. Diff hunks can support a claim, never corroborate it. The analysis runs at import, so the agent worker stays network-free.
+- **Analytics** (D-055): one daily aggregate, recomputed per day (idempotent) for the days a sync or an investigation touched. Real observations only by default (D-051).
+- **Forget and retention:** delete everything derived from a repository or an old investigation, down to checkpoints, fingerprint links and analytics rows; a meta-test fails if a table with `workspace_id` is not covered.
+
 ## Data model
 
 | Area | Tables |
@@ -259,6 +285,10 @@ flowchart LR
 | Approval (M3) | `remediation_proposals` (proposed/approved/rejected; M5 adds `withdrawn` with a required reason and time, D-036; diff computed by Kensa), `approval_decisions` (one per investigation) |
 | Runtime | `jobs` (partial unique index: one active job per investigation); LangGraph checkpoints in the `langgraph` schema (M3) |
 | GitHub (M4) | `workflow_runs`: the run, attempt, job, failed steps, log source, fetched and missing files of an imported investigation |
+| History (v1.1) | `tracked_repositories` (with the sync cursor), `ci_runs`, `ci_jobs`, `etl_batches`, `dq_findings`, `purge_audits` (counts only) |
+| Fingerprints (v1.1) | `failure_fingerprints` (versioned, unique per workspace and hash), `investigation_fingerprints` (primary or secondary), `resolutions` (human-confirmed, audited) |
+| Changes (v1.1) | `change_analyses` (comparability, factors, unverified factors), `change_suspects` (status CHECK: `correlated` or `weak`); `documents.source_type` adds `diff` |
+| Analytics (v1.1) | `analytics_daily` (one row per day, source, repository, workflow, category and origin), `analytics_watermarks` |
 | Not adopted | A separate `hypotheses` table: the verifier loop keeps its attempts in the graph state. |
 
 Evaluation results are files (`eval/reports/`), not tables: the harness runs in its own `kensa_eval` database, so the planned `eval_*` tables were not needed.
@@ -274,4 +304,5 @@ The short version is below. `SECURITY.md` holds the principles and the threat mo
 - **Workspace scoping:** every query goes through the workspace dependency. Another workspace's investigation returns 404 on every endpoint (tested).
 - **Untrusted inputs:** logs, retrieved text and model output are untrusted. Secrets are redacted before storage and inference (tested with a corpus). The model has no tools and cannot write. Prompt injection inside a log is contained by the evidence delimiters and caught by the verifier (tested).
 - **Remediation** is proposals only: text, plus diffs that Kensa computes from validated edits. An approval records a decision; nothing from logs or the model is ever executed or applied.
+- **v1.1:** history syncs and change comparisons use the same read-only client, each with a request budget. Commit messages and diff hunks are attacker-controlled text: redacted, wrapped as data, never executed. History, change and analytics code imports no process or code-evaluation module (tested statically).
 - **Outbound network (M4):** only GETs to `api.github.com`, plus one validated redirect hop to an allowlisted log store. Every connection is refused if the host resolves to a non-public address. Nothing downloaded is executed, and nothing is written to GitHub (tested statically and with mocks).

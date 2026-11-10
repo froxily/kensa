@@ -1,0 +1,12 @@
+﻿{
+  "comparisons": {
+    "a3f91d625c7e48b0f16a2d937e4c5b08d9216f3a...b7c2e483a59d016f8c4b7e2a930f6d15c8e21a49": {
+      "status": "ahead", "merge_base": "a3f91d625c7e48b0f16a2d937e4c5b08d9216f3a", "truncated": false,
+      "commits": [
+        {"sha": "d4e8b1c627fa3059e16d4b892a7c0f53b9e2146d", "message": "Load deployment region at startup", "date": "2026-11-08T09:40:00Z", "files": [{"path": "lib/kestrel_settings.rb", "status": "modified", "additions": 1, "deletions": 1, "patch": "@@ -1,5 +1,5 @@\n module KestrelSettings\n-  REGION = \"local\"\n+  REGION = ENV.fetch(\"KESTREL_REGION\")\n \n   def self.banner\n     \"region: #{REGION}\""}]},
+        {"sha": "b7c2e483a59d016f8c4b7e2a930f6d15c8e21a49", "message": "Clarify workflow step comments", "date": "2026-11-08T10:10:00Z", "files": [{"path": ".github/workflows/ruby.yml", "status": "modified", "additions": 3, "deletions": 0, "patch": "@@ -5,8 +5,11 @@ jobs:\n     runs-on: ubuntu-24.04\n     steps:\n       - uses: actions/checkout@v4\n+      # Install the interpreter and bundled gems.\n+      # Bundler caches the installed gems.\n       - uses: ruby/setup-ruby@v1\n         with:\n           ruby-version: '3.3'\n           bundler-cache: true\n+      # Run the startup checks.\n       - run: bundle exec ruby -Itest test/startup_test.rb"}]}
+      ]
+    }
+  },
+  "workflow_blobs": {"a3f91d625c7e48b0f16a2d937e4c5b08d9216f3a": "f8217d6a9c34b05e2d178a6f43c9b501e8d762ab", "b7c2e483a59d016f8c4b7e2a930f6d15c8e21a49": "c38b21f7964a05d2e7b918c63f4d12a0e5c976ab"}
+}

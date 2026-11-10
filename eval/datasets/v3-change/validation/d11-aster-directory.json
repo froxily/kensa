@@ -1,0 +1,14 @@
+{
+  "id": "d11-aster-directory",
+  "independent_labels": {
+    "comparability": "comparable",
+    "unverified_factors": [],
+    "category": "workflow_path",
+    "culprit_kind": "workflow",
+    "culprit_paths": ["aster/text.py", "tests/test_text.py"]
+  },
+  "verdict": "disagree",
+  "disputed_fields": ["history.json"],
+  "reason_category": "data_inconsistency",
+  "notes": "Both purported rename patches contain only context lines and no additions or deletions. Such hunks are not Git diffs for unchanged file renames; the source paths of the renames are also omitted, so the history does not establish that these files moved out of legacy."
+}

@@ -1,0 +1,46 @@
+2026-09-15T16:03:41.0150000Z Current runner version: '2.328.0'
+2026-09-15T16:03:41.0250000Z ##[group]Operating System
+2026-09-15T16:03:41.0260000Z Ubuntu
+2026-09-15T16:03:41.0270000Z 24.04.3
+2026-09-15T16:03:41.0280000Z ##[endgroup]
+2026-09-15T16:03:41.0290000Z ##[group]Runner Image
+2026-09-15T16:03:41.0300000Z Image: ubuntu-24.04
+2026-09-15T16:03:41.0310000Z Version: 20260907.1.0
+2026-09-15T16:03:41.0320000Z ##[endgroup]
+2026-09-15T16:03:41.2310000Z Prepare workflow directory
+2026-09-15T16:03:41.5410000Z Prepare all required actions
+2026-09-15T16:03:42.0110000Z Download action repository 'actions/checkout@v4'
+2026-09-15T16:03:42.1210000Z Complete job name: relay-image
+2026-09-15T16:03:42.2100000Z ##[group]Run actions/checkout@v4
+2026-09-15T16:03:42.2110000Z with:
+2026-09-15T16:03:42.2120000Z   repository: sable-fulcrum/cairn-dispatch
+2026-09-15T16:03:42.2130000Z   clean: true
+2026-09-15T16:03:42.2140000Z   fetch-depth: 1
+2026-09-15T16:03:42.2150000Z ##[endgroup]
+2026-09-15T16:03:42.4300000Z Syncing repository: sable-fulcrum/cairn-dispatch
+2026-09-15T16:03:42.5890000Z Getting Git version info
+2026-09-15T16:03:42.7400000Z Initialized empty Git repository in /home/runner/work/cairn-dispatch/cairn-dispatch/.git/
+2026-09-15T16:03:43.0150000Z Fetching the repository
+2026-09-15T16:03:43.9170000Z Checking out the ref
+2026-09-15T16:03:43.9930000Z ##[group]Run docker buildx build --load -f deploy/relay.Dockerfile -t cairn-relay:ci .
+2026-09-15T16:03:43.9940000Z docker buildx build --load -f deploy/relay.Dockerfile -t cairn-relay:ci .
+2026-09-15T16:03:43.9950000Z shell: /usr/bin/bash -e {0}
+2026-09-15T16:03:43.9960000Z ##[endgroup]
+2026-09-15T16:03:44.2170000Z #0 building with "default" instance using docker driver
+2026-09-15T16:03:44.2180000Z #1 [internal] load build definition from relay.Dockerfile
+2026-09-15T16:03:44.2190000Z #1 transferring dockerfile: 298B done
+2026-09-15T16:03:44.2200000Z #1 DONE 0.0s
+2026-09-15T16:03:44.2210000Z #2 [internal] load metadata for ghcr.io/sable-fulcrum/relay-base:1.4.2
+2026-09-15T16:03:45.6730000Z #2 ERROR: failed to authorize: failed to fetch anonymous token: unexpected status from GET request to https://ghcr.io/token?scope=repository%3Asable-fulcrum%2Frelay-base%3Apull&service=ghcr.io: 403 Forbidden
+2026-09-15T16:03:45.6740000Z ------
+2026-09-15T16:03:45.6750000Z  > [internal] load metadata for ghcr.io/sable-fulcrum/relay-base:1.4.2:
+2026-09-15T16:03:45.6760000Z ------
+2026-09-15T16:03:45.6770000Z relay.Dockerfile:1
+2026-09-15T16:03:45.6780000Z --------------------
+2026-09-15T16:03:45.6790000Z    1 | >>> FROM ghcr.io/sable-fulcrum/relay-base:1.4.2
+2026-09-15T16:03:45.6800000Z    2 |     WORKDIR /opt/relay
+2026-09-15T16:03:45.6810000Z --------------------
+2026-09-15T16:03:45.6820000Z ERROR: failed to build: failed to solve: ghcr.io/sable-fulcrum/relay-base:1.4.2: failed to resolve source metadata for ghcr.io/sable-fulcrum/relay-base:1.4.2: failed to authorize: failed to fetch anonymous token: unexpected status: 403 Forbidden
+2026-09-15T16:03:45.7030000Z ##[error]Process completed with exit code 1.
+2026-09-15T16:03:45.7180000Z Post job cleanup.
+2026-09-15T16:03:45.8390000Z Cleaning up orphan processes

@@ -1,0 +1,20 @@
+{
+  "id": "t12-cicada-packages",
+  "split": "test",
+  "comparability": "comparable",
+  "category": "github_permissions",
+  "culprit_kind": "workflow",
+  "difficulty": "medium",
+  "ecosystem": "go",
+  "title": "Registry push denied after token permission change",
+  "root_cause": "The workflow changed the GITHUB_TOKEN packages permission from write to read. The registry accepts the login but denies the image push because publishing requires packages write access.",
+  "culprit_paths": [".github/workflows/cicada.yml"],
+  "culprit_commit": "9fa2d71c4b86e503a19c7d2f8b640e3a5c71d290",
+  "unverified_factors": [],
+  "fix_keywords": ["packages", "write"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 17, "end_line": 21, "why": "The job token has packages read access."},
+    {"path": "log", "start_line": 72, "end_line": 78, "why": "The registry rejects the push for lack of package write permission."},
+    {"path": "repo/.github/workflows/cicada.yml", "start_line": 5, "end_line": 7, "why": "The workflow specifies the token permissions."}
+  ]
+}

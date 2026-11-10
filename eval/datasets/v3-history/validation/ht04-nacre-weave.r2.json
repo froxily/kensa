@@ -1,0 +1,13 @@
+{
+  "id": "ht04-nacre-weave",
+  "independent_labels": [
+    {"id": "e1", "cluster": "a", "relation": "first", "category": "dependency_build"},
+    {"id": "e2", "cluster": "b", "relation": "lookalike", "category": "dependency_build"},
+    {"id": "e3", "cluster": "c", "relation": "first", "category": "dependency_build"},
+    {"id": "e4", "cluster": "d", "relation": "lookalike", "category": "dependency_build"}
+  ],
+  "verdict": "agree",
+  "disputed_fields": [],
+  "reason_category": "none",
+  "notes": "The two E0609 errors concern different field accesses and types; the Cargo version-selection errors concern different dependencies. Each pair needs a separate correction. Root causes match the logs, and no giveaway commentary appears. There are no recurrences to check for copying. The labels and test split match the plan."
+}

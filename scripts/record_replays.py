@@ -11,9 +11,11 @@ Needs the Compose database and Ollama with the models named in .env. It:
    graph, hybrid retrieval and the local model;
 3. investigates the three built-in samples through the HTTP API, then three dev-split cases of
    evaluation set v2 together with their repository files (the evaluation harness's path, through
-   the same service the API uses). The test split is never read;
+   the same service the API uses), then one dev-split case of the synthetic v3-change set with its
+   change analysis (format 2, v1.1; the replay labels it synthetic). Test splits are never read;
 4. saves every response the UI needs to ``frontend/replay/recording.json``, with a manifest
-   (recording time, commit, model, GPU). No decision is recorded.
+   (recording time, commit, model, GPU): each run, its timeline, documents, similar failures and
+   changes, and the analytics dashboard. No decision is recorded.
 
 Every string in the recording is checked with ``security_scan.py``'s patterns and for local
 paths; on any finding nothing is written. Logs and model output are stored as data, never executed.
@@ -41,10 +43,15 @@ from benchmark_model import git_sha, gpu_description
 from e2e_server import prepare_database
 from pydantic import SecretStr
 from security_scan import findings
+from sqlalchemy import Engine
 from sqlalchemy.engine import make_url
 from sqlalchemy.orm import Session
 
 from kensa.app import create_app
+from kensa.changes.analyzer import analyze
+from kensa.changes.service import failure_subjects
+from kensa.changes.sources import FixtureChangeSource
+from kensa.changes.store import save_analysis
 from kensa.core.config import Settings
 from kensa.db.models import DEFAULT_WORKSPACE_ID
 from kensa.db.session import build_engine
@@ -55,6 +62,7 @@ from kensa.indexing.service import (
     index_directory,
     index_knowledge,
 )
+from kensa.inference.embeddings import Embedder
 from kensa.inference.factory import embedder_for
 from kensa.investigations.service import NewInvestigation, create_investigation
 
@@ -73,6 +81,9 @@ RUN_TIMEOUT_S = 900
 # regression that stays a hypothesis (with a repository diff to review), and a log that does
 # not show the failure, so Kensa abstains.
 DEV_CASES = ("d45-coast-scope", "d03-tide-rounding", "d33-plum-cutoff")
+# One synthetic v3-change dev case (validated, frozen) shows the change-aware panel (v1.1).
+CHANGE_CASE = "d10-saffron-compose"
+CHANGE_DATASET = REPO_ROOT / "eval" / "datasets" / "v3-change"
 
 # This machine's own paths would reveal the recording user's name or folder layout. CI logs are
 # full of runner paths such as /home/runner/work/...; those are log content, not local paths.
@@ -131,6 +142,8 @@ def wait_for(client: httpx.Client, investigation_id: str) -> dict[str, Any]:
 
 def export(client: httpx.Client, ids: list[str], settings: Settings) -> dict[str, Any]:
     investigations, events, documents = [], {}, {}
+    history: dict[str, Any] = {}
+    changes: dict[str, Any] = {}
     for investigation_id in ids:
         detail = client.get(f"/api/investigations/{investigation_id}").json()
         investigations.append(detail)
@@ -140,6 +153,12 @@ def export(client: httpx.Client, ids: list[str], settings: Settings) -> dict[str
         for document in detail["documents"]:
             path = f"/api/investigations/{investigation_id}/documents/{document['id']}"
             documents[f"{investigation_id}/{document['id']}"] = client.get(path).json()
+        history[investigation_id] = client.get(
+            f"/api/investigations/{investigation_id}/history"
+        ).json()
+        changes[investigation_id] = client.get(
+            f"/api/investigations/{investigation_id}/changes"
+        ).json()
     status = ["git", "-C", str(REPO_ROOT), "status", "--porcelain", "--untracked-files=no"]
     dirty = subprocess.run(  # noqa: S603  (fixed argv built in this file)
         status,
@@ -148,7 +167,7 @@ def export(client: httpx.Client, ids: list[str], settings: Settings) -> dict[str
         check=False,
     ).stdout.strip()
     return {
-        "format": 1,
+        "format": 2,
         "manifest": {
             "recorded_at": datetime.now(UTC).isoformat(timespec="seconds"),
             "commit": git_sha() + ("-dirty" if dirty else ""),
@@ -162,7 +181,37 @@ def export(client: httpx.Client, ids: list[str], settings: Settings) -> dict[str
         "events": events,
         "documents": documents,
         "samples": client.get("/api/samples").json(),
+        "history": history,
+        "changes": changes,
+        "repositories": client.get("/api/history/repositories").json(),
+        # Every recorded run is a sample or an evaluation case, so all origins are included.
+        "analytics": client.get(
+            "/api/analytics/dashboard", params={"days": 30, "include_all_origins": "true"}
+        ).json(),
     }
+
+
+def record_change_case(
+    engine: Engine, embedder: Embedder, settings: Settings, client: httpx.Client
+) -> str:
+    """The synthetic v3-change case, with its change analysis saved in the same transaction
+    as the investigation (as an import does), before the worker can pick it up."""
+    folder = CHANGE_DATASET / "cases" / CHANGE_CASE
+    log_text = (folder / "failed.log").read_text(encoding="utf-8-sig")
+    source = FixtureChangeSource(folder)
+    failed, job = source.failed()
+    lines = log_text.split("\n")
+    subjects, category = failure_subjects(lines)
+    analysis = analyze(failed, job, lines, source, subjects=subjects, category=category)
+    with Session(engine) as session, session.begin():
+        repository = ensure_repository(session, DEFAULT_WORKSPACE_ID, f"demo/{CHANGE_CASE}")
+        indexed = index_directory(session, DEFAULT_WORKSPACE_ID, repository.id, folder / "repo")
+        embed_pending(session, embedder, DEFAULT_WORKSPACE_ID, indexed.document_ids)
+        new = NewInvestigation(None, "upload", "ollama", "job.log", log_text, repository.id)
+        investigation = create_investigation(session, DEFAULT_WORKSPACE_ID, new, settings.llm_model)
+        save_analysis(session, DEFAULT_WORKSPACE_ID, investigation.id, failed.head_sha, analysis)
+        investigation_id = str(investigation.id)
+    return str(wait_for(client, investigation_id)["id"])
 
 
 @contextmanager
@@ -212,7 +261,8 @@ def verify() -> int:
         stored = export(client, ids, settings)
     found = [
         path
-        for key in ("investigations", "events", "documents", "samples")
+        # The dashboard's date range follows the day it is asked, so it is not compared.
+        for key in ("investigations", "events", "documents", "samples", "history", "changes")
         for path in differences(committed[key], stored[key], f"$.{key}")
     ]
     if found:
@@ -280,6 +330,7 @@ def main() -> int:
                         ).id
                     )
                 ids.append(wait_for(client, investigation_id)["id"])
+            ids.append(record_change_case(engine, embedder, settings, client))
             recording = export(client, ids, settings)
     finally:
         engine.dispose()

@@ -1,0 +1,13 @@
+{
+  "id": "hd40-zephyrkin-vault",
+  "independent_labels": [
+    {"id": "e1", "cluster": "a", "relation": "first", "category": "test_regression"},
+    {"id": "e2", "cluster": "b", "relation": "first", "category": "dependency_build"},
+    {"id": "e3", "cluster": "c", "relation": "first", "category": "missing_env_var"},
+    {"id": "e4", "cluster": "a", "relation": "recurrence", "category": "test_regression"}
+  ],
+  "verdict": "agree",
+  "disputed_fields": [],
+  "reason_category": "none",
+  "notes": "The same cutoff test and assertion fail in e1 and e4; the later run differs in SDK, target framework, test counts and source line. E2 reports a missing project reference, and e3 reports a missing archive URL. Their fixes differ. Root-cause descriptions match the reported evidence; no giveaway commentary was found."
+}

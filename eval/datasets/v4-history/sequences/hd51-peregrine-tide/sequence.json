@@ -1,0 +1,12 @@
+{
+  "id": "hd51-peregrine-tide",
+  "split": "dev",
+  "ecosystem": "swift (xcodebuild, spm)",
+  "repository": "peregrine-tide/harbor-signal-ios",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"dependency_build","title":"Distribution certificate missing from keychain","root_cause":"The archive requires an Apple Distribution signing certificate for the team, but its private key and certificate are absent from the runner keychain.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"b","relation":"lookalike","category":"dependency_build","title":"Provisioning profile does not support push notifications","root_cause":"The selected distribution provisioning profile lacks the Push Notifications capability required by the app entitlements; the profile must be regenerated with that capability.","differs_from_earlier":"Both archives fail during signing, but this runner has a signing certificate and the selected profile lacks a required entitlement."},
+    {"id":"e3","file":"e3.log","cluster":"c","relation":"first","category":"test_regression","title":"Tide formatting assertion fails","root_cause":"The tide label formatter returns a rounded value that disagrees with the expected decimal precision in the unit test.","differs_from_earlier":""},
+    {"id":"e4","file":"e4.log","cluster":"b","relation":"recurrence","category":"dependency_build","title":"Provisioning profile lacks push entitlement","root_cause":"The selected distribution provisioning profile lacks the Push Notifications capability required by the app entitlements; the profile must be regenerated with that capability.","differs_from_earlier":"A later archive on a newer runner uses a different build number and checkout path, but the same profile still lacks the required capability."}
+  ]
+}

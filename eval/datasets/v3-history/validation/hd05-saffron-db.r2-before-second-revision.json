@@ -1,0 +1,33 @@
+{
+ "id": "hd05-saffron-db",
+ "independent_labels": [
+  {
+   "id": "e1",
+   "cluster": "a",
+   "relation": "first",
+   "category": "db_connectivity"
+  },
+  {
+   "id": "e2",
+   "cluster": "a",
+   "relation": "recurrence",
+   "category": "db_connectivity"
+  },
+  {
+   "id": "e3",
+   "cluster": "a",
+   "relation": "recurrence",
+   "category": "db_connectivity"
+  },
+  {
+   "id": "e4",
+   "cluster": "b",
+   "relation": "first",
+   "category": "test_regression"
+  }
+ ],
+ "verdict": "agree",
+ "disputed_fields": [],
+ "reason_category": "none",
+ "notes": "The first three runs show PostgreSQL rejecting max_connections=0; the later runs vary paths, setup and Rails tasks. The fourth fails an ordering assertion. The labels and plan match; no giveaway commentary is apparent."
+}

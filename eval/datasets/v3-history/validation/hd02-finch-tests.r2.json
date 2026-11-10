@@ -1,0 +1,13 @@
+{
+  "id": "hd02-finch-tests",
+  "independent_labels": [
+    {"id": "e1", "cluster": "a", "relation": "first", "category": "test_regression"},
+    {"id": "e2", "cluster": "b", "relation": "lookalike", "category": "test_regression"},
+    {"id": "e3", "cluster": "a", "relation": "recurrence", "category": "test_regression"},
+    {"id": "e4", "cluster": "c", "relation": "first", "category": "dependency_build"}
+  ],
+  "verdict": "agree",
+  "disputed_fields": [],
+  "reason_category": "none",
+  "notes": "The refund rounding assertion recurs in e3 with a new line number and changed output order. E2 fails a different account initialization assertion while the refund test passes; e4 fails module checksum verification. Root-cause descriptions match the logs, and no giveaway commentary is apparent."
+}

@@ -1,0 +1,69 @@
+2026-09-02T08:14:01.1000000Z Current runner version: '2.328.0'
+2026-09-02T08:14:01.2100000Z ##[group]Runner Image Provisioner
+2026-09-02T08:14:01.2200000Z Hosted Compute Agent
+2026-09-02T08:14:01.2300000Z Version: 20260824.1
+2026-09-02T08:14:01.2400000Z ##[endgroup]
+2026-09-02T08:14:01.3000000Z ##[group]Operating System
+2026-09-02T08:14:01.3100000Z Ubuntu
+2026-09-02T08:14:01.3200000Z 24.04.3
+2026-09-02T08:14:01.3300000Z ##[endgroup]
+2026-09-02T08:14:01.4000000Z ##[group]Runner Image
+2026-09-02T08:14:01.4100000Z Image: ubuntu-24.04
+2026-09-02T08:14:01.4200000Z Version: 20260830.1.0
+2026-09-02T08:14:01.4300000Z ##[endgroup]
+2026-09-02T08:14:01.5000000Z Prepare workflow directory
+2026-09-02T08:14:02.1000000Z Prepare all required actions
+2026-09-02T08:14:02.8000000Z ##[group]Run actions/checkout@v4
+2026-09-02T08:14:02.8100000Z with:
+2026-09-02T08:14:02.8200000Z   repository: copper-heron/tidebook
+2026-09-02T08:14:02.8300000Z   fetch-depth: 1
+2026-09-02T08:14:02.8400000Z ##[endgroup]
+2026-09-02T08:14:03.0300000Z Syncing repository: copper-heron/tidebook
+2026-09-02T08:14:04.1400000Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/184/merge
+2026-09-02T08:14:04.3000000Z ##[group]Run actions/setup-node@v4
+2026-09-02T08:14:04.3100000Z with:
+2026-09-02T08:14:04.3200000Z   node-version: 20
+2026-09-02T08:14:04.3300000Z ##[endgroup]
+2026-09-02T08:14:05.0500000Z Found in cache @ /opt/hostedtoolcache/node/20.19.4/x64
+2026-09-02T08:14:05.1000000Z ##[group]Run npm ci
+2026-09-02T08:14:05.1100000Z npm ci
+2026-09-02T08:14:05.1200000Z shell: /usr/bin/bash -e {0}
+2026-09-02T08:14:05.1300000Z ##[endgroup]
+2026-09-02T08:14:12.4000000Z added 286 packages, and audited 287 packages in 7s
+2026-09-02T08:14:12.4100000Z 34 packages are looking for funding
+2026-09-02T08:14:12.4200000Z found 0 vulnerabilities
+2026-09-02T08:14:12.5000000Z ##[group]Run npm test -- --runInBand
+2026-09-02T08:14:12.5100000Z npm test -- --runInBand
+2026-09-02T08:14:12.5200000Z shell: /usr/bin/bash -e {0}
+2026-09-02T08:14:12.5300000Z ##[endgroup]
+2026-09-02T08:14:12.8000000Z > tidebook@1.4.0 test
+2026-09-02T08:14:12.8100000Z > jest --runInBand
+2026-09-02T08:14:13.4200000Z FAIL test/reservation-window.test.js
+2026-09-02T08:14:13.4300000Z   reservation window
+2026-09-02T08:14:13.4400000Z     ✓ accepts a minute before closing (2 ms)
+2026-09-02T08:14:13.4500000Z     ✕ rejects the closing minute (3 ms)
+2026-09-02T08:14:13.4600000Z     ✓ returns capacity after a cancellation
+2026-09-02T08:14:13.4700000Z 
+2026-09-02T08:14:13.4800000Z   ● reservation window › rejects the closing minute
+2026-09-02T08:14:13.4900000Z 
+2026-09-02T08:14:13.5000000Z     expect(received).toBe(expected) // Object.is equality
+2026-09-02T08:14:13.5100000Z 
+2026-09-02T08:14:13.5200000Z     Expected: false
+2026-09-02T08:14:13.5300000Z     Received: true
+2026-09-02T08:14:13.5400000Z 
+2026-09-02T08:14:13.5500000Z       21 |   test('rejects the closing minute', () => {
+2026-09-02T08:14:13.5600000Z     > 22 |     expect(isReservationOpen(540, 540)).toBe(false);
+2026-09-02T08:14:13.5700000Z          |                                         ^
+2026-09-02T08:14:13.5800000Z       23 |   });
+2026-09-02T08:14:13.5900000Z 
+2026-09-02T08:14:13.6000000Z       at Object.toBe (test/reservation-window.test.js:22:41)
+2026-09-02T08:14:13.6200000Z Test Suites: 1 failed, 1 total
+2026-09-02T08:14:13.6300000Z Tests:       1 failed, 2 passed, 3 total
+2026-09-02T08:14:13.6400000Z Snapshots:   0 total
+2026-09-02T08:14:13.6500000Z Time:        0.742 s
+2026-09-02T08:14:13.6600000Z Ran all test suites.
+2026-09-02T08:14:13.7000000Z ##[error]Process completed with exit code 1.
+2026-09-02T08:14:13.7500000Z Post job cleanup.
+2026-09-02T08:14:13.8500000Z [command]/usr/bin/git version
+2026-09-02T08:14:13.8600000Z git version 2.51.0
+2026-09-02T08:14:14.0000000Z Cleaning up orphan processes

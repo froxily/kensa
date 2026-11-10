@@ -1,0 +1,18 @@
+﻿{
+  "id": "t23-ycliff-registry",
+  "split": "test",
+  "comparability": "identical",
+  "category": "docker",
+  "culprit_kind": "none",
+  "difficulty": "medium",
+  "ecosystem": "python",
+  "title": "Runtime image pull returns a service error",
+  "root_cause": "The registry returned HTTP 503 while Docker tried to pull the runtime image. The successful baseline and failed run use the same commit, so no repository change in the comparison caused the failure.",
+  "culprit_paths": [],
+  "culprit_commit": null,
+  "unverified_factors": [],
+  "fix_keywords": ["registry", "retry"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 60, "end_line": 65, "why": "The image pull fails with a registry service error."}
+  ]
+}

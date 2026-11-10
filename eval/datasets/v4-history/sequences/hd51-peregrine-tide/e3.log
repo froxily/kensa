@@ -1,0 +1,52 @@
+2026-09-15T08:07:01.1010000Z Current runner version: '2.329.0'
+2026-09-15T08:07:01.1020000Z ##[group]Operating System
+2026-09-15T08:07:01.1030000Z macOS
+2026-09-15T08:07:01.1040000Z 15.6
+2026-09-15T08:07:01.1050000Z ##[endgroup]
+2026-09-15T08:07:01.1060000Z ##[group]Runner Image
+2026-09-15T08:07:01.1070000Z Image: macos-15
+2026-09-15T08:07:01.1080000Z Version: 20250908.0012
+2026-09-15T08:07:01.1090000Z ##[endgroup]
+2026-09-15T08:07:01.3020000Z Prepare workflow directory
+2026-09-15T08:07:01.6020000Z Prepare all required actions
+2026-09-15T08:07:02.0010000Z Download action repository 'actions/checkout@v4'
+2026-09-15T08:07:02.2520000Z Complete job name: unit-tests
+2026-09-15T08:07:02.3030000Z ##[group]Run actions/checkout@v4
+2026-09-15T08:07:02.3040000Z with:
+2026-09-15T08:07:02.3050000Z   repository: peregrine-tide/harbor-signal-ios
+2026-09-15T08:07:02.3060000Z   clean: true
+2026-09-15T08:07:02.3070000Z   persist-credentials: false
+2026-09-15T08:07:02.3080000Z ##[endgroup]
+2026-09-15T08:07:02.9000000Z Syncing repository: peregrine-tide/harbor-signal-ios
+2026-09-15T08:07:03.2020000Z Working directory is '/Users/runner/work/harbor-signal-ios/harbor-signal-ios'
+2026-09-15T08:07:03.9900000Z Checking out the ref
+2026-09-15T08:07:04.1410000Z HEAD is now at 9c48ef2 Update tide label precision
+2026-09-15T08:07:04.3000000Z ##[group]Run swift test
+2026-09-15T08:07:04.3010000Z swift test --package-path Packages/CurrentMarks
+2026-09-15T08:07:04.3020000Z shell: /bin/bash -e {0}
+2026-09-15T08:07:04.3030000Z ##[endgroup]
+2026-09-15T08:07:05.1020000Z Building for debugging...
+2026-09-15T08:07:05.6010000Z [0/13] Write sources
+2026-09-15T08:07:05.6020000Z [2/13] Write swift-version--A1B2C3.txt
+2026-09-15T08:07:07.4010000Z [4/15] Emitting module CurrentMarks
+2026-09-15T08:07:07.8020000Z [5/15] Compiling CurrentMarks TideLabel.swift
+2026-09-15T08:07:08.1020000Z [6/16] Wrapping AST for CurrentMarks for debugging
+2026-09-15T08:07:08.9010000Z [8/18] Emitting module CurrentMarksTests
+2026-09-15T08:07:09.0310000Z [9/18] Compiling CurrentMarksTests TideLabelTests.swift
+2026-09-15T08:07:10.2110000Z [13/13] Linking CurrentMarksPackageTests
+2026-09-15T08:07:10.3500000Z Build complete! (5.25s)
+2026-09-15T08:07:10.4110000Z Test Suite 'All tests' started at 2026-09-15 08:07:10.410.
+2026-09-15T08:07:10.4120000Z Test Suite 'CurrentMarksPackageTests.xctest' started at 2026-09-15 08:07:10.411.
+2026-09-15T08:07:10.4130000Z Test Suite 'TideLabelTests' started at 2026-09-15 08:07:10.412.
+2026-09-15T08:07:10.4140000Z Test Case '-[CurrentMarksTests.TideLabelTests testDecimalPrecision]' started.
+2026-09-15T08:07:10.4150000Z /Users/runner/work/harbor-signal-ios/harbor-signal-ios/Packages/CurrentMarks/Tests/CurrentMarksTests/TideLabelTests.swift:28: error: -[CurrentMarksTests.TideLabelTests testDecimalPrecision] : XCTAssertEqual failed: ("1.3 m") is not equal to ("1.25 m")
+2026-09-15T08:07:10.4160000Z Test Case '-[CurrentMarksTests.TideLabelTests testDecimalPrecision]' failed (0.002 seconds).
+2026-09-15T08:07:10.4170000Z Test Suite 'TideLabelTests' failed at 2026-09-15 08:07:10.416.
+2026-09-15T08:07:10.4180000Z 	 Executed 1 test, with 1 failure (0 unexpected) in 0.002 (0.003) seconds
+2026-09-15T08:07:10.4190000Z Test Suite 'CurrentMarksPackageTests.xctest' failed at 2026-09-15 08:07:10.418.
+2026-09-15T08:07:10.4200000Z 	 Executed 1 test, with 1 failure (0 unexpected) in 0.002 (0.004) seconds
+2026-09-15T08:07:10.4210000Z Test Suite 'All tests' failed at 2026-09-15 08:07:10.420.
+2026-09-15T08:07:10.4220000Z 	 Executed 1 test, with 1 failure (0 unexpected) in 0.002 (0.005) seconds
+2026-09-15T08:07:10.5000000Z ##[error]Process completed with exit code 1.
+2026-09-15T08:07:10.5510000Z Cleaning up orphan processes
+2026-09-15T08:07:10.5900000Z Complete job

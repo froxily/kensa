@@ -1,0 +1,13 @@
+{
+  "id": "ht11-pelagic-frames",
+  "independent_labels": [
+    {"id": "e1", "cluster": "a", "relation": "first", "category": null},
+    {"id": "e2", "cluster": "b", "relation": "lookalike", "category": null},
+    {"id": "e3", "cluster": "a", "relation": "recurrence", "category": null},
+    {"id": "e4", "cluster": "c", "relation": "first", "category": "test_regression"}
+  ],
+  "verdict": "ambiguous",
+  "disputed_fields": ["e1.category", "e2.category", "e3.category"],
+  "reason_category": "ambiguous_evidence",
+  "notes": "The first and third logs show oversized collector frames reset by the ingress proxy; the second connects to an incompatible metrics host and requires a different fix. The recurrence has a different batch and retry wrapper. The fourth is a boundary test failure. Clusters, relations, root causes and plan agree, and no giveaway commentary is apparent. The allowed categories have no general service-connectivity option: db_connectivity is assigned to the first three entries, but the logs do not identify a database. Their category is therefore unresolved."
+}

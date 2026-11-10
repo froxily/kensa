@@ -1,0 +1,45 @@
+2026-09-19T11:05:22.1100000Z Current runner version: '2.329.0'
+2026-09-19T11:05:22.1200000Z ##[group]Runner Image
+2026-09-19T11:05:22.1300000Z Image: ubuntu-24.04
+2026-09-19T11:05:22.1400000Z Version: 20260914.1.0
+2026-09-19T11:05:22.1500000Z ##[endgroup]
+2026-09-19T11:05:22.1600000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-19T11:05:22.1700000Z Contents: read
+2026-09-19T11:05:22.1800000Z Metadata: read
+2026-09-19T11:05:22.1900000Z ##[endgroup]
+2026-09-19T11:05:22.2000000Z Prepare workflow directory
+2026-09-19T11:05:22.2100000Z Prepare all required actions
+2026-09-19T11:05:22.5200000Z Download action repository 'actions/checkout@v4'
+2026-09-19T11:05:22.8100000Z Download action repository 'actions/setup-go@v5'
+2026-09-19T11:05:22.9100000Z Complete job name: integration / archive
+2026-09-19T11:05:23.0100000Z ##[group]Run actions/checkout@v4
+2026-09-19T11:05:23.0200000Z with:
+2026-09-19T11:05:23.0300000Z   repository: woodlark-works/ochre-relay
+2026-09-19T11:05:23.0400000Z   fetch-depth: 1
+2026-09-19T11:05:23.0500000Z ##[endgroup]
+2026-09-19T11:05:23.0600000Z Syncing repository: woodlark-works/ochre-relay
+2026-09-19T11:05:23.2700000Z Working directory is '/home/runner/work/ochre-relay/ochre-relay'
+2026-09-19T11:05:23.8100000Z Checking out the ref
+2026-09-19T11:05:24.0200000Z ##[group]Run actions/setup-go@v5
+2026-09-19T11:05:24.0300000Z with:
+2026-09-19T11:05:24.0400000Z   go-version: 1.23.6
+2026-09-19T11:05:24.0500000Z   cache: true
+2026-09-19T11:05:24.0600000Z ##[endgroup]
+2026-09-19T11:05:24.4200000Z go version go1.23.6 linux/amd64
+2026-09-19T11:05:24.5300000Z ##[group]Run go test -count=1 -v ./internal/archive
+2026-09-19T11:05:24.5400000Z go test -count=1 -v ./internal/archive
+2026-09-19T11:05:24.5500000Z shell: /usr/bin/bash -e {0}
+2026-09-19T11:05:24.5600000Z ##[endgroup]
+2026-09-19T11:05:29.0200000Z === RUN   TestArchiveKey
+2026-09-19T11:05:29.0300000Z --- PASS: TestArchiveKey (0.00s)
+2026-09-19T11:05:29.0400000Z === RUN   TestArchivePut
+2026-09-19T11:05:29.0500000Z     client_test.go:53: load archive config: required environment variable OCHRE_ARCHIVE_URL is not set
+2026-09-19T11:05:29.0600000Z --- FAIL: TestArchivePut (0.00s)
+2026-09-19T11:05:29.0700000Z FAIL
+2026-09-19T11:05:29.0800000Z FAIL    woodlark-works/ochre-relay/internal/archive    0.005s
+2026-09-19T11:05:29.0900000Z FAIL
+2026-09-19T11:05:29.1000000Z ##[error]Process completed with exit code 1.
+2026-09-19T11:05:29.1100000Z Post job cleanup.
+2026-09-19T11:05:29.1200000Z [command]/usr/bin/git version
+2026-09-19T11:05:29.1300000Z git version 2.51.0
+2026-09-19T11:05:29.1400000Z Cleaning up orphan processes

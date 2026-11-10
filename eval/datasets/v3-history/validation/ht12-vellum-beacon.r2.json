@@ -1,0 +1,13 @@
+{
+  "id": "ht12-vellum-beacon",
+  "independent_labels": [
+    {"id": "e1", "cluster": "a", "relation": "first", "category": "missing_env_var"},
+    {"id": "e2", "cluster": "b", "relation": "first", "category": "test_regression"},
+    {"id": "e3", "cluster": "c", "relation": "lookalike", "category": "missing_env_var"},
+    {"id": "e4", "cluster": "a", "relation": "recurrence", "category": "missing_env_var"}
+  ],
+  "verdict": "agree",
+  "disputed_fields": [],
+  "reason_category": "none",
+  "notes": "The scheduled jobs omit the environment containing BEACON_PROBE_KEY; e4 repeats that cause through an npm script with changed run details. The manual job selects the environment but references BEACON_PROBE_TOKEN, requiring a different fix. The independent boundary-test failure is consistent with its stated limited root cause. The logs contain no evident giveaway commentary."
+}

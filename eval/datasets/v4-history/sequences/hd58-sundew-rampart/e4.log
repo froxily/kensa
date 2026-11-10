@@ -1,0 +1,42 @@
+2026-09-23T06:41:00.2100000Z Current runner version: '2.329.0'
+2026-09-23T06:41:00.2200000Z ##[group]Runner Image Provisioner
+2026-09-23T06:41:00.2300000Z Hosted Compute Agent
+2026-09-23T06:41:00.2400000Z Version: 20260921.1
+2026-09-23T06:41:00.2500000Z ##[endgroup]
+2026-09-23T06:41:00.2600000Z ##[group]Operating System
+2026-09-23T06:41:00.2700000Z Ubuntu
+2026-09-23T06:41:00.2800000Z 22.04.5
+2026-09-23T06:41:00.2900000Z ##[endgroup]
+2026-09-23T06:41:00.3000000Z ##[group]Runner Image
+2026-09-23T06:41:00.3100000Z Image: ubuntu-22.04
+2026-09-23T06:41:00.3200000Z Version: 20260920.1.0
+2026-09-23T06:41:00.3300000Z ##[endgroup]
+2026-09-23T06:41:00.3400000Z Prepare workflow directory
+2026-09-23T06:41:00.3500000Z Prepare all required actions
+2026-09-23T06:41:01.3500000Z Download action repository 'actions/checkout@v4'
+2026-09-23T06:41:02.3500000Z Complete job name: staging-provision
+2026-09-23T06:41:02.4500000Z ##[group]Run actions/checkout@v4
+2026-09-23T06:41:02.4600000Z with:
+2026-09-23T06:41:02.4700000Z   repository: sundew-works/rampart-provisioner
+2026-09-23T06:41:02.4800000Z   clean: true
+2026-09-23T06:41:02.4900000Z ##[endgroup]
+2026-09-23T06:41:02.5900000Z Syncing repository: sundew-works/rampart-provisioner
+2026-09-23T06:41:03.5900000Z Checking out the ref
+2026-09-23T06:41:03.6900000Z ##[group]Run ansible-playbook -i inventory/staging.yml provision.yml --diff
+2026-09-23T06:41:03.7000000Z ansible-playbook -i inventory/staging.yml provision.yml --diff
+2026-09-23T06:41:03.7100000Z shell: /usr/bin/bash -e {0}
+2026-09-23T06:41:03.7200000Z ##[endgroup]
+2026-09-23T06:41:04.7200000Z PLAY [Configure rampart hosts] *************************************************
+2026-09-23T06:41:04.8200000Z TASK [Gathering Facts] *********************************************************
+2026-09-23T06:41:07.8200000Z ok: [rampart-stage-3]
+2026-09-23T06:41:07.9200000Z TASK [rampart : Create configuration directory] *******************************
+2026-09-23T06:41:08.9200000Z changed: [rampart-stage-3]
+2026-09-23T06:41:09.0200000Z TASK [rampart : Install base packages] ******************************************
+2026-09-23T06:41:10.0200000Z fatal: [rampart-stage-3]: FAILED! => {"changed": false, "msg": "Failed to lock apt for exclusive operation: Could not get lock /var/lib/dpkg/lock-frontend. It is held by process 2184 (unattended-upgr)"}
+2026-09-23T06:41:10.1200000Z PLAY RECAP *********************************************************************
+2026-09-23T06:41:10.2200000Z rampart-stage-3            : ok=2    changed=1    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0
+2026-09-23T06:41:10.3200000Z ##[error]Process completed with exit code 2.
+2026-09-23T06:41:10.4200000Z Post job cleanup.
+2026-09-23T06:41:10.5200000Z [command]/usr/bin/git version
+2026-09-23T06:41:10.6200000Z git version 2.50.1
+2026-09-23T06:41:10.7200000Z Cleaning up orphan processes

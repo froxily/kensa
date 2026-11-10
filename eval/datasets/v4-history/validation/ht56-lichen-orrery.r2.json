@@ -1,0 +1,13 @@
+{
+  "id": "ht56-lichen-orrery",
+  "independent_labels": [
+    {"id": "e1", "cluster": "a", "relation": "first", "category": "dependency_build"},
+    {"id": "e2", "cluster": "a", "relation": "recurrence", "category": "dependency_build"},
+    {"id": "e3", "cluster": "b", "relation": "lookalike", "category": "dependency_build"},
+    {"id": "e4", "cluster": "b", "relation": "recurrence", "category": "dependency_build"}
+  ],
+  "verdict": "disagree",
+  "disputed_fields": ["e3.relation"],
+  "reason_category": "label_conflict",
+  "notes": "e3 is a publish failure with the same tool and exit code as e1, but the existing version requires a version increment rather than replacing a path dependency. It is therefore a lookalike; sequence.json and the plan mark it first. Both recurrences have substantive run differences, root causes match the logs, and no giveaway commentary is apparent."
+}

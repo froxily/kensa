@@ -1,0 +1,48 @@
+2026-09-15T06:15:01.1000000Z Current runner version: '2.329.0'
+2026-09-15T06:15:01.2000000Z ##[group]Operating System
+2026-09-15T06:15:01.2100000Z Ubuntu
+2026-09-15T06:15:01.2200000Z 24.04.3
+2026-09-15T06:15:01.2300000Z ##[endgroup]
+2026-09-15T06:15:01.2400000Z ##[group]Runner Image
+2026-09-15T06:15:01.2500000Z Image: ubuntu-24.04
+2026-09-15T06:15:01.2600000Z Version: 20260908.1
+2026-09-15T06:15:01.2700000Z ##[endgroup]
+2026-09-15T06:15:02.0000000Z Prepare workflow directory
+2026-09-15T06:15:02.3000000Z Prepare all required actions
+2026-09-15T06:15:03.0000000Z Getting action download info
+2026-09-15T06:15:03.5000000Z Complete job name: smoke
+2026-09-15T06:15:04.0000000Z ##[group]Run actions/checkout@v4
+2026-09-15T06:15:04.0100000Z with:
+2026-09-15T06:15:04.0200000Z   repository: duskmill-labs/strata-indexer
+2026-09-15T06:15:04.0300000Z   path: build/tree
+2026-09-15T06:15:04.0400000Z ##[endgroup]
+2026-09-15T06:15:04.4000000Z Syncing repository: duskmill-labs/strata-indexer
+2026-09-15T06:15:04.5000000Z Working directory is '/home/runner/work/strata-indexer/strata-indexer/build/tree'
+2026-09-15T06:15:05.0000000Z Checking out the ref
+2026-09-15T06:15:05.4000000Z ##[group]Run actions/setup-python@v5
+2026-09-15T06:15:05.4100000Z with:
+2026-09-15T06:15:05.4200000Z   python-version: '3.12'
+2026-09-15T06:15:05.4300000Z ##[endgroup]
+2026-09-15T06:15:06.0000000Z Successfully set up CPython (3.12.6)
+2026-09-15T06:15:06.5000000Z ##[group]Run python -m pip install .
+2026-09-15T06:15:06.5100000Z python -m pip install .
+2026-09-15T06:15:06.5200000Z shell: /usr/bin/bash -e {0}
+2026-09-15T06:15:06.5300000Z ##[endgroup]
+2026-09-15T06:15:08.0000000Z Processing /home/runner/work/strata-indexer/strata-indexer/build/tree
+2026-09-15T06:15:09.1000000Z Building wheel for strata-indexer (pyproject.toml): finished with status 'done'
+2026-09-15T06:15:09.4000000Z Successfully installed strata-indexer-0.4.2
+2026-09-15T06:15:10.0000000Z ##[group]Run python -m strata_indexer.cli --help
+2026-09-15T06:15:10.0100000Z python -m strata_indexer.cli --help
+2026-09-15T06:15:10.0200000Z shell: /usr/bin/bash -e {0}
+2026-09-15T06:15:10.0300000Z ##[endgroup]
+2026-09-15T06:15:10.1000000Z Traceback (most recent call last):
+2026-09-15T06:15:10.1100000Z   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-09-15T06:15:10.1200000Z   File "<frozen runpy>", line 88, in _run_code
+2026-09-15T06:15:10.1300000Z   File "/opt/hostedtoolcache/Python/3.12.6/x64/lib/python3.12/site-packages/strata_indexer/cli.py", line 3, in <module>
+2026-09-15T06:15:10.1400000Z     from strata_indexer.survey import scan_layers
+2026-09-15T06:15:10.1500000Z   File "/opt/hostedtoolcache/Python/3.12.6/x64/lib/python3.12/site-packages/strata_indexer/survey.py", line 5, in <module>
+2026-09-15T06:15:10.1600000Z     import ridgecodec
+2026-09-15T06:15:10.1700000Z ModuleNotFoundError: No module named 'ridgecodec'
+2026-09-15T06:15:10.2000000Z ##[error]Process completed with exit code 1.
+2026-09-15T06:15:10.3000000Z Post job cleanup.
+2026-09-15T06:15:10.4000000Z Cleaning up orphan processes

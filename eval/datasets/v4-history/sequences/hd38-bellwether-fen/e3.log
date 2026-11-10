@@ -1,0 +1,49 @@
+2026-09-16T06:04:11.1134291Z Current runner version: '2.328.0'
+2026-09-16T06:04:11.1140901Z ##[group]Operating System
+2026-09-16T06:04:11.1143301Z Ubuntu
+2026-09-16T06:04:11.1144902Z 22.04.5
+2026-09-16T06:04:11.1146202Z LTS
+2026-09-16T06:04:11.1147901Z ##[endgroup]
+2026-09-16T06:04:11.1150003Z ##[group]Runner Image
+2026-09-16T06:04:11.1152219Z Image: ubuntu-22.04
+2026-09-16T06:04:11.1154043Z Version: 20260908.1.0
+2026-09-16T06:04:11.1155961Z ##[endgroup]
+2026-09-16T06:04:11.1203310Z Prepare workflow directory
+2026-09-16T06:04:11.1723902Z Prepare all required actions
+2026-09-16T06:04:11.6283290Z Getting action download info
+2026-09-16T06:04:12.8823912Z ##[group]Run actions/checkout@v4
+2026-09-16T06:04:12.8826103Z with:
+2026-09-16T06:04:12.8827901Z   repository: fenward-labs/bellwether-fen
+2026-09-16T06:04:12.8829412Z   fetch-depth: 1
+2026-09-16T06:04:12.8831201Z   clean: true
+2026-09-16T06:04:12.8833012Z ##[endgroup]
+2026-09-16T06:04:13.0461701Z Syncing repository: fenward-labs/bellwether-fen
+2026-09-16T06:04:13.4271091Z ##[group]Fetching the repository
+2026-09-16T06:04:14.0053102Z From https://github.com/fenward-labs/bellwether-fen
+2026-09-16T06:04:14.0054901Z  * [new ref]         refs/pull/96/merge -> pull/96/merge
+2026-09-16T06:04:14.0097912Z ##[endgroup]
+2026-09-16T06:04:14.0204431Z ##[group]Checking out the ref
+2026-09-16T06:04:14.0611530Z HEAD is now at a6c093d Merge pull request #96
+2026-09-16T06:04:14.0613091Z ##[endgroup]
+2026-09-16T06:04:14.0987021Z ##[group]Run actions/setup-python@v5
+2026-09-16T06:04:14.0988801Z with:
+2026-09-16T06:04:14.0990221Z   python-version: '3.12'
+2026-09-16T06:04:14.0992010Z ##[endgroup]
+2026-09-16T06:04:14.7418801Z Successfully set up CPython (3.12.5)
+2026-09-16T06:04:14.7574201Z ##[group]Run python -m pip install -r requirements-ci.txt
+2026-09-16T06:04:14.7576510Z python -m pip install -r requirements-ci.txt
+2026-09-16T06:04:14.7578101Z shell: /usr/bin/bash -e {0}
+2026-09-16T06:04:14.7579802Z env:
+2026-09-16T06:04:14.7581310Z   PIP_INDEX_URL: https://packages.fenward.internal/simple
+2026-09-16T06:04:14.7583210Z ##[endgroup]
+2026-09-16T06:04:15.1611092Z Looking in indexes: https://packages.fenward.internal/simple
+2026-09-16T06:04:15.7320411Z WARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7f2b184a12d0>: Failed to resolve 'packages.fenward.internal' ([Errno -3] Temporary failure in name resolution)")': /simple/mypy/
+2026-09-16T06:04:16.3021193Z WARNING: Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7f2b184a1610>: Failed to resolve 'packages.fenward.internal' ([Errno -3] Temporary failure in name resolution)")': /simple/mypy/
+2026-09-16T06:04:17.3290419Z WARNING: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7f2b184a1990>: Failed to resolve 'packages.fenward.internal' ([Errno -3] Temporary failure in name resolution)")': /simple/mypy/
+2026-09-16T06:04:19.3410922Z WARNING: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7f2b184a1c10>: Failed to resolve 'packages.fenward.internal' ([Errno -3] Temporary failure in name resolution)")': /simple/mypy/
+2026-09-16T06:04:23.3523311Z WARNING: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7f2b184a1ed0>: Failed to resolve 'packages.fenward.internal' ([Errno -3] Temporary failure in name resolution)")': /simple/mypy/
+2026-09-16T06:04:23.3542921Z ERROR: Could not find a version that satisfies the requirement mypy==1.11.2 (from versions: none)
+2026-09-16T06:04:23.3545301Z ERROR: No matching distribution found for mypy==1.11.2
+2026-09-16T06:04:23.4216123Z ##[error]Process completed with exit code 1.
+2026-09-16T06:04:23.4391820Z Post job cleanup.
+2026-09-16T06:04:23.5612993Z Cleaning up orphan processes

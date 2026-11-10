@@ -1,0 +1,11 @@
+name: Ruby checks
+on: [push]
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+      - run: ruby -Ilib test/basket_test.rb

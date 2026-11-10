@@ -1,0 +1,48 @@
+2026-09-28T11:04:00.0000000Z Current runner version: '2.328.0'
+2026-09-28T11:04:00.1000000Z ##[group]Operating System
+2026-09-28T11:04:00.2000000Z macOS
+2026-09-28T11:04:00.3000000Z 15.6
+2026-09-28T11:04:00.4000000Z ##[endgroup]
+2026-09-28T11:04:00.5000000Z ##[group]Runner Image
+2026-09-28T11:04:00.6000000Z Image: macos-15
+2026-09-28T11:04:00.7000000Z Version: 20260922.1
+2026-09-28T11:04:00.8000000Z ##[endgroup]
+2026-09-28T11:04:01.0000000Z Prepare workflow directory
+2026-09-28T11:04:01.3000000Z Prepare all required actions
+2026-09-28T11:04:01.9000000Z Download action repository 'actions/checkout@v4'
+2026-09-28T11:04:02.2000000Z Complete job name: iOS tests
+2026-09-28T11:04:02.4000000Z ##[group]Run actions/checkout@v4
+2026-09-28T11:04:02.5000000Z with:
+2026-09-28T11:04:02.6000000Z   repository: azalea-sound/fathom-notes
+2026-09-28T11:04:02.7000000Z   fetch-depth: 1
+2026-09-28T11:04:02.8000000Z   clean: true
+2026-09-28T11:04:02.9000000Z ##[endgroup]
+2026-09-28T11:04:03.2000000Z Syncing repository: azalea-sound/fathom-notes
+2026-09-28T11:04:03.8000000Z git version 2.50.1
+2026-09-28T11:04:04.2000000Z Initializing the repository
+2026-09-28T11:04:05.1000000Z Fetching the repository
+2026-09-28T11:04:06.4000000Z Checking out the ref
+2026-09-28T11:04:07.0000000Z ##[group]Run xcodebuild test -project FathomNotes.xcodeproj -scheme FathomNotes -destination 'platform=iOS Simulator,OS=18.5,name=iPhone 16'
+2026-09-28T11:04:07.1000000Z xcodebuild test -project FathomNotes.xcodeproj -scheme FathomNotes -destination 'platform=iOS Simulator,OS=18.5,name=iPhone 16'
+2026-09-28T11:04:07.2000000Z shell: /bin/bash -e {0}
+2026-09-28T11:04:07.3000000Z ##[endgroup]
+2026-09-28T11:04:08.0000000Z Command line invocation:
+2026-09-28T11:04:08.1000000Z     /Applications/Xcode_16.4.app/Contents/Developer/usr/bin/xcodebuild test -project FathomNotes.xcodeproj -scheme FathomNotes -destination "platform=iOS Simulator,OS=18.5,name=iPhone 16"
+2026-09-28T11:04:08.5000000Z User defaults from command line:
+2026-09-28T11:04:09.1000000Z     IDEPackageSupportUseBuiltinSCM = YES
+2026-09-28T11:04:10.0000000Z CreateBuildRequest
+2026-09-28T11:04:12.0000000Z CreateBuildOperation
+2026-09-28T11:04:18.0000000Z SwiftCompile normal arm64 DepthLabel.swift
+2026-09-28T11:04:30.0000000Z Test Suite 'All tests' started at 2026-09-28 11:04:30.000
+2026-09-28T11:04:30.1000000Z Test Suite 'FathomNotesTests.xctest' started at 2026-09-28 11:04:30.100
+2026-09-28T11:04:30.2000000Z Test Suite 'DepthLabelTests' started at 2026-09-28 11:04:30.200
+2026-09-28T11:04:30.3000000Z Test Case '-[FathomNotesTests.DepthLabelTests testRoundsFractionalDepth]' started.
+2026-09-28T11:04:30.4000000Z /Users/runner/work/fathom-notes/fathom-notes/FathomNotesTests/DepthLabelTests.swift:24: error: -[FathomNotesTests.DepthLabelTests testRoundsFractionalDepth] : XCTAssertEqual failed: ("12 m") is not equal to ("13 m") - depth 12.8 m should round to the nearest metre
+2026-09-28T11:04:30.5000000Z Test Case '-[FathomNotesTests.DepthLabelTests testRoundsFractionalDepth]' failed (0.102 seconds).
+2026-09-28T11:04:30.6000000Z Test Suite 'DepthLabelTests' failed at 2026-09-28 11:04:30.600.
+2026-09-28T11:04:30.7000000Z 	 Executed 1 test, with 1 failure (0 unexpected) in 0.102 (0.400) seconds
+2026-09-28T11:04:31.0000000Z ** TEST FAILED **
+2026-09-28T11:04:31.1000000Z ##[error]Process completed with exit code 65.
+2026-09-28T11:04:31.2000000Z Post job cleanup.
+2026-09-28T11:04:31.4000000Z Removing HTTP extra header
+2026-09-28T11:04:31.5000000Z Cleaning up orphan processes

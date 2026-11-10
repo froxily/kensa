@@ -1,0 +1,75 @@
+﻿2026-10-30T11:14:04.1042391Z Current runner version: '2.329.0'
+2026-10-30T11:14:04.1082074Z ##[group]Runner Image Provisioner
+2026-10-30T11:14:04.1083611Z Hosted Compute Agent
+2026-10-30T11:14:04.1084810Z Version: 20261020.1
+2026-10-30T11:14:04.1085912Z ##[endgroup]
+2026-10-30T11:14:04.1087115Z ##[group]Operating System
+2026-10-30T11:14:04.1088204Z Ubuntu
+2026-10-30T11:14:04.1089372Z 24.04.3
+2026-10-30T11:14:04.1090448Z LTS
+2026-10-30T11:14:04.1091578Z ##[endgroup]
+2026-10-30T11:14:04.1092780Z ##[group]Runner Image
+2026-10-30T11:14:04.1093935Z Image: ubuntu-24.04
+2026-10-30T11:14:04.1095046Z Version: 20261026.1
+2026-10-30T11:14:04.1096158Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261026.1/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-30T11:14:04.1097279Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261026.1
+2026-10-30T11:14:04.1098395Z ##[endgroup]
+2026-10-30T11:14:04.1099536Z ##[group]GITHUB_TOKEN Permissions
+2026-10-30T11:14:04.1100685Z Contents: read
+2026-10-30T11:14:04.1101754Z Metadata: read
+2026-10-30T11:14:04.1102843Z ##[endgroup]
+2026-10-30T11:14:04.1103917Z Secret source: Actions
+2026-10-30T11:14:04.1105031Z Prepare workflow directory
+2026-10-30T11:14:04.1849280Z Prepare all required actions
+2026-10-30T11:14:04.1925087Z Getting action download info
+2026-10-30T11:14:04.4392187Z Download action repository 'actions/checkout@v4' (SHA:11bd71901bbe5b1630ceea73d27597364c9af683)
+2026-10-30T11:14:04.7601452Z Complete job name: mirror tests
+2026-10-30T11:14:04.8245378Z ##[group]Run actions/checkout@v4
+2026-10-30T11:14:04.8246431Z with:
+2026-10-30T11:14:04.8247412Z   repository: wren-labs/mirror-kit
+2026-10-30T11:14:04.8248371Z   clean: true
+2026-10-30T11:14:04.8249333Z   fetch-depth: 1
+2026-10-30T11:14:04.8250292Z ##[endgroup]
+2026-10-30T11:14:04.9417552Z Syncing repository: wren-labs/mirror-kit
+2026-10-30T11:14:04.9421128Z ##[group]Getting Git version info
+2026-10-30T11:14:04.9423312Z Working directory is '/home/runner/work/mirror-kit/mirror-kit'
+2026-10-30T11:14:04.9457048Z [command]/usr/bin/git version
+2026-10-30T11:14:04.9491106Z git version 2.51.1
+2026-10-30T11:14:04.9493120Z ##[endgroup]
+2026-10-30T11:14:05.1133921Z Initializing the repository
+2026-10-30T11:14:05.2055030Z Fetching the repository
+2026-10-30T11:14:05.8317190Z Checking out the ref
+2026-10-30T11:14:05.9023317Z [command]/usr/bin/git log -1 --format=%H
+2026-10-30T11:14:05.9048042Z 5c8a1d9e4b7602f3a6c915de083b4f7a2e6d913c
+2026-10-30T11:14:05.9340732Z ##[group]Run cargo test
+2026-10-30T11:14:05.9341905Z cargo test
+2026-10-30T11:14:05.9362248Z shell: /usr/bin/bash -e {0}
+2026-10-30T11:14:05.9363518Z ##[endgroup]
+2026-10-30T11:14:06.0042307Z    Compiling wren-mirror v0.1.0 (/home/runner/work/mirror-kit/mirror-kit)
+2026-10-30T11:14:06.4218943Z     Finished `test` profile [unoptimized + debuginfo] target(s) in 0.41s
+2026-10-30T11:14:06.4221089Z      Running unittests src/lib.rs (target/debug/deps/wren_mirror-a56d2c9f8b130e47)
+2026-10-30T11:14:06.4242120Z
+2026-10-30T11:14:06.4243294Z running 1 test
+2026-10-30T11:14:06.4244821Z test tests::reverses_three_letters ... FAILED
+2026-10-30T11:14:06.4245973Z
+2026-10-30T11:14:06.4247002Z failures:
+2026-10-30T11:14:06.4248034Z
+2026-10-30T11:14:06.4249049Z ---- tests::reverses_three_letters stdout ----
+2026-10-30T11:14:06.4250121Z
+2026-10-30T11:14:06.4251160Z thread 'tests::reverses_three_letters' panicked at src/lib.rs:11:9:
+2026-10-30T11:14:06.4252206Z assertion `left == right` failed
+2026-10-30T11:14:06.4253275Z   left: "elm"
+2026-10-30T11:14:06.4254337Z  right: "mle"
+2026-10-30T11:14:06.4255401Z note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+2026-10-30T11:14:06.4256452Z
+2026-10-30T11:14:06.4257538Z failures:
+2026-10-30T11:14:06.4258603Z     tests::reverses_three_letters
+2026-10-30T11:14:06.4259667Z
+2026-10-30T11:14:06.4260731Z test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-30T11:14:06.4261854Z
+2026-10-30T11:14:06.4262918Z error: test failed, to rerun pass `--lib`
+2026-10-30T11:14:06.4291945Z ##[error]Process completed with exit code 101.
+2026-10-30T11:14:06.4362835Z Post job cleanup.
+2026-10-30T11:14:06.5264930Z [command]/usr/bin/git version
+2026-10-30T11:14:06.5293644Z git version 2.51.1
+2026-10-30T11:14:06.5561794Z Cleaning up orphan processes

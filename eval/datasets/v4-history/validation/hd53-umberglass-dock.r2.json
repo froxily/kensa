@@ -1,0 +1,13 @@
+{
+  "id": "hd53-umberglass-dock",
+  "independent_labels": {
+    "e1": {"cluster": "a", "relation": "first", "category": "test_regression"},
+    "e2": {"cluster": "b", "relation": "lookalike", "category": "test_regression"},
+    "e3": {"cluster": "c", "relation": "lookalike", "category": "test_regression"},
+    "e4": {"cluster": "a", "relation": "recurrence", "category": "test_regression"}
+  },
+  "verdict": "disagree",
+  "disputed_fields": ["e1.category", "e2.relation", "e4.category"],
+  "reason_category": "label_conflict",
+  "notes": "The oversized quote handler deadlocks on its own non-reentrant mutex; fixing application locking makes e1 and e4 test regressions rather than resource or runtime timeout failures. E2 is also a Playwright timeout resembling e1, but its stale dispatch button locator needs a separate fix. E3 has a different stale locator on the ledger page. E4 varies worker count, timeout, test lines and other run details; the root-cause descriptions fit the logs and no giveaway commentary was found. The plan labels e2 first and e1/e4 oom_timeout."
+}

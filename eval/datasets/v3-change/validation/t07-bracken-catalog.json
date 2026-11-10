@@ -1,0 +1,14 @@
+{
+  "id": "t07-bracken-catalog",
+  "independent_labels": {
+    "comparability": "comparable",
+    "unverified_factors": [],
+    "category": "db_connectivity",
+    "culprit_kind": "workflow",
+    "culprit_paths": [".github/workflows/bracken.yml"]
+  },
+  "verdict": "agree",
+  "disputed_fields": [],
+  "reason_category": "none",
+  "notes": "The matching successful baseline has the same runner image and version, and its comparison is ahead. The workflow changes PGDATABASE to bracken_archive while the service creates bracken_catalog; the failed log reports that the requested database does not exist. The evidence ranges and recorded run details are consistent."
+}

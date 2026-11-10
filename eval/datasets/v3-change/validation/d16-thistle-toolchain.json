@@ -1,0 +1,14 @@
+{
+  "id": "d16-thistle-toolchain",
+  "independent_labels": {
+    "comparability": "partially_comparable",
+    "unverified_factors": ["runner_image_changed"],
+    "category": "dependency_build",
+    "culprit_kind": "runner_image",
+    "culprit_paths": ["<runner-image>"]
+  },
+  "verdict": "agree",
+  "disputed_fields": [],
+  "reason_category": "none",
+  "notes": "The matching successful baseline has an older runner image; GCC changes from 13 to 14 and the unchanged extension fails on its implicit function declaration. The compared Python changes do not affect the extension build. Evidence ranges and recorded run details are consistent."
+}

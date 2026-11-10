@@ -1,0 +1,43 @@
+2026-09-19T07:40:10.4001000Z Current runner version: '2.329.0'
+2026-09-19T07:40:10.4021000Z ##[group]Runner Image
+2026-09-19T07:40:10.4022000Z Image: ubuntu-24.04
+2026-09-19T07:40:10.4023000Z Version: 20260914.1.0
+2026-09-19T07:40:10.4024000Z ##[endgroup]
+2026-09-19T07:40:10.4031000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-19T07:40:10.4032000Z Contents: read
+2026-09-19T07:40:10.4033000Z Metadata: read
+2026-09-19T07:40:10.4034000Z ##[endgroup]
+2026-09-19T07:40:10.4041000Z Prepare workflow directory
+2026-09-19T07:40:10.6121000Z Prepare all required actions
+2026-09-19T07:40:10.8521000Z Getting action download info
+2026-09-19T07:40:11.0031000Z Complete job name: resolve
+2026-09-19T07:40:11.1041000Z ##[group]Run actions/checkout@v4
+2026-09-19T07:40:11.1042000Z with:
+2026-09-19T07:40:11.1043000Z   repository: oriel-sundial/lichen-telemetry
+2026-09-19T07:40:11.1044000Z   clean: true
+2026-09-19T07:40:11.1045000Z ##[endgroup]
+2026-09-19T07:40:11.3201000Z Syncing repository: oriel-sundial/lichen-telemetry
+2026-09-19T07:40:11.5001000Z Initializing the repository
+2026-09-19T07:40:11.8011000Z Fetching the repository
+2026-09-19T07:40:12.1031000Z Checking out the ref
+2026-09-19T07:40:12.2301000Z ##[group]Run actions/setup-python@v5
+2026-09-19T07:40:12.2302000Z with:
+2026-09-19T07:40:12.2303000Z   python-version: '3.12'
+2026-09-19T07:40:12.2304000Z ##[endgroup]
+2026-09-19T07:40:12.5001000Z Successfully set up CPython (3.12.7)
+2026-09-19T07:40:12.6101000Z ##[group]Run uv lock
+2026-09-19T07:40:12.6102000Z uv lock
+2026-09-19T07:40:12.6103000Z shell: /usr/bin/bash -e {0}
+2026-09-19T07:40:12.6104000Z ##[endgroup]
+2026-09-19T07:40:12.6901000Z Using CPython 3.12.7 interpreter at: /opt/hostedtoolcache/Python/3.12.7/x64/bin/python3
+2026-09-19T07:40:13.4101000Z   x No solution found when resolving dependencies:
+2026-09-19T07:40:13.4102000Z   `-> Because moss-relay==2.1.0 depends on oriel-transport<2 and
+2026-09-19T07:40:13.4103000Z       your project depends on oriel-transport>=2, we can conclude that
+2026-09-19T07:40:13.4104000Z       moss-relay==2.1.0 and your project are incompatible.
+2026-09-19T07:40:13.4105000Z       And because your project depends on moss-relay==2.1.0, we can
+2026-09-19T07:40:13.4106000Z       conclude that your project's requirements are unsatisfiable.
+2026-09-19T07:40:13.4301000Z ##[error]Process completed with exit code 1.
+2026-09-19T07:40:13.4701000Z Post job cleanup.
+2026-09-19T07:40:13.5501000Z [command]/usr/bin/git version
+2026-09-19T07:40:13.5581000Z git version 2.51.0
+2026-09-19T07:40:13.6011000Z Cleaning up orphan processes

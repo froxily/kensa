@@ -1,0 +1,13 @@
+{
+  "id": "hd12-willow-attest",
+  "independent_labels": [
+    {"id": "e1", "cluster": "a", "relation": "first", "category": "missing_env_var"},
+    {"id": "e2", "cluster": "b", "relation": "first", "category": "workflow_path"},
+    {"id": "e3", "cluster": "c", "relation": "lookalike", "category": "missing_env_var"},
+    {"id": "e4", "cluster": "a", "relation": "recurrence", "category": "missing_env_var"}
+  ],
+  "verdict": "ambiguous",
+  "disputed_fields": ["e1.root_cause", "e2.root_cause", "e4.root_cause"],
+  "reason_category": "ambiguous_evidence",
+  "notes": "The labels match the sequence and plan. The fork runs show an empty signing variable, but do not establish that a configured repository secret was withheld rather than absent or incorrectly mapped. The policy error establishes a missing path, but not whether the directory is wrong or the file must be supplied. The typo in e3 needs a different fix from the fork scenario. e4 changes the runner, PR, Go version and invocation; no giveaway commentary is apparent."
+}

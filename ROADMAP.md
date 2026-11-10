@@ -240,6 +240,24 @@ MVP = M0 + M1. Nothing from M2 onwards starts until every M1 acceptance item is 
 - [x] The README links the live demo, the source, the video and the docs.
 - [x] The replay e2e tests can also check a deployed copy of the demo (`KENSA_REPLAY_URL`).
 
+## M7 (v1.1): Failure intelligence, local `[~]` (built and evaluated 2026-11-09; awaiting the owner's review; not published)
+
+The plan was approved by the owner on 2026-11-09 with 6 corrections (D-051 to D-056). Developed on feature branches in the private repository; `v1.0.0` and the public `main` are untouched. v1.2 (flaky tests) and v1.3 (remediation validation) are not started.
+
+- [x] **M7.1 History and ETL** (D-052): tracked public repositories; incremental, idempotent, budgeted syncs in a dedicated worker; 7 data-quality checks; import de-duplication; Forget repository and retention as full cascades with a coverage meta-test.
+- [x] **M7.2 Fingerprints and similar failures** (D-051, D-053): rule-derived, versioned fingerprints; similar failures shown as history, never evidence; human-confirmed resolutions; `index_incidents` off by default; backfill.
+- [x] **M7.3 Change-aware investigation** (D-054): factor-based comparability (unknown never treated as same), deterministic suspect ranking, suspects only `correlated` or `weak`, citable diff hunks that never corroborate; the worker stays network-free.
+- [x] **M7.4 Analytics** (D-055): the incrementally refreshed daily aggregate, the dashboard API, the `/analytics` page (SVG charts with equivalent tables, EN/JA, axe-checked, phone width), the tracking panel, and the Changes and Similar failures panels.
+- [x] **M7.5 Evaluation:** v3-change and v3-history written by a separate LLM author, validated independently before the freeze (5 items excluded), frozen; protocol committed before any test run; each test split run once (`eval/reports/v11-results.md`):
+  - [x] change analysis: culprit Hit@1 0.810 and MRR 0.905 against naive baselines (0.476/0.706 and 0.238/0.571); comparability 1.000; no suspect stated as a cause
+  - [ ] **fingerprints: not met.** Precision 0.682 (threshold 0.90; dev 1.000), recall 0.469 (floor 0.60), 4 of 13 look-alikes merged (threshold 10%). Recall@5 0.960 met. Version 2 overfitted the dev split; the next version needs new data
+  - [x] model ablation: 26/30 with and without change evidence (the same cases), 0 wrong `corroborated`, 0 `corroborated` on a diff alone, latency within budget
+  - [x] v2 dev regression guard: 56/60 and 53/60 (v1.0: 55 and 53), 0 wrong `corroborated`
+- [x] **M7.5 Benchmarks and checks:** analytics on 50,000 synthetic runs (dashboard p95 80 ms with history matching off and 120 ms on at v1.1.0, target 300 ms; refresh idempotent); a v1.0 database upgrades with every row unchanged; static no-execution checks on history, change, analytics and remediation code.
+- [x] **M7.5 Replay format 2:** 7 recorded runs, with similar failures, one synthetic change analysis (labelled) and the dashboard; offline replay e2e passes.
+- [x] **M7.5 Documentation:** decisions D-051 to D-056, architecture (Mermaid), threat model, README, evaluation, testing, mistakes.
+- [ ] **Not done (needs the owner's separate approval):** the lab repository `froxily/kensa-ci-lab` and real observed runs; a public update.
+
 ## Optional future work (not before M6)
 
 Approved PR creation, MCP connectors, DSPy, more providers, multi-repo investigations, incident clustering, trends.

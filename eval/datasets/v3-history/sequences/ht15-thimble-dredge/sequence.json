@@ -1,0 +1,12 @@
+﻿{
+  "id": "ht15-thimble-dredge",
+  "split": "test",
+  "ecosystem": "python",
+  "repository": "quaylark/thimble-dredge",
+  "entries": [
+    {"id": "e1", "file": "e1.log", "cluster": "a", "relation": "first", "category": "oom_timeout", "title": "Dredge worker exceeds container memory", "root_cause": "The shoal compaction container is OOM-killed while buffering records under a 512 MiB memory limit. Reduce the worker's peak memory usage or increase its limit.", "differs_from_earlier": ""},
+    {"id": "e2", "file": "e2.log", "cluster": "a", "relation": "recurrence", "category": "oom_timeout", "title": "Dredge worker exceeds container memory again", "root_cause": "The shoal compaction container is OOM-killed while buffering records under a 512 MiB memory limit. Reduce the worker's peak memory usage or increase its limit.", "differs_from_earlier": "A different input and runner encounter the same memory limit, with different timing and build output."},
+    {"id": "e3", "file": "e3.log", "cluster": "b", "relation": "first", "category": "test_regression", "title": "Tide window boundary assertion fails", "root_cause": "The tide window function excludes an event at its inclusive end boundary. Correct the boundary comparison.", "differs_from_earlier": ""},
+    {"id": "e4", "file": "e4.log", "cluster": "c", "relation": "first", "category": "workflow_path", "title": "Archive manifest path is missing", "root_cause": "The workflow asks the archive upload step for a manifest in a directory that the build does not create. Point the step at the generated manifest path.", "differs_from_earlier": ""}
+  ]
+}

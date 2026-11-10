@@ -1,0 +1,12 @@
+﻿{
+  "comparisons": {
+    "c52b8f071d4a69e3b7128c05f9a641de3087b2ac...a74c3e9160b5d82f4916ca37e2b80f95d1647abc": {
+      "status": "diverged", "merge_base": "8e30c4d91a6257bf076d3e8c49b2f1a65c7d904e", "truncated": false,
+      "commits": [{"sha": "a74c3e9160b5d82f4916ca37e2b80f95d1647abc", "message": "Clarify export check description", "date": "2026-10-28T09:10:00Z", "files": [{"path": "README.md", "status": "modified", "additions": 1, "deletions": 1, "patch": "@@ -1,2 +1,2 @@\n # Tamarind export check\n-Checks the export directory.\n+Checks that the export directory is configured."}]}]
+    }
+  },
+  "workflow_blobs": {
+    "a74c3e9160b5d82f4916ca37e2b80f95d1647abc": "6bc92e8a713df405b8e1a32c795d604fa218ce39",
+    "c52b8f071d4a69e3b7128c05f9a641de3087b2ac": "6bc92e8a713df405b8e1a32c795d604fa218ce39"
+  }
+}

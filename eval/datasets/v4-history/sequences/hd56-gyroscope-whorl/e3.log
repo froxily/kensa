@@ -1,0 +1,49 @@
+2026-09-15T11:32:10.1000000Z Current runner version: '2.329.0'
+2026-09-15T11:32:10.1100000Z ##[group]Runner Image
+2026-09-15T11:32:10.1200000Z Image: ubuntu-24.04
+2026-09-15T11:32:10.1300000Z ##[endgroup]
+2026-09-15T11:32:10.1400000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-15T11:32:10.1500000Z Contents: read
+2026-09-15T11:32:10.1600000Z ##[endgroup]
+2026-09-15T11:32:10.1700000Z Prepare workflow directory
+2026-09-15T11:32:10.1800000Z Prepare all required actions
+2026-09-15T11:32:10.1900000Z Download action repository 'actions/checkout@v4'
+2026-09-15T11:32:10.2000000Z ##[group]Run actions/checkout@v4
+2026-09-15T11:32:10.2100000Z with:
+2026-09-15T11:32:10.2200000Z   repository: whorlkin/gyroscope-whorl
+2026-09-15T11:32:10.2300000Z   clean: true
+2026-09-15T11:32:10.2400000Z ##[endgroup]
+2026-09-15T11:32:11.1000000Z Syncing repository: whorlkin/gyroscope-whorl
+2026-09-15T11:32:12.1000000Z Checking out the ref
+2026-09-15T11:32:12.2000000Z ##[group]Run flutter pub get
+2026-09-15T11:32:12.2100000Z flutter pub get
+2026-09-15T11:32:12.2200000Z shell: /usr/bin/bash -e {0}
+2026-09-15T11:32:12.2300000Z ##[endgroup]
+2026-09-15T11:32:14.1000000Z Resolving dependencies...
+2026-09-15T11:32:15.1000000Z Downloading packages...
+2026-09-15T11:32:16.1000000Z Got dependencies!
+2026-09-15T11:32:16.2000000Z ##[group]Run flutter build appbundle --release
+2026-09-15T11:32:16.2100000Z flutter build appbundle --release
+2026-09-15T11:32:16.2200000Z shell: /usr/bin/bash -e {0}
+2026-09-15T11:32:16.2300000Z ##[endgroup]
+2026-09-15T11:32:18.1000000Z Running Gradle task 'bundleRelease'...
+2026-09-15T11:32:49.1000000Z lib/map/waypoint_overlay.dart:73:21: Error: Required named parameter 'radius' must be provided.
+2026-09-15T11:32:49.1100000Z     return HaloRing(color: accent);
+2026-09-15T11:32:49.1200000Z                    ^
+2026-09-15T11:32:49.1300000Z lib/map/halo_ring.dart:9:9: Context: Found this candidate, but the arguments don't match.
+2026-09-15T11:32:49.1400000Z   const HaloRing({super.key, required this.radius, required this.color});
+2026-09-15T11:32:49.1500000Z         ^^^^^^^^
+2026-09-15T11:32:50.1000000Z Target kernel_snapshot_program failed: Exception
+2026-09-15T11:32:50.1100000Z FAILURE: Build failed with an exception.
+2026-09-15T11:32:50.1200000Z * What went wrong:
+2026-09-15T11:32:50.1300000Z Execution failed for task ':app:compileFlutterBuildRelease'.
+2026-09-15T11:32:50.1400000Z > Process 'command 'flutter'' finished with non-zero exit value 1
+2026-09-15T11:32:50.1500000Z * Try:
+2026-09-15T11:32:50.1600000Z > Run with --stacktrace option to get the stack trace.
+2026-09-15T11:32:50.1700000Z > Run with --scan to get full insights.
+2026-09-15T11:32:50.1800000Z BUILD FAILED in 33s
+2026-09-15T11:32:50.1900000Z Running Gradle task 'bundleRelease'...                             33.5s
+2026-09-15T11:32:50.2000000Z Gradle task bundleRelease failed with exit code 1
+2026-09-15T11:32:50.2100000Z ##[error]Process completed with exit code 1.
+2026-09-15T11:32:50.2200000Z Post job cleanup.
+2026-09-15T11:32:50.2300000Z Cleaning up orphan processes

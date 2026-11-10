@@ -1,0 +1,53 @@
+2026-09-19T16:05:10.3013456Z Current runner version: '2.329.0'
+2026-09-19T16:05:10.3023456Z ##[group]Runner Image
+2026-09-19T16:05:10.3033456Z Image: ubuntu-24.04
+2026-09-19T16:05:10.3043456Z Version: 20260913.1.0
+2026-09-19T16:05:10.3053456Z ##[endgroup]
+2026-09-19T16:05:10.3063456Z ##[group]GITHUB_TOKEN Permissions
+2026-09-19T16:05:10.3073456Z Contents: read
+2026-09-19T16:05:10.3083456Z Metadata: read
+2026-09-19T16:05:10.3093456Z ##[endgroup]
+2026-09-19T16:05:10.4103456Z Prepare workflow directory
+2026-09-19T16:05:10.5113456Z Prepare all required actions
+2026-09-19T16:05:10.6123456Z Getting action download info
+2026-09-19T16:05:10.7133456Z Download action repository 'actions/checkout@v4'
+2026-09-19T16:05:11.0143456Z Complete job name: bundle
+2026-09-19T16:05:11.1153456Z ##[group]Run actions/checkout@v4
+2026-09-19T16:05:11.1163456Z with:
+2026-09-19T16:05:11.1173456Z   repository: safflower-labs/gantry-checks
+2026-09-19T16:05:11.1183456Z   clean: true
+2026-09-19T16:05:11.1193456Z   fetch-depth: 1
+2026-09-19T16:05:11.1203456Z ##[endgroup]
+2026-09-19T16:05:11.2213456Z Syncing repository: safflower-labs/gantry-checks
+2026-09-19T16:05:11.3223456Z ##[group]Getting Git version info
+2026-09-19T16:05:11.3233456Z git version 2.51.1
+2026-09-19T16:05:11.3243456Z ##[endgroup]
+2026-09-19T16:05:11.4253456Z Initializing the repository
+2026-09-19T16:05:11.5263456Z Fetching the repository
+2026-09-19T16:05:11.8273456Z Checking out the ref
+2026-09-19T16:05:11.9283456Z [command]/usr/bin/git log -1 --format=%H
+2026-09-19T16:05:11.9293456Z 94e18b794ab4bb13e120ff84c1de7af01749d41c
+2026-09-19T16:05:12.0303456Z ##[group]Run pwd; cat Makefile tools/gantry/Makefile
+2026-09-19T16:05:12.0313456Z pwd; cat Makefile tools/gantry/Makefile
+2026-09-19T16:05:12.0323456Z shell: /usr/bin/bash -e {0}
+2026-09-19T16:05:12.0333456Z ##[endgroup]
+2026-09-19T16:05:12.0343456Z /home/runner/work/gantry-checks/gantry-checks
+2026-09-19T16:05:12.0353456Z .PHONY: help
+2026-09-19T16:05:12.0363456Z help:
+2026-09-19T16:05:12.0373456Z 	@echo 'See tools/gantry for bundle commands'
+2026-09-19T16:05:12.0383456Z .PHONY: verify-bundle bundle-clean
+2026-09-19T16:05:12.0393456Z verify-bundle:
+2026-09-19T16:05:12.0403456Z 	./assemble-bundle.sh build/bundle
+2026-09-19T16:05:12.0413456Z 	./check-manifest.sh build/bundle/manifest.txt
+2026-09-19T16:05:12.0423456Z bundle-clean:
+2026-09-19T16:05:12.0433456Z 	rm -rf build/bundle
+2026-09-19T16:05:12.1353456Z ##[group]Run make bundle-clean
+2026-09-19T16:05:12.1363456Z make bundle-clean
+2026-09-19T16:05:12.1373456Z shell: /usr/bin/bash -e {0}
+2026-09-19T16:05:12.1383456Z ##[endgroup]
+2026-09-19T16:05:12.1393456Z make: *** No rule to make target 'bundle-clean'.  Stop.
+2026-09-19T16:05:12.1403456Z ##[error]Process completed with exit code 2.
+2026-09-19T16:05:12.2413456Z Post job cleanup.
+2026-09-19T16:05:12.3423456Z [command]/usr/bin/git version
+2026-09-19T16:05:12.3433456Z git version 2.51.1
+2026-09-19T16:05:12.4443456Z Cleaning up orphan processes

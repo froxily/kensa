@@ -1,0 +1,48 @@
+2026-09-02T09:14:00.1111111Z Current runner version: '2.328.0'
+2026-09-02T09:14:00.2111111Z ##[group]Runner Image
+2026-09-02T09:14:00.3111111Z Image: ubuntu-24.04
+2026-09-02T09:14:00.4111111Z Version: 20260824.1.0
+2026-09-02T09:14:00.5111111Z ##[endgroup]
+2026-09-02T09:14:00.6111111Z ##[group]GITHUB_TOKEN Permissions
+2026-09-02T09:14:00.7111111Z Contents: read
+2026-09-02T09:14:00.8111111Z ##[endgroup]
+2026-09-02T09:14:01.1111111Z Prepare workflow directory
+2026-09-02T09:14:01.4111111Z Prepare all required actions
+2026-09-02T09:14:02.1111111Z Download action repository 'actions/checkout@v4'
+2026-09-02T09:14:02.4111111Z Download action repository 'hashicorp/setup-terraform@v3'
+2026-09-02T09:14:03.1111111Z Complete job name: plan
+2026-09-02T09:14:03.4111111Z ##[group]Run actions/checkout@v4
+2026-09-02T09:14:03.5111111Z with:
+2026-09-02T09:14:03.6111111Z   repository: thistleharbor/estuary-infra
+2026-09-02T09:14:03.7111111Z   clean: true
+2026-09-02T09:14:03.8111111Z ##[endgroup]
+2026-09-02T09:14:04.1111111Z Syncing repository: thistleharbor/estuary-infra
+2026-09-02T09:14:04.3111111Z Getting Git version info
+2026-09-02T09:14:05.1111111Z Initialized empty Git repository in /home/runner/work/estuary-infra/estuary-infra/.git/
+2026-09-02T09:14:06.1111111Z Checking out the ref
+2026-09-02T09:14:06.4111111Z ##[group]Run hashicorp/setup-terraform@v3
+2026-09-02T09:14:06.5111111Z with:
+2026-09-02T09:14:06.6111111Z   terraform_version: 1.9.8
+2026-09-02T09:14:06.7111111Z ##[endgroup]
+2026-09-02T09:14:08.1111111Z Terraform CLI version 1.9.8
+2026-09-02T09:14:08.4111111Z ##[group]Run terraform init -input=false
+2026-09-02T09:14:08.5111111Z terraform init -input=false
+2026-09-02T09:14:08.6111111Z shell: /usr/bin/bash -e {0}
+2026-09-02T09:14:08.7111111Z ##[endgroup]
+2026-09-02T09:14:09.1111111Z Initializing the backend...
+2026-09-02T09:14:09.8111111Z Successfully configured the backend "s3"!
+2026-09-02T09:14:10.1111111Z Initializing provider plugins...
+2026-09-02T09:14:11.1111111Z - Using previously-installed hashicorp/aws v5.67.0
+2026-09-02T09:14:11.4111111Z Terraform has been successfully initialized!
+2026-09-02T09:14:11.7111111Z ##[group]Run terraform plan -input=false -no-color
+2026-09-02T09:14:11.8111111Z terraform plan -input=false -no-color
+2026-09-02T09:14:11.9111111Z shell: /usr/bin/bash -e {0}
+2026-09-02T09:14:12.0111111Z ##[endgroup]
+2026-09-02T09:14:12.3111111Z Acquiring state lock. This may take a few moments...
+2026-09-02T09:14:12.8111111Z Error: Error acquiring the state lock
+2026-09-02T09:14:12.9111111Z 
+2026-09-02T09:14:13.0111111Z Error message: operation error DynamoDB: PutItem, request send failed, Post "http://127.0.0.1:8000/": dial tcp 127.0.0.1:8000: connect: connection refused
+2026-09-02T09:14:14.4111111Z ##[error]Terraform exited with code 1.
+2026-09-02T09:14:14.5111111Z ##[error]Process completed with exit code 1.
+2026-09-02T09:14:14.6111111Z Post job cleanup.
+2026-09-02T09:14:14.7111111Z Cleaning up orphan processes

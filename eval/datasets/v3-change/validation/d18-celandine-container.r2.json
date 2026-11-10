@@ -1,0 +1,14 @@
+{
+  "id": "d18-celandine-container",
+  "independent_labels": {
+    "comparability": "partially_comparable",
+    "unverified_factors": ["history_diverged"],
+    "category": "docker",
+    "culprit_kind": "build_config",
+    "culprit_paths": ["Dockerfile"]
+  },
+  "verdict": "agree",
+  "disputed_fields": [],
+  "reason_category": "none",
+  "notes": "The matching successful baseline has divergent history. The Dockerfile change selects the image tag that the failed build cannot resolve; the cited evidence and recorded run details agree."
+}

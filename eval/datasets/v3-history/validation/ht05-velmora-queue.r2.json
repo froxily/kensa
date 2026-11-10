@@ -1,0 +1,13 @@
+{
+  "id": "ht05-velmora-queue",
+  "independent_labels": [
+    {"id": "e1", "cluster": "a", "relation": "first", "category": "db_connectivity"},
+    {"id": "e2", "cluster": "a", "relation": "recurrence", "category": "db_connectivity"},
+    {"id": "e3", "cluster": "a", "relation": "recurrence", "category": "db_connectivity"},
+    {"id": "e4", "cluster": "b", "relation": "lookalike", "category": "db_connectivity"}
+  ],
+  "verdict": "disagree",
+  "disputed_fields": ["e4.relation", "e4.differs_from_earlier"],
+  "reason_category": "label_conflict",
+  "notes": "e1-e3 show no listener on port 6379 and recur through different commands or tests. e4 repeats the same refusal but Redis responds on published port 6380, requiring the client and service ports to be aligned; it is a lookalike, not first. Its differs_from_earlier field should describe that distinction. The plan specifies b as first, conflicting with the observed lookalike. Root causes match the evidence; recurrences are not timestamp-only copies, and the logs contain no giveaway commentary."
+}

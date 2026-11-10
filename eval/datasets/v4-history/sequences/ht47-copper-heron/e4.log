@@ -1,0 +1,51 @@
+2026-10-04T11:05:00.3333333Z Current runner version: '2.329.0'
+2026-10-04T11:05:00.4333333Z ##[group]Operating System
+2026-10-04T11:05:00.5333333Z Ubuntu
+2026-10-04T11:05:00.6333333Z 24.04.3
+2026-10-04T11:05:00.7333333Z ##[endgroup]
+2026-10-04T11:05:00.8333333Z ##[group]Runner Image
+2026-10-04T11:05:00.9333333Z Image: ubuntu-24.04
+2026-10-04T11:05:01.0333333Z ##[endgroup]
+2026-10-04T11:05:01.3333333Z ##[group]GITHUB_TOKEN Permissions
+2026-10-04T11:05:01.4333333Z Contents: read
+2026-10-04T11:05:01.5333333Z ##[endgroup]
+2026-10-04T11:05:02.3333333Z Prepare workflow directory
+2026-10-04T11:05:03.3333333Z Prepare all required actions
+2026-10-04T11:05:04.3333333Z ##[group]Run actions/checkout@v4
+2026-10-04T11:05:04.4333333Z with:
+2026-10-04T11:05:04.5333333Z   repository: copper-heron/tide-dial
+2026-10-04T11:05:04.6333333Z   fetch-depth: 1
+2026-10-04T11:05:04.7333333Z ##[endgroup]
+2026-10-04T11:05:05.3333333Z Syncing repository: copper-heron/tide-dial
+2026-10-04T11:05:06.3333333Z Getting Git version info
+2026-10-04T11:05:07.3333333Z Checking out the ref
+2026-10-04T11:05:08.3333333Z ##[group]Run actions/setup-java@v4
+2026-10-04T11:05:08.4333333Z with:
+2026-10-04T11:05:08.5333333Z   distribution: temurin
+2026-10-04T11:05:08.6333333Z   java-version: 17
+2026-10-04T11:05:08.7333333Z ##[endgroup]
+2026-10-04T11:05:09.3333333Z ##[group]Run ./gradlew :app:assemblePaidDebug
+2026-10-04T11:05:09.4333333Z ./gradlew :app:assemblePaidDebug
+2026-10-04T11:05:09.5333333Z shell: /usr/bin/bash -e {0}
+2026-10-04T11:05:09.6333333Z ##[endgroup]
+2026-10-04T11:05:11.3333333Z Starting a Gradle Daemon (subsequent builds will be faster)
+2026-10-04T11:05:20.3333333Z > Task :app:preBuild UP-TO-DATE
+2026-10-04T11:05:21.3333333Z > Task :app:prePaidDebugBuild UP-TO-DATE
+2026-10-04T11:05:22.3333333Z > Task :app:generatePaidDebugBuildConfig
+2026-10-04T11:05:24.3333333Z > Task :app:processPaidDebugResources
+2026-10-04T11:05:29.3333333Z > Task :app:compilePaidDebugKotlin FAILED
+2026-10-04T11:05:29.4333333Z e: file:///home/runner/work/tide-dial/tide-dial/app/src/main/java/org/copperheron/tidedial/TideCard.kt:47:20 Unresolved reference: formatTideLabel
+2026-10-04T11:05:29.5333333Z FAILURE: Build failed with an exception.
+2026-10-04T11:05:29.6333333Z * What went wrong:
+2026-10-04T11:05:29.7333333Z Execution failed for task ':app:compilePaidDebugKotlin'.
+2026-10-04T11:05:29.8333333Z > A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+2026-10-04T11:05:29.9333333Z    > Compilation error. See log for more details
+2026-10-04T11:05:30.0333333Z * Try:
+2026-10-04T11:05:30.1333333Z > Run with --stacktrace option to get the stack trace.
+2026-10-04T11:05:30.2333333Z > Run with --info or --debug option to get more log output.
+2026-10-04T11:05:30.3333333Z > Get more help at https://help.gradle.org.
+2026-10-04T11:05:30.4333333Z BUILD FAILED in 21s
+2026-10-04T11:05:30.5333333Z 31 actionable tasks: 31 executed
+2026-10-04T11:05:30.6333333Z ##[error]Process completed with exit code 1.
+2026-10-04T11:05:31.3333333Z Post job cleanup.
+2026-10-04T11:05:31.4333333Z Cleaning up orphan processes

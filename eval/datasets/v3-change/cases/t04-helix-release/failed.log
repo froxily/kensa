@@ -1,0 +1,81 @@
+﻿2026-10-30T10:14:05.0100000Z Current runner version: '2.330.0'
+2026-10-30T10:14:05.0110000Z ##[group]Runner Image Provisioner
+2026-10-30T10:14:05.0120000Z Hosted Compute Agent
+2026-10-30T10:14:05.0130000Z Version: 20261020.1
+2026-10-30T10:14:05.0140000Z ##[endgroup]
+2026-10-30T10:14:05.0150000Z ##[group]Operating System
+2026-10-30T10:14:05.0160000Z Ubuntu
+2026-10-30T10:14:05.0170000Z 24.04.3
+2026-10-30T10:14:05.0180000Z LTS
+2026-10-30T10:14:05.0190000Z ##[endgroup]
+2026-10-30T10:14:05.0200000Z ##[group]Runner Image
+2026-10-30T10:14:05.0210000Z Image: ubuntu-24.04
+2026-10-30T10:14:05.0220000Z Version: 20261026.1
+2026-10-30T10:14:05.0230000Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261026.1/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-30T10:14:05.0240000Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261026.1
+2026-10-30T10:14:05.0250000Z ##[endgroup]
+2026-10-30T10:14:05.0260000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-30T10:14:05.0270000Z Contents: read
+2026-10-30T10:14:05.0280000Z Metadata: read
+2026-10-30T10:14:05.0290000Z ##[endgroup]
+2026-10-30T10:14:05.0300000Z Secret source: Actions
+2026-10-30T10:14:05.0310000Z Prepare workflow directory
+2026-10-30T10:14:05.0320000Z Prepare all required actions
+2026-10-30T10:14:05.0330000Z Getting action download info
+2026-10-30T10:14:05.0340000Z Download action repository 'actions/checkout@v4'
+2026-10-30T10:14:05.0350000Z Download action repository 'actions/setup-java@v4'
+2026-10-30T10:14:05.0360000Z Complete job name: compile
+2026-10-30T10:14:06.0010000Z ##[group]Run actions/checkout@v4
+2026-10-30T10:14:06.0020000Z with:
+2026-10-30T10:14:06.0030000Z   repository: helix-labs/rill-index
+2026-10-30T10:14:06.0040000Z   clean: true
+2026-10-30T10:14:06.0050000Z   fetch-depth: 1
+2026-10-30T10:14:06.0060000Z ##[endgroup]
+2026-10-30T10:14:06.0070000Z Syncing repository: helix-labs/rill-index
+2026-10-30T10:14:06.0080000Z Getting Git version info
+2026-10-30T10:14:06.0090000Z git version 2.51.0
+2026-10-30T10:14:06.0100000Z Initializing the repository
+2026-10-30T10:14:06.0110000Z Fetching the repository
+2026-10-30T10:14:06.0120000Z Checking out the ref
+2026-10-30T10:14:06.0130000Z [command]/usr/bin/git log -1 --format=%H
+2026-10-30T10:14:06.0140000Z c39a7b84e612f0d59c2a376be481d9f05a6c813b
+2026-10-30T10:14:07.0010000Z ##[group]Run actions/setup-java@v4
+2026-10-30T10:14:07.0020000Z with:
+2026-10-30T10:14:07.0030000Z   distribution: temurin
+2026-10-30T10:14:07.0040000Z   java-version: 21
+2026-10-30T10:14:07.0050000Z   cache: maven
+2026-10-30T10:14:07.0060000Z ##[endgroup]
+2026-10-30T10:14:07.0070000Z Installed distributions
+2026-10-30T10:14:07.0080000Z   Resolved Java 21.0.8+9 from tool-cache
+2026-10-30T10:14:07.0090000Z Setting Java 21.0.8+9 as the default
+2026-10-30T10:14:07.0100000Z Creating toolchains.xml for JDK version 21 from temurin
+2026-10-30T10:14:07.0110000Z Cache restored from key: setup-java-Linux-maven-4f9d
+2026-10-30T10:14:08.0010000Z ##[group]Run mvn -B verify
+2026-10-30T10:14:08.0020000Z mvn -B verify
+2026-10-30T10:14:08.0030000Z shell: /usr/bin/bash -e {0}
+2026-10-30T10:14:08.0040000Z ##[endgroup]
+2026-10-30T10:14:09.0010000Z [INFO] Scanning for projects...
+2026-10-30T10:14:09.0020000Z [INFO] ------------------------< org.helix:rill-index >------------------------
+2026-10-30T10:14:09.0030000Z [INFO] Building rill-index 1.2.0
+2026-10-30T10:14:09.0040000Z [INFO] --------------------------------[ jar ]---------------------------------
+2026-10-30T10:14:09.0050000Z [INFO] --- maven-resources-plugin:3.3.1:resources (default-resources) @ rill-index ---
+2026-10-30T10:14:09.0060000Z [INFO] skip non existing resourceDirectory /home/runner/work/rill-index/rill-index/src/main/resources
+2026-10-30T10:14:09.0070000Z [INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ rill-index ---
+2026-10-30T10:14:09.0080000Z [INFO] Recompiling the module because of changed source code.
+2026-10-30T10:14:09.0090000Z [INFO] Compiling 1 source file with javac [debug release 23] to target/classes
+2026-10-30T10:14:09.0100000Z [INFO] ------------------------------------------------------------------------
+2026-10-30T10:14:09.0110000Z [INFO] BUILD FAILURE
+2026-10-30T10:14:09.0120000Z [INFO] ------------------------------------------------------------------------
+2026-10-30T10:14:09.0130000Z [INFO] Total time:  1.108 s
+2026-10-30T10:14:09.0140000Z [INFO] Finished at: 2026-10-30T10:14:09Z
+2026-10-30T10:14:09.0150000Z [INFO] ------------------------------------------------------------------------
+2026-10-30T10:14:09.0160000Z [ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.13.0:compile (default-compile) on project rill-index: Fatal error compiling: error: release version 23 not supported -> [Help 1]
+2026-10-30T10:14:09.0170000Z [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+2026-10-30T10:14:09.0180000Z [ERROR] Re-run Maven using the -X switch to enable full debug logging.
+2026-10-30T10:14:09.0190000Z [ERROR] For more information about the errors and possible solutions, please read the following articles:
+2026-10-30T10:14:09.0200000Z [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+2026-10-30T10:14:09.0210000Z ##[error]Process completed with exit code 1.
+2026-10-30T10:14:09.0220000Z Post job cleanup.
+2026-10-30T10:14:09.0230000Z [command]/usr/bin/git version
+2026-10-30T10:14:09.0240000Z git version 2.51.0
+2026-10-30T10:14:09.0250000Z Cleaning up orphan processes

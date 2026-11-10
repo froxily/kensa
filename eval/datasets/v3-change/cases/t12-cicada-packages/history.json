@@ -1,0 +1,16 @@
+{
+  "comparisons": {
+    "4b8e2a6d9f301c57e842ba6d71f0c9e35a28d614...9fa2d71c4b86e503a19c7d2f8b640e3a5c71d290": {
+      "status": "ahead", "merge_base": "4b8e2a6d9f301c57e842ba6d71f0c9e35a28d614", "truncated": false,
+      "commits": [
+        {"sha": "9fa2d71c4b86e503a19c7d2f8b640e3a5c71d290", "message": "Reduce workflow token access", "date": "2026-11-08T10:13:00Z", "files": [
+          {"path": ".github/workflows/cicada.yml", "status": "modified", "additions": 1, "deletions": 1, "patch": "@@ -4,7 +4,7 @@ on:\n     branches: [main]\n permissions:\n   contents: read\n-  packages: write\n+  packages: read\n jobs:\n   publish:\n     runs-on: ubuntu-24.04"}
+        ]}
+      ]
+    }
+  },
+  "workflow_blobs": {
+    "9fa2d71c4b86e503a19c7d2f8b640e3a5c71d290": "b2c7a49e1d630f8a52e4c79b16a03d5e8f924c71",
+    "4b8e2a6d9f301c57e842ba6d71f0c9e35a28d614": "d71f3c8a04b925e6f1a37c4b9e562d08a3c6f714"
+  }
+}

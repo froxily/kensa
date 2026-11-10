@@ -1,0 +1,12 @@
+{
+  "id": "hd35-reedbarge",
+  "split": "dev",
+  "ecosystem": "node (pnpm)",
+  "repository": "brackenflux/tidemark-panel",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"dependency_build","title":"React DOM peer range rejects React 19","root_cause":"The project installs react-dom 18.3.1 alongside React 19.0.0, outside react-dom's required React peer range. Align the React and react-dom versions.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"a","relation":"recurrence","category":"dependency_build","title":"React DOM peer range rejects React 19","root_cause":"The project installs react-dom 18.3.1 alongside React 19.0.0, outside react-dom's required React peer range. Align the React and react-dom versions.","differs_from_earlier":"A newer pnpm and Node version runs on a different runner after a documentation change, but the same package versions conflict."},
+    {"id":"e3","file":"e3.log","cluster":"a","relation":"recurrence","category":"dependency_build","title":"React DOM peer range rejects React 19","root_cause":"The project installs react-dom 18.3.1 alongside React 19.0.0, outside react-dom's required React peer range. Align the React and react-dom versions.","differs_from_earlier":"Another pnpm and Node upgrade and a changed install invocation still resolve the same incompatible React pair."},
+    {"id":"e4","file":"e4.log","cluster":"b","relation":"first","category":"test_regression","title":"Channel width assertion fails","root_cause":"The channelWidth function returns the unclamped value for a narrow viewport, failing its minimum-width assertion. Restore the minimum-width clamp.","differs_from_earlier":""}
+  ]
+}

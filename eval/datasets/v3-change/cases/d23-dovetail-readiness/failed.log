@@ -1,0 +1,72 @@
+﻿2026-11-05T10:10:04.1110000Z Current runner version: '2.330.0'
+2026-11-05T10:10:04.1120000Z ##[group]Runner Image
+2026-11-05T10:10:04.1130000Z Image: ubuntu-24.04
+2026-11-05T10:10:04.1140000Z Version: 20261026.1
+2026-11-05T10:10:04.1150000Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261026.1/images/ubuntu/Ubuntu2404-Readme.md
+2026-11-05T10:10:04.1160000Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261026.1
+2026-11-05T10:10:04.1170000Z ##[endgroup]
+2026-11-05T10:10:04.1180000Z ##[group]GITHUB_TOKEN Permissions
+2026-11-05T10:10:04.1190000Z Contents: read
+2026-11-05T10:10:04.1200000Z Metadata: read
+2026-11-05T10:10:04.1210000Z Packages: read
+2026-11-05T10:10:04.1220000Z ##[endgroup]
+2026-11-05T10:10:04.1230000Z Secret source: Actions
+2026-11-05T10:10:04.1240000Z Prepare workflow directory
+2026-11-05T10:10:04.2200000Z Prepare all required actions
+2026-11-05T10:10:04.2210000Z Getting action download info
+2026-11-05T10:10:04.5200000Z Download action repository 'actions/checkout@v4'
+2026-11-05T10:10:05.1200000Z Download action repository 'actions/setup-python@v5'
+2026-11-05T10:10:05.6200000Z Complete job name: integration
+2026-11-05T10:10:05.6210000Z ##[group]Checking docker version
+2026-11-05T10:10:05.6220000Z /usr/bin/docker version --format '{{.Server.APIVersion}}'
+2026-11-05T10:10:05.7200000Z '1.48'
+2026-11-05T10:10:05.7210000Z Docker daemon API version: '1.48'
+2026-11-05T10:10:05.7220000Z ##[endgroup]
+2026-11-05T10:10:05.7230000Z ##[group]Clean up resources from previous jobs
+2026-11-05T10:10:05.7240000Z /usr/bin/docker ps --all --quiet --no-trunc --filter "label=78ac29"
+2026-11-05T10:10:05.8200000Z /usr/bin/docker network prune --force --filter "label=78ac29"
+2026-11-05T10:10:05.9200000Z ##[endgroup]
+2026-11-05T10:10:05.9210000Z ##[group]Create local container network
+2026-11-05T10:10:05.9220000Z /usr/bin/docker network create --label 78ac29 github_network_58a9f3
+2026-11-05T10:10:06.0200000Z 713e4b98d02a
+2026-11-05T10:10:06.0210000Z ##[endgroup]
+2026-11-05T10:10:06.0220000Z ##[group]Starting postgres service container
+2026-11-05T10:10:06.0230000Z /usr/bin/docker pull postgres:16
+2026-11-05T10:10:07.0200000Z 16: Pulling from library/postgres
+2026-11-05T10:10:07.2200000Z Digest: sha256:cd19b6eaa4d2b9786a1fdc5eac72b3091c8f4d50eb3a6257f901b2d4c63e8a17
+2026-11-05T10:10:07.2210000Z Status: Downloaded newer image for postgres:16
+2026-11-05T10:10:07.2220000Z docker.io/library/postgres:16
+2026-11-05T10:10:07.2230000Z /usr/bin/docker create --name postgres_service --label 78ac29 --network github_network_58a9f3 -p 5432:5432 --health-cmd pg_isready --health-interval 2s --health-timeout 5s --health-retries 5 -e POSTGRES_USER=dovetail -e POSTGRES_DB=dovetail_test -e POSTGRES_HOST_AUTH_METHOD=trust postgres:16
+2026-11-05T10:10:07.4200000Z 8f1c2e7a43bd
+2026-11-05T10:10:07.4210000Z /usr/bin/docker start 8f1c2e7a43bd
+2026-11-05T10:10:07.9200000Z 8f1c2e7a43bd
+2026-11-05T10:10:07.9210000Z /usr/bin/docker ps --all --filter id=8f1c2e7a43bd --filter status=running --no-trunc --format "{{.ID}} {{.Status}}"
+2026-11-05T10:10:08.0200000Z 8f1c2e7a43bd Up Less than a second (health: starting)
+2026-11-05T10:10:08.0210000Z ##[endgroup]
+2026-11-05T10:10:08.0220000Z ##[group]Waiting for all services to be ready
+2026-11-05T10:10:08.0230000Z /usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" 8f1c2e7a43bd
+2026-11-05T10:10:08.1200000Z starting
+2026-11-05T10:10:08.1210000Z postgres service is starting, waiting 2 seconds before checking again.
+2026-11-05T10:10:10.1220000Z /usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" 8f1c2e7a43bd
+2026-11-05T10:10:10.2200000Z starting
+2026-11-05T10:10:10.2210000Z postgres service is starting, waiting 4 seconds before checking again.
+2026-11-05T10:10:14.2220000Z /usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" 8f1c2e7a43bd
+2026-11-05T10:10:14.3200000Z starting
+2026-11-05T10:10:14.3210000Z postgres service is starting, waiting 8 seconds before checking again.
+2026-11-05T10:10:22.3220000Z /usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" 8f1c2e7a43bd
+2026-11-05T10:10:22.4200000Z unhealthy
+2026-11-05T10:10:22.4210000Z ##[error]Failed to initialize container postgres:16
+2026-11-05T10:10:22.4220000Z ##[group]Service container logs: postgres
+2026-11-05T10:10:22.4230000Z /usr/bin/docker logs --details 8f1c2e7a43bd
+2026-11-05T10:10:22.4240000Z 2026-11-05 10:10:08.010 UTC [48] LOG:  could not bind IPv4 address "0.0.0.0": Cannot assign requested address
+2026-11-05T10:10:22.4241000Z 2026-11-05 10:10:08.010 UTC [48] WARNING:  could not create listen socket for "*"
+2026-11-05T10:10:22.4242000Z 2026-11-05 10:10:08.010 UTC [48] FATAL:  could not create any TCP/IP sockets
+2026-11-05T10:10:22.4250000Z ##[endgroup]
+2026-11-05T10:10:22.4260000Z ##[endgroup]
+2026-11-05T10:10:22.4270000Z Stop and remove container: postgres_service
+2026-11-05T10:10:22.4280000Z /usr/bin/docker rm --force 8f1c2e7a43bd
+2026-11-05T10:10:22.5200000Z 8f1c2e7a43bd
+2026-11-05T10:10:22.5210000Z Remove container network: github_network_58a9f3
+2026-11-05T10:10:22.5220000Z /usr/bin/docker network rm github_network_58a9f3
+2026-11-05T10:10:22.6200000Z github_network_58a9f3
+2026-11-05T10:10:22.6210000Z Cleaning up orphan processes

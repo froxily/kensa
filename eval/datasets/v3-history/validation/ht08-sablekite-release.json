@@ -1,0 +1,13 @@
+{
+  "id": "ht08-sablekite-release",
+  "independent_labels": {
+    "e1": {"cluster": "a", "relation": "first", "category": "github_permissions"},
+    "e2": {"cluster": "a", "relation": "recurrence", "category": "github_permissions"},
+    "e3": {"cluster": "b", "relation": "first", "category": "dependency_build"},
+    "e4": {"cluster": "a", "relation": "recurrence", "category": "github_permissions"}
+  },
+  "verdict": "agree",
+  "disputed_fields": [],
+  "reason_category": "none",
+  "notes": "The three upload failures show contents read permission and the same 403; e2 masks the upload failure with a subsequent download failure. e3 fails at compilation on an undefined function. The recurrences differ in steps and build details, and the logs contain no explanatory giveaway commentary. The labels and pattern match the sequence and plan."
+}

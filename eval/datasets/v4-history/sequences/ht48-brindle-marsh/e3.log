@@ -1,0 +1,52 @@
+2026-09-19T14:03:20.1000000Z Current runner version: '2.329.0'
+2026-09-19T14:03:20.1100000Z ##[group]Runner Image
+2026-09-19T14:03:20.1200000Z Image: ubuntu-24.04
+2026-09-19T14:03:20.1300000Z Version: 20260914.1.0
+2026-09-19T14:03:20.1400000Z ##[endgroup]
+2026-09-19T14:03:20.1500000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-19T14:03:20.1600000Z Contents: read
+2026-09-19T14:03:20.1700000Z Metadata: read
+2026-09-19T14:03:20.1800000Z ##[endgroup]
+2026-09-19T14:03:20.1900000Z Prepare workflow directory
+2026-09-19T14:03:20.2000000Z Prepare all required actions
+2026-09-19T14:03:20.9000000Z Download action repository 'actions/checkout@v4'
+2026-09-19T14:03:21.1200000Z Download action repository 'hashicorp/setup-terraform@v3'
+2026-09-19T14:03:21.1800000Z Complete job name: plan / staging
+2026-09-19T14:03:21.2500000Z ##[group]Run actions/checkout@v4
+2026-09-19T14:03:21.2600000Z with:
+2026-09-19T14:03:21.2700000Z   repository: brindle-marsh/reedgate-infra
+2026-09-19T14:03:21.2800000Z   fetch-depth: 1
+2026-09-19T14:03:21.2900000Z ##[endgroup]
+2026-09-19T14:03:21.8800000Z Syncing repository: brindle-marsh/reedgate-infra
+2026-09-19T14:03:22.2100000Z Checking out the ref
+2026-09-19T14:03:22.4000000Z ##[group]Run hashicorp/setup-terraform@v3
+2026-09-19T14:03:22.4100000Z with:
+2026-09-19T14:03:22.4200000Z   terraform_version: 1.9.8
+2026-09-19T14:03:22.4300000Z ##[endgroup]
+2026-09-19T14:03:23.1000000Z Terraform CLI installed
+2026-09-19T14:03:23.2000000Z ##[group]Run terraform init -backend=false -input=false
+2026-09-19T14:03:23.2100000Z terraform init -backend=false -input=false
+2026-09-19T14:03:23.2200000Z shell: /usr/bin/bash -e {0}
+2026-09-19T14:03:23.2300000Z ##[endgroup]
+2026-09-19T14:03:23.4100000Z Initializing modules...
+2026-09-19T14:03:23.4200000Z - fenway in ../../modules/fenway
+2026-09-19T14:03:23.4500000Z Initializing provider plugins...
+2026-09-19T14:03:23.4600000Z - Reusing previous version of hashicorp/aws from the dependency lock file
+2026-09-19T14:03:24.3800000Z - Installing hashicorp/aws v5.62.0...
+2026-09-19T14:03:26.4300000Z - Installed hashicorp/aws v5.62.0 (signed by HashiCorp)
+2026-09-19T14:03:26.4400000Z Terraform has been successfully initialized!
+2026-09-19T14:03:26.5000000Z ##[group]Run terraform plan -input=false -no-color -var-file=staging.auto.tfvars
+2026-09-19T14:03:26.5100000Z terraform plan -input=false -no-color -var-file=staging.auto.tfvars
+2026-09-19T14:03:26.5200000Z shell: /usr/bin/bash -e {0}
+2026-09-19T14:03:26.5300000Z ##[endgroup]
+2026-09-19T14:03:27.0200000Z Error: No value for required variable
+2026-09-19T14:03:27.0300000Z 
+2026-09-19T14:03:27.0400000Z   on variables.tf line 12:
+2026-09-19T14:03:27.0500000Z   12: variable "lockbox_region" {
+2026-09-19T14:03:27.0600000Z 
+2026-09-19T14:03:27.0700000Z The root module input variable "lockbox_region" is not set, and has no
+2026-09-19T14:03:27.0800000Z default value. Use a -var or -var-file command line argument to provide a value for this variable.
+2026-09-19T14:03:27.1000000Z ##[error]Terraform exited with code 1.
+2026-09-19T14:03:27.1100000Z ##[error]Process completed with exit code 1.
+2026-09-19T14:03:27.2000000Z Post job cleanup.
+2026-09-19T14:03:27.3300000Z Cleaning up orphan processes

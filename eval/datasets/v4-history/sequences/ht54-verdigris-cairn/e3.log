@@ -1,0 +1,54 @@
+2026-09-15T04:22:10.1000000Z Current runner version: '2.329.0'
+2026-09-15T04:22:10.2000000Z ##[group]Runner Image Provisioner
+2026-09-15T04:22:10.3000000Z Hosted Compute Agent
+2026-09-15T04:22:10.4000000Z Version: 20260908.2
+2026-09-15T04:22:10.5000000Z ##[endgroup]
+2026-09-15T04:22:10.6000000Z ##[group]Operating System
+2026-09-15T04:22:10.7000000Z Ubuntu
+2026-09-15T04:22:10.8000000Z 24.04.3
+2026-09-15T04:22:10.9000000Z LTS
+2026-09-15T04:22:11.0000000Z ##[endgroup]
+2026-09-15T04:22:11.1000000Z ##[group]Runner Image
+2026-09-15T04:22:11.2000000Z Image: ubuntu-24.04
+2026-09-15T04:22:11.3000000Z Version: 20260908.1.0
+2026-09-15T04:22:11.4000000Z ##[endgroup]
+2026-09-15T04:22:11.5000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-15T04:22:11.6000000Z Contents: read
+2026-09-15T04:22:11.7000000Z Metadata: read
+2026-09-15T04:22:11.8000000Z ##[endgroup]
+2026-09-15T04:22:11.9000000Z Prepare workflow directory
+2026-09-15T04:22:12.1000000Z Prepare all required actions
+2026-09-15T04:22:12.3000000Z Download action repository 'actions/checkout@v4' (SHA: 11bd71901bbe5b1630ceea73d27597364c9af683)
+2026-09-15T04:22:12.5000000Z Complete job name: manifest-integration
+2026-09-15T04:22:12.7000000Z ##[group]Checking docker version
+2026-09-15T04:22:12.9000000Z /usr/bin/docker version --format '{{.Server.APIVersion}}'
+2026-09-15T04:22:13.1000000Z '1.48'
+2026-09-15T04:22:13.3000000Z ##[endgroup]
+2026-09-15T04:22:13.5000000Z ##[group]Clean up resources from previous jobs
+2026-09-15T04:22:13.7000000Z /usr/bin/docker network prune --force --filter label=cd83a1
+2026-09-15T04:22:13.9000000Z ##[endgroup]
+2026-09-15T04:22:14.1000000Z ##[group]Create local container network
+2026-09-15T04:22:14.3000000Z /usr/bin/docker network create --label cd83a1 github_network_c84df2
+2026-09-15T04:22:14.5000000Z ##[endgroup]
+2026-09-15T04:22:14.7000000Z ##[group]Starting manifest service container
+2026-09-15T04:22:14.9000000Z /usr/bin/docker pull mysql:8.4
+2026-09-15T04:22:17.1000000Z Status: Downloaded newer image for mysql:8.4
+2026-09-15T04:22:17.3000000Z /usr/bin/docker create --name manifest_526 --label cd83a1 --network github_network_c84df2 --network-alias manifest -e MYSQL_DATABASE=cairn_manifest --health-cmd "mysqladmin ping -h 127.0.0.1" --health-interval 5s --health-timeout 3s --health-retries 3 mysql:8.4
+2026-09-15T04:22:17.5000000Z /usr/bin/docker start manifest_526
+2026-09-15T04:22:17.7000000Z ##[endgroup]
+2026-09-15T04:22:17.9000000Z ##[group]Waiting for all services to be ready
+2026-09-15T04:22:19.9000000Z ##[error]Failed to initialize container manifest
+2026-09-15T04:22:20.1000000Z ##[group]Print service container logs: manifest_526
+2026-09-15T04:22:20.3000000Z 2026-09-15 04:22:18+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.6-1.el9 started.
+2026-09-15T04:22:20.5000000Z 2026-09-15 04:22:18+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
+2026-09-15T04:22:20.7000000Z 2026-09-15 04:22:18+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.6-1.el9 started.
+2026-09-15T04:22:20.9000000Z 2026-09-15 04:22:18+00:00 [ERROR] [Entrypoint]: Database is uninitialized and password option is not specified
+2026-09-15T04:22:21.1000000Z     You need to specify one of the following as an environment variable:
+2026-09-15T04:22:21.3000000Z     - MYSQL_ROOT_PASSWORD
+2026-09-15T04:22:21.5000000Z     - MYSQL_ALLOW_EMPTY_PASSWORD
+2026-09-15T04:22:21.7000000Z     - MYSQL_RANDOM_ROOT_PASSWORD
+2026-09-15T04:22:21.9000000Z ##[endgroup]
+2026-09-15T04:22:22.1000000Z ##[error]One or more containers failed to start.
+2026-09-15T04:22:22.3000000Z Remove container: manifest_526
+2026-09-15T04:22:22.5000000Z Remove container network: github_network_c84df2
+2026-09-15T04:22:22.7000000Z Cleaning up orphan processes

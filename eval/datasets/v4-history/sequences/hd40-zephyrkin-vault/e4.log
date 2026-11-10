@@ -1,0 +1,50 @@
+2026-09-29T12:46:00.1298765Z Current runner version: '2.329.0'
+2026-09-29T12:46:00.1798765Z ##[group]Runner Image Provisioner
+2026-09-29T12:46:00.1998765Z Hosted Compute Agent
+2026-09-29T12:46:00.2198765Z Image: ubuntu-24.04
+2026-09-29T12:46:00.2398765Z ##[endgroup]
+2026-09-29T12:46:00.2698765Z ##[group]GITHUB_TOKEN Permissions
+2026-09-29T12:46:00.2898765Z Contents: read
+2026-09-29T12:46:00.3098765Z Metadata: read
+2026-09-29T12:46:00.3298765Z ##[endgroup]
+2026-09-29T12:46:00.3898765Z Prepare workflow directory
+2026-09-29T12:46:00.4998765Z Prepare all required actions
+2026-09-29T12:46:00.6098765Z Complete job name: test
+2026-09-29T12:46:00.7298765Z ##[group]Run actions/checkout@v4
+2026-09-29T12:46:00.7498765Z with:
+2026-09-29T12:46:00.7698765Z   repository: zephyrkin/murmurvault
+2026-09-29T12:46:00.7898765Z   fetch-depth: 1
+2026-09-29T12:46:00.8098765Z ##[endgroup]
+2026-09-29T12:46:00.9298765Z Syncing repository: zephyrkin/murmurvault
+2026-09-29T12:46:01.4298765Z Checking out the ref
+2026-09-29T12:46:01.6398765Z ##[group]Run actions/setup-dotnet@v4
+2026-09-29T12:46:01.6598765Z with:
+2026-09-29T12:46:01.6798765Z   dotnet-version: 9.0.101
+2026-09-29T12:46:01.6998765Z ##[endgroup]
+2026-09-29T12:46:03.1198765Z dotnet-install: Installed version is 9.0.101
+2026-09-29T12:46:03.2398765Z ##[group]Run dotnet test tests/Fallowspire.Tests/Fallowspire.Tests.csproj --configuration Release
+2026-09-29T12:46:03.2598765Z dotnet test tests/Fallowspire.Tests/Fallowspire.Tests.csproj --configuration Release
+2026-09-29T12:46:03.2798765Z shell: /usr/bin/bash -e {0}
+2026-09-29T12:46:03.2998765Z ##[endgroup]
+2026-09-29T12:46:04.0198765Z   Determining projects to restore...
+2026-09-29T12:46:04.8998765Z   Restored /home/runner/work/murmurvault/murmurvault/tests/Fallowspire.Tests/Fallowspire.Tests.csproj (in 604 ms).
+2026-09-29T12:46:05.1898765Z   Restored /home/runner/work/murmurvault/murmurvault/src/Fallowspire/Fallowspire.csproj (in 183 ms).
+2026-09-29T12:46:06.5498765Z   Fallowspire -> /home/runner/work/murmurvault/murmurvault/src/Fallowspire/bin/Release/net9.0/Fallowspire.dll
+2026-09-29T12:46:07.5798765Z   Fallowspire.Tests -> /home/runner/work/murmurvault/murmurvault/tests/Fallowspire.Tests/bin/Release/net9.0/Fallowspire.Tests.dll
+2026-09-29T12:46:07.6998765Z Test run for /home/runner/work/murmurvault/murmurvault/tests/Fallowspire.Tests/bin/Release/net9.0/Fallowspire.Tests.dll (.NETCoreApp,Version=v9.0)
+2026-09-29T12:46:07.7198765Z VSTest version 17.12.0 (x64)
+2026-09-29T12:46:07.7398765Z Starting test execution, please wait...
+2026-09-29T12:46:07.7598765Z A total of 1 test files matched the specified pattern.
+2026-09-29T12:46:08.2998765Z [xUnit.net 00:00:00.36]     Fallowspire.Tests.LeaseExpiryTests.ExpiresAtCutoff [FAIL]
+2026-09-29T12:46:08.3198765Z   Failed Fallowspire.Tests.LeaseExpiryTests.ExpiresAtCutoff [4 ms]
+2026-09-29T12:46:08.3398765Z   Error Message:
+2026-09-29T12:46:08.3598765Z    Assert.True() Failure
+2026-09-29T12:46:08.3798765Z Expected: True
+2026-09-29T12:46:08.3998765Z Actual:   False
+2026-09-29T12:46:08.4198765Z   Stack Trace:
+2026-09-29T12:46:08.4398765Z      at Fallowspire.Tests.LeaseExpiryTests.ExpiresAtCutoff() in /home/runner/work/murmurvault/murmurvault/tests/Fallowspire.Tests/LeaseExpiryTests.cs:line 49
+2026-09-29T12:46:08.4598765Z    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+2026-09-29T12:46:08.5598765Z Failed!  - Failed:     1, Passed:    71, Skipped:     0, Total:    72, Duration: 318 ms - Fallowspire.Tests.dll (net9.0)
+2026-09-29T12:46:08.5898765Z ##[error]Process completed with exit code 1.
+2026-09-29T12:46:08.6998765Z Post job cleanup.
+2026-09-29T12:46:08.8198765Z Cleaning up orphan processes

@@ -1,0 +1,49 @@
+2026-09-15T11:03:00.0000000Z Current runner version: '2.329.0'
+2026-09-15T11:03:00.1000000Z ##[group]Runner Image
+2026-09-15T11:03:00.2000000Z Image: ubuntu-24.04
+2026-09-15T11:03:00.3000000Z Version: 20260908.1.0
+2026-09-15T11:03:00.4000000Z ##[endgroup]
+2026-09-15T11:03:00.5000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-15T11:03:00.6000000Z Contents: read
+2026-09-15T11:03:00.7000000Z ##[endgroup]
+2026-09-15T11:03:01.0000000Z Prepare workflow directory
+2026-09-15T11:03:01.2000000Z Prepare all required actions
+2026-09-15T11:03:01.7000000Z Download action repository 'actions/checkout@v4'
+2026-09-15T11:03:02.2000000Z Download action repository 'dart-lang/setup-dart@v1'
+2026-09-15T11:03:02.6000000Z Complete job name: publish-check
+2026-09-15T11:03:02.7000000Z ##[group]Run actions/checkout@v4
+2026-09-15T11:03:02.8000000Z with:
+2026-09-15T11:03:02.9000000Z   repository: cormorant-labs/lichen-orrery
+2026-09-15T11:03:03.0000000Z   clean: true
+2026-09-15T11:03:03.1000000Z ##[endgroup]
+2026-09-15T11:03:03.3000000Z Syncing repository: cormorant-labs/lichen-orrery
+2026-09-15T11:03:03.7000000Z Initializing the repository
+2026-09-15T11:03:04.2000000Z Fetching the repository
+2026-09-15T11:03:05.2000000Z Checking out the ref
+2026-09-15T11:03:05.3000000Z ##[group]Run dart-lang/setup-dart@v1
+2026-09-15T11:03:05.4000000Z with:
+2026-09-15T11:03:05.5000000Z   sdk: stable
+2026-09-15T11:03:05.6000000Z ##[endgroup]
+2026-09-15T11:03:09.0000000Z Dart SDK version: 3.9.2 (stable) on "linux_x64"
+2026-09-15T11:03:09.1000000Z ##[group]Run dart pub get
+2026-09-15T11:03:09.2000000Z dart pub get
+2026-09-15T11:03:09.3000000Z shell: /usr/bin/bash -e {0}
+2026-09-15T11:03:09.4000000Z ##[endgroup]
+2026-09-15T11:03:10.0000000Z Resolving dependencies...
+2026-09-15T11:03:11.7000000Z Downloading packages...
+2026-09-15T11:03:11.9000000Z + collection 1.19.1
+2026-09-15T11:03:12.0000000Z + orrery_palette 0.2.1
+2026-09-15T11:03:12.1000000Z + orrery_ephemeris 0.1.0
+2026-09-15T11:03:12.2000000Z Changed 3 dependencies!
+2026-09-15T11:03:12.4000000Z ##[group]Run dart pub publish --force
+2026-09-15T11:03:12.5000000Z dart pub publish --force
+2026-09-15T11:03:12.6000000Z shell: /usr/bin/bash -e {0}
+2026-09-15T11:03:12.7000000Z ##[endgroup]
+2026-09-15T11:03:13.0000000Z Publishing lichen_orrery 0.5.0 to https://pub.dev:
+2026-09-15T11:03:13.3000000Z Validating package...
+2026-09-15T11:03:13.5000000Z Uploading...
+2026-09-15T11:03:13.6000000Z Server responded with status 409: Version 0.5.0 of package lichen_orrery already exists.
+2026-09-15T11:03:13.7000000Z Failed to publish package.
+2026-09-15T11:03:13.8000000Z ##[error]Process completed with exit code 65.
+2026-09-15T11:03:14.0000000Z Post job cleanup.
+2026-09-15T11:03:14.4000000Z Cleaning up orphan processes

@@ -1,0 +1,61 @@
+id_prefix,split,pattern,focus,suggested_ecosystem
+hd31,dev,a a b~a a,a secret missing on one runner recurs; the look-alike misses a different secret,python (pytest)
+hd32,dev,a b~a a c,a failing unit test recurs after unrelated edits; the look-alike fails another assertion in the same suite,node (jest)
+hd33,dev,a b a b,a pending database migration and a style-check failure alternate,"ruby (rspec, rails)"
+hd34,dev,a b~a c d~c,a compile error recurs in one crate; a look-alike compile error in another crate; a test timeout and a look-alike timeout in another job,rust (cargo)
+hd35,dev,a a a b,a peer-dependency conflict recurs across tool upgrades; then an unrelated failure,node (pnpm)
+hd36,dev,a b b a,an out-of-memory test run and a missing generated source alternate,java (gradle)
+hd37,dev,a b~a c~a d,an image pull failure; look-alikes with another image tag and with registry authentication,"docker (buildx, registries)"
+hd38,dev,a a b a,a type error recurs while the codebase changes elsewhere; one unrelated network failure,"python (mypy, ruff)"
+hd39,dev,a b~a b a,"two different missing variables, each recurring",go
+hd40,dev,a b c a,"three different failures, then the first recurs with a newer SDK",dotnet
+hd41,dev,a a b~a b,"a test-database connection failure recurs; the look-alike is an authentication failure, which also recurs","php (composer, phpunit)"
+hd42,dev,a b~a a c,a missing script recurs; the look-alike references another missing file,shell and make
+hd43,dev,a b a c,a lockfile out of sync recurs; a test regression and another failure in between,"node (yarn, vitest)"
+hd44,dev,a a b~a c,"a token lacks a permission, recurring; the look-alike lacks a different permission","release tooling (gh, actions permissions)"
+hd45,dev,a b~a c a,a disk-full failure recurs; the look-alike exhausts a different resource,"c++ (cmake, gcc)"
+hd46,dev,a b c~a a,a plugin resolution failure recurs; a flaky-looking failure that is really a test assertion,java (maven)
+hd47,dev,a b~a b c,"a manifest merge failure and a look-alike resource conflict, then another failure","kotlin (gradle, android)"
+hd48,dev,a a b c,a state-lock error recurs; then two unrelated provider failures,terraform
+hd49,dev,a b~a a b,a missing chart value recurs; the look-alike is a different missing value,"kubernetes (helm, kubectl)"
+hd50,dev,a b a a,a dependency compilation failure recurs twice after an unrelated test failure,elixir (mix)
+hd51,dev,a b~a c b,a code-signing failure; a look-alike provisioning failure; then an unrelated failure,"swift (xcodebuild, spm)"
+hd52,dev,a a b~a a,a resolver failure recurs; the look-alike is a different unsatisfiable constraint,"python (poetry, uv)"
+hd53,dev,a b c~b a,an end-to-end timeout recurs; a selector failure and its look-alike in another page,"node (playwright, e2e)"
+hd54,dev,a b~a c~a a,a service not ready recurs; two look-alikes with different service settings,postgres and mysql service containers
+hd55,dev,a b a c~a,"two alternating compilation failures, then a look-alike of the first",scala or clojure
+hd56,dev,a a b b,"two failures each recurring once, in a mobile build",dart or flutter
+hd57,dev,a b~a c c,a missing build target; its look-alike; then a recurring sandbox failure,bazel
+hd58,dev,a b c a,"three different provisioning failures, then the first recurs",ansible or packer
+hd59,dev,a b~a a a,a cache restore failure that breaks the build recurs; the look-alike is an artifact upload failure,"github actions (cache, artifacts, setup actions)"
+hd60,dev,a b c~b b,a permission flag missing at run time; a recurring import failure and its look-alike,deno or bun
+ht31,test,a a b~a a,a configuration key missing in one environment recurs; the look-alike misses a different key,python (pytest)
+ht32,test,a b~a a c,a snapshot test failure recurs after unrelated edits; the look-alike is another snapshot in the same suite,node (jest)
+ht33,test,a b a b,a failing fixture load and an asset precompile failure alternate,"ruby (rspec, rails)"
+ht34,test,a b~a c d~c,a borrow-check error recurs; a look-alike in another module; a slow benchmark job and a look-alike in another job,rust (cargo)
+ht35,test,a a a b,a missing workspace package recurs across releases; then an unrelated failure,node (pnpm)
+ht36,test,a b b a,a test JVM crash and a failed code-generation step alternate,java (gradle)
+ht37,test,a b~a c~a d,a base image build failure; look-alikes with another stage and with a missing build argument,"docker (buildx, registries)"
+ht38,test,a a b a,a lint rule violation recurs while unrelated files change; one unrelated registry failure,"python (mypy, ruff)"
+ht39,test,a b~a b a,"two different missing build tags or flags, each recurring",go
+ht40,test,a b c a,"three different failures, then the first recurs on a new runner image",dotnet
+ht41,test,a a b~a b,"a migration lock timeout recurs; the look-alike is a different database error, which also recurs","php (composer, phpunit)"
+ht42,test,a b~a a c,a wrong working directory recurs; the look-alike runs a misspelled target,shell and make
+ht43,test,a b a c,an engine version mismatch recurs; a test regression and another failure in between,"node (yarn, vitest)"
+ht44,test,a a b~a c,"a release upload is forbidden, recurring; the look-alike is forbidden for a different reason","release tooling (gh, actions permissions)"
+ht45,test,a b~a c a,a linker failure recurs; the look-alike is a different undefined symbol,"c++ (cmake, gcc)"
+ht46,test,a b c~a a,a surefire fork failure recurs; a failure that looks environmental but is a test assertion,java (maven)
+ht47,test,a b~a b c,"a lint baseline failure and a look-alike lint failure in another variant, then another failure","kotlin (gradle, android)"
+ht48,test,a a b c,a provider version constraint recurs; then two unrelated plan failures,terraform
+ht49,test,a b~a a b,a template rendering failure recurs; the look-alike fails on a different template,"kubernetes (helm, kubectl)"
+ht50,test,a b a a,a native dependency build failure recurs twice after an unrelated test failure,elixir (mix)
+ht51,test,a b~a c b,a simulator boot failure; a look-alike destination failure; then an unrelated failure,"swift (xcodebuild, spm)"
+ht52,test,a a b~a a,a hash mismatch on install recurs; the look-alike is a different package source failure,"python (poetry, uv)"
+ht53,test,a b c~b a,a browser launch failure recurs; an assertion failure and its look-alike on another page,"node (playwright, e2e)"
+ht54,test,a b~a c~a a,"a container health check fails, recurring; two look-alikes with different services",postgres and mysql service containers
+ht55,test,a b a c~a,"two alternating test failures, then a look-alike of the first",scala or clojure
+ht56,test,a a b b,"two failures each recurring once, in a package publish",dart or flutter
+ht57,test,a b~a c c,a visibility error; its look-alike; then a recurring remote cache failure,bazel
+ht58,test,a b c a,"three different image build failures, then the first recurs",ansible or packer
+ht59,test,a b~a a a,a matrix job missing a toolchain recurs; the look-alike misses a different toolchain,"github actions (cache, artifacts, setup actions)"
+ht60,test,a b c~b b,a lockfile integrity failure; a recurring type-check failure and its look-alike,deno or bun

@@ -66,8 +66,15 @@ class Settings(BaseSettings):
     embedding_model: str = Field(default="qwen3-embedding:0.6b", min_length=1, max_length=100)
     embedding_num_gpu: int | None = Field(default=None, ge=0, le=999)
     retrieval_channels: list[Channel] = Field(default_factory=_all_channels)
-    # Verified investigations become searchable "incident" documents for later runs.
-    index_incidents: bool = True
+    # Index corroborated investigations as "incident" documents for later retrieval. Off since
+    # v1.1 (D-051): a model's earlier conclusion must not anchor a new diagnosis. Similar
+    # failures are shown as history instead (fingerprints, D-053).
+    index_incidents: bool = False
+    # Show earlier failures as recurrences or similar failures (D-057). Experimental and
+    # off by default: fingerprint version 3 met its precision targets on held-out data but
+    # missed recall and similar-failure Recall@5 (eval/reports/v11-v4-history-test.md).
+    # Fingerprints are still recorded either way, so turning it on needs no backfill.
+    history_matching: bool = False
 
     # Agent workflow budgets (M3, DECISIONS.md D-028). Every run is bounded by all of them.
     # Diagnoses per run: the first plus verifier-requested retries.
@@ -90,6 +97,19 @@ class Settings(BaseSettings):
     github_max_log_bytes: int = Field(default=16_000_000, ge=100_000, le=64_000_000)
     # Repository files fetched per import besides the workflow file.
     github_max_files: int = Field(default=6, ge=0, le=20)
+
+    # CI history (v1.1, D-052): manual, incremental syncs of tracked public repositories.
+    # GitHub requests one sync may make (a 304 counts); the next sync continues where it stopped.
+    history_request_budget: int = Field(default=300, ge=10, le=2000)
+    # How far back the first sync of a newly tracked repository reads.
+    history_default_days: int = Field(default=30, ge=1, le=400)
+
+    # Change-aware investigation (v1.1, D-054): compare an imported run with the last comparable
+    # successful run of its workflow. GitHub requests one comparison may make.
+    change_analysis: bool = True
+    change_request_budget: int = Field(default=8, ge=2, le=30)
+    # Make suspected changes' hunks retrievable, citable evidence (False keeps only the notes).
+    change_diff_evidence: bool = True
 
     # Background worker (in-process; DECISIONS.md D-006). Tests disable it and drive it directly.
     worker_enabled: bool = True

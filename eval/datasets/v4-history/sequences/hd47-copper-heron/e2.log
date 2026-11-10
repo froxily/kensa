@@ -1,0 +1,50 @@
+2026-09-08T14:02:10.1234567Z Current runner version: '2.328.0'
+2026-09-08T14:02:10.2234567Z ##[group]Runner Image
+2026-09-08T14:02:10.3234567Z Image: ubuntu-24.04
+2026-09-08T14:02:10.4234567Z Version: 20260830.1.0
+2026-09-08T14:02:10.5234567Z ##[endgroup]
+2026-09-08T14:02:10.6234567Z ##[group]GITHUB_TOKEN Permissions
+2026-09-08T14:02:10.7234567Z Contents: read
+2026-09-08T14:02:10.8234567Z Metadata: read
+2026-09-08T14:02:10.9234567Z ##[endgroup]
+2026-09-08T14:02:11.0234567Z Prepare workflow directory
+2026-09-08T14:02:11.1234567Z Prepare all required actions
+2026-09-08T14:02:12.1234567Z ##[group]Run actions/checkout@v4
+2026-09-08T14:02:12.2234567Z with:
+2026-09-08T14:02:12.3234567Z   repository: copper-heron/siltcompass
+2026-09-08T14:02:12.4234567Z   fetch-depth: 1
+2026-09-08T14:02:12.5234567Z ##[endgroup]
+2026-09-08T14:02:13.1234567Z Syncing repository: copper-heron/siltcompass
+2026-09-08T14:02:14.1234567Z Checking out the ref
+2026-09-08T14:02:14.5234567Z ##[group]Run actions/setup-java@v4
+2026-09-08T14:02:14.6234567Z with:
+2026-09-08T14:02:14.7234567Z   distribution: temurin
+2026-09-08T14:02:14.8234567Z   java-version: 17
+2026-09-08T14:02:14.9234567Z ##[endgroup]
+2026-09-08T14:02:15.3234567Z Setting Java 17 as the default
+2026-09-08T14:02:15.5234567Z ##[group]Run ./gradlew :app:assembleDebug --no-daemon
+2026-09-08T14:02:15.6234567Z ./gradlew :app:assembleDebug --no-daemon
+2026-09-08T14:02:15.7234567Z shell: /usr/bin/bash -e {0}
+2026-09-08T14:02:15.8234567Z ##[endgroup]
+2026-09-08T14:02:20.1234567Z To honour the JVM settings for this build a single-use Daemon process will be forked.
+2026-09-08T14:02:35.1234567Z > Task :app:preBuild UP-TO-DATE
+2026-09-08T14:02:35.2234567Z > Task :app:preDebugBuild UP-TO-DATE
+2026-09-08T14:02:36.1234567Z > Task :app:generateDebugResValues
+2026-09-08T14:02:37.1234567Z > Task :app:checkDebugAarMetadata
+2026-09-08T14:02:38.1234567Z > Task :app:processDebugMainManifest
+2026-09-08T14:02:39.1234567Z > Task :app:mergeDebugResources FAILED
+2026-09-08T14:02:39.2234567Z /home/runner/work/siltcompass/siltcompass/app/src/main/res/values/strings.xml:12:4: Duplicate resources
+2026-09-08T14:02:39.3234567Z /home/runner/work/siltcompass/siltcompass/app/src/main/res/values/harbor.xml:5:4: string/berth_caption is originally defined here
+2026-09-08T14:02:39.4234567Z 
+2026-09-08T14:02:39.5234567Z FAILURE: Build failed with an exception.
+2026-09-08T14:02:39.6234567Z * What went wrong:
+2026-09-08T14:02:39.7234567Z Execution failed for task ':app:mergeDebugResources'.
+2026-09-08T14:02:39.8234567Z > [string/berth_caption] /home/runner/work/siltcompass/siltcompass/app/src/main/res/values/strings.xml	[string/berth_caption] /home/runner/work/siltcompass/siltcompass/app/src/main/res/values/harbor.xml: Error: Duplicate resources
+2026-09-08T14:02:39.9234567Z * Try:
+2026-09-08T14:02:40.0234567Z > Run with --stacktrace option to get the stack trace.
+2026-09-08T14:02:40.1234567Z > Run with --scan to get full insights.
+2026-09-08T14:02:40.2234567Z BUILD FAILED in 24s
+2026-09-08T14:02:40.3234567Z 5 actionable tasks: 5 executed
+2026-09-08T14:02:40.4234567Z ##[error]Process completed with exit code 1.
+2026-09-08T14:02:40.5234567Z Post job cleanup.
+2026-09-08T14:02:40.6234567Z Cleaning up orphan processes

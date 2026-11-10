@@ -1,0 +1,48 @@
+2026-09-11T14:21:00.1234567Z Current runner version: '2.328.0'
+2026-09-11T14:21:00.1634567Z ##[group]Runner Image Provisioner
+2026-09-11T14:21:00.1834567Z Hosted Compute Agent
+2026-09-11T14:21:00.2034567Z Image: ubuntu-22.04
+2026-09-11T14:21:00.2234567Z ##[endgroup]
+2026-09-11T14:21:00.2534567Z ##[group]GITHUB_TOKEN Permissions
+2026-09-11T14:21:00.2734567Z Contents: read
+2026-09-11T14:21:00.2934567Z Metadata: read
+2026-09-11T14:21:00.3134567Z ##[endgroup]
+2026-09-11T14:21:00.3734567Z Prepare workflow directory
+2026-09-11T14:21:00.4834567Z Prepare all required actions
+2026-09-11T14:21:00.5934567Z Complete job name: build
+2026-09-11T14:21:00.7134567Z ##[group]Run actions/checkout@v4
+2026-09-11T14:21:00.7334567Z with:
+2026-09-11T14:21:00.7534567Z   repository: zephyrkin/murmurvault
+2026-09-11T14:21:00.7734567Z   clean: true
+2026-09-11T14:21:00.7934567Z ##[endgroup]
+2026-09-11T14:21:00.9134567Z Syncing repository: zephyrkin/murmurvault
+2026-09-11T14:21:01.4134567Z Checking out the ref
+2026-09-11T14:21:01.6234567Z ##[group]Run actions/setup-dotnet@v4
+2026-09-11T14:21:01.6434567Z with:
+2026-09-11T14:21:01.6634567Z   dotnet-version: 8.0.404
+2026-09-11T14:21:01.6834567Z ##[endgroup]
+2026-09-11T14:21:03.1034567Z dotnet-install: Installed version is 8.0.404
+2026-09-11T14:21:03.2234567Z ##[group]Run dotnet build src/Fallowspire/Fallowspire.csproj -c Release
+2026-09-11T14:21:03.2434567Z dotnet build src/Fallowspire/Fallowspire.csproj -c Release
+2026-09-11T14:21:03.2634567Z shell: /usr/bin/bash -e {0}
+2026-09-11T14:21:03.2834567Z ##[endgroup]
+2026-09-11T14:21:04.0034567Z   Determining projects to restore...
+2026-09-11T14:21:04.1134567Z   Skipping project "/home/runner/work/murmurvault/murmurvault/src/Ravelwort.Contracts/Ravelwort.Contracts.csproj" because it was not found.
+2026-09-11T14:21:04.1734567Z   Skipping project "/home/runner/work/murmurvault/murmurvault/src/Ravelwort.Contracts/Ravelwort.Contracts.csproj" because it was not found.
+2026-09-11T14:21:04.8834567Z   Restored /home/runner/work/murmurvault/murmurvault/src/Fallowspire/Fallowspire.csproj (in 332 ms).
+2026-09-11T14:21:05.1634567Z /usr/share/dotnet/sdk/8.0.404/Microsoft.Common.CurrentVersion.targets(2176,5): warning MSB9008: The referenced project ../Ravelwort.Contracts/Ravelwort.Contracts.csproj does not exist. [/home/runner/work/murmurvault/murmurvault/src/Fallowspire/Fallowspire.csproj]
+2026-09-11T14:21:06.1534567Z /home/runner/work/murmurvault/murmurvault/src/Fallowspire/ArchiveEnvelope.cs(2,7): error CS0246: The type or namespace name 'Ravelwort' could not be found (are you missing a using directive or an assembly reference?) [/home/runner/work/murmurvault/murmurvault/src/Fallowspire/Fallowspire.csproj]
+2026-09-11T14:21:06.1834567Z /home/runner/work/murmurvault/murmurvault/src/Fallowspire/ArchiveEnvelope.cs(12,12): error CS0246: The type or namespace name 'ArchiveRecord' could not be found (are you missing a using directive or an assembly reference?) [/home/runner/work/murmurvault/murmurvault/src/Fallowspire/Fallowspire.csproj]
+2026-09-11T14:21:06.2134567Z 
+2026-09-11T14:21:06.2434567Z Build FAILED.
+2026-09-11T14:21:06.2734567Z 
+2026-09-11T14:21:06.3034567Z /usr/share/dotnet/sdk/8.0.404/Microsoft.Common.CurrentVersion.targets(2176,5): warning MSB9008: The referenced project ../Ravelwort.Contracts/Ravelwort.Contracts.csproj does not exist. [/home/runner/work/murmurvault/murmurvault/src/Fallowspire/Fallowspire.csproj]
+2026-09-11T14:21:06.3334567Z /home/runner/work/murmurvault/murmurvault/src/Fallowspire/ArchiveEnvelope.cs(2,7): error CS0246: The type or namespace name 'Ravelwort' could not be found (are you missing a using directive or an assembly reference?) [/home/runner/work/murmurvault/murmurvault/src/Fallowspire/Fallowspire.csproj]
+2026-09-11T14:21:06.3634567Z /home/runner/work/murmurvault/murmurvault/src/Fallowspire/ArchiveEnvelope.cs(12,12): error CS0246: The type or namespace name 'ArchiveRecord' could not be found (are you missing a using directive or an assembly reference?) [/home/runner/work/murmurvault/murmurvault/src/Fallowspire/Fallowspire.csproj]
+2026-09-11T14:21:06.3934567Z     1 Warning(s)
+2026-09-11T14:21:06.4234567Z     2 Error(s)
+2026-09-11T14:21:06.4534567Z 
+2026-09-11T14:21:06.4834567Z Time Elapsed 00:00:03.10
+2026-09-11T14:21:06.5334567Z ##[error]Process completed with exit code 1.
+2026-09-11T14:21:06.6434567Z Post job cleanup.
+2026-09-11T14:21:06.7634567Z Cleaning up orphan processes

@@ -1,0 +1,65 @@
+2026-09-12T14:26:20.1122234Z Current runner version: '2.329.0'
+2026-09-12T14:26:20.1152234Z ##[group]Operating System
+2026-09-12T14:26:20.1153234Z Ubuntu 22.04.5 LTS
+2026-09-12T14:26:20.1154234Z ##[endgroup]
+2026-09-12T14:26:20.1162234Z ##[group]Runner Image
+2026-09-12T14:26:20.1163234Z Image: ubuntu-22.04
+2026-09-12T14:26:20.1164234Z Version: 20260906.1.0
+2026-09-12T14:26:20.1165234Z ##[endgroup]
+2026-09-12T14:26:20.1182234Z Prepare workflow directory
+2026-09-12T14:26:20.5592234Z Download action repository 'actions/checkout@v4'
+2026-09-12T14:26:20.9802234Z Complete job name: dependency-lock / pull request
+2026-09-12T14:26:21.0122234Z ##[group]Run actions/checkout@v4
+2026-09-12T14:26:21.0123234Z with:
+2026-09-12T14:26:21.0124234Z   repository: oriel-sundial/lichen-telemetry
+2026-09-12T14:26:21.0125234Z   ref: refs/pull/83/merge
+2026-09-12T14:26:21.0126234Z   fetch-depth: 2
+2026-09-12T14:26:21.0127234Z ##[endgroup]
+2026-09-12T14:26:21.1792234Z [command]/usr/bin/git version
+2026-09-12T14:26:21.1922234Z git version 2.46.2
+2026-09-12T14:26:21.4902234Z [command]/usr/bin/git fetch --depth=2 origin +refs/pull/83/merge:refs/remotes/pull/83/merge
+2026-09-12T14:26:22.7902234Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/83/merge
+2026-09-12T14:26:22.9022234Z HEAD is now at 91ac7e2 Merge pull request #83
+2026-09-12T14:26:23.0012234Z ##[group]Run actions/setup-python@v5
+2026-09-12T14:26:23.0013234Z with:
+2026-09-12T14:26:23.0014234Z   python-version: '3.11'
+2026-09-12T14:26:23.0016234Z ##[endgroup]
+2026-09-12T14:26:23.3992234Z Successfully set up CPython (3.11.10)
+2026-09-12T14:26:23.5112234Z ##[group]Run python -m pip --version
+2026-09-12T14:26:23.5113234Z python -m pip --version
+2026-09-12T14:26:23.5114234Z uv --version
+2026-09-12T14:26:23.5115234Z shell: /usr/bin/bash -e {0}
+2026-09-12T14:26:23.5116234Z ##[endgroup]
+2026-09-12T14:26:23.5422234Z pip 25.2 from /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages/pip (python 3.11)
+2026-09-12T14:26:23.5502234Z uv 0.8.14
+2026-09-12T14:26:23.5522234Z ##[group]Run git status --short --branch
+2026-09-12T14:26:23.5523234Z git status --short --branch
+2026-09-12T14:26:23.5524234Z git rev-parse --short HEAD
+2026-09-12T14:26:23.5525234Z shell: /usr/bin/bash -e {0}
+2026-09-12T14:26:23.5526234Z ##[endgroup]
+2026-09-12T14:26:23.5622234Z ## HEAD (no branch)
+2026-09-12T14:26:23.5702234Z 91ac7e2
+2026-09-12T14:26:23.5722234Z ##[group]Run python -m unittest discover -s checks
+2026-09-12T14:26:23.5723234Z python -m unittest discover -s checks
+2026-09-12T14:26:23.5724234Z shell: /usr/bin/bash -e {0}
+2026-09-12T14:26:23.5725234Z ##[endgroup]
+2026-09-12T14:26:23.5802234Z ............
+2026-09-12T14:26:23.5812234Z ----------------------------------------------------------------------
+2026-09-12T14:26:23.5822234Z Ran 12 tests in 0.008s
+2026-09-12T14:26:23.5832234Z OK
+2026-09-12T14:26:23.6012234Z ##[group]Run uv lock --check
+2026-09-12T14:26:23.6013234Z uv lock --check
+2026-09-12T14:26:23.6014234Z shell: /usr/bin/bash -e {0}
+2026-09-12T14:26:23.6015234Z env:
+2026-09-12T14:26:23.6016234Z   UV_CACHE_DIR: /home/runner/work/_temp/uv-83-cache
+2026-09-12T14:26:23.6017234Z ##[endgroup]
+2026-09-12T14:26:25.9432234Z   x No solution found when resolving dependencies:
+2026-09-12T14:26:25.9433234Z   `-> Because lichen-exporter==1.4.0 depends on sundial-codec<3 and
+2026-09-12T14:26:25.9434234Z       your project depends on sundial-codec>=3, we can conclude that
+2026-09-12T14:26:25.9435234Z       lichen-exporter==1.4.0 and your project are incompatible.
+2026-09-12T14:26:25.9436234Z       And because your project depends on lichen-exporter==1.4.0, we can
+2026-09-12T14:26:25.9437234Z       conclude that your project's requirements are unsatisfiable.
+2026-09-12T14:26:25.9612234Z ##[error]Process completed with exit code 1.
+2026-09-12T14:26:26.0922234Z Post job cleanup.
+2026-09-12T14:26:26.1922234Z [command]/usr/bin/git config --global --unset-all safe.directory
+2026-09-12T14:26:26.2402234Z Cleaning up orphan processes

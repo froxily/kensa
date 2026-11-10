@@ -1,0 +1,10 @@
+name: integration
+on: push
+jobs:
+  integration:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: node --check src/worker.js
+      - run: docker compose up -d
+      - run: node src/worker.js

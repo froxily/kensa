@@ -1,0 +1,47 @@
+2026-09-08T11:21:01.1000000Z Current runner version: '2.328.0'
+2026-09-08T11:21:01.2000000Z ##[group]Runner Image
+2026-09-08T11:21:01.3000000Z Image: ubuntu-22.04
+2026-09-08T11:21:01.4000000Z Version: 20260906.1.0
+2026-09-08T11:21:01.5000000Z ##[endgroup]
+2026-09-08T11:21:01.6000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-08T11:21:01.7000000Z Contents: read
+2026-09-08T11:21:01.8000000Z ##[endgroup]
+2026-09-08T11:21:02.0000000Z Prepare workflow directory
+2026-09-08T11:21:02.2000000Z Prepare all required actions
+2026-09-08T11:21:02.4000000Z Getting action download info
+2026-09-08T11:21:02.6000000Z Download action repository 'actions/checkout@v4'
+2026-09-08T11:21:02.8000000Z Download action repository 'actions/setup-dotnet@v4'
+2026-09-08T11:21:03.0000000Z Complete job name: test
+2026-09-08T11:21:03.2000000Z ##[group]Run actions/checkout@v4
+2026-09-08T11:21:03.3000000Z with:
+2026-09-08T11:21:03.4000000Z   repository: borealworks/capstan-ledger
+2026-09-08T11:21:03.5000000Z   fetch-depth: 1
+2026-09-08T11:21:03.6000000Z ##[endgroup]
+2026-09-08T11:21:04.1000000Z Syncing repository: borealworks/capstan-ledger
+2026-09-08T11:21:04.5000000Z Initializing the repository
+2026-09-08T11:21:05.1000000Z Fetching the repository
+2026-09-08T11:21:05.6000000Z Checking out the ref
+2026-09-08T11:21:06.0000000Z ##[group]Run actions/setup-dotnet@v4
+2026-09-08T11:21:06.1000000Z with:
+2026-09-08T11:21:06.2000000Z   dotnet-version: 8.0.x
+2026-09-08T11:21:06.3000000Z ##[endgroup]
+2026-09-08T11:21:07.0000000Z Installing .NET SDK version 8.0.412
+2026-09-08T11:21:08.0000000Z ##[group]Run dotnet restore CapstanLedger.sln
+2026-09-08T11:21:08.1000000Z dotnet restore CapstanLedger.sln
+2026-09-08T11:21:08.2000000Z shell: /usr/bin/bash -e {0}
+2026-09-08T11:21:08.3000000Z ##[endgroup]
+2026-09-08T11:21:09.0000000Z   Determining projects to restore...
+2026-09-08T11:21:11.0000000Z /home/runner/work/capstan-ledger/capstan-ledger/src/CapstanLedger/CapstanLedger.csproj : error NU1102: Unable to find package QuayMath with version (>= 7.4.2) [/home/runner/work/capstan-ledger/capstan-ledger/CapstanLedger.sln]
+2026-09-08T11:21:11.1000000Z /home/runner/work/capstan-ledger/capstan-ledger/src/CapstanLedger/CapstanLedger.csproj : error NU1102:   - Found 6 version(s) in nuget.org [ Nearest version: 7.4.1 ] [/home/runner/work/capstan-ledger/capstan-ledger/CapstanLedger.sln]
+2026-09-08T11:21:11.2000000Z /home/runner/work/capstan-ledger/capstan-ledger/tests/CapstanLedger.Tests/CapstanLedger.Tests.csproj : error NU1102: Unable to find package QuayMath with version (>= 7.4.2) [/home/runner/work/capstan-ledger/capstan-ledger/CapstanLedger.sln]
+2026-09-08T11:21:11.3000000Z /home/runner/work/capstan-ledger/capstan-ledger/tests/CapstanLedger.Tests/CapstanLedger.Tests.csproj : error NU1102:   - Found 6 version(s) in nuget.org [ Nearest version: 7.4.1 ] [/home/runner/work/capstan-ledger/capstan-ledger/CapstanLedger.sln]
+2026-09-08T11:21:11.4000000Z   Failed to restore /home/runner/work/capstan-ledger/capstan-ledger/src/CapstanLedger/CapstanLedger.csproj (in 2.1 sec).
+2026-09-08T11:21:11.5000000Z   Failed to restore /home/runner/work/capstan-ledger/capstan-ledger/tests/CapstanLedger.Tests/CapstanLedger.Tests.csproj (in 2.1 sec).
+2026-09-08T11:21:11.6000000Z ##[error]Process completed with exit code 1.
+2026-09-08T11:21:11.7000000Z Post job cleanup.
+2026-09-08T11:21:11.8000000Z [command]/usr/bin/git version
+2026-09-08T11:21:11.9000000Z git version 2.51.0
+2026-09-08T11:21:12.0000000Z Temporarily overriding HOME before making global git config changes
+2026-09-08T11:21:12.1000000Z Adding repository directory to the temporary git global config as a safe directory
+2026-09-08T11:21:12.2000000Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/capstan-ledger/capstan-ledger
+2026-09-08T11:21:12.3000000Z Cleaning up orphan processes

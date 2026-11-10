@@ -1,0 +1,66 @@
+2026-11-07T18:15:03.1234567Z Current runner version: '2.329.0'
+2026-11-07T18:15:03.2234567Z ##[group]Runner Image
+2026-11-07T18:15:03.3234567Z Image: ubuntu-24.04
+2026-11-07T18:15:03.4234567Z Version: 20261026.1
+2026-11-07T18:15:03.5234567Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261026.1/images/ubuntu/Ubuntu2404-Readme.md
+2026-11-07T18:15:03.6234567Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261026.1
+2026-11-07T18:15:03.7234567Z ##[endgroup]
+2026-11-07T18:15:03.8234567Z ##[group]GITHUB_TOKEN Permissions
+2026-11-07T18:15:03.9234567Z Contents: read
+2026-11-07T18:15:04.0234567Z Metadata: read
+2026-11-07T18:15:04.1234567Z ##[endgroup]
+2026-11-07T18:15:04.2234567Z Secret source: Actions
+2026-11-07T18:15:04.3234567Z Prepare workflow directory
+2026-11-07T18:15:04.4234567Z Prepare all required actions
+2026-11-07T18:15:04.5234567Z Getting action download info
+2026-11-07T18:15:05.1234567Z Download action repository 'actions/checkout@v4'
+2026-11-07T18:15:05.4234567Z Download action repository 'actions/setup-java@v4'
+2026-11-07T18:15:06.1234567Z Complete job name: verify
+2026-11-07T18:15:06.2234567Z ##[group]Run actions/checkout@v4
+2026-11-07T18:15:06.3234567Z with:
+2026-11-07T18:15:06.4234567Z   fetch-depth: 1
+2026-11-07T18:15:06.5234567Z   clean: true
+2026-11-07T18:15:06.6234567Z ##[endgroup]
+2026-11-07T18:15:07.1234567Z Syncing repository: larchfield/gauge
+2026-11-07T18:15:07.2234567Z Getting Git version info
+2026-11-07T18:15:07.3234567Z git version 2.51.2
+2026-11-07T18:15:08.1234567Z Checking out the ref
+2026-11-07T18:15:08.2234567Z HEAD is now at 7bd4f10 Add gauge boundary coverage
+2026-11-07T18:15:08.3234567Z ##[group]Run actions/setup-java@v4
+2026-11-07T18:15:08.4234567Z with:
+2026-11-07T18:15:08.5234567Z   distribution: temurin
+2026-11-07T18:15:08.6234567Z   java-version: 21
+2026-11-07T18:15:08.7234567Z   cache: maven
+2026-11-07T18:15:08.8234567Z ##[endgroup]
+2026-11-07T18:15:09.1234567Z Installed distributions
+2026-11-07T18:15:09.2234567Z   Successfully set up Java version 21
+2026-11-07T18:15:09.3234567Z Cache restored from key: setup-java-Linux-x64-maven-3cd48a
+2026-11-07T18:15:09.4234567Z ##[group]Run mvn -B test
+2026-11-07T18:15:09.5234567Z mvn -B test
+2026-11-07T18:15:09.6234567Z shell: /usr/bin/bash -e {0}
+2026-11-07T18:15:09.7234567Z ##[endgroup]
+2026-11-07T18:15:11.1234567Z [INFO] Scanning for projects...
+2026-11-07T18:15:11.2234567Z [INFO] -----------------------< org.larchfield:gauge >------------------------
+2026-11-07T18:15:11.3234567Z [INFO] Building gauge 1.0.0
+2026-11-07T18:15:11.4234567Z [INFO] --------------------------------[ jar ]---------------------------------
+2026-11-07T18:15:12.1234567Z [INFO] --- maven-resources-plugin:3.3.1:resources (default-resources) @ gauge ---
+2026-11-07T18:15:12.2234567Z [INFO] skip non existing resourceDirectory /home/runner/work/gauge/gauge/src/main/resources
+2026-11-07T18:15:12.3234567Z [INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ gauge ---
+2026-11-07T18:15:13.1234567Z [INFO] Compiling 1 source file with javac [debug release 21] to target/classes
+2026-11-07T18:15:14.1234567Z [INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ gauge ---
+2026-11-07T18:15:14.2234567Z [INFO] Compiling 1 source file with javac [debug release 21] to target/test-classes
+2026-11-07T18:15:15.1234567Z [INFO] --- maven-surefire-plugin:3.5.2:test (default-test) @ gauge ---
+2026-11-07T18:15:15.2234567Z [INFO] Running org.larchfield.GaugeTest
+2026-11-07T18:15:15.3234567Z [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.031 s -- in org.larchfield.GaugeTest
+2026-11-07T18:15:15.4234567Z [INFO] Results:
+2026-11-07T18:15:15.5234567Z [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+2026-11-07T18:15:15.6234567Z [INFO] ------------------------------------------------------------------------
+2026-11-07T18:15:15.7234567Z [INFO] BUILD SUCCESS
+2026-11-07T18:15:15.8234567Z [INFO] ------------------------------------------------------------------------
+2026-11-07T18:15:15.9234567Z [INFO] Total time:  4.901 s
+2026-11-07T18:15:16.0234567Z [INFO] Finished at: 2026-11-07T18:15:16Z
+2026-11-07T18:15:16.1234567Z [INFO] ------------------------------------------------------------------------
+2026-11-07T18:15:16.2234567Z Post job cleanup.
+2026-11-07T18:15:16.3234567Z [command]/usr/bin/git version
+2026-11-07T18:15:16.4234567Z git version 2.51.2
+2026-11-07T18:15:16.5234567Z Cleaning up orphan processes

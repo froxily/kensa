@@ -1,0 +1,12 @@
+{
+  "id": "hd38-bellwether-fen",
+  "split": "dev",
+  "ecosystem": "python",
+  "repository": "fenward-labs/bellwether-fen",
+  "entries": [
+    {"id": "e1", "file": "e1.log", "cluster": "a", "relation": "first", "category": "dependency_build", "title": "Optional water level passed to formatter", "root_cause": "The gauge renderer passes an optional water level to format_level, which requires a float. The call must handle the missing value before formatting.", "differs_from_earlier": ""},
+    {"id": "e2", "file": "e2.log", "cluster": "a", "relation": "recurrence", "category": "dependency_build", "title": "Optional water level passed to formatter", "root_cause": "The gauge renderer passes an optional water level to format_level, which requires a float. The call must handle the missing value before formatting.", "differs_from_earlier": "A later pull request checks more source files; unrelated edits moved the diagnostic to a new line."},
+    {"id": "e3", "file": "e3.log", "cluster": "b", "relation": "first", "category": "db_connectivity", "title": "Package index hostname cannot be resolved", "root_cause": "The runner cannot resolve the configured internal Python package index hostname, so dependency installation fails. Restoring DNS or correcting the index address is required.", "differs_from_earlier": "Installation fails on DNS resolution before static checks run; this is independent of the renderer type error."},
+    {"id": "e4", "file": "e4.log", "cluster": "a", "relation": "recurrence", "category": "dependency_build", "title": "Optional water level passed to formatter", "root_cause": "The gauge renderer passes an optional water level to format_level, which requires a float. The call must handle the missing value before formatting.", "differs_from_earlier": "A later push uses a newer runner image and checks a larger source tree; the same call is now on another line."}
+  ]
+}

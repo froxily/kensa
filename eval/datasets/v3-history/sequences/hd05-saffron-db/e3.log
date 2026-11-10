@@ -1,0 +1,50 @@
+2026-09-15T12:00:00.0000000Z Current runner version: '2.329.0'
+2026-09-15T12:00:01.0000000Z ##[group]Runner Image
+2026-09-15T12:00:02.0000000Z Image: ubuntu-24.04
+2026-09-15T12:00:03.0000000Z Version: 20260913.1
+2026-09-15T12:00:04.0000000Z ##[endgroup]
+2026-09-15T12:00:05.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-15T12:00:06.0000000Z Contents: read
+2026-09-15T12:00:07.0000000Z ##[endgroup]
+2026-09-15T12:00:08.0000000Z Prepare workflow directory
+2026-09-15T12:00:09.0000000Z Prepare all required actions
+2026-09-15T12:00:10.0000000Z Download action repository 'actions/checkout@v4'
+2026-09-15T12:00:11.0000000Z Download action repository 'ruby/setup-ruby@v1'
+2026-09-15T12:00:12.0000000Z Complete job name: test
+2026-09-15T12:00:13.0000000Z ##[group]Run actions/checkout@v4
+2026-09-15T12:00:14.0000000Z with:
+2026-09-15T12:00:15.0000000Z   repository: saffron-yard/wagon-notes
+2026-09-15T12:00:16.0000000Z   ref: refs/pull/79/merge
+2026-09-15T12:00:17.0000000Z Syncing repository
+2026-09-15T12:00:18.0000000Z git version 2.51.1
+2026-09-15T12:00:19.0000000Z Fetching the repository
+2026-09-15T12:00:20.0000000Z Checking out the ref
+2026-09-15T12:00:21.0000000Z ##[endgroup]
+2026-09-15T12:00:22.0000000Z ##[group]Run ruby/setup-ruby@v1
+2026-09-15T12:00:23.0000000Z with:
+2026-09-15T12:00:24.0000000Z   ruby-version: 3.3
+2026-09-15T12:00:25.0000000Z   bundler-cache: true
+2026-09-15T12:00:26.0000000Z Bundle complete! 49 Gemfile dependencies, 129 gems now installed.
+2026-09-15T12:00:27.0000000Z ##[endgroup]
+2026-09-15T12:00:27.1000000Z ##[group]Run pg_ctl -D /tmp/wagon-pg-79 -l /tmp/pg79.log start || cat /tmp/pg79.log
+2026-09-15T12:00:27.2000000Z waiting for server to start.... stopped waiting
+2026-09-15T12:00:27.3000000Z pg_ctl: could not start server
+2026-09-15T12:00:27.4000000Z 2026-09-15 12:00:27 UTC [4217] LOG:  0 is outside the valid range for parameter "max_connections" (1 .. 262143)
+2026-09-15T12:00:27.5000000Z 2026-09-15 12:00:27 UTC [4217] FATAL:  configuration file "/tmp/wagon-pg-79/postgresql.conf" contains errors
+2026-09-15T12:00:27.6000000Z ##[endgroup]
+2026-09-15T12:00:28.0000000Z ##[group]Run bundle exec rails test
+2026-09-15T12:00:29.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-15T12:00:30.0000000Z env:
+2026-09-15T12:00:31.0000000Z   RAILS_ENV: test
+2026-09-15T12:00:32.0000000Z   PORT: 4107
+2026-09-15T12:00:33.0000000Z ##[endgroup]
+2026-09-15T12:00:34.0000000Z Running via Spring preloader
+2026-09-15T12:00:35.0000000Z bin/rails aborted!
+2026-09-15T12:00:36.0000000Z ActiveRecord::ConnectionNotEstablished: connection to server at "127.0.0.1", port 5432 failed: Connection refused
+2026-09-15T12:00:37.0000000Z Is the server running on that host and accepting TCP/IP connections?
+2026-09-15T12:00:38.0000000Z Caused by:
+2026-09-15T12:00:39.0000000Z PG::ConnectionBad: connection to server at "127.0.0.1", port 5432 failed: Connection refused
+2026-09-15T12:00:40.0000000Z Tasks: TOP => test:prepare => db:test:load_schema
+2026-09-15T12:00:41.0000000Z ##[error]Process completed with exit code 1.
+2026-09-15T12:00:42.0000000Z Post job cleanup.
+2026-09-15T12:00:43.0000000Z Cleaning up orphan processes

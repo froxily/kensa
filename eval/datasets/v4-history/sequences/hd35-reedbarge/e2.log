@@ -1,0 +1,53 @@
+2026-09-09T11:24:17.0010000Z Current runner version: '2.320.0'
+2026-09-09T11:24:17.0120000Z ##[group]Runner Image
+2026-09-09T11:24:17.0210000Z Image: ubuntu-24.04
+2026-09-09T11:24:17.0220000Z Version: 20240901.1.0
+2026-09-09T11:24:17.0230000Z ##[endgroup]
+2026-09-09T11:24:17.0300000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-09T11:24:17.0310000Z Contents: read
+2026-09-09T11:24:17.0320000Z Metadata: read
+2026-09-09T11:24:17.0330000Z ##[endgroup]
+2026-09-09T11:24:17.0800000Z Prepare workflow directory
+2026-09-09T11:24:17.3600000Z Prepare all required actions
+2026-09-09T11:24:17.7800000Z Download action repository 'actions/checkout@v4'
+2026-09-09T11:24:18.1300000Z Download action repository 'actions/setup-node@v4'
+2026-09-09T11:24:18.4900000Z Download action repository 'pnpm/action-setup@v4'
+2026-09-09T11:24:18.7100000Z Complete job name: checks (node 22)
+2026-09-09T11:24:18.7500000Z ##[group]Run actions/checkout@v4
+2026-09-09T11:24:18.7520000Z   repository: brackenflux/tidemark-panel
+2026-09-09T11:24:18.7530000Z   ref: refs/pull/48/merge
+2026-09-09T11:24:18.7540000Z ##[endgroup]
+2026-09-09T11:24:19.2200000Z Syncing repository: brackenflux/tidemark-panel
+2026-09-09T11:24:19.3300000Z [command]/usr/bin/git version
+2026-09-09T11:24:19.3400000Z git version 2.47.1
+2026-09-09T11:24:19.4100000Z Temporarily overriding HOME='/home/runner/work/_temp/04f8a237' before making global git config changes
+2026-09-09T11:24:20.0700000Z Checking out the ref
+2026-09-09T11:24:20.3000000Z ##[group]Run actions/setup-node@v4
+2026-09-09T11:24:20.3020000Z   node-version: 22.11.0
+2026-09-09T11:24:20.3030000Z ##[endgroup]
+2026-09-09T11:24:20.6200000Z Found in cache @ /opt/hostedtoolcache/node/22.11.0/x64
+2026-09-09T11:24:20.8000000Z ##[group]Run pnpm/action-setup@v4
+2026-09-09T11:24:20.8020000Z   version: 10.2.1
+2026-09-09T11:24:20.8030000Z ##[endgroup]
+2026-09-09T11:24:22.1400000Z Installation Completed!
+2026-09-09T11:24:22.2000000Z ##[group]Run git show --stat --oneline -1
+2026-09-09T11:24:22.2010000Z git show --stat --oneline -1
+2026-09-09T11:24:22.2020000Z shell: /usr/bin/bash -e {0}
+2026-09-09T11:24:22.2030000Z ##[endgroup]
+2026-09-09T11:24:22.2200000Z b8c21ad Update deployment documentation
+2026-09-09T11:24:22.2210000Z  docs/deploy.md | 7 +++++--
+2026-09-09T11:24:22.2220000Z  1 file changed, 5 insertions(+), 2 deletions(-)
+2026-09-09T11:24:22.6300000Z ##[group]Run pnpm install --no-frozen-lockfile
+2026-09-09T11:24:22.6310000Z shell: /usr/bin/bash -e {0}
+2026-09-09T11:24:22.6320000Z ##[endgroup]
+2026-09-09T11:24:23.6500000Z Progress: resolved 1, reused 0, downloaded 0, added 0
+2026-09-09T11:24:24.6600000Z Progress: resolved 111, reused 0, downloaded 91, added 0
+2026-09-09T11:24:27.3100000Z Progress: resolved 149, reused 0, downloaded 124, added 0, done
+2026-09-09T11:24:27.3800000Z ERR_PNPM_PEER_DEP_ISSUES Unmet peer dependencies
+2026-09-09T11:24:27.3810000Z .
+2026-09-09T11:24:27.3820000Z └─┬ react-dom 18.3.1
+2026-09-09T11:24:27.3830000Z   └── ✕ unmet peer react@^18.3.1: found 19.0.0
+2026-09-09T11:24:27.4100000Z ##[error]Process completed with exit code 1.
+2026-09-09T11:24:27.4600000Z Post job cleanup.
+2026-09-09T11:24:27.6900000Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-09-09T11:24:27.8000000Z Cleaning up orphan processes

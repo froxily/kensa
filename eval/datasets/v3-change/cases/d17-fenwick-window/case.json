@@ -1,0 +1,20 @@
+﻿{
+  "id": "d17-fenwick-window",
+  "split": "dev",
+  "comparability": "partially_comparable",
+  "category": "test_regression",
+  "culprit_kind": "source",
+  "difficulty": "medium",
+  "ecosystem": "go",
+  "title": "Closed interval excludes its lower edge",
+  "root_cause": "The interval check changed its lower comparison from inclusive to exclusive, although the function promises a closed interval. The existing lower-edge test therefore fails for an input equal to the lower bound; the Go version used by the job is pinned across runs.",
+  "culprit_paths": ["window/interval.go"],
+  "culprit_commit": "c41e6a7903bdf528ac04617e9b23d15f8a72c60e",
+  "unverified_factors": ["runner_image_changed"],
+  "fix_keywords": ["<=", "lower"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 56, "end_line": 58, "why": "The lower-edge assertion fails."},
+    {"path": "repo/window/interval.go", "start_line": 3, "end_line": 6, "why": "The documented closed interval uses a strict lower comparison."}
+  ]
+}
+

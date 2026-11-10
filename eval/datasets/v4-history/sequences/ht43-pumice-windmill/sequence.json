@@ -1,0 +1,12 @@
+﻿{
+  "id": "ht43-pumice-windmill",
+  "split": "test",
+  "ecosystem": "node",
+  "repository": "pumice-labs/windmill-ledger",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"dependency_build","title":"Yarn rejects the Node engine","root_cause":"The workflow uses Node 18 while windmill-ledger requires Node 20 or newer. Configure setup-node to install a compatible Node version.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"b","relation":"first","category":"test_regression","title":"Settlement rounding test fails","root_cause":"The settlement rounding implementation rounds a half-cent down where the contract requires rounding up. Correct the rounding behavior in the settlement calculation.","differs_from_earlier":""},
+    {"id":"e3","file":"e3.log","cluster":"a","relation":"recurrence","category":"dependency_build","title":"Yarn rejects the Node engine again","root_cause":"The workflow uses Node 18 while windmill-ledger requires Node 20 or newer. Configure setup-node to install a compatible Node version.","differs_from_earlier":"A later pull request runs on a different runner with a different Node 18 patch version and exits during a frozen install."},
+    {"id":"e4","file":"e4.log","cluster":"c","relation":"first","category":"missing_env_var","title":"Preview base URL is missing","root_cause":"The preview verification step does not receive WINDMILL_PREVIEW_BASE_URL. Supply the preview URL to that step.","differs_from_earlier":""}
+  ]
+}

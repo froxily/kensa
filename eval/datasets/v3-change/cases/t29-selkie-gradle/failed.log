@@ -1,0 +1,68 @@
+﻿2026-10-29T10:18:03.1301250Z Current runner version: '2.329.0'
+2026-10-29T10:18:03.1324000Z ##[group]Runner Image Provisioner
+2026-10-29T10:18:03.1325110Z Hosted Compute Agent
+2026-10-29T10:18:03.1326230Z Version: 20261020.1
+2026-10-29T10:18:03.1327350Z ##[endgroup]
+2026-10-29T10:18:03.1328400Z ##[group]Operating System
+2026-10-29T10:18:03.1329510Z Ubuntu
+2026-10-29T10:18:03.1330610Z 24.04.3
+2026-10-29T10:18:03.1331710Z LTS
+2026-10-29T10:18:03.1332810Z ##[endgroup]
+2026-10-29T10:18:03.1333910Z ##[group]Runner Image
+2026-10-29T10:18:03.1335010Z Image: ubuntu-24.04
+2026-10-29T10:18:03.1336110Z Version: 20261026.1
+2026-10-29T10:18:03.1337210Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261026.1/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-29T10:18:03.1338310Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261026.1
+2026-10-29T10:18:03.1339410Z ##[endgroup]
+2026-10-29T10:18:03.1340510Z ##[group]GITHUB_TOKEN Permissions
+2026-10-29T10:18:03.1341610Z Contents: read
+2026-10-29T10:18:03.1342710Z Metadata: read
+2026-10-29T10:18:03.1343810Z ##[endgroup]
+2026-10-29T10:18:03.1344910Z Secret source: Actions
+2026-10-29T10:18:03.1346010Z Prepare workflow directory
+2026-10-29T10:18:03.2647110Z Prepare all required actions
+2026-10-29T10:18:03.2818210Z Getting action download info
+2026-10-29T10:18:03.5709310Z Download action repository 'actions/checkout@v4'
+2026-10-29T10:18:03.9430410Z Download action repository 'actions/setup-java@v4'
+2026-10-29T10:18:04.3571510Z Complete job name: build
+2026-10-29T10:18:04.4822610Z ##[group]Run actions/checkout@v4
+2026-10-29T10:18:04.4823710Z with:
+2026-10-29T10:18:04.4824810Z   repository: shoal-labs/selkie
+2026-10-29T10:18:04.4825910Z   fetch-depth: 1
+2026-10-29T10:18:04.4827010Z   clean: true
+2026-10-29T10:18:04.4828110Z ##[endgroup]
+2026-10-29T10:18:04.6759210Z Syncing repository: shoal-labs/selkie
+2026-10-29T10:18:04.6760310Z ##[group]Getting Git version info
+2026-10-29T10:18:04.6761410Z Working directory is '/home/runner/work/selkie/selkie'
+2026-10-29T10:18:04.6772510Z [command]/usr/bin/git version
+2026-10-29T10:18:04.6793610Z git version 2.51.1
+2026-10-29T10:18:04.6794710Z ##[endgroup]
+2026-10-29T10:18:05.0185810Z Initialized empty Git repository in /home/runner/work/selkie/selkie/.git/
+2026-10-29T10:18:05.9436910Z ##[group]Checking out the ref
+2026-10-29T10:18:05.9468010Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-10-29T10:18:05.9549110Z Switched to a new branch 'main'
+2026-10-29T10:18:05.9550210Z ##[endgroup]
+2026-10-29T10:18:05.9601310Z [command]/usr/bin/git log -1 --format=%H
+2026-10-29T10:18:05.9622410Z a83f1b9c6d207e45f38a91b6c42d7e0f5a9b3c18
+2026-10-29T10:18:06.0353510Z ##[group]Run actions/setup-java@v4
+2026-10-29T10:18:06.0354610Z with:
+2026-10-29T10:18:06.0355710Z   distribution: temurin
+2026-10-29T10:18:06.0356810Z   java-version: 21
+2026-10-29T10:18:06.0357910Z   check-latest: false
+2026-10-29T10:18:06.0359010Z ##[endgroup]
+2026-10-29T10:18:06.1390110Z ##[group]Installed distributions
+2026-10-29T10:18:06.1391210Z Successfully set up Java 21
+2026-10-29T10:18:06.1392310Z ##[endgroup]
+2026-10-29T10:18:06.1953410Z ##[group]Run ./tools/gradlew build
+2026-10-29T10:18:06.1954510Z [36;1m./tools/gradlew build[0m
+2026-10-29T10:18:06.1995610Z shell: /usr/bin/bash -e {0}
+2026-10-29T10:18:06.1996710Z ##[endgroup]
+2026-10-29T10:18:06.2067810Z /home/runner/work/_temp/84a0d6f2-1f3a-44e2-9c68-7b356a824fa1.sh: line 1: ./tools/gradlew: No such file or directory
+2026-10-29T10:18:06.2088910Z ##[error]Process completed with exit code 127.
+2026-10-29T10:18:06.2190010Z Post job cleanup.
+2026-10-29T10:18:06.3031110Z [command]/usr/bin/git version
+2026-10-29T10:18:06.3052210Z git version 2.51.1
+2026-10-29T10:18:06.3273310Z Temporarily overriding HOME before making global git config changes
+2026-10-29T10:18:06.3284410Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-29T10:18:06.3295510Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/selkie/selkie
+2026-10-29T10:18:06.3406610Z Cleaning up orphan processes

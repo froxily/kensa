@@ -1,0 +1,12 @@
+{
+  "id": "hd48-thistleharbor",
+  "split": "dev",
+  "ecosystem": "terraform",
+  "repository": "thistleharbor/estuary-infra",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"db_connectivity","title":"Terraform cannot reach the state lock database","root_cause":"The DynamoDB endpoint configured for state locking refuses connections, preventing Terraform from acquiring the production state lock. The backend endpoint must be corrected or made reachable.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"a","relation":"recurrence","category":"db_connectivity","title":"State lock database endpoint still unreachable","root_cause":"The DynamoDB endpoint configured for state locking refuses connections, preventing Terraform from acquiring the production state lock. The backend endpoint must be corrected or made reachable.","differs_from_earlier":"A later pull request runs a plan with different inputs, Terraform version and lock timeout, but the same backend endpoint refuses connections."},
+    {"id":"e3","file":"e3.log","cluster":"b","relation":"first","category":"github_permissions","title":"GitHub provider cannot update repository file","root_cause":"The workflow's GitHub token has read-only contents permission, so the GitHub provider cannot update a repository file. The workflow must grant contents write permission.","differs_from_earlier":""},
+    {"id":"e4","file":"e4.log","cluster":"c","relation":"first","category":"dependency_build","title":"AWS provider version unavailable","root_cause":"The configuration constrains the AWS provider to a version that is not published in the Terraform registry. The provider version constraint must be corrected.","differs_from_earlier":""}
+  ]
+}

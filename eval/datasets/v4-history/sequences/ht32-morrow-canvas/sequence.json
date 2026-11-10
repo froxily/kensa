@@ -1,0 +1,12 @@
+{
+  "id": "ht32-morrow-canvas",
+  "split": "test",
+  "ecosystem": "node (jest)",
+  "repository": "morrow-guild/canvas-orchard",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"test_regression","title":"Compact badge snapshot has an outdated label","root_cause":"The compact harvest badge now renders 'Ready' while its committed snapshot still expects 'Pending'. Review the intended label and update the compact badge snapshot or restore the expected label.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"b","relation":"lookalike","category":"test_regression","title":"Expanded badge snapshot has an outdated icon","root_cause":"The expanded harvest badge now renders the sprout icon while its committed snapshot expects the leaf icon. Review the intended icon and update the expanded badge snapshot or restore the expected icon.","differs_from_earlier":"The same suite and snapshot assertion fail, but the expanded variant has an independent icon mismatch rather than the compact variant's label mismatch."},
+    {"id":"e3","file":"e3.log","cluster":"a","relation":"recurrence","category":"test_regression","title":"Compact badge snapshot still has an outdated label","root_cause":"The compact harvest badge now renders 'Ready' while its committed snapshot still expects 'Pending'. Review the intended label and update the compact badge snapshot or restore the expected label.","differs_from_earlier":"A later run has a shifted test line, different passing suites and timing, but the compact badge has the same label mismatch."},
+    {"id":"e4","file":"e4.log","cluster":"c","relation":"first","category":"test_regression","title":"Harvest count formatter returns the wrong plural","root_cause":"The harvest count formatter returns the singular noun for two items. Correct its plural selection logic.","differs_from_earlier":""}
+  ]
+}

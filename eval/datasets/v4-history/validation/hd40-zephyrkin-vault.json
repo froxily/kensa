@@ -1,0 +1,13 @@
+{
+  "id": "hd40-zephyrkin-vault",
+  "independent_labels": [
+    {"id": "e1", "cluster": "a", "relation": "first", "category": "test_regression"},
+    {"id": "e2", "cluster": "b", "relation": "first", "category": "dependency_build"},
+    {"id": "e3", "cluster": "c", "relation": "first", "category": "missing_env_var"},
+    {"id": "e4", "cluster": "a", "relation": "recurrence", "category": "test_regression"}
+  ],
+  "verdict": "ambiguous",
+  "disputed_fields": ["e1.root_cause", "e2.root_cause", "e4.root_cause"],
+  "reason_category": "ambiguous_evidence",
+  "notes": "Labels and plan match. The repeated cutoff assertion supports a recurrence, but neither test log establishes that a strict comparison causes the failure. The missing project reference in e2 does not establish that the project was renamed or reveal a new path. The later run differs beyond timestamps; no giveaway commentary is apparent."
+}

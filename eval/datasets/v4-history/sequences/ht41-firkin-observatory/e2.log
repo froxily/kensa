@@ -1,0 +1,60 @@
+2026-09-18T15:23:10.1100000Z Current runner version: '2.328.0'
+2026-09-18T15:23:10.1200000Z ##[group]Operating System
+2026-09-18T15:23:10.1300000Z Ubuntu
+2026-09-18T15:23:10.1400000Z 24.04.3
+2026-09-18T15:23:10.1500000Z ##[endgroup]
+2026-09-18T15:23:10.1600000Z ##[group]Runner Image
+2026-09-18T15:23:10.1700000Z Image: ubuntu-24.04
+2026-09-18T15:23:10.1800000Z Version: 20260914.1.0
+2026-09-18T15:23:10.1900000Z ##[endgroup]
+2026-09-18T15:23:10.2000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-18T15:23:10.2100000Z Contents: read
+2026-09-18T15:23:10.2200000Z Metadata: read
+2026-09-18T15:23:10.2300000Z ##[endgroup]
+2026-09-18T15:23:10.2400000Z Prepare workflow directory
+2026-09-18T15:23:10.3400000Z Prepare all required actions
+2026-09-18T15:23:11.3400000Z Complete job name: migrate
+2026-09-18T15:23:11.4200000Z ##[group]Run actions/checkout@v4
+2026-09-18T15:23:11.4300000Z with:
+2026-09-18T15:23:11.4400000Z   repository: firkin-observatory/tarnledger
+2026-09-18T15:23:11.4500000Z   fetch-depth: 1
+2026-09-18T15:23:11.4600000Z ##[endgroup]
+2026-09-18T15:23:11.7000000Z Syncing repository: firkin-observatory/tarnledger
+2026-09-18T15:23:12.0300000Z [command]/usr/bin/git version
+2026-09-18T15:23:12.0400000Z git version 2.51.0
+2026-09-18T15:23:13.1500000Z Checking out the ref
+2026-09-18T15:23:13.4200000Z [command]/usr/bin/git log -1 --format=%H
+2026-09-18T15:23:13.4300000Z 4a16905cb3f120d5fe83bd229e71a4ac9509d419
+2026-09-18T15:23:13.5100000Z ##[group]Run composer install --no-interaction --prefer-dist
+2026-09-18T15:23:13.5200000Z composer install --no-interaction --prefer-dist
+2026-09-18T15:23:13.5300000Z shell: /usr/bin/bash -e {0}
+2026-09-18T15:23:13.5400000Z ##[endgroup]
+2026-09-18T15:23:13.9300000Z Installing dependencies from lock file
+2026-09-18T15:23:14.0200000Z Verifying lock file contents can be installed on current platform.
+2026-09-18T15:23:14.2800000Z Package operations: 1 install, 0 updates, 0 removals
+2026-09-18T15:23:14.7600000Z Generating optimized autoload files
+2026-09-18T15:23:15.5100000Z ##[group]Run php artisan migrate --force
+2026-09-18T15:23:15.5200000Z php artisan migrate --force
+2026-09-18T15:23:15.5300000Z shell: /usr/bin/bash -e {0}
+2026-09-18T15:23:15.5400000Z ##[endgroup]
+2026-09-18T15:23:15.7100000Z 
+2026-09-18T15:23:15.7200000Z    INFO  Running migrations.
+2026-09-18T15:23:15.7300000Z 
+2026-09-18T15:23:15.7400000Z   2026_09_11_130000_add_ledger_note ......................... RUNNING
+2026-09-18T15:23:15.8300000Z   2026_09_11_130000_add_ledger_note .................... 89ms DONE
+2026-09-18T15:23:15.8400000Z   2026_09_12_090000_add_ledger_posted_index ................. RUNNING
+2026-09-18T15:23:20.8800000Z   2026_09_12_090000_add_ledger_posted_index ............ 5s FAIL
+2026-09-18T15:23:20.8900000Z 
+2026-09-18T15:23:20.9000000Z   Illuminate\Database\QueryException
+2026-09-18T15:23:20.9100000Z 
+2026-09-18T15:23:20.9200000Z   SQLSTATE[55P03]: Lock not available: 7 ERROR:  canceling statement due to lock timeout (Connection: pgsql, SQL: create index "ledger_entries_posted_at_index" on "ledger_entries" ("posted_at"))
+2026-09-18T15:23:20.9300000Z 
+2026-09-18T15:23:20.9400000Z   at vendor/laravel/framework/src/Illuminate/Database/Connection.php:825
+2026-09-18T15:23:20.9500000Z   ➜ 825▕             throw new QueryException(
+2026-09-18T15:23:20.9600000Z       +9 vendor frames
+2026-09-18T15:23:20.9700000Z   10  database/migrations/2026_09_12_090000_add_ledger_posted_index.php:19
+2026-09-18T15:23:20.9900000Z ##[error]Process completed with exit code 1.
+2026-09-18T15:23:21.0300000Z Post job cleanup.
+2026-09-18T15:23:21.2200000Z [command]/usr/bin/git version
+2026-09-18T15:23:21.2300000Z git version 2.51.0
+2026-09-18T15:23:21.3900000Z Cleaning up orphan processes

@@ -1,0 +1,12 @@
+﻿{
+  "id": "ht03-lichen-harvest",
+  "split": "test",
+  "ecosystem": "rust",
+  "repository": "rillforge/lichen-harvest",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"dependency_build","title":"Compiler below package minimum","root_cause":"The workflow selects Rust 1.77.2 while the harvest crate requires Rust 1.81. Update the workflow toolchain to a supported version.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"b","relation":"first","category":"db_connectivity","title":"Database role password rejected","root_cause":"The integration job supplies a password for the lichen_runner PostgreSQL role that does not match the password configured on the database service. Align the job and service credentials.","differs_from_earlier":""},
+    {"id":"e3","file":"e3.log","cluster":"a","relation":"recurrence","category":"dependency_build","title":"Compiler below package minimum","root_cause":"The workflow selects Rust 1.77.2 while the harvest crate requires Rust 1.81. Update the workflow toolchain to a supported version.","differs_from_earlier":"A later run invokes cargo check instead of cargo test after a cache restore and uses a different runner."},
+    {"id":"e4","file":"e4.log","cluster":"b","relation":"recurrence","category":"db_connectivity","title":"Database role password rejected","root_cause":"The integration job supplies a password for the lichen_runner PostgreSQL role that does not match the password configured on the database service. Align the job and service credentials.","differs_from_earlier":"A later integration run reaches the same authentication failure through the migration command rather than a direct readiness query."}
+  ]
+}

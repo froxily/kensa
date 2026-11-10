@@ -1,0 +1,46 @@
+2026-09-02T09:14:02.0000000Z Current runner version: '2.329.0'
+2026-09-02T09:14:02.1000000Z ##[group]Operating System
+2026-09-02T09:14:02.2000000Z Ubuntu
+2026-09-02T09:14:02.3000000Z 24.04.3
+2026-09-02T09:14:02.4000000Z ##[endgroup]
+2026-09-02T09:14:02.5000000Z ##[group]Runner Image
+2026-09-02T09:14:02.6000000Z Image: ubuntu-24.04
+2026-09-02T09:14:02.7000000Z Version: 20260824.1.0
+2026-09-02T09:14:02.8000000Z ##[endgroup]
+2026-09-02T09:14:02.9000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-02T09:14:03.0000000Z Contents: read
+2026-09-02T09:14:03.1000000Z Metadata: read
+2026-09-02T09:14:03.2000000Z ##[endgroup]
+2026-09-02T09:14:03.3000000Z Prepare workflow directory
+2026-09-02T09:14:03.4000000Z Prepare all required actions
+2026-09-02T09:14:04.0000000Z Getting action download info
+2026-09-02T09:14:04.5000000Z Download action repository 'actions/checkout@v4'
+2026-09-02T09:14:05.0000000Z Complete job name: publish
+2026-09-02T09:14:05.1000000Z ##[group]Run actions/checkout@v4
+2026-09-02T09:14:05.2000000Z with:
+2026-09-02T09:14:05.3000000Z   repository: mistral-skein/auric-cordage
+2026-09-02T09:14:05.4000000Z   fetch-depth: 1
+2026-09-02T09:14:05.5000000Z   token: ***
+2026-09-02T09:14:05.6000000Z ##[endgroup]
+2026-09-02T09:14:06.2000000Z Syncing repository: mistral-skein/auric-cordage
+2026-09-02T09:14:06.8000000Z Getting Git version info
+2026-09-02T09:14:07.2000000Z Temporarily overriding HOME for git config
+2026-09-02T09:14:07.8000000Z Fetching the repository
+2026-09-02T09:14:08.3000000Z Checking out the ref
+2026-09-02T09:14:08.5000000Z [command]/usr/bin/git log -1 --format=%H
+2026-09-02T09:14:08.7000000Z ##[group]Run tar -czf cordage-linux-amd64.tar.gz dist/
+2026-09-02T09:14:08.8000000Z tar -czf cordage-linux-amd64.tar.gz dist/
+2026-09-02T09:14:08.9000000Z shell: /usr/bin/bash -e {0}
+2026-09-02T09:14:09.0000000Z ##[endgroup]
+2026-09-02T09:14:09.5000000Z ##[group]Run gh release upload v2.6.0 cordage-linux-amd64.tar.gz
+2026-09-02T09:14:09.6000000Z gh release upload v2.6.0 cordage-linux-amd64.tar.gz
+2026-09-02T09:14:09.7000000Z shell: /usr/bin/bash -e {0}
+2026-09-02T09:14:09.8000000Z env:
+2026-09-02T09:14:09.9000000Z   GH_TOKEN: ***
+2026-09-02T09:14:10.0000000Z ##[endgroup]
+2026-09-02T09:14:10.9000000Z HTTP 403: Resource not accessible by integration (https://uploads.github.com/repos/mistral-skein/auric-cordage/releases/481207/assets?name=cordage-linux-amd64.tar.gz)
+2026-09-02T09:14:11.0000000Z ##[error]Process completed with exit code 1.
+2026-09-02T09:14:11.1000000Z Post job cleanup.
+2026-09-02T09:14:11.3000000Z [command]/usr/bin/git version
+2026-09-02T09:14:11.5000000Z git version 2.51.0
+2026-09-02T09:14:11.7000000Z Cleaning up orphan processes

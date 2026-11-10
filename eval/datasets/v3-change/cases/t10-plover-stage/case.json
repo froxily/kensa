@@ -1,0 +1,19 @@
+{
+  "id": "t10-plover-stage",
+  "split": "test",
+  "comparability": "comparable",
+  "category": "docker",
+  "culprit_kind": "build_config",
+  "difficulty": "medium",
+  "ecosystem": "rust",
+  "title": "Container build target no longer exists",
+  "root_cause": "The Dockerfile renamed the compile stage from builder to compile, while the workflow still asks Docker to build the builder target. Docker cannot find that stage and stops before compiling the Rust application.",
+  "culprit_paths": ["Dockerfile"],
+  "culprit_commit": "b1e74c9a263fd850a6c18d9e437b2f506a91c8de",
+  "unverified_factors": [],
+  "fix_keywords": ["builder", "compile", "target"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 48, "end_line": 56, "why": "The build requests builder and Docker reports that target does not exist."},
+    {"path": "repo/Dockerfile", "start_line": 1, "end_line": 5, "why": "The Dockerfile names its build stage compile."}
+  ]
+}

@@ -1,0 +1,51 @@
+2026-09-08T17:20:01.1000000Z Current runner version: '2.328.0'
+2026-09-08T17:20:01.1100000Z ##[group]Runner Image
+2026-09-08T17:20:01.1200000Z Image: ubuntu-22.04
+2026-09-08T17:20:01.1300000Z ##[endgroup]
+2026-09-08T17:20:01.1400000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-08T17:20:01.1500000Z Contents: read
+2026-09-08T17:20:01.1600000Z ##[endgroup]
+2026-09-08T17:20:01.1700000Z Prepare workflow directory
+2026-09-08T17:20:01.1800000Z Prepare all required actions
+2026-09-08T17:20:01.1900000Z ##[group]Run actions/checkout@v4
+2026-09-08T17:20:01.2000000Z with:
+2026-09-08T17:20:01.2100000Z   repository: whorlkin/gyroscope-whorl
+2026-09-08T17:20:01.2200000Z   fetch-depth: 1
+2026-09-08T17:20:01.2300000Z ##[endgroup]
+2026-09-08T17:20:02.1000000Z Syncing repository: whorlkin/gyroscope-whorl
+2026-09-08T17:20:03.1000000Z Checking out the ref
+2026-09-08T17:20:03.2000000Z ##[group]Run flutter pub get
+2026-09-08T17:20:03.2100000Z flutter pub get
+2026-09-08T17:20:03.2200000Z shell: /usr/bin/bash -e {0}
+2026-09-08T17:20:03.2300000Z ##[endgroup]
+2026-09-08T17:20:04.1000000Z Resolving dependencies...
+2026-09-08T17:20:05.1000000Z Downloading packages...
+2026-09-08T17:20:05.2000000Z Got dependencies!
+2026-09-08T17:20:05.2100000Z 2 packages have newer versions incompatible with dependency constraints.
+2026-09-08T17:20:05.2200000Z Try `flutter pub outdated` for more information.
+2026-09-08T17:20:05.2300000Z ##[group]Run flutter build appbundle --release
+2026-09-08T17:20:05.2400000Z flutter build appbundle --release
+2026-09-08T17:20:05.2500000Z shell: /usr/bin/bash -e {0}
+2026-09-08T17:20:05.2600000Z ##[endgroup]
+2026-09-08T17:20:07.1000000Z Running Gradle task 'bundleRelease'...
+2026-09-08T17:20:28.1000000Z Font asset "MaterialIcons-Regular.otf" was tree-shaken, reducing it significantly.
+2026-09-08T17:20:30.1000000Z lib/widgets/mire_dial.dart:54:7: Error: No named parameter with the name 'trackColor'.
+2026-09-08T17:20:30.1100000Z       trackColor: palette.mist,
+2026-09-08T17:20:30.1200000Z       ^^^^^^^^^^
+2026-09-08T17:20:30.1300000Z lib/widgets/arc_gauge.dart:12:9: Context: Found this candidate, but the arguments don't match.
+2026-09-08T17:20:30.1400000Z   const ArcGauge({super.key, required this.paint});
+2026-09-08T17:20:30.1500000Z         ^^^^^^^^
+2026-09-08T17:20:31.1000000Z Target kernel_snapshot_program failed: Exception
+2026-09-08T17:20:31.1100000Z FAILURE: Build failed with an exception.
+2026-09-08T17:20:31.1200000Z * What went wrong:
+2026-09-08T17:20:31.1300000Z Execution failed for task ':app:compileFlutterBuildRelease'.
+2026-09-08T17:20:31.1400000Z > Process 'command 'flutter'' finished with non-zero exit value 1
+2026-09-08T17:20:31.1500000Z * Try:
+2026-09-08T17:20:31.1600000Z > Run with --stacktrace option to get the stack trace.
+2026-09-08T17:20:31.1700000Z > Get more help at https://help.gradle.org.
+2026-09-08T17:20:31.1800000Z BUILD FAILED in 25s
+2026-09-08T17:20:31.1900000Z Running Gradle task 'bundleRelease'...                             25.7s
+2026-09-08T17:20:31.2000000Z Gradle task bundleRelease failed with exit code 1
+2026-09-08T17:20:31.2100000Z ##[error]Process completed with exit code 1.
+2026-09-08T17:20:31.2200000Z Post job cleanup.
+2026-09-08T17:20:31.2300000Z Cleaning up orphan processes

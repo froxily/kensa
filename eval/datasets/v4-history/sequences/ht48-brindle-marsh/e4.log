@@ -1,0 +1,50 @@
+2026-09-28T07:25:40.0100000Z Current runner version: '2.329.0'
+2026-09-28T07:25:40.0200000Z ##[group]Operating System
+2026-09-28T07:25:40.0300000Z Ubuntu
+2026-09-28T07:25:40.0400000Z 24.04.3
+2026-09-28T07:25:40.0500000Z ##[endgroup]
+2026-09-28T07:25:40.0600000Z ##[group]Runner Image
+2026-09-28T07:25:40.0700000Z Image: ubuntu-24.04
+2026-09-28T07:25:40.0800000Z Version: 20260921.1.0
+2026-09-28T07:25:40.0900000Z ##[endgroup]
+2026-09-28T07:25:40.1000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-28T07:25:40.1100000Z Contents: read
+2026-09-28T07:25:40.1200000Z Metadata: read
+2026-09-28T07:25:40.1300000Z ##[endgroup]
+2026-09-28T07:25:40.1400000Z Prepare workflow directory
+2026-09-28T07:25:40.1500000Z Prepare all required actions
+2026-09-28T07:25:40.8200000Z Download action repository 'actions/checkout@v4'
+2026-09-28T07:25:41.0200000Z Download action repository 'hashicorp/setup-terraform@v3'
+2026-09-28T07:25:41.1100000Z Complete job name: plan / production
+2026-09-28T07:25:41.1800000Z ##[group]Run actions/checkout@v4
+2026-09-28T07:25:41.1900000Z with:
+2026-09-28T07:25:41.2000000Z   repository: brindle-marsh/reedgate-infra
+2026-09-28T07:25:41.2100000Z   clean: true
+2026-09-28T07:25:41.2200000Z   fetch-depth: 1
+2026-09-28T07:25:41.2300000Z ##[endgroup]
+2026-09-28T07:25:41.4800000Z Syncing repository: brindle-marsh/reedgate-infra
+2026-09-28T07:25:41.4900000Z ##[group]Getting Git version info
+2026-09-28T07:25:41.5000000Z Working directory is '/home/runner/work/reedgate-infra/reedgate-infra'
+2026-09-28T07:25:41.5100000Z [command]/usr/bin/git version
+2026-09-28T07:25:41.5200000Z git version 2.51.0
+2026-09-28T07:25:41.5300000Z ##[endgroup]
+2026-09-28T07:25:42.1400000Z Checking out the ref
+2026-09-28T07:25:42.1500000Z HEAD is now at 4c823ae Rename old-reedbed environment to reedbed
+2026-09-28T07:25:42.3600000Z ##[group]Run hashicorp/setup-terraform@v3
+2026-09-28T07:25:42.3700000Z with:
+2026-09-28T07:25:42.3800000Z   terraform_version: 1.9.8
+2026-09-28T07:25:42.3900000Z   terraform_wrapper: true
+2026-09-28T07:25:42.4000000Z ##[endgroup]
+2026-09-28T07:25:43.0900000Z Terraform CLI installed
+2026-09-28T07:25:43.1500000Z ##[group]Run cd environments/old-reedbed
+2026-09-28T07:25:43.1600000Z cd environments/old-reedbed
+2026-09-28T07:25:43.1700000Z terraform init -backend=false -input=false
+2026-09-28T07:25:43.1800000Z terraform plan -input=false -no-color -var-file=reedbed.tfvars
+2026-09-28T07:25:43.1900000Z shell: /usr/bin/bash -e {0}
+2026-09-28T07:25:43.2000000Z ##[endgroup]
+2026-09-28T07:25:43.2100000Z /home/runner/work/_temp/29813.sh: line 1: cd: environments/old-reedbed: No such file or directory
+2026-09-28T07:25:43.2200000Z ##[error]Process completed with exit code 1.
+2026-09-28T07:25:43.3100000Z Post job cleanup.
+2026-09-28T07:25:43.4800000Z [command]/usr/bin/git version
+2026-09-28T07:25:43.4900000Z git version 2.51.0
+2026-09-28T07:25:43.6000000Z Cleaning up orphan processes

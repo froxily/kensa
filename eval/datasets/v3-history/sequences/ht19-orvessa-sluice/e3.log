@@ -1,0 +1,47 @@
+﻿2026-09-24T14:34:00.0000000Z Current runner version: '2.329.0'
+2026-09-24T14:34:00.1000000Z Runner name: 'GitHub Actions 1002754'
+2026-09-24T14:34:00.2000000Z ##[group]Operating System
+2026-09-24T14:34:00.3000000Z Ubuntu 24.04.3 LTS
+2026-09-24T14:34:00.4000000Z ##[endgroup]
+2026-09-24T14:34:00.5000000Z ##[group]Runner Image
+2026-09-24T14:34:00.6000000Z Image: ubuntu-24.04
+2026-09-24T14:34:00.7000000Z ##[endgroup]
+2026-09-24T14:34:01.0000000Z ##[group]Run actions/checkout@v4
+2026-09-24T14:34:01.1000000Z with:
+2026-09-24T14:34:01.2000000Z   repository: quillmarsh/orvessa
+2026-09-24T14:34:01.3000000Z   fetch-depth: 1
+2026-09-24T14:34:01.4000000Z ##[endgroup]
+2026-09-24T14:34:02.0000000Z Syncing repository: quillmarsh/orvessa
+2026-09-24T14:34:03.0000000Z Fetching the repository
+2026-09-24T14:34:04.0000000Z Checking out the ref
+2026-09-24T14:34:05.0000000Z ##[group]Run actions/setup-dotnet@v4
+2026-09-24T14:34:05.1000000Z with:
+2026-09-24T14:34:05.2000000Z   dotnet-version: 8.0.x
+2026-09-24T14:34:05.3000000Z ##[endgroup]
+2026-09-24T14:34:08.0000000Z Installed dotnet version 8.0.413
+2026-09-24T14:34:08.1000000Z ##[group]Run dotnet test tests/Orvessa.Tests --configuration Release --blame-hang --blame-hang-timeout 2m
+2026-09-24T14:34:08.2000000Z dotnet test tests/Orvessa.Tests --configuration Release --blame-hang --blame-hang-timeout 2m
+2026-09-24T14:34:08.3000000Z shell: /usr/bin/bash -e {0}
+2026-09-24T14:34:08.4000000Z ##[endgroup]
+2026-09-24T14:34:10.0000000Z   Determining projects to restore...
+2026-09-24T14:34:12.0000000Z   Restored /home/runner/work/orvessa/orvessa/tests/Orvessa.Tests/Orvessa.Tests.csproj (in 986 ms).
+2026-09-24T14:34:12.1000000Z   Restored /home/runner/work/orvessa/orvessa/src/Orvessa/Orvessa.csproj (in 603 ms).
+2026-09-24T14:34:15.0000000Z   Orvessa -> /home/runner/work/orvessa/orvessa/src/Orvessa/bin/Release/net8.0/Orvessa.dll
+2026-09-24T14:34:18.0000000Z   Orvessa.Tests -> /home/runner/work/orvessa/orvessa/tests/Orvessa.Tests/bin/Release/net8.0/Orvessa.Tests.dll
+2026-09-24T14:34:18.1000000Z Test run for Orvessa.Tests.dll (.NETCoreApp,Version=v8.0)
+2026-09-24T14:34:18.2000000Z VSTest version 17.11.1 (x64)
+2026-09-24T14:34:18.3000000Z Starting test execution, please wait...
+2026-09-24T14:34:18.4000000Z A total of 1 test files matched the specified pattern.
+2026-09-24T14:34:21.0000000Z   Passed Orvessa.Tests.GaugeTests.Calibrate [31 ms]
+2026-09-24T14:34:22.0000000Z   Passed Orvessa.Tests.ReedPulseTests.EmptyBatch [34 ms]
+2026-09-24T14:34:23.0000000Z   Passed Orvessa.Tests.SluiceCycleTests.Opens [45 ms]
+2026-09-24T14:36:23.0000000Z [createdump] Gathering state for process 2075 dotnet
+2026-09-24T14:36:26.0000000Z [createdump] Written 87293952 bytes to file /tmp/2075_hangdump.dmp
+2026-09-24T14:36:26.1000000Z Test Run Aborted.
+2026-09-24T14:36:26.2000000Z The active test was: Orvessa.Tests.SluiceCycleTests.ConcurrentCloseCompletes
+2026-09-24T14:36:26.3000000Z Thread 14: System.Threading.Tasks.Task.Wait() at Orvessa.SluiceCycle.Close() in SluiceCycle.cs:line 84
+2026-09-24T14:36:26.4000000Z Thread 19: System.Threading.Monitor.Enter(Object) at Orvessa.SluiceCycle.Drain() in SluiceCycle.cs:line 53
+2026-09-24T14:36:26.5000000Z Attachments: /home/runner/work/_temp/TestResults/2075_hangdump.dmp
+2026-09-24T14:36:26.6000000Z ##[error]Process completed with exit code 1.
+2026-09-24T14:36:27.0000000Z Post job cleanup.
+2026-09-24T14:36:27.1000000Z Cleaning up orphan processes

@@ -1,0 +1,19 @@
+{
+  "id": "t05-umbra-summary",
+  "split": "test",
+  "comparability": "comparable",
+  "category": "test_regression",
+  "culprit_kind": "source",
+  "difficulty": "medium",
+  "ecosystem": "typescript",
+  "title": "Empty collection produces a non-finite mean",
+  "root_cause": "The summary function stopped returning zero for an empty collection and now divides its zero total by the zero item count. The existing empty-input assertion receives NaN instead of zero. A later test-only change adds coverage for a single value without changing that assertion.",
+  "culprit_paths": ["src/mean.ts"],
+  "culprit_commit": "c7e452a901b3df68e124c9a0f67d85b231ea409c",
+  "unverified_factors": [],
+  "fix_keywords": ["values.length", "0"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 60, "end_line": 69, "why": "The empty-input test reports NaN where zero was expected."},
+    {"path": "repo/src/mean.ts", "start_line": 1, "end_line": 4, "why": "The total is divided by the number of values without an empty-input guard."}
+  ]
+}

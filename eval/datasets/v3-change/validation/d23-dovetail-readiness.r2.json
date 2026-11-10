@@ -1,0 +1,14 @@
+{
+  "id": "d23-dovetail-readiness",
+  "independent_labels": {
+    "comparability": "identical",
+    "unverified_factors": [],
+    "category": "db_connectivity",
+    "culprit_kind": "none",
+    "culprit_paths": []
+  },
+  "verdict": "agree",
+  "disputed_fields": [],
+  "reason_category": "none",
+  "notes": "The matching successful baseline has the same SHA, and the comparison is identical. PostgreSQL fails to bind its network address, leaving the service unhealthy before tests start. The cited log lines support this, and the run metadata and repository configuration are consistent."
+}

@@ -1,0 +1,45 @@
+﻿2026-08-19T12:03:16.2001000Z Current runner version: '2.328.0'
+2026-08-19T12:03:16.2002000Z Runner name: 'GitHub Actions 71'
+2026-08-19T12:03:16.2003000Z ##[group]Operating System
+2026-08-19T12:03:16.2004000Z Ubuntu
+2026-08-19T12:03:16.2005000Z 24.04.3
+2026-08-19T12:03:16.2006000Z ##[endgroup]
+2026-08-19T12:03:16.2007000Z ##[group]Runner Image
+2026-08-19T12:03:16.2008000Z Image: ubuntu-24.04
+2026-08-19T12:03:16.2009000Z Version: 20260810.1.0
+2026-08-19T12:03:16.2010000Z ##[endgroup]
+2026-08-19T12:03:16.2011000Z ##[group]GITHUB_TOKEN Permissions
+2026-08-19T12:03:16.2012000Z Contents: read
+2026-08-19T12:03:16.2013000Z ##[endgroup]
+2026-08-19T12:03:16.2014000Z Prepare workflow directory
+2026-08-19T12:03:16.2015000Z Prepare all required actions
+2026-08-19T12:03:17.2016000Z Download action repository 'actions/checkout@v4'
+2026-08-19T12:03:17.2017000Z Complete job name: container
+2026-08-19T12:03:17.2018000Z ##[group]Run actions/checkout@v4
+2026-08-19T12:03:17.2019000Z with:
+2026-08-19T12:03:17.2020000Z   repository: cairnworks/foxglove-foundry
+2026-08-19T12:03:17.2021000Z   fetch-depth: 1
+2026-08-19T12:03:17.2022000Z ##[endgroup]
+2026-08-19T12:03:18.2023000Z Syncing repository: cairnworks/foxglove-foundry
+2026-08-19T12:03:18.2024000Z Fetching the repository
+2026-08-19T12:03:19.2025000Z Checking out the ref
+2026-08-19T12:03:19.2026000Z HEAD is now at 81b9c3e Update container base
+2026-08-19T12:03:19.2027000Z ##[group]Run docker login registry.example.org -u foundry-ci --password-stdin
+2026-08-19T12:03:19.2028000Z shell: /usr/bin/bash -e {0}
+2026-08-19T12:03:19.2029000Z ##[endgroup]
+2026-08-19T12:03:19.7030000Z Login Succeeded
+2026-08-19T12:03:19.7031000Z ##[group]Run docker buildx build --load -t foundry-check .
+2026-08-19T12:03:19.7032000Z shell: /usr/bin/bash -e {0}
+2026-08-19T12:03:19.7033000Z ##[endgroup]
+2026-08-19T12:03:20.2034000Z #0 building with "default" instance using docker driver
+2026-08-19T12:03:20.2035000Z #1 [internal] load build definition from Dockerfile
+2026-08-19T12:03:20.2036000Z #1 transferring dockerfile: 322B done
+2026-08-19T12:03:20.2037000Z #1 DONE 0.0s
+2026-08-19T12:03:20.2038000Z #2 [internal] load metadata for registry.example.org/cairnworks/alloy-base:1.6
+2026-08-19T12:03:20.7039000Z #2 ERROR: unexpected status from HEAD request to registry.example.org/v2/cairnworks/alloy-base/manifests/1.6: 403 Forbidden
+2026-08-19T12:03:20.7040000Z #2 registry response: denied: account foundry-ci is not a member of repository cairnworks/alloy-base
+2026-08-19T12:03:20.7041000Z ERROR: failed to solve: registry.example.org/cairnworks/alloy-base:1.6: failed to resolve source metadata: unexpected status: 403 Forbidden
+2026-08-19T12:03:20.7042000Z ##[error]Process completed with exit code 1.
+2026-08-19T12:03:20.7043000Z Post job cleanup.
+2026-08-19T12:03:20.7044000Z Cleaning up orphan processes
+2026-08-19T12:03:20.7045000Z Complete job

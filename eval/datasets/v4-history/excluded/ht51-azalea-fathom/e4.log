@@ -1,0 +1,48 @@
+2026-10-05T16:30:00.0000000Z Current runner version: '2.329.0'
+2026-10-05T16:30:00.1000000Z ##[group]Operating System
+2026-10-05T16:30:00.2000000Z macOS
+2026-10-05T16:30:00.3000000Z 15.7
+2026-10-05T16:30:00.4000000Z ##[endgroup]
+2026-10-05T16:30:00.5000000Z ##[group]Runner Image
+2026-10-05T16:30:00.6000000Z Image: macos-15
+2026-10-05T16:30:00.7000000Z Version: 20260929.1
+2026-10-05T16:30:00.8000000Z ##[endgroup]
+2026-10-05T16:30:01.0000000Z Prepare workflow directory
+2026-10-05T16:30:01.2000000Z Prepare all required actions
+2026-10-05T16:30:01.7000000Z Download action repository 'actions/checkout@v4'
+2026-10-05T16:30:02.0000000Z Complete job name: iOS tests
+2026-10-05T16:30:02.2000000Z ##[group]Run actions/checkout@v4
+2026-10-05T16:30:02.3000000Z with:
+2026-10-05T16:30:02.4000000Z   repository: azalea-sound/fathom-notes
+2026-10-05T16:30:02.5000000Z   fetch-depth: 1
+2026-10-05T16:30:02.6000000Z   clean: true
+2026-10-05T16:30:02.7000000Z ##[endgroup]
+2026-10-05T16:30:03.1000000Z Syncing repository: azalea-sound/fathom-notes
+2026-10-05T16:30:03.5000000Z Getting Git version info
+2026-10-05T16:30:03.6000000Z git version 2.51.0
+2026-10-05T16:30:04.0000000Z Initializing the repository
+2026-10-05T16:30:05.0000000Z Fetching the repository
+2026-10-05T16:30:06.2000000Z Checking out the ref
+2026-10-05T16:30:06.8000000Z ##[group]Run xcrun simctl list runtimes
+2026-10-05T16:30:06.9000000Z xcrun simctl list runtimes
+2026-10-05T16:30:07.0000000Z shell: /bin/bash -e {0}
+2026-10-05T16:30:07.1000000Z ##[endgroup]
+2026-10-05T16:30:07.4000000Z == Runtimes ==
+2026-10-05T16:30:07.5000000Z iOS 18.5 (18.5 - 22F76) - com.apple.CoreSimulator.SimRuntime.iOS-18-5
+2026-10-05T16:30:07.7000000Z ##[group]Run xcodebuild test -project FathomNotes.xcodeproj -scheme FathomNotes -destination 'platform=iOS Simulator,name=iPhone 16 Pro,OS=18.7' -destination-timeout 20
+2026-10-05T16:30:07.8000000Z xcodebuild test -project FathomNotes.xcodeproj -scheme FathomNotes -destination 'platform=iOS Simulator,name=iPhone 16 Pro,OS=18.7' -destination-timeout 20
+2026-10-05T16:30:07.9000000Z shell: /bin/bash -e {0}
+2026-10-05T16:30:08.0000000Z ##[endgroup]
+2026-10-05T16:30:08.5000000Z Command line invocation:
+2026-10-05T16:30:08.6000000Z     /Applications/Xcode_16.4.app/Contents/Developer/usr/bin/xcodebuild test -project FathomNotes.xcodeproj -scheme FathomNotes -destination "platform=iOS Simulator,name=iPhone 16 Pro,OS=18.7" -destination-timeout 20
+2026-10-05T16:30:09.0000000Z --- xcodebuild: Waiting for the requested destination to become available
+2026-10-05T16:30:29.3000000Z xcodebuild: error: Unable to find a device matching the provided destination specifier:
+2026-10-05T16:30:29.4000000Z 		{ platform:iOS Simulator, OS:18.7, name:iPhone 16 Pro }
+2026-10-05T16:30:29.5000000Z 	The requested device could not be found because no available devices matched the request.
+2026-10-05T16:30:29.6000000Z 	Available destinations for the "FathomNotes" scheme:
+2026-10-05T16:30:29.7000000Z 		{ platform:iOS Simulator, arch:arm64, id:3D17D9C2-6358-4D09-9D1A-A57325BEA1C3, OS:18.5, name:iPhone 16 Pro }
+2026-10-05T16:30:29.8000000Z ##[error]Process completed with exit code 70.
+2026-10-05T16:30:30.0000000Z Post job cleanup.
+2026-10-05T16:30:30.1000000Z git version 2.51.0
+2026-10-05T16:30:30.2000000Z Removing HTTP extra header
+2026-10-05T16:30:30.4000000Z Cleaning up orphan processes

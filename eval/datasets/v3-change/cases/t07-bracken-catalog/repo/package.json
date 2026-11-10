@@ -1,0 +1,7 @@
+{
+  "name": "bracken-catalog-checks",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": { "test": "node --test" },
+  "dependencies": { "pg": "8.13.1" }
+}

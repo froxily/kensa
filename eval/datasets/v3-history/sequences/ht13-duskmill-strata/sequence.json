@@ -1,0 +1,12 @@
+{
+  "id": "ht13-duskmill-strata",
+  "split": "test",
+  "ecosystem": "python",
+  "repository": "duskmill-labs/strata-indexer",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"dependency_build","title":"Strata checks cannot import ridgecodec","root_cause":"The Python environment does not install ridgecodec, which the strata indexer imports at module load time. Add ridgecodec to the project's installed dependencies.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"a","relation":"recurrence","category":"dependency_build","title":"Strata checks cannot import ridgecodec","root_cause":"The Python environment does not install ridgecodec, which the strata indexer imports at module load time. Add ridgecodec to the project's installed dependencies.","differs_from_earlier":"A different runner and checkout path run a narrower test selection after a fresh installation."},
+    {"id":"e3","file":"e3.log","cluster":"a","relation":"recurrence","category":"dependency_build","title":"Strata checks cannot import ridgecodec","root_cause":"The Python environment does not install ridgecodec, which the strata indexer imports at module load time. Add ridgecodec to the project's installed dependencies.","differs_from_earlier":"The import fails in a command-line smoke check, with a different workspace and installation output."},
+    {"id":"e4","file":"e4.log","cluster":"a","relation":"recurrence","category":"dependency_build","title":"Strata checks cannot import ridgecodec","root_cause":"The Python environment does not install ridgecodec, which the strata indexer imports at module load time. Add ridgecodec to the project's installed dependencies.","differs_from_earlier":"A later full test collection uses another runner path and reports an additional collection error from the same import."}
+  ]
+}

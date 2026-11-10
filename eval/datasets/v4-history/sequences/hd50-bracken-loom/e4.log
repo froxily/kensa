@@ -1,0 +1,60 @@
+2026-09-29T07:44:11.1234567Z Current runner version: '2.329.0'
+2026-09-29T07:44:11.2244567Z ##[group]Operating System
+2026-09-29T07:44:11.2344567Z Ubuntu
+2026-09-29T07:44:11.2444567Z 22.04.5
+2026-09-29T07:44:11.2544567Z ##[endgroup]
+2026-09-29T07:44:11.2644567Z ##[group]Runner Image
+2026-09-29T07:44:11.2744567Z Image: ubuntu-22.04
+2026-09-29T07:44:11.2844567Z Version: 20260921.1.0
+2026-09-29T07:44:11.2944567Z ##[endgroup]
+2026-09-29T07:44:11.5844567Z Prepare workflow directory
+2026-09-29T07:44:11.9544567Z Complete job name: test / ubuntu-22.04
+2026-09-29T07:44:12.1044567Z ##[group]Run actions/checkout@v4
+2026-09-29T07:44:12.1144567Z with:
+2026-09-29T07:44:12.1244567Z   repository: fenmere-labs/bracken-loom
+2026-09-29T07:44:12.1344567Z   ref: refs/heads/main
+2026-09-29T07:44:12.1444567Z ##[endgroup]
+2026-09-29T07:44:12.4144567Z Copying '/home/runner/.gitconfig' to '/home/runner/work/_temp/685f328d-702a-4901-9c28-442a678ba16b/.gitconfig'
+2026-09-29T07:44:13.8744567Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-09-29T07:44:14.0644567Z HEAD is now at 17e08bd Add batch dispatch metrics
+2026-09-29T07:44:14.1644567Z ##[group]Run erlef/setup-beam@v1
+2026-09-29T07:44:14.1744567Z with:
+2026-09-29T07:44:14.1844567Z   otp-version: '27.3'
+2026-09-29T07:44:14.1944567Z   elixir-version: '1.18.4'
+2026-09-29T07:44:14.2044567Z ##[endgroup]
+2026-09-29T07:44:18.5644567Z OTP 27.3 has been installed
+2026-09-29T07:44:20.8344567Z Elixir 1.18.4 has been installed
+2026-09-29T07:44:21.0244567Z ##[group]Run actions/cache@v4
+2026-09-29T07:44:21.0344567Z with:
+2026-09-29T07:44:21.0444567Z   path: deps
+2026-09-29T07:44:21.0544567Z   key: loom-deps-ubuntu22-4a90f
+2026-09-29T07:44:21.0644567Z ##[endgroup]
+2026-09-29T07:44:22.1144567Z Cache restored from key: loom-deps-ubuntu22-4a90f
+2026-09-29T07:44:22.2944567Z ##[group]Run mix deps.clean archive_bridge
+2026-09-29T07:44:22.3044567Z mix deps.clean archive_bridge
+2026-09-29T07:44:22.3144567Z shell: /usr/bin/bash -e {0}
+2026-09-29T07:44:22.3244567Z ##[endgroup]
+2026-09-29T07:44:23.0744567Z * Cleaning archive_bridge
+2026-09-29T07:44:23.1844567Z ##[group]Run mix test --exclude integration
+2026-09-29T07:44:23.1944567Z mix test --exclude integration
+2026-09-29T07:44:23.2044567Z shell: /usr/bin/bash -e {0}
+2026-09-29T07:44:23.2144567Z env:
+2026-09-29T07:44:23.2244567Z   MIX_ENV: test
+2026-09-29T07:44:23.2344567Z ##[endgroup]
+2026-09-29T07:44:24.2644567Z ==> jason
+2026-09-29T07:44:24.2744567Z Compiling 10 files (.ex)
+2026-09-29T07:44:25.7344567Z Generated jason app
+2026-09-29T07:44:25.7544567Z ==> archive_bridge
+2026-09-29T07:44:25.7644567Z make: Entering directory '/home/runner/work/bracken-loom/bracken-loom/deps/archive_bridge'
+2026-09-29T07:44:25.7744567Z cc -O2 -fPIC -I/usr/lib/erlang/usr/include -c c_src/archive_bridge.c -o priv/archive_bridge.o
+2026-09-29T07:44:25.9244567Z c_src/archive_bridge.c:4:10: fatal error: archive.h: No such file or directory
+2026-09-29T07:44:25.9344567Z     4 | #include <archive.h>
+2026-09-29T07:44:25.9444567Z       |          ^~~~~~~~~~~
+2026-09-29T07:44:25.9544567Z compilation terminated.
+2026-09-29T07:44:25.9644567Z make: *** [Makefile:22: priv/archive_bridge.o] Error 1
+2026-09-29T07:44:25.9744567Z make: Leaving directory '/home/runner/work/bracken-loom/bracken-loom/deps/archive_bridge'
+2026-09-29T07:44:25.9944567Z could not compile dependency :archive_bridge, "mix compile" failed.
+2026-09-29T07:44:26.0344567Z ##[error]Process completed with exit code 1.
+2026-09-29T07:44:26.1844567Z Post job cleanup.
+2026-09-29T07:44:26.2944567Z [command]/usr/bin/git config --local --get-regexp core\.sshCommand
+2026-09-29T07:44:26.4844567Z Cleaning up orphan processes

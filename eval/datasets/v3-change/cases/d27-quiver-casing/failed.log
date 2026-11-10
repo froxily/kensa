@@ -1,0 +1,71 @@
+2026-10-30T10:22:03.1200000Z Current runner version: '2.329.0'
+2026-10-30T10:22:03.1250000Z ##[group]Runner Image Provisioner
+2026-10-30T10:22:03.1260000Z Hosted Compute Agent
+2026-10-30T10:22:03.1270000Z Version: 20261020.1
+2026-10-30T10:22:03.1280000Z ##[endgroup]
+2026-10-30T10:22:03.1290000Z ##[group]Operating System
+2026-10-30T10:22:03.1300000Z Ubuntu
+2026-10-30T10:22:03.1310000Z 24.04.3
+2026-10-30T10:22:03.1320000Z LTS
+2026-10-30T10:22:03.1330000Z ##[endgroup]
+2026-10-30T10:22:03.1340000Z ##[group]Runner Image
+2026-10-30T10:22:03.1350000Z Image: ubuntu-24.04
+2026-10-30T10:22:03.1360000Z Version: 20261026.1
+2026-10-30T10:22:03.1370000Z Included Software: https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-30T10:22:03.1380000Z ##[endgroup]
+2026-10-30T10:22:03.1390000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-30T10:22:03.1400000Z Contents: read
+2026-10-30T10:22:03.1410000Z Metadata: read
+2026-10-30T10:22:03.1420000Z ##[endgroup]
+2026-10-30T10:22:03.1430000Z Secret source: Actions
+2026-10-30T10:22:03.1440000Z Prepare workflow directory
+2026-10-30T10:22:03.1450000Z Prepare all required actions
+2026-10-30T10:22:03.1460000Z Getting action download info
+2026-10-30T10:22:04.1470000Z Download action repository 'actions/checkout@v4'
+2026-10-30T10:22:04.1480000Z Download action repository 'actions/setup-dotnet@v4'
+2026-10-30T10:22:04.1490000Z Complete job name: build
+2026-10-30T10:22:04.1500000Z ##[group]Run actions/checkout@v4
+2026-10-30T10:22:04.1510000Z with:
+2026-10-30T10:22:04.1520000Z   fetch-depth: 1
+2026-10-30T10:22:04.1530000Z   persist-credentials: true
+2026-10-30T10:22:04.1540000Z ##[endgroup]
+2026-10-30T10:22:04.1550000Z Syncing repository: ximbral-forge/quiver-console
+2026-10-30T10:22:04.1560000Z ##[group]Getting Git version info
+2026-10-30T10:22:04.1570000Z Working directory is '/home/runner/work/quiver-console/quiver-console'
+2026-10-30T10:22:04.1580000Z [command]/usr/bin/git version
+2026-10-30T10:22:04.1590000Z git version 2.51.0
+2026-10-30T10:22:04.1600000Z ##[endgroup]
+2026-10-30T10:22:04.1610000Z Temporarily overriding HOME before making global git config changes
+2026-10-30T10:22:04.1620000Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-30T10:22:04.1630000Z Deleting the contents of '/home/runner/work/quiver-console/quiver-console'
+2026-10-30T10:22:04.1640000Z ##[group]Initializing the repository
+2026-10-30T10:22:04.1650000Z [command]/usr/bin/git init /home/runner/work/quiver-console/quiver-console
+2026-10-30T10:22:04.1660000Z Initialized empty Git repository in /home/runner/work/quiver-console/quiver-console/.git/
+2026-10-30T10:22:04.1670000Z ##[endgroup]
+2026-10-30T10:22:05.1680000Z ##[group]Fetching the repository
+2026-10-30T10:22:05.1690000Z [command]/usr/bin/git fetch --no-tags --prune --depth=1 origin +c83f12a6bd490e57f263ad9081be745c6d39f021:refs/remotes/origin/main
+2026-10-30T10:22:05.1700000Z ##[endgroup]
+2026-10-30T10:22:05.1710000Z ##[group]Checking out the ref
+2026-10-30T10:22:05.1720000Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-10-30T10:22:05.1730000Z Switched to a new branch 'main'
+2026-10-30T10:22:05.1740000Z ##[endgroup]
+2026-10-30T10:22:05.1750000Z [command]/usr/bin/git log -1 --format=%H
+2026-10-30T10:22:05.1760000Z c83f12a6bd490e57f263ad9081be745c6d39f021
+2026-10-30T10:22:06.1770000Z ##[group]Run actions/setup-dotnet@v4
+2026-10-30T10:22:06.1780000Z with:
+2026-10-30T10:22:06.1790000Z   dotnet-version: 8.0.x
+2026-10-30T10:22:06.1800000Z ##[endgroup]
+2026-10-30T10:22:08.1810000Z dotnet-version: 8.0.414
+2026-10-30T10:22:08.1820000Z ##[group]Run dotnet build src/Quiver/Quiver.csproj --configuration Release
+2026-10-30T10:22:08.1830000Z dotnet build src/Quiver/Quiver.csproj --configuration Release
+2026-10-30T10:22:08.1840000Z shell: /usr/bin/bash -e {0}
+2026-10-30T10:22:08.1850000Z ##[endgroup]
+2026-10-30T10:22:08.1860000Z MSBUILD : error MSB1009: Project file does not exist.
+2026-10-30T10:22:08.1870000Z Switch: src/Quiver/Quiver.csproj
+2026-10-30T10:22:08.1880000Z ##[error]Process completed with exit code 1.
+2026-10-30T10:22:08.1890000Z Post job cleanup.
+2026-10-30T10:22:08.1900000Z [command]/usr/bin/git version
+2026-10-30T10:22:08.1910000Z git version 2.51.0
+2026-10-30T10:22:08.1920000Z Temporarily overriding HOME before making global git config changes
+2026-10-30T10:22:08.1930000Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-30T10:22:08.1940000Z Cleaning up orphan processes

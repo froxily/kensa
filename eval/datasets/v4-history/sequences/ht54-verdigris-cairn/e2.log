@@ -1,0 +1,51 @@
+2026-09-08T14:35:02.1200000Z Current runner version: '2.328.0'
+2026-09-08T14:35:02.2200000Z ##[group]Runner Image Provisioner
+2026-09-08T14:35:02.3200000Z Hosted Compute Agent
+2026-09-08T14:35:02.4200000Z Version: 20260824.1
+2026-09-08T14:35:02.5200000Z ##[endgroup]
+2026-09-08T14:35:02.6200000Z ##[group]Operating System
+2026-09-08T14:35:02.7200000Z Ubuntu
+2026-09-08T14:35:02.8200000Z 24.04.3
+2026-09-08T14:35:02.9200000Z LTS
+2026-09-08T14:35:03.0200000Z ##[endgroup]
+2026-09-08T14:35:03.1200000Z ##[group]Runner Image
+2026-09-08T14:35:03.2200000Z Image: ubuntu-24.04
+2026-09-08T14:35:03.3200000Z Version: 20260901.1.0
+2026-09-08T14:35:03.4200000Z ##[endgroup]
+2026-09-08T14:35:03.5200000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-08T14:35:03.6200000Z Contents: read
+2026-09-08T14:35:03.7200000Z Metadata: read
+2026-09-08T14:35:03.8200000Z ##[endgroup]
+2026-09-08T14:35:03.9200000Z Prepare workflow directory
+2026-09-08T14:35:04.1200000Z Prepare all required actions
+2026-09-08T14:35:04.3200000Z Download action repository 'actions/checkout@v4' (SHA: 11bd71901bbe5b1630ceea73d27597364c9af683)
+2026-09-08T14:35:04.5200000Z Complete job name: archive-integration
+2026-09-08T14:35:04.7200000Z ##[group]Checking docker version
+2026-09-08T14:35:04.9200000Z /usr/bin/docker version --format '{{.Server.APIVersion}}'
+2026-09-08T14:35:05.1200000Z '1.48'
+2026-09-08T14:35:05.3200000Z ##[endgroup]
+2026-09-08T14:35:05.5200000Z ##[group]Clean up resources from previous jobs
+2026-09-08T14:35:05.7200000Z /usr/bin/docker network prune --force --filter label=4f1d90
+2026-09-08T14:35:05.9200000Z ##[endgroup]
+2026-09-08T14:35:06.1200000Z ##[group]Create local container network
+2026-09-08T14:35:06.3200000Z /usr/bin/docker network create --label 4f1d90 github_network_9af213
+2026-09-08T14:35:06.5200000Z ##[endgroup]
+2026-09-08T14:35:06.7200000Z ##[group]Starting archive service container
+2026-09-08T14:35:06.9200000Z /usr/bin/docker pull postgres:16.4
+2026-09-08T14:35:08.1200000Z Status: Downloaded newer image for postgres:16.4
+2026-09-08T14:35:08.3200000Z /usr/bin/docker create --name archive_704 --label 4f1d90 --network github_network_9af213 --network-alias archive -e POSTGRES_USER=cairn_archivist -e POSTGRES_PASSWORD=*** -e POSTGRES_DB=cairn_archive --health-cmd "pg_isready -h 127.0.0.1 -p 5433 -U cairn_archivist -d cairn_archive" --health-interval 5s --health-timeout 3s --health-retries 3 postgres:16.4
+2026-09-08T14:35:08.5200000Z /usr/bin/docker start archive_704
+2026-09-08T14:35:08.7200000Z ##[endgroup]
+2026-09-08T14:35:08.9200000Z ##[group]Waiting for all services to be ready
+2026-09-08T14:35:13.9200000Z archive service is starting, waiting 2 seconds before checking again.
+2026-09-08T14:35:21.9200000Z ##[error]Failed to initialize container archive
+2026-09-08T14:35:22.1200000Z ##[group]Print service container logs: archive_704
+2026-09-08T14:35:22.3200000Z PostgreSQL init process complete; ready for start up.
+2026-09-08T14:35:22.5200000Z 2026-09-08 14:35:11.014 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2026-09-08T14:35:22.7200000Z 2026-09-08 14:35:11.032 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+2026-09-08T14:35:22.9200000Z 2026-09-08 14:35:11.052 UTC [1] LOG:  database system is ready to accept connections
+2026-09-08T14:35:23.1200000Z ##[endgroup]
+2026-09-08T14:35:23.3200000Z ##[error]One or more containers failed to start.
+2026-09-08T14:35:23.5200000Z Remove container: archive_704
+2026-09-08T14:35:23.7200000Z Remove container network: github_network_9af213
+2026-09-08T14:35:23.9200000Z Cleaning up orphan processes

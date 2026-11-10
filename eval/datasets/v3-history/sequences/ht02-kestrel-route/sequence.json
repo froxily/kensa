@@ -1,0 +1,12 @@
+﻿{
+  "id": "ht02-kestrel-route",
+  "split": "test",
+  "ecosystem": "python",
+  "repository": "dune-signal/kestrel-route",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"test_regression","title":"Route label retains trailing separator","root_cause":"The route label formatter appends a separator after the final segment. Remove the trailing separator from the formatter.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"b","relation":"lookalike","category":"test_regression","title":"Route label uses wrong case","root_cause":"The route label formatter uppercases segment names when it should preserve their case. Remove the uppercase conversion.","differs_from_earlier":"A nearby string assertion in the same formatter fails, but the case conversion needs a different correction from the trailing separator."},
+    {"id":"e3","file":"e3.log","cluster":"a","relation":"recurrence","category":"test_regression","title":"Route label retains trailing separator","root_cause":"The route label formatter appends a separator after the final segment. Remove the trailing separator from the formatter.","differs_from_earlier":"A different input, runner, test line number and surrounding test output show the same extra final separator."},
+    {"id":"e4","file":"e4.log","cluster":"c","relation":"first","category":"missing_env_var","title":"Route fixture directory unset","root_cause":"The fixture loader requires KESTREL_ROUTE_FIXTURES but the job does not set it. Configure that variable to point to the fixture directory.","differs_from_earlier":""}
+  ]
+}

@@ -1,0 +1,49 @@
+﻿2026-09-24T09:41:11.1010000Z Current runner version: '2.329.0'
+2026-09-24T09:41:11.1300000Z ##[group]Runner Image
+2026-09-24T09:41:11.1310000Z Image: ubuntu-24.04
+2026-09-24T09:41:11.1320000Z Version: 20260920.1.0
+2026-09-24T09:41:11.1330000Z ##[endgroup]
+2026-09-24T09:41:11.1500000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-24T09:41:11.1510000Z Contents: read
+2026-09-24T09:41:11.1520000Z Metadata: read
+2026-09-24T09:41:11.1530000Z ##[endgroup]
+2026-09-24T09:41:11.2400000Z Prepare workflow directory
+2026-09-24T09:41:11.5200000Z Prepare all required actions
+2026-09-24T09:41:11.8800000Z Download action repository 'actions/checkout@v4'
+2026-09-24T09:41:12.0300000Z Download action repository 'actions/setup-node@v4'
+2026-09-24T09:41:12.2300000Z Complete job name: preview-check
+2026-09-24T09:41:12.2800000Z ##[group]Run actions/checkout@v4
+2026-09-24T09:41:12.2810000Z with:
+2026-09-24T09:41:12.2820000Z   repository: pumice-labs/windmill-ledger
+2026-09-24T09:41:12.2830000Z   clean: true
+2026-09-24T09:41:12.2840000Z ##[endgroup]
+2026-09-24T09:41:12.4250000Z Syncing repository: pumice-labs/windmill-ledger
+2026-09-24T09:41:12.7210000Z Fetching the repository
+2026-09-24T09:41:13.1550000Z Checking out the ref
+2026-09-24T09:41:13.4500000Z ##[group]Run actions/setup-node@v4
+2026-09-24T09:41:13.4510000Z with:
+2026-09-24T09:41:13.4520000Z   node-version: 20
+2026-09-24T09:41:13.4530000Z ##[endgroup]
+2026-09-24T09:41:13.9200000Z Found in cache @ /opt/hostedtoolcache/node/20.19.5/x64
+2026-09-24T09:41:14.1200000Z node: v20.19.5
+2026-09-24T09:41:14.1210000Z yarn: 1.22.22
+2026-09-24T09:41:14.1500000Z ##[group]Run yarn --silent install --frozen-lockfile
+2026-09-24T09:41:14.1510000Z yarn --silent install --frozen-lockfile
+2026-09-24T09:41:14.1520000Z shell: /usr/bin/bash -e {0}
+2026-09-24T09:41:14.1530000Z ##[endgroup]
+2026-09-24T09:41:17.9800000Z ##[group]Run yarn --silent verify:preview
+2026-09-24T09:41:17.9810000Z yarn --silent verify:preview
+2026-09-24T09:41:17.9820000Z shell: /usr/bin/bash -e {0}
+2026-09-24T09:41:17.9830000Z ##[endgroup]
+2026-09-24T09:41:18.3010000Z file:///home/runner/work/windmill-ledger/windmill-ledger/scripts/check-preview.mjs:7
+2026-09-24T09:41:18.3020000Z   throw new Error('WINDMILL_PREVIEW_BASE_URL is required');
+2026-09-24T09:41:18.3030000Z         ^
+2026-09-24T09:41:18.3040000Z Error: WINDMILL_PREVIEW_BASE_URL is required
+2026-09-24T09:41:18.3050000Z     at file:///home/runner/work/windmill-ledger/windmill-ledger/scripts/check-preview.mjs:7:9
+2026-09-24T09:41:18.3060000Z     at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+2026-09-24T09:41:18.3070000Z     at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+2026-09-24T09:41:18.3080000Z Node.js v20.19.5
+2026-09-24T09:41:18.3600000Z error Command failed with exit code 1.
+2026-09-24T09:41:18.3900000Z ##[error]Process completed with exit code 1.
+2026-09-24T09:41:18.4000000Z Post job cleanup.
+2026-09-24T09:41:18.5500000Z Cleaning up orphan processes

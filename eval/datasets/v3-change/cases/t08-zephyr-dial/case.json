@@ -1,0 +1,20 @@
+﻿{
+  "id": "t08-zephyr-dial",
+  "split": "test",
+  "comparability": "comparable",
+  "category": "db_connectivity",
+  "culprit_kind": "source",
+  "difficulty": "easy",
+  "ecosystem": "go",
+  "title": "Integration connection uses the wrong port",
+  "root_cause": "The connection string builder changed the PostgreSQL port from 5432 to 5433. The workflow still publishes the healthy service on port 5432, so the integration test cannot connect.",
+  "culprit_paths": ["internal/berth/connect.go"],
+  "culprit_commit": "d25e6a039f7b418c92d0e3a15b684fc729a1d306",
+  "unverified_factors": [],
+  "fix_keywords": ["5432", "connectionString"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 30, "end_line": 32, "why": "The PostgreSQL service becomes healthy."},
+    {"path": "log", "start_line": 57, "end_line": 59, "why": "The integration test cannot connect to port 5433."},
+    {"path": "repo/.github/workflows/berth.yml", "start_line": 12, "end_line": 13, "why": "The service is published on port 5432."}
+  ]
+}

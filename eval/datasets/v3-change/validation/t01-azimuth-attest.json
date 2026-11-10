@@ -1,0 +1,14 @@
+{
+  "id": "t01-azimuth-attest",
+  "independent_labels": {
+    "comparability": "comparable",
+    "unverified_factors": [],
+    "category": "missing_env_var",
+    "culprit_kind": "workflow",
+    "culprit_paths": [".github/workflows/attest.yml"]
+  },
+  "verdict": "agree",
+  "disputed_fields": [],
+  "reason_category": "none",
+  "notes": "The matching successful baseline has the same runner and an ahead comparison. The workflow removed the secret mapping, and the failed command reports the missing variable; the evidence lines are correct."
+}

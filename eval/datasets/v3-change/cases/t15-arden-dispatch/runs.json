@@ -1,0 +1,14 @@
+﻿{
+  "failed": {
+    "run_id": 9283147602, "run_attempt": 1, "workflow_id": 87144290,
+    "workflow_path": ".github/workflows/dispatch.yml", "event": "push", "head_branch": "main",
+    "head_sha": "d82e6a47f193cb508e4a762d9f03b615ca784e21", "created_at": "2026-10-29T10:14:00Z", "conclusion": "failure",
+    "jobs": [{"name": "dispatch-check", "conclusion": "failure", "labels": ["ubuntu-24.04"], "runner_image": "ubuntu-24.04", "runner_image_version": "20261026.1"}],
+    "failed_job": "dispatch-check"
+  },
+  "candidates": [
+    {"run_id": 9283100431, "run_attempt": 1, "workflow_id": 87144290, "workflow_path": ".github/workflows/dispatch.yml", "event": "push", "head_branch": "main", "head_sha": "5f83a1ce624d97b0a468e13f9c25d70b3a61e842", "created_at": "2026-10-29T09:42:00Z", "conclusion": "failure", "jobs": [{"name": "dispatch-check", "conclusion": "failure", "labels": ["ubuntu-24.04"], "runner_image": "ubuntu-24.04", "runner_image_version": "20261026.1"}]},
+    {"run_id": 9283016854, "run_attempt": 1, "workflow_id": 87144290, "workflow_path": ".github/workflows/dispatch.yml", "event": "push", "head_branch": "main", "head_sha": "c3718d65a02eb497f5c91d346a8b20e7f6941ac3", "created_at": "2026-10-29T08:30:00Z", "conclusion": "success", "jobs": [{"name": "dispatch-check", "conclusion": "success", "labels": ["ubuntu-24.04"], "runner_image": "ubuntu-24.04", "runner_image_version": "20261026.1"}]},
+    {"run_id": 9282897130, "run_attempt": 1, "workflow_id": 87144290, "workflow_path": ".github/workflows/dispatch.yml", "event": "push", "head_branch": "main", "head_sha": "a64d92b7e318f50c6a7d4b129e83cf051b6a927d", "created_at": "2026-10-28T17:20:00Z", "conclusion": "success", "jobs": [{"name": "dispatch-check", "conclusion": "success", "labels": ["ubuntu-24.04"], "runner_image": "ubuntu-24.04", "runner_image_version": "20261026.1"}]}
+  ]
+}

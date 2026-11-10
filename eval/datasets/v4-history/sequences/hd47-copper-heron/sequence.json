@@ -1,0 +1,12 @@
+{
+  "id": "hd47-copper-heron",
+  "split": "dev",
+  "ecosystem": "kotlin (gradle, android)",
+  "repository": "copper-heron/siltcompass",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"dependency_build","title":"Application label conflicts during manifest merge","root_cause":"The app and the tidepanel library both declare different application labels without a merge rule. Resolve the label conflict in the app manifest.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"b","relation":"lookalike","category":"dependency_build","title":"Duplicate Android string resource","root_cause":"Two values files in the app's main resource set define the string berth_caption. Remove or rename one of the duplicate definitions.","differs_from_earlier":"Both jobs fail during Android merging with conflicting declarations, but this is a duplicate resource within one source set rather than a manifest attribute conflict."},
+    {"id":"e3","file":"e3.log","cluster":"b","relation":"recurrence","category":"dependency_build","title":"Duplicate Android string resource remains","root_cause":"Two values files in the app's main resource set define the string berth_caption. Remove or rename one of the duplicate definitions.","differs_from_earlier":"A later release build uses another runner and reports the same duplicate definitions at shifted lines after resource edits."},
+    {"id":"e4","file":"e4.log","cluster":"c","relation":"first","category":"test_regression","title":"Heading formatter returns the wrong boundary value","root_cause":"HeadingFormatter rounds 359.6 degrees to 360 instead of wrapping the rounded value to zero. Correct the formatter's wraparound calculation.","differs_from_earlier":""}
+  ]
+}

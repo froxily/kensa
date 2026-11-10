@@ -1,0 +1,12 @@
+{
+  "id": "hd31-quartz-otter",
+  "split": "dev",
+  "ecosystem": "python",
+  "repository": "velvet-quay/otter-ledger",
+  "entries": [
+    {"id": "e1", "file": "e1.log", "cluster": "a", "relation": "first", "category": "missing_env_var", "title": "Receipt signing key absent on audit runner", "root_cause": "The audit runner does not receive the OTTER_RECEIPT_KEY secret required by the receipt signing fixture. Supply that secret to the audit job.", "differs_from_earlier": ""},
+    {"id": "e2", "file": "e2.log", "cluster": "a", "relation": "recurrence", "category": "missing_env_var", "title": "Receipt signing key absent on audit runner", "root_cause": "The audit runner does not receive the OTTER_RECEIPT_KEY secret required by the receipt signing fixture. Supply that secret to the audit job.", "differs_from_earlier": "A later run uses a different checkout path and test selection, and the fixture is at a later line after edits."},
+    {"id": "e3", "file": "e3.log", "cluster": "b", "relation": "lookalike", "category": "missing_env_var", "title": "Archive wrapping key absent on audit runner", "root_cause": "The audit runner does not receive the OTTER_ARCHIVE_KEY secret required by the archive wrapping fixture. Supply that separate secret to the audit job.", "differs_from_earlier": "The same fixture setup error now identifies the archive wrapping key and a different fixture; adding the receipt signing key will not fix it."},
+    {"id": "e4", "file": "e4.log", "cluster": "a", "relation": "recurrence", "category": "missing_env_var", "title": "Receipt signing key absent on audit runner", "root_cause": "The audit runner does not receive the OTTER_RECEIPT_KEY secret required by the receipt signing fixture. Supply that secret to the audit job.", "differs_from_earlier": "A later run selects another receipt test and reports a changed fixture line and a different runner workspace."}
+  ]
+}

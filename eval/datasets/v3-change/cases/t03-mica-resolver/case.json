@@ -1,0 +1,19 @@
+﻿{
+  "id": "t03-mica-resolver",
+  "split": "test",
+  "comparability": "comparable",
+  "category": "dependency_build",
+  "culprit_kind": "lockfile",
+  "difficulty": "medium",
+  "ecosystem": "python",
+  "title": "Pinned HTTP dependency blocks installation",
+  "root_cause": "The regenerated lockfile raised urllib3 from 2.0.7 to 2.2.3 while retaining botocore 1.34.0. On Python 3.12, that botocore release requires urllib3 below 2.1, so pip cannot resolve the pinned requirements.",
+  "culprit_paths": ["requirements.lock"],
+  "culprit_commit": "f38a2c764b9d01e5a7c6f413b2809dca56e341ab",
+  "unverified_factors": [],
+  "fix_keywords": ["urllib3", "2.1", "requirements.lock"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 60, "end_line": 64, "why": "pip reports the incompatible urllib3 pin and botocore dependency constraint."},
+    {"path": "repo/requirements.lock", "start_line": 1, "end_line": 5, "why": "The lockfile pins both conflicting packages."}
+  ]
+}

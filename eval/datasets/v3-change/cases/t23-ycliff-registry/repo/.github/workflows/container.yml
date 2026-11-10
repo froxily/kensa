@@ -1,0 +1,13 @@
+﻿name: Container checks
+on: push
+jobs:
+  image-check:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Pull runtime image
+        run: docker pull python:3.12-slim
+      - name: Build image
+        run: docker build -t ycliff-check .
+      - name: Run checks
+        run: docker run --rm ycliff-check

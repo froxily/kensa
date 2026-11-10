@@ -1,0 +1,20 @@
+{
+  "id": "t09-kiln-copy",
+  "split": "test",
+  "comparability": "comparable",
+  "category": "docker",
+  "culprit_kind": "build_config",
+  "difficulty": "medium",
+  "ecosystem": "python",
+  "title": "Container build cannot copy application source",
+  "root_cause": "The Dockerfile changed the source of the application COPY from src/ to source/, but the repository still contains src/. Docker cannot find source/ in the build context and stops before producing the image.",
+  "culprit_paths": ["Dockerfile"],
+  "culprit_commit": "b6c391fa47d2058e9a13c67f042b8d5e7f1a6c90",
+  "unverified_factors": [],
+  "fix_keywords": ["COPY", "src/", "Dockerfile"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 58, "end_line": 59, "why": "Docker cannot find the source directory for the COPY instruction."},
+    {"path": "log", "start_line": 63, "end_line": 70, "why": "The build reports the failing Dockerfile instruction and missing path."},
+    {"path": "repo/Dockerfile", "start_line": 5, "end_line": 5, "why": "The current image definition uses the missing source path."}
+  ]
+}

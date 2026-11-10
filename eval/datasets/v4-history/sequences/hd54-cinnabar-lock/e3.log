@@ -1,0 +1,51 @@
+2026-09-15T15:09:30.7012345Z Current runner version: '2.328.0'
+2026-09-15T15:09:30.7112345Z ##[group]Runner Image Provisioner
+2026-09-15T15:09:30.7212345Z Hosted Compute Agent
+2026-09-15T15:09:30.7312345Z Version: 20260910.1
+2026-09-15T15:09:30.7412345Z ##[endgroup]
+2026-09-15T15:09:30.7512345Z ##[group]Operating System
+2026-09-15T15:09:30.7612345Z Ubuntu
+2026-09-15T15:09:30.7712345Z 24.04.3
+2026-09-15T15:09:30.7812345Z ##[endgroup]
+2026-09-15T15:09:30.7912345Z ##[group]Runner Image
+2026-09-15T15:09:30.8012345Z Image: ubuntu-24.04
+2026-09-15T15:09:30.8112345Z Version: 20260913.1.0
+2026-09-15T15:09:30.8212345Z ##[endgroup]
+2026-09-15T15:09:30.8312345Z ##[group]GITHUB_TOKEN Permissions
+2026-09-15T15:09:30.8412345Z Contents: read
+2026-09-15T15:09:30.8512345Z Metadata: read
+2026-09-15T15:09:30.8612345Z ##[endgroup]
+2026-09-15T15:09:30.8712345Z Prepare workflow directory
+2026-09-15T15:09:30.8812345Z Prepare all required actions
+2026-09-15T15:09:30.8912345Z Download action repository 'actions/checkout@v4'
+2026-09-15T15:09:31.2012345Z Complete job name: integration
+2026-09-15T15:09:31.2112345Z ##[group]Checking docker version
+2026-09-15T15:09:31.2212345Z /usr/bin/docker version --format '{{.Server.APIVersion}}'
+2026-09-15T15:09:31.2312345Z '1.48'
+2026-09-15T15:09:31.2412345Z ##[endgroup]
+2026-09-15T15:09:31.2512345Z ##[group]Create local container network
+2026-09-15T15:09:31.2612345Z /usr/bin/docker network create --label 901ef4 github_network_3120
+2026-09-15T15:09:31.2712345Z d26ae80b7193
+2026-09-15T15:09:31.2812345Z ##[endgroup]
+2026-09-15T15:09:31.2912345Z ##[group]Starting mysql service container
+2026-09-15T15:09:31.3012345Z /usr/bin/docker pull mysql:8.4
+2026-09-15T15:09:34.3012345Z Status: Downloaded newer image for mysql:8.4
+2026-09-15T15:09:34.3112345Z /usr/bin/docker create --name mysql_3120 --network github_network_3120 --health-cmd "mysqladmin ping -h 127.0.0.1 -P 3307" --health-interval 5s --health-timeout 3s --health-retries 10 -e MYSQL_ALLOW_EMPTY_PASSWORD=yes mysql:8.4
+2026-09-15T15:09:34.3212345Z d7f6510ae584
+2026-09-15T15:09:34.3312345Z /usr/bin/docker start d7f6510ae584
+2026-09-15T15:09:34.3412345Z d7f6510ae584
+2026-09-15T15:09:34.3512345Z ##[endgroup]
+2026-09-15T15:09:34.3612345Z ##[group]Waiting for all services to be ready
+2026-09-15T15:09:34.3712345Z /usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" d7f6510ae584
+2026-09-15T15:09:34.3812345Z starting
+2026-09-15T15:09:34.3912345Z mysql service is starting, waiting 2 seconds before checking again.
+2026-09-15T15:09:41.3912345Z mysql service is starting, waiting 8 seconds before checking again.
+2026-09-15T15:10:37.3912345Z unhealthy
+2026-09-15T15:10:37.4012345Z ##[error]Failed to initialize container mysql: container is unhealthy.
+2026-09-15T15:10:37.4112345Z ##[group]mysql service container logs
+2026-09-15T15:10:37.4212345Z 2026-09-15T15:09:47.824001Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.4.6'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
+2026-09-15T15:10:37.4312345Z ##[endgroup]
+2026-09-15T15:10:37.4412345Z ##[error]One or more containers failed to start.
+2026-09-15T15:10:37.4512345Z Stop and remove container: mysql_3120
+2026-09-15T15:10:37.4612345Z Remove container network: github_network_3120
+2026-09-15T15:10:37.4712345Z Cleaning up orphan processes

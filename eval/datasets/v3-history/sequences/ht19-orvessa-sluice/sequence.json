@@ -1,0 +1,12 @@
+﻿{
+  "id": "ht19-orvessa-sluice",
+  "split": "test",
+  "ecosystem": "dotnet",
+  "repository": "quillmarsh/orvessa",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"oom_timeout","title":"Sluice cycle test hangs","root_cause":"The SluiceCycle concurrent-close test deadlocks while waiting for a worker that needs the lock held by the closing thread. Fix the close synchronization so the worker can complete.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"b","relation":"lookalike","category":"oom_timeout","title":"Test host exhausts memory","root_cause":"The ReedPulse bulk fixture allocates an unbounded in-memory payload and exhausts the test host heap. Bound or stream the fixture data.","differs_from_earlier":"The same suite step aborts, but the host reports OutOfMemoryException in ReedPulse rather than a hang in SluiceCycle."},
+    {"id":"e3","file":"e3.log","cluster":"a","relation":"recurrence","category":"oom_timeout","title":"Sluice cycle test hangs again","root_cause":"The SluiceCycle concurrent-close test deadlocks while waiting for a worker that needs the lock held by the closing thread. Fix the close synchronization so the worker can complete.","differs_from_earlier":"A later run executes a different set of tests first and records a new hang dump path and elapsed time."},
+    {"id":"e4","file":"e4.log","cluster":"a","relation":"recurrence","category":"oom_timeout","title":"Concurrent close stalls suite","root_cause":"The SluiceCycle concurrent-close test deadlocks while waiting for a worker that needs the lock held by the closing thread. Fix the close synchronization so the worker can complete.","differs_from_earlier":"The run uses another runner and build configuration, with a changed test order and stack line numbers after unrelated edits."}
+  ]
+}

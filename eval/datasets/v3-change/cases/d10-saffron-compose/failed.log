@@ -1,0 +1,70 @@
+2026-11-09T08:00:01.0000000Z Current runner version: '2.329.0'
+2026-11-09T08:00:01.1000000Z ##[group]Runner Image
+2026-11-09T08:00:01.2000000Z Image: ubuntu-24.04
+2026-11-09T08:00:01.3000000Z Version: 20261026.1
+2026-11-09T08:00:01.4000000Z Included Software: https://github.com/actions/runner-images
+2026-11-09T08:00:01.5000000Z ##[endgroup]
+2026-11-09T08:00:02.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-11-09T08:00:02.1000000Z Contents: read
+2026-11-09T08:00:02.2000000Z Metadata: read
+2026-11-09T08:00:02.3000000Z ##[endgroup]
+2026-11-09T08:00:03.0000000Z Secret source: Actions
+2026-11-09T08:00:03.1000000Z Prepare workflow directory
+2026-11-09T08:00:03.2000000Z Prepare all required actions
+2026-11-09T08:00:03.3000000Z Getting action download info
+2026-11-09T08:00:03.4000000Z Download action repository 'actions/checkout@v4'
+2026-11-09T08:00:04.0000000Z Complete job name: integration
+2026-11-09T08:00:04.1000000Z ##[group]Run actions/checkout@v4
+2026-11-09T08:00:04.2000000Z with:
+2026-11-09T08:00:04.3000000Z   repository: saffron-labs/worker
+2026-11-09T08:00:04.4000000Z   clean: true
+2026-11-09T08:00:04.5000000Z   fetch-depth: 1
+2026-11-09T08:00:04.6000000Z   persist-credentials: true
+2026-11-09T08:00:04.7000000Z ##[endgroup]
+2026-11-09T08:00:05.0000000Z Syncing repository: saffron-labs/worker
+2026-11-09T08:00:05.1000000Z ##[group]Getting Git version info
+2026-11-09T08:00:05.2000000Z Working directory is '/home/runner/work/worker/worker'
+2026-11-09T08:00:05.3000000Z [command]/usr/bin/git version
+2026-11-09T08:00:05.4000000Z git version 2.51.2
+2026-11-09T08:00:05.5000000Z ##[endgroup]
+2026-11-09T08:00:05.6000000Z Temporarily overriding HOME
+2026-11-09T08:00:05.7000000Z Adding repository directory to the temporary git global config
+2026-11-09T08:00:05.8000000Z Deleting the contents of the workspace
+2026-11-09T08:00:05.9000000Z ##[group]Initializing the repository
+2026-11-09T08:00:06.0000000Z [command]/usr/bin/git init
+2026-11-09T08:00:06.1000000Z Initialized empty Git repository
+2026-11-09T08:00:06.2000000Z ##[endgroup]
+2026-11-09T08:00:06.3000000Z ##[group]Fetching the repository
+2026-11-09T08:00:06.4000000Z [command]/usr/bin/git fetch --depth=1 origin
+2026-11-09T08:00:06.5000000Z From https://github.com/saffron-labs/worker
+2026-11-09T08:00:06.6000000Z  * branch            main       -> FETCH_HEAD
+2026-11-09T08:00:06.7000000Z ##[endgroup]
+2026-11-09T08:00:06.8000000Z ##[group]Determining the checkout info
+2026-11-09T08:00:06.9000000Z ##[endgroup]
+2026-11-09T08:00:07.0000000Z [command]/usr/bin/git sparse-checkout disable
+2026-11-09T08:00:07.1000000Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-09T08:00:07.2000000Z ##[group]Checking out the ref
+2026-11-09T08:00:07.3000000Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-11-09T08:00:07.4000000Z Switched to a new branch 'main'
+2026-11-09T08:00:07.5000000Z ##[endgroup]
+2026-11-09T08:00:07.6000000Z [command]/usr/bin/git log -1 --format=%H
+2026-11-09T08:00:07.7000000Z b29d5e80f31c674a0b152e8f7d4c3061a9e82b73
+2026-11-09T08:00:07.7100000Z ##[group]Run node --check src/worker.js
+2026-11-09T08:00:07.7200000Z node --check src/worker.js
+2026-11-09T08:00:07.7300000Z shell: /usr/bin/bash -e {0}
+2026-11-09T08:00:07.7400000Z ##[endgroup]
+2026-11-09T08:00:08.0000000Z ##[group]Run docker compose up -d
+2026-11-09T08:00:08.1000000Z docker compose up -d
+2026-11-09T08:00:08.2000000Z shell: /usr/bin/bash -e {0}
+2026-11-09T08:00:08.3000000Z ##[endgroup]
+2026-11-09T08:00:08.4000000Z  worker Pulling
+2026-11-09T08:00:09.0000000Z  worker Error pull access denied for saffron-workers, repository does not exist or may require authorization: server message: insufficient_scope: authorization failed
+2026-11-09T08:00:09.1000000Z Error response from daemon: pull access denied for saffron-workers, repository does not exist or may require authorization
+2026-11-09T08:00:09.2000000Z ##[error]Process completed with exit code 1.
+2026-11-09T08:00:09.3000000Z Post job cleanup.
+2026-11-09T08:00:09.4000000Z [command]/usr/bin/git version
+2026-11-09T08:00:09.5000000Z git version 2.51.2
+2026-11-09T08:00:09.6000000Z Temporarily overriding HOME
+2026-11-09T08:00:09.7000000Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-09T08:00:09.8000000Z Cleaning up orphan processes
+2026-11-09T08:00:09.9000000Z Complete job

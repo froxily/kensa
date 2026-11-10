@@ -1,0 +1,40 @@
+2026-09-13T13:12:00.0000000Z Current runner version: '2.329.0'
+2026-09-13T13:12:01.0000000Z ##[group]Operating System
+2026-09-13T13:12:02.0000000Z Ubuntu 22.04.5 LTS
+2026-09-13T13:12:03.0000000Z ##[endgroup]
+2026-09-13T13:12:04.0000000Z ##[group]Runner Image
+2026-09-13T13:12:05.0000000Z Image: ubuntu-22.04
+2026-09-13T13:12:06.0000000Z ##[endgroup]
+2026-09-13T13:12:07.0000000Z Prepare workflow directory
+2026-09-13T13:12:08.0000000Z Prepare all required actions
+2026-09-13T13:12:09.0000000Z ##[group]Run actions/checkout@v4
+2026-09-13T13:12:10.0000000Z Syncing repository: marshworks/finch-ledger
+2026-09-13T13:12:11.0000000Z Fetching pull request 39 merge ref
+2026-09-13T13:12:12.0000000Z Checking out the ref
+2026-09-13T13:12:13.0000000Z ##[endgroup]
+2026-09-13T13:12:14.0000000Z ##[group]Run actions/setup-go@v5
+2026-09-13T13:12:15.0000000Z Setup go version spec 1.23
+2026-09-13T13:12:16.0000000Z go version go1.23.2 linux/amd64
+2026-09-13T13:12:17.0000000Z ##[endgroup]
+2026-09-13T13:12:18.0000000Z ##[group]Run go mod download
+2026-09-13T13:12:19.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-13T13:12:20.0000000Z ##[endgroup]
+2026-09-13T13:12:21.0000000Z ##[group]Run go test -v ./...
+2026-09-13T13:12:22.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-13T13:12:23.0000000Z === RUN   TestParseDate
+2026-09-13T13:12:24.0000000Z --- PASS: TestParseDate (0.00s)
+2026-09-13T13:12:25.0000000Z PASS
+2026-09-13T13:12:26.0000000Z ok   marshworks/finch-ledger/dates 0.004s
+2026-09-13T13:12:27.0000000Z === RUN   TestEmptyBalance
+2026-09-13T13:12:28.0000000Z --- PASS: TestEmptyBalance (0.00s)
+2026-09-13T13:12:29.0000000Z === RUN   TestRefundRounding
+2026-09-13T13:12:30.0000000Z     refund_test.go:58: refund 10.005: got 10.00, want 10.01
+2026-09-13T13:12:31.0000000Z --- FAIL: TestRefundRounding (0.00s)
+2026-09-13T13:12:32.0000000Z === RUN   TestRefundZero
+2026-09-13T13:12:33.0000000Z --- PASS: TestRefundZero (0.00s)
+2026-09-13T13:12:34.0000000Z FAIL
+2026-09-13T13:12:35.0000000Z FAIL marshworks/finch-ledger/ledger 0.006s
+2026-09-13T13:12:36.0000000Z ?    marshworks/finch-ledger/cmd/finch [no test files]
+2026-09-13T13:12:37.0000000Z FAIL
+2026-09-13T13:12:38.0000000Z ##[error]Process completed with exit code 1.
+2026-09-13T13:12:39.0000000Z Post job cleanup.

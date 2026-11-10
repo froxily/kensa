@@ -1,0 +1,49 @@
+2026-09-07T10:05:11.1000000Z Current runner version: '2.329.0'
+2026-09-07T10:05:11.1500000Z ##[group]Operating System
+2026-09-07T10:05:11.1600000Z Ubuntu
+2026-09-07T10:05:11.1700000Z 22.04.5
+2026-09-07T10:05:11.1800000Z ##[endgroup]
+2026-09-07T10:05:11.1900000Z ##[group]Runner Image
+2026-09-07T10:05:11.2000000Z Image: ubuntu-22.04
+2026-09-07T10:05:11.2100000Z Version: 20260901.1.0
+2026-09-07T10:05:11.2200000Z ##[endgroup]
+2026-09-07T10:05:11.2300000Z Prepare workflow directory
+2026-09-07T10:05:11.3500000Z Prepare all required actions
+2026-09-07T10:05:11.5000000Z Download action repository 'actions/checkout@v4'
+2026-09-07T10:05:11.9000000Z Complete job name: compile (jdk-21)
+2026-09-07T10:05:12.0000000Z ##[group]Run actions/checkout@v4
+2026-09-07T10:05:12.0100000Z with:
+2026-09-07T10:05:12.0200000Z   repository: inkcap-works/meridian-observatory
+2026-09-07T10:05:12.0300000Z   ref: refs/pull/79/merge
+2026-09-07T10:05:12.0400000Z ##[endgroup]
+2026-09-07T10:05:12.4000000Z Syncing repository: inkcap-works/meridian-observatory
+2026-09-07T10:05:12.8000000Z Initializing the repository
+2026-09-07T10:05:13.2000000Z Fetching the repository
+2026-09-07T10:05:13.5000000Z Checking out the ref
+2026-09-07T10:05:13.6000000Z [command]/usr/bin/git log -1 --format=%H
+2026-09-07T10:05:13.6100000Z b04ef792d31a580ac52e961d4c830b6e75f921aa
+2026-09-07T10:05:13.7000000Z ##[group]Run ./gradlew compileJava --console=plain
+2026-09-07T10:05:13.7100000Z ./gradlew compileJava --console=plain
+2026-09-07T10:05:13.7200000Z shell: /usr/bin/bash -e {0}
+2026-09-07T10:05:13.7300000Z ##[endgroup]
+2026-09-07T10:05:14.2000000Z Downloading https://services.gradle.org/distributions/gradle-8.10.2-bin.zip
+2026-09-07T10:05:17.6000000Z Welcome to Gradle 8.10.2!
+2026-09-07T10:05:18.1000000Z Starting a Gradle Daemon (subsequent builds will be faster)
+2026-09-07T10:05:22.4000000Z > Task :compileJava FAILED
+2026-09-07T10:05:22.4100000Z /home/runner/work/meridian-observatory/meridian-observatory/src/main/java/org/inkcap/observatory/MeridianProjector.java:42: error: cannot find symbol
+2026-09-07T10:05:22.4200000Z         return observation.getBearing();
+2026-09-07T10:05:22.4300000Z                           ^
+2026-09-07T10:05:22.4400000Z   symbol:   method getBearing()
+2026-09-07T10:05:22.4500000Z   location: variable observation of type ObservationRecord
+2026-09-07T10:05:22.4600000Z 1 error
+2026-09-07T10:05:22.5000000Z FAILURE: Build failed with an exception.
+2026-09-07T10:05:22.5100000Z * What went wrong:
+2026-09-07T10:05:22.5200000Z Execution failed for task ':compileJava'.
+2026-09-07T10:05:22.5300000Z > Compilation failed; see the compiler error output for details.
+2026-09-07T10:05:22.5400000Z * Try:
+2026-09-07T10:05:22.5500000Z > Run with --info option to get more log output.
+2026-09-07T10:05:22.5600000Z BUILD FAILED in 8s
+2026-09-07T10:05:22.5700000Z 1 actionable task: 1 executed
+2026-09-07T10:05:22.6000000Z ##[error]Process completed with exit code 1.
+2026-09-07T10:05:22.7000000Z Post job cleanup.
+2026-09-07T10:05:22.8000000Z Cleaning up orphan processes

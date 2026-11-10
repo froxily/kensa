@@ -1,0 +1,18 @@
+﻿{
+  "id": "d25-quillon-rename",
+  "split": "dev",
+  "comparability": "incomparable",
+  "category": "test_regression",
+  "culprit_kind": "none",
+  "difficulty": "medium",
+  "ecosystem": "go",
+  "title": "A renamed workflow reports a boundary assertion failure",
+  "root_cause": "The failed run's test reports an incorrect result at the capacity boundary. Earlier successful runs used a different workflow path, so they cannot establish a comparable baseline or identify a responsible change under the comparison rules.",
+  "culprit_paths": [],
+  "culprit_commit": null,
+  "unverified_factors": [],
+  "fix_keywords": ["capacity", "boundary"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 50, "end_line": 54, "why": "The Go test reports the boundary assertion and failing package."}
+  ]
+}

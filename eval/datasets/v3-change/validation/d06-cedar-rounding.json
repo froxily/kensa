@@ -1,0 +1,14 @@
+{
+  "id": "d06-cedar-rounding",
+  "independent_labels": {
+    "comparability": "comparable",
+    "unverified_factors": [],
+    "category": "test_regression",
+    "culprit_kind": "source",
+    "culprit_paths": ["src/main/java/CedarLimit.java"]
+  },
+  "verdict": "agree",
+  "disputed_fields": [],
+  "reason_category": "none",
+  "notes": "The matching successful baseline has the same runner and an ahead comparison. The source change excludes 100, matching the failed boundary assertion; the evidence range and recorded history are consistent."
+}

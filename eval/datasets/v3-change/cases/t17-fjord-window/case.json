@@ -1,0 +1,20 @@
+{
+  "id": "t17-fjord-window",
+  "split": "test",
+  "comparability": "partially_comparable",
+  "category": "test_regression",
+  "culprit_kind": "source",
+  "difficulty": "medium",
+  "ecosystem": "python",
+  "title": "Half-open window count includes the endpoint",
+  "root_cause": "The window-counting function was changed to add one to the difference between its endpoints. That counts the excluded endpoint of a half-open interval, so the existing test receives five slots instead of four. The runner image version also changed, but the arithmetic change directly explains the assertion.",
+  "culprit_paths": ["fjord_window.py"],
+  "culprit_commit": "6d3a20f49b7c185e0af6341d9e2b8c5724f106ad",
+  "unverified_factors": ["runner_image_changed"],
+  "fix_keywords": ["active_slots", "end - start"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 69, "end_line": 70, "why": "The empty-window test passes while the half-open-window test fails."},
+    {"path": "log", "start_line": 73, "end_line": 78, "why": "The assertion expects four slots but receives five."},
+    {"path": "repo/fjord_window.py", "start_line": 1, "end_line": 5, "why": "The function adds one to the endpoint difference despite its half-open contract."}
+  ]
+}

@@ -1,0 +1,41 @@
+id_prefix,split,pattern,focus,suggested_ecosystem
+hd01,dev,a a b~a a,a missing variable recurs; the look-alike misses a different variable,python
+hd02,dev,a b~a a c,a failing test recurs with new line numbers; the look-alike fails another assertion,go
+hd03,dev,a b a b,two clusters alternate: a lockfile conflict and an OOM kill,node
+hd04,dev,a b~a c d~c,two look-alike pairs only and no recurrence,java
+hd05,dev,a a a b,a database connection refusal recurs three times with different ports in noise,ruby
+hd06,dev,a b b a,a Docker pull error and a Dockerfile COPY error,go
+hd07,dev,a b~a c~a d,one cause and two look-alikes of it,rust
+hd08,dev,a a b a,a permission denied on package push recurs; one recurrence is masked by a later step,typescript
+hd09,dev,a b c a,a timeout recurs after two unrelated failures,python
+hd10,dev,a a b b,two clusters recurring once each: a missing path and a compile error,dotnet
+hd11,dev,a b~a a c,a flaky-looking network error recurs; the look-alike is a real DNS misconfiguration,node
+hd12,dev,a b c~a a,a missing secret on fork pull requests and a look-alike with a mistyped variable name,go
+hd13,dev,a a a a,the same compile error four times with different file line numbers,kotlin
+hd14,dev,a b~a b a,a test regression and a look-alike test failure caused by a missing service,python
+hd15,dev,a a b c,a disk-full failure recurs; two unrelated failures follow,java
+hd16,dev,a b~a c a,a dependency resolution error and a look-alike with a different package,php
+hd17,dev,a b a c~b,a workflow path error recurs; a look-alike of the second cluster,ruby
+hd18,dev,a a b c~b,a Docker daemon error recurs; a pair of look-alike registry errors,go
+hd19,dev,a b~a a a,a heap exhaustion recurs; the look-alike is a timeout in the same step,scala
+hd20,dev,a b a a,a type error recurs after an unrelated permissions failure,typescript
+ht01,test,a a b~a a,a missing variable recurs; the look-alike misses a different variable,node
+ht02,test,a b~a a c,a failing test recurs with new line numbers; the look-alike fails another assertion,python
+ht03,test,a b a b,two clusters alternate: a toolchain version error and a database auth failure,go
+ht04,test,a b~a c d~c,two look-alike pairs only and no recurrence,rust
+ht05,test,a a a b,a redis connection refusal recurs three times,python
+ht06,test,a b b a,an image tag not found and a multi-stage build error,node
+ht07,test,a b~a c~a d,one cause and two look-alikes of it,java
+ht08,test,a a b a,a permission error on a release upload recurs; one recurrence is masked,go
+ht09,test,a b c a,a job timeout recurs after two unrelated failures,ruby
+ht10,test,a a b b,two clusters recurring once each: a missing working directory and a linker error,cpp
+ht11,test,a b~a a c,an intermittent-looking connection reset recurs; the look-alike is a wrong host,python
+ht12,test,a b c~a a,a secret empty on scheduled runs and a look-alike with a renamed secret,node
+ht13,test,a a a a,the same module-not-found error four times with different paths in noise,python
+ht14,test,a b~a b a,a snapshot test regression and a look-alike failure caused by a missing locale,typescript
+ht15,test,a a b c,a container killed with exit 137 recurs; two unrelated failures follow,go
+ht16,test,a b~a c a,a peer dependency conflict and a look-alike with a different package,node
+ht17,test,a b a c~b,an action path error recurs; a look-alike of the second cluster,java
+ht18,test,a a b c~b,a buildx error recurs; a pair of look-alike registry errors,rust
+ht19,test,a b~a a a,a test suite timeout recurs; the look-alike is an OOM in the same step,dotnet
+ht20,test,a b a a,a lint failure recurs after an unrelated cache restore failure,elixir

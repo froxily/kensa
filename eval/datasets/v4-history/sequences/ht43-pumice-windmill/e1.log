@@ -1,0 +1,45 @@
+﻿2026-09-03T08:12:01.1029321Z Current runner version: '2.328.0'
+2026-09-03T08:12:01.1312450Z ##[group]Runner Image
+2026-09-03T08:12:01.1320000Z Image: ubuntu-24.04
+2026-09-03T08:12:01.1326410Z Version: 20260830.1.0
+2026-09-03T08:12:01.1334100Z ##[endgroup]
+2026-09-03T08:12:01.1450100Z ##[group]GITHUB_TOKEN Permissions
+2026-09-03T08:12:01.1459800Z Contents: read
+2026-09-03T08:12:01.1465700Z Metadata: read
+2026-09-03T08:12:01.1471000Z ##[endgroup]
+2026-09-03T08:12:01.2050910Z Prepare workflow directory
+2026-09-03T08:12:01.3226500Z Prepare all required actions
+2026-09-03T08:12:01.6120600Z Download action repository 'actions/checkout@v4'
+2026-09-03T08:12:01.8097800Z Download action repository 'actions/setup-node@v4'
+2026-09-03T08:12:02.1884300Z Complete job name: verify
+2026-09-03T08:12:02.2452300Z ##[group]Run actions/checkout@v4
+2026-09-03T08:12:02.2459900Z with:
+2026-09-03T08:12:02.2463100Z   repository: pumice-labs/windmill-ledger
+2026-09-03T08:12:02.2467600Z   clean: true
+2026-09-03T08:12:02.2470100Z ##[endgroup]
+2026-09-03T08:12:02.4155100Z Syncing repository: pumice-labs/windmill-ledger
+2026-09-03T08:12:02.5304300Z Initializing the repository
+2026-09-03T08:12:02.9347200Z Fetching the repository
+2026-09-03T08:12:03.4203000Z Checking out the ref
+2026-09-03T08:12:03.6018000Z ##[group]Run actions/setup-node@v4
+2026-09-03T08:12:03.6027000Z with:
+2026-09-03T08:12:03.6032000Z   node-version: 18
+2026-09-03T08:12:03.6036000Z ##[endgroup]
+2026-09-03T08:12:04.0357900Z Found in cache @ /opt/hostedtoolcache/node/18.20.5/x64
+2026-09-03T08:12:04.0600500Z ##[group]Environment details
+2026-09-03T08:12:04.1571900Z node: v18.20.5
+2026-09-03T08:12:04.2450100Z npm: 10.8.2
+2026-09-03T08:12:04.3408200Z yarn: 1.22.22
+2026-09-03T08:12:04.3414700Z ##[endgroup]
+2026-09-03T08:12:04.3592000Z ##[group]Run yarn --silent install
+2026-09-03T08:12:04.3599000Z yarn --silent install
+2026-09-03T08:12:04.3637000Z shell: /usr/bin/bash -e {0}
+2026-09-03T08:12:04.3641000Z ##[endgroup]
+2026-09-03T08:12:04.7503200Z error windmill-ledger@2.4.0: The engine "node" is incompatible with this module. Expected version ">=20". Got "18.20.5"
+2026-09-03T08:12:04.7509800Z error Found incompatible module.
+2026-09-03T08:12:04.7515900Z info Visit https://yarnpkg.com/en/docs/cli/install for documentation about this command.
+2026-09-03T08:12:04.7811300Z ##[error]Process completed with exit code 1.
+2026-09-03T08:12:04.7901900Z Post job cleanup.
+2026-09-03T08:12:04.9013700Z [command]/usr/bin/git version
+2026-09-03T08:12:04.9060900Z git version 2.51.0
+2026-09-03T08:12:05.0076200Z Cleaning up orphan processes

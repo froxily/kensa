@@ -1,0 +1,70 @@
+2026-10-30T08:30:02.1234567Z Current runner version: '2.329.0'
+2026-10-30T08:30:02.2234567Z ##[group]Runner Image
+2026-10-30T08:30:02.3234567Z Image: ubuntu-24.04
+2026-10-30T08:30:02.4234567Z Version: 20261026.1
+2026-10-30T08:30:02.5234567Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261026.1/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-30T08:30:02.6234567Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261026.1
+2026-10-30T08:30:02.7234567Z ##[endgroup]
+2026-10-30T08:30:02.8234567Z ##[group]GITHUB_TOKEN Permissions
+2026-10-30T08:30:02.9234567Z Contents: read
+2026-10-30T08:30:03.0234567Z Metadata: read
+2026-10-30T08:30:03.1234567Z PullRequests: read
+2026-10-30T08:30:03.2234567Z ##[endgroup]
+2026-10-30T08:30:03.3234567Z Secret source: Actions
+2026-10-30T08:30:03.4234567Z Prepare workflow directory
+2026-10-30T08:30:03.5234567Z Prepare all required actions
+2026-10-30T08:30:03.6234567Z Getting action download info
+2026-10-30T08:30:04.1234567Z Download action repository 'actions/checkout@v4'
+2026-10-30T08:30:04.4234567Z Download action repository 'actions/setup-python@v5'
+2026-10-30T08:30:04.7234567Z Complete job name: test
+2026-10-30T08:30:05.1234567Z ##[group]Run actions/checkout@v4
+2026-10-30T08:30:05.2234567Z with:
+2026-10-30T08:30:05.3234567Z   repository: solstice-labs/aurora-ledger
+2026-10-30T08:30:05.4234567Z   clean: true
+2026-10-30T08:30:05.5234567Z   fetch-depth: 1
+2026-10-30T08:30:05.6234567Z ##[endgroup]
+2026-10-30T08:30:05.7234567Z Syncing repository: solstice-labs/aurora-ledger
+2026-10-30T08:30:05.8234567Z ##[group]Getting Git version info
+2026-10-30T08:30:05.9234567Z git version 2.51.2
+2026-10-30T08:30:06.0234567Z ##[endgroup]
+2026-10-30T08:30:06.1234567Z Initializing the repository
+2026-10-30T08:30:06.5234567Z Fetching the repository
+2026-10-30T08:30:07.1234567Z Checking out the ref
+2026-10-30T08:30:07.3234567Z [command]/usr/bin/git log -1 --format=%H
+2026-10-30T08:30:07.4234567Z a62f4b9e078c13d5a9e62c714f3b805d926ce148
+2026-10-30T08:30:07.5234567Z ##[group]Run actions/setup-python@v5
+2026-10-30T08:30:07.6234567Z with:
+2026-10-30T08:30:07.7234567Z   python-version: 3.12
+2026-10-30T08:30:07.8234567Z   check-latest: false
+2026-10-30T08:30:07.9234567Z ##[endgroup]
+2026-10-30T08:30:08.1234567Z ##[group]Installed versions
+2026-10-30T08:30:08.2234567Z Successfully set up CPython (3.12.7)
+2026-10-30T08:30:08.3234567Z ##[endgroup]
+2026-10-30T08:30:08.4234567Z ##[group]Run python -m pip install pytest
+2026-10-30T08:30:08.5234567Z python -m pip install pytest
+2026-10-30T08:30:08.6234567Z shell: /usr/bin/bash -e {0}
+2026-10-30T08:30:08.7234567Z ##[endgroup]
+2026-10-30T08:30:09.1234567Z Collecting pytest
+2026-10-30T08:30:09.3234567Z   Downloading pytest-8.3.3-py3-none-any.whl.metadata (7.5 kB)
+2026-10-30T08:30:09.5234567Z Collecting iniconfig (from pytest)
+2026-10-30T08:30:09.7234567Z Collecting packaging (from pytest)
+2026-10-30T08:30:09.9234567Z Collecting pluggy<2,>=1.5 (from pytest)
+2026-10-30T08:30:10.1234567Z Downloading pytest-8.3.3-py3-none-any.whl (342 kB)
+2026-10-30T08:30:10.3234567Z Installing collected packages: pluggy, packaging, iniconfig, pytest
+2026-10-30T08:30:10.7234567Z Successfully installed iniconfig-2.0.0 packaging-24.1 pluggy-1.5.0 pytest-8.3.3
+2026-10-30T08:30:11.1234567Z ##[group]Run python -m pytest -v
+2026-10-30T08:30:11.2234567Z python -m pytest -v
+2026-10-30T08:30:11.3234567Z shell: /usr/bin/bash -e {0}
+2026-10-30T08:30:11.4234567Z ##[endgroup]
+2026-10-30T08:30:11.6234567Z ============================= test session starts ==============================
+2026-10-30T08:30:11.7234567Z platform linux -- Python 3.12.7, pytest-8.3.3, pluggy-1.5.0 -- /opt/hostedtoolcache/Python/3.12.7/x64/bin/python
+2026-10-30T08:30:11.8234567Z cachedir: .pytest_cache
+2026-10-30T08:30:11.9234567Z rootdir: /home/runner/work/aurora-ledger/aurora-ledger
+2026-10-30T08:30:12.2234567Z collecting ... collected 2 items
+2026-10-30T08:30:12.3234567Z tests/test_ledger_math.py::test_outstanding_nets_credits PASSED          [ 50%]
+2026-10-30T08:30:12.4234567Z tests/test_ledger_math.py::test_outstanding_empty PASSED                 [100%]
+2026-10-30T08:30:12.5234567Z ============================== 2 passed in 0.02s ===============================
+2026-10-30T08:30:12.6234567Z Post job cleanup.
+2026-10-30T08:30:12.7234567Z [command]/usr/bin/git version
+2026-10-30T08:30:12.8234567Z git version 2.51.2
+2026-10-30T08:30:12.9234567Z Cleaning up orphan processes

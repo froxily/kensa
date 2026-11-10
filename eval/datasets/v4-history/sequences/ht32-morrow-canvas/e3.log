@@ -1,0 +1,59 @@
+2026-09-19T14:41:01.0000000Z Current runner version: '2.329.0'
+2026-09-19T14:41:01.1000000Z ##[group]Operating System
+2026-09-19T14:41:01.1100000Z Ubuntu
+2026-09-19T14:41:01.1200000Z 24.04.3
+2026-09-19T14:41:01.1300000Z ##[endgroup]
+2026-09-19T14:41:01.2000000Z ##[group]Runner Image
+2026-09-19T14:41:01.2100000Z Image: ubuntu-24.04
+2026-09-19T14:41:01.2200000Z ##[endgroup]
+2026-09-19T14:41:02.0000000Z Prepare workflow directory
+2026-09-19T14:41:02.2000000Z Prepare all required actions
+2026-09-19T14:41:03.0000000Z ##[group]Run actions/checkout@v4
+2026-09-19T14:41:03.0100000Z with:
+2026-09-19T14:41:03.0200000Z   repository: morrow-guild/canvas-orchard
+2026-09-19T14:41:03.0300000Z   clean: true
+2026-09-19T14:41:03.0400000Z ##[endgroup]
+2026-09-19T14:41:03.9000000Z Syncing repository: morrow-guild/canvas-orchard
+2026-09-19T14:41:04.3000000Z Checking out the ref
+2026-09-19T14:41:05.0000000Z ##[group]Run actions/setup-node@v4
+2026-09-19T14:41:05.0100000Z with:
+2026-09-19T14:41:05.0200000Z   node-version: 20
+2026-09-19T14:41:05.0300000Z ##[endgroup]
+2026-09-19T14:41:05.8000000Z node: v20.19.5
+2026-09-19T14:41:05.8100000Z npm: 10.8.2
+2026-09-19T14:41:06.0000000Z ##[group]Run npm ci
+2026-09-19T14:41:06.0100000Z npm ci
+2026-09-19T14:41:06.0200000Z shell: /usr/bin/bash -e {0}
+2026-09-19T14:41:06.0300000Z ##[endgroup]
+2026-09-19T14:41:11.5000000Z added 316 packages, and audited 317 packages in 5s
+2026-09-19T14:41:11.6000000Z found 0 vulnerabilities
+2026-09-19T14:41:11.7000000Z ##[group]Run npm test -- --ci --runInBand
+2026-09-19T14:41:11.7100000Z npm test -- --ci --runInBand
+2026-09-19T14:41:11.7200000Z shell: /usr/bin/bash -e {0}
+2026-09-19T14:41:11.7300000Z ##[endgroup]
+2026-09-19T14:41:12.0000000Z > canvas-orchard@1.0.0 test
+2026-09-19T14:41:12.0100000Z > jest --ci --runInBand
+2026-09-19T14:41:12.6000000Z FAIL src/badges/harvestBadge.test.js
+2026-09-19T14:41:12.6100000Z   ● harvest badge › renders compact badge
+2026-09-19T14:41:12.6200000Z     expect(received).toMatchSnapshot()
+2026-09-19T14:41:12.6300000Z     Snapshot name: `harvest badge renders compact badge 1`
+2026-09-19T14:41:12.6400000Z     - Snapshot  - 1
+2026-09-19T14:41:12.6500000Z     + Received  + 1
+2026-09-19T14:41:12.6600000Z       <span class="badge badge--compact">
+2026-09-19T14:41:12.6700000Z     -   Pending
+2026-09-19T14:41:12.6800000Z     +   Ready
+2026-09-19T14:41:12.6900000Z       </span>
+2026-09-19T14:41:12.7000000Z       19 |   const badge = renderHarvestBadge({ compact: true });
+2026-09-19T14:41:12.7100000Z     > 20 |   expect(badge).toMatchSnapshot();
+2026-09-19T14:41:12.7200000Z          |                 ^
+2026-09-19T14:41:12.7300000Z       at Object.toMatchSnapshot (src/badges/harvestBadge.test.js:20:17)
+2026-09-19T14:41:12.8000000Z PASS src/format/season.test.js
+2026-09-19T14:41:12.9000000Z PASS src/format/harvestCount.test.js
+2026-09-19T14:41:13.0000000Z  › 1 snapshot failed.
+2026-09-19T14:41:13.0100000Z Test Suites: 1 failed, 2 passed, 3 total
+2026-09-19T14:41:13.0200000Z Tests:       1 failed, 7 passed, 8 total
+2026-09-19T14:41:13.0300000Z Snapshots:   1 failed, 1 passed, 2 total
+2026-09-19T14:41:13.0400000Z Time:        0.934 s
+2026-09-19T14:41:13.1000000Z ##[error]Process completed with exit code 1.
+2026-09-19T14:41:13.2000000Z Post job cleanup.
+2026-09-19T14:41:13.4000000Z Cleaning up orphan processes

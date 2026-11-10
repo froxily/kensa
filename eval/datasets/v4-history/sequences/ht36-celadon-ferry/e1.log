@@ -1,0 +1,57 @@
+2026-09-02T09:12:01.0023100Z Current runner version: '2.328.0'
+2026-09-02T09:12:01.0311100Z ##[group]Runner Image
+2026-09-02T09:12:01.0312000Z Image: ubuntu-24.04
+2026-09-02T09:12:01.0313000Z Version: 20260824.1.0
+2026-09-02T09:12:01.0314000Z ##[endgroup]
+2026-09-02T09:12:01.0471000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-02T09:12:01.0472000Z Contents: read
+2026-09-02T09:12:01.0473000Z Metadata: read
+2026-09-02T09:12:01.0474000Z ##[endgroup]
+2026-09-02T09:12:01.0511000Z Prepare workflow directory
+2026-09-02T09:12:01.2301000Z Prepare all required actions
+2026-09-02T09:12:01.7191000Z Complete job name: test
+2026-09-02T09:12:01.8191000Z ##[group]Run actions/checkout@v4
+2026-09-02T09:12:01.8192000Z with:
+2026-09-02T09:12:01.8193000Z   repository: ferryglass/celadon-ledger
+2026-09-02T09:12:01.8194000Z   fetch-depth: 1
+2026-09-02T09:12:01.8195000Z ##[endgroup]
+2026-09-02T09:12:02.4821000Z Syncing repository: ferryglass/celadon-ledger
+2026-09-02T09:12:03.7201000Z HEAD is now at 6e3b2d1 Add ledger batch coverage
+2026-09-02T09:12:03.8241000Z ##[group]Run actions/setup-java@v4
+2026-09-02T09:12:03.8242000Z with:
+2026-09-02T09:12:03.8243000Z   distribution: temurin
+2026-09-02T09:12:03.8244000Z   java-version: 21
+2026-09-02T09:12:03.8245000Z ##[endgroup]
+2026-09-02T09:12:04.5151000Z Java version 21.0.8+9 has been installed
+2026-09-02T09:12:04.6241000Z ##[group]Run ./gradlew test --no-daemon
+2026-09-02T09:12:04.6242000Z ./gradlew test --no-daemon
+2026-09-02T09:12:04.6243000Z shell: /usr/bin/bash -e {0}
+2026-09-02T09:12:04.6244000Z ##[endgroup]
+2026-09-02T09:12:09.1211000Z > Task :generateLedgerTypes
+2026-09-02T09:12:10.7221000Z > Task :compileJava
+2026-09-02T09:12:11.7281000Z > Task :processResources
+2026-09-02T09:12:11.7321000Z > Task :classes
+2026-09-02T09:12:13.0161000Z > Task :compileTestJava
+2026-09-02T09:12:13.0191000Z > Task :processTestResources
+2026-09-02T09:12:13.0221000Z > Task :testClasses
+2026-09-02T09:12:21.3251000Z > Task :test
+2026-09-02T09:12:21.3261000Z #
+2026-09-02T09:12:21.3262000Z # A fatal error has been detected by the Java Runtime Environment:
+2026-09-02T09:12:21.3263000Z #  SIGSEGV (0xb) at pc=0x00007f124102a310, pid=1834, tid=1862
+2026-09-02T09:12:21.3264000Z # JRE version: OpenJDK Runtime Environment Temurin-21.0.8+9
+2026-09-02T09:12:21.3265000Z # Problematic frame:
+2026-09-02T09:12:21.3266000Z # C  [libtidepack-1.4.2.so+0xa310]  tidepack_compress_block+0x70
+2026-09-02T09:12:21.3267000Z # An error report file with more information is saved as:
+2026-09-02T09:12:21.3268000Z # /home/runner/work/celadon-ledger/celadon-ledger/hs_err_pid1834.log
+2026-09-02T09:12:21.6301000Z > Task :test FAILED
+2026-09-02T09:12:21.6311000Z FAILURE: Build failed with an exception.
+2026-09-02T09:12:21.6312000Z * What went wrong:
+2026-09-02T09:12:21.6313000Z Execution failed for task ':test'.
+2026-09-02T09:12:21.6314000Z > Process 'Gradle Test Executor 1' finished with non-zero exit value 134
+2026-09-02T09:12:21.6315000Z * Try:
+2026-09-02T09:12:21.6316000Z > Run with --stacktrace option to get the stack trace.
+2026-09-02T09:12:21.6321000Z BUILD FAILED in 17s
+2026-09-02T09:12:21.6322000Z 6 actionable tasks: 6 executed
+2026-09-02T09:12:21.7341000Z ##[error]Process completed with exit code 1.
+2026-09-02T09:12:21.7501000Z Post job cleanup.
+2026-09-02T09:12:21.9501000Z Cleaning up orphan processes

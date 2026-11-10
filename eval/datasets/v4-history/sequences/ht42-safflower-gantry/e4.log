@@ -1,0 +1,43 @@
+2026-09-25T08:30:17.4014567Z Current runner version: '2.329.0'
+2026-09-25T08:30:17.4024567Z ##[group]Runner Image
+2026-09-25T08:30:17.4034567Z Image: ubuntu-24.04
+2026-09-25T08:30:17.4044567Z Version: 20260920.1.0
+2026-09-25T08:30:17.4054567Z ##[endgroup]
+2026-09-25T08:30:17.4064567Z ##[group]GITHUB_TOKEN Permissions
+2026-09-25T08:30:17.4074567Z Contents: read
+2026-09-25T08:30:17.4084567Z Metadata: read
+2026-09-25T08:30:17.4094567Z ##[endgroup]
+2026-09-25T08:30:17.5104567Z Prepare workflow directory
+2026-09-25T08:30:17.6114567Z Prepare all required actions
+2026-09-25T08:30:17.7124567Z Getting action download info
+2026-09-25T08:30:17.8134567Z Download action repository 'actions/checkout@v4'
+2026-09-25T08:30:18.1144567Z Complete job name: bundle
+2026-09-25T08:30:18.2154567Z ##[group]Run actions/checkout@v4
+2026-09-25T08:30:18.2164567Z with:
+2026-09-25T08:30:18.2174567Z   repository: safflower-labs/gantry-checks
+2026-09-25T08:30:18.2184567Z   clean: true
+2026-09-25T08:30:18.2194567Z   fetch-depth: 1
+2026-09-25T08:30:18.2204567Z ##[endgroup]
+2026-09-25T08:30:18.3214567Z Syncing repository: safflower-labs/gantry-checks
+2026-09-25T08:30:18.4224567Z ##[group]Getting Git version info
+2026-09-25T08:30:18.4234567Z git version 2.51.1
+2026-09-25T08:30:18.4244567Z ##[endgroup]
+2026-09-25T08:30:18.5254567Z Initializing the repository
+2026-09-25T08:30:18.6264567Z Fetching the repository
+2026-09-25T08:30:18.9274567Z Checking out the ref
+2026-09-25T08:30:19.0284567Z [command]/usr/bin/git log -1 --format=%H
+2026-09-25T08:30:19.0294567Z 5cb027e8935539e921286af64250878a22460f95
+2026-09-25T08:30:19.1304567Z ##[group]Run make verify-bundle
+2026-09-25T08:30:19.1314567Z make verify-bundle
+2026-09-25T08:30:19.1324567Z shell: /usr/bin/bash -e {0}
+2026-09-25T08:30:19.1334567Z ##[endgroup]
+2026-09-25T08:30:19.1344567Z ./assemble-bundle.sh build/bundle
+2026-09-25T08:30:19.4354567Z wrote build/bundle/manifest.txt
+2026-09-25T08:30:19.5364567Z ./check-manifest.sh build/bundle/manifest.txt
+2026-09-25T08:30:19.5374567Z check-manifest: required entry 'index' not found in build/bundle/manifest.txt
+2026-09-25T08:30:19.5384567Z make: *** [Makefile:18: verify-bundle] Error 1
+2026-09-25T08:30:19.5394567Z ##[error]Process completed with exit code 2.
+2026-09-25T08:30:19.6404567Z Post job cleanup.
+2026-09-25T08:30:19.7414567Z [command]/usr/bin/git version
+2026-09-25T08:30:19.7424567Z git version 2.51.1
+2026-09-25T08:30:19.8434567Z Cleaning up orphan processes

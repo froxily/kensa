@@ -1,0 +1,12 @@
+﻿{
+  "comparisons": {
+    "c9e37a581d04f2b6a7c195e803d64fba21e097ac...a3b419e57c0f68d12e94b7a503f6c18d2a94e751": {
+      "status": "ahead", "merge_base": "c9e37a581d04f2b6a7c195e803d64fba21e097ac", "truncated": false,
+      "commits": [
+        {"sha": "3e2f4b619a70d8c5e13a6b249f8d071c5a92e364", "message": "Use local socket for database probe", "date": "2026-10-29T09:40:00Z", "files": [{"path": ".github/workflows/terrace.yml", "status": "modified", "additions": 1, "deletions": 1, "patch": "@@ -17,7 +17,7 @@ jobs:\n           --health-timeout 5s\n           --health-retries 5\n     env:\n-      PGHOST: 127.0.0.1\n+      PGHOST: /var/run/postgresql\n       PGPORT: 5432\n       PGUSER: postgres\n       PGDATABASE: terrace_test"}]},
+        {"sha": "a3b419e57c0f68d12e94b7a503f6c18d2a94e751", "message": "Clarify probe output", "date": "2026-10-29T10:10:00Z", "files": [{"path": "spec/terrace_probe.rb", "status": "modified", "additions": 1, "deletions": 1, "patch": "@@ -2,4 +2,4 @@ require 'pg'\n connection = PG.connect\n result = connection.exec('SELECT 1 AS value')\n abort 'unexpected result' unless result[0]['value'] == '1'\n-puts 'Database probe passed'\n+puts 'Terrace database probe passed'"}]}
+      ]
+    }
+  },
+  "workflow_blobs": {"c9e37a581d04f2b6a7c195e803d64fba21e097ac": "b47a01d6c529f8e34a718b09d2c6e5f1439ab870", "a3b419e57c0f68d12e94b7a503f6c18d2a94e751": "d5820a4b67e1c39f2a846d51b0c7e9f135ac6284"}
+}

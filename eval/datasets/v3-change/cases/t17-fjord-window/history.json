@@ -1,0 +1,12 @@
+{
+  "comparisons": {
+    "4f86c19d0e3a7b52c901fd6a2b8e4753d0ac69b1...9ac274e6b105fd3a78c02e94d613b5f8a0c7e432": {
+      "status": "ahead", "merge_base": "4f86c19d0e3a7b52c901fd6a2b8e4753d0ac69b1", "truncated": false,
+      "commits": [
+        {"sha": "6d3a20f49b7c185e0af6341d9e2b8c5724f106ad", "message": "Adjust window count", "date": "2026-11-08T08:40:00Z", "files": [{"path": "fjord_window.py", "status": "modified", "additions": 1, "deletions": 1, "patch": "@@ -2,4 +2,4 @@ def active_slots(start, end):\n     \"\"\"Count whole slots in the half-open interval.\"\"\"\n     if end <= start:\n         return 0\n-    return end - start\n+    return end - start + 1"}]},
+        {"sha": "9ac274e6b105fd3a78c02e94d613b5f8a0c7e432", "message": "Document local checks", "date": "2026-11-08T09:10:00Z", "files": [{"path": "README.md", "status": "modified", "additions": 2, "deletions": 0, "patch": "@@ -1,3 +1,5 @@\n # Fjord window\n \n Count whole slots in a half-open interval.\n+\n+Run the checks with `python -m unittest discover -s tests -v`."}]}
+      ]
+    }
+  },
+  "workflow_blobs": {"4f86c19d0e3a7b52c901fd6a2b8e4753d0ac69b1": "b3e0f29a4c618d7e52f093ac6b17d840e5a2c931", "9ac274e6b105fd3a78c02e94d613b5f8a0c7e432": "b3e0f29a4c618d7e52f093ac6b17d840e5a2c931"}
+}

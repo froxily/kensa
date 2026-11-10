@@ -1,0 +1,46 @@
+2026-09-02T06:00:00.0000000Z Current runner version: '2.328.0'
+2026-09-02T06:00:01.0000000Z ##[group]Runner Image
+2026-09-02T06:00:02.0000000Z Image: ubuntu-22.04
+2026-09-02T06:00:03.0000000Z Version: 20260825.1
+2026-09-02T06:00:04.0000000Z ##[endgroup]
+2026-09-02T06:00:05.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-02T06:00:06.0000000Z Contents: read
+2026-09-02T06:00:07.0000000Z ##[endgroup]
+2026-09-02T06:00:08.0000000Z Prepare workflow directory
+2026-09-02T06:00:09.0000000Z Prepare all required actions
+2026-09-02T06:00:10.0000000Z Download action repository 'actions/checkout@v4'
+2026-09-02T06:00:11.0000000Z Download action repository 'actions/setup-java@v4'
+2026-09-02T06:00:12.0000000Z Complete job name: unit
+2026-09-02T06:00:13.0000000Z ##[group]Run actions/checkout@v4
+2026-09-02T06:00:14.0000000Z with:
+2026-09-02T06:00:15.0000000Z   repository: marble-quay/ledger-reef
+2026-09-02T06:00:16.0000000Z   fetch-depth: 1
+2026-09-02T06:00:17.0000000Z Syncing repository
+2026-09-02T06:00:18.0000000Z git version 2.51.0
+2026-09-02T06:00:19.0000000Z Fetching the repository
+2026-09-02T06:00:20.0000000Z Checking out the ref
+2026-09-02T06:00:21.0000000Z ##[endgroup]
+2026-09-02T06:00:22.0000000Z ##[group]Run actions/setup-java@v4
+2026-09-02T06:00:23.0000000Z with:
+2026-09-02T06:00:24.0000000Z   distribution: temurin
+2026-09-02T06:00:25.0000000Z   java-version: 21
+2026-09-02T06:00:26.0000000Z Java 21 was set as the default
+2026-09-02T06:00:27.0000000Z ##[endgroup]
+2026-09-02T06:00:28.0000000Z ##[group]Run ./gradlew test
+2026-09-02T06:00:29.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-02T06:00:30.0000000Z > Task :compileJava
+2026-09-02T06:00:31.0000000Z > Task :compileTestJava
+2026-09-02T06:00:32.0000000Z > Task :test
+2026-09-02T06:00:32.1000000Z TaxLedgerTest > roundsHalfUp() STANDARD_OUT
+2026-09-02T06:00:32.2000000Z     TaxLedger: rawTax=1.235 scale=2 roundingMode=DOWN result=1.23
+2026-09-02T06:00:33.0000000Z TaxLedgerTest > roundsHalfUp() FAILED
+2026-09-02T06:00:34.0000000Z     org.opentest4j.AssertionFailedError: expected: <1.24> but was: <1.23>
+2026-09-02T06:00:35.0000000Z         at ledger.reef.TaxLedgerTest.roundsHalfUp(TaxLedgerTest.java:42)
+2026-09-02T06:00:36.0000000Z 34 tests completed, 1 failed
+2026-09-02T06:00:37.0000000Z FAILURE: Build failed with an exception.
+2026-09-02T06:00:38.0000000Z * What went wrong:
+2026-09-02T06:00:39.0000000Z Execution failed for task ':test'.
+2026-09-02T06:00:40.0000000Z > There were failing tests.
+2026-09-02T06:00:41.0000000Z BUILD FAILED in 18s
+2026-09-02T06:00:42.0000000Z ##[error]Process completed with exit code 1.
+2026-09-02T06:00:43.0000000Z Post job cleanup.

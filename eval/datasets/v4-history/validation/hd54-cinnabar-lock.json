@@ -1,0 +1,13 @@
+{
+  "id": "hd54-cinnabar-lock",
+  "independent_labels": [
+    {"id": "e1", "cluster": "a", "relation": "first", "category": "docker"},
+    {"id": "e2", "cluster": "b", "relation": "lookalike", "category": "docker"},
+    {"id": "e3", "cluster": "c", "relation": "lookalike", "category": "docker"},
+    {"id": "e4", "cluster": "a", "relation": "recurrence", "category": "docker"}
+  ],
+  "verdict": "ambiguous",
+  "disputed_fields": ["e1.category", "e2.category", "e3.category", "e4.category"],
+  "reason_category": "ambiguous_evidence",
+  "notes": "The labels and plan agree on clusters and relations. The fixes change Docker service health commands, supporting docker, but the probes fail to connect to database listeners, supporting db_connectivity; the specification does not distinguish these overlapping categories. The address and MySQL port cases require separate fixes. The PostgreSQL recurrence differs in runner, container settings and retry schedule. Root causes match the logs; no giveaway commentary found."
+}

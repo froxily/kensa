@@ -1,0 +1,51 @@
+2026-09-28T09:04:51.1051000Z Current runner version: '2.328.0'
+2026-09-28T09:04:51.1091000Z ##[group]Runner Image
+2026-09-28T09:04:51.1092000Z Image: ubuntu-24.04
+2026-09-28T09:04:51.1093000Z Version: 20260921.1.0
+2026-09-28T09:04:51.1094000Z ##[endgroup]
+2026-09-28T09:04:51.1121000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-28T09:04:51.1122000Z Contents: read
+2026-09-28T09:04:51.1123000Z Metadata: read
+2026-09-28T09:04:51.1124000Z ##[endgroup]
+2026-09-28T09:04:51.1201000Z Prepare workflow directory
+2026-09-28T09:04:51.1991000Z Prepare all required actions
+2026-09-28T09:04:51.5111000Z Download action repository 'actions/checkout@v4'
+2026-09-28T09:04:51.7891000Z Download action repository 'actions/setup-python@v5'
+2026-09-28T09:04:52.0211000Z Complete job name: staging-tests
+2026-09-28T09:04:52.1011000Z ##[group]Run actions/checkout@v4
+2026-09-28T09:04:52.1012000Z with:
+2026-09-28T09:04:52.1013000Z   repository: bracken-moor/saffron-quay
+2026-09-28T09:04:52.1014000Z   clean: true
+2026-09-28T09:04:52.1015000Z ##[endgroup]
+2026-09-28T09:04:52.6021000Z Syncing repository: bracken-moor/saffron-quay
+2026-09-28T09:04:53.0141000Z Checking out the ref
+2026-09-28T09:04:53.3011000Z ##[group]Run actions/setup-python@v5
+2026-09-28T09:04:53.3012000Z with:
+2026-09-28T09:04:53.3013000Z   python-version: 3.12
+2026-09-28T09:04:53.3014000Z ##[endgroup]
+2026-09-28T09:04:53.6901000Z Successfully set up CPython (3.12.6)
+2026-09-28T09:04:53.7411000Z ##[group]Run pytest tests/staging -q
+2026-09-28T09:04:53.7412000Z pytest tests/staging -q
+2026-09-28T09:04:53.7413000Z shell: /usr/bin/bash -e {0}
+2026-09-28T09:04:53.7414000Z env:
+2026-09-28T09:04:53.7415000Z   QUAY_ENV: staging
+2026-09-28T09:04:53.7416000Z   QUAY_DISPATCH_URL: https://dispatch.example.invalid
+2026-09-28T09:04:53.7417000Z ##[endgroup]
+2026-09-28T09:04:54.5991000Z .....F.                                                                  [100%]
+2026-09-28T09:04:54.5992000Z =================================== FAILURES ===================================
+2026-09-28T09:04:54.5993000Z ___________________________ test_receipt_settings ___________________________
+2026-09-28T09:04:54.5994000Z     def test_receipt_settings():
+2026-09-28T09:04:54.5995000Z >       assert load_receipt_settings().region == "west"
+2026-09-28T09:04:54.5996000Z tests/staging/test_receipt_config.py:12:
+2026-09-28T09:04:54.5997000Z saffron_quay/settings.py:41: in load_receipt_settings
+2026-09-28T09:04:54.5998000Z     region = os.environ["QUAY_RECEIPT_REGION"]
+2026-09-28T09:04:54.5999000Z <frozen os>:685: in __getitem__
+2026-09-28T09:04:54.6000000Z E   KeyError: 'QUAY_RECEIPT_REGION'
+2026-09-28T09:04:54.6001000Z =========================== short test summary info ============================
+2026-09-28T09:04:54.6002000Z FAILED tests/staging/test_receipt_config.py::test_receipt_settings - KeyError: 'QUAY_RECEIPT_REGION'
+2026-09-28T09:04:54.6003000Z 1 failed, 6 passed in 0.31s
+2026-09-28T09:04:54.7101000Z ##[error]Process completed with exit code 1.
+2026-09-28T09:04:54.7991000Z Post job cleanup.
+2026-09-28T09:04:54.9011000Z [command]/usr/bin/git version
+2026-09-28T09:04:54.9031000Z git version 2.51.0
+2026-09-28T09:04:55.0101000Z Cleaning up orphan processes

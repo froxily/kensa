@@ -1,0 +1,42 @@
+2026-09-07T16:21:31.0081200Z Current runner version: '2.328.0'
+2026-09-07T16:21:31.0241200Z ##[group]Operating System
+2026-09-07T16:21:31.0242200Z Ubuntu
+2026-09-07T16:21:31.0243200Z 24.04.3
+2026-09-07T16:21:31.0244200Z LTS
+2026-09-07T16:21:31.0245200Z ##[endgroup]
+2026-09-07T16:21:31.0251200Z ##[group]Runner Image
+2026-09-07T16:21:31.0252200Z Image: ubuntu-24.04
+2026-09-07T16:21:31.0253200Z Version: 20260831.1.0
+2026-09-07T16:21:31.0254200Z ##[endgroup]
+2026-09-07T16:21:31.0261200Z ##[group]GITHUB_TOKEN Permissions
+2026-09-07T16:21:31.0262200Z Contents: read
+2026-09-07T16:21:31.0263200Z Metadata: read
+2026-09-07T16:21:31.0264200Z ##[endgroup]
+2026-09-07T16:21:31.0361200Z Prepare workflow directory
+2026-09-07T16:21:31.1921200Z Prepare all required actions
+2026-09-07T16:21:31.4641200Z Getting action download info
+2026-09-07T16:21:31.7521200Z Download action repository 'actions/checkout@v4'
+2026-09-07T16:21:32.4101200Z Complete job name: audit
+2026-09-07T16:21:32.5081200Z ##[group]Run actions/checkout@v4
+2026-09-07T16:21:32.5082200Z with:
+2026-09-07T16:21:32.5083200Z   repository: tarn-lantern/sluice-audit
+2026-09-07T16:21:32.5084200Z   clean: true
+2026-09-07T16:21:32.5085200Z   fetch-depth: 1
+2026-09-07T16:21:32.5086200Z ##[endgroup]
+2026-09-07T16:21:32.7011200Z Syncing repository: tarn-lantern/sluice-audit
+2026-09-07T16:21:32.9171200Z Initializing the repository
+2026-09-07T16:21:33.5811200Z Fetching the repository
+2026-09-07T16:21:34.1821200Z Checking out the ref
+2026-09-07T16:21:34.2831200Z ##[group]Run make audit
+2026-09-07T16:21:34.2832200Z [36;1mmake audit[0m
+2026-09-07T16:21:34.2861200Z shell: /usr/bin/bash -e {0}
+2026-09-07T16:21:34.2862200Z ##[endgroup]
+2026-09-07T16:21:34.2991200Z ./scripts/inspect-sluice.sh config/tarn-rules.tsv data/sluice-manifest.tsv
+2026-09-07T16:21:34.3021200Z ./scripts/inspect-sluice.sh: line 12: config/tarn-rules.tsv: No such file or directory
+2026-09-07T16:21:34.3031200Z make: *** [Makefile:18: audit] Error 1
+2026-09-07T16:21:34.3061200Z ##[error]Process completed with exit code 2.
+2026-09-07T16:21:34.3191200Z Post job cleanup.
+2026-09-07T16:21:34.4491200Z /usr/bin/git version
+2026-09-07T16:21:34.4551200Z git version 2.51.0
+2026-09-07T16:21:34.5111200Z Temporarily overriding HOME before making global git config changes
+2026-09-07T16:21:34.5841200Z Cleaning up orphan processes

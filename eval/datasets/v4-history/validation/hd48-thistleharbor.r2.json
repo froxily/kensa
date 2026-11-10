@@ -1,0 +1,13 @@
+{
+  "id": "hd48-thistleharbor",
+  "independent_labels": [
+    {"id": "e1", "cluster": "a", "relation": "first", "category": "db_connectivity"},
+    {"id": "e2", "cluster": "a", "relation": "recurrence", "category": "db_connectivity"},
+    {"id": "e3", "cluster": "b", "relation": "first", "category": "github_permissions"},
+    {"id": "e4", "cluster": "c", "relation": "first", "category": "dependency_build"}
+  ],
+  "verdict": "agree",
+  "disputed_fields": [],
+  "reason_category": "none",
+  "notes": "e1 and e2 show the same refused DynamoDB lock endpoint, with substantially different run details. e3 requires GitHub contents write permission; e4 requires an available AWS provider version. The logs contain no apparent giveaway commentary. e1 does not itself identify the state as production, although its root-cause text calls it production."
+}

@@ -1,0 +1,52 @@
+2026-09-17T07:41:02.1000000Z Current runner version: '2.329.0'
+2026-09-17T07:41:02.1200000Z Runner name: 'GitHub Actions 3'
+2026-09-17T07:41:02.1400000Z ##[group]Operating System
+2026-09-17T07:41:02.1500000Z Ubuntu
+2026-09-17T07:41:02.1600000Z 24.04.3
+2026-09-17T07:41:02.1700000Z ##[endgroup]
+2026-09-17T07:41:02.1800000Z ##[group]Runner Image
+2026-09-17T07:41:02.1900000Z Image: ubuntu-24.04
+2026-09-17T07:41:02.2000000Z Version: 20260913.1.0
+2026-09-17T07:41:02.2100000Z ##[endgroup]
+2026-09-17T07:41:02.4000000Z Prepare workflow directory
+2026-09-17T07:41:02.8000000Z Download action repository 'actions/checkout@v4'
+2026-09-17T07:41:03.0000000Z Download action repository 'actions/setup-python@v5'
+2026-09-17T07:41:03.3000000Z Complete job name: queue integration
+2026-09-17T07:41:03.4000000Z ##[group]Run actions/checkout@v4
+2026-09-17T07:41:03.4100000Z with:
+2026-09-17T07:41:03.4200000Z   repository: velmora-labs/siltqueue
+2026-09-17T07:41:03.4300000Z   fetch-depth: 1
+2026-09-17T07:41:03.4400000Z ##[endgroup]
+2026-09-17T07:41:03.7000000Z Syncing repository: velmora-labs/siltqueue
+2026-09-17T07:41:04.0000000Z Fetching the repository
+2026-09-17T07:41:04.7000000Z Checking out the ref
+2026-09-17T07:41:05.0000000Z ##[group]Run actions/setup-python@v5
+2026-09-17T07:41:05.0100000Z with:
+2026-09-17T07:41:05.0200000Z   python-version: '3.12'
+2026-09-17T07:41:05.0300000Z ##[endgroup]
+2026-09-17T07:41:05.5000000Z Successfully set up CPython (3.12.7)
+2026-09-17T07:41:05.6000000Z ##[group]Run python -m pip install -e .
+2026-09-17T07:41:05.6100000Z python -m pip install -e .
+2026-09-17T07:41:05.6200000Z shell: /usr/bin/bash -e {0}
+2026-09-17T07:41:05.6300000Z ##[endgroup]
+2026-09-17T07:41:10.4000000Z Successfully installed redis-5.2.0 siltqueue-0.1.0
+2026-09-17T07:41:10.4100000Z ##[group]Run ss -ltn 'sport = :6379'
+2026-09-17T07:41:10.4200000Z ss -ltn 'sport = :6379'
+2026-09-17T07:41:10.4300000Z shell: /usr/bin/bash -e {0}
+2026-09-17T07:41:10.4400000Z ##[endgroup]
+2026-09-17T07:41:10.4500000Z State  Recv-Q Send-Q Local Address:Port Peer Address:Port
+2026-09-17T07:41:10.5000000Z ##[group]Run python -m siltqueue.quaysync --check
+2026-09-17T07:41:10.5100000Z python -m siltqueue.quaysync --check
+2026-09-17T07:41:10.5200000Z shell: /usr/bin/bash -e {0}
+2026-09-17T07:41:10.5300000Z ##[endgroup]
+2026-09-17T07:41:10.9000000Z Traceback (most recent call last):
+2026-09-17T07:41:10.9100000Z   File "/opt/hostedtoolcache/Python/3.12.7/x64/lib/python3.12/runpy.py", line 198, in _run_module_as_main
+2026-09-17T07:41:10.9200000Z     return _run_code(code, main_globals, None)
+2026-09-17T07:41:10.9300000Z   File "/home/runner/work/siltqueue/siltqueue/src/siltqueue/quaysync.py", line 71, in <module>
+2026-09-17T07:41:10.9400000Z     main()
+2026-09-17T07:41:10.9500000Z   File "/home/runner/work/siltqueue/siltqueue/src/siltqueue/quaysync.py", line 65, in main
+2026-09-17T07:41:10.9600000Z     client.ping()
+2026-09-17T07:41:10.9700000Z redis.exceptions.ConnectionError: Error 111 connecting to localhost:6379. Connection refused.
+2026-09-17T07:41:11.0000000Z ##[error]Process completed with exit code 1.
+2026-09-17T07:41:11.1000000Z Post job cleanup.
+2026-09-17T07:41:11.3000000Z Cleaning up orphan processes

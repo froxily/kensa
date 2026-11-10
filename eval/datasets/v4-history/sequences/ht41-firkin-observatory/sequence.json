@@ -1,0 +1,12 @@
+{
+  "id": "ht41-firkin-observatory",
+  "split": "test",
+  "ecosystem": "php",
+  "repository": "firkin-observatory/tarnledger",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"db_connectivity","title":"Migration waits too long for table lock","root_cause":"The migration adding an index to ledger_entries cannot acquire a table lock within PostgreSQL's lock_timeout while a concurrent transaction holds a conflicting lock. Shorten or schedule the competing transaction so the migration can acquire its lock.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"a","relation":"recurrence","category":"db_connectivity","title":"Ledger index migration lock timeout","root_cause":"The migration adding an index to ledger_entries cannot acquire a table lock within PostgreSQL's lock_timeout while a concurrent transaction holds a conflicting lock. Shorten or schedule the competing transaction so the migration can acquire its lock.","differs_from_earlier":"A later run has a different runner image version, checkout, and preceding migration, but times out on the same index creation."},
+    {"id":"e3","file":"e3.log","cluster":"b","relation":"lookalike","category":"db_connectivity","title":"Migration transaction deadlocks on balances","root_cause":"The balance backfill and a concurrent transaction acquire conflicting locks in an order that creates a PostgreSQL deadlock. Make the transactions acquire their locks in a consistent order.","differs_from_earlier":"The same migration command fails with a PostgreSQL concurrency error, but this is a deadlock in a balance backfill, not a lock timeout creating an index."},
+    {"id":"e4","file":"e4.log","cluster":"b","relation":"recurrence","category":"db_connectivity","title":"Balance backfill deadlock recurs","root_cause":"The balance backfill and a concurrent transaction acquire conflicting locks in an order that creates a PostgreSQL deadlock. Make the transactions acquire their locks in a consistent order.","differs_from_earlier":"A different run and transaction pair deadlock in the same balance backfill, after a different preceding migration."}
+  ]
+}

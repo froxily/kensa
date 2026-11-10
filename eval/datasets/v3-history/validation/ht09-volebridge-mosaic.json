@@ -1,0 +1,13 @@
+{
+  "id": "ht09-volebridge-mosaic",
+  "independent_labels": [
+    {"id": "e1", "cluster": "a", "relation": "first", "category": "oom_timeout"},
+    {"id": "e2", "cluster": "b", "relation": "first", "category": "dependency_build"},
+    {"id": "e3", "cluster": "c", "relation": "first", "category": "missing_env_var"},
+    {"id": "e4", "cluster": "a", "relation": "recurrence", "category": "oom_timeout"}
+  ],
+  "verdict": "agree",
+  "disputed_fields": [],
+  "reason_category": "none",
+  "notes": "Both matrix runs time out with 480 cases and one worker; the later run has different setup, runner image and progress. The intervening failures concern missing libyaml headers and an unset export URL. Root causes match the logs, and no giveaway commentary was found."
+}

@@ -1,0 +1,47 @@
+2026-09-18T10:25:11.1000000Z Current runner version: '2.329.0'
+2026-09-18T10:25:11.1100000Z ##[group]Runner Image Provisioner
+2026-09-18T10:25:11.1200000Z Hosted Compute Agent
+2026-09-18T10:25:11.1300000Z Version: 20260901.1
+2026-09-18T10:25:11.1400000Z ##[endgroup]
+2026-09-18T10:25:11.1500000Z ##[group]Operating System
+2026-09-18T10:25:11.1600000Z Ubuntu
+2026-09-18T10:25:11.1700000Z 24.04.3
+2026-09-18T10:25:11.1800000Z ##[endgroup]
+2026-09-18T10:25:11.1900000Z ##[group]Runner Image
+2026-09-18T10:25:11.2000000Z Image: ubuntu-24.04
+2026-09-18T10:25:11.2100000Z Version: 20260914.1.0
+2026-09-18T10:25:11.2200000Z ##[endgroup]
+2026-09-18T10:25:11.2300000Z Prepare workflow directory
+2026-09-18T10:25:11.2400000Z Prepare all required actions
+2026-09-18T10:25:11.2500000Z Download action repository 'actions/checkout@v4'
+2026-09-18T10:25:12.0000000Z Complete job name: Render staging
+2026-09-18T10:25:12.1000000Z ##[group]Run actions/checkout@v4
+2026-09-18T10:25:12.1100000Z with:
+2026-09-18T10:25:12.1200000Z   repository: reedglass/larkspur-weir
+2026-09-18T10:25:12.1300000Z   fetch-depth: 1
+2026-09-18T10:25:12.1400000Z ##[endgroup]
+2026-09-18T10:25:12.3000000Z Syncing repository: reedglass/larkspur-weir
+2026-09-18T10:25:12.4000000Z Getting Git version info
+2026-09-18T10:25:12.5000000Z Temporarily overriding HOME='/home/runner/work/_temp/42bc' before making global git config changes
+2026-09-18T10:25:12.6000000Z Initializing the repository
+2026-09-18T10:25:13.1000000Z Fetching the repository
+2026-09-18T10:25:13.6000000Z Checking out the ref
+2026-09-18T10:25:13.7000000Z [command]/usr/bin/git log -1 --format=%H
+2026-09-18T10:25:13.8000000Z 4c5088b9d0795b72ee259f51f64a88e492a71fb4
+2026-09-18T10:25:14.0000000Z ##[group]Run helm version --short
+2026-09-18T10:25:14.0100000Z helm version --short
+2026-09-18T10:25:14.0200000Z shell: /usr/bin/bash -e {0}
+2026-09-18T10:25:14.0300000Z ##[endgroup]
+2026-09-18T10:25:14.2000000Z v3.18.5+g6a3b1f3
+2026-09-18T10:25:14.3000000Z ##[group]Run helm template weir-staging ./charts/weir -f ./deploy/staging.yaml
+2026-09-18T10:25:14.3100000Z helm template weir-staging ./charts/weir -f ./deploy/staging.yaml
+2026-09-18T10:25:14.3200000Z shell: /usr/bin/bash -e {0}
+2026-09-18T10:25:14.3300000Z ##[endgroup]
+2026-09-18T10:25:14.5000000Z Error: execution error at (weir/templates/gateway-ingress.yaml:19:14): weirGateway.host is required
+2026-09-18T10:25:14.5100000Z 
+2026-09-18T10:25:14.5200000Z Use --debug flag to render out invalid YAML
+2026-09-18T10:25:14.5300000Z ##[error]Process completed with exit code 1.
+2026-09-18T10:25:14.6000000Z Post job cleanup.
+2026-09-18T10:25:14.7000000Z [command]/usr/bin/git version
+2026-09-18T10:25:14.7100000Z git version 2.51.0
+2026-09-18T10:25:14.8000000Z Cleaning up orphan processes

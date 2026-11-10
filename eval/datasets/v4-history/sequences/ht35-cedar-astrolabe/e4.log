@@ -1,0 +1,72 @@
+2026-09-26T15:30:01.1000000Z Current runner version: '2.330.0'
+2026-09-26T15:30:01.1100000Z ##[group]Runner Image
+2026-09-26T15:30:01.1200000Z Image: ubuntu-24.04
+2026-09-26T15:30:01.1300000Z Version: 20260921.1.0
+2026-09-26T15:30:01.1400000Z ##[endgroup]
+2026-09-26T15:30:01.1500000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-26T15:30:01.1600000Z Contents: read
+2026-09-26T15:30:01.1700000Z ##[endgroup]
+2026-09-26T15:30:01.1800000Z Prepare workflow directory
+2026-09-26T15:30:01.1900000Z Prepare all required actions
+2026-09-26T15:30:01.2000000Z Getting action download info
+2026-09-26T15:30:01.2100000Z Download action repository 'actions/checkout@v4'
+2026-09-26T15:30:01.2200000Z Download action repository 'actions/setup-node@v4'
+2026-09-26T15:30:01.2300000Z Complete job name: release-check
+2026-09-26T15:30:01.2400000Z ##[group]Run actions/checkout@v4
+2026-09-26T15:30:01.2500000Z with:
+2026-09-26T15:30:01.2600000Z   repository: cedar-astrolabe/orbit-ledger
+2026-09-26T15:30:01.2700000Z   fetch-depth: 1
+2026-09-26T15:30:01.2800000Z ##[endgroup]
+2026-09-26T15:30:01.2900000Z Syncing repository: cedar-astrolabe/orbit-ledger
+2026-09-26T15:30:01.3000000Z Fetching the repository
+2026-09-26T15:30:02.3100000Z Checking out the ref
+2026-09-26T15:30:02.3200000Z ##[group]Run actions/setup-node@v4
+2026-09-26T15:30:02.3300000Z with:
+2026-09-26T15:30:02.3400000Z   node-version: 22
+2026-09-26T15:30:02.3500000Z ##[endgroup]
+2026-09-26T15:30:02.3600000Z Found in cache @ /opt/hostedtoolcache/node/22.19.0/x64
+2026-09-26T15:30:02.3700000Z ##[group]Run corepack enable
+2026-09-26T15:30:02.3800000Z corepack enable
+2026-09-26T15:30:02.3900000Z pnpm install --frozen-lockfile
+2026-09-26T15:30:02.4000000Z shell: /usr/bin/bash -e {0}
+2026-09-26T15:30:02.4100000Z ##[endgroup]
+2026-09-26T15:30:03.4200000Z Scope: all 5 workspace projects
+2026-09-26T15:30:03.4300000Z Lockfile is up to date, resolution step is skipped
+2026-09-26T15:30:04.4400000Z Packages: +142
+2026-09-26T15:30:05.4500000Z Progress: resolved 142, reused 0, downloaded 142, added 142, done
+2026-09-26T15:30:05.4600000Z Done in 2.8s using pnpm v9.15.9
+2026-09-26T15:30:05.4700000Z ##[group]Run pnpm --filter @cedar-astrolabe/console test
+2026-09-26T15:30:05.4800000Z pnpm --filter @cedar-astrolabe/console test
+2026-09-26T15:30:05.4900000Z shell: /usr/bin/bash -e {0}
+2026-09-26T15:30:05.5000000Z ##[endgroup]
+2026-09-26T15:30:05.5100000Z > @cedar-astrolabe/console@2.5.0 test /home/runner/work/orbit-ledger/orbit-ledger/apps/console
+2026-09-26T15:30:05.5200000Z > vitest run
+2026-09-26T15:30:05.5300000Z 
+2026-09-26T15:30:06.5400000Z  RUN  v2.1.9 /home/runner/work/orbit-ledger/orbit-ledger/apps/console
+2026-09-26T15:30:06.5500000Z 
+2026-09-26T15:30:06.5600000Z  ❯ src/orbit-label.test.ts (3 tests | 1 failed) 12ms
+2026-09-26T15:30:06.5700000Z    × rounds altitude to the nearest kilometer 7ms
+2026-09-26T15:30:06.5800000Z      → expected '412 km' to be '413 km' // Object.is equality
+2026-09-26T15:30:06.5900000Z 
+2026-09-26T15:30:06.6000000Z  FAIL  src/orbit-label.test.ts > rounds altitude to the nearest kilometer
+2026-09-26T15:30:06.6100000Z AssertionError: expected '412 km' to be '413 km' // Object.is equality
+2026-09-26T15:30:06.6200000Z 
+2026-09-26T15:30:06.6300000Z Expected: "413 km"
+2026-09-26T15:30:06.6400000Z Received: "412 km"
+2026-09-26T15:30:06.6500000Z 
+2026-09-26T15:30:06.6600000Z  ❯ src/orbit-label.test.ts:18:33
+2026-09-26T15:30:06.6700000Z      16| it('rounds altitude to the nearest kilometer', () => {
+2026-09-26T15:30:06.6800000Z      17|   const label = formatOrbitLabel(412.8)
+2026-09-26T15:30:06.6900000Z      18|   expect(label).toBe('413 km')
+2026-09-26T15:30:06.7000000Z        |                 ^
+2026-09-26T15:30:06.7100000Z      19| })
+2026-09-26T15:30:06.7200000Z 
+2026-09-26T15:30:06.7300000Z  Test Files  1 failed (1)
+2026-09-26T15:30:06.7400000Z       Tests  1 failed | 2 passed (3)
+2026-09-26T15:30:06.7500000Z    Duration  483ms
+2026-09-26T15:30:06.7600000Z /home/runner/work/orbit-ledger/orbit-ledger/apps/console:
+2026-09-26T15:30:06.7700000Z  ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @cedar-astrolabe/console@2.5.0 test: `vitest run`
+2026-09-26T15:30:06.7800000Z Exit status 1
+2026-09-26T15:30:06.7900000Z ##[error]Process completed with exit code 1.
+2026-09-26T15:30:06.8000000Z Post job cleanup.
+2026-09-26T15:30:06.8100000Z Cleaning up orphan processes

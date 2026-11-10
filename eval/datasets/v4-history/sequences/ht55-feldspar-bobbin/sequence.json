@@ -1,0 +1,12 @@
+{
+  "id": "ht55-feldspar-bobbin",
+  "split": "test",
+  "ecosystem": "clojure",
+  "repository": "feldspar-bobbin/spindle-mosaic",
+  "entries": [
+    {"id": "e1", "file": "e1.log", "cluster": "a", "relation": "first", "category": "test_regression", "title": "Duplicate warp threads are removed", "root_cause": "The warp expansion function converts thread identifiers to a set, dropping repetitions that must be preserved. Retain the input sequence when expanding the warp.", "differs_from_earlier": ""},
+    {"id": "e2", "file": "e2.log", "cluster": "b", "relation": "first", "category": "test_regression", "title": "Empty palette cannot be decoded", "root_cause": "The palette decoder calls parse-long on an empty field and uses the resulting nil as a number. Handle the empty palette representation in the decoder.", "differs_from_earlier": ""},
+    {"id": "e3", "file": "e3.log", "cluster": "a", "relation": "recurrence", "category": "test_regression", "title": "Repeated warp threads are still dropped", "root_cause": "The warp expansion function converts thread identifiers to a set, dropping repetitions that must be preserved. Retain the input sequence when expanding the warp.", "differs_from_earlier": "A later run uses a different runner and expanded fixture; the same duplicate removal fails a second warp assertion."},
+    {"id": "e4", "file": "e4.log", "cluster": "c", "relation": "lookalike", "category": "test_regression", "title": "Weft threads are returned in reverse order", "root_cause": "The weft expansion function prepends each thread while reducing, reversing the expected order. Append threads or reverse the result in the weft expansion function.", "differs_from_earlier": "Like the warp failure, an expansion test compares thread vectors, but the weft output contains all threads in reverse order and requires a separate implementation fix."}
+  ]
+}

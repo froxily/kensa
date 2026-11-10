@@ -1,0 +1,50 @@
+2026-09-14T08:12:03.4512345Z Current runner version: '2.328.0'
+2026-09-14T08:12:03.5212345Z ##[group]Runner Image Provisioner
+2026-09-14T08:12:03.5512345Z Hosted Compute Agent
+2026-09-14T08:12:03.5812345Z ##[endgroup]
+2026-09-14T08:12:03.6112345Z ##[group]Operating System
+2026-09-14T08:12:03.6412345Z Ubuntu
+2026-09-14T08:12:03.6712345Z 22.04.5
+2026-09-14T08:12:03.7012345Z ##[endgroup]
+2026-09-14T08:12:03.7312345Z ##[group]Runner Image
+2026-09-14T08:12:03.7612345Z Image: ubuntu-22.04
+2026-09-14T08:12:03.7912345Z Version: 20260907.1.0
+2026-09-14T08:12:03.8212345Z ##[endgroup]
+2026-09-14T08:12:04.0012345Z Prepare workflow directory
+2026-09-14T08:12:04.1512345Z Prepare all required actions
+2026-09-14T08:12:05.1012345Z Getting action download info
+2026-09-14T08:12:06.3012345Z Complete job name: compile
+2026-09-14T08:12:06.5012345Z ##[group]Run actions/checkout@v4
+2026-09-14T08:12:06.5312345Z with:
+2026-09-14T08:12:06.5612345Z   repository: gannet-clockworks/escapement-ledger
+2026-09-14T08:12:06.5912345Z   fetch-depth: 1
+2026-09-14T08:12:06.6212345Z ##[endgroup]
+2026-09-14T08:12:07.1012345Z Syncing repository: gannet-clockworks/escapement-ledger
+2026-09-14T08:12:07.4212345Z Initialized empty Git repository in /home/runner/work/escapement-ledger/escapement-ledger/.git/
+2026-09-14T08:12:08.1512345Z Checking out the ref
+2026-09-14T08:12:08.4312345Z ##[group]Run actions/setup-java@v4
+2026-09-14T08:12:08.4612345Z with:
+2026-09-14T08:12:08.4912345Z   distribution: temurin
+2026-09-14T08:12:08.5212345Z   java-version: 17
+2026-09-14T08:12:08.5512345Z ##[endgroup]
+2026-09-14T08:12:09.2112345Z Java 17 was installed
+2026-09-14T08:12:09.5112345Z ##[group]Run sbt compile
+2026-09-14T08:12:09.5412345Z [36;1msbt compile[0m
+2026-09-14T08:12:09.5712345Z shell: /usr/bin/bash -e {0}
+2026-09-14T08:12:09.6012345Z ##[endgroup]
+2026-09-14T08:12:12.2112345Z [info] welcome to sbt 1.10.2 (Eclipse Adoptium Java 17.0.16)
+2026-09-14T08:12:13.3112345Z [info] loading project definition from /home/runner/work/escapement-ledger/escapement-ledger/project
+2026-09-14T08:12:14.3212345Z [info] loading settings for project escapement-ledger from build.sbt...
+2026-09-14T08:12:15.4012345Z [info] set current project to escapement-ledger (in build file:/home/runner/work/escapement-ledger/escapement-ledger/)
+2026-09-14T08:12:17.1012345Z [info] compiling 18 Scala sources to /home/runner/work/escapement-ledger/escapement-ledger/target/scala-2.13/classes ...
+2026-09-14T08:12:20.2312345Z [error] /home/runner/work/escapement-ledger/escapement-ledger/src/main/scala/clockwork/DispatchDecoder.scala:27:20: type mismatch;
+2026-09-14T08:12:20.2512345Z [error]  found   : String
+2026-09-14T08:12:20.2712345Z [error]  required: scala.concurrent.duration.FiniteDuration
+2026-09-14T08:12:20.2912345Z [error]     DispatchWindow(config.getString("dispatch.window"))
+2026-09-14T08:12:20.3112345Z [error]                    ^
+2026-09-14T08:12:20.3312345Z [error] one error found
+2026-09-14T08:12:20.3512345Z [error] (Compile / compileIncremental) Compilation failed
+2026-09-14T08:12:20.3712345Z [error] Total time: 5 s, completed Sep 14, 2026, 8:12:20 AM
+2026-09-14T08:12:20.4012345Z ##[error]Process completed with exit code 1.
+2026-09-14T08:12:20.5012345Z Post job cleanup.
+2026-09-14T08:12:20.7012345Z Cleaning up orphan processes

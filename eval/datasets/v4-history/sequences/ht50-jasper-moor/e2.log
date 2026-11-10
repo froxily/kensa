@@ -1,0 +1,61 @@
+2026-09-09T11:21:01.1000000Z Current runner version: '2.329.0'
+2026-09-09T11:21:01.2000000Z ##[group]Runner Image
+2026-09-09T11:21:01.2100000Z Image: ubuntu-24.04
+2026-09-09T11:21:01.2200000Z Version: 20260906.1.0
+2026-09-09T11:21:01.2300000Z ##[endgroup]
+2026-09-09T11:21:01.3000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-09T11:21:01.3100000Z Contents: read
+2026-09-09T11:21:01.3200000Z Metadata: read
+2026-09-09T11:21:01.3300000Z ##[endgroup]
+2026-09-09T11:21:01.4000000Z Prepare workflow directory
+2026-09-09T11:21:01.5000000Z Download action repository 'actions/checkout@v4'
+2026-09-09T11:21:02.0000000Z ##[group]Run actions/checkout@v4
+2026-09-09T11:21:02.0100000Z with:
+2026-09-09T11:21:02.0200000Z   repository: jasper-moor/tideledger
+2026-09-09T11:21:02.0300000Z   fetch-depth: 1
+2026-09-09T11:21:02.0400000Z ##[endgroup]
+2026-09-09T11:21:02.3000000Z Syncing repository: jasper-moor/tideledger
+2026-09-09T11:21:03.0000000Z Fetching the repository
+2026-09-09T11:21:04.0000000Z Checking out the ref
+2026-09-09T11:21:04.1000000Z ##[group]Run erlef/setup-beam@v1
+2026-09-09T11:21:04.1100000Z with:
+2026-09-09T11:21:04.1200000Z   otp-version: '27.2'
+2026-09-09T11:21:04.1300000Z   elixir-version: '1.18.2'
+2026-09-09T11:21:04.1400000Z ##[endgroup]
+2026-09-09T11:21:08.1000000Z ##[group]Run mix local.hex --force
+2026-09-09T11:21:08.1100000Z mix local.hex --force
+2026-09-09T11:21:08.1200000Z mix local.rebar --force
+2026-09-09T11:21:08.1300000Z mix deps.get
+2026-09-09T11:21:08.1400000Z shell: /usr/bin/bash -e {0}
+2026-09-09T11:21:08.1500000Z ##[endgroup]
+2026-09-09T11:21:09.1000000Z * creating /home/runner/.mix/archives/hex-2.2.1
+2026-09-09T11:21:10.1000000Z Resolving Hex dependencies...
+2026-09-09T11:21:10.3000000Z Resolution completed in 0.16s
+2026-09-09T11:21:10.3100000Z Unchanged:
+2026-09-09T11:21:10.3200000Z   ezstd 1.1.0
+2026-09-09T11:21:11.0000000Z ##[group]Run mix test
+2026-09-09T11:21:11.0100000Z mix test
+2026-09-09T11:21:11.0200000Z shell: /usr/bin/bash -e {0}
+2026-09-09T11:21:11.0300000Z ##[endgroup]
+2026-09-09T11:21:12.1000000Z ===> ezstd
+2026-09-09T11:21:13.0000000Z Generated ezstd app
+2026-09-09T11:21:13.1000000Z ===> tideledger
+2026-09-09T11:21:13.2000000Z Compiling 18 files (.ex)
+2026-09-09T11:21:14.1000000Z Generated tideledger app
+2026-09-09T11:21:14.2000000Z Running ExUnit with seed: 420118, max_cases: 4
+2026-09-09T11:21:14.3000000Z ..........
+2026-09-09T11:21:14.3100000Z 
+2026-09-09T11:21:14.3200000Z   1) test rounds a half-cent settlement upward (Tideledger.SettlementTest)
+2026-09-09T11:21:14.3300000Z      test/tideledger/settlement_test.exs:41
+2026-09-09T11:21:14.3400000Z      Assertion with == failed
+2026-09-09T11:21:14.3500000Z      code:  assert Settlement.cents(Decimal.new("1.005")) == 101
+2026-09-09T11:21:14.3600000Z      left:  100
+2026-09-09T11:21:14.3700000Z      right: 101
+2026-09-09T11:21:14.3800000Z      stacktrace:
+2026-09-09T11:21:14.3900000Z        test/tideledger/settlement_test.exs:42: (test)
+2026-09-09T11:21:14.4000000Z 
+2026-09-09T11:21:14.4100000Z Finished in 0.2 seconds (0.2s async, 0.00s sync)
+2026-09-09T11:21:14.4200000Z 27 tests, 1 failure
+2026-09-09T11:21:14.5000000Z ##[error]Process completed with exit code 2.
+2026-09-09T11:21:14.6000000Z Post job cleanup.
+2026-09-09T11:21:14.7000000Z Cleaning up orphan processes

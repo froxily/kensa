@@ -1,0 +1,18 @@
+﻿{
+  "id": "t26-wren-mirror",
+  "split": "test",
+  "comparability": "incomparable",
+  "category": "test_regression",
+  "culprit_kind": "none",
+  "difficulty": "medium",
+  "ecosystem": "rust",
+  "title": "A new test job exposes a reversal error",
+  "root_cause": "The Rust test expects the mirror operation to reverse the input, but the actual value preserves its original order. Earlier successful runs did not contain this job, so they do not establish a comparable baseline or identify when the defect was introduced.",
+  "culprit_paths": [],
+  "culprit_commit": null,
+  "unverified_factors": [],
+  "fix_keywords": ["mirror", "reverse"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 59, "end_line": 62, "why": "The test reports the actual and expected strings in the failed assertion."}
+  ]
+}

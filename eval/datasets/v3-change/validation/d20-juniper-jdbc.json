@@ -1,0 +1,14 @@
+{
+  "id": "d20-juniper-jdbc",
+  "independent_labels": {
+    "comparability": "partially_comparable",
+    "unverified_factors": ["baseline_log_unavailable", "runner_labels_unknown"],
+    "category": "db_connectivity",
+    "culprit_kind": "build_config",
+    "culprit_paths": ["build.gradle.kts"]
+  },
+  "verdict": "agree",
+  "disputed_fields": [],
+  "reason_category": "none",
+  "notes": "The baseline log and runner labels are unavailable. The changed JDBC port is 5433 while the healthy PostgreSQL service publishes 5432; the cited evidence lines and history support the labels."
+}

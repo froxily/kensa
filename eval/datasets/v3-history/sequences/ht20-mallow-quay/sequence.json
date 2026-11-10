@@ -1,0 +1,12 @@
+﻿{
+  "id": "ht20-mallow-quay",
+  "split": "test",
+  "ecosystem": "elixir",
+  "repository": "reedwharf/mallow-quay",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"test_regression","title":"Credo rejects nested conditional","root_cause":"The dispatch function in lib/mallow_quay/berth_router.ex contains a nested conditional flagged by Credo's Refactor.Nesting check. Refactor the conditional to satisfy the configured nesting limit.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"b","relation":"first","category":"workflow_path","title":"Cache archive cannot be extracted","root_cause":"The cache restore destination is blocked by a regular file at the deps path, so tar cannot create the cached directory. Remove the file or restore the cache to an unoccupied directory.","differs_from_earlier":""},
+    {"id":"e3","file":"e3.log","cluster":"a","relation":"recurrence","category":"test_regression","title":"Credo rejects nested conditional","root_cause":"The dispatch function in lib/mallow_quay/berth_router.ex contains a nested conditional flagged by Credo's Refactor.Nesting check. Refactor the conditional to satisfy the configured nesting limit.","differs_from_earlier":"A later pull request moves the finding to another line and runs on a different runner with a warm dependency cache."},
+    {"id":"e4","file":"e4.log","cluster":"a","relation":"recurrence","category":"test_regression","title":"Credo rejects nested conditional","root_cause":"The dispatch function in lib/mallow_quay/berth_router.ex contains a nested conditional flagged by Credo's Refactor.Nesting check. Refactor the conditional to satisfy the configured nesting limit.","differs_from_earlier":"A later checkout compiles the application before linting, and unrelated edits shift the finding again."}
+  ]
+}

@@ -1,0 +1,85 @@
+2026-09-28T16:38:01.1227134Z Current runner version: '2.330.0'
+2026-09-28T16:38:01.1803120Z ##[group]Operating System
+2026-09-28T16:38:01.1804310Z Ubuntu
+2026-09-28T16:38:01.1805450Z 22.04.5
+2026-09-28T16:38:01.1806500Z LTS
+2026-09-28T16:38:01.1807340Z ##[endgroup]
+2026-09-28T16:38:01.1810810Z ##[group]Runner Image
+2026-09-28T16:38:01.1811990Z Image: ubuntu-22.04
+2026-09-28T16:38:01.1813080Z Version: 20260921.1.0
+2026-09-28T16:38:01.1814210Z ##[endgroup]
+2026-09-28T16:38:01.1833050Z ##[group]GITHUB_TOKEN Permissions
+2026-09-28T16:38:01.1834180Z Contents: read
+2026-09-28T16:38:01.1835030Z Metadata: read
+2026-09-28T16:38:01.1836170Z PullRequests: read
+2026-09-28T16:38:01.1837300Z ##[endgroup]
+2026-09-28T16:38:01.2901290Z Prepare workflow directory
+2026-09-28T16:38:01.4133370Z Prepare all required actions
+2026-09-28T16:38:01.6280440Z Getting action download info
+2026-09-28T16:38:02.5928100Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+2026-09-28T16:38:03.0914330Z Download action repository 'actions/checkout@v4' (SHA:08c6903cd8c0fde910a37f88322edcfb5dd907a8)
+2026-09-28T16:38:03.5332610Z Complete job name: dependency-check (22)
+2026-09-28T16:38:03.6815240Z ##[group]Run actions/checkout@v4
+2026-09-28T16:38:03.6816630Z with:
+2026-09-28T16:38:03.6817710Z   repository: gloamforge/harbor-sundial
+2026-09-28T16:38:03.6818810Z   ref: refs/pull/87/merge
+2026-09-28T16:38:03.6819820Z   clean: true
+2026-09-28T16:38:03.6820820Z   fetch-depth: 1
+2026-09-28T16:38:03.6821740Z   persist-credentials: true
+2026-09-28T16:38:03.6822780Z ##[endgroup]
+2026-09-28T16:38:03.9111040Z Syncing repository: gloamforge/harbor-sundial
+2026-09-28T16:38:04.1250090Z Temporarily overriding HOME='/home/runner/work/_temp/0c1564ed-6f2d-4d14-bd10-07b184e53c78' before making global git config changes
+2026-09-28T16:38:04.1452100Z [command]/usr/bin/git version
+2026-09-28T16:38:04.1482610Z git version 2.51.0
+2026-09-28T16:38:04.2043950Z Deleting the contents of '/home/runner/work/harbor-sundial/harbor-sundial'
+2026-09-28T16:38:04.3001620Z ##[group]Initializing the repository
+2026-09-28T16:38:04.3331760Z Initialized empty Git repository in /home/runner/work/harbor-sundial/harbor-sundial/.git/
+2026-09-28T16:38:04.3521870Z ##[endgroup]
+2026-09-28T16:38:04.5233710Z ##[group]Fetching the repository
+2026-09-28T16:38:06.3907450Z From https://github.com/gloamforge/harbor-sundial
+2026-09-28T16:38:06.3911800Z  * [new ref]         refs/pull/87/merge -> pull/87/merge
+2026-09-28T16:38:06.3971510Z ##[endgroup]
+2026-09-28T16:38:06.4613580Z ##[group]Checking out the ref
+2026-09-28T16:38:06.5374270Z HEAD is now at 7a6f93b Merge pull request 87
+2026-09-28T16:38:06.5396720Z ##[endgroup]
+2026-09-28T16:38:06.7321530Z ##[group]Run actions/setup-node@v4
+2026-09-28T16:38:06.7323060Z with:
+2026-09-28T16:38:06.7324140Z   node-version: 22
+2026-09-28T16:38:06.7325350Z   check-latest: false
+2026-09-28T16:38:06.7326480Z ##[endgroup]
+2026-09-28T16:38:06.9462560Z Found in cache @ /opt/hostedtoolcache/node/22.18.0/x64
+2026-09-28T16:38:07.0581260Z ##[group]Environment details
+2026-09-28T16:38:07.0582840Z node: v22.18.0
+2026-09-28T16:38:07.0583970Z npm: 10.9.3
+2026-09-28T16:38:07.0585070Z yarn: 1.22.22
+2026-09-28T16:38:07.0586250Z ##[endgroup]
+2026-09-28T16:38:07.1940470Z ##[group]Run npm install
+2026-09-28T16:38:07.1941890Z npm install
+2026-09-28T16:38:07.1943020Z shell: /usr/bin/bash -e {0}
+2026-09-28T16:38:07.1944200Z env:
+2026-09-28T16:38:07.1945340Z   CI: true
+2026-09-28T16:38:07.1946410Z ##[endgroup]
+2026-09-28T16:38:13.8750920Z npm error code ERESOLVE
+2026-09-28T16:38:13.8753140Z npm error ERESOLVE unable to resolve dependency tree
+2026-09-28T16:38:13.8755030Z npm error
+2026-09-28T16:38:13.8756610Z npm error While resolving: harbor-sundial@0.8.0
+2026-09-28T16:38:13.8758190Z npm error Found: @gloamforge/canvas-core@4.2.0
+2026-09-28T16:38:13.8759840Z npm error node_modules/@gloamforge/canvas-core
+2026-09-28T16:38:13.8761540Z npm error   @gloamforge/canvas-core@"4.2.0" from the root project
+2026-09-28T16:38:13.8763120Z npm error
+2026-09-28T16:38:13.8764680Z npm error Could not resolve dependency:
+2026-09-28T16:38:13.8766280Z npm error peer @gloamforge/canvas-core@"^3.0.0" from @gloamforge/canvas-inspector@3.1.0
+2026-09-28T16:38:13.8767980Z npm error node_modules/@gloamforge/canvas-inspector
+2026-09-28T16:38:13.8769630Z npm error   @gloamforge/canvas-inspector@"3.1.0" from the root project
+2026-09-28T16:38:13.8771160Z npm error
+2026-09-28T16:38:13.8772640Z npm error Fix the upstream dependency conflict, or retry
+2026-09-28T16:38:13.8774230Z npm error this command with --force or --legacy-peer-deps
+2026-09-28T16:38:13.8775770Z npm error to accept an incorrect (and potentially broken) dependency resolution.
+2026-09-28T16:38:13.8777300Z npm error
+2026-09-28T16:38:13.8778840Z npm error For a full report see:
+2026-09-28T16:38:13.8780490Z npm error /home/runner/.npm/_logs/2026-09-28T16_38_07_431Z-eresolve-report.txt
+2026-09-28T16:38:13.8782150Z npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-09-28T16_38_07_431Z-debug-0.log
+2026-09-28T16:38:13.9128080Z ##[error]Process completed with exit code 1.
+2026-09-28T16:38:13.9221930Z Post job cleanup.
+2026-09-28T16:38:14.0483020Z [command]/usr/bin/git config --local --get-regexp core\.sshCommand
+2026-09-28T16:38:14.1131070Z Cleaning up orphan processes

@@ -1,0 +1,12 @@
+﻿{
+  "id": "ht07-celandine-mooring",
+  "split": "test",
+  "ecosystem": "java",
+  "repository": "celandine-works/mooring-planner",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"test_regression","title":"Arrival boundary excluded","root_cause":"The berth availability predicate excludes an arrival exactly at the opening time. Make the opening boundary inclusive.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"b","relation":"lookalike","category":"test_regression","title":"Departure boundary included","root_cause":"The berth availability predicate includes a departure exactly at the closing time. Make the closing boundary exclusive.","differs_from_earlier":"Another boundary assertion in the same suite fails, but the closing comparison must change rather than the opening comparison."},
+    {"id":"e3","file":"e3.log","cluster":"c","relation":"lookalike","category":"test_regression","title":"Overnight interval rejected","root_cause":"Berth availability returns false for an arrival inside an overnight window. Correct availability handling for intervals that cross midnight.","differs_from_earlier":"A similar availability assertion fails for an interval crossing midnight; correcting the interval logic is separate from making the opening boundary inclusive."},
+    {"id":"e4","file":"e4.log","cluster":"d","relation":"first","category":"dependency_build","title":"Unknown mooring class","root_cause":"DispatchBoard references MooringSlot in works.celandine.mooring.model, but the compiler cannot find that class in the package.","differs_from_earlier":""}
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "t19-nacre-checks",
+  "independent_labels": {
+    "comparability": "partially_comparable",
+    "unverified_factors": ["history_diverged"],
+    "category": "github_permissions",
+    "culprit_kind": "workflow",
+    "culprit_paths": [".github/workflows/verify.yml"]
+  },
+  "verdict": "agree",
+  "disputed_fields": [],
+  "reason_category": "none",
+  "notes": "The matching successful baseline has diverged history. The workflow changes checks permission from write to read, and check-run creation fails with 403. Logs, history, repository files, plan and evidence ranges are consistent."
+}

@@ -1,0 +1,49 @@
+2026-09-14T08:12:01.1234000Z Current runner version: '2.329.0'
+2026-09-14T08:12:01.1241000Z ##[group]Runner Image
+2026-09-14T08:12:01.1242000Z Image: ubuntu-24.04
+2026-09-14T08:12:01.1243000Z Version: 20260907.1.0
+2026-09-14T08:12:01.1244000Z ##[endgroup]
+2026-09-14T08:12:01.1250000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-14T08:12:01.1251000Z Contents: read
+2026-09-14T08:12:01.1252000Z ##[endgroup]
+2026-09-14T08:12:01.8000000Z Prepare workflow directory
+2026-09-14T08:12:02.1000000Z Prepare all required actions
+2026-09-14T08:12:03.1000000Z Getting action download info
+2026-09-14T08:12:04.0000000Z ##[group]Run actions/checkout@v4
+2026-09-14T08:12:04.0010000Z with:
+2026-09-14T08:12:04.0020000Z   repository: ravelin-works/waxwing-retort
+2026-09-14T08:12:04.0030000Z   fetch-depth: 1
+2026-09-14T08:12:04.0040000Z ##[endgroup]
+2026-09-14T08:12:04.4000000Z Syncing repository: ravelin-works/waxwing-retort
+2026-09-14T08:12:05.2000000Z Checking out the ref
+2026-09-14T08:12:05.4000000Z ##[group]Run packer init image/retort.pkr.hcl
+2026-09-14T08:12:05.4010000Z packer init image/retort.pkr.hcl
+2026-09-14T08:12:05.4020000Z shell: /usr/bin/bash -e {0}
+2026-09-14T08:12:05.4030000Z ##[endgroup]
+2026-09-14T08:12:06.0000000Z Installed plugin github.com/hashicorp/docker v1.1.2
+2026-09-14T08:12:06.1000000Z ##[group]Run packer build image/retort.pkr.hcl
+2026-09-14T08:12:06.1010000Z packer build image/retort.pkr.hcl
+2026-09-14T08:12:06.1020000Z shell: /usr/bin/bash -e {0}
+2026-09-14T08:12:06.1030000Z ##[endgroup]
+2026-09-14T08:12:06.5000000Z docker.retort: output will be in this color.
+2026-09-14T08:12:06.7000000Z ==> docker.retort: Creating a temporary directory for sharing data...
+2026-09-14T08:12:06.9000000Z ==> docker.retort: Pulling Docker image: ubuntu:24.04
+2026-09-14T08:12:10.1000000Z     docker.retort: Status: Downloaded newer image for ubuntu:24.04
+2026-09-14T08:12:10.2000000Z ==> docker.retort: Starting docker container...
+2026-09-14T08:12:10.8000000Z ==> docker.retort: Provisioning with shell script: image/install-retort.sh
+2026-09-14T08:12:11.0000000Z     docker.retort: Get:1 http://archive.ubuntu.com/ubuntu noble InRelease [256 kB]
+2026-09-14T08:12:13.4000000Z     docker.retort: Fetched 28.4 MB in 2s (13.6 MB/s)
+2026-09-14T08:12:13.5000000Z     docker.retort: Reading package lists...
+2026-09-14T08:12:14.0000000Z     docker.retort: Reading package lists...
+2026-09-14T08:12:14.2000000Z     docker.retort: Building dependency tree...
+2026-09-14T08:12:14.3000000Z     docker.retort: Reading state information...
+2026-09-14T08:12:14.4000000Z     docker.retort: E: Unable to locate package retort-metrics-agent
+2026-09-14T08:12:14.5000000Z ==> docker.retort: Killing the container: 19a64c7d2ef1
+2026-09-14T08:12:14.8000000Z Build 'docker.retort' errored after 8 seconds 290 milliseconds: Script exited with non-zero exit status: 100. Allowed exit codes are: [0]
+2026-09-14T08:12:14.8010000Z ==> Wait completed after 8 seconds 290 milliseconds
+2026-09-14T08:12:14.8020000Z ==> Some builds didn't complete successfully and had errors:
+2026-09-14T08:12:14.8030000Z --> docker.retort: Script exited with non-zero exit status: 100. Allowed exit codes are: [0]
+2026-09-14T08:12:14.8040000Z ==> Builds finished but no artifacts were created.
+2026-09-14T08:12:14.9000000Z ##[error]Process completed with exit code 1.
+2026-09-14T08:12:15.0000000Z Post job cleanup.
+2026-09-14T08:12:15.2000000Z Cleaning up orphan processes

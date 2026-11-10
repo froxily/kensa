@@ -1,0 +1,8 @@
+name: Quartz image
+on: push
+jobs:
+  image:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -t quartz-check .

@@ -1,0 +1,13 @@
+{
+  "id": "ht15-thimble-dredge",
+  "independent_labels": [
+    {"id": "e1", "cluster": "a", "relation": "first", "category": "oom_timeout"},
+    {"id": "e2", "cluster": "a", "relation": "recurrence", "category": "oom_timeout"},
+    {"id": "e3", "cluster": "b", "relation": "first", "category": "test_regression"},
+    {"id": "e4", "cluster": "c", "relation": "first", "category": "workflow_path"}
+  ],
+  "verdict": "ambiguous",
+  "disputed_fields": ["e1.root_cause", "e2.root_cause"],
+  "reason_category": "ambiguous_evidence",
+  "notes": "The labels and plan pattern agree. E2 confirms a container OOM, while e1's exit 137 and 512 MiB limit suggest but do not establish an OOM. Both logs show records being buffered, but neither establishes the claim that the entire input is loaded into memory. E2 differs substantively from e1; e3 and e4 are unrelated failures, and no giveaway commentary is apparent."
+}

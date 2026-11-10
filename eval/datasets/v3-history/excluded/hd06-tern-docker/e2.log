@@ -1,0 +1,52 @@
+2026-09-09T05:00:00.0000000Z Current runner version: '2.328.0'
+2026-09-09T05:00:01.0000000Z ##[group]Runner Image
+2026-09-09T05:00:02.0000000Z Image: ubuntu-24.04
+2026-09-09T05:00:03.0000000Z Version: 20260901.1
+2026-09-09T05:00:04.0000000Z ##[endgroup]
+2026-09-09T05:00:05.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-09T05:00:06.0000000Z Contents: read
+2026-09-09T05:00:07.0000000Z ##[endgroup]
+2026-09-09T05:00:08.0000000Z Prepare workflow directory
+2026-09-09T05:00:09.0000000Z Prepare all required actions
+2026-09-09T05:00:10.0000000Z Download action repository 'actions/checkout@v4'
+2026-09-09T05:00:11.0000000Z Complete job name: image
+2026-09-09T05:00:12.0000000Z ##[group]Run actions/checkout@v4
+2026-09-09T05:00:13.0000000Z with:
+2026-09-09T05:00:14.0000000Z   repository: tern-harbor/beacon-sail
+2026-09-09T05:00:15.0000000Z   ref: refs/pull/22/merge
+2026-09-09T05:00:16.0000000Z Syncing repository
+2026-09-09T05:00:17.0000000Z git version 2.51.0
+2026-09-09T05:00:18.0000000Z Initializing the repository
+2026-09-09T05:00:19.0000000Z Fetching the repository
+2026-09-09T05:00:20.0000000Z Checking out the ref
+2026-09-09T05:00:21.0000000Z ##[endgroup]
+2026-09-09T05:00:21.1000000Z ##[group]Run ls -l deploy/beacon.yaml && cat .dockerignore
+2026-09-09T05:00:21.2000000Z ls -l deploy/beacon.yaml && cat .dockerignore
+2026-09-09T05:00:21.3000000Z shell: /usr/bin/bash -e {0}
+2026-09-09T05:00:21.4000000Z ##[endgroup]
+2026-09-09T05:00:21.5000000Z -rw-r--r-- 1 runner docker 184 Sep  9 05:00 deploy/beacon.yaml
+2026-09-09T05:00:21.6000000Z .git
+2026-09-09T05:00:21.7000000Z deploy/
+2026-09-09T05:00:22.0000000Z ##[group]Run docker build -t beacon-sail .
+2026-09-09T05:00:23.0000000Z docker build -t beacon-sail .
+2026-09-09T05:00:24.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-09T05:00:25.0000000Z ##[endgroup]
+2026-09-09T05:00:26.0000000Z #0 building with "default" instance using docker driver
+2026-09-09T05:00:27.0000000Z #1 [internal] load build definition from Dockerfile
+2026-09-09T05:00:28.0000000Z #1 transferring dockerfile: 330B done
+2026-09-09T05:00:29.0000000Z #1 DONE 0.0s
+2026-09-09T05:00:30.0000000Z #2 [internal] load .dockerignore
+2026-09-09T05:00:31.0000000Z #2 transferring context: 47B done
+2026-09-09T05:00:32.0000000Z #2 DONE 0.0s
+2026-09-09T05:00:33.0000000Z #3 [internal] load build context
+2026-09-09T05:00:34.0000000Z #3 transferring context: 12.4kB done
+2026-09-09T05:00:35.0000000Z #3 DONE 0.0s
+2026-09-09T05:00:36.0000000Z #4 [build 3/5] COPY deploy/beacon.yaml /etc/beacon.yaml
+2026-09-09T05:00:37.0000000Z #4 ERROR: failed to calculate checksum of ref: "/deploy/beacon.yaml": not found
+2026-09-09T05:00:38.0000000Z Dockerfile:6
+2026-09-09T05:00:39.0000000Z --------------------
+2026-09-09T05:00:40.0000000Z    6 | >>> COPY deploy/beacon.yaml /etc/beacon.yaml
+2026-09-09T05:00:41.0000000Z --------------------
+2026-09-09T05:00:42.0000000Z ERROR: failed to build: failed to solve: failed to compute cache key: failed to calculate checksum: "/deploy/beacon.yaml": not found
+2026-09-09T05:00:43.0000000Z ##[error]Process completed with exit code 1.
+2026-09-09T05:00:44.0000000Z Post job cleanup.

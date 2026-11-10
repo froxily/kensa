@@ -1,0 +1,20 @@
+﻿{
+  "id": "t16-kestrel-compiler",
+  "split": "test",
+  "comparability": "partially_comparable",
+  "category": "dependency_build",
+  "culprit_kind": "runner_image",
+  "difficulty": "hard",
+  "ecosystem": "cpp",
+  "title": "Compiler switch exposes an unused private field",
+  "root_cause": "The runner image version changed and its default C++ compiler switched from GCC to Clang. Clang reports an unused private field under the existing warning flags, and -Werror turns that diagnostic into a build failure; the intervening project version change does not affect compilation.",
+  "culprit_paths": ["<runner-image>"],
+  "culprit_commit": null,
+  "unverified_factors": ["runner_image_changed"],
+  "fix_keywords": ["route_hint_", "-Werror", "clang"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 44, "end_line": 46, "why": "CMake identifies the default C++ compiler as Clang 19."},
+    {"path": "log", "start_line": 57, "end_line": 62, "why": "Clang rejects the unused private field because warnings are errors."},
+    {"path": "repo/src/route_book.hpp", "start_line": 3, "end_line": 9, "why": "The class declares the unused field."}
+  ]
+}

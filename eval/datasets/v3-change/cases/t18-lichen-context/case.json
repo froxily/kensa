@@ -1,0 +1,19 @@
+﻿{
+  "id": "t18-lichen-context",
+  "split": "test",
+  "comparability": "partially_comparable",
+  "category": "docker",
+  "culprit_kind": "build_config",
+  "difficulty": "medium",
+  "ecosystem": "go",
+  "title": "Container build cannot find its source directory",
+  "root_cause": "The Dockerfile changed the source of a COPY instruction from cmd/lichen to cmd/lichens, which is absent from the build context. BuildKit cannot compute the source checksum and stops before compiling the Go program. The successful baseline is on a divergent history, so the comparison cannot establish every intervening difference.",
+  "culprit_paths": ["Dockerfile"],
+  "culprit_commit": "e9a413c6b70d28f154a3c8e902d65b7f31c4a860",
+  "unverified_factors": ["history_diverged"],
+  "fix_keywords": ["Dockerfile", "cmd/lichen/"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 68, "end_line": 69, "why": "BuildKit cannot find the source of the COPY instruction."},
+    {"path": "repo/Dockerfile", "start_line": 3, "end_line": 5, "why": "The build copies the plural directory before compiling the singular package path."}
+  ]
+}

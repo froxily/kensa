@@ -1,0 +1,12 @@
+﻿{
+  "id": "ht14-wrenfield-almanac",
+  "split": "test",
+  "ecosystem": "typescript",
+  "repository": "wrenfield-labs/almanac-panel",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"test_regression","title":"Forecast card snapshot changes", "root_cause":"The forecast card now omits its unit label after a rendering regression; restore the unit label in the card renderer.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"b","relation":"lookalike","category":"test_regression","title":"French date snapshot uses fallback locale","root_cause":"The runner lacks French locale data required by the date formatter, which falls back to English; install the locale data in the CI image.","differs_from_earlier":"Another Jest snapshot mismatch, but the date formatting locale falls back rather than the card dropping a unit label."},
+    {"id":"e3","file":"e3.log","cluster":"b","relation":"recurrence","category":"test_regression","title":"French date snapshot falls back again","root_cause":"The runner lacks French locale data required by the date formatter, which falls back to English; install the locale data in the CI image.","differs_from_earlier":"A later run exposes the same missing locale in a different date fixture and a different checkout path."},
+    {"id":"e4","file":"e4.log","cluster":"a","relation":"recurrence","category":"test_regression","title":"Forecast unit still absent","root_cause":"The forecast card now omits its unit label after a rendering regression; restore the unit label in the card renderer.","differs_from_earlier":"A later run renders another temperature fixture after unrelated tests and reports a shifted source line."}
+  ]
+}

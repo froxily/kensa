@@ -1,0 +1,40 @@
+2026-09-15T16:06:22.1122010Z Current runner version: '2.329.0'
+2026-09-15T16:06:22.1254110Z ##[group]Runner Image
+2026-09-15T16:06:22.1257120Z Image: ubuntu-22.04
+2026-09-15T16:06:22.1260020Z Version: 20260908.1.0
+2026-09-15T16:06:22.1263010Z ##[endgroup]
+2026-09-15T16:06:22.2102020Z Prepare workflow directory
+2026-09-15T16:06:22.2843120Z Prepare all required actions
+2026-09-15T16:06:22.4913120Z Download action repository 'actions/checkout@v4'
+2026-09-15T16:06:22.7510020Z Complete job name: warp-tests
+2026-09-15T16:06:22.7601010Z ##[group]Run actions/checkout@v4
+2026-09-15T16:06:22.7603110Z with:
+2026-09-15T16:06:22.7605010Z   repository: feldspar-bobbin/spindle-mosaic
+2026-09-15T16:06:22.7607110Z   clean: true
+2026-09-15T16:06:22.7609110Z ##[endgroup]
+2026-09-15T16:06:22.8923200Z Syncing repository: feldspar-bobbin/spindle-mosaic
+2026-09-15T16:06:23.1721220Z [command]/usr/bin/git init /home/runner/work/spindle-mosaic/spindle-mosaic
+2026-09-15T16:06:23.2483110Z Initialized empty Git repository in /home/runner/work/spindle-mosaic/spindle-mosaic/.git/
+2026-09-15T16:06:23.4109110Z Fetching the repository
+2026-09-15T16:06:24.1741120Z Checking out the ref
+2026-09-15T16:06:24.2911010Z ##[group]Run clojure -M:test -n mosaic.warp-test
+2026-09-15T16:06:24.2914000Z clojure -M:test -n mosaic.warp-test
+2026-09-15T16:06:24.2938110Z shell: /usr/bin/bash -e {0}
+2026-09-15T16:06:24.2941220Z ##[endgroup]
+2026-09-15T16:06:26.4213020Z Testing mosaic.warp-test
+2026-09-15T16:06:26.4312010Z 
+2026-09-15T16:06:26.4316010Z FAIL in (expands-repeated-warp) (warp_test.clj:34)
+2026-09-15T16:06:26.4319110Z expected: (= [:indigo :indigo :chalk] (expand-warp [:indigo :indigo :chalk]))
+2026-09-15T16:06:26.4322110Z   actual: (not (= [:indigo :indigo :chalk] [:indigo :chalk]))
+2026-09-15T16:06:26.4325110Z 
+2026-09-15T16:06:26.4328110Z FAIL in (expands-three-identical-threads) (warp_test.clj:41)
+2026-09-15T16:06:26.4331110Z expected: (= [:chalk :chalk :chalk] (expand-warp [:chalk :chalk :chalk]))
+2026-09-15T16:06:26.4334110Z   actual: (not (= [:chalk :chalk :chalk] [:chalk]))
+2026-09-15T16:06:26.4343110Z 
+2026-09-15T16:06:26.4347110Z Ran 9 tests containing 22 assertions.
+2026-09-15T16:06:26.4350110Z 2 failures, 0 errors.
+2026-09-15T16:06:26.5022010Z ##[error]Process completed with exit code 1.
+2026-09-15T16:06:26.5131110Z Post job cleanup.
+2026-09-15T16:06:26.5661010Z [command]/usr/bin/git version
+2026-09-15T16:06:26.5771010Z git version 2.43.0
+2026-09-15T16:06:26.6921010Z Cleaning up orphan processes

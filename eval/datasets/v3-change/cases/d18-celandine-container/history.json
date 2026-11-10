@@ -1,0 +1,11 @@
+{
+  "comparisons": {
+    "c349ab62f08d71e5a43c9b867f120d5e6a2c784b...b8c731e2d54a09f6c13e892a7d04b5f96e21c8a3": {
+      "status": "diverged", "merge_base": "a59c2d73e4f081b6c9d1527a3e68f4b021d7c93e", "truncated": false,
+      "commits": [{"sha": "b8c731e2d54a09f6c13e892a7d04b5f96e21c8a3", "message": "Update runtime base tag", "date": "2026-10-28T10:08:00Z", "files": [{"path": "Dockerfile", "status": "modified", "additions": 1, "deletions": 1, "patch": "@@ -3,7 +3,7 @@ WORKDIR /work\n COPY Cargo.toml Cargo.lock ./\n COPY src ./src\n RUN cargo build --release --locked\n-FROM debian:bookworm\n+FROM debian:bookworm-slim-celandine\n COPY --from=build /work/target/release/celandine /usr/local/bin/celandine\n USER 10001\n ENTRYPOINT [\"/usr/local/bin/celandine\"]"}]}]
+    },
+    "e261d39b4a75c08f12b6e934da571c8f0a2b469d...b8c731e2d54a09f6c13e892a7d04b5f96e21c8a3": {"status": "diverged", "merge_base": "a59c2d73e4f081b6c9d1527a3e68f4b021d7c93e", "truncated": false, "commits": [{"sha": "b8c731e2d54a09f6c13e892a7d04b5f96e21c8a3", "message": "Update runtime base tag", "date": "2026-10-28T10:08:00Z", "files": [{"path": "Dockerfile", "status": "modified", "additions": 1, "deletions": 1, "patch": "@@ -3,7 +3,7 @@ WORKDIR /work\n COPY Cargo.toml Cargo.lock ./\n COPY src ./src\n RUN cargo build --release --locked\n-FROM debian:bookworm\n+FROM debian:bookworm-slim-celandine\n COPY --from=build /work/target/release/celandine /usr/local/bin/celandine\n USER 10001\n ENTRYPOINT [\"/usr/local/bin/celandine\"]"}]}]
+    }
+  },
+  "workflow_blobs": {"b8c731e2d54a09f6c13e892a7d04b5f96e21c8a3": "d1f28c694a3b057e6c82d19f4a7b035e96c18a42", "c349ab62f08d71e5a43c9b867f120d5e6a2c784b": "d1f28c694a3b057e6c82d19f4a7b035e96c18a42", "e261d39b4a75c08f12b6e934da571c8f0a2b469d": "d1f28c694a3b057e6c82d19f4a7b035e96c18a42"}
+}

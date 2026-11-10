@@ -1,0 +1,46 @@
+2026-09-20T16:23:12.1000000Z Current runner version: '2.329.0'
+2026-09-20T16:23:12.1400000Z ##[group]Runner Image
+2026-09-20T16:23:12.1500000Z Image: windows-2025
+2026-09-20T16:23:12.1600000Z Version: 20260914.1.0
+2026-09-20T16:23:12.1700000Z ##[endgroup]
+2026-09-20T16:23:12.2000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-20T16:23:12.2100000Z Contents: read
+2026-09-20T16:23:12.2200000Z Metadata: read
+2026-09-20T16:23:12.2300000Z ##[endgroup]
+2026-09-20T16:23:12.2400000Z Prepare workflow directory
+2026-09-20T16:23:12.3000000Z Prepare all required actions
+2026-09-20T16:23:12.7800000Z Download action repository 'actions/checkout@v4'
+2026-09-20T16:23:13.0200000Z Complete job name: compile (windows-2025)
+2026-09-20T16:23:13.0600000Z ##[group]Run actions/checkout@v4
+2026-09-20T16:23:13.0700000Z with:
+2026-09-20T16:23:13.0800000Z   repository: quillhaven/bellows-index
+2026-09-20T16:23:13.0900000Z   ref: refs/pull/84/merge
+2026-09-20T16:23:13.1000000Z   fetch-depth: 1
+2026-09-20T16:23:13.1100000Z   clean: true
+2026-09-20T16:23:13.1200000Z ##[endgroup]
+2026-09-20T16:23:13.4100000Z Syncing repository: quillhaven/bellows-index
+2026-09-20T16:23:13.4600000Z ##[group]Getting Git version info
+2026-09-20T16:23:13.4800000Z git version 2.52.0.windows.1
+2026-09-20T16:23:13.4900000Z ##[endgroup]
+2026-09-20T16:23:13.8200000Z Initializing the repository
+2026-09-20T16:23:14.2500000Z Setting up auth
+2026-09-20T16:23:14.8100000Z Fetching the repository
+2026-09-20T16:23:16.1200000Z Checking out the ref
+2026-09-20T16:23:16.4100000Z ##[group]Run cargo check --all-targets --locked
+2026-09-20T16:23:16.4200000Z [36;1mcargo check --all-targets --locked[0m
+2026-09-20T16:23:16.4300000Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-09-20T16:23:16.4400000Z ##[endgroup]
+2026-09-20T16:23:16.9800000Z cargo: D:\a\_temp\8b12.ps1:2
+2026-09-20T16:23:16.9900000Z Line |
+2026-09-20T16:23:17.0000000Z    2 |  cargo check --all-targets --locked
+2026-09-20T16:23:17.0100000Z      |  ~~~~~
+2026-09-20T16:23:17.0200000Z      | The term 'cargo' is not recognized as a name of a cmdlet, function, script file, or executable program.
+2026-09-20T16:23:17.0300000Z      | Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+2026-09-20T16:23:17.0900000Z ##[error]Process completed with exit code 1.
+2026-09-20T16:23:17.1200000Z Post job cleanup.
+2026-09-20T16:23:17.3600000Z [command]"C:\Program Files\Git\bin\git.exe" version
+2026-09-20T16:23:17.3700000Z git version 2.52.0.windows.1
+2026-09-20T16:23:17.5400000Z Temporarily overriding HOME='D:\a\_temp\16cb' before making global git config changes
+2026-09-20T16:23:17.6100000Z Adding repository directory to the temporary git global config as a safe directory
+2026-09-20T16:23:17.6800000Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\bellows-index\bellows-index
+2026-09-20T16:23:17.9100000Z Cleaning up orphan processes

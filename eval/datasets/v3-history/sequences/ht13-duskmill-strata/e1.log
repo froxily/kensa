@@ -1,0 +1,52 @@
+2026-09-04T08:00:01.1041234Z Current runner version: '2.329.0'
+2026-09-04T08:00:01.2241234Z ##[group]Operating System
+2026-09-04T08:00:01.2251234Z Ubuntu
+2026-09-04T08:00:01.2261234Z 24.04.3
+2026-09-04T08:00:01.2271234Z ##[endgroup]
+2026-09-04T08:00:01.3001234Z ##[group]Runner Image
+2026-09-04T08:00:01.3011234Z Image: ubuntu-24.04
+2026-09-04T08:00:01.3021234Z Version: 20260830.1
+2026-09-04T08:00:01.3031234Z ##[endgroup]
+2026-09-04T08:00:02.0011234Z Prepare workflow directory
+2026-09-04T08:00:02.2011234Z Prepare all required actions
+2026-09-04T08:00:03.1011234Z Getting action download info
+2026-09-04T08:00:04.0011234Z Complete job name: checks
+2026-09-04T08:00:04.5001234Z ##[group]Run actions/checkout@v4
+2026-09-04T08:00:04.5011234Z with:
+2026-09-04T08:00:04.5021234Z   repository: duskmill-labs/strata-indexer
+2026-09-04T08:00:04.5031234Z   clean: true
+2026-09-04T08:00:04.5041234Z ##[endgroup]
+2026-09-04T08:00:05.0101234Z Syncing repository: duskmill-labs/strata-indexer
+2026-09-04T08:00:05.2101234Z Working directory is '/home/runner/work/strata-indexer/strata-indexer'
+2026-09-04T08:00:06.0021234Z Checking out the ref
+2026-09-04T08:00:06.5001234Z ##[group]Run actions/setup-python@v5
+2026-09-04T08:00:06.5011234Z with:
+2026-09-04T08:00:06.5021234Z   python-version: '3.12'
+2026-09-04T08:00:06.5031234Z ##[endgroup]
+2026-09-04T08:00:07.0201234Z Successfully set up CPython (3.12.6)
+2026-09-04T08:00:07.3001234Z ##[group]Run python -m pip install -e '.[test]'
+2026-09-04T08:00:07.3011234Z python -m pip install -e '.[test]'
+2026-09-04T08:00:07.3021234Z shell: /usr/bin/bash -e {0}
+2026-09-04T08:00:07.3031234Z ##[endgroup]
+2026-09-04T08:00:10.1001234Z Building editable for strata-indexer (pyproject.toml): finished with status 'done'
+2026-09-04T08:00:10.4001234Z Successfully installed pytest-8.3.3 strata-indexer-0.4.0
+2026-09-04T08:00:10.8001234Z ##[group]Run python -m pytest
+2026-09-04T08:00:10.8011234Z python -m pytest
+2026-09-04T08:00:10.8021234Z shell: /usr/bin/bash -e {0}
+2026-09-04T08:00:10.8031234Z ##[endgroup]
+2026-09-04T08:00:11.0101234Z ============================= test session starts ==============================
+2026-09-04T08:00:11.0111234Z platform linux -- Python 3.12.6, pytest-8.3.3
+2026-09-04T08:00:11.0121234Z rootdir: /home/runner/work/strata-indexer/strata-indexer
+2026-09-04T08:00:11.0131234Z collected 3 items / 1 error
+2026-09-04T08:00:11.0141234Z __________________ ERROR collecting tests/test_survey.py __________________
+2026-09-04T08:00:11.0151234Z tests/test_survey.py:2: in <module>
+2026-09-04T08:00:11.0161234Z     from strata_indexer.survey import scan_layers
+2026-09-04T08:00:11.0171234Z src/strata_indexer/survey.py:4: in <module>
+2026-09-04T08:00:11.0181234Z     import ridgecodec
+2026-09-04T08:00:11.0191234Z E   ModuleNotFoundError: No module named 'ridgecodec'
+2026-09-04T08:00:11.0201234Z =========================== short test summary info ============================
+2026-09-04T08:00:11.0211234Z ERROR tests/test_survey.py
+2026-09-04T08:00:11.0221234Z !!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+2026-09-04T08:00:11.1001234Z ##[error]Process completed with exit code 2.
+2026-09-04T08:00:11.2001234Z Post job cleanup.
+2026-09-04T08:00:11.3001234Z Cleaning up orphan processes

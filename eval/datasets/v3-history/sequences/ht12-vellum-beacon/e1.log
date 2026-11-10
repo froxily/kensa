@@ -1,0 +1,63 @@
+﻿2026-09-02T01:00:02.1100000Z Current runner version: '2.329.0'
+2026-09-02T01:00:02.1120000Z ##[group]Runner Image
+2026-09-02T01:00:02.1130000Z Image: ubuntu-24.04
+2026-09-02T01:00:02.1140000Z Version: 20260824.1
+2026-09-02T01:00:02.1150000Z ##[endgroup]
+2026-09-02T01:00:02.1180000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-02T01:00:02.1190000Z Contents: read
+2026-09-02T01:00:02.1200000Z ##[endgroup]
+2026-09-02T01:00:02.1250000Z Prepare workflow directory
+2026-09-02T01:00:02.4200000Z Prepare all required actions
+2026-09-02T01:00:03.0150000Z Job name: scheduled-probe
+2026-09-02T01:00:03.0200000Z Event: schedule
+2026-09-02T01:00:03.0210000Z Environment: none
+2026-09-02T01:00:03.1000000Z ##[group]Run actions/checkout@v4
+2026-09-02T01:00:03.1010000Z with:
+2026-09-02T01:00:03.1020000Z   repository: copperquay/vellum-beacon
+2026-09-02T01:00:03.1030000Z   clean: true
+2026-09-02T01:00:03.1040000Z ##[endgroup]
+2026-09-02T01:00:04.0100000Z Syncing repository: copperquay/vellum-beacon
+2026-09-02T01:00:04.2200000Z Checking out the ref
+2026-09-02T01:00:04.2300000Z HEAD is now at 2fd189c Tune probe window
+2026-09-02T01:00:04.2400000Z ##[group]Run cat .github/workflows/probe.yml
+2026-09-02T01:00:04.2410000Z cat .github/workflows/probe.yml
+2026-09-02T01:00:04.2420000Z gh secret list --env observatory
+2026-09-02T01:00:04.2430000Z gh secret list
+2026-09-02T01:00:04.2440000Z shell: /usr/bin/bash -e {0}
+2026-09-02T01:00:04.2441000Z env:
+2026-09-02T01:00:04.2442000Z   GH_TOKEN: ***
+2026-09-02T01:00:04.2450000Z ##[endgroup]
+2026-09-02T01:00:04.2460000Z on: {schedule: [{cron: '0 1 * * *'}]}
+2026-09-02T01:00:04.2470000Z jobs:
+2026-09-02T01:00:04.2480000Z   scheduled-probe:
+2026-09-02T01:00:04.2490000Z     runs-on: ubuntu-latest
+2026-09-02T01:00:04.2500000Z     steps:
+2026-09-02T01:00:04.2510000Z       - run: node scripts/probe-beacon.mjs
+2026-09-02T01:00:04.2520000Z         env:
+2026-09-02T01:00:04.2530000Z           BEACON_PROBE_KEY: ${{ secrets.BEACON_PROBE_KEY }}
+2026-09-02T01:00:04.2540000Z BEACON_PROBE_KEY  2026-08-29T10:00:00Z
+2026-09-02T01:00:04.2550000Z ARCHIVE_KEY       2026-08-20T10:00:00Z
+2026-09-02T01:00:04.4000000Z ##[group]Run actions/setup-node@v4
+2026-09-02T01:00:04.4010000Z with:
+2026-09-02T01:00:04.4020000Z   node-version: 22
+2026-09-02T01:00:04.4030000Z ##[endgroup]
+2026-09-02T01:00:05.0100000Z Found in cache @ /opt/hostedtoolcache/node/22.18.0/x64
+2026-09-02T01:00:05.0900000Z ##[group]Run npm ci
+2026-09-02T01:00:05.0910000Z npm ci
+2026-09-02T01:00:05.0920000Z shell: /usr/bin/bash -e {0}
+2026-09-02T01:00:05.0930000Z ##[endgroup]
+2026-09-02T01:00:08.5100000Z added 42 packages, and audited 43 packages in 3s
+2026-09-02T01:00:08.5110000Z found 0 vulnerabilities
+2026-09-02T01:00:08.7000000Z ##[group]Run node scripts/probe-beacon.mjs
+2026-09-02T01:00:08.7010000Z node scripts/probe-beacon.mjs
+2026-09-02T01:00:08.7020000Z shell: /usr/bin/bash -e {0}
+2026-09-02T01:00:08.7030000Z env:
+2026-09-02T01:00:08.7040000Z   BEACON_PROBE_KEY: 
+2026-09-02T01:00:08.7050000Z ##[endgroup]
+2026-09-02T01:00:08.8100000Z file:///home/runner/work/vellum-beacon/vellum-beacon/scripts/probe-beacon.mjs:17
+2026-09-02T01:00:08.8110000Z Error: BEACON_PROBE_KEY must be non-empty
+2026-09-02T01:00:08.8120000Z     at loadProbeConfig (file:///home/runner/work/vellum-beacon/vellum-beacon/scripts/probe-beacon.mjs:17:11)
+2026-09-02T01:00:08.8130000Z Node.js v22.18.0
+2026-09-02T01:00:08.8200000Z ##[error]Process completed with exit code 1.
+2026-09-02T01:00:08.9000000Z Post job cleanup.
+2026-09-02T01:00:09.0500000Z Cleaning up orphan processes

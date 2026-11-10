@@ -1,0 +1,12 @@
+{
+  "id": "hd33-ivory-kestrel",
+  "split": "dev",
+  "ecosystem": "ruby (rspec, rails)",
+  "repository": "ivory-kestrel/lichen-post",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"test_regression","title":"Test database has a pending dispatch window migration","root_cause":"The test database has not applied migration 20260903114500 AddDispatchWindowToParcels. Apply the migration to the test database before running RSpec.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"b","relation":"first","category":"test_regression","title":"RuboCop rejects a long dispatch label line","root_cause":"A line in the dispatch label formatter exceeds the configured Layout/LineLength limit. Reformat that expression to satisfy the style check.","differs_from_earlier":""},
+    {"id":"e3","file":"e3.log","cluster":"a","relation":"recurrence","category":"test_regression","title":"Dispatch window migration remains pending in test","root_cause":"The test database has not applied migration 20260903114500 AddDispatchWindowToParcels. Apply the migration to the test database before running RSpec.","differs_from_earlier":"A later RSpec invocation loads a different spec and reports an additional pending migration, while the dispatch window migration is still unapplied."},
+    {"id":"e4","file":"e4.log","cluster":"b","relation":"recurrence","category":"test_regression","title":"Dispatch label formatter still exceeds line length","root_cause":"A line in the dispatch label formatter exceeds the configured Layout/LineLength limit. Reformat that expression to satisfy the style check.","differs_from_earlier":"The formatter has moved down after unrelated edits and the later RuboCop run inspects a different set of files; the same expression still exceeds the limit."}
+  ]
+}

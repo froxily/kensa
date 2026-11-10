@@ -1,0 +1,55 @@
+2026-09-26T07:08:01.0000000Z Current runner version: '2.329.0'
+2026-09-26T07:08:01.1000000Z ##[group]Operating System
+2026-09-26T07:08:01.1100000Z Ubuntu
+2026-09-26T07:08:01.1200000Z 24.04.3
+2026-09-26T07:08:01.1300000Z ##[endgroup]
+2026-09-26T07:08:01.2000000Z ##[group]Runner Image
+2026-09-26T07:08:01.2100000Z Image: ubuntu-24.04
+2026-09-26T07:08:01.2200000Z ##[endgroup]
+2026-09-26T07:08:02.0000000Z Prepare workflow directory
+2026-09-26T07:08:02.2000000Z Prepare all required actions
+2026-09-26T07:08:03.0000000Z ##[group]Run actions/checkout@v4
+2026-09-26T07:08:03.0100000Z with:
+2026-09-26T07:08:03.0200000Z   repository: morrow-guild/canvas-orchard
+2026-09-26T07:08:03.0300000Z   clean: true
+2026-09-26T07:08:03.0400000Z ##[endgroup]
+2026-09-26T07:08:03.9000000Z Syncing repository: morrow-guild/canvas-orchard
+2026-09-26T07:08:04.4000000Z Checking out the ref
+2026-09-26T07:08:05.0000000Z ##[group]Run actions/setup-node@v4
+2026-09-26T07:08:05.0100000Z with:
+2026-09-26T07:08:05.0200000Z   node-version: 20
+2026-09-26T07:08:05.0300000Z ##[endgroup]
+2026-09-26T07:08:05.8000000Z node: v20.19.5
+2026-09-26T07:08:05.8100000Z npm: 10.8.2
+2026-09-26T07:08:06.0000000Z ##[group]Run npm ci
+2026-09-26T07:08:06.0100000Z npm ci
+2026-09-26T07:08:06.0200000Z shell: /usr/bin/bash -e {0}
+2026-09-26T07:08:06.0300000Z ##[endgroup]
+2026-09-26T07:08:11.3000000Z added 316 packages, and audited 317 packages in 5s
+2026-09-26T07:08:11.4000000Z found 0 vulnerabilities
+2026-09-26T07:08:11.5000000Z ##[group]Run npm test -- --ci
+2026-09-26T07:08:11.5100000Z npm test -- --ci
+2026-09-26T07:08:11.5200000Z shell: /usr/bin/bash -e {0}
+2026-09-26T07:08:11.5300000Z ##[endgroup]
+2026-09-26T07:08:11.8000000Z > canvas-orchard@1.0.0 test
+2026-09-26T07:08:11.8100000Z > jest --ci
+2026-09-26T07:08:12.4000000Z PASS src/badges/harvestBadge.test.js
+2026-09-26T07:08:12.6000000Z PASS src/format/season.test.js
+2026-09-26T07:08:12.8000000Z FAIL src/format/harvestCount.test.js
+2026-09-26T07:08:12.8100000Z   ● format harvest count › uses plural for two items
+2026-09-26T07:08:12.8200000Z     expect(received).toBe(expected) // Object.is equality
+2026-09-26T07:08:12.8300000Z     Expected: "2 harvests"
+2026-09-26T07:08:12.8400000Z     Received: "2 harvest"
+2026-09-26T07:08:12.8500000Z       11 |
+2026-09-26T07:08:12.8600000Z       12 | test('uses plural for two items', () => {
+2026-09-26T07:08:12.8700000Z     > 13 |   expect(formatHarvestCount(2)).toBe('2 harvests');
+2026-09-26T07:08:12.8800000Z          |                                 ^
+2026-09-26T07:08:12.8900000Z       14 | });
+2026-09-26T07:08:12.9000000Z       at Object.toBe (src/format/harvestCount.test.js:13:33)
+2026-09-26T07:08:13.0000000Z Test Suites: 1 failed, 2 passed, 3 total
+2026-09-26T07:08:13.0100000Z Tests:       1 failed, 7 passed, 8 total
+2026-09-26T07:08:13.0200000Z Snapshots:   2 passed, 2 total
+2026-09-26T07:08:13.0300000Z Time:        1.347 s
+2026-09-26T07:08:13.1000000Z ##[error]Process completed with exit code 1.
+2026-09-26T07:08:13.2000000Z Post job cleanup.
+2026-09-26T07:08:13.4000000Z Cleaning up orphan processes

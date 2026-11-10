@@ -1,0 +1,43 @@
+2026-09-05T10:20:00.0000000Z Current runner version: '2.328.0'
+2026-09-05T10:20:00.1000000Z Runner name: 'hosted-32'
+2026-09-05T10:20:00.2000000Z ##[group]Operating System
+2026-09-05T10:20:00.3000000Z Ubuntu
+2026-09-05T10:20:00.4000000Z 22.04.5
+2026-09-05T10:20:00.5000000Z ##[endgroup]
+2026-09-05T10:20:00.6000000Z ##[group]Runner Image
+2026-09-05T10:20:00.7000000Z Image: ubuntu-22.04
+2026-09-05T10:20:00.8000000Z Version: 20260831.1
+2026-09-05T10:20:00.9000000Z ##[endgroup]
+2026-09-05T10:20:01.0000000Z Prepare workflow directory
+2026-09-05T10:20:01.1000000Z Prepare all required actions
+2026-09-05T10:20:01.2000000Z Download action repository 'actions/checkout@v4'
+2026-09-05T10:20:01.3000000Z Complete job name: attest
+2026-09-05T10:20:02.0000000Z ##[group]Run actions/checkout@v4
+2026-09-05T10:20:02.1000000Z with:
+2026-09-05T10:20:02.2000000Z   repository: willow-works/attest-gate
+2026-09-05T10:20:02.3000000Z   ref: refs/heads/main
+2026-09-05T10:20:02.4000000Z ##[endgroup]
+2026-09-05T10:20:03.0000000Z Syncing repository: willow-works/attest-gate
+2026-09-05T10:20:03.1000000Z [command]/usr/bin/git version
+2026-09-05T10:20:03.2000000Z git version 2.47.3
+2026-09-05T10:20:04.0000000Z Fetching the repository
+2026-09-05T10:20:05.0000000Z Checking out the ref
+2026-09-05T10:20:05.2000000Z ##[group]Run actions/setup-go@v5
+2026-09-05T10:20:05.3000000Z with:
+2026-09-05T10:20:05.4000000Z   go-version: '1.24'
+2026-09-05T10:20:05.5000000Z ##[endgroup]
+2026-09-05T10:20:06.0000000Z go version go1.24.6 linux/amd64
+2026-09-05T10:20:06.5000000Z ##[group]Run go test ./...
+2026-09-05T10:20:06.6000000Z go test ./...
+2026-09-05T10:20:06.7000000Z shell: /usr/bin/bash -e {0}
+2026-09-05T10:20:06.8000000Z ##[endgroup]
+2026-09-05T10:20:09.0000000Z ok  willow-works/attest-gate/internal/policy  0.021s
+2026-09-05T10:20:09.1000000Z ##[group]Run go run ./cmd/policycheck --file config/policies/release.yaml
+2026-09-05T10:20:09.2000000Z go run ./cmd/policycheck --file config/policies/release.yaml
+2026-09-05T10:20:09.3000000Z shell: /usr/bin/bash -e {0}
+2026-09-05T10:20:09.4000000Z ##[endgroup]
+2026-09-05T10:20:09.5000000Z policycheck: open config/policies/release.yaml: no such file or directory
+2026-09-05T10:20:09.6000000Z exit status 1
+2026-09-05T10:20:09.7000000Z ##[error]Process completed with exit code 1.
+2026-09-05T10:20:09.8000000Z Post job cleanup.
+2026-09-05T10:20:09.9000000Z Cleaning up orphan processes

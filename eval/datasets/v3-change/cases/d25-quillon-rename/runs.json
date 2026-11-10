@@ -1,0 +1,14 @@
+﻿{
+  "failed": {
+    "run_id": 9214500310, "run_attempt": 1, "workflow_id": 83452011,
+    "workflow_path": ".github/workflows/verify-quillon.yml", "event": "push", "head_branch": "main",
+    "head_sha": "5c7e18a02db984f3a618ce75b2d049afc13e6b70", "created_at": "2026-10-13T10:20:00Z", "conclusion": "failure",
+    "jobs": [{"name": "verify", "conclusion": "failure", "labels": ["ubuntu-24.04"], "runner_image": "ubuntu-24.04", "runner_image_version": "20261005.1"}],
+    "failed_job": "verify"
+  },
+  "candidates": [
+    {"run_id": 9214499920, "run_attempt": 1, "workflow_id": 83452011, "workflow_path": ".github/workflows/verify-quillon.yml", "event": "push", "head_branch": "main", "head_sha": "e12a6b9d478f0c253a1e79bd04cf3628ab651e90", "created_at": "2026-10-13T09:50:00Z", "conclusion": "failure", "jobs": [{"name": "verify", "conclusion": "failure", "labels": ["ubuntu-24.04"], "runner_image": "ubuntu-24.04", "runner_image_version": "20261005.1"}]},
+    {"run_id": 9214410034, "run_attempt": 1, "workflow_id": 83451027, "workflow_path": ".github/workflows/quillon-ci.yml", "event": "push", "head_branch": "main", "head_sha": "9f18a6c4b50d372e8a417cb0d2e69f351b8c7a24", "created_at": "2026-10-12T16:10:00Z", "conclusion": "success", "jobs": [{"name": "verify", "conclusion": "success", "labels": ["ubuntu-24.04"], "runner_image": "ubuntu-24.04", "runner_image_version": "20261005.1"}]},
+    {"run_id": 9214310052, "run_attempt": 1, "workflow_id": 83451027, "workflow_path": ".github/workflows/quillon-ci.yml", "event": "push", "head_branch": "main", "head_sha": "3be270a59d84f106c9a2e3157bf048da6c1e9327", "created_at": "2026-10-11T14:00:00Z", "conclusion": "success", "jobs": [{"name": "verify", "conclusion": "success", "labels": ["ubuntu-24.04"], "runner_image": "ubuntu-24.04", "runner_image_version": "20261005.1"}]}
+  ]
+}

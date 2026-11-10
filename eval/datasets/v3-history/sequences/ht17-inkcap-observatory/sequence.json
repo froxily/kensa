@@ -1,0 +1,12 @@
+{
+  "id": "ht17-inkcap-observatory",
+  "split": "test",
+  "ecosystem": "java",
+  "repository": "inkcap-works/meridian-observatory",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"workflow_path","title":"Action definition missing at prepare-starlens path","root_cause":"The workflow uses .github/actions/prepare-starlens, where the runner cannot find an action definition or Dockerfile after checkout.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"b","relation":"first","category":"dependency_build","title":"Compilation cannot find getBearing","root_cause":"MeridianProjector calls getBearing() on an ObservationRecord, but the compiler cannot find that method.","differs_from_earlier":""},
+    {"id":"e3","file":"e3.log","cluster":"a","relation":"recurrence","category":"workflow_path","title":"Action definition missing at prepare-starlens path","root_cause":"The workflow uses .github/actions/prepare-starlens, where the runner cannot find an action definition or Dockerfile after checkout.","differs_from_earlier":"A later pull request and runner fail at the same action path after a different checkout and cache restore."},
+    {"id":"e4","file":"e4.log","cluster":"c","relation":"lookalike","category":"dependency_build","title":"Compilation cannot find getDeclination","root_cause":"MeridianProjector calls getDeclination() on a CalibrationProfile, but the compiler cannot find that method.","differs_from_earlier":"Like e2, javac reports a missing method in MeridianProjector, but this is a different receiver and accessor requiring a separate source change."}
+  ]
+}

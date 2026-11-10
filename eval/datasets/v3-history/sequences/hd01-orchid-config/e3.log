@@ -1,0 +1,43 @@
+2026-09-09T12:20:00.0000000Z Current runner version: '2.329.0'
+2026-09-09T12:20:01.0000000Z ##[group]Operating System
+2026-09-09T12:20:02.0000000Z Ubuntu 24.04.3 LTS
+2026-09-09T12:20:03.0000000Z ##[endgroup]
+2026-09-09T12:20:04.0000000Z ##[group]Runner Image
+2026-09-09T12:20:05.0000000Z Image: ubuntu-24.04
+2026-09-09T12:20:06.0000000Z ##[endgroup]
+2026-09-09T12:20:07.0000000Z Prepare workflow directory
+2026-09-09T12:20:08.0000000Z Prepare all required actions
+2026-09-09T12:20:09.0000000Z ##[group]Run actions/checkout@v4
+2026-09-09T12:20:10.0000000Z Syncing repository: larkspur-labs/orchid-api
+2026-09-09T12:20:11.0000000Z Fetching pull request 88 merge ref
+2026-09-09T12:20:12.0000000Z Checking out the ref
+2026-09-09T12:20:13.0000000Z ##[endgroup]
+2026-09-09T12:20:14.0000000Z ##[group]Run actions/setup-python@v5
+2026-09-09T12:20:15.0000000Z Successfully set up CPython (3.12.6)
+2026-09-09T12:20:16.0000000Z ##[endgroup]
+2026-09-09T12:20:17.0000000Z ##[group]Run pip install -r requirements-test.txt
+2026-09-09T12:20:18.0000000Z Installing collected packages: orchid-api
+2026-09-09T12:20:19.0000000Z Successfully installed orchid-api-0.4.2
+2026-09-09T12:20:20.0000000Z ##[endgroup]
+2026-09-09T12:20:21.0000000Z ##[group]Run pytest -q
+2026-09-09T12:20:22.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-09T12:20:23.0000000Z env:
+2026-09-09T12:20:24.0000000Z   ORCHID_ENDPOINT: http://127.0.0.1:8111
+2026-09-09T12:20:25.0000000Z ============================= test session starts ==============================
+2026-09-09T12:20:26.0000000Z platform linux -- Python 3.12.6, pytest-8.3.3
+2026-09-09T12:20:27.0000000Z rootdir: /home/runner/work/orchid-api/orchid-api
+2026-09-09T12:20:28.0000000Z collected 0 items / 1 error
+2026-09-09T12:20:29.0000000Z __________________ ERROR collecting tests/test_routes.py __________________
+2026-09-09T12:20:30.0000000Z tests/test_routes.py:3: in <module>
+2026-09-09T12:20:31.0000000Z     from orchid_api.routes import app
+2026-09-09T12:20:32.0000000Z orchid_api/routes.py:6: in <module>
+2026-09-09T12:20:33.0000000Z     from orchid_api.config import settings
+2026-09-09T12:20:34.0000000Z orchid_api/config.py:17: in <module>
+2026-09-09T12:20:35.0000000Z     region = os.environ['ORCHID_REGION']
+2026-09-09T12:20:36.0000000Z <frozen os>:679: in __getitem__
+2026-09-09T12:20:37.0000000Z E   KeyError: 'ORCHID_REGION'
+2026-09-09T12:20:38.0000000Z =========================== short test summary info ============================
+2026-09-09T12:20:39.0000000Z ERROR tests/test_routes.py - KeyError: 'ORCHID_REGION'
+2026-09-09T12:20:40.0000000Z !!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+2026-09-09T12:20:41.0000000Z ##[error]Process completed with exit code 2.
+2026-09-09T12:20:42.0000000Z Post job cleanup.

@@ -32,6 +32,8 @@ blob-report/
 # ...but not the synthetic CI logs the app and its benchmark read (tests/test_repository.py).
 !backend/src/kensa/samples/*.log
 !eval/fixtures/**/*.log
+# ...nor the evaluation datasets' logs (v3 cases use failed.log, baseline.log, e1.log).
+!eval/datasets/**/*.log
 # ...nor evaluation-case repositories that contain a dist/ folder (listed in a frozen manifest).
 !eval/datasets/**/dist/
 tmp/

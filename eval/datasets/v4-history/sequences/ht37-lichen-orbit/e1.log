@@ -1,0 +1,50 @@
+2026-09-03T09:14:01.1320000Z Current runner version: '2.328.0'
+2026-09-03T09:14:01.1480000Z ##[group]Operating System
+2026-09-03T09:14:01.1490000Z Ubuntu
+2026-09-03T09:14:01.1500000Z 24.04.3
+2026-09-03T09:14:01.1510000Z ##[endgroup]
+2026-09-03T09:14:01.1810000Z ##[group]Runner Image
+2026-09-03T09:14:01.1820000Z Image: ubuntu-24.04
+2026-09-03T09:14:01.1830000Z Version: 20260831.1.0
+2026-09-03T09:14:01.1840000Z ##[endgroup]
+2026-09-03T09:14:01.2100000Z Prepare workflow directory
+2026-09-03T09:14:01.3120000Z Prepare all required actions
+2026-09-03T09:14:01.6120000Z Download action repository 'actions/checkout@v4'
+2026-09-03T09:14:02.0110000Z ##[group]Run actions/checkout@v4
+2026-09-03T09:14:02.0120000Z with:
+2026-09-03T09:14:02.0130000Z   repository: lichen-orbit/pulse-vault
+2026-09-03T09:14:02.0140000Z   fetch-depth: 1
+2026-09-03T09:14:02.0150000Z ##[endgroup]
+2026-09-03T09:14:02.1980000Z Syncing repository: lichen-orbit/pulse-vault
+2026-09-03T09:14:02.2010000Z ##[group]Getting Git version info
+2026-09-03T09:14:02.2020000Z git version 2.51.0
+2026-09-03T09:14:02.2030000Z ##[endgroup]
+2026-09-03T09:14:02.5360000Z Fetching the repository
+2026-09-03T09:14:03.4040000Z Checking out the ref
+2026-09-03T09:14:03.6220000Z [command]/usr/bin/git log -1 --format=%H
+2026-09-03T09:14:03.7120000Z ##[group]Run docker buildx build --progress=plain -f deploy/Containerfile .
+2026-09-03T09:14:03.7130000Z docker buildx build --progress=plain -f deploy/Containerfile .
+2026-09-03T09:14:03.7140000Z shell: /usr/bin/bash -e {0}
+2026-09-03T09:14:03.7150000Z ##[endgroup]
+2026-09-03T09:14:04.0310000Z #0 building with "default" instance using docker driver
+2026-09-03T09:14:04.0320000Z #1 [internal] load build definition from Containerfile
+2026-09-03T09:14:04.0330000Z #1 transferring dockerfile: 421B done
+2026-09-03T09:14:04.0340000Z #1 DONE 0.0s
+2026-09-03T09:14:04.0350000Z #2 [internal] load metadata for docker.io/library/golang:1.25-alpine
+2026-09-03T09:14:04.5010000Z #2 CANCELED
+2026-09-03T09:14:04.5020000Z #3 [internal] load metadata for docker.io/library/alpine:3.99
+2026-09-03T09:14:04.5030000Z #3 ERROR: docker.io/library/alpine:3.99: not found
+2026-09-03T09:14:04.5040000Z ------
+2026-09-03T09:14:04.5050000Z  > [internal] load metadata for docker.io/library/alpine:3.99:
+2026-09-03T09:14:04.5060000Z ------
+2026-09-03T09:14:04.5070000Z Containerfile:9
+2026-09-03T09:14:04.5080000Z --------------------
+2026-09-03T09:14:04.5090000Z    7 |     RUN go build -o /out/pulse ./cmd/pulse
+2026-09-03T09:14:04.5100000Z    8 | 
+2026-09-03T09:14:04.5110000Z    9 | >>> FROM alpine:3.99 AS runtime
+2026-09-03T09:14:04.5120000Z   10 |     COPY --from=builder /out/pulse /usr/local/bin/pulse
+2026-09-03T09:14:04.5130000Z --------------------
+2026-09-03T09:14:04.5140000Z ERROR: failed to build: failed to solve: alpine:3.99: failed to resolve source metadata for docker.io/library/alpine:3.99: docker.io/library/alpine:3.99: not found
+2026-09-03T09:14:04.5360000Z ##[error]Process completed with exit code 1.
+2026-09-03T09:14:04.5590000Z Post job cleanup.
+2026-09-03T09:14:04.7010000Z Cleaning up orphan processes

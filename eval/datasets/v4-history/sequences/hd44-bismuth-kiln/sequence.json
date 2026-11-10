@@ -1,0 +1,12 @@
+{
+  "id": "hd44-bismuth-kiln",
+  "split": "dev",
+  "ecosystem": "github-actions",
+  "repository": "isobar-foundry/bismuth-kiln",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"github_permissions","title":"Release creation denied","root_cause":"The workflow token has contents read access but needs contents write access to create a GitHub release.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"a","relation":"recurrence","category":"github_permissions","title":"Release creation denied again","root_cause":"The workflow token has contents read access but needs contents write access to create a GitHub release.","differs_from_earlier":"A later tag and runner execute a different release command after packaging a different artifact."},
+    {"id":"e3","file":"e3.log","cluster":"b","relation":"lookalike","category":"github_permissions","title":"Pull request comment denied","root_cause":"The workflow token lacks pull-requests write access required to post a pull request comment; contents write access would not grant it.","differs_from_earlier":"The same gh permission error occurs while creating a pull request comment, which requires pull-requests write rather than contents write."},
+    {"id":"e4","file":"e4.log","cluster":"c","relation":"first","category":"workflow_path","title":"Release notes file absent","root_cause":"The release command points to a notes file at a path that does not exist in the checkout.","differs_from_earlier":""}
+  ]
+}

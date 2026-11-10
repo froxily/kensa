@@ -15,7 +15,7 @@ browser, not live AI inference · **[Demo video](docs/media/kensa-demo.webm)** (
 
 ![A Kensa report from the replay demo: the root cause, its status and the cited source lines](docs/media/report-en.png)
 
-> **Status:** v1.0, milestones M0–M6 complete ([Roadmap](ROADMAP.md)). [Demo video](docs/media/kensa-demo.webm)
+> **Status:** v1.1.0 is the current release: change-aware investigation and CI failure analytics are available; historical recurrence matching is **experimental and off by default** ([Changelog](CHANGELOG.md), [Roadmap](ROADMAP.md)). [Demo video](docs/media/kensa-demo.webm)
 > (75 s, captioned; [transcript](docs/media/kensa-demo-transcript.md)) · 日本語の概要は[下記](#日本語概要).
 > This repository is a clean snapshot of a private development history, so commit IDs quoted in
 > the docs and reports refer to that history.
@@ -24,8 +24,10 @@ browser, not live AI inference · **[Demo video](docs/media/kensa-demo.webm)** (
 
 **[Open the live demo](https://froxily.github.io/kensa/)** (GitHub Pages). It is a
 **prerecorded interactive replay, not live AI inference**: a static build of the real UI, showing
-**real runs recorded with the local model** (the three built-in samples and three evaluation
-cases). No model, backend or database runs behind it. It makes no request outside its own files,
+**real runs recorded with the local model** (the three built-in samples and four evaluation
+cases). One of them is a synthetic v1.1 case with its earlier runs and changes, so the "Changes
+since the last success" panel and the analytics dashboard can be tried; the replay says so on
+those pages. No model, backend or database runs behind it. It makes no request outside its own files,
 and says on every page that it is a replay. An approval there is kept in the browser tab only and
 is labelled as not saved.
 
@@ -85,6 +87,11 @@ flowchart LR
   - Jobs use leases, heartbeats, bounded retries and fenced writes in PostgreSQL (no Redis).
   - Each approval decision is recorded exactly once.
 - **Read-only GitHub import.** Paste a public repository, run or job URL. Kensa finds the failed job and reads the workflow and the files the log mentions at the run's exact commit.
+- **Failure intelligence (v1.1):**
+  - **What changed since it last worked.** For an imported run, Kensa finds the last comparable successful run and ranks the changes in between. Each comparability factor (workflow file, event, branch, job, runner labels, runner image) is checked, and anything it cannot verify is named, never assumed equal. A suspect is a correlation, never a cause; its diff can support a claim but never corroborate it.
+  - **Analytics with incremental ETL.** Track public repositories (read-only, incremental, budgeted, resumable syncs) and see failure trends, categories, workflows, data freshness and data quality, with every chart also given as a table. Real observations only, unless you include samples and replays.
+  - **Has this failed before? (experimental, off by default).** Every investigation records rule-derived failure fingerprints. Only an *exact* fingerprint, built from something the log names, may claim a recurrence; approximate ones only suggest similar failures, listed apart. On fresh held-out data it claimed recurrences precisely (precision 1.000, no look-alike merged) but found only about a third of them (recall 0.349, Recall@5 0.892), below its targets, so matching is off unless you set `KENSA_HISTORY_MATCHING=true`. History is never evidence and never changes a diagnosis.
+  - **Forget means forget.** Forgetting a repository, or applying retention, deletes everything derived from it, down to checkpoints, fingerprints and analytics rows.
 - **English and Japanese UI,** light and dark, keyboard accessible, checked with axe.
 
 ## Results
@@ -100,10 +107,14 @@ was run once, under a protocol fixed beforehand. Full method and results:
 | M5: 20 unseen cases (v1) | 11–13/20 per configuration | Answers labelled "verified" were right only 57–78% of the time. The status model was redesigned |
 | M5.1: 60 unseen cases (v2) | **41–44/60** (M5 on the same cases: 28–41) | All 646 accepted citations genuine. But the trust goal was not met: 2–3 wrong answers per configuration were still `corroborated` (M5: 0–1), all of them test failures taken as the cause |
 | M5.2 rule | 41–44/60 on those cases, recomputed (one configuration loses one) | A test regression is never `corroborated`. On those 60 cases, recomputed exactly from the stored run, the wrong `corroborated` answers drop to 0. The rule was chosen after seeing them, so this is not a held-out result, and **its effect on new failures is not measured** |
+| v1.1: 30 unseen change cases (v3-change) | 26/30 with and without change evidence (the same cases) | **No wrong answer was `corroborated`**, with or without change evidence. The breaking change was ranked first in 81% of culprit cases (largest diff: 48%, most recent: 24%), and every comparability verdict was right |
+| v1.1: 18 unseen failure sequences (v3-history) | (no diagnosis) | **Fingerprint version 2 missed its targets:** precision 0.68 (target 0.90; dev 1.00), recall 0.47. Tuned on dev, it did not transfer |
+| v1.1.0: 28 unseen failure sequences (v4-history, a fresh set) | (no diagnosis) | **Version 3 is precise but misses most recurrences:** precision 1.000 (target 0.90), no look-alike merged, no wrong "same failure" label; recall 0.349 (target 0.60) and similar-failure Recall@5 0.892 (target 0.90) were missed. Matching is therefore experimental and off by default |
 
 - **Latency:** a diagnosis takes about 13 s at the median with the GPU at full power, and about 20 s when the laptop throttles it.
 - **Dev versus held-out:** results on the dev splits were higher than on the held-out splits. The held-out numbers are the ones that count.
-- **No held-out data is left:** both test splits are spent, so any further claim needs a new independent set. [docs/evaluation.md](docs/evaluation.md) separates what was measured, what was derived and what is not measured.
+- **Change evidence and diagnosis accuracy:** no improvement in the final diagnosis has been shown. On the held-out change cases, the same 26 of 30 were right with and without change evidence.
+- **No held-out data is left:** the v1, v2, v3 and v4 test splits are spent, so any further claim needs a new independent set. [docs/evaluation.md](docs/evaluation.md) separates what was measured, what was derived and what is not measured.
 
 ## Security and privacy
 - **Local only:** the API, the database and the model listen on 127.0.0.1 only. Nothing is sent to a paid or remote service.
@@ -139,8 +150,8 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts/ci-local.ps1
 
 | Suite | Count |
 |---|---|
-| Backend tests (pytest) | 468 |
-| Frontend tests (Vitest) | 44 |
+| Backend tests (pytest) | 571 |
+| Frontend tests (Vitest) | 57 |
 | End-to-end tests (Playwright) | 17, including axe in both languages and themes, and the replay build offline, by keyboard and at phone width |
 
 Plus strict mypy, Ruff, ESLint, Prettier and TypeScript checks. See [docs/testing.md](docs/testing.md).
@@ -170,6 +181,12 @@ Plus strict mypy, Ruff, ESLint, Prettier and TypeScript checks. See [docs/testin
 - **推測しない:** ログに失敗が示されていなければ、モデルに推測させず「原因を特定できません」と表示します。
 - **人による承認:** 修正案（差分を含む）は提案のみです。承認は判断を記録するだけで、リポジトリを変更することはありません。
 - **耐障害性:** LangGraph のエージェントは PostgreSQL のチェックポイントから再開でき、ジョブはリースと上限付きの再試行で処理されます。
+- **障害インテリジェンス（v1.1）:**
+  - **前回の成功から何が変わったか:** GitHub から取り込んだ実行について、比較可能な直近の成功した実行を探し、その間の変更を順位付けします。比較可能性の要素（ワークフローファイル、イベント、ブランチ、ジョブ、ランナーのラベルとイメージ）を一つずつ確認し、確認できない要素は同一とみなさず明示します。疑わしい変更は相関にすぎず、原因とはしません。差分は主張を補強できますが、裏付けにはなりません。
+  - **分析と差分 ETL:** 公開リポジトリを追跡し（読み取り専用、差分のみ、リクエスト数に上限あり、中断後に再開可能）、失敗の推移、カテゴリ、ワークフロー、データの鮮度と品質を表示します。グラフはすべて表でも確認できます。
+  - **以前にも起きたか（試験的、既定では無効）:** 調査ごとに、ルールから作る失敗のフィンガープリントを記録します。再発とみなすのは、ログが特定の対象を示す「完全一致」のフィンガープリントが共通する場合だけです。新しい未使用データでは、表示した再発はすべて正しかった（精度 1.000、似ているだけの失敗の誤統合なし）ものの、本当の再発の約 3 分の 1 しか見つけられず（再現率 0.349、Recall@5 0.892）、目標に届きませんでした。そのため照合は既定で無効です（`KENSA_HISTORY_MATCHING=true` で有効化）。履歴は証拠には使わず、診断を変えることもありません。
+  - **削除は完全に:** リポジトリのデータ削除や保持期間の適用では、そこから派生したすべてのデータ（チェックポイント、フィンガープリント、分析データまで）を削除します。
+- **v1.1 の評価:** 未使用の 30 件で、失敗の原因となった変更を 81% の割合で 1 位に挙げ（単純な比較基準は 48% と 24%）、比較可能性の判定はすべて正解でした。変更の情報を加えても誤った「原因の裏付けあり」は 0 件でした。変更の情報による最終的な診断精度の向上は示されていません（同じ 26/30 件が正解）。フィンガープリントは、バージョン 2 が未使用データで精度 0.68（目標 0.90）と目標未達で、新しいデータで測ったバージョン 3 は精度 1.000 でしたが、再現率 0.349 と Recall@5 0.892 が目標未達でした。
 - **評価:** Kensa のコードから隔離された別の LLM が作成し、使用前に凍結した 60 件の未使用テストケースで、正しいカテゴリを 41〜44 件特定しました。ただし、誤った答え 2〜3 件が「原因の裏付けあり」とされ、信頼性の目標は未達でした。その後の規則（M5.2）は同じ結果を見て決めたため、新しい失敗に対する効果は未測定です。誤りや限界も含めて、結果は [docs/evaluation.md](docs/evaluation.md) にそのまま記載しています。
 - **試す:** [ライブデモ](https://froxily.github.io/kensa/)をブラウザーで開けます。これは事前に記録した、操作できるリプレイで、ライブの AI 推論ではありません。バックエンドもモデルも不要な同じリプレイ版（実際の実行の記録）は、上記の `build:replay` でローカルにも作成できます。リプレイ版での承認はブラウザーのタブ内だけに保持され、保存されません。UI は日本語と英語に対応し、スマートフォンの画面幅でも横スクロールせずに表示できます。
 - **デモ動画:** 約 1 分 15 秒、音声なし、英語字幕付き（[動画](docs/media/kensa-demo.webm)）。日本語の字幕と書き起こしは [docs/media/kensa-demo-transcript.md](docs/media/kensa-demo-transcript.md) にあります。

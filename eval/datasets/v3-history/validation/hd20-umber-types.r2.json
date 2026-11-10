@@ -1,0 +1,13 @@
+{
+  "id": "hd20-umber-types",
+  "independent_labels": [
+    {"id": "e1", "cluster": "a", "relation": "first", "category": "dependency_build"},
+    {"id": "e2", "cluster": "b", "relation": "first", "category": "github_permissions"},
+    {"id": "e3", "cluster": "a", "relation": "recurrence", "category": "dependency_build"},
+    {"id": "e4", "cluster": "a", "relation": "recurrence", "category": "dependency_build"}
+  ],
+  "verdict": "agree",
+  "disputed_fields": [],
+  "reason_category": "none",
+  "notes": "The same TS2345 mismatch in render.ts recurs in e3 and e4 with changed commands and run details; e2 is an unrelated release API 403. Root causes match the diagnostics, and the logs contain no giveaway commentary. The sequence matches the plan."
+}

@@ -275,3 +275,70 @@ export const TERMINAL_STATUSES: readonly InvestigationStatus[] = [
 export function isTerminal(status: InvestigationStatus): boolean {
   return TERMINAL_STATUSES.includes(status);
 }
+
+export type Provenance = "human_confirmed" | "verifier_corroborated" | "model_hypothesis" | "none";
+export interface Resolution {
+  provenance: Provenance;
+  summary: string;
+  created_at: string;
+}
+export interface History {
+  // Experimental history matching (D-057); off by default, then nothing is matched.
+  matching: boolean;
+  fingerprints: {
+    hash: string;
+    role: "primary" | "secondary";
+    category: string;
+    rule_id: string;
+    subject: string;
+    template: string;
+    kind: "exact" | "approximate";
+    occurrences: number | null;
+  }[];
+  similar: {
+    investigation_id: string;
+    title: string;
+    created_at: string;
+    match: "same_failure" | "related" | "similar_text";
+    score: number;
+    earlier: boolean;
+    category: string;
+    diagnosis_category: string | null;
+    verification_status: string | null;
+    provenance: Provenance;
+    resolution: string | null;
+  }[];
+  resolution: Resolution | null;
+}
+export interface Changes {
+  comparability:
+    | "comparable"
+    | "partially_comparable"
+    | "incomparable"
+    | "identical"
+    | "no_baseline"
+    | "history_unavailable";
+  reasons: string[];
+  factors: {
+    name: string;
+    state: "same" | "different" | "unknown" | "changed_in_range";
+    detail: string;
+  }[];
+  unverified: string[];
+  baseline_run_id: number | null;
+  baseline_sha: string | null;
+  failed_sha: string;
+  compare_status: string | null;
+  commits: number;
+  files: number;
+  truncated: boolean;
+  suspects: {
+    rank: number;
+    path: string;
+    change_kind: string;
+    score: number;
+    status: "correlated" | "weak";
+    signals: Record<string, number>;
+    document_id: string | null;
+  }[];
+}

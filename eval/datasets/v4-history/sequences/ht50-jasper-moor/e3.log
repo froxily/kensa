@@ -1,0 +1,74 @@
+2026-09-17T14:32:01.0145812Z Current runner version: '2.330.0'
+2026-09-17T14:32:01.0950123Z ##[group]Runner Image
+2026-09-17T14:32:01.0957451Z Image: ubuntu-24.04
+2026-09-17T14:32:01.0962100Z Version: 20260913.1.0
+2026-09-17T14:32:01.0969000Z ##[endgroup]
+2026-09-17T14:32:01.2064000Z Prepare workflow directory
+2026-09-17T14:32:01.7330190Z Download action repository 'actions/checkout@v4'
+2026-09-17T14:32:02.7210040Z Download action repository 'erlef/setup-beam@v1'
+2026-09-17T14:32:03.1186620Z Complete job name: test / otp-27
+2026-09-17T14:32:03.4216630Z ##[group]Run actions/checkout@v4
+2026-09-17T14:32:03.4219820Z with:
+2026-09-17T14:32:03.4221160Z   repository: jasper-moor/tideledger
+2026-09-17T14:32:03.4223100Z   ref: refs/pull/138/merge
+2026-09-17T14:32:03.4225540Z ##[endgroup]
+2026-09-17T14:32:03.8125560Z Syncing repository: jasper-moor/tideledger
+2026-09-17T14:32:04.4184020Z [command]/usr/bin/git version
+2026-09-17T14:32:04.4218000Z git version 2.50.1
+2026-09-17T14:32:05.2356170Z Fetching the repository
+2026-09-17T14:32:06.1390550Z Checking out the ref
+2026-09-17T14:32:06.3752010Z 6f1b25d3a68e420f109b5583646bb85c29fbca31
+2026-09-17T14:32:06.4485550Z ##[group]Run erlef/setup-beam@v1
+2026-09-17T14:32:06.4487900Z with:
+2026-09-17T14:32:06.4490100Z   otp-version: '27.2.4'
+2026-09-17T14:32:06.4492100Z   elixir-version: '1.18.3'
+2026-09-17T14:32:06.4494400Z ##[endgroup]
+2026-09-17T14:32:11.1013190Z OTP 27.2.4 has been installed
+2026-09-17T14:32:14.3014770Z Elixir 1.18.3 has been installed
+2026-09-17T14:32:14.6037100Z ##[group]Run mix local.hex --force
+2026-09-17T14:32:14.6040190Z mix local.hex --force
+2026-09-17T14:32:14.6042200Z mix local.rebar --force
+2026-09-17T14:32:14.6044010Z mix deps.get
+2026-09-17T14:32:14.6046130Z shell: /usr/bin/bash -e {0}
+2026-09-17T14:32:14.6048100Z ##[endgroup]
+2026-09-17T14:32:15.9511120Z * creating /home/runner/.mix/archives/hex-2.2.2
+2026-09-17T14:32:17.2385100Z * creating /home/runner/.mix/elixir/1-18/rebar3
+2026-09-17T14:32:18.4200000Z Resolving Hex dependencies...
+2026-09-17T14:32:18.7651000Z Resolution completed in 0.345s
+2026-09-17T14:32:18.7659000Z Unchanged:
+2026-09-17T14:32:18.7663000Z   decimal 2.3.0
+2026-09-17T14:32:18.7666000Z   ezstd 1.1.0
+2026-09-17T14:32:19.2364110Z * Getting decimal (Hex package)
+2026-09-17T14:32:19.9194000Z * Getting ezstd (Hex package)
+2026-09-17T14:32:20.0010000Z ##[group]Run git status --short
+2026-09-17T14:32:20.0020000Z git status --short
+2026-09-17T14:32:20.0030000Z git rev-parse --short HEAD
+2026-09-17T14:32:20.0040000Z shell: /usr/bin/bash -e {0}
+2026-09-17T14:32:20.0050000Z ##[endgroup]
+2026-09-17T14:32:20.1100000Z 6f1b25d
+2026-09-17T14:32:20.2100000Z ##[group]Run elixir --version
+2026-09-17T14:32:20.2110000Z elixir --version
+2026-09-17T14:32:20.2120000Z shell: /usr/bin/bash -e {0}
+2026-09-17T14:32:20.2130000Z ##[endgroup]
+2026-09-17T14:32:20.3100000Z Erlang/OTP 27 [erts-15.2.7] [64-bit] [smp:4:4]
+2026-09-17T14:32:20.4110000Z Elixir 1.18.3 (compiled with Erlang/OTP 27)
+2026-09-17T14:32:20.5312240Z ##[group]Run mix test
+2026-09-17T14:32:20.5314610Z mix test
+2026-09-17T14:32:20.5316800Z shell: /usr/bin/bash -e {0}
+2026-09-17T14:32:20.5318510Z env:
+2026-09-17T14:32:20.5320030Z   MIX_ENV: test
+2026-09-17T14:32:20.5321770Z ##[endgroup]
+2026-09-17T14:32:21.4219340Z ==> decimal
+2026-09-17T14:32:21.5438120Z Compiling 4 files (.ex)
+2026-09-17T14:32:22.9106010Z Generated decimal app
+2026-09-17T14:32:23.0124780Z ==> ezstd
+2026-09-17T14:32:23.2578010Z make -C /home/runner/work/tideledger/tideledger/deps/ezstd
+2026-09-17T14:32:23.3811400Z c_src/ezstd_nif.c:8:10: fatal error: zlib.h: No such file or directory
+2026-09-17T14:32:23.3814200Z     8 | #include <zlib.h>
+2026-09-17T14:32:23.3816080Z       |          ^~~~~~~~
+2026-09-17T14:32:23.3817850Z 1 error generated.
+2026-09-17T14:32:23.3859000Z make: *** [Makefile:37: priv/ezstd_nif.so] Error 1
+2026-09-17T14:32:23.4062250Z ** (Mix) Could not compile dependency :ezstd
+2026-09-17T14:32:23.4298880Z ##[error]Process completed with exit code 1.
+2026-09-17T14:32:23.5681120Z Post job cleanup.
+2026-09-17T14:32:23.9231020Z Cleaning up orphan processes

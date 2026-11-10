@@ -1,0 +1,54 @@
+2026-09-17T15:42:06.0000000Z Current runner version: '2.321.0'
+2026-09-17T15:42:06.0500000Z ##[group]Operating System
+2026-09-17T15:42:06.0510000Z Ubuntu
+2026-09-17T15:42:06.0520000Z 24.04.1 LTS
+2026-09-17T15:42:06.0540000Z ##[endgroup]
+2026-09-17T15:42:06.0600000Z ##[group]Runner Image
+2026-09-17T15:42:06.0610000Z Image: ubuntu-24.04
+2026-09-17T15:42:06.0620000Z Version: 20240908.1.0
+2026-09-17T15:42:06.0630000Z ##[endgroup]
+2026-09-17T15:42:06.1200000Z Prepare workflow directory
+2026-09-17T15:42:06.4500000Z Prepare all required actions
+2026-09-17T15:42:06.8000000Z Download action repository 'actions/checkout@v4'
+2026-09-17T15:42:07.1300000Z Download action repository 'pnpm/action-setup@v4'
+2026-09-17T15:42:07.4700000Z Download action repository 'actions/setup-node@v4'
+2026-09-17T15:42:07.7500000Z Complete job name: install-and-check
+2026-09-17T15:42:07.8100000Z ##[group]Run actions/checkout@v4
+2026-09-17T15:42:07.8120000Z   repository: brackenflux/tidemark-panel
+2026-09-17T15:42:07.8130000Z   ref: refs/pull/53/merge
+2026-09-17T15:42:07.8140000Z ##[endgroup]
+2026-09-17T15:42:08.1300000Z Syncing repository: brackenflux/tidemark-panel
+2026-09-17T15:42:08.2000000Z [command]/usr/bin/git version
+2026-09-17T15:42:08.2100000Z git version 2.48.0
+2026-09-17T15:42:08.3200000Z Temporarily overriding HOME='/home/runner/work/_temp/bde31ac9' before making global git config changes
+2026-09-17T15:42:08.9200000Z Checking out the ref
+2026-09-17T15:42:09.1500000Z ##[group]Run pnpm/action-setup@v4
+2026-09-17T15:42:09.1520000Z   version: 10.15.1
+2026-09-17T15:42:09.1530000Z ##[endgroup]
+2026-09-17T15:42:11.1900000Z Installation Completed!
+2026-09-17T15:42:11.2400000Z ##[group]Run actions/setup-node@v4
+2026-09-17T15:42:11.2420000Z   node-version: 22.18.0
+2026-09-17T15:42:11.2430000Z ##[endgroup]
+2026-09-17T15:42:11.5700000Z Found in cache @ /opt/hostedtoolcache/node/22.18.0/x64
+2026-09-17T15:42:11.6100000Z ##[group]Run node --version && pnpm --version
+2026-09-17T15:42:11.6110000Z node --version && pnpm --version
+2026-09-17T15:42:11.6120000Z shell: /usr/bin/bash -e {0}
+2026-09-17T15:42:11.6130000Z ##[endgroup]
+2026-09-17T15:42:11.6140000Z v22.18.0
+2026-09-17T15:42:11.6150000Z 10.15.1
+2026-09-17T15:42:11.6500000Z ##[group]Run pnpm install --no-frozen-lockfile --reporter=append-only
+2026-09-17T15:42:11.6510000Z pnpm install --no-frozen-lockfile --reporter=append-only
+2026-09-17T15:42:11.6520000Z shell: /usr/bin/bash -e {0}
+2026-09-17T15:42:11.6530000Z ##[endgroup]
+2026-09-17T15:42:12.6600000Z Progress: resolved 1, reused 0, downloaded 0, added 0
+2026-09-17T15:42:13.6700000Z Progress: resolved 67, reused 14, downloaded 42, added 0
+2026-09-17T15:42:14.6700000Z Progress: resolved 131, reused 18, downloaded 97, added 0
+2026-09-17T15:42:16.2400000Z Progress: resolved 154, reused 18, downloaded 109, added 0, done
+2026-09-17T15:42:16.3100000Z ERR_PNPM_PEER_DEP_ISSUES Unmet peer dependencies
+2026-09-17T15:42:16.3110000Z .
+2026-09-17T15:42:16.3120000Z └─┬ react-dom 18.3.1
+2026-09-17T15:42:16.3130000Z   └── ✕ unmet peer react@^18.3.1: found 19.0.0
+2026-09-17T15:42:16.3500000Z ##[error]Process completed with exit code 1.
+2026-09-17T15:42:16.3900000Z Post job cleanup.
+2026-09-17T15:42:16.4500000Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-09-17T15:42:16.6300000Z Cleaning up orphan processes

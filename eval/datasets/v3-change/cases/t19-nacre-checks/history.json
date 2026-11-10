@@ -1,0 +1,12 @@
+﻿{
+  "comparisons": {
+    "b6149d0e32fa7c851db4a6e970c2385f1a6d4c79...9e4c17a6b285d30f829c51e6a4b793d0c6285f1a": {
+      "status": "diverged", "merge_base": "c735a91e0b624df38a591c7e42f06b8d39a5e214", "truncated": false,
+      "commits": [
+        {"sha": "4fdc12a8396b5e70d2381c9af467e0b2d5c39168", "message": "Narrow verification token access", "date": "2026-10-30T09:42:00Z", "files": [{"path": ".github/workflows/verify.yml", "status": "modified", "additions": 1, "deletions": 1, "patch": "@@ -2,7 +2,7 @@ name: Nacre verification\n on: push\n permissions:\n   contents: read\n-  checks: write\n+  checks: read\n jobs:\n   verify:\n     runs-on: ubuntu-24.04"}]},
+        {"sha": "9e4c17a6b285d30f829c51e6a4b793d0c6285f1a", "message": "Clarify local build command", "date": "2026-10-30T10:08:00Z", "files": [{"path": "README.md", "status": "modified", "additions": 1, "deletions": 1, "patch": "@@ -1,3 +1,3 @@\n # Nacre core\n \n-Build with `mvn verify` using Java 21.\n+Build and verify with `mvn -B verify` using Java 21."}]}
+      ]
+    }
+  },
+  "workflow_blobs": {"b6149d0e32fa7c851db4a6e970c2385f1a6d4c79": "a528ef3c7609b41d2c8a593e70fb416d9e238ac5", "9e4c17a6b285d30f829c51e6a4b793d0c6285f1a": "d9217c4e8f305ab6219c4d7e0a856f31b2c49e70"}
+}

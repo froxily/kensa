@@ -3,6 +3,9 @@ import { useEffect, useState } from "react";
 
 import {
   createInvestigation,
+  getChanges,
+  getHistory,
+  saveResolution,
   decideInvestigation,
   getDocument,
   getInvestigation,
@@ -129,4 +132,18 @@ export function useAgentEvents(id: string, status: InvestigationStatus | undefin
   }, [terminal, live.length, id, client]);
 
   return { ...initial, events: mergeEvents(initial.data ?? [], live) };
+}
+
+export function useChanges(id: string) {
+  return useQuery({ queryKey: queryKeys.changes(id), queryFn: () => getChanges(id) });
+}
+export function useHistory(id: string) {
+  return useQuery({ queryKey: queryKeys.history(id), queryFn: () => getHistory(id) });
+}
+export function useSaveResolution(id: string) {
+  const client = useQueryClient();
+  return useMutation({
+    mutationFn: (summary: string) => saveResolution(id, summary),
+    onSuccess: () => client.invalidateQueries({ queryKey: queryKeys.history(id) }),
+  });
 }

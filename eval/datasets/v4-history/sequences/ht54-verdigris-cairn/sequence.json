@@ -1,0 +1,12 @@
+{
+  "id": "ht54-verdigris-cairn",
+  "split": "test",
+  "ecosystem": "postgres and mysql service containers",
+  "repository": "pelagic-works/verdigris-cairn",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"docker","title":"Catalog service health probe uses an absent role","root_cause":"The catalog PostgreSQL health check connects as cairn_probe, but that role is not created in the service database. Create the role or configure the probe to use an existing role.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"b","relation":"lookalike","category":"docker","title":"Archive service health probe targets the wrong port","root_cause":"The archive PostgreSQL health check probes port 5433 inside the container, although PostgreSQL listens on 5432. Correct the health check port.","differs_from_earlier":"Like e1, a PostgreSQL service becomes unhealthy during job startup; this probe targets the wrong port rather than an absent database role."},
+    {"id":"e3","file":"e3.log","cluster":"c","relation":"lookalike","category":"missing_env_var","title":"Manifest service cannot initialize its data directory","root_cause":"The manifest MySQL service starts with a fresh data directory but no root password or permitted empty-password option. Supply an appropriate initialization setting.","differs_from_earlier":"Like e1, a database service fails its container health check, but MySQL exits because its initialization settings are incomplete."},
+    {"id":"e4","file":"e4.log","cluster":"a","relation":"recurrence","category":"docker","title":"Catalog health probe still uses an absent role","root_cause":"The catalog PostgreSQL health check connects as cairn_probe, but that role is not created in the service database. Create the role or configure the probe to use an existing role.","differs_from_earlier":"A later run uses a different runner, image version, database name and health timing; the catalog probe still connects as the same nonexistent role."}
+  ]
+}

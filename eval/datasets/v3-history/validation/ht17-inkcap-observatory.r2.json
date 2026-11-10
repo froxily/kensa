@@ -1,0 +1,13 @@
+{
+  "id": "ht17-inkcap-observatory",
+  "independent_labels": [
+    {"id": "e1", "cluster": "a", "relation": "first", "category": "workflow_path"},
+    {"id": "e2", "cluster": "b", "relation": "first", "category": "dependency_build"},
+    {"id": "e3", "cluster": "a", "relation": "recurrence", "category": "workflow_path"},
+    {"id": "e4", "cluster": "c", "relation": "lookalike", "category": "dependency_build"}
+  ],
+  "verdict": "agree",
+  "disputed_fields": [],
+  "reason_category": "none",
+  "notes": "e1 and e3 fail at the same local action path after checkout; e3 includes a different runner, pull request and cache step. e2 and e4 report missing methods on different receiver types and call sites, requiring separate corrections. Root-cause descriptions match the logs, and no giveaway commentary was found. The labels match the plan pattern."
+}

@@ -52,6 +52,8 @@ select = ["E", "W", "F", "I", "B", "UP", "N", "S", "C4", "SIM", "RUF", "PT", "DT
 "alembic/versions/*" = ["N999", "E501"]
 # Regex rule table: patterns are clearer unsplit.
 "src/kensa/analysis/signatures.py" = ["E501"]
+# SQL built from module-constant fragments only; every value is a bound parameter.
+"src/kensa/analytics/queries.py" = ["S608"]
 # A stopword list reads best as one string.
 "src/kensa/retrieval/search.py" = ["SIM905"]
 

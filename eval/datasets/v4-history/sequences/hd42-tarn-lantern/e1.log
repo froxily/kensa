@@ -1,0 +1,44 @@
+2026-09-02T09:14:10.1123410Z Current runner version: '2.328.0'
+2026-09-02T09:14:10.1432140Z ##[group]Operating System
+2026-09-02T09:14:10.1433140Z Ubuntu
+2026-09-02T09:14:10.1434140Z 24.04.3
+2026-09-02T09:14:10.1435140Z LTS
+2026-09-02T09:14:10.1436140Z ##[endgroup]
+2026-09-02T09:14:10.1440140Z ##[group]Runner Image
+2026-09-02T09:14:10.1441140Z Image: ubuntu-24.04
+2026-09-02T09:14:10.1442140Z Version: 20260824.1.0
+2026-09-02T09:14:10.1443140Z ##[endgroup]
+2026-09-02T09:14:10.1450140Z ##[group]GITHUB_TOKEN Permissions
+2026-09-02T09:14:10.1451140Z Contents: read
+2026-09-02T09:14:10.1452140Z Metadata: read
+2026-09-02T09:14:10.1453140Z ##[endgroup]
+2026-09-02T09:14:10.1512140Z Prepare workflow directory
+2026-09-02T09:14:10.2832140Z Prepare all required actions
+2026-09-02T09:14:10.7152140Z Getting action download info
+2026-09-02T09:14:11.0162140Z Download action repository 'actions/checkout@v4'
+2026-09-02T09:14:11.6112140Z Complete job name: audit
+2026-09-02T09:14:11.7312140Z ##[group]Run actions/checkout@v4
+2026-09-02T09:14:11.7313140Z with:
+2026-09-02T09:14:11.7314140Z   repository: tarn-lantern/sluice-audit
+2026-09-02T09:14:11.7315140Z   clean: true
+2026-09-02T09:14:11.7316140Z   fetch-depth: 1
+2026-09-02T09:14:11.7317140Z ##[endgroup]
+2026-09-02T09:14:11.9752140Z Syncing repository: tarn-lantern/sluice-audit
+2026-09-02T09:14:12.1042140Z Working directory is '/home/runner/work/sluice-audit/sluice-audit'
+2026-09-02T09:14:12.5352140Z Initializing the repository
+2026-09-02T09:14:13.3942140Z Fetching the repository
+2026-09-02T09:14:14.1202140Z Checking out the ref
+2026-09-02T09:14:14.2292140Z /usr/bin/git log -1 --format=%H
+2026-09-02T09:14:14.3302140Z ##[group]Run make audit
+2026-09-02T09:14:14.3303140Z [36;1mmake audit[0m
+2026-09-02T09:14:14.3342140Z shell: /usr/bin/bash -e {0}
+2026-09-02T09:14:14.3343140Z ##[endgroup]
+2026-09-02T09:14:14.3482140Z ./scripts/inspect-sluice.sh config/tarn-rules.tsv data/sluice-manifest.tsv
+2026-09-02T09:14:14.3492140Z make: ./scripts/inspect-sluice.sh: No such file or directory
+2026-09-02T09:14:14.3493140Z make: *** [Makefile:18: audit] Error 127
+2026-09-02T09:14:14.3522140Z ##[error]Process completed with exit code 2.
+2026-09-02T09:14:14.3652140Z Post job cleanup.
+2026-09-02T09:14:14.5122140Z /usr/bin/git version
+2026-09-02T09:14:14.5182140Z git version 2.51.0
+2026-09-02T09:14:14.6112140Z Cleaning up orphan processes
+2026-09-02T09:14:14.6402140Z Terminate orphan process: pid (1782) (sh)

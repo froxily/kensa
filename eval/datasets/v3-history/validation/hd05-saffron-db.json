@@ -1,0 +1,13 @@
+{
+  "id": "hd05-saffron-db",
+  "independent_labels": [
+    {"id": "e1", "cluster": "a", "relation": "first", "category": "db_connectivity"},
+    {"id": "e2", "cluster": "a", "relation": "recurrence", "category": "db_connectivity"},
+    {"id": "e3", "cluster": "a", "relation": "recurrence", "category": "db_connectivity"},
+    {"id": "e4", "cluster": "b", "relation": "first", "category": "test_regression"}
+  ],
+  "verdict": "ambiguous",
+  "disputed_fields": ["e1.root_cause", "e2.root_cause", "e3.root_cause", "e4.root_cause"],
+  "reason_category": "ambiguous_evidence",
+  "notes": "The labels and plan agree, and the runs differ beyond timestamps. The first three logs show the same localhost connection refusal, but do not establish whether the service was never started, failed, or listened elsewhere; a common underlying fix is plausible rather than proven. The last assertion shows reversed output, but does not establish that creation-time ordering is the cause. No giveaway commentary found."
+}

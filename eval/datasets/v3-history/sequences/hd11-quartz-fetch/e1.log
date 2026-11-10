@@ -1,0 +1,45 @@
+2026-09-01T08:00:00.0000000Z Current runner version: '2.328.0'
+2026-09-01T08:00:00.1000000Z Runner name: 'hosted-41'
+2026-09-01T08:00:00.2000000Z ##[group]Operating System
+2026-09-01T08:00:00.3000000Z Ubuntu
+2026-09-01T08:00:00.4000000Z 24.04.3
+2026-09-01T08:00:00.5000000Z ##[endgroup]
+2026-09-01T08:00:00.6000000Z ##[group]Runner Image
+2026-09-01T08:00:00.7000000Z Image: ubuntu-24.04
+2026-09-01T08:00:00.8000000Z Version: 20260824.1
+2026-09-01T08:00:00.9000000Z ##[endgroup]
+2026-09-01T08:00:01.0000000Z Prepare workflow directory
+2026-09-01T08:00:01.1000000Z Prepare all required actions
+2026-09-01T08:00:01.2000000Z Download action repository 'actions/checkout@v4'
+2026-09-01T08:00:01.3000000Z Complete job name: verify
+2026-09-01T08:00:02.0000000Z ##[group]Run actions/checkout@v4
+2026-09-01T08:00:02.1000000Z with:
+2026-09-01T08:00:02.2000000Z   repository: quartz-labs/relay-fetch
+2026-09-01T08:00:02.3000000Z   clean: true
+2026-09-01T08:00:02.4000000Z ##[endgroup]
+2026-09-01T08:00:03.0000000Z Syncing repository: quartz-labs/relay-fetch
+2026-09-01T08:00:03.1000000Z [command]/usr/bin/git version
+2026-09-01T08:00:03.2000000Z git version 2.51.0
+2026-09-01T08:00:04.0000000Z Fetching the repository
+2026-09-01T08:00:05.0000000Z Checking out the ref
+2026-09-01T08:00:05.2000000Z ##[group]Run actions/setup-node@v4
+2026-09-01T08:00:05.3000000Z with:
+2026-09-01T08:00:05.4000000Z   node-version: 22
+2026-09-01T08:00:05.5000000Z ##[endgroup]
+2026-09-01T08:00:06.0000000Z Found in cache: node 22.18.0
+2026-09-01T08:00:06.5000000Z ##[group]Run npm ci
+2026-09-01T08:00:06.6000000Z npm ci
+2026-09-01T08:00:06.7000000Z shell: /usr/bin/bash -e {0}
+2026-09-01T08:00:06.8000000Z ##[endgroup]
+2026-09-01T08:00:09.0000000Z added 86 packages in 2s
+2026-09-01T08:00:09.1000000Z ##[group]Run npm run relay-check
+2026-09-01T08:00:09.2000000Z npm run relay-check
+2026-09-01T08:00:09.3000000Z ##[endgroup]
+2026-09-01T08:00:09.4000000Z > node scripts/relay-check.js --resource inventory
+2026-09-01T08:00:09.5000000Z GET https://relay.quartz.example/inventory
+2026-09-01T08:00:19.5100000Z gateway: upstream response deadline exceeded (10000ms)
+2026-09-01T08:00:19.5200000Z Error: socket hang up
+2026-09-01T08:00:19.5300000Z   code: 'ECONNRESET'
+2026-09-01T08:00:19.5400000Z ##[error]Process completed with exit code 1.
+2026-09-01T08:00:19.6000000Z Post job cleanup.
+2026-09-01T08:00:19.7000000Z Cleaning up orphan processes

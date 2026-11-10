@@ -1,0 +1,49 @@
+2026-09-02T09:14:11.1000000Z Current runner version: '2.328.0'
+2026-09-02T09:14:11.1100000Z ##[group]Runner Image
+2026-09-02T09:14:11.1200000Z Image: ubuntu-24.04
+2026-09-02T09:14:11.1300000Z ##[endgroup]
+2026-09-02T09:14:11.1400000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-02T09:14:11.1500000Z Contents: read
+2026-09-02T09:14:11.1600000Z ##[endgroup]
+2026-09-02T09:14:11.1700000Z Prepare workflow directory
+2026-09-02T09:14:11.1800000Z Prepare all required actions
+2026-09-02T09:14:11.1900000Z Download action repository 'actions/checkout@v4'
+2026-09-02T09:14:11.2000000Z ##[group]Run actions/checkout@v4
+2026-09-02T09:14:11.2100000Z with:
+2026-09-02T09:14:11.2200000Z   repository: whorlkin/gyroscope-whorl
+2026-09-02T09:14:11.2300000Z   clean: true
+2026-09-02T09:14:11.2400000Z ##[endgroup]
+2026-09-02T09:14:11.2500000Z Syncing repository: whorlkin/gyroscope-whorl
+2026-09-02T09:14:12.1000000Z Checking out the ref
+2026-09-02T09:14:12.2000000Z ##[group]Run flutter pub get
+2026-09-02T09:14:12.2100000Z flutter pub get
+2026-09-02T09:14:12.2200000Z shell: /usr/bin/bash -e {0}
+2026-09-02T09:14:12.2300000Z ##[endgroup]
+2026-09-02T09:14:14.1000000Z Resolving dependencies...
+2026-09-02T09:14:15.1000000Z Downloading packages...
+2026-09-02T09:14:16.1000000Z Got dependencies!
+2026-09-02T09:14:16.2000000Z ##[group]Run flutter build apk --release
+2026-09-02T09:14:16.2100000Z flutter build apk --release
+2026-09-02T09:14:16.2200000Z shell: /usr/bin/bash -e {0}
+2026-09-02T09:14:16.2300000Z ##[endgroup]
+2026-09-02T09:14:18.1000000Z Running Gradle task 'assembleRelease'...
+2026-09-02T09:14:45.1000000Z lib/widgets/mire_dial.dart:48:7: Error: No named parameter with the name 'trackColor'.
+2026-09-02T09:14:45.1100000Z       trackColor: palette.mist,
+2026-09-02T09:14:45.1200000Z       ^^^^^^^^^^
+2026-09-02T09:14:45.1300000Z lib/widgets/arc_gauge.dart:12:9: Context: Found this candidate, but the arguments don't match.
+2026-09-02T09:14:45.1400000Z   const ArcGauge({super.key, required this.paint});
+2026-09-02T09:14:45.1500000Z         ^^^^^^^^
+2026-09-02T09:14:46.1000000Z Target kernel_snapshot_program failed: Exception
+2026-09-02T09:14:46.1100000Z FAILURE: Build failed with an exception.
+2026-09-02T09:14:46.1200000Z * What went wrong:
+2026-09-02T09:14:46.1300000Z Execution failed for task ':app:compileFlutterBuildRelease'.
+2026-09-02T09:14:46.1400000Z > Process 'command 'flutter'' finished with non-zero exit value 1
+2026-09-02T09:14:46.1500000Z * Try:
+2026-09-02T09:14:46.1600000Z > Run with --stacktrace option to get the stack trace.
+2026-09-02T09:14:46.1700000Z > Run with --info or --debug option to get more log output.
+2026-09-02T09:14:46.1800000Z BUILD FAILED in 29s
+2026-09-02T09:14:46.1900000Z Running Gradle task 'assembleRelease'...                           29.3s
+2026-09-02T09:14:46.2000000Z Gradle task assembleRelease failed with exit code 1
+2026-09-02T09:14:46.2100000Z ##[error]Process completed with exit code 1.
+2026-09-02T09:14:46.2200000Z Post job cleanup.
+2026-09-02T09:14:46.2300000Z Cleaning up orphan processes

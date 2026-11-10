@@ -1,0 +1,49 @@
+2026-09-24T13:00:00.0000000Z Current runner version: '2.329.0'
+2026-09-24T13:00:00.1000000Z Runner name: 'hosted-61'
+2026-09-24T13:00:00.2000000Z ##[group]Operating System
+2026-09-24T13:00:00.3000000Z Ubuntu
+2026-09-24T13:00:00.4000000Z 24.04.3
+2026-09-24T13:00:00.5000000Z ##[endgroup]
+2026-09-24T13:00:00.6000000Z ##[group]Runner Image
+2026-09-24T13:00:00.7000000Z Image: ubuntu-24.04
+2026-09-24T13:00:00.8000000Z Version: 20260921.1
+2026-09-24T13:00:00.9000000Z ##[endgroup]
+2026-09-24T13:00:01.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-24T13:00:01.1000000Z Contents: read
+2026-09-24T13:00:01.2000000Z Metadata: read
+2026-09-24T13:00:01.3000000Z ##[endgroup]
+2026-09-24T13:00:01.4000000Z Prepare workflow directory
+2026-09-24T13:00:01.5000000Z Prepare all required actions
+2026-09-24T13:00:01.6000000Z Download action repository 'actions/checkout@v4'
+2026-09-24T13:00:01.7000000Z Complete job name: release
+2026-09-24T13:00:02.0000000Z ##[group]Run actions/checkout@v4
+2026-09-24T13:00:02.1000000Z with:
+2026-09-24T13:00:02.2000000Z   repository: boreal-atelier/archive-index
+2026-09-24T13:00:02.3000000Z   ref: refs/tags/v1.4.0
+2026-09-24T13:00:02.4000000Z ##[endgroup]
+2026-09-24T13:00:03.0000000Z Syncing repository: boreal-atelier/archive-index
+2026-09-24T13:00:03.1000000Z [command]/usr/bin/git version
+2026-09-24T13:00:03.2000000Z git version 2.51.0
+2026-09-24T13:00:04.0000000Z Fetching the repository
+2026-09-24T13:00:05.0000000Z Checking out the ref
+2026-09-24T13:00:05.2000000Z ##[group]Run actions/setup-java@v4
+2026-09-24T13:00:05.3000000Z with:
+2026-09-24T13:00:05.4000000Z   distribution: temurin
+2026-09-24T13:00:05.5000000Z   java-version: '21'
+2026-09-24T13:00:05.6000000Z ##[endgroup]
+2026-09-24T13:00:06.0000000Z Java 21 was installed
+2026-09-24T13:00:06.5000000Z ##[group]Run ./gradlew jar
+2026-09-24T13:00:06.6000000Z ./gradlew jar
+2026-09-24T13:00:06.7000000Z shell: /usr/bin/bash -e {0}
+2026-09-24T13:00:06.8000000Z ##[endgroup]
+2026-09-24T13:00:12.0000000Z > Task :jar
+2026-09-24T13:00:12.1000000Z BUILD SUCCESSFUL in 6s
+2026-09-24T13:00:12.2000000Z ##[group]Run gh release upload v1.4.0 build/libs/archive-index.jar
+2026-09-24T13:00:12.3000000Z gh release upload v1.4.0 build/libs/archive-index.jar
+2026-09-24T13:00:12.4000000Z env:
+2026-09-24T13:00:12.5000000Z   GH_TOKEN: ***
+2026-09-24T13:00:12.6000000Z ##[endgroup]
+2026-09-24T13:00:13.0000000Z HTTP 403: Resource not accessible by integration
+2026-09-24T13:00:13.1000000Z ##[error]Process completed with exit code 1.
+2026-09-24T13:00:13.2000000Z Post job cleanup.
+2026-09-24T13:00:13.3000000Z Cleaning up orphan processes

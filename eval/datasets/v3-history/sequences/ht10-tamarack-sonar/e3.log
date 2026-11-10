@@ -1,0 +1,65 @@
+2026-09-16T10:33:02.1000000Z Current runner version: '2.328.0'
+2026-09-16T10:33:02.1010000Z ##[group]Runner Image
+2026-09-16T10:33:02.1011000Z Image: ubuntu-24.04
+2026-09-16T10:33:02.1012000Z Version: 20260907.1.0
+2026-09-16T10:33:02.1013000Z ##[endgroup]
+2026-09-16T10:33:02.1014000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-16T10:33:02.1015000Z Contents: read
+2026-09-16T10:33:02.1016000Z Metadata: read
+2026-09-16T10:33:02.1017000Z ##[endgroup]
+2026-09-16T10:33:02.1020000Z Prepare workflow directory
+2026-09-16T10:33:02.2020000Z Prepare all required actions
+2026-09-16T10:33:02.4020000Z Download action repository 'actions/checkout@v4'
+2026-09-16T10:33:02.7000000Z Complete job name: linux-build
+2026-09-16T10:33:02.8000000Z ##[group]Run actions/checkout@v4
+2026-09-16T10:33:02.8001000Z with:
+2026-09-16T10:33:02.8002000Z   repository: tamarack-labs/sonarloom
+2026-09-16T10:33:02.8003000Z   fetch-depth: 1
+2026-09-16T10:33:02.8004000Z ##[endgroup]
+2026-09-16T10:33:03.0010000Z Syncing repository: tamarack-labs/sonarloom
+2026-09-16T10:33:03.1010000Z Initializing the repository
+2026-09-16T10:33:03.3020000Z Fetching the repository
+2026-09-16T10:33:04.0020000Z Checking out the ref
+2026-09-16T10:33:04.1020000Z HEAD is now at 02be493 Add delay display
+2026-09-16T10:33:04.2000000Z ##[group]Run mkdir -p out/sonar-build
+2026-09-16T10:33:04.2001000Z mkdir -p out/sonar-build
+2026-09-16T10:33:04.2002000Z shell: /usr/bin/bash -e {0}
+2026-09-16T10:33:04.2003000Z ##[endgroup]
+2026-09-16T10:33:04.3000000Z ##[group]Run cmake ../.. -DCMAKE_BUILD_TYPE=Release
+2026-09-16T10:33:04.3001000Z cmake ../.. -DCMAKE_BUILD_TYPE=Release
+2026-09-16T10:33:04.3002000Z shell: /usr/bin/bash -e {0}
+2026-09-16T10:33:04.3003000Z ##[endgroup]
+2026-09-16T10:33:04.5120000Z -- The CXX compiler identification is GNU 13.3.0
+2026-09-16T10:33:04.7130000Z -- Detecting CXX compiler ABI info
+2026-09-16T10:33:04.9210000Z -- Detecting CXX compiler ABI info - done
+2026-09-16T10:33:05.0020000Z -- Check for working CXX compiler: /usr/bin/c++ - skipped
+2026-09-16T10:33:05.0030000Z -- Detecting CXX compile features
+2026-09-16T10:33:05.0040000Z -- Detecting CXX compile features - done
+2026-09-16T10:33:05.1200000Z -- Configuring done (0.8s)
+2026-09-16T10:33:05.1300000Z -- Generating done (0.0s)
+2026-09-16T10:33:05.1310000Z -- Build files have been written to: /home/runner/work/sonarloom/sonarloom/out/sonar-build
+2026-09-16T10:33:05.1500000Z ##[group]Run c++ -c ../../src/pulse.cpp -o /tmp/pulse-check.o
+2026-09-16T10:33:05.1501000Z c++ -c ../../src/pulse.cpp -o /tmp/pulse-check.o
+2026-09-16T10:33:05.1502000Z nm -C /tmp/pulse-check.o | grep estimate_delay
+2026-09-16T10:33:05.1503000Z cat CMakeFiles/sonar.dir/link.txt
+2026-09-16T10:33:05.1504000Z shell: /usr/bin/bash -e {0}
+2026-09-16T10:33:05.1505000Z ##[endgroup]
+2026-09-16T10:33:05.1900000Z 0000000000000000 T pulse::estimate_delay(float const*, unsigned long)
+2026-09-16T10:33:05.1910000Z /usr/bin/c++ -O3 -DNDEBUG CMakeFiles/sonar.dir/src/main.cpp.o CMakeFiles/sonar.dir/src/window.cpp.o CMakeFiles/sonar.dir/src/display.cpp.o -o sonar
+2026-09-16T10:33:05.2010000Z ##[group]Run cmake --build . --parallel 2
+2026-09-16T10:33:05.2011000Z cmake --build . --parallel 2
+2026-09-16T10:33:05.2012000Z shell: /usr/bin/bash -e {0}
+2026-09-16T10:33:05.2013000Z ##[endgroup]
+2026-09-16T10:33:05.4010000Z [ 25%] Building CXX object CMakeFiles/sonar.dir/src/main.cpp.o
+2026-09-16T10:33:05.4020000Z [ 50%] Building CXX object CMakeFiles/sonar.dir/src/window.cpp.o
+2026-09-16T10:33:06.6010000Z [ 75%] Building CXX object CMakeFiles/sonar.dir/src/display.cpp.o
+2026-09-16T10:33:07.2040000Z [100%] Linking CXX executable sonar
+2026-09-16T10:33:07.3050000Z /usr/bin/ld: CMakeFiles/sonar.dir/src/main.cpp.o: in function `main':
+2026-09-16T10:33:07.3051000Z main.cpp:(.text.startup+0x85): undefined reference to `pulse::estimate_delay(float const*, unsigned long)'
+2026-09-16T10:33:07.3060000Z collect2: error: ld returned 1 exit status
+2026-09-16T10:33:07.3070000Z gmake[2]: *** [CMakeFiles/sonar.dir/build.make:129: sonar] Error 1
+2026-09-16T10:33:07.3080000Z gmake[1]: *** [CMakeFiles/Makefile2:83: CMakeFiles/sonar.dir/all] Error 2
+2026-09-16T10:33:07.3090000Z gmake: *** [Makefile:91: all] Error 2
+2026-09-16T10:33:07.3100000Z ##[error]Process completed with exit code 2.
+2026-09-16T10:33:07.4000000Z Post job cleanup.
+2026-09-16T10:33:07.5000000Z Cleaning up orphan processes

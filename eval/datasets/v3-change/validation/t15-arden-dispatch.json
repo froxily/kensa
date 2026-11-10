@@ -1,0 +1,14 @@
+{
+  "id": "t15-arden-dispatch",
+  "independent_labels": {
+    "comparability": "partially_comparable",
+    "unverified_factors": ["baseline_log_unavailable"],
+    "category": "missing_env_var",
+    "culprit_kind": "workflow",
+    "culprit_paths": [".github/workflows/dispatch.yml"]
+  },
+  "verdict": "agree",
+  "disputed_fields": [],
+  "reason_category": "none",
+  "notes": "The newest eligible successful run is an ancestor with matching runner facts, but its log is unavailable. The workflow diff removes the required region variable, and the failed log and settings file show the resulting startup error. The evidence ranges and plan row match."
+}

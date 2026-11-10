@@ -1,0 +1,16 @@
+﻿{
+  "failed": {
+    "run_id": 9214635108, "run_attempt": 1, "workflow_id": 85217439,
+    "workflow_path": ".github/workflows/rust-check.yml", "event": "push", "head_branch": "main",
+    "head_sha": "5c8a1d9e4b7602f3a6c915de083b4f7a2e6d913c", "created_at": "2026-10-30T11:14:00Z", "conclusion": "failure",
+    "jobs": [
+      {"name": "quick", "conclusion": "success", "labels": ["ubuntu-24.04"], "runner_image": "ubuntu-24.04", "runner_image_version": "20261026.1"},
+      {"name": "mirror tests", "conclusion": "failure", "labels": ["ubuntu-24.04"], "runner_image": "ubuntu-24.04", "runner_image_version": "20261026.1"}
+    ],
+    "failed_job": "mirror tests"
+  },
+  "candidates": [
+    {"run_id": 9214573842, "run_attempt": 1, "workflow_id": 85217439, "workflow_path": ".github/workflows/rust-check.yml", "event": "push", "head_branch": "main", "head_sha": "a71d3c8e90b245f6d4a8e1c739f0b2d6e5c491ab", "created_at": "2026-10-30T10:10:00Z", "conclusion": "success", "jobs": [{"name": "quick", "conclusion": "success", "labels": ["ubuntu-24.04"], "runner_image": "ubuntu-24.04", "runner_image_version": "20261026.1"}]},
+    {"run_id": 9214492726, "run_attempt": 1, "workflow_id": 85217439, "workflow_path": ".github/workflows/rust-check.yml", "event": "push", "head_branch": "main", "head_sha": "a71d3c8e90b245f6d4a8e1c739f0b2d6e5c491ab", "created_at": "2026-10-30T09:20:00Z", "conclusion": "success", "jobs": [{"name": "quick", "conclusion": "success", "labels": ["ubuntu-24.04"], "runner_image": "ubuntu-24.04", "runner_image_version": "20261026.1"}]}
+  ]
+}

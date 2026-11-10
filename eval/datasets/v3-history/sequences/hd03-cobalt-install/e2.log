@@ -1,0 +1,43 @@
+2026-09-04T11:20:00.0000000Z Current runner version: '2.328.0'
+2026-09-04T11:20:01.0000000Z ##[group]Runner Image
+2026-09-04T11:20:02.0000000Z Image: ubuntu-24.04
+2026-09-04T11:20:03.0000000Z Version: 20260824.1
+2026-09-04T11:20:04.0000000Z ##[endgroup]
+2026-09-04T11:20:05.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-04T11:20:06.0000000Z Contents: read
+2026-09-04T11:20:07.0000000Z ##[endgroup]
+2026-09-04T11:20:08.0000000Z Prepare workflow directory
+2026-09-04T11:20:09.0000000Z Prepare all required actions
+2026-09-04T11:20:10.0000000Z Getting action download info
+2026-09-04T11:20:11.0000000Z Download action repository 'actions/checkout@v4'
+2026-09-04T11:20:12.0000000Z Download action repository 'actions/setup-node@v4'
+2026-09-04T11:20:13.0000000Z Complete job name: bundle
+2026-09-04T11:20:14.0000000Z ##[group]Run actions/checkout@v4
+2026-09-04T11:20:15.0000000Z with:
+2026-09-04T11:20:16.0000000Z   repository: cobalt-labs/parcel-loom
+2026-09-04T11:20:17.0000000Z   fetch-depth: 1
+2026-09-04T11:20:18.0000000Z Syncing repository
+2026-09-04T11:20:19.0000000Z git version 2.51.0
+2026-09-04T11:20:20.0000000Z Initializing the repository
+2026-09-04T11:20:21.0000000Z Fetching the repository
+2026-09-04T11:20:22.0000000Z Checking out the ref
+2026-09-04T11:20:23.0000000Z ##[endgroup]
+2026-09-04T11:20:24.0000000Z ##[group]Run actions/setup-node@v4
+2026-09-04T11:20:25.0000000Z with:
+2026-09-04T11:20:26.0000000Z   node-version: 20
+2026-09-04T11:20:27.0000000Z Found in cache: node 20.19.4
+2026-09-04T11:20:28.0000000Z ##[endgroup]
+2026-09-04T11:20:29.0000000Z ##[group]Run npm ci
+2026-09-04T11:20:30.0000000Z added 842 packages in 13s
+2026-09-04T11:20:31.0000000Z 71 packages are looking for funding
+2026-09-04T11:20:32.0000000Z ##[endgroup]
+2026-09-04T11:20:33.0000000Z ##[group]Run npm run build:atlas
+2026-09-04T11:20:34.0000000Z > parcel-loom@1.0.0 build:atlas
+2026-09-04T11:20:35.0000000Z > node scripts/atlas-bundle.js
+2026-09-04T11:20:36.0000000Z bundling atlas assets
+2026-09-04T11:22:01.0000000Z transformed 13842 modules
+2026-09-04T11:22:12.0000000Z Killed
+2026-09-04T11:22:13.0000000Z kernel: Out of memory: Killed process 2318 (node) total-vm:8459200kB, anon-rss:6810020kB
+2026-09-04T11:22:14.0000000Z ##[error]Process completed with exit code 137.
+2026-09-04T11:22:15.0000000Z Post job cleanup.
+2026-09-04T11:22:16.0000000Z Cleaning up orphan processes

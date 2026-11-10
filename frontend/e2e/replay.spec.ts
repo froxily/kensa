@@ -19,7 +19,11 @@ interface RecordedInvestigation {
 
 const recording = JSON.parse(
   readFileSync(new URL("../replay/recording.json", import.meta.url), "utf-8"),
-) as { manifest: { model: string }; investigations: RecordedInvestigation[] };
+) as {
+  manifest: { model: string };
+  investigations: RecordedInvestigation[];
+  changes: Record<string, unknown>;
+};
 
 function recorded(predicate: (item: RecordedInvestigation) => boolean): RecordedInvestigation {
   const found = recording.investigations.find(predicate);
@@ -83,6 +87,7 @@ async function focusOutline(page: Page): Promise<string> {
 const PAGES = [
   "./",
   "./#/investigations/new",
+  "./#/analytics",
   ...recording.investigations.map((item) => `./#/investigations/${item.id}`),
 ];
 
@@ -162,7 +167,22 @@ test("the replay works with every request outside its own files blocked", async 
     await expect(page.getByRole("heading", { level: 1, name: item.title })).toBeVisible();
     await expect(page.getByRole("region", { name: strings.report.title })).toBeVisible();
     await expect(page.getByRole("region", { name: strings.log.region })).toBeVisible();
+    // v1.1: the History panel loads from the recording, with matching off (the default).
+    const history = page.getByRole("region", { name: new RegExp(strings.similar.title) });
+    await expect(history).toContainText(strings.similar.matchingOff);
+    await expect(history.getByText(strings.similar.recurrences)).toHaveCount(0);
+    const changes = page.getByRole("region", { name: strings.changes.title });
+    if (recording.changes[item.id]) {
+      await expect(changes).toContainText(strings.changes.replaySynthetic);
+    } else {
+      await expect(changes).toHaveCount(0);
+    }
   }
+  await page.goto("./#/analytics");
+  await expect(
+    page.getByRole("heading", { level: 1, name: strings.analytics.title }),
+  ).toBeVisible();
+  await expect(page.getByText(strings.analytics.recurringOff)).toBeVisible();
   await page.goto(`./#/investigations/${awaitingApproval.id}`);
   await page.getByRole("button", { name: strings.review.approve }).click();
   await expect(page.getByText(strings.replay.decisionNotSaved)).toBeVisible();
@@ -261,6 +281,7 @@ for (const [scheme, locale] of [
     for (const [label, path] of [
       ["overview", "./"],
       ["new investigation", "./#/investigations/new"],
+      ["analytics", "./#/analytics"],
       ["awaiting approval", `./#/investigations/${awaitingApproval.id}`],
       ["abstention", `./#/investigations/${abstained.id}`],
     ] as const) {

@@ -1,0 +1,40 @@
+2026-09-20T10:45:00.0000000Z Current runner version: '2.329.0'
+2026-09-20T10:45:01.0000000Z ##[group]Operating System
+2026-09-20T10:45:02.0000000Z Ubuntu 24.04.3 LTS
+2026-09-20T10:45:03.0000000Z ##[endgroup]
+2026-09-20T10:45:04.0000000Z ##[group]Runner Image
+2026-09-20T10:45:05.0000000Z Image: ubuntu-24.04
+2026-09-20T10:45:06.0000000Z Version: 20250914.1
+2026-09-20T10:45:07.0000000Z ##[endgroup]
+2026-09-20T10:45:08.0000000Z Prepare workflow directory
+2026-09-20T10:45:09.0000000Z Prepare all required actions
+2026-09-20T10:45:10.0000000Z Download action repository 'actions/checkout@v4'
+2026-09-20T10:45:11.0000000Z Complete job name: probe-image
+2026-09-20T10:45:12.0000000Z ##[group]Run actions/checkout@v4
+2026-09-20T10:45:13.0000000Z with:
+2026-09-20T10:45:14.0000000Z   repository: nacelle/boreal-relay
+2026-09-20T10:45:15.0000000Z   clean: true
+2026-09-20T10:45:16.0000000Z ##[endgroup]
+2026-09-20T10:45:17.0000000Z Syncing repository: nacelle/boreal-relay
+2026-09-20T10:45:18.0000000Z git version 2.51.0
+2026-09-20T10:45:19.0000000Z Initialized empty Git repository
+2026-09-20T10:45:20.0000000Z Fetching the repository
+2026-09-20T10:45:21.0000000Z Checking out the ref
+2026-09-20T10:45:22.0000000Z ##[group]Run go version
+2026-09-20T10:45:23.0000000Z go version
+2026-09-20T10:45:24.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-20T10:45:25.0000000Z ##[endgroup]
+2026-09-20T10:45:26.0000000Z go version go1.24.6 linux/amd64
+2026-09-20T10:45:27.0000000Z ##[group]Run docker pull ghcr.io/nacelle/probe-base:2.7
+2026-09-20T10:45:28.0000000Z docker pull ghcr.io/nacelle/probe-base:2.7
+2026-09-20T10:45:29.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-20T10:45:30.0000000Z ##[endgroup]
+2026-09-20T10:45:31.0000000Z Error response from daemon: manifest unknown
+2026-09-20T10:45:32.0000000Z ##[error]Process completed with exit code 1.
+2026-09-20T10:45:33.0000000Z Post job cleanup.
+2026-09-20T10:45:34.0000000Z /usr/bin/git version
+2026-09-20T10:45:35.0000000Z git version 2.51.0
+2026-09-20T10:45:36.0000000Z Temporarily overriding HOME
+2026-09-20T10:45:37.0000000Z Adding repository directory to safe directories
+2026-09-20T10:45:38.0000000Z Removing HTTP extra header
+2026-09-20T10:45:39.0000000Z Cleaning up orphan processes

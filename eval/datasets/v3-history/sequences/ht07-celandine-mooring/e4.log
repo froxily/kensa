@@ -1,0 +1,48 @@
+﻿2026-09-24T15:40:00.0000000Z Current runner version: '2.329.0'
+2026-09-24T15:40:00.1000000Z ##[group]Runner Image
+2026-09-24T15:40:00.2000000Z Image: ubuntu-24.04
+2026-09-24T15:40:00.3000000Z Version: 20260920.1
+2026-09-24T15:40:00.4000000Z ##[endgroup]
+2026-09-24T15:40:00.5000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-24T15:40:00.6000000Z Contents: read
+2026-09-24T15:40:00.7000000Z Metadata: read
+2026-09-24T15:40:00.8000000Z ##[endgroup]
+2026-09-24T15:40:01.0000000Z Prepare workflow directory
+2026-09-24T15:40:01.5000000Z Prepare all required actions
+2026-09-24T15:40:02.0000000Z ##[group]Run actions/checkout@v4
+2026-09-24T15:40:02.1000000Z with:
+2026-09-24T15:40:02.2000000Z   repository: celandine-works/mooring-planner
+2026-09-24T15:40:02.3000000Z   fetch-depth: 1
+2026-09-24T15:40:03.0000000Z Syncing repository: celandine-works/mooring-planner
+2026-09-24T15:40:03.9000000Z Checking out the ref
+2026-09-24T15:40:04.0000000Z ##[endgroup]
+2026-09-24T15:40:04.2000000Z ##[group]Run actions/setup-java@v4
+2026-09-24T15:40:04.3000000Z with:
+2026-09-24T15:40:04.4000000Z   distribution: temurin
+2026-09-24T15:40:04.5000000Z   java-version: 21
+2026-09-24T15:40:05.0000000Z Java 21 was set as the default
+2026-09-24T15:40:05.1000000Z ##[endgroup]
+2026-09-24T15:40:05.2000000Z ##[group]Run mvn -B verify
+2026-09-24T15:40:05.3000000Z mvn -B verify
+2026-09-24T15:40:05.4000000Z shell: /usr/bin/bash -e {0}
+2026-09-24T15:40:05.5000000Z ##[endgroup]
+2026-09-24T15:40:06.0000000Z [INFO] Scanning for projects...
+2026-09-24T15:40:06.4000000Z [INFO] Building mooring-planner 1.5.0-SNAPSHOT
+2026-09-24T15:40:07.0000000Z [INFO] --- resources:3.3.1:resources (default-resources) @ mooring-planner ---
+2026-09-24T15:40:07.1000000Z [INFO] Copying 1 resource from src/main/resources to target/classes
+2026-09-24T15:40:07.5000000Z [INFO] --- compiler:3.13.0:compile (default-compile) @ mooring-planner ---
+2026-09-24T15:40:07.9000000Z [INFO] Recompiling the module because of changed source code.
+2026-09-24T15:40:08.0000000Z [INFO] Compiling 17 source files with javac [release 21] to target/classes
+2026-09-24T15:40:09.0000000Z [INFO] -------------------------------------------------------------
+2026-09-24T15:40:09.1000000Z [ERROR] COMPILATION ERROR :
+2026-09-24T15:40:09.2000000Z [INFO] -------------------------------------------------------------
+2026-09-24T15:40:09.3000000Z [ERROR] /home/runner/work/mooring-planner/mooring-planner/src/main/java/works/celandine/mooring/DispatchBoard.java:[3,36] cannot find symbol
+2026-09-24T15:40:09.3100000Z   symbol:   class MooringSlot
+2026-09-24T15:40:09.3200000Z   location: package works.celandine.mooring.model
+2026-09-24T15:40:09.4000000Z [INFO] 1 error
+2026-09-24T15:40:09.5000000Z [INFO] BUILD FAILURE
+2026-09-24T15:40:09.6000000Z [ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.13.0:compile (default-compile) on project mooring-planner: Compilation failure
+2026-09-24T15:40:09.7000000Z [ERROR] /home/runner/work/mooring-planner/mooring-planner/src/main/java/works/celandine/mooring/DispatchBoard.java:[3,36] cannot find symbol
+2026-09-24T15:40:09.8000000Z ##[error]Process completed with exit code 1.
+2026-09-24T15:40:09.9000000Z Post job cleanup.
+2026-09-24T15:40:10.0000000Z Cleaning up orphan processes

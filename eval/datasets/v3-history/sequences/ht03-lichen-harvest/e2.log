@@ -1,0 +1,46 @@
+﻿2026-09-06T14:22:01.0000000Z Current runner version: '2.328.0'
+2026-09-06T14:22:01.1000000Z Runner name: 'GitHub Actions 1000219'
+2026-09-06T14:22:01.2000000Z ##[group]Operating System
+2026-09-06T14:22:01.3000000Z Ubuntu 24.04.3 LTS
+2026-09-06T14:22:01.4000000Z ##[endgroup]
+2026-09-06T14:22:01.5000000Z ##[group]Runner Image
+2026-09-06T14:22:01.6000000Z Image: ubuntu-24.04
+2026-09-06T14:22:01.7000000Z Version: 20260901.1.0
+2026-09-06T14:22:01.8000000Z ##[endgroup]
+2026-09-06T14:22:02.0000000Z Prepare workflow directory
+2026-09-06T14:22:02.1000000Z Prepare all required actions
+2026-09-06T14:22:02.3000000Z Getting action download info
+2026-09-06T14:22:03.0000000Z Complete job name: integration
+2026-09-06T14:22:03.1000000Z ##[group]Checking docker version
+2026-09-06T14:22:03.2000000Z Client: Docker Engine - Community
+2026-09-06T14:22:03.3000000Z Server: Docker Engine - Community
+2026-09-06T14:22:03.4000000Z ##[endgroup]
+2026-09-06T14:22:03.5000000Z ##[group]Create local container network
+2026-09-06T14:22:03.6000000Z [command]/usr/bin/docker network create github_network_218
+2026-09-06T14:22:03.7000000Z ##[endgroup]
+2026-09-06T14:22:04.0000000Z ##[group]Starting postgres service container
+2026-09-06T14:22:04.1000000Z Image: postgres:16
+2026-09-06T14:22:04.2000000Z POSTGRES_USER: lichen_runner
+2026-09-06T14:22:04.3000000Z POSTGRES_DB: lichen_ci
+2026-09-06T14:22:04.4000000Z POSTGRES_PASSWORD: ***
+2026-09-06T14:22:08.0000000Z postgres service is healthy.
+2026-09-06T14:22:08.1000000Z ##[endgroup]
+2026-09-06T14:22:08.2000000Z ##[group]Run actions/checkout@v4
+2026-09-06T14:22:08.3000000Z with:
+2026-09-06T14:22:08.4000000Z   repository: rillforge/lichen-harvest
+2026-09-06T14:22:08.5000000Z ##[endgroup]
+2026-09-06T14:22:09.0000000Z Syncing repository: rillforge/lichen-harvest
+2026-09-06T14:22:09.3000000Z Fetching the repository
+2026-09-06T14:22:10.0000000Z Checking out the ref
+2026-09-06T14:22:10.2000000Z ##[group]Run psql -h 127.0.0.1 -U lichen_runner -d lichen_ci -c 'select 1'
+2026-09-06T14:22:10.3000000Z psql -h 127.0.0.1 -U lichen_runner -d lichen_ci -c 'select 1'
+2026-09-06T14:22:10.4000000Z shell: /usr/bin/bash -e {0}
+2026-09-06T14:22:10.5000000Z env:
+2026-09-06T14:22:10.6000000Z   PGPASSWORD: ***
+2026-09-06T14:22:10.7000000Z ##[endgroup]
+2026-09-06T14:22:10.8000000Z psql: error: connection to server at "127.0.0.1", port 5432 failed: FATAL:  password authentication failed for user "lichen_runner"
+2026-09-06T14:22:10.9000000Z ##[error]Process completed with exit code 2.
+2026-09-06T14:22:11.0000000Z Stop and remove container: postgres
+2026-09-06T14:22:11.1000000Z Remove container network: github_network_218
+2026-09-06T14:22:11.2000000Z Post job cleanup.
+2026-09-06T14:22:11.3000000Z Cleaning up orphan processes

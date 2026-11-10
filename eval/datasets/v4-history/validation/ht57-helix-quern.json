@@ -1,0 +1,13 @@
+{
+  "id": "ht57-helix-quern",
+  "independent_labels": [
+    {"id": "e1", "cluster": "a", "relation": "first", "category": "dependency_build"},
+    {"id": "e2", "cluster": "b", "relation": "lookalike", "category": "dependency_build"},
+    {"id": "e3", "cluster": "c", "relation": "first", "category": "dependency_build"},
+    {"id": "e4", "cluster": "c", "relation": "recurrence", "category": "dependency_build"}
+  ],
+  "verdict": "agree",
+  "disputed_fields": [],
+  "reason_category": "none",
+  "notes": "The two visibility errors involve different dependencies and consumers. The later builds both fail to resolve the same remote-cache host; e4 changes target, runner and build details. The visibility diagnostics establish that access is denied, though they do not establish that the targets are private to their packages. No giveaway commentary found."
+}

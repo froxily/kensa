@@ -1,0 +1,12 @@
+{
+  "comparisons": {
+    "1111111111111111111111111111111111111111...3333333333333333333333333333333333333333": {
+      "status": "ahead", "merge_base": "1111111111111111111111111111111111111111", "truncated": false,
+      "commits": [
+        {"sha": "2222222222222222222222222222222222222222", "message": "Simplify job environment", "date": "2026-11-03T07:00:00Z", "files": [{"path": ".github/workflows/check.yml", "status": "modified", "additions": 0, "deletions": 2, "patch": "@@ -4,7 +4,5 @@ jobs:\n   check:\n     runs-on: ubuntu-24.04\n-    env:\n-      ORCHARD_REGION: west\n     steps:\n       - uses: actions/checkout@v4\n       - uses: actions/setup-python@v5"}]},
+        {"sha": "3333333333333333333333333333333333333333", "message": "Restructure formatting helpers", "date": "2026-11-03T08:45:00Z", "files": [{"path": "src/display.py", "status": "modified", "additions": 8, "deletions": 2, "patch": "@@ -1,2 +1,8 @@\n-def label(name):\n-    return name.strip().title()\n+def clean(name):\n+    return name.strip()\n+\n+\n+def label(name):\n+    value = clean(name)\n+    return value.title()\n+"}]}
+      ]
+    }
+  },
+  "workflow_blobs": {"1111111111111111111111111111111111111111": "4444444444444444444444444444444444444444", "3333333333333333333333333333333333333333": "5555555555555555555555555555555555555555"}
+}

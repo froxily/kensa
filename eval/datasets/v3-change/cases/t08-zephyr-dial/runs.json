@@ -1,0 +1,13 @@
+﻿{
+  "failed": {
+    "run_id": 9247138012, "run_attempt": 1, "workflow_id": 82471380,
+    "workflow_path": ".github/workflows/berth.yml", "event": "push", "head_branch": "main",
+    "head_sha": "a61c97b2d8043e6f195ab428c0d7e31f62b9a504", "created_at": "2026-11-09T10:20:00Z", "conclusion": "failure",
+    "jobs": [{"name": "integration", "conclusion": "failure", "labels": ["ubuntu-24.04"], "runner_image": "ubuntu-24.04", "runner_image_version": "20261026.1"}],
+    "failed_job": "integration"
+  },
+  "candidates": [
+    {"run_id": 9247137999, "run_attempt": 1, "workflow_id": 82471380, "workflow_path": ".github/workflows/berth.yml", "event": "push", "head_branch": "main", "head_sha": "d25e6a039f7b418c92d0e3a15b684fc729a1d306", "created_at": "2026-11-09T09:45:00Z", "conclusion": "failure", "jobs": [{"name": "integration", "conclusion": "failure", "labels": ["ubuntu-24.04"], "runner_image": "ubuntu-24.04", "runner_image_version": "20261026.1"}]},
+    {"run_id": 9247137924, "run_attempt": 1, "workflow_id": 82471380, "workflow_path": ".github/workflows/berth.yml", "event": "push", "head_branch": "main", "head_sha": "b73d2e4f196a80c53b74d9e261fa0c85e937ab42", "created_at": "2026-11-09T08:10:00Z", "conclusion": "success", "jobs": [{"name": "integration", "conclusion": "success", "labels": ["ubuntu-24.04"], "runner_image": "ubuntu-24.04", "runner_image_version": "20261026.1"}]}
+  ]
+}

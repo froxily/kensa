@@ -1,0 +1,23 @@
+﻿{
+  "comparisons": {
+    "c3718d65a02eb497f5c91d346a8b20e7f6941ac3...d82e6a47f193cb508e4a762d9f03b615ca784e21": {
+      "status": "ahead", "merge_base": "c3718d65a02eb497f5c91d346a8b20e7f6941ac3", "truncated": false,
+      "commits": [
+        {"sha": "9b4c18e527a0d63f892be147c65a30d1f8e249ab", "message": "Simplify dispatch test environment", "date": "2026-10-29T09:35:00Z", "files": [{"path": ".github/workflows/dispatch.yml", "status": "modified", "additions": 0, "deletions": 2, "patch": "@@ -12,3 +12,1 @@ jobs:\n       - run: npm test\n-        env:\n-          ARDEN_DISPATCH_REGION: north\n"}]},
+        {"sha": "5f83a1ce624d97b0a468e13f9c25d70b3a61e842", "message": "Clarify dispatch README", "date": "2026-10-29T09:40:00Z", "files": [{"path": "README.md", "status": "modified", "additions": 1, "deletions": 1, "patch": "@@ -3,1 +3,1 @@\n-Run checks with npm test.\n+Run the dispatch checks with npm test.\n"}]},
+        {"sha": "d82e6a47f193cb508e4a762d9f03b615ca784e21", "message": "Name the dispatch check", "date": "2026-10-29T10:10:00Z", "files": [{"path": "package.json", "status": "modified", "additions": 1, "deletions": 1, "patch": "@@ -2,1 +2,1 @@\n-  \"name\": \"arden\",\n+  \"name\": \"arden-dispatch\",\n"}]}
+      ]
+    },
+    "a64d92b7e318f50c6a7d4b129e83cf051b6a927d...d82e6a47f193cb508e4a762d9f03b615ca784e21": {
+      "status": "ahead", "merge_base": "a64d92b7e318f50c6a7d4b129e83cf051b6a927d", "truncated": false,
+      "commits": [
+        {"sha": "c3718d65a02eb497f5c91d346a8b20e7f6941ac3", "message": "Document dispatch checks", "date": "2026-10-29T08:25:00Z", "files": [{"path": "README.md", "status": "modified", "additions": 1, "deletions": 1, "patch": "@@ -3,1 +3,1 @@\n-Run checks locally.\n+Run checks with npm test.\n"}]},
+        {"sha": "9b4c18e527a0d63f892be147c65a30d1f8e249ab", "message": "Simplify dispatch test environment", "date": "2026-10-29T09:35:00Z", "files": [{"path": ".github/workflows/dispatch.yml", "status": "modified", "additions": 0, "deletions": 2, "patch": "@@ -12,3 +12,1 @@ jobs:\n       - run: npm test\n-        env:\n-          ARDEN_DISPATCH_REGION: north\n"}]},
+        {"sha": "5f83a1ce624d97b0a468e13f9c25d70b3a61e842", "message": "Clarify dispatch README", "date": "2026-10-29T09:40:00Z", "files": [{"path": "README.md", "status": "modified", "additions": 1, "deletions": 1, "patch": "@@ -3,1 +3,1 @@\n-Run checks with npm test.\n+Run the dispatch checks with npm test.\n"}]},
+        {"sha": "d82e6a47f193cb508e4a762d9f03b615ca784e21", "message": "Name the dispatch check", "date": "2026-10-29T10:10:00Z", "files": [{"path": "package.json", "status": "modified", "additions": 1, "deletions": 1, "patch": "@@ -2,1 +2,1 @@\n-  \"name\": \"arden\",\n+  \"name\": \"arden-dispatch\",\n"}]}
+      ]
+    }
+  },
+  "workflow_blobs": {"d82e6a47f193cb508e4a762d9f03b615ca784e21": "e48c17d902a3b6f51e87c42d9a604fb31d8c725e", "c3718d65a02eb497f5c91d346a8b20e7f6941ac3": "b65f2d8c013e7a94f1c063b9d4a826e5c731f0ab", "a64d92b7e318f50c6a7d4b129e83cf051b6a927d": "b65f2d8c013e7a94f1c063b9d4a826e5c731f0ab"}
+}
+

@@ -1,0 +1,55 @@
+﻿2026-09-13T05:32:01.0000000Z Current runner version: '2.328.0'
+2026-09-13T05:32:01.1000000Z ##[group]Runner Image
+2026-09-13T05:32:01.2000000Z Image: ubuntu-24.04
+2026-09-13T05:32:01.3000000Z Version: 20260907.1.0
+2026-09-13T05:32:01.4000000Z ##[endgroup]
+2026-09-13T05:32:01.5000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-13T05:32:01.6000000Z Contents: read
+2026-09-13T05:32:01.7000000Z ##[endgroup]
+2026-09-13T05:32:02.0000000Z Prepare workflow directory
+2026-09-13T05:32:02.1000000Z Prepare all required actions
+2026-09-13T05:32:02.3000000Z Download action repository 'actions/checkout@v4'
+2026-09-13T05:32:02.7000000Z ##[group]Run actions/checkout@v4
+2026-09-13T05:32:02.8000000Z with:
+2026-09-13T05:32:02.9000000Z   repository: bracken-studio/whorl-dispatch
+2026-09-13T05:32:03.0000000Z   clean: true
+2026-09-13T05:32:03.1000000Z ##[endgroup]
+2026-09-13T05:32:03.2000000Z Syncing repository: bracken-studio/whorl-dispatch
+2026-09-13T05:32:03.3000000Z Working directory is '/home/runner/work/whorl-dispatch/whorl-dispatch'
+2026-09-13T05:32:03.4000000Z ##[group]Fetching the repository
+2026-09-13T05:32:04.0000000Z From https://github.com/bracken-studio/whorl-dispatch
+2026-09-13T05:32:04.1000000Z  * [new ref] refs/pull/44/merge -> pull/44/merge
+2026-09-13T05:32:04.2000000Z ##[endgroup]
+2026-09-13T05:32:04.3000000Z ##[group]Checking out the ref
+2026-09-13T05:32:04.4000000Z HEAD is now at 392cdef Merge pull request
+2026-09-13T05:32:04.5000000Z ##[endgroup]
+2026-09-13T05:32:04.6000000Z ##[group]Run actions/setup-node@v4
+2026-09-13T05:32:04.7000000Z with:
+2026-09-13T05:32:04.8000000Z   node-version: 22
+2026-09-13T05:32:05.0000000Z ##[endgroup]
+2026-09-13T05:32:05.1000000Z Found in cache @ /opt/hostedtoolcache/node/22.18.0/x64
+2026-09-13T05:32:05.2000000Z ##[group]Run npm ci
+2026-09-13T05:32:05.3000000Z npm ci
+2026-09-13T05:32:05.4000000Z shell: /usr/bin/bash -e {0}
+2026-09-13T05:32:05.5000000Z ##[endgroup]
+2026-09-13T05:32:08.0000000Z added 48 packages, and audited 49 packages in 2s
+2026-09-13T05:32:08.1000000Z found 0 vulnerabilities
+2026-09-13T05:32:08.2000000Z ##[group]Run npm test
+2026-09-13T05:32:08.3000000Z npm test
+2026-09-13T05:32:08.4000000Z shell: /usr/bin/bash -e {0}
+2026-09-13T05:32:08.5000000Z env:
+2026-09-13T05:32:08.6000000Z   WHORL_ORIGIN: https://dispatch.example.invalid
+2026-09-13T05:32:08.7000000Z ##[endgroup]
+2026-09-13T05:32:08.8000000Z > whorl-dispatch@1.2.1 test
+2026-09-13T05:32:08.9000000Z > node --test
+2026-09-13T05:32:09.0000000Z file:///home/runner/work/whorl-dispatch/whorl-dispatch/src/settings.mjs:10
+2026-09-13T05:32:09.1000000Z   if (!value) throw new Error(`Missing required environment variable: ${key}`);
+2026-09-13T05:32:09.2000000Z                     ^
+2026-09-13T05:32:09.3000000Z Error: Missing required environment variable: WHORL_ZONE
+2026-09-13T05:32:09.4000000Z     at required (file:///home/runner/work/whorl-dispatch/whorl-dispatch/src/settings.mjs:10:21)
+2026-09-13T05:32:09.5000000Z     at file:///home/runner/work/whorl-dispatch/whorl-dispatch/src/settings.mjs:15:16
+2026-09-13T05:32:09.6000000Z Node.js v22.18.0
+2026-09-13T05:32:09.7000000Z not ok 1 - test/dispatch.test.mjs
+2026-09-13T05:32:09.8000000Z ##[error]Process completed with exit code 1.
+2026-09-13T05:32:09.9000000Z Post job cleanup.
+2026-09-13T05:32:10.0000000Z Cleaning up orphan processes

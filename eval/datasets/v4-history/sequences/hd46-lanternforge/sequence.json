@@ -1,0 +1,12 @@
+{
+  "id": "hd46-lanternforge",
+  "split": "dev",
+  "ecosystem": "java (maven)",
+  "repository": "brackenquay/lanternforge",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"dependency_build","title":"Maven cannot resolve the declared enforcer plugin version","root_cause":"The POM declares maven-enforcer-plugin version 3.5.9, which is not published in Maven Central. Correct the plugin version in the POM.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"b","relation":"first","category":"test_regression","title":"Dispatch window assertion fails","root_cause":"The dispatch window calculation returns an inclusive end time while the test expects the exclusive boundary. Correct the boundary calculation.","differs_from_earlier":""},
+    {"id":"e3","file":"e3.log","cluster":"c","relation":"lookalike","category":"dependency_build","title":"Maven cannot resolve an internal plugin","root_cause":"The internal beacon-audit Maven plugin is not in Central because the workflow omits the company plugin repository from its Maven settings. Configure the plugin repository in the workflow's settings file.","differs_from_earlier":"Like e1, Maven reports PluginResolutionException, but this plugin is internal and needs repository configuration rather than a corrected version."},
+    {"id":"e4","file":"e4.log","cluster":"a","relation":"recurrence","category":"dependency_build","title":"Declared enforcer plugin version remains unavailable","root_cause":"The POM declares maven-enforcer-plugin version 3.5.9, which is not published in Maven Central. Correct the plugin version in the POM.","differs_from_earlier":"A later pull request uses a different runner and Maven command; the same unresolved plugin version stops the build."}
+  ]
+}

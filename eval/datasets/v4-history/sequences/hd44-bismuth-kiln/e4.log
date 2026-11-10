@@ -1,0 +1,46 @@
+2026-09-25T09:41:10.1512300Z Current runner version: '2.329.0'
+2026-09-25T09:41:10.1514400Z ##[group]Runner Image Provisioner
+2026-09-25T09:41:10.1516500Z Hosted Compute Agent
+2026-09-25T09:41:10.1518600Z Version: 20260915.1
+2026-09-25T09:41:10.1520700Z ##[endgroup]
+2026-09-25T09:41:10.1522800Z ##[group]Operating System
+2026-09-25T09:41:10.1524900Z Ubuntu
+2026-09-25T09:41:10.1527000Z 24.04.3
+2026-09-25T09:41:10.1529100Z ##[endgroup]
+2026-09-25T09:41:10.1531200Z ##[group]GITHUB_TOKEN Permissions
+2026-09-25T09:41:10.1533300Z Contents: write
+2026-09-25T09:41:10.1535400Z Metadata: read
+2026-09-25T09:41:10.1537500Z ##[endgroup]
+2026-09-25T09:41:10.1539600Z Prepare workflow directory
+2026-09-25T09:41:10.4340000Z Prepare all required actions
+2026-09-25T09:41:10.9510000Z Download action repository 'actions/checkout@v4'
+2026-09-25T09:41:11.4100000Z Complete job name: publish
+2026-09-25T09:41:11.5140000Z ##[group]Run actions/checkout@v4
+2026-09-25T09:41:11.5142100Z with:
+2026-09-25T09:41:11.5144200Z   repository: isobar-foundry/bismuth-kiln
+2026-09-25T09:41:11.5146300Z   ref: refs/tags/v2.5.0
+2026-09-25T09:41:11.5148400Z   token: ***
+2026-09-25T09:41:11.5150500Z ##[endgroup]
+2026-09-25T09:41:11.7510000Z Syncing repository: isobar-foundry/bismuth-kiln
+2026-09-25T09:41:11.8580000Z [command]/usr/bin/git version
+2026-09-25T09:41:11.8630000Z git version 2.51.0
+2026-09-25T09:41:12.3400000Z Fetching the repository
+2026-09-25T09:41:12.8180000Z Checking out the ref
+2026-09-25T09:41:12.8590000Z HEAD is now at 0c9f421 Move release notes
+2026-09-25T09:41:12.9020000Z ##[group]Run ls release
+2026-09-25T09:41:12.9022100Z [36;1mls release[0m
+2026-09-25T09:41:12.9024200Z shell: /usr/bin/bash -e {0}
+2026-09-25T09:41:12.9026300Z ##[endgroup]
+2026-09-25T09:41:12.9180000Z notes
+2026-09-25T09:41:12.9620000Z ##[group]Run gh release create v2.5.0 --notes-file release/notes.md
+2026-09-25T09:41:12.9622100Z [36;1mgh release create v2.5.0 --notes-file release/notes.md[0m
+2026-09-25T09:41:12.9624200Z shell: /usr/bin/bash -e {0}
+2026-09-25T09:41:12.9626300Z env:
+2026-09-25T09:41:12.9628400Z   GH_TOKEN: ***
+2026-09-25T09:41:12.9630500Z ##[endgroup]
+2026-09-25T09:41:13.0170000Z failed to read release notes: open release/notes.md: no such file or directory
+2026-09-25T09:41:13.0230000Z ##[error]Process completed with exit code 1.
+2026-09-25T09:41:13.0390000Z Post job cleanup.
+2026-09-25T09:41:13.1570000Z [command]/usr/bin/git version
+2026-09-25T09:41:13.1620000Z git version 2.51.0
+2026-09-25T09:41:13.2690000Z Cleaning up orphan processes

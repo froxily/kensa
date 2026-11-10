@@ -1,0 +1,48 @@
+﻿2026-09-09T11:22:00.0000000Z Current runner version: '2.328.0'
+2026-09-09T11:22:00.1000000Z ##[group]Runner Image
+2026-09-09T11:22:00.2000000Z Image: ubuntu-24.04
+2026-09-09T11:22:00.3000000Z Version: 20260901.1
+2026-09-09T11:22:00.4000000Z ##[endgroup]
+2026-09-09T11:22:00.5000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-09T11:22:00.6000000Z Contents: read
+2026-09-09T11:22:00.7000000Z Metadata: read
+2026-09-09T11:22:00.8000000Z ##[endgroup]
+2026-09-09T11:22:01.0000000Z Prepare workflow directory
+2026-09-09T11:22:01.5000000Z Prepare all required actions
+2026-09-09T11:22:02.0000000Z ##[group]Run actions/checkout@v4
+2026-09-09T11:22:02.1000000Z with:
+2026-09-09T11:22:02.2000000Z   repository: celandine-works/mooring-planner
+2026-09-09T11:22:02.3000000Z   clean: true
+2026-09-09T11:22:03.0000000Z Syncing repository: celandine-works/mooring-planner
+2026-09-09T11:22:04.0000000Z Checking out the ref
+2026-09-09T11:22:04.1000000Z ##[endgroup]
+2026-09-09T11:22:04.2000000Z ##[group]Run actions/setup-java@v4
+2026-09-09T11:22:04.3000000Z with:
+2026-09-09T11:22:04.4000000Z   distribution: temurin
+2026-09-09T11:22:04.5000000Z   java-version: 21
+2026-09-09T11:22:05.0000000Z Java 21 was set as the default
+2026-09-09T11:22:05.1000000Z ##[endgroup]
+2026-09-09T11:22:05.2000000Z ##[group]Run mvn -B test
+2026-09-09T11:22:05.3000000Z mvn -B test
+2026-09-09T11:22:05.4000000Z shell: /usr/bin/bash -e {0}
+2026-09-09T11:22:05.5000000Z ##[endgroup]
+2026-09-09T11:22:06.0000000Z [INFO] Scanning for projects...
+2026-09-09T11:22:06.4000000Z [INFO] Building mooring-planner 1.4.0-SNAPSHOT
+2026-09-09T11:22:07.1000000Z [INFO] --- resources:3.3.1:resources (default-resources) @ mooring-planner ---
+2026-09-09T11:22:07.3000000Z [INFO] skip non existing resourceDirectory src/main/resources
+2026-09-09T11:22:08.0000000Z [INFO] --- compiler:3.13.0:compile (default-compile) @ mooring-planner ---
+2026-09-09T11:22:09.0000000Z [INFO] Compiling 15 source files with javac [release 21] to target/classes
+2026-09-09T11:22:10.1000000Z [INFO] --- surefire:3.5.2:test (default-test) @ mooring-planner ---
+2026-09-09T11:22:10.4000000Z [INFO] Running works.celandine.mooring.BerthWindowTest
+2026-09-09T11:22:10.7000000Z [ERROR] Tests run: 7, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.117 s <<< FAILURE! -- in works.celandine.mooring.BerthWindowTest
+2026-09-09T11:22:10.7100000Z [ERROR] works.celandine.mooring.BerthWindowTest.departureAtClosingIsUnavailable -- Time elapsed: 0.009 s <<< FAILURE!
+2026-09-09T11:22:10.7200000Z org.opentest4j.AssertionFailedError: window 08:00-17:00, departure 17:00 ==> expected: <false> but was: <true>
+2026-09-09T11:22:10.7300000Z 	at works.celandine.mooring.BerthWindowTest.departureAtClosingIsUnavailable(BerthWindowTest.java:49)
+2026-09-09T11:22:10.8000000Z [INFO] Results:
+2026-09-09T11:22:10.9000000Z [ERROR] Failures: 1, Errors: 0, Skipped: 0
+2026-09-09T11:22:11.0000000Z [INFO] BUILD FAILURE
+2026-09-09T11:22:11.1000000Z [ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.2:test (default-test) on project mooring-planner: There are test failures.
+2026-09-09T11:22:11.2000000Z [ERROR] Please refer to target/surefire-reports for the individual test results.
+2026-09-09T11:22:11.3000000Z ##[error]Process completed with exit code 1.
+2026-09-09T11:22:11.4000000Z Post job cleanup.
+2026-09-09T11:22:11.5000000Z Cleaning up orphan processes

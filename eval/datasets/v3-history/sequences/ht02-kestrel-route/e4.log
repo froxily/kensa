@@ -1,0 +1,43 @@
+﻿2026-09-24T06:44:00.0010000Z Current runner version: '2.330.0'
+2026-09-24T06:44:00.1010000Z ##[group]Runner Image
+2026-09-24T06:44:00.2010000Z Image: ubuntu-24.04
+2026-09-24T06:44:00.3010000Z Version: 20260920.1
+2026-09-24T06:44:00.4010000Z ##[endgroup]
+2026-09-24T06:44:00.5010000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-24T06:44:00.6010000Z Contents: read
+2026-09-24T06:44:00.7010000Z Metadata: read
+2026-09-24T06:44:00.8010000Z ##[endgroup]
+2026-09-24T06:44:00.9010000Z Prepare workflow directory
+2026-09-24T06:44:01.0010000Z Prepare all required actions
+2026-09-24T06:44:01.1010000Z Download action repository 'actions/checkout@v4'
+2026-09-24T06:44:01.2010000Z Download action repository 'actions/setup-python@v5'
+2026-09-24T06:44:01.3010000Z Complete job name: fixture-check
+2026-09-24T06:44:01.4010000Z ##[group]Run actions/checkout@v4
+2026-09-24T06:44:01.5010000Z with:
+2026-09-24T06:44:01.6010000Z   repository: dune-signal/kestrel-route
+2026-09-24T06:44:01.7010000Z   clean: true
+2026-09-24T06:44:01.8010000Z ##[endgroup]
+2026-09-24T06:44:02.0010000Z Fetching the repository
+2026-09-24T06:44:02.2010000Z Checking out the ref
+2026-09-24T06:44:02.4010000Z ##[group]Run actions/setup-python@v5
+2026-09-24T06:44:02.5010000Z with:
+2026-09-24T06:44:02.6010000Z   python-version: '3.12'
+2026-09-24T06:44:02.7010000Z ##[endgroup]
+2026-09-24T06:44:03.0010000Z Successfully set up CPython (3.12.7)
+2026-09-24T06:44:03.1010000Z ##[group]Run python -m kestrel_route.fixture_check
+2026-09-24T06:44:03.2010000Z python -m kestrel_route.fixture_check
+2026-09-24T06:44:03.3010000Z shell: /usr/bin/bash -e {0}
+2026-09-24T06:44:03.4010000Z ##[endgroup]
+2026-09-24T06:44:03.5010000Z Traceback (most recent call last):
+2026-09-24T06:44:03.6010000Z   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-09-24T06:44:03.7010000Z   File "<frozen runpy>", line 88, in _run_code
+2026-09-24T06:44:03.8010000Z   File "/home/runner/work/kestrel-route/kestrel-route/kestrel_route/fixture_check.py", line 23, in <module>
+2026-09-24T06:44:03.9010000Z     main()
+2026-09-24T06:44:04.0010000Z   File "/home/runner/work/kestrel-route/kestrel-route/kestrel_route/fixture_check.py", line 12, in main
+2026-09-24T06:44:04.1010000Z     fixture_dir = os.environ['KESTREL_ROUTE_FIXTURES']
+2026-09-24T06:44:04.2010000Z                   ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-09-24T06:44:04.3010000Z   File "<frozen os>", line 679, in __getitem__
+2026-09-24T06:44:04.4010000Z KeyError: 'KESTREL_ROUTE_FIXTURES'
+2026-09-24T06:44:04.5010000Z ##[error]Process completed with exit code 1.
+2026-09-24T06:44:04.6010000Z Post job cleanup.
+2026-09-24T06:44:04.7010000Z Cleaning up orphan processes

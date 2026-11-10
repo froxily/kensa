@@ -1,0 +1,19 @@
+{
+  "id": "d30-larch-gauge",
+  "split": "dev",
+  "comparability": "history_unavailable",
+  "category": "test_regression",
+  "culprit_kind": "none",
+  "difficulty": "medium",
+  "ecosystem": "java",
+  "title": "Gauge boundary assertion fails",
+  "root_cause": "The gauge test runs but reports an incorrect boundary result. The successful baseline commit is no longer available to compare, so the evidence does not establish which change introduced the regression.",
+  "culprit_paths": [],
+  "culprit_commit": null,
+  "unverified_factors": [],
+  "fix_keywords": ["Gauge", "boundary"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 54, "end_line": 57, "why": "The test ran and its boundary assertion failed."},
+    {"path": "repo/src/main/java/org/larchfield/Gauge.java", "start_line": 4, "end_line": 6, "why": "The current boundary calculation uses a strict comparison at the boundary."}
+  ]
+}

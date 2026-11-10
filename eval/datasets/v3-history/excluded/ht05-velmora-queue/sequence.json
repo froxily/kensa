@@ -1,0 +1,12 @@
+{
+  "id": "ht05-velmora-queue",
+  "split": "test",
+  "ecosystem": "python",
+  "repository": "velmora-labs/siltqueue",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"db_connectivity","title":"Queue tests cannot reach Redis","root_cause":"No service is listening on localhost port 6379 when the queue client attempts to connect. Provision Redis on that port for the job.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"a","relation":"recurrence","category":"db_connectivity","title":"Redis unavailable during worker test","root_cause":"No service is listening on localhost port 6379 when the queue client attempts to connect. Provision Redis on that port for the job.","differs_from_earlier":"A later pull request reaches Redis through a worker fixture and has a different traceback and runner."},
+    {"id":"e3","file":"e3.log","cluster":"a","relation":"recurrence","category":"db_connectivity","title":"Queue smoke check cannot connect","root_cause":"No service is listening on localhost port 6379 when the queue client attempts to connect. Provision Redis on that port for the job.","differs_from_earlier":"A smoke check fails before pytest on a later run, with different installation and checkout output."},
+    {"id":"e4","file":"e4.log","cluster":"b","relation":"first","category":"db_connectivity","title":"Redis client uses the wrong port","root_cause":"The Redis service is published on host port 6380, while the queue client connects to port 6379. Align the client port with the service mapping.","differs_from_earlier":""}
+  ]
+}

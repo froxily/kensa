@@ -1,0 +1,13 @@
+{
+  "id": "hd06-tern-docker",
+  "independent_labels": [
+    {"id": "e1", "cluster": "a", "relation": "first", "category": "docker"},
+    {"id": "e2", "cluster": "b", "relation": "first", "category": "docker"},
+    {"id": "e3", "cluster": "b", "relation": "recurrence", "category": "docker"},
+    {"id": "e4", "cluster": "a", "relation": "recurrence", "category": "docker"}
+  ],
+  "verdict": "ambiguous",
+  "disputed_fields": ["e2.root_cause", "e3.root_cause"],
+  "reason_category": "ambiguous_evidence",
+  "notes": "The labels match the plan and the logs, and the recurrences vary beyond timestamps. The COPY failures show that deploy/beacon.yaml is absent from the build context, but do not establish that .dockerignore excludes the deploy directory; the file could instead be absent or outside the context. The stated specific root cause and fix therefore are not independently verified. No giveaway commentary found."
+}

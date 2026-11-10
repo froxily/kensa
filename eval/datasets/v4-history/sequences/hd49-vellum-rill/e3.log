@@ -1,0 +1,44 @@
+2026-09-17T15:26:10.1000000Z Current runner version: '2.329.0'
+2026-09-17T15:26:10.2000000Z ##[group]Runner Image
+2026-09-17T15:26:10.3000000Z Image: ubuntu-24.04
+2026-09-17T15:26:10.4000000Z Version: 20260913.1.0
+2026-09-17T15:26:10.5000000Z ##[endgroup]
+2026-09-17T15:26:10.6000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-17T15:26:10.7000000Z Contents: read
+2026-09-17T15:26:10.8000000Z Metadata: read
+2026-09-17T15:26:10.9000000Z ##[endgroup]
+2026-09-17T15:26:11.0000000Z Prepare workflow directory
+2026-09-17T15:26:11.1000000Z Prepare all required actions
+2026-09-17T15:26:11.2000000Z Getting action download info
+2026-09-17T15:26:11.3000000Z Download action repository 'actions/checkout@v4'
+2026-09-17T15:26:11.4000000Z Complete job name: render / preview
+2026-09-17T15:26:11.5000000Z ##[group]Run actions/checkout@v4
+2026-09-17T15:26:11.6000000Z with:
+2026-09-17T15:26:11.7000000Z   repository: vellum-rill/gatehouse-chart
+2026-09-17T15:26:11.8000000Z   clean: true
+2026-09-17T15:26:11.9000000Z   fetch-depth: 1
+2026-09-17T15:26:12.0000000Z ##[endgroup]
+2026-09-17T15:26:12.1000000Z Syncing repository: vellum-rill/gatehouse-chart
+2026-09-17T15:26:12.2000000Z ##[group]Getting Git version info
+2026-09-17T15:26:12.3000000Z git version 2.51.1
+2026-09-17T15:26:12.4000000Z ##[endgroup]
+2026-09-17T15:26:12.5000000Z Initializing the repository
+2026-09-17T15:26:12.6000000Z Fetching the repository
+2026-09-17T15:26:13.0000000Z Checking out the ref
+2026-09-17T15:26:13.1000000Z /usr/bin/git log -1 --format=%H
+2026-09-17T15:26:13.2000000Z c4d6a8cb56a30803f60b238e9777810686117bfe
+2026-09-17T15:26:13.3000000Z ##[group]Run helm dependency build ./charts/gatehouse
+2026-09-17T15:26:13.4000000Z helm dependency build ./charts/gatehouse
+2026-09-17T15:26:13.5000000Z shell: /usr/bin/bash -e {0}
+2026-09-17T15:26:13.6000000Z ##[endgroup]
+2026-09-17T15:26:13.7000000Z ##[group]Run helm template preview-74 ./charts/gatehouse -f deploy/preview.yaml --namespace preview-74
+2026-09-17T15:26:13.8000000Z helm template preview-74 ./charts/gatehouse -f deploy/preview.yaml --namespace preview-74
+2026-09-17T15:26:13.9000000Z shell: /usr/bin/bash -e {0}
+2026-09-17T15:26:14.0000000Z ##[endgroup]
+2026-09-17T15:26:14.1000000Z Error: execution error at (gatehouse/templates/ingress.yaml:14:12): gateway.publicHost is required
+2026-09-17T15:26:14.2000000Z Use --debug flag to render out invalid YAML
+2026-09-17T15:26:14.3000000Z ##[error]Process completed with exit code 1.
+2026-09-17T15:26:14.4000000Z Post job cleanup.
+2026-09-17T15:26:14.5000000Z [command]/usr/bin/git version
+2026-09-17T15:26:14.6000000Z git version 2.51.1
+2026-09-17T15:26:14.7000000Z Cleaning up orphan processes

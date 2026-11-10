@@ -1,0 +1,50 @@
+2026-09-14T15:27:10.0010000Z Current runner version: '2.329.0'
+2026-09-14T15:27:10.0200000Z ##[group]Runner Image
+2026-09-14T15:27:10.0300000Z Image: ubuntu-22.04
+2026-09-14T15:27:10.0400000Z Version: 20260907.1.0
+2026-09-14T15:27:10.0500000Z ##[endgroup]
+2026-09-14T15:27:10.0600000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-14T15:27:10.0700000Z Contents: read
+2026-09-14T15:27:10.0800000Z Metadata: read
+2026-09-14T15:27:10.0900000Z ##[endgroup]
+2026-09-14T15:27:10.1000000Z Prepare workflow directory
+2026-09-14T15:27:10.2900000Z Prepare all required actions
+2026-09-14T15:27:10.7100000Z Complete job name: test
+2026-09-14T15:27:10.8000000Z ##[group]Run actions/checkout@v4
+2026-09-14T15:27:10.8100000Z with:
+2026-09-14T15:27:10.8200000Z   repository: ferryglass/celadon-ledger
+2026-09-14T15:27:10.8300000Z   clean: true
+2026-09-14T15:27:10.8400000Z ##[endgroup]
+2026-09-14T15:27:11.5000000Z Syncing repository: ferryglass/celadon-ledger
+2026-09-14T15:27:12.6000000Z HEAD is now at 3c859ef Adjust ledger rounding
+2026-09-14T15:27:12.7000000Z ##[group]Run actions/setup-java@v4
+2026-09-14T15:27:12.7100000Z with:
+2026-09-14T15:27:12.7200000Z   distribution: temurin
+2026-09-14T15:27:12.7300000Z   java-version: 21
+2026-09-14T15:27:12.7400000Z   cache: gradle
+2026-09-14T15:27:12.7500000Z ##[endgroup]
+2026-09-14T15:27:13.5000000Z Cache restored from key: setup-java-Linux-gradle-c2f7
+2026-09-14T15:27:13.6000000Z ##[group]Run ./gradlew test --no-daemon --build-cache
+2026-09-14T15:27:13.6100000Z ./gradlew test --no-daemon --build-cache
+2026-09-14T15:27:13.6200000Z shell: /usr/bin/bash -e {0}
+2026-09-14T15:27:13.6300000Z ##[endgroup]
+2026-09-14T15:27:17.2000000Z To honour the JVM settings for this build a single-use Daemon process will be forked.
+2026-09-14T15:27:18.9000000Z Daemon will be stopped at the end of the build
+2026-09-14T15:27:20.0100000Z > Task :generateLedgerTypes FAILED
+2026-09-14T15:27:20.0200000Z FAILURE: Build failed with an exception.
+2026-09-14T15:27:20.0300000Z * What went wrong:
+2026-09-14T15:27:20.0400000Z A problem was found with the configuration of task ':generateLedgerTypes' (type 'GenerateLedgerTypes').
+2026-09-14T15:27:20.0500000Z   - In plugin 'ferryglass.schema' type 'GenerateLedgerTypes' property 'schemaFile' specifies file '/home/runner/work/celadon-ledger/celadon-ledger/schema/ledger-v2.yaml' which doesn't exist.
+2026-09-14T15:27:20.0600000Z     Reason: An input file was expected to be present but it doesn't exist.
+2026-09-14T15:27:20.0700000Z     Possible solutions:
+2026-09-14T15:27:20.0800000Z       1. Make sure the file exists before the task is called.
+2026-09-14T15:27:20.0900000Z       2. Make sure that the task which produces the file is declared as an input.
+2026-09-14T15:27:20.1000000Z * Try:
+2026-09-14T15:27:20.1100000Z > Run with --stacktrace option to get the stack trace.
+2026-09-14T15:27:20.1200000Z > Run with --scan to get full insights.
+2026-09-14T15:27:20.1300000Z BUILD FAILED in 6s
+2026-09-14T15:27:20.1400000Z 1 actionable task: 1 executed
+2026-09-14T15:27:20.2500000Z ##[error]Process completed with exit code 1.
+2026-09-14T15:27:20.3000000Z Post job cleanup.
+2026-09-14T15:27:20.5100000Z Cache hit occurred on the primary key, not saving cache.
+2026-09-14T15:27:20.7000000Z Cleaning up orphan processes

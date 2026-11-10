@@ -1,0 +1,20 @@
+﻿{
+  "id": "d20-juniper-jdbc",
+  "split": "dev",
+  "comparability": "partially_comparable",
+  "category": "db_connectivity",
+  "culprit_kind": "build_config",
+  "difficulty": "medium",
+  "ecosystem": "kotlin",
+  "title": "Integration database port in Gradle",
+  "root_cause": "The Gradle test configuration changed the JDBC port from 5432 to 5433. The PostgreSQL service is published on 5432, so the test connection to localhost:5433 is refused.",
+  "culprit_paths": ["build.gradle.kts"],
+  "culprit_commit": "e90a3b761c54d8f2a630e9b1457c0d2f8a6b319c",
+  "unverified_factors": ["baseline_log_unavailable", "runner_labels_unknown"],
+  "fix_keywords": ["5432", "juniper.db.url"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 42, "end_line": 45, "why": "The service publishes PostgreSQL on port 5432 and becomes healthy."},
+    {"path": "log", "start_line": 78, "end_line": 84, "why": "The test fails when the JDBC driver connects to port 5433."},
+    {"path": "repo/build.gradle.kts", "start_line": 12, "end_line": 14, "why": "The Gradle test task supplies the JDBC URL."}
+  ]
+}

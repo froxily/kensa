@@ -1,0 +1,48 @@
+2026-09-16T10:04:21.0100000Z Current runner version: '2.329.0'
+2026-09-16T10:04:21.1200000Z ##[group]Runner Image
+2026-09-16T10:04:21.1300000Z Image: ubuntu-24.04
+2026-09-16T10:04:21.1400000Z Version: 20260908.1.0
+2026-09-16T10:04:21.1500000Z ##[endgroup]
+2026-09-16T10:04:21.2200000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-16T10:04:21.2300000Z Contents: read
+2026-09-16T10:04:21.2400000Z Metadata: read
+2026-09-16T10:04:21.2500000Z ##[endgroup]
+2026-09-16T10:04:21.3300000Z Prepare workflow directory
+2026-09-16T10:04:21.5100000Z Prepare all required actions
+2026-09-16T10:04:21.6600000Z Download action repository 'actions/checkout@v4'
+2026-09-16T10:04:22.0400000Z Download action repository 'actions/setup-python@v5'
+2026-09-16T10:04:22.2100000Z Complete job name: install / py312
+2026-09-16T10:04:22.3000000Z ##[group]Run actions/checkout@v4
+2026-09-16T10:04:22.3100000Z with:
+2026-09-16T10:04:22.3200000Z   repository: oriole-foundry/spindle-index
+2026-09-16T10:04:22.3300000Z   fetch-depth: 1
+2026-09-16T10:04:22.3400000Z   clean: true
+2026-09-16T10:04:22.3500000Z ##[endgroup]
+2026-09-16T10:04:22.4900000Z Syncing repository: oriole-foundry/spindle-index
+2026-09-16T10:04:22.6500000Z ##[group]Getting Git version info
+2026-09-16T10:04:22.6600000Z git version 2.51.0
+2026-09-16T10:04:22.6700000Z ##[endgroup]
+2026-09-16T10:04:23.2000000Z Checking out the ref
+2026-09-16T10:04:23.4000000Z ##[group]Run actions/setup-python@v5
+2026-09-16T10:04:23.4100000Z with:
+2026-09-16T10:04:23.4200000Z   python-version: '3.12'
+2026-09-16T10:04:23.4300000Z ##[endgroup]
+2026-09-16T10:04:23.6900000Z Successfully set up CPython (3.12.11)
+2026-09-16T10:04:23.7400000Z ##[group]Run uv venv
+2026-09-16T10:04:23.7500000Z uv venv
+2026-09-16T10:04:23.7600000Z shell: /usr/bin/bash -e {0}
+2026-09-16T10:04:23.7700000Z ##[endgroup]
+2026-09-16T10:04:23.9200000Z Using CPython 3.12.11
+2026-09-16T10:04:23.9300000Z Creating virtual environment at: .venv
+2026-09-16T10:04:24.0400000Z ##[group]Run uv pip install --require-hashes -r requirements/render.txt
+2026-09-16T10:04:24.0500000Z uv pip install --require-hashes -r requirements/render.txt
+2026-09-16T10:04:24.0600000Z shell: /usr/bin/bash -e {0}
+2026-09-16T10:04:24.0700000Z ##[endgroup]
+2026-09-16T10:04:24.9200000Z   × Failed to download `oriole-raster @ https://packages.oriole-foundry.com/wheels/oriole_raster-1.8.0-py3-none-any.whl`
+2026-09-16T10:04:24.9300000Z   ├─▶ Failed to fetch: `https://packages.oriole-foundry.com/wheels/oriole_raster-1.8.0-py3-none-any.whl`
+2026-09-16T10:04:24.9400000Z   ╰─▶ HTTP status client error (404 Not Found) for url (https://packages.oriole-foundry.com/wheels/oriole_raster-1.8.0-py3-none-any.whl)
+2026-09-16T10:04:24.9600000Z ##[error]Process completed with exit code 1.
+2026-09-16T10:04:25.0800000Z Post job cleanup.
+2026-09-16T10:04:25.2000000Z [command]/usr/bin/git version
+2026-09-16T10:04:25.2100000Z git version 2.51.0
+2026-09-16T10:04:25.3400000Z Cleaning up orphan processes

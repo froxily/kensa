@@ -1,0 +1,44 @@
+﻿2026-09-03T08:21:10.1031240Z Current runner version: '2.328.0'
+2026-09-03T08:21:10.1052140Z ##[group]Runner Image
+2026-09-03T08:21:10.1053210Z Image: ubuntu-24.04
+2026-09-03T08:21:10.1054200Z Version: 20260824.1.0
+2026-09-03T08:21:10.1055100Z ##[endgroup]
+2026-09-03T08:21:10.1056200Z ##[group]GITHUB_TOKEN Permissions
+2026-09-03T08:21:10.1057000Z Contents: read
+2026-09-03T08:21:10.1058000Z Metadata: read
+2026-09-03T08:21:10.1059000Z ##[endgroup]
+2026-09-03T08:21:10.1061000Z Prepare workflow directory
+2026-09-03T08:21:10.2073000Z Prepare all required actions
+2026-09-03T08:21:10.3124000Z Download action repository 'actions/checkout@v4'
+2026-09-03T08:21:10.6125000Z Complete job name: linux-build
+2026-09-03T08:21:10.8112000Z ##[group]Run actions/checkout@v4
+2026-09-03T08:21:10.8113000Z with:
+2026-09-03T08:21:10.8114000Z   repository: tamarack-labs/sonarloom
+2026-09-03T08:21:10.8115000Z   clean: true
+2026-09-03T08:21:10.8116000Z   fetch-depth: 1
+2026-09-03T08:21:10.8117000Z ##[endgroup]
+2026-09-03T08:21:11.1128000Z Syncing repository: tamarack-labs/sonarloom
+2026-09-03T08:21:11.1131000Z ##[group]Getting Git version info
+2026-09-03T08:21:11.1142000Z Working directory is '/home/runner/work/sonarloom/sonarloom'
+2026-09-03T08:21:11.1203000Z git version 2.51.0
+2026-09-03T08:21:11.1204000Z ##[endgroup]
+2026-09-03T08:21:11.3025000Z Initializing the repository
+2026-09-03T08:21:11.4126000Z Fetching the repository
+2026-09-03T08:21:12.4127000Z Checking out the ref
+2026-09-03T08:21:12.6128000Z HEAD is now at 7d29a14 Add acoustic window
+2026-09-03T08:21:12.6130000Z ##[group]Run cmake --version
+2026-09-03T08:21:12.6131000Z cmake --version
+2026-09-03T08:21:12.6132000Z shell: /usr/bin/bash -e {0}
+2026-09-03T08:21:12.6133000Z ##[endgroup]
+2026-09-03T08:21:12.6201000Z cmake version 3.31.6
+2026-09-03T08:21:12.6202000Z 
+2026-09-03T08:21:12.6203000Z CMake suite maintained and supported by Kitware.
+2026-09-03T08:21:12.7311000Z ##[group]Run cmake ../.. -DCMAKE_BUILD_TYPE=Release
+2026-09-03T08:21:12.7312000Z cmake ../.. -DCMAKE_BUILD_TYPE=Release
+2026-09-03T08:21:12.7313000Z shell: /usr/bin/bash -e {0}
+2026-09-03T08:21:12.7314000Z ##[endgroup]
+2026-09-03T08:21:12.7351000Z ##[error]An error occurred trying to start process '/usr/bin/bash' with working directory '/home/runner/work/sonarloom/sonarloom/out/sonar-build'. No such file or directory
+2026-09-03T08:21:12.8012000Z Post job cleanup.
+2026-09-03T08:21:12.9013000Z [command]/usr/bin/git version
+2026-09-03T08:21:12.9054000Z git version 2.51.0
+2026-09-03T08:21:12.9115000Z Cleaning up orphan processes

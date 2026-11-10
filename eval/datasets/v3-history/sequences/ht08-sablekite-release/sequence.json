@@ -1,0 +1,12 @@
+﻿{
+  "id": "ht08-sablekite-release",
+  "split": "test",
+  "ecosystem": "go",
+  "repository": "sablekite-labs/tideglass",
+  "entries": [
+    {"id": "e1", "file": "e1.log", "cluster": "a", "relation": "first", "category": "github_permissions", "title": "Release asset upload lacks write permission", "root_cause": "The release job's GITHUB_TOKEN has contents read permission, so the GitHub API rejects the release asset upload. Grant the job contents write permission.", "differs_from_earlier": ""},
+    {"id": "e2", "file": "e2.log", "cluster": "a", "relation": "recurrence", "category": "github_permissions", "title": "Release asset upload denied", "root_cause": "The release job's GITHUB_TOKEN has contents read permission, so the GitHub API rejects the release asset upload. Grant the job contents write permission.", "differs_from_earlier": "A different tag and runner reach the same upload denial; a subsequent verification step fails to download the absent asset and supplies the final error."},
+    {"id": "e3", "file": "e3.log", "cluster": "b", "relation": "first", "category": "dependency_build", "title": "Go build references an undefined function", "root_cause": "The release command calls a nonexistent function in the internal soundings package. Correct the function reference before building.", "differs_from_earlier": ""},
+    {"id": "e4", "file": "e4.log", "cluster": "a", "relation": "recurrence", "category": "github_permissions", "title": "Release upload rejected by API", "root_cause": "The release job's GITHUB_TOKEN has contents read permission, so the GitHub API rejects the release asset upload. Grant the job contents write permission.", "differs_from_earlier": "A later tag builds a different target and invokes gh release upload with a tag variable, but the API again rejects the read-only token."}
+  ]
+}

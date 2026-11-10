@@ -1,0 +1,13 @@
+{
+  "id": "ht11-pelagic-frames",
+  "independent_labels": [
+    {"id": "e1", "cluster": "a", "relation": "first", "category": "db_connectivity"},
+    {"id": "e2", "cluster": "b", "relation": "lookalike", "category": "db_connectivity"},
+    {"id": "e3", "cluster": "a", "relation": "recurrence", "category": "db_connectivity"},
+    {"id": "e4", "cluster": "c", "relation": "first", "category": "test_regression"}
+  ],
+  "verdict": "agree",
+  "disputed_fields": [],
+  "reason_category": "none",
+  "notes": "e1 and e3 exceed the same ingress frame limit; e3 uses a different batch and retry wrapper. e2 reaches a metrics exporter that does not support database ingest, requiring an endpoint correction. e4 fails the lower-boundary test. Root causes match the logs, and no giveaway commentary was found. Labels and pattern match the plan."
+}

@@ -1,0 +1,50 @@
+2026-09-23T16:41:08.1234567Z Current runner version: '2.329.0'
+2026-09-23T16:41:08.2234567Z ##[group]Runner Image Provisioner
+2026-09-23T16:41:08.3234567Z Hosted Compute Agent
+2026-09-23T16:41:08.4234567Z ##[endgroup]
+2026-09-23T16:41:08.5234567Z ##[group]Operating System
+2026-09-23T16:41:08.6234567Z Ubuntu
+2026-09-23T16:41:08.7234567Z 24.04.3
+2026-09-23T16:41:08.8234567Z ##[endgroup]
+2026-09-23T16:41:08.9234567Z ##[group]Runner Image
+2026-09-23T16:41:09.0234567Z Image: ubuntu-24.04
+2026-09-23T16:41:09.1234567Z Version: 20260915.1.0
+2026-09-23T16:41:09.2234567Z ##[endgroup]
+2026-09-23T16:41:09.3234567Z Prepare workflow directory
+2026-09-23T16:41:09.4234567Z Prepare all required actions
+2026-09-23T16:41:09.5234567Z Download action repository 'actions/checkout@v4'
+2026-09-23T16:41:09.6234567Z Download action repository 'actions/setup-python@v5'
+2026-09-23T16:41:09.7234567Z Complete job name: lint
+2026-09-23T16:41:09.8234567Z ##[group]Run actions/checkout@v4
+2026-09-23T16:41:09.9234567Z with:
+2026-09-23T16:41:10.0234567Z   repository: porcelain-moth/aurora-thimble
+2026-09-23T16:41:10.1234567Z   fetch-depth: 1
+2026-09-23T16:41:10.2234567Z ##[endgroup]
+2026-09-23T16:41:10.3234567Z Syncing repository: porcelain-moth/aurora-thimble
+2026-09-23T16:41:10.4234567Z git version 2.51.0
+2026-09-23T16:41:10.5234567Z Fetching the repository
+2026-09-23T16:41:11.1234567Z Checking out the ref
+2026-09-23T16:41:11.2234567Z ##[group]Run actions/setup-python@v5
+2026-09-23T16:41:11.3234567Z with:
+2026-09-23T16:41:11.4234567Z   python-version: '3.12'
+2026-09-23T16:41:11.5234567Z ##[endgroup]
+2026-09-23T16:41:11.6234567Z Successfully set up CPython (3.12.6)
+2026-09-23T16:41:11.7234567Z ##[group]Run python -m pip install ruff==0.6.9
+2026-09-23T16:41:11.8234567Z python -m pip install ruff==0.6.9
+2026-09-23T16:41:11.9234567Z shell: /usr/bin/bash -e {0}
+2026-09-23T16:41:12.0234567Z ##[endgroup]
+2026-09-23T16:41:13.1234567Z Successfully installed ruff-0.6.9
+2026-09-23T16:41:13.2234567Z ##[group]Run ruff check src tests
+2026-09-23T16:41:13.3234567Z ruff check src tests
+2026-09-23T16:41:13.4234567Z shell: /usr/bin/bash -e {0}
+2026-09-23T16:41:13.5234567Z ##[endgroup]
+2026-09-23T16:41:13.6234567Z src/thimble/spools.py:27:32: B006 Do not use mutable data structures for argument defaults
+2026-09-23T16:41:13.7234567Z    |
+2026-09-23T16:41:13.8234567Z 27 | def collect_spools(items, seen=[]):
+2026-09-23T16:41:13.9234567Z    |                                ^^ B006
+2026-09-23T16:41:14.0234567Z    |
+2026-09-23T16:41:14.1234567Z Found 1 error.
+2026-09-23T16:41:14.2234567Z No fixes available (1 hidden fix can be enabled with the `--unsafe-fixes` option).
+2026-09-23T16:41:14.3234567Z ##[error]Process completed with exit code 1.
+2026-09-23T16:41:14.4234567Z Post job cleanup.
+2026-09-23T16:41:14.5234567Z Cleaning up orphan processes

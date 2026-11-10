@@ -1,0 +1,42 @@
+2026-09-08T10:10:00.0000000Z Current runner version: '2.328.0'
+2026-09-08T10:10:01.0000000Z ##[group]Runner Image
+2026-09-08T10:10:02.0000000Z Image: ubuntu-24.04
+2026-09-08T10:10:03.0000000Z ##[endgroup]
+2026-09-08T10:10:04.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-08T10:10:05.0000000Z Contents: read
+2026-09-08T10:10:06.0000000Z ##[endgroup]
+2026-09-08T10:10:07.0000000Z Prepare workflow directory
+2026-09-08T10:10:08.0000000Z Prepare all required actions
+2026-09-08T10:10:09.0000000Z Download action repository 'actions/checkout@v4'
+2026-09-08T10:10:10.0000000Z Download action repository 'actions/setup-dotnet@v4'
+2026-09-08T10:10:11.0000000Z Complete job name: migrate (8.0)
+2026-09-08T10:10:12.0000000Z ##[group]Run actions/checkout@v4
+2026-09-08T10:10:13.0000000Z with:
+2026-09-08T10:10:14.0000000Z   repository: saffron-ibis/quay-ledger
+2026-09-08T10:10:15.0000000Z   fetch-depth: 1
+2026-09-08T10:10:16.0000000Z ##[endgroup]
+2026-09-08T10:10:17.0000000Z Syncing repository: saffron-ibis/quay-ledger
+2026-09-08T10:10:18.0000000Z Fetching the repository
+2026-09-08T10:10:19.0000000Z Checking out the ref
+2026-09-08T10:10:20.0000000Z ##[group]Run actions/setup-dotnet@v4
+2026-09-08T10:10:21.0000000Z with:
+2026-09-08T10:10:22.0000000Z   dotnet-version: 8.0.x
+2026-09-08T10:10:23.0000000Z ##[endgroup]
+2026-09-08T10:10:24.0000000Z Installed SDK 8.0.403
+2026-09-08T10:10:25.0000000Z ##[group]Run dotnet restore src/QuayLedger.csproj
+2026-09-08T10:10:26.0000000Z dotnet restore src/QuayLedger.csproj
+2026-09-08T10:10:27.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-08T10:10:28.0000000Z ##[endgroup]
+2026-09-08T10:10:29.0000000Z   Determining projects to restore...
+2026-09-08T10:10:30.0000000Z   Restored /home/runner/work/quay-ledger/quay-ledger/src/QuayLedger.csproj (in 873 ms).
+2026-09-08T10:10:31.0000000Z ##[group]Run dotnet run -- --check --verbose
+2026-09-08T10:10:32.0000000Z dotnet run -- --check --verbose
+2026-09-08T10:10:33.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-08T10:10:34.0000000Z ##[endgroup]
+2026-09-08T10:10:35.0000000Z ##[error]An error occurred trying to start process '/usr/bin/bash' with working directory '/home/runner/work/quay-ledger/quay-ledger/tools/quay-migrate'. No such file or directory
+2026-09-08T10:10:36.0000000Z Post job cleanup.
+2026-09-08T10:10:37.0000000Z [command]/usr/bin/git version
+2026-09-08T10:10:38.0000000Z git version 2.47.0
+2026-09-08T10:10:39.0000000Z Temporarily overriding HOME for git config
+2026-09-08T10:10:40.0000000Z Removing HTTP extra header
+2026-09-08T10:10:41.0000000Z Cleaning up orphan processes

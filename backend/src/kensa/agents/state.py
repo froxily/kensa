@@ -27,6 +27,8 @@ class GraphState(TypedDict):
     repository_id: str | None
     channels: list[str]
     signatures: NotRequired[list[Json]]
+    # v1.1 (D-054): Kensa's findings about changes since the last successful run.
+    change_notes: NotRequired[list[str]]
     document_count: NotRequired[int]
     line_count: NotRequired[int]
     log_tail: NotRequired[list[str]]

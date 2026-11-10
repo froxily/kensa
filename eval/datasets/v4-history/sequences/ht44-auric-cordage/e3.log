@@ -1,0 +1,44 @@
+2026-09-17T12:04:20.0000000Z Current runner version: '2.330.0'
+2026-09-17T12:04:20.1000000Z ##[group]Operating System
+2026-09-17T12:04:20.2000000Z Ubuntu
+2026-09-17T12:04:20.3000000Z 24.04.3
+2026-09-17T12:04:20.4000000Z ##[endgroup]
+2026-09-17T12:04:20.5000000Z ##[group]Runner Image
+2026-09-17T12:04:20.6000000Z Image: ubuntu-24.04
+2026-09-17T12:04:20.7000000Z Version: 20260910.1.0
+2026-09-17T12:04:20.8000000Z ##[endgroup]
+2026-09-17T12:04:20.9000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-17T12:04:21.0000000Z Contents: write
+2026-09-17T12:04:21.1000000Z Metadata: read
+2026-09-17T12:04:21.2000000Z ##[endgroup]
+2026-09-17T12:04:21.3000000Z Prepare workflow directory
+2026-09-17T12:04:21.4000000Z Prepare all required actions
+2026-09-17T12:04:22.0000000Z Getting action download info
+2026-09-17T12:04:22.5000000Z Download action repository 'actions/checkout@v4'
+2026-09-17T12:04:23.0000000Z Complete job name: publish
+2026-09-17T12:04:23.1000000Z ##[group]Run actions/checkout@v4
+2026-09-17T12:04:23.2000000Z with:
+2026-09-17T12:04:23.3000000Z   repository: mistral-skein/auric-cordage
+2026-09-17T12:04:23.4000000Z   token: ***
+2026-09-17T12:04:23.5000000Z   fetch-depth: 1
+2026-09-17T12:04:23.6000000Z ##[endgroup]
+2026-09-17T12:04:24.1000000Z Syncing repository: mistral-skein/auric-cordage
+2026-09-17T12:04:24.7000000Z Getting Git version info
+2026-09-17T12:04:25.3000000Z Fetching the repository
+2026-09-17T12:04:26.0000000Z Checking out the ref
+2026-09-17T12:04:26.4000000Z ##[group]Run tar -czf cordage-darwin-arm64.tar.gz dist/
+2026-09-17T12:04:26.5000000Z tar -czf cordage-darwin-arm64.tar.gz dist/
+2026-09-17T12:04:26.6000000Z shell: /usr/bin/bash -e {0}
+2026-09-17T12:04:26.7000000Z ##[endgroup]
+2026-09-17T12:04:27.1000000Z ##[group]Run gh release upload v2.7.0 cordage-darwin-arm64.tar.gz
+2026-09-17T12:04:27.2000000Z gh release upload v2.7.0 cordage-darwin-arm64.tar.gz
+2026-09-17T12:04:27.3000000Z shell: /usr/bin/bash -e {0}
+2026-09-17T12:04:27.4000000Z env:
+2026-09-17T12:04:27.5000000Z   GH_TOKEN: ***
+2026-09-17T12:04:27.6000000Z ##[endgroup]
+2026-09-17T12:04:28.3000000Z HTTP 403: Release is immutable (https://uploads.github.com/repos/mistral-skein/auric-cordage/releases/492074/assets?name=cordage-darwin-arm64.tar.gz)
+2026-09-17T12:04:28.4000000Z ##[error]Process completed with exit code 1.
+2026-09-17T12:04:28.5000000Z Post job cleanup.
+2026-09-17T12:04:28.7000000Z [command]/usr/bin/git version
+2026-09-17T12:04:28.8000000Z git version 2.51.0
+2026-09-17T12:04:29.0000000Z Cleaning up orphan processes

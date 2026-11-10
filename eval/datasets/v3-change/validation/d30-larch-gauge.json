@@ -1,0 +1,14 @@
+{
+  "id": "d30-larch-gauge",
+  "independent_labels": {
+    "comparability": "history_unavailable",
+    "unverified_factors": [],
+    "category": "test_regression",
+    "culprit_kind": "none",
+    "culprit_paths": []
+  },
+  "verdict": "agree",
+  "disputed_fields": [],
+  "reason_category": "none",
+  "notes": "The matching successful baseline has a not_found comparison. The test fails at the capacity boundary, and the current implementation uses a strict greater-than comparison; the unavailable history prevents attribution to a changed file. The cited evidence and run details are consistent."
+}

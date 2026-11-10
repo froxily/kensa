@@ -1,0 +1,55 @@
+2026-09-23T09:41:00.1000000Z Current runner version: '2.329.0'
+2026-09-23T09:41:00.2000000Z ##[group]Runner Image
+2026-09-23T09:41:00.3000000Z Image: ubuntu-24.04
+2026-09-23T09:41:00.4000000Z Version: 20260915.1.0
+2026-09-23T09:41:00.5000000Z ##[endgroup]
+2026-09-23T09:41:00.6000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-23T09:41:00.7000000Z Contents: read
+2026-09-23T09:41:00.8000000Z Metadata: read
+2026-09-23T09:41:00.9000000Z ##[endgroup]
+2026-09-23T09:41:01.0000000Z Prepare workflow directory
+2026-09-23T09:41:01.3000000Z Prepare all required actions
+2026-09-23T09:41:01.6000000Z Download action repository 'actions/checkout@v4'
+2026-09-23T09:41:01.9000000Z Download action repository 'actions/setup-node@v4'
+2026-09-23T09:41:02.2000000Z Complete job name: checks
+2026-09-23T09:41:02.5000000Z ##[group]Run actions/checkout@v4
+2026-09-23T09:41:02.6000000Z with:
+2026-09-23T09:41:02.7000000Z   repository: brineglyph/kelp-mill
+2026-09-23T09:41:02.8000000Z   fetch-depth: 1
+2026-09-23T09:41:02.9000000Z ##[endgroup]
+2026-09-23T09:41:03.2000000Z Syncing repository: brineglyph/kelp-mill
+2026-09-23T09:41:03.4000000Z git version 2.51.0
+2026-09-23T09:41:04.6000000Z Fetching the repository
+2026-09-23T09:41:05.5000000Z Checking out the ref
+2026-09-23T09:41:06.1000000Z ##[group]Run actions/setup-node@v4
+2026-09-23T09:41:06.2000000Z with:
+2026-09-23T09:41:06.3000000Z   node-version: 22
+2026-09-23T09:41:06.4000000Z ##[endgroup]
+2026-09-23T09:41:06.9000000Z Found in cache @ /opt/hostedtoolcache/node/22.19.0/x64
+2026-09-23T09:41:07.3000000Z ##[group]Run yarn install --immutable
+2026-09-23T09:41:07.4000000Z yarn install --immutable
+2026-09-23T09:41:07.5000000Z shell: /usr/bin/bash -e {0}
+2026-09-23T09:41:07.6000000Z ##[endgroup]
+2026-09-23T09:41:08.1000000Z ➤ YN0000: · Yarn 4.5.1
+2026-09-23T09:41:08.2000000Z ➤ YN0000: ┌ Resolution step
+2026-09-23T09:41:08.6000000Z ➤ YN0000: └ Completed
+2026-09-23T09:41:08.7000000Z ➤ YN0000: ┌ Fetch step
+2026-09-23T09:41:09.5000000Z ➤ YN0000: └ Completed
+2026-09-23T09:41:09.6000000Z ➤ YN0000: ┌ Link step
+2026-09-23T09:41:10.2000000Z ➤ YN0000: └ Completed
+2026-09-23T09:41:10.3000000Z ➤ YN0000: · Done in 2s 186ms
+2026-09-23T09:41:10.5000000Z ##[group]Run yarn build
+2026-09-23T09:41:10.6000000Z yarn build
+2026-09-23T09:41:10.7000000Z shell: /usr/bin/bash -e {0}
+2026-09-23T09:41:10.8000000Z ##[endgroup]
+2026-09-23T09:41:11.4000000Z vite v5.4.14 building for production...
+2026-09-23T09:41:11.7000000Z transforming...
+2026-09-23T09:41:12.2000000Z ✓ 38 modules transformed.
+2026-09-23T09:41:12.3000000Z x Build failed in 881ms
+2026-09-23T09:41:12.4000000Z error during build:
+2026-09-23T09:41:12.5000000Z Error: KELP_CHART_REGION is required
+2026-09-23T09:41:12.6000000Z     at chartConfig (file:///home/runner/work/kelp-mill/kelp-mill/vite.config.ts:19:11)
+2026-09-23T09:41:12.7000000Z     at Object.generateBundle (file:///home/runner/work/kelp-mill/kelp-mill/vite.config.ts:33:18)
+2026-09-23T09:41:12.8000000Z ##[error]Process completed with exit code 1.
+2026-09-23T09:41:12.9000000Z Post job cleanup.
+2026-09-23T09:41:13.1000000Z Cleaning up orphan processes

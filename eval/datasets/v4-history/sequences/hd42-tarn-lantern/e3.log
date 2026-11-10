@@ -1,0 +1,49 @@
+2026-09-15T07:03:42.4101020Z Current runner version: '2.329.0'
+2026-09-15T07:03:42.4291020Z ##[group]Operating System
+2026-09-15T07:03:42.4292020Z Ubuntu
+2026-09-15T07:03:42.4293020Z 22.04.5
+2026-09-15T07:03:42.4294020Z LTS
+2026-09-15T07:03:42.4295020Z ##[endgroup]
+2026-09-15T07:03:42.4301020Z ##[group]Runner Image
+2026-09-15T07:03:42.4302020Z Image: ubuntu-22.04
+2026-09-15T07:03:42.4303020Z Version: 20260908.1.0
+2026-09-15T07:03:42.4304020Z ##[endgroup]
+2026-09-15T07:03:42.4311020Z ##[group]GITHUB_TOKEN Permissions
+2026-09-15T07:03:42.4312020Z Contents: read
+2026-09-15T07:03:42.4313020Z Metadata: read
+2026-09-15T07:03:42.4314020Z ##[endgroup]
+2026-09-15T07:03:42.4421020Z Prepare workflow directory
+2026-09-15T07:03:42.6121020Z Prepare all required actions
+2026-09-15T07:03:42.9111020Z Getting action download info
+2026-09-15T07:03:43.2031020Z Download action repository 'actions/checkout@v4'
+2026-09-15T07:03:43.8471020Z Complete job name: manifest-check
+2026-09-15T07:03:43.9541020Z ##[group]Run actions/checkout@v4
+2026-09-15T07:03:43.9542020Z with:
+2026-09-15T07:03:43.9543020Z   repository: tarn-lantern/sluice-audit
+2026-09-15T07:03:43.9544020Z   fetch-depth: 1
+2026-09-15T07:03:43.9545020Z ##[endgroup]
+2026-09-15T07:03:44.1381020Z Syncing repository: tarn-lantern/sluice-audit
+2026-09-15T07:03:44.3201020Z Initializing the repository
+2026-09-15T07:03:45.0321020Z Fetching the repository
+2026-09-15T07:03:45.6521020Z Checking out the ref
+2026-09-15T07:03:45.7911020Z ##[group]Run make --version
+2026-09-15T07:03:45.7912020Z [36;1mmake --version | head -n 1[0m
+2026-09-15T07:03:45.7951020Z shell: /usr/bin/bash -e {0}
+2026-09-15T07:03:45.7952020Z ##[endgroup]
+2026-09-15T07:03:45.8011020Z GNU Make 4.3
+2026-09-15T07:03:45.8101020Z ##[group]Run make ci-audit
+2026-09-15T07:03:45.8102020Z [36;1mmake ci-audit[0m
+2026-09-15T07:03:45.8131020Z shell: /usr/bin/bash -e {0}
+2026-09-15T07:03:45.8132020Z ##[endgroup]
+2026-09-15T07:03:45.8261020Z make audit
+2026-09-15T07:03:45.8311020Z make[1]: Entering directory '/home/runner/work/sluice-audit/sluice-audit'
+2026-09-15T07:03:45.8321020Z ./scripts/inspect-sluice.sh config/tarn-rules.tsv data/sluice-manifest.tsv
+2026-09-15T07:03:45.8331020Z make[1]: ./scripts/inspect-sluice.sh: No such file or directory
+2026-09-15T07:03:45.8332020Z make[1]: *** [Makefile:21: audit] Error 127
+2026-09-15T07:03:45.8333020Z make[1]: Leaving directory '/home/runner/work/sluice-audit/sluice-audit'
+2026-09-15T07:03:45.8341020Z make: *** [Makefile:25: ci-audit] Error 2
+2026-09-15T07:03:45.8371020Z ##[error]Process completed with exit code 2.
+2026-09-15T07:03:45.8501020Z Post job cleanup.
+2026-09-15T07:03:46.0141020Z /usr/bin/git version
+2026-09-15T07:03:46.0201020Z git version 2.51.0
+2026-09-15T07:03:46.1121020Z Cleaning up orphan processes

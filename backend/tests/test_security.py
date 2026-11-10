@@ -1,7 +1,9 @@
 """M5 security audit: regression tests for the findings and the corpora."""
 
+import ast
 import uuid
 from collections.abc import Iterator
+from pathlib import Path
 
 import httpx
 import pytest
@@ -18,6 +20,7 @@ from kensa.core.config import Settings
 from kensa.db.models import Investigation, Workspace
 from tests.github_fixtures import API, RUN_PATH, RUN_URL, jobs_json, run_json
 
+SRC = Path(__file__).resolve().parents[1] / "src" / "kensa"
 FAKE_TOKEN = "github_pat_" + "Q1w2E3r4T5y6U7i8O9p0" * 3
 
 # Instruction-like text the detector must catch (prompt injection inside CI logs).
@@ -135,3 +138,42 @@ def test_the_token_never_appears_in_responses_or_logs(client: TestClient) -> Non
     assert FAKE_TOKEN not in "".join(bodies)
     assert FAKE_TOKEN not in str(logs)
     assert FAKE_TOKEN not in repr(Settings(_env_file=None, github_token=SecretStr(FAKE_TOKEN)))
+
+
+# --------------------------------------------------------- v1.1: no execution paths ---
+
+_NO_EXECUTION = [
+    *sorted((SRC / "history").glob("*.py")),
+    *sorted((SRC / "changes").glob("*.py")),
+    *sorted((SRC / "analytics").glob("*.py")),
+    SRC / "analysis" / "fingerprint.py",
+    SRC / "agents" / "remediation.py",
+    SRC / "agents" / "fixes.py",
+    SRC / "api" / "history.py",
+    SRC / "api" / "analytics.py",
+]
+_FORBIDDEN_MODULES = {"subprocess", "pty", "pickle", "marshal", "shelve", "ctypes", "runpy"}
+# Built-ins that run code, and process-starting attributes (os.system, os.popen, os.exec*).
+_FORBIDDEN_BUILTINS = {"eval", "exec", "compile", "__import__"}
+_FORBIDDEN_CALLS = {"system", "popen", "Popen", "spawnl", "spawnv", "execv", "execvp", "startfile"}
+
+
+@pytest.mark.parametrize("path", _NO_EXECUTION, ids=lambda p: f"{p.parent.name}/{p.name}")
+def test_history_changes_analytics_and_remediation_never_execute(path: Path) -> None:
+    """History, change analysis, analytics and remediation read data and never run anything
+    (D-052, D-054): no process, shell, code-evaluation or deserialisation module or call."""
+    tree = ast.parse(path.read_text(encoding="utf-8"))
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Import):
+            names = {alias.name.split(".")[0] for alias in node.names}
+            assert not names & _FORBIDDEN_MODULES, (path.name, names)
+        elif isinstance(node, ast.ImportFrom):
+            assert (node.module or "").split(".")[0] not in _FORBIDDEN_MODULES, path.name
+            if node.module == "os":
+                assert not {a.name for a in node.names} & _FORBIDDEN_CALLS, path.name
+        elif isinstance(node, ast.Call):
+            func = node.func
+            if isinstance(func, ast.Name):
+                assert func.id not in _FORBIDDEN_BUILTINS, (path.name, func.id, node.lineno)
+            elif isinstance(func, ast.Attribute):
+                assert func.attr not in _FORBIDDEN_CALLS, (path.name, func.attr, node.lineno)

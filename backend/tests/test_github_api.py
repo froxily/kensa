@@ -216,6 +216,23 @@ def test_a_failed_run_becomes_a_commit_pinned_investigation(
     assert "at commit 0123456" in timeline[0]["summary"]
 
 
+def test_importing_the_same_job_again_opens_its_investigation(
+    api: Api, github: respx.MockRouter
+) -> None:
+    """v1.1: no duplicate investigations of one job attempt (same commit, same provider)."""
+    _mock_run(github)
+    first = _create(api)
+    assert first.status_code == 201, first.text
+    again = _create(api)
+    assert again.status_code == 200, again.text
+    assert again.json()["id"] == first.json()["id"]
+    with Session(api.engine) as session:
+        assert session.scalar(select(func.count()).select_from(Investigation)) == 1
+    other_provider = _create(api, provider="ollama")
+    assert other_provider.status_code == 201
+    assert other_provider.json()["id"] != first.json()["id"]
+
+
 def test_reimport_at_another_commit_keeps_earlier_evidence_intact(
     api: Api, github: respx.MockRouter
 ) -> None:

@@ -1,0 +1,45 @@
+2026-09-04T11:20:00.0000000Z Current runner version: '2.328.0'
+2026-09-04T11:20:00.1000000Z Runner name: 'hosted-56'
+2026-09-04T11:20:00.2000000Z ##[group]Operating System
+2026-09-04T11:20:00.3000000Z Ubuntu
+2026-09-04T11:20:00.4000000Z 24.04.3
+2026-09-04T11:20:00.5000000Z ##[endgroup]
+2026-09-04T11:20:00.6000000Z ##[group]Runner Image
+2026-09-04T11:20:00.7000000Z Image: ubuntu-24.04
+2026-09-04T11:20:00.8000000Z Version: 20260831.1
+2026-09-04T11:20:00.9000000Z ##[endgroup]
+2026-09-04T11:20:01.0000000Z Prepare workflow directory
+2026-09-04T11:20:01.1000000Z Prepare all required actions
+2026-09-04T11:20:01.2000000Z Download action repository 'actions/checkout@v4'
+2026-09-04T11:20:01.3000000Z Complete job name: verify
+2026-09-04T11:20:02.0000000Z ##[group]Run actions/checkout@v4
+2026-09-04T11:20:02.1000000Z with:
+2026-09-04T11:20:02.2000000Z   repository: quartz-labs/relay-fetch
+2026-09-04T11:20:02.3000000Z   clean: true
+2026-09-04T11:20:02.4000000Z ##[endgroup]
+2026-09-04T11:20:03.0000000Z Syncing repository: quartz-labs/relay-fetch
+2026-09-04T11:20:03.1000000Z [command]/usr/bin/git version
+2026-09-04T11:20:03.2000000Z git version 2.51.0
+2026-09-04T11:20:04.0000000Z Fetching the repository
+2026-09-04T11:20:05.0000000Z Checking out the ref
+2026-09-04T11:20:05.2000000Z ##[group]Run actions/setup-node@v4
+2026-09-04T11:20:05.3000000Z with:
+2026-09-04T11:20:05.4000000Z   node-version: 22
+2026-09-04T11:20:05.5000000Z ##[endgroup]
+2026-09-04T11:20:06.0000000Z Found in cache: node 22.18.0
+2026-09-04T11:20:06.5000000Z ##[group]Run npm ci
+2026-09-04T11:20:06.6000000Z npm ci
+2026-09-04T11:20:06.7000000Z shell: /usr/bin/bash -e {0}
+2026-09-04T11:20:06.8000000Z ##[endgroup]
+2026-09-04T11:20:10.0000000Z added 87 packages in 3s
+2026-09-04T11:20:10.1000000Z ##[group]Run npm run relay-check
+2026-09-04T11:20:10.2000000Z npm run relay-check
+2026-09-04T11:20:10.3000000Z ##[endgroup]
+2026-09-04T11:20:10.4000000Z > node scripts/relay-check.js --resource inventory
+2026-09-04T11:20:10.5000000Z GET https://relay.quatrz.example/inventory
+2026-09-04T11:20:10.5100000Z Error: getaddrinfo ENOTFOUND relay.quatrz.example
+2026-09-04T11:20:10.5200000Z     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+2026-09-04T11:20:10.5300000Z   code: 'ENOTFOUND'
+2026-09-04T11:20:10.5400000Z ##[error]Process completed with exit code 1.
+2026-09-04T11:20:10.6000000Z Post job cleanup.
+2026-09-04T11:20:10.7000000Z Cleaning up orphan processes

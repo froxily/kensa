@@ -1,0 +1,56 @@
+2026-09-08T10:21:00.1010101Z Current runner version: '2.328.0'
+2026-09-08T10:21:00.2010101Z ##[group]Runner Image
+2026-09-08T10:21:00.3010101Z Image: ubuntu-24.04
+2026-09-08T10:21:00.4010101Z Version: 20260901.1.0
+2026-09-08T10:21:00.5010101Z ##[endgroup]
+2026-09-08T10:21:00.6010101Z ##[group]GITHUB_TOKEN Permissions
+2026-09-08T10:21:00.7010101Z Contents: read
+2026-09-08T10:21:00.8010101Z ##[endgroup]
+2026-09-08T10:21:01.1010101Z Prepare workflow directory
+2026-09-08T10:21:02.1010101Z Prepare all required actions
+2026-09-08T10:21:03.1010101Z ##[group]Run actions/checkout@v4
+2026-09-08T10:21:03.2010101Z with:
+2026-09-08T10:21:03.3010101Z   repository: foxglove-basin/sluice-ledger
+2026-09-08T10:21:03.4010101Z   fetch-depth: 1
+2026-09-08T10:21:03.5010101Z ##[endgroup]
+2026-09-08T10:21:04.1010101Z Syncing repository: foxglove-basin/sluice-ledger
+2026-09-08T10:21:05.1010101Z Checking out the ref
+2026-09-08T10:21:06.1010101Z ##[group]Starting postgres service
+2026-09-08T10:21:06.2010101Z /usr/bin/docker create --name pg_basin_804 -p 5432:5432 postgres:16
+2026-09-08T10:21:07.1010101Z Waiting for all services to be ready
+2026-09-08T10:21:10.1010101Z Service postgres is healthy.
+2026-09-08T10:21:10.2010101Z ##[endgroup]
+2026-09-08T10:21:10.3010101Z ##[group]Run composer install --no-interaction --prefer-dist
+2026-09-08T10:21:10.4010101Z composer install --no-interaction --prefer-dist
+2026-09-08T10:21:10.5010101Z shell: /usr/bin/bash -e {0}
+2026-09-08T10:21:10.6010101Z ##[endgroup]
+2026-09-08T10:21:11.1010101Z Installing dependencies from lock file
+2026-09-08T10:21:11.2010101Z Verifying lock file contents can be installed on current platform.
+2026-09-08T10:21:11.3010101Z Nothing to install, update or remove
+2026-09-08T10:21:11.4010101Z Generating autoload files
+2026-09-08T10:21:12.1010101Z ##[group]Run vendor/bin/phpunit --testsuite integration
+2026-09-08T10:21:12.2010101Z vendor/bin/phpunit --testsuite integration
+2026-09-08T10:21:12.3010101Z shell: /usr/bin/bash -e {0}
+2026-09-08T10:21:12.4010101Z env:
+2026-09-08T10:21:12.5010101Z   DB_HOST: 127.0.0.1
+2026-09-08T10:21:12.6010101Z   DB_PORT: 5433
+2026-09-08T10:21:12.7010101Z   DB_DATABASE: sluice_test
+2026-09-08T10:21:12.8010101Z ##[endgroup]
+2026-09-08T10:21:13.1010101Z PHPUnit 10.5.35 by Sebastian Bergmann and contributors.
+2026-09-08T10:21:13.2010101Z Runtime:       PHP 8.3.12
+2026-09-08T10:21:13.3010101Z Configuration: /home/runner/work/sluice-ledger/sluice-ledger/phpunit.xml
+2026-09-08T10:21:13.4010101Z EE                                                                  2 / 2 (100%)
+2026-09-08T10:21:13.5010101Z Time: 00:00.107, Memory: 8.00 MB
+2026-09-08T10:21:13.6010101Z There were 2 errors:
+2026-09-08T10:21:13.7010101Z 1) Tests\Integration\BasinBalanceTest::testRecordsBalance
+2026-09-08T10:21:13.8010101Z PDOException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5433 failed: Connection refused
+2026-09-08T10:21:13.9010101Z     Is the server running on that host and accepting TCP/IP connections?
+2026-09-08T10:21:14.0010101Z /home/runner/work/sluice-ledger/sluice-ledger/tests/Integration/BasinBalanceTest.php:31
+2026-09-08T10:21:14.1010101Z 2) Tests\Integration\BasinBalanceTest::testReadsBalance
+2026-09-08T10:21:14.2010101Z PDOException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5433 failed: Connection refused
+2026-09-08T10:21:14.3010101Z /home/runner/work/sluice-ledger/sluice-ledger/tests/Integration/BasinBalanceTest.php:45
+2026-09-08T10:21:14.4010101Z ERRORS!
+2026-09-08T10:21:14.5010101Z Tests: 2, Assertions: 0, Errors: 2.
+2026-09-08T10:21:14.6010101Z ##[error]Process completed with exit code 2.
+2026-09-08T10:21:14.7010101Z Stop and remove container: postgres
+2026-09-08T10:21:15.1010101Z Cleaning up orphan processes

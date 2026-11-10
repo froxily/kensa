@@ -1,0 +1,51 @@
+2026-09-23T14:48:38.1104472Z Current runner version: '2.329.0'
+2026-09-23T14:48:38.1111020Z ##[group]Operating System
+2026-09-23T14:48:38.1113401Z Ubuntu
+2026-09-23T14:48:38.1115104Z 24.04.3
+2026-09-23T14:48:38.1116640Z LTS
+2026-09-23T14:48:38.1118291Z ##[endgroup]
+2026-09-23T14:48:38.1120310Z ##[group]Runner Image
+2026-09-23T14:48:38.1122292Z Image: ubuntu-24.04
+2026-09-23T14:48:38.1124301Z Version: 20260915.1.0
+2026-09-23T14:48:38.1126111Z ##[endgroup]
+2026-09-23T14:48:38.1181002Z Prepare workflow directory
+2026-09-23T14:48:38.1827101Z Prepare all required actions
+2026-09-23T14:48:38.6139231Z Getting action download info
+2026-09-23T14:48:39.7853991Z ##[group]Run actions/checkout@v4
+2026-09-23T14:48:39.7855703Z with:
+2026-09-23T14:48:39.7857420Z   repository: fenward-labs/bellwether-fen
+2026-09-23T14:48:39.7858929Z   clean: true
+2026-09-23T14:48:39.7860910Z   fetch-depth: 1
+2026-09-23T14:48:39.7862881Z ##[endgroup]
+2026-09-23T14:48:39.9714110Z Syncing repository: fenward-labs/bellwether-fen
+2026-09-23T14:48:40.3421001Z ##[group]Fetching the repository
+2026-09-23T14:48:40.9173201Z From https://github.com/fenward-labs/bellwether-fen
+2026-09-23T14:48:40.9175190Z  * [new branch]      main       -> origin/main
+2026-09-23T14:48:40.9223910Z ##[endgroup]
+2026-09-23T14:48:40.9321412Z ##[group]Checking out the ref
+2026-09-23T14:48:40.9751091Z HEAD is now at f210b9e Add station summaries
+2026-09-23T14:48:40.9752911Z ##[endgroup]
+2026-09-23T14:48:41.0151920Z ##[group]Run actions/setup-python@v5
+2026-09-23T14:48:41.0154011Z with:
+2026-09-23T14:48:41.0155490Z   python-version: '3.12'
+2026-09-23T14:48:41.0157314Z ##[endgroup]
+2026-09-23T14:48:41.7223902Z Successfully set up CPython (3.12.6)
+2026-09-23T14:48:41.7399101Z ##[group]Run python -m pip install -r requirements-ci.txt
+2026-09-23T14:48:41.7401019Z python -m pip install -r requirements-ci.txt
+2026-09-23T14:48:41.7402610Z shell: /usr/bin/bash -e {0}
+2026-09-23T14:48:41.7404302Z ##[endgroup]
+2026-09-23T14:48:45.8661130Z Successfully installed mypy-1.11.2 mypy-extensions-1.0.0 ruff-0.6.4 typing-extensions-4.12.2
+2026-09-23T14:48:46.1143401Z ##[group]Run ruff check src tests
+2026-09-23T14:48:46.1145102Z ruff check src tests
+2026-09-23T14:48:46.1146701Z shell: /usr/bin/bash -e {0}
+2026-09-23T14:48:46.1148511Z ##[endgroup]
+2026-09-23T14:48:46.1329900Z All checks passed!
+2026-09-23T14:48:46.1491001Z ##[group]Run mypy src
+2026-09-23T14:48:46.1492801Z mypy src
+2026-09-23T14:48:46.1494300Z shell: /usr/bin/bash -e {0}
+2026-09-23T14:48:46.1496209Z ##[endgroup]
+2026-09-23T14:48:48.0134011Z src/bellwether_fen/gauge.py:53: error: Argument 1 to "format_level" has incompatible type "float | None"; expected "float"  [arg-type]
+2026-09-23T14:48:48.0137910Z Found 1 error in 1 file (checked 24 source files)
+2026-09-23T14:48:48.0921104Z ##[error]Process completed with exit code 1.
+2026-09-23T14:48:48.1120912Z Post job cleanup.
+2026-09-23T14:48:48.2329711Z Cleaning up orphan processes

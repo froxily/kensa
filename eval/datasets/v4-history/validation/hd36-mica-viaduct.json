@@ -1,0 +1,13 @@
+{
+  "id": "hd36-mica-viaduct",
+  "independent_labels": [
+    {"id":"e1","cluster":"a","relation":"first","category":"oom_timeout"},
+    {"id":"e2","cluster":"b","relation":"first","category":"dependency_build"},
+    {"id":"e3","cluster":"b","relation":"recurrence","category":"dependency_build"},
+    {"id":"e4","cluster":"a","relation":"recurrence","category":"oom_timeout"}
+  ],
+  "verdict": "ambiguous",
+  "disputed_fields": ["e2.category", "e2.root_cause", "e3.category", "e3.root_cause"],
+  "reason_category": "ambiguous_evidence",
+  "notes": "The missing ContourIndex symbol recurs in e2 and e3, but those logs do not establish that it is generated or that skipped generation caused the error; a missing import, source, or dependency could also explain it. The generation task in e4 does not prove its role in the earlier failures. Thus the workflow_path category and stated fix are not independently verifiable. The e1/e4 heap failures recur with substantive run differences; no giveaway commentary is apparent."
+}

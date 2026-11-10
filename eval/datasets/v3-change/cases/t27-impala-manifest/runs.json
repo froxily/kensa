@@ -1,0 +1,13 @@
+{
+  "failed": {
+    "run_id": 9361742801, "run_attempt": 1, "workflow_id": 83715492,
+    "workflow_path": ".github/workflows/manifest-ci.yml", "event": "push", "head_branch": "main",
+    "head_sha": "a6c91d3e4f507b28c1d69e2fa83b7405d19ec624", "created_at": "2026-11-09T09:10:00Z", "conclusion": "failure",
+    "jobs": [{"name": "manifest (22)", "conclusion": "failure", "labels": ["ubuntu-24.04"], "runner_image": "ubuntu-24.04", "runner_image_version": "20261026.1"}],
+    "failed_job": "manifest (22)"
+  },
+  "candidates": [
+    {"run_id": 9361731902, "run_attempt": 1, "workflow_id": 83715492, "workflow_path": ".github/workflows/manifest-ci.yml", "event": "push", "head_branch": "main", "head_sha": "c4e307a8b15d629f03e7a49c81b6d275ea904f13", "created_at": "2026-11-09T08:35:00Z", "conclusion": "failure", "jobs": [{"name": "manifest (22)", "conclusion": "failure", "labels": ["ubuntu-24.04"], "runner_image": "ubuntu-24.04", "runner_image_version": "20261026.1"}]},
+    {"run_id": 9361698420, "run_attempt": 1, "workflow_id": 83711863, "workflow_path": ".github/workflows/manifest-check.yml", "event": "push", "head_branch": "main", "head_sha": "b82f0c6d39a51e47b8c216f0d4a7935e61c028ab", "created_at": "2026-11-08T16:25:00Z", "conclusion": "success", "jobs": [{"name": "manifest (22)", "conclusion": "success", "labels": ["ubuntu-24.04"], "runner_image": "ubuntu-24.04", "runner_image_version": "20261026.1"}]}
+  ]
+}

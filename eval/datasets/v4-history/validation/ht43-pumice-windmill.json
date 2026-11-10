@@ -1,0 +1,13 @@
+{
+  "id": "ht43-pumice-windmill",
+  "independent_labels": [
+    {"id": "e1", "cluster": "a", "relation": "first", "category": "dependency_build"},
+    {"id": "e2", "cluster": "b", "relation": "first", "category": "test_regression"},
+    {"id": "e3", "cluster": "a", "relation": "recurrence", "category": "dependency_build"},
+    {"id": "e4", "cluster": "c", "relation": "first", "category": "missing_env_var"}
+  ],
+  "verdict": "agree",
+  "disputed_fields": [],
+  "reason_category": "none",
+  "notes": "The plan and labels match. E1 and e3 both use Node 18 against the package's >=20 requirement, with different runner, version, checkout and install details. E2 fails a settlement rounding assertion; e4 lacks the preview URL. The stated causes match the observable failures, and the logs contain no giveaway commentary."
+}

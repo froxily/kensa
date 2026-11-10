@@ -1,0 +1,13 @@
+{
+  "id": "ht36-celadon-ferry",
+  "independent_labels": [
+    {"id": "e1", "cluster": "a", "relation": "first", "category": "dependency_build"},
+    {"id": "e2", "cluster": "b", "relation": "first", "category": "dependency_build"},
+    {"id": "e3", "cluster": "b", "relation": "recurrence", "category": "dependency_build"},
+    {"id": "e4", "cluster": "a", "relation": "recurrence", "category": "dependency_build"}
+  ],
+  "verdict": "agree",
+  "disputed_fields": [],
+  "reason_category": "none",
+  "notes": "e1 and e4 crash in the same tidepack 1.4.2 native function; e2 and e3 fail because the generator's schema input is absent. The latter needs a path or file fix, distinct from the native crash. Both recurrences have substantive run differences. The logs do not contain explanatory giveaway commentary. The native frame identifies the crash location, although it does not independently prove why that function crashed."
+}

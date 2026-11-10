@@ -1,0 +1,54 @@
+2026-09-15T11:03:02.1111111Z Current runner version: '2.329.0'
+2026-09-15T11:03:02.2111111Z ##[group]Runner Image
+2026-09-15T11:03:02.3111111Z Image: ubuntu-24.04
+2026-09-15T11:03:02.4111111Z Version: 20260907.1.0
+2026-09-15T11:03:02.5111111Z ##[endgroup]
+2026-09-15T11:03:02.6111111Z ##[group]GITHUB_TOKEN Permissions
+2026-09-15T11:03:02.7111111Z Contents: read
+2026-09-15T11:03:02.8111111Z ##[endgroup]
+2026-09-15T11:03:03.1111111Z Prepare workflow directory
+2026-09-15T11:03:04.1111111Z Prepare all required actions
+2026-09-15T11:03:05.1111111Z ##[group]Run actions/checkout@v4
+2026-09-15T11:03:05.2111111Z with:
+2026-09-15T11:03:05.3111111Z   repository: foxglove-basin/sluice-ledger
+2026-09-15T11:03:05.4111111Z   clean: true
+2026-09-15T11:03:05.5111111Z ##[endgroup]
+2026-09-15T11:03:06.1111111Z Syncing repository: foxglove-basin/sluice-ledger
+2026-09-15T11:03:07.1111111Z Checking out the ref
+2026-09-15T11:03:08.1111111Z ##[group]Starting postgres service
+2026-09-15T11:03:08.2111111Z /usr/bin/docker create --name pg_basin_932 -p 5432:5432 postgres:16
+2026-09-15T11:03:09.1111111Z Waiting for all services to be ready
+2026-09-15T11:03:12.1111111Z Service postgres is healthy.
+2026-09-15T11:03:12.2111111Z ##[endgroup]
+2026-09-15T11:03:12.3111111Z ##[group]Run composer install --no-interaction --prefer-dist
+2026-09-15T11:03:12.4111111Z composer install --no-interaction --prefer-dist
+2026-09-15T11:03:12.5111111Z shell: /usr/bin/bash -e {0}
+2026-09-15T11:03:12.6111111Z ##[endgroup]
+2026-09-15T11:03:13.1111111Z Installing dependencies from lock file
+2026-09-15T11:03:13.2111111Z Verifying lock file contents can be installed on current platform.
+2026-09-15T11:03:13.3111111Z Nothing to install, update or remove
+2026-09-15T11:03:13.4111111Z Generating autoload files
+2026-09-15T11:03:14.1111111Z ##[group]Run vendor/bin/phpunit --testsuite integration
+2026-09-15T11:03:14.2111111Z vendor/bin/phpunit --testsuite integration
+2026-09-15T11:03:14.3111111Z shell: /usr/bin/bash -e {0}
+2026-09-15T11:03:14.4111111Z env:
+2026-09-15T11:03:14.5111111Z   DB_HOST: 127.0.0.1
+2026-09-15T11:03:14.6111111Z   DB_PORT: 5432
+2026-09-15T11:03:14.7111111Z   DB_DATABASE: sluice_test
+2026-09-15T11:03:14.8111111Z   DB_USERNAME: sluice_reader
+2026-09-15T11:03:14.9111111Z   DB_PASSWORD: ***
+2026-09-15T11:03:15.0111111Z ##[endgroup]
+2026-09-15T11:03:15.1111111Z PHPUnit 10.5.35 by Sebastian Bergmann and contributors.
+2026-09-15T11:03:15.2111111Z Runtime:       PHP 8.3.12
+2026-09-15T11:03:15.3111111Z Configuration: /home/runner/work/sluice-ledger/sluice-ledger/phpunit.xml
+2026-09-15T11:03:15.4111111Z E                                                                   1 / 1 (100%)
+2026-09-15T11:03:15.5111111Z Time: 00:00.102, Memory: 8.00 MB
+2026-09-15T11:03:15.6111111Z There was 1 error:
+2026-09-15T11:03:15.7111111Z 1) Tests\Integration\BasinBalanceTest::testRecordsBalance
+2026-09-15T11:03:15.8111111Z PDOException: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: FATAL:  password authentication failed for user "sluice_reader"
+2026-09-15T11:03:15.9111111Z /home/runner/work/sluice-ledger/sluice-ledger/tests/Integration/BasinBalanceTest.php:31
+2026-09-15T11:03:16.0111111Z ERRORS!
+2026-09-15T11:03:16.1111111Z Tests: 1, Assertions: 0, Errors: 1.
+2026-09-15T11:03:16.2111111Z ##[error]Process completed with exit code 2.
+2026-09-15T11:03:16.3111111Z Stop and remove container: postgres
+2026-09-15T11:03:17.1111111Z Cleaning up orphan processes

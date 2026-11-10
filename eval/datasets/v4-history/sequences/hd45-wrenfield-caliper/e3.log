@@ -1,0 +1,57 @@
+2026-09-14T14:42:01.1000000Z Current runner version: '2.328.0'
+2026-09-14T14:42:01.2000000Z ##[group]Runner Image
+2026-09-14T14:42:01.3000000Z Image: ubuntu-24.04
+2026-09-14T14:42:01.4000000Z Version: 20260908.1.0
+2026-09-14T14:42:01.5000000Z ##[endgroup]
+2026-09-14T14:42:01.6000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-14T14:42:01.7000000Z Contents: read
+2026-09-14T14:42:01.8000000Z ##[endgroup]
+2026-09-14T14:42:02.0000000Z Prepare workflow directory
+2026-09-14T14:42:02.2000000Z Prepare all required actions
+2026-09-14T14:42:02.5000000Z Download action repository 'actions/checkout@v4'
+2026-09-14T14:42:03.1000000Z Complete job name: build
+2026-09-14T14:42:03.2000000Z ##[group]Run actions/checkout@v4
+2026-09-14T14:42:03.3000000Z with:
+2026-09-14T14:42:03.4000000Z   repository: wrenfield-labs/caliper-mesh
+2026-09-14T14:42:03.5000000Z   clean: true
+2026-09-14T14:42:03.6000000Z ##[endgroup]
+2026-09-14T14:42:04.0000000Z Syncing repository: wrenfield-labs/caliper-mesh
+2026-09-14T14:42:05.0000000Z Checking out the ref
+2026-09-14T14:42:05.2000000Z ##[group]Run cmake -S . -B build
+2026-09-14T14:42:05.3000000Z cmake -S . -B build
+2026-09-14T14:42:05.4000000Z cmake --build build -j 4
+2026-09-14T14:42:05.5000000Z shell: /usr/bin/bash -e {0}
+2026-09-14T14:42:05.6000000Z ##[endgroup]
+2026-09-14T14:42:06.0000000Z -- The CXX compiler identification is GNU 13.3.0
+2026-09-14T14:42:06.7000000Z -- Detecting CXX compiler ABI info - done
+2026-09-14T14:42:06.8000000Z -- Check for working CXX compiler: /usr/bin/c++ - skipped
+2026-09-14T14:42:06.9000000Z -- Detecting CXX compile features - done
+2026-09-14T14:42:07.1000000Z -- Configuring done (1.1s)
+2026-09-14T14:42:07.2000000Z -- Generating done (0.1s)
+2026-09-14T14:42:07.3000000Z -- Build files have been written to: /home/runner/work/caliper-mesh/caliper-mesh/build
+2026-09-14T14:42:08.1000000Z [ 25%] Building CXX object CMakeFiles/caliper.dir/src/grid.cc.o
+2026-09-14T14:42:08.2000000Z [ 50%] Building CXX object CMakeFiles/caliper.dir/src/mesh_index.cc.o
+2026-09-14T14:42:12.0000000Z [ 75%] Linking CXX static library libcaliper.a
+2026-09-14T14:42:13.0000000Z [100%] Linking CXX executable bounds_tests
+2026-09-14T14:42:13.1000000Z [100%] Built target bounds_tests
+2026-09-14T14:42:13.2000000Z ##[group]Run ctest --test-dir build --output-on-failure
+2026-09-14T14:42:13.3000000Z ctest --test-dir build --output-on-failure
+2026-09-14T14:42:13.4000000Z shell: /usr/bin/bash -e {0}
+2026-09-14T14:42:13.5000000Z ##[endgroup]
+2026-09-14T14:42:13.6000000Z Internal ctest changing into directory: /home/runner/work/caliper-mesh/caliper-mesh/build
+2026-09-14T14:42:13.7000000Z Test project /home/runner/work/caliper-mesh/caliper-mesh/build
+2026-09-14T14:42:13.8000000Z     Start 1: bounds_tests
+2026-09-14T14:42:13.9000000Z 1/1 Test #1: bounds_tests .....................***Failed    0.01 sec
+2026-09-14T14:42:14.0000000Z /home/runner/work/caliper-mesh/caliper-mesh/tests/bounds_test.cc:47: Failure
+2026-09-14T14:42:14.1000000Z Expected equality of these values:
+2026-09-14T14:42:14.2000000Z   bounds.max_x
+2026-09-14T14:42:14.3000000Z     Which is: 0
+2026-09-14T14:42:14.4000000Z   -2
+2026-09-14T14:42:14.5000000Z [  FAILED  ] Bounds.NegativeCoordinates
+2026-09-14T14:42:14.6000000Z 0% tests passed, 1 tests failed out of 1
+2026-09-14T14:42:14.7000000Z The following tests FAILED:
+2026-09-14T14:42:14.8000000Z 	  1 - bounds_tests (Failed)
+2026-09-14T14:42:14.9000000Z Errors while running CTest
+2026-09-14T14:42:15.0000000Z ##[error]Process completed with exit code 8.
+2026-09-14T14:42:15.1000000Z Post job cleanup.
+2026-09-14T14:42:15.2000000Z Cleaning up orphan processes

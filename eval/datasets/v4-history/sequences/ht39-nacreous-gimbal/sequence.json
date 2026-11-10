@@ -1,0 +1,12 @@
+{
+  "id": "ht39-nacreous-gimbal",
+  "split": "test",
+  "ecosystem": "go",
+  "repository": "polderkite/tarnsignal",
+  "entries": [
+    {"id": "e1", "file": "e1.log", "cluster": "a", "relation": "first", "category": "dependency_build", "title": "SQLite adapter excluded from build", "root_cause": "The Go build omits the tidal_sqlite tag required by the echoweave adapter package. Add that tag to the build invocation.", "differs_from_earlier": ""},
+    {"id": "e2", "file": "e2.log", "cluster": "b", "relation": "lookalike", "category": "dependency_build", "title": "ICU index excluded from build", "root_cause": "The Go build omits the tidal_icu tag required by the shoalindex package. Add that tag to the build invocation.", "differs_from_earlier": "The same Go build-constraints error now names shoalindex; it requires a different build tag from echoweave."},
+    {"id": "e3", "file": "e3.log", "cluster": "b", "relation": "recurrence", "category": "dependency_build", "title": "ICU index excluded from build", "root_cause": "The Go build omits the tidal_icu tag required by the shoalindex package. Add that tag to the build invocation.", "differs_from_earlier": "A later pull request runs go test with a different package selection and runner; the shoalindex files remain excluded."},
+    {"id": "e4", "file": "e4.log", "cluster": "a", "relation": "recurrence", "category": "dependency_build", "title": "SQLite adapter excluded from build", "root_cause": "The Go build omits the tidal_sqlite tag required by the echoweave adapter package. Add that tag to the build invocation.", "differs_from_earlier": "A later release build uses go build and a different workspace; the echoweave files are still excluded."}
+  ]
+}

@@ -1,0 +1,54 @@
+2026-09-03T09:17:00.1123456Z Current runner version: '2.328.0'
+2026-09-03T09:17:00.2123456Z ##[group]Runner Image
+2026-09-03T09:17:00.3123456Z Image: ubuntu-24.04
+2026-09-03T09:17:00.4123456Z Version: 20260823.1.0
+2026-09-03T09:17:00.5123456Z ##[endgroup]
+2026-09-03T09:17:00.6123456Z ##[group]GITHUB_TOKEN Permissions
+2026-09-03T09:17:00.7123456Z Contents: read
+2026-09-03T09:17:00.8123456Z Metadata: read
+2026-09-03T09:17:00.9123456Z ##[endgroup]
+2026-09-03T09:17:01.0123456Z Prepare workflow directory
+2026-09-03T09:17:01.1123456Z Prepare all required actions
+2026-09-03T09:17:01.2123456Z Download action repository 'actions/checkout@v4'
+2026-09-03T09:17:02.1123456Z ##[group]Run actions/checkout@v4
+2026-09-03T09:17:02.2123456Z with:
+2026-09-03T09:17:02.3123456Z   repository: copper-heron/siltcompass
+2026-09-03T09:17:02.4123456Z   clean: true
+2026-09-03T09:17:02.5123456Z ##[endgroup]
+2026-09-03T09:17:03.0123456Z Syncing repository: copper-heron/siltcompass
+2026-09-03T09:17:03.3123456Z Getting Git version info
+2026-09-03T09:17:04.0123456Z Checking out the ref
+2026-09-03T09:17:04.5123456Z ##[group]Run actions/setup-java@v4
+2026-09-03T09:17:04.6123456Z with:
+2026-09-03T09:17:04.7123456Z   distribution: temurin
+2026-09-03T09:17:04.8123456Z   java-version: 17
+2026-09-03T09:17:04.9123456Z ##[endgroup]
+2026-09-03T09:17:05.3123456Z Setting Java 17 as the default
+2026-09-03T09:17:05.5123456Z ##[group]Run ./gradlew :app:assembleDebug
+2026-09-03T09:17:05.6123456Z ./gradlew :app:assembleDebug
+2026-09-03T09:17:05.7123456Z shell: /usr/bin/bash -e {0}
+2026-09-03T09:17:05.8123456Z ##[endgroup]
+2026-09-03T09:17:12.1123456Z Starting a Gradle Daemon (subsequent builds will be faster)
+2026-09-03T09:17:27.1123456Z > Task :app:preBuild UP-TO-DATE
+2026-09-03T09:17:27.2123456Z > Task :app:preDebugBuild UP-TO-DATE
+2026-09-03T09:17:28.1123456Z > Task :app:generateDebugResValues
+2026-09-03T09:17:29.1123456Z > Task :app:checkDebugAarMetadata
+2026-09-03T09:17:30.1123456Z > Task :app:mapDebugSourceSetPaths
+2026-09-03T09:17:31.1123456Z > Task :app:processDebugMainManifest FAILED
+2026-09-03T09:17:31.2123456Z /home/runner/work/siltcompass/siltcompass/app/src/main/AndroidManifest.xml:8:9-42 Error:
+2026-09-03T09:17:31.3123456Z 	Attribute application@label value=(@string/app_name) from AndroidManifest.xml:8:9-42
+2026-09-03T09:17:31.4123456Z 	is also present at [:tidepanel] AndroidManifest.xml:7:9-44 value=(@string/panel_name).
+2026-09-03T09:17:31.5123456Z 	Suggestion: add 'tools:replace="android:label"' to <application> element at AndroidManifest.xml to override.
+2026-09-03T09:17:31.6123456Z See https://developer.android.com/r/studio-ui/build/manifest-merger for more information about the manifest merger.
+2026-09-03T09:17:31.7123456Z FAILURE: Build failed with an exception.
+2026-09-03T09:17:31.8123456Z * What went wrong:
+2026-09-03T09:17:31.9123456Z Execution failed for task ':app:processDebugMainManifest'.
+2026-09-03T09:17:32.0123456Z > Manifest merger failed with multiple errors, see logs
+2026-09-03T09:17:32.1123456Z * Try:
+2026-09-03T09:17:32.2123456Z > Run with --stacktrace option to get the stack trace.
+2026-09-03T09:17:32.3123456Z > Run with --info or --debug option to get more log output.
+2026-09-03T09:17:32.4123456Z BUILD FAILED in 26s
+2026-09-03T09:17:32.5123456Z 4 actionable tasks: 4 executed
+2026-09-03T09:17:32.6123456Z ##[error]Process completed with exit code 1.
+2026-09-03T09:17:32.7123456Z Post job cleanup.
+2026-09-03T09:17:33.1123456Z Cleaning up orphan processes

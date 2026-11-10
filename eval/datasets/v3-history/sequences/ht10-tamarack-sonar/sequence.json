@@ -1,0 +1,12 @@
+﻿{
+  "id": "ht10-tamarack-sonar",
+  "split": "test",
+  "ecosystem": "cpp",
+  "repository": "tamarack-labs/sonarloom",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"workflow_path","title":"Configure step starts in absent directory","root_cause":"The workflow sets the configure step working directory to out/sonar-build, but no preceding step creates that directory. The workflow must create it before starting the step or use an existing directory.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"a","relation":"recurrence","category":"workflow_path","title":"Configure directory still absent","root_cause":"The workflow sets the configure step working directory to out/sonar-build, but no preceding step creates that directory. The workflow must create it before starting the step or use an existing directory.","differs_from_earlier":"A later pull request uses a different runner and checkout path, with dependency setup and a different configure command before the same process launch failure."},
+    {"id":"e3","file":"e3.log","cluster":"b","relation":"first","category":"dependency_build","title":"Sonar executable cannot link pulse function","root_cause":"The sonar executable calls pulse::estimate_delay, but the CMake target omits the source file defining that function. Add the implementation source to the linked target.","differs_from_earlier":""},
+    {"id":"e4","file":"e4.log","cluster":"b","relation":"recurrence","category":"dependency_build","title":"Undefined pulse function on link","root_cause":"The sonar executable calls pulse::estimate_delay, but the CMake target omits the source file defining that function. Add the implementation source to the linked target.","differs_from_earlier":"A later run uses a different build configuration and parallelism, and debug information reports the source line of the reference."}
+  ]
+}

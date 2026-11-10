@@ -1,0 +1,46 @@
+2026-09-08T11:20:17.0110000Z Current runner version: '2.328.0'
+2026-09-08T11:20:17.0200000Z ##[group]Operating System
+2026-09-08T11:20:17.0210000Z Ubuntu
+2026-09-08T11:20:17.0220000Z 24.04.3
+2026-09-08T11:20:17.0230000Z ##[endgroup]
+2026-09-08T11:20:17.0240000Z ##[group]Runner Image
+2026-09-08T11:20:17.0250000Z Image: ubuntu-24.04
+2026-09-08T11:20:17.0260000Z Version: 20260830.1.0
+2026-09-08T11:20:17.0270000Z ##[endgroup]
+2026-09-08T11:20:17.2300000Z Prepare workflow directory
+2026-09-08T11:20:17.5500000Z Prepare all required actions
+2026-09-08T11:20:18.0120000Z Download action repository 'actions/checkout@v4'
+2026-09-08T11:20:18.1300000Z Complete job name: web-image
+2026-09-08T11:20:18.2190000Z ##[group]Run actions/checkout@v4
+2026-09-08T11:20:18.2200000Z with:
+2026-09-08T11:20:18.2210000Z   repository: sable-fulcrum/cairn-dispatch
+2026-09-08T11:20:18.2220000Z   clean: true
+2026-09-08T11:20:18.2230000Z   fetch-depth: 1
+2026-09-08T11:20:18.2240000Z ##[endgroup]
+2026-09-08T11:20:18.4310000Z Syncing repository: sable-fulcrum/cairn-dispatch
+2026-09-08T11:20:18.5900000Z Getting Git version info
+2026-09-08T11:20:18.7410000Z Initialized empty Git repository in /home/runner/work/cairn-dispatch/cairn-dispatch/.git/
+2026-09-08T11:20:19.0190000Z Fetching the repository
+2026-09-08T11:20:19.9210000Z Checking out the ref
+2026-09-08T11:20:19.9970000Z ##[group]Run docker buildx build --load -f deploy/web.Dockerfile -t cairn-web:ci .
+2026-09-08T11:20:19.9980000Z docker buildx build --load -f deploy/web.Dockerfile -t cairn-web:ci .
+2026-09-08T11:20:19.9990000Z shell: /usr/bin/bash -e {0}
+2026-09-08T11:20:20.0000000Z ##[endgroup]
+2026-09-08T11:20:20.2190000Z #0 building with "default" instance using docker driver
+2026-09-08T11:20:20.2200000Z #1 [internal] load build definition from web.Dockerfile
+2026-09-08T11:20:20.2210000Z #1 transferring dockerfile: 372B done
+2026-09-08T11:20:20.2220000Z #1 DONE 0.0s
+2026-09-08T11:20:20.2230000Z #2 [internal] load metadata for docker.io/sablefulcrum/web-runtime:2.6.19
+2026-09-08T11:20:21.6820000Z #2 ERROR: docker.io/sablefulcrum/web-runtime:2.6.19: not found
+2026-09-08T11:20:21.6830000Z ------
+2026-09-08T11:20:21.6840000Z  > [internal] load metadata for docker.io/sablefulcrum/web-runtime:2.6.19:
+2026-09-08T11:20:21.6850000Z ------
+2026-09-08T11:20:21.6860000Z web.Dockerfile:1
+2026-09-08T11:20:21.6870000Z --------------------
+2026-09-08T11:20:21.6880000Z    1 | >>> FROM sablefulcrum/web-runtime:2.6.19
+2026-09-08T11:20:21.6890000Z    2 |     COPY public/ /usr/share/cairn/
+2026-09-08T11:20:21.6900000Z --------------------
+2026-09-08T11:20:21.6910000Z ERROR: failed to build: failed to solve: sablefulcrum/web-runtime:2.6.19: failed to resolve source metadata for docker.io/sablefulcrum/web-runtime:2.6.19: docker.io/sablefulcrum/web-runtime:2.6.19: not found
+2026-09-08T11:20:21.7040000Z ##[error]Process completed with exit code 1.
+2026-09-08T11:20:21.7190000Z Post job cleanup.
+2026-09-08T11:20:21.8400000Z Cleaning up orphan processes

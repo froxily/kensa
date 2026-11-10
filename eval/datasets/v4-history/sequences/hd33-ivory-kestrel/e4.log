@@ -1,0 +1,49 @@
+2026-09-25T08:32:00.1000000Z Current runner version: '2.329.0'
+2026-09-25T08:32:00.2000000Z ##[group]Operating System
+2026-09-25T08:32:00.3000000Z Ubuntu
+2026-09-25T08:32:00.4000000Z 24.04.3
+2026-09-25T08:32:00.5000000Z ##[endgroup]
+2026-09-25T08:32:00.6000000Z ##[group]Runner Image
+2026-09-25T08:32:00.7000000Z Image: ubuntu-24.04
+2026-09-25T08:32:00.8000000Z ##[endgroup]
+2026-09-25T08:32:00.9000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-25T08:32:01.0000000Z Contents: read
+2026-09-25T08:32:01.1000000Z Metadata: read
+2026-09-25T08:32:01.2000000Z ##[endgroup]
+2026-09-25T08:32:01.3000000Z Prepare workflow directory
+2026-09-25T08:32:01.4000000Z Prepare all required actions
+2026-09-25T08:32:01.5000000Z Download action repository 'actions/checkout@v4'
+2026-09-25T08:32:02.0000000Z ##[group]Run actions/checkout@v4
+2026-09-25T08:32:02.1000000Z with:
+2026-09-25T08:32:02.2000000Z   repository: ivory-kestrel/lichen-post
+2026-09-25T08:32:02.3000000Z   fetch-depth: 1
+2026-09-25T08:32:02.4000000Z ##[endgroup]
+2026-09-25T08:32:02.5000000Z Syncing repository: ivory-kestrel/lichen-post
+2026-09-25T08:32:03.0000000Z Getting Git version info
+2026-09-25T08:32:03.1000000Z git version 2.51.0
+2026-09-25T08:32:04.0000000Z Checking out the ref
+2026-09-25T08:32:04.5000000Z ##[group]Run ruby/setup-ruby@v1
+2026-09-25T08:32:04.6000000Z with:
+2026-09-25T08:32:04.7000000Z   ruby-version: 3.3
+2026-09-25T08:32:04.8000000Z   bundler-cache: true
+2026-09-25T08:32:04.9000000Z ##[endgroup]
+2026-09-25T08:32:07.0000000Z ruby 3.3.6
+2026-09-25T08:32:07.5000000Z Using bundler 2.5.23
+2026-09-25T08:32:08.0000000Z Bundle complete! 43 Gemfile dependencies, 155 gems now installed.
+2026-09-25T08:32:08.5000000Z ##[group]Run bundle exec rubocop app/formatters spec/formatters
+2026-09-25T08:32:08.6000000Z bundle exec rubocop app/formatters spec/formatters
+2026-09-25T08:32:08.7000000Z shell: /usr/bin/bash -e {0}
+2026-09-25T08:32:08.8000000Z ##[endgroup]
+2026-09-25T08:32:10.0000000Z Inspecting 12 files
+2026-09-25T08:32:10.1000000Z ...C........
+2026-09-25T08:32:10.2000000Z 
+2026-09-25T08:32:10.3000000Z Offenses:
+2026-09-25T08:32:10.4000000Z 
+2026-09-25T08:32:10.5000000Z app/formatters/dispatch_label_formatter.rb:23:121: C: Layout/LineLength: Line is too long. [130/120]
+2026-09-25T08:32:10.6000000Z     "#{parcel.recipient_name} - #{parcel.delivery_address} - #{parcel.dispatch_window} - #{parcel.route_description_for_delivery}"
+2026-09-25T08:32:10.7000000Z                                                                                                                         ^^^^^^^^^^
+2026-09-25T08:32:10.8000000Z 
+2026-09-25T08:32:10.9000000Z 12 files inspected, 1 offense detected
+2026-09-25T08:32:11.0000000Z ##[error]Process completed with exit code 1.
+2026-09-25T08:32:11.1000000Z Post job cleanup.
+2026-09-25T08:32:11.2000000Z Cleaning up orphan processes

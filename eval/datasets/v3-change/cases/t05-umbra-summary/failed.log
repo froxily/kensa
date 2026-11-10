@@ -1,0 +1,79 @@
+2026-10-30T09:14:03.1023456Z Current runner version: '2.329.0'
+2026-10-30T09:14:03.1043456Z ##[group]Runner Image Provisioner
+2026-10-30T09:14:03.1053456Z Hosted Compute Agent
+2026-10-30T09:14:03.1063456Z Version: 20261019.1
+2026-10-30T09:14:03.1073456Z ##[endgroup]
+2026-10-30T09:14:03.1083456Z ##[group]Operating System
+2026-10-30T09:14:03.1093456Z Ubuntu
+2026-10-30T09:14:03.1103456Z 24.04.3
+2026-10-30T09:14:03.1113456Z LTS
+2026-10-30T09:14:03.1123456Z ##[endgroup]
+2026-10-30T09:14:03.1133456Z ##[group]Runner Image
+2026-10-30T09:14:03.1143456Z Image: ubuntu-24.04
+2026-10-30T09:14:03.1153456Z Version: 20261026.1
+2026-10-30T09:14:03.1163456Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261026.1/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-30T09:14:03.1173456Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261026.1
+2026-10-30T09:14:03.1183456Z ##[endgroup]
+2026-10-30T09:14:03.1193456Z ##[group]GITHUB_TOKEN Permissions
+2026-10-30T09:14:03.1203456Z Contents: read
+2026-10-30T09:14:03.1213456Z Metadata: read
+2026-10-30T09:14:03.1223456Z ##[endgroup]
+2026-10-30T09:14:03.1233456Z Secret source: Actions
+2026-10-30T09:14:03.1243456Z Prepare workflow directory
+2026-10-30T09:14:03.3323456Z Prepare all required actions
+2026-10-30T09:14:03.4413456Z Getting action download info
+2026-10-30T09:14:03.7893456Z Download action repository 'actions/checkout@v4'
+2026-10-30T09:14:04.1743456Z Download action repository 'actions/setup-node@v4'
+2026-10-30T09:14:04.4523456Z Complete job name: verify
+2026-10-30T09:14:04.5583456Z ##[group]Run actions/checkout@v4
+2026-10-30T09:14:04.5593456Z with:
+2026-10-30T09:14:04.5603456Z   fetch-depth: 1
+2026-10-30T09:14:04.5613456Z   persist-credentials: true
+2026-10-30T09:14:04.5623456Z ##[endgroup]
+2026-10-30T09:14:05.2013456Z Syncing repository: umbra-labs/readings
+2026-10-30T09:14:05.5523456Z Checking out the ref
+2026-10-30T09:14:05.6123456Z HEAD is now at f28c49e Cover single reading
+2026-10-30T09:14:05.8133456Z ##[group]Run actions/setup-node@v4
+2026-10-30T09:14:05.8143456Z with:
+2026-10-30T09:14:05.8153456Z   node-version: 22
+2026-10-30T09:14:05.8163456Z ##[endgroup]
+2026-10-30T09:14:06.4923456Z Found in cache @ /opt/hostedtoolcache/node/22.21.1/x64
+2026-10-30T09:14:06.5013456Z ##[group]Environment details
+2026-10-30T09:14:06.5023456Z node: v22.21.1
+2026-10-30T09:14:06.5033456Z npm: 10.9.4
+2026-10-30T09:14:06.5043456Z ##[endgroup]
+2026-10-30T09:14:06.6023456Z ##[group]Run npm install
+2026-10-30T09:14:06.6033456Z npm install
+2026-10-30T09:14:06.6043456Z shell: /usr/bin/bash -e {0}
+2026-10-30T09:14:06.6053456Z ##[endgroup]
+2026-10-30T09:14:11.3613456Z added 45 packages, and audited 46 packages in 4s
+2026-10-30T09:14:11.3623456Z 12 packages are looking for funding
+2026-10-30T09:14:11.3633456Z   run `npm fund` for details
+2026-10-30T09:14:11.3643456Z found 0 vulnerabilities
+2026-10-30T09:14:11.4743456Z ##[group]Run npm test
+2026-10-30T09:14:11.4753456Z npm test
+2026-10-30T09:14:11.4763456Z shell: /usr/bin/bash -e {0}
+2026-10-30T09:14:11.4773456Z ##[endgroup]
+2026-10-30T09:14:11.6483456Z > umbra-readings@1.0.0 test
+2026-10-30T09:14:11.6493456Z > vitest run
+2026-10-30T09:14:12.0133456Z  RUN  v2.1.4 /home/runner/work/readings/readings
+2026-10-30T09:14:12.3913456Z  ? test/mean.test.ts (2 tests | 1 failed) 8ms
+2026-10-30T09:14:12.3923456Z    × mean > returns zero for no readings 6ms
+2026-10-30T09:14:12.3933456Z      ? expected NaN to be +0 // Object.is equality
+2026-10-30T09:14:12.3943456Z    ? mean > returns a single reading
+2026-10-30T09:14:12.3953456Z  FAIL  test/mean.test.ts > mean > returns zero for no readings
+2026-10-30T09:14:12.3963456Z AssertionError: expected NaN to be +0 // Object.is equality
+2026-10-30T09:14:12.3973456Z  ? test/mean.test.ts:6:22
+2026-10-30T09:14:12.3983456Z       4| describe('mean', () => {
+2026-10-30T09:14:12.3993456Z       5|   it('returns zero for no readings', () => {
+2026-10-30T09:14:12.4003456Z       6|     expect(mean([])).toBe(0);
+2026-10-30T09:14:12.4013456Z        |                      ^
+2026-10-30T09:14:12.4023456Z       7|   });
+2026-10-30T09:14:12.4033456Z  Test Files  1 failed (1)
+2026-10-30T09:14:12.4043456Z       Tests  1 failed | 1 passed (2)
+2026-10-30T09:14:12.4053456Z    Duration  382ms
+2026-10-30T09:14:12.4433456Z ##[error]Process completed with exit code 1.
+2026-10-30T09:14:12.5013456Z Post job cleanup.
+2026-10-30T09:14:12.6433456Z [command]/usr/bin/git version
+2026-10-30T09:14:12.6453456Z git version 2.51.1
+2026-10-30T09:14:12.7113456Z Cleaning up orphan processes

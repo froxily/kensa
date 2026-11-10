@@ -1,0 +1,62 @@
+2026-09-08T11:03:00.1000000Z Current runner version: '2.328.0'
+2026-09-08T11:03:00.2000000Z ##[group]Runner Image
+2026-09-08T11:03:00.3000000Z Image: ubuntu-24.04
+2026-09-08T11:03:00.4000000Z Version: 20260901.1.0
+2026-09-08T11:03:00.5000000Z ##[endgroup]
+2026-09-08T11:03:00.6000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-08T11:03:00.7000000Z Contents: read
+2026-09-08T11:03:00.8000000Z Metadata: read
+2026-09-08T11:03:00.9000000Z ##[endgroup]
+2026-09-08T11:03:01.0000000Z Prepare workflow directory
+2026-09-08T11:03:01.2000000Z Prepare all required actions
+2026-09-08T11:03:01.5000000Z Download action repository 'actions/checkout@v4'
+2026-09-08T11:03:01.8000000Z Download action repository 'actions/setup-node@v4'
+2026-09-08T11:03:02.1000000Z Complete job name: checks
+2026-09-08T11:03:02.4000000Z ##[group]Run actions/checkout@v4
+2026-09-08T11:03:02.5000000Z with:
+2026-09-08T11:03:02.6000000Z   repository: brineglyph/kelp-mill
+2026-09-08T11:03:02.7000000Z   fetch-depth: 1
+2026-09-08T11:03:02.8000000Z ##[endgroup]
+2026-09-08T11:03:03.0000000Z Syncing repository: brineglyph/kelp-mill
+2026-09-08T11:03:03.2000000Z git version 2.51.0
+2026-09-08T11:03:04.3000000Z Fetching the repository
+2026-09-08T11:03:05.1000000Z Checking out the ref
+2026-09-08T11:03:05.8000000Z ##[group]Run actions/setup-node@v4
+2026-09-08T11:03:05.9000000Z with:
+2026-09-08T11:03:06.0000000Z   node-version: 22
+2026-09-08T11:03:06.1000000Z ##[endgroup]
+2026-09-08T11:03:06.4000000Z Found in cache @ /opt/hostedtoolcache/node/22.18.0/x64
+2026-09-08T11:03:06.8000000Z ##[group]Run yarn install --immutable
+2026-09-08T11:03:06.9000000Z yarn install --immutable
+2026-09-08T11:03:07.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-08T11:03:07.1000000Z ##[endgroup]
+2026-09-08T11:03:07.8000000Z ➤ YN0000: · Yarn 4.5.1
+2026-09-08T11:03:08.0000000Z ➤ YN0000: ┌ Resolution step
+2026-09-08T11:03:08.3000000Z ➤ YN0000: └ Completed
+2026-09-08T11:03:08.4000000Z ➤ YN0000: ┌ Fetch step
+2026-09-08T11:03:09.1000000Z ➤ YN0000: └ Completed
+2026-09-08T11:03:09.2000000Z ➤ YN0000: ┌ Link step
+2026-09-08T11:03:10.0000000Z ➤ YN0000: └ Completed
+2026-09-08T11:03:10.1000000Z ➤ YN0000: · Done in 2s 302ms
+2026-09-08T11:03:10.3000000Z ##[group]Run yarn vitest run
+2026-09-08T11:03:10.4000000Z yarn vitest run
+2026-09-08T11:03:10.5000000Z shell: /usr/bin/bash -e {0}
+2026-09-08T11:03:10.6000000Z ##[endgroup]
+2026-09-08T11:03:11.2000000Z  RUN  v2.1.8 /home/runner/work/kelp-mill/kelp-mill
+2026-09-08T11:03:12.0000000Z  ✓ src/chart/labels.test.ts (4 tests) 9ms
+2026-09-08T11:03:12.2000000Z  ❯ src/berth/capacity.test.ts (3 tests | 1 failed) 15ms
+2026-09-08T11:03:12.3000000Z    × excludes closed berths from available capacity 8ms
+2026-09-08T11:03:12.4000000Z      → expected 7 to be 4 // Object.is equality
+2026-09-08T11:03:12.5000000Z  FAIL  src/berth/capacity.test.ts > excludes closed berths from available capacity
+2026-09-08T11:03:12.6000000Z AssertionError: expected 7 to be 4 // Object.is equality
+2026-09-08T11:03:12.7000000Z  ❯ src/berth/capacity.test.ts:27:39
+2026-09-08T11:03:12.8000000Z      25|   const berths = [{ slots: 4, closed: false }, { slots: 3, closed: true }];
+2026-09-08T11:03:12.9000000Z      26| 
+2026-09-08T11:03:13.0000000Z      27|   expect(availableCapacity(berths)).toBe(4);
+2026-09-08T11:03:13.1000000Z        |                                       ^
+2026-09-08T11:03:13.2000000Z  Test Files  1 failed | 1 passed (2)
+2026-09-08T11:03:13.3000000Z       Tests  1 failed | 6 passed (7)
+2026-09-08T11:03:13.4000000Z    Duration  1.75s
+2026-09-08T11:03:13.5000000Z ##[error]Process completed with exit code 1.
+2026-09-08T11:03:13.6000000Z Post job cleanup.
+2026-09-08T11:03:13.7000000Z Cleaning up orphan processes

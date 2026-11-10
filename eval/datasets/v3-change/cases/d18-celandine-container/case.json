@@ -1,0 +1,20 @@
+{
+  "id": "d18-celandine-container",
+  "split": "dev",
+  "comparability": "partially_comparable",
+  "category": "docker",
+  "culprit_kind": "build_config",
+  "difficulty": "medium",
+  "ecosystem": "rust",
+  "title": "Runtime image tag fails to resolve",
+  "root_cause": "The Dockerfile changed the runtime base from debian:bookworm to debian:bookworm-slim-celandine. Docker reports that the new image tag was not found and cannot resolve it during the build. The successful run is on a divergent branch of history, so the change is assessed from the merge base.",
+  "culprit_paths": ["Dockerfile"],
+  "culprit_commit": "b8c731e2d54a09f6c13e892a7d04b5f96e21c8a3",
+  "unverified_factors": ["history_diverged"],
+  "fix_keywords": ["Dockerfile", "debian:bookworm"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 65, "end_line": 66, "why": "Docker cannot find the runtime image tag."},
+    {"path": "log", "start_line": 71, "end_line": 79, "why": "The build error identifies the FROM instruction and failed image resolution."},
+    {"path": "repo/Dockerfile", "start_line": 6, "end_line": 6, "why": "The runtime stage selects the unavailable tag."}
+  ]
+}

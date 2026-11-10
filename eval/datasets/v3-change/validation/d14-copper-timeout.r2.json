@@ -1,0 +1,14 @@
+{
+  "id": "d14-copper-timeout",
+  "independent_labels": {
+    "comparability": "comparable",
+    "unverified_factors": [],
+    "category": "oom_timeout",
+    "culprit_kind": "workflow",
+    "culprit_paths": [".github/workflows/build.yml"]
+  },
+  "verdict": "agree",
+  "disputed_fields": [],
+  "reason_category": "none",
+  "notes": "The matching successful baseline has the same runner and an ahead comparison. The workflow reduces the timeout from 10 to 2 minutes while the archive takes 3 minutes; the later source change only alters output. Evidence ranges and cross-file details are consistent."
+}

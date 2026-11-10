@@ -1,0 +1,12 @@
+{
+  "id": "ht57-helix-quern",
+  "split": "test",
+  "ecosystem": "bazel",
+  "repository": "helix-quern/tarn-sifter",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"dependency_build","title":"Loom library is not visible to the exporter","root_cause":"The loom library target is private to its package, but the exporter target depends on it. Its visibility must allow the exporter package.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"b","relation":"lookalike","category":"dependency_build","title":"Gauge schema is not visible to the sampler","root_cause":"The gauge schema target is private to its package, but the sampler target depends on it. Its visibility must allow the sampler package.","differs_from_earlier":"The same Bazel visibility diagnostic concerns a different dependency and consumer; the gauge schema visibility needs its own change."},
+    {"id":"e3","file":"e3.log","cluster":"c","relation":"first","category":"dependency_build","title":"Remote cache hostname cannot resolve","root_cause":"The configured remote cache hostname cache.tarn-sifter.invalid does not resolve on the runner. The remote cache endpoint configuration must be corrected.","differs_from_earlier":""},
+    {"id":"e4","file":"e4.log","cluster":"c","relation":"recurrence","category":"dependency_build","title":"Remote cache hostname cannot resolve again","root_cause":"The configured remote cache hostname cache.tarn-sifter.invalid does not resolve on the runner. The remote cache endpoint configuration must be corrected.","differs_from_earlier":"A later build requests a different target on a newer runner, but the same configured hostname fails DNS resolution."}
+  ]
+}

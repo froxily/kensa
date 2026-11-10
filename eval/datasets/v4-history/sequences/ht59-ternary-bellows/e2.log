@@ -1,0 +1,46 @@
+2026-09-13T11:07:21.1100000Z Current runner version: '2.328.0'
+2026-09-13T11:07:21.1500000Z ##[group]Runner Image
+2026-09-13T11:07:21.1600000Z Image: windows-2022
+2026-09-13T11:07:21.1700000Z Version: 20260906.1.0
+2026-09-13T11:07:21.1800000Z ##[endgroup]
+2026-09-13T11:07:21.2100000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-13T11:07:21.2200000Z Contents: read
+2026-09-13T11:07:21.2300000Z Metadata: read
+2026-09-13T11:07:21.2400000Z ##[endgroup]
+2026-09-13T11:07:21.2500000Z Prepare workflow directory
+2026-09-13T11:07:21.3100000Z Prepare all required actions
+2026-09-13T11:07:21.8200000Z Download action repository 'actions/checkout@v4'
+2026-09-13T11:07:22.1400000Z Complete job name: verify-go (windows-2022)
+2026-09-13T11:07:22.2000000Z ##[group]Run actions/checkout@v4
+2026-09-13T11:07:22.2100000Z with:
+2026-09-13T11:07:22.2200000Z   repository: quillhaven/bellows-index
+2026-09-13T11:07:22.2300000Z   fetch-depth: 1
+2026-09-13T11:07:22.2400000Z   clean: true
+2026-09-13T11:07:22.2500000Z ##[endgroup]
+2026-09-13T11:07:22.5000000Z Syncing repository: quillhaven/bellows-index
+2026-09-13T11:07:22.5500000Z ##[group]Getting Git version info
+2026-09-13T11:07:22.5700000Z git version 2.51.0.windows.1
+2026-09-13T11:07:22.5900000Z ##[endgroup]
+2026-09-13T11:07:22.9400000Z Initializing the repository
+2026-09-13T11:07:23.3200000Z Disabling automatic garbage collection
+2026-09-13T11:07:23.6600000Z Setting up auth
+2026-09-13T11:07:24.2200000Z Fetching the repository
+2026-09-13T11:07:25.4100000Z Checking out the ref
+2026-09-13T11:07:25.6800000Z ##[group]Run go test ./...
+2026-09-13T11:07:25.6900000Z [36;1mgo test ./...[0m
+2026-09-13T11:07:25.7000000Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-09-13T11:07:25.7100000Z ##[endgroup]
+2026-09-13T11:07:26.1400000Z go: D:\a\_temp\79da.ps1:2
+2026-09-13T11:07:26.1500000Z Line |
+2026-09-13T11:07:26.1600000Z    2 |  go test ./...
+2026-09-13T11:07:26.1700000Z      |  ~~
+2026-09-13T11:07:26.1800000Z      | The term 'go' is not recognized as a name of a cmdlet, function, script file, or executable program.
+2026-09-13T11:07:26.1900000Z      | Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+2026-09-13T11:07:26.2500000Z ##[error]Process completed with exit code 1.
+2026-09-13T11:07:26.2800000Z Post job cleanup.
+2026-09-13T11:07:26.5000000Z [command]"C:\Program Files\Git\bin\git.exe" version
+2026-09-13T11:07:26.5100000Z git version 2.51.0.windows.1
+2026-09-13T11:07:26.6800000Z Temporarily overriding HOME='D:\a\_temp\e6d2' before making global git config changes
+2026-09-13T11:07:26.7600000Z Adding repository directory to the temporary git global config as a safe directory
+2026-09-13T11:07:26.8200000Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\bellows-index\bellows-index
+2026-09-13T11:07:27.0400000Z Cleaning up orphan processes

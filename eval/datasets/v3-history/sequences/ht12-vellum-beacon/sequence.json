@@ -1,0 +1,12 @@
+﻿{
+  "id": "ht12-vellum-beacon",
+  "split": "test",
+  "ecosystem": "node",
+  "repository": "copperquay/vellum-beacon",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"missing_env_var","title":"Scheduled probe lacks service secret","root_cause":"The scheduled workflow uses a job without the observatory environment, where the BEACON_PROBE_KEY secret is configured, so the secret resolves to an empty string. Attach the job to that environment.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"b","relation":"first","category":"test_regression","title":"Beacon window boundary assertion fails","root_cause":"The upper-boundary test expects true but receives false. The log does not establish whether the calculation or the expectation is incorrect.","differs_from_earlier":""},
+    {"id":"e3","file":"e3.log","cluster":"c","relation":"lookalike","category":"missing_env_var","title":"Probe secret reference uses the wrong name","root_cause":"The workflow refers to BEACON_PROBE_TOKEN, which is absent from the repository and observatory environment; the environment contains BEACON_PROBE_KEY. Update the workflow secret reference.","differs_from_earlier":"Like e1, the probe receives an empty credential, but this manually dispatched job selects the environment and references a different secret name."},
+    {"id":"e4","file":"e4.log","cluster":"a","relation":"recurrence","category":"missing_env_var","title":"Scheduled probe again lacks service secret","root_cause":"The scheduled workflow uses a job without the observatory environment, where the BEACON_PROBE_KEY secret is configured, so the secret resolves to an empty string. Attach the job to that environment.","differs_from_earlier":"A later scheduled run uses a newer runner image and reaches the probe through an npm script; the job still omits the environment."}
+  ]
+}

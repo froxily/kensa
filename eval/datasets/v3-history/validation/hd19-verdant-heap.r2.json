@@ -1,0 +1,13 @@
+{
+  "id": "hd19-verdant-heap",
+  "independent_labels": [
+    {"id": "e1", "cluster": "a", "relation": "first", "category": "oom_timeout"},
+    {"id": "e2", "cluster": "b", "relation": "lookalike", "category": "oom_timeout"},
+    {"id": "e3", "cluster": "a", "relation": "recurrence", "category": "oom_timeout"},
+    {"id": "e4", "cluster": "a", "relation": "recurrence", "category": "oom_timeout"}
+  ],
+  "verdict": "agree",
+  "disputed_fields": [],
+  "reason_category": "none",
+  "notes": "e1, e3, and e4 show heap exhaustion in ExpandedFixture.retainRows with a 512 MB test heap; their stack traces and run details differ. e2 instead times out while retrying a refused fixture-server connection, requiring a different fix. The labels and plan match, and the logs contain no apparent giveaway commentary."
+}

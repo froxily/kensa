@@ -1,0 +1,61 @@
+2026-09-24T07:45:00.1700000Z Current runner version: '2.329.0'
+2026-09-24T07:45:00.2300000Z ##[group]Runner Image
+2026-09-24T07:45:00.2310000Z Image: ubuntu-22.04
+2026-09-24T07:45:00.2320000Z Version: 20260917.1.0
+2026-09-24T07:45:00.2330000Z ##[endgroup]
+2026-09-24T07:45:00.2400000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-24T07:45:00.2410000Z Contents: read
+2026-09-24T07:45:00.2420000Z Metadata: read
+2026-09-24T07:45:00.2430000Z ##[endgroup]
+2026-09-24T07:45:01.0210000Z Prepare workflow directory
+2026-09-24T07:45:01.6710000Z Prepare all required actions
+2026-09-24T07:45:02.0020000Z Download action repository 'dart-lang/setup-dart@v1'
+2026-09-24T07:45:02.4310000Z Download action repository 'actions/checkout@v4'
+2026-09-24T07:45:03.0600000Z Complete job name: publish-check
+2026-09-24T07:45:03.1310000Z ##[group]Run actions/checkout@v4
+2026-09-24T07:45:03.1320000Z with:
+2026-09-24T07:45:03.1330000Z   repository: cormorant-labs/lichen-orrery
+2026-09-24T07:45:03.1340000Z   fetch-depth: 1
+2026-09-24T07:45:03.1350000Z ##[endgroup]
+2026-09-24T07:45:03.7250000Z Syncing repository: cormorant-labs/lichen-orrery
+2026-09-24T07:45:04.0030000Z [command]/usr/bin/git version
+2026-09-24T07:45:04.0090000Z git version 2.51.0
+2026-09-24T07:45:04.2100000Z Initializing the repository
+2026-09-24T07:45:05.8000000Z Fetching the repository
+2026-09-24T07:45:07.1220000Z Checking out the ref
+2026-09-24T07:45:07.3110000Z [command]/usr/bin/git log -1 --format=%H
+2026-09-24T07:45:07.3170000Z 6c74068466b22cdac47c144ac5aa9036b297a746
+2026-09-24T07:45:07.5120000Z ##[group]Run dart-lang/setup-dart@v1
+2026-09-24T07:45:07.5130000Z with:
+2026-09-24T07:45:07.5140000Z   sdk: stable
+2026-09-24T07:45:07.5150000Z ##[endgroup]
+2026-09-24T07:45:13.4090000Z Dart SDK version: 3.9.3 (stable) on "linux_x64"
+2026-09-24T07:45:13.7010000Z ##[group]Run dart pub get
+2026-09-24T07:45:13.7020000Z dart pub get
+2026-09-24T07:45:13.7030000Z shell: /usr/bin/bash -e {0}
+2026-09-24T07:45:13.7040000Z ##[endgroup]
+2026-09-24T07:45:14.1920000Z Resolving dependencies...
+2026-09-24T07:45:17.8210000Z Downloading packages...
+2026-09-24T07:45:18.1180000Z + orrery_ephemeris 0.1.0
+2026-09-24T07:45:18.1190000Z + collection 1.19.1
+2026-09-24T07:45:18.1200000Z + orrery_palette 0.2.1
+2026-09-24T07:45:18.1210000Z + meta 1.17.0
+2026-09-24T07:45:18.2890000Z Changed 4 dependencies!
+2026-09-24T07:45:18.5120000Z ##[group]Run dart format --output=none --set-exit-if-changed .
+2026-09-24T07:45:18.5130000Z dart format --output=none --set-exit-if-changed .
+2026-09-24T07:45:18.5140000Z shell: /usr/bin/bash -e {0}
+2026-09-24T07:45:18.5150000Z ##[endgroup]
+2026-09-24T07:45:20.2370000Z Formatted 18 files (0 changed) in 0.37 seconds.
+2026-09-24T07:45:20.4410000Z ##[group]Run dart pub publish --force
+2026-09-24T07:45:20.4420000Z dart pub publish --force
+2026-09-24T07:45:20.4430000Z shell: /usr/bin/bash -e {0}
+2026-09-24T07:45:20.4440000Z ##[endgroup]
+2026-09-24T07:45:21.3380000Z Publishing lichen_orrery 0.5.0 to https://pub.dev:
+2026-09-24T07:45:21.5400000Z Validating package...
+2026-09-24T07:45:22.7030000Z Uploading...
+2026-09-24T07:45:22.7040000Z Server responded with status 409: Version 0.5.0 of package lichen_orrery already exists.
+2026-09-24T07:45:22.7050000Z Failed to publish package.
+2026-09-24T07:45:22.8870000Z ##[error]Process completed with exit code 65.
+2026-09-24T07:45:23.1140000Z Post job cleanup.
+2026-09-24T07:45:23.4620000Z Temporarily overriding HOME='/home/runner/work/_temp/4b2f75fc-c38a-4f78-adf5-c0fb36a981c7' before making global git config changes
+2026-09-24T07:45:23.9470000Z Cleaning up orphan processes

@@ -1,0 +1,14 @@
+{
+  "id": "d10-saffron-compose",
+  "independent_labels": {
+    "comparability": "comparable",
+    "unverified_factors": [],
+    "category": "docker",
+    "culprit_kind": "build_config",
+    "culprit_paths": ["compose.yaml"]
+  },
+  "verdict": "agree",
+  "disputed_fields": [],
+  "reason_category": "none",
+  "notes": "The matching successful baseline has the same runner details and an ahead comparison. The compose image rename matches the failed pull; the cited log lines show the error. The history patches and repository files agree."
+}

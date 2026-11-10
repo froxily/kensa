@@ -1,0 +1,12 @@
+{
+  "id": "hd60-dovetail-estuary",
+  "split": "dev",
+  "ecosystem": "deno",
+  "repository": "dovetail-estuary/silt-index",
+  "entries": [
+    {"id": "e1", "file": "e1.log", "cluster": "a", "relation": "first", "category": "missing_env_var", "title": "Deno cannot read index configuration", "root_cause": "The Deno run command lacks permission to read the SILT_INDEX_MODE environment variable. Grant environment access for that variable.", "differs_from_earlier": ""},
+    {"id": "e2", "file": "e2.log", "cluster": "b", "relation": "first", "category": "dependency_build", "title": "Missing local normalize module", "root_cause": "The import in src/compose.ts points to the nonexistent local file src/normalise.ts; the actual module is src/normalize.ts. Correct the import path.", "differs_from_earlier": ""},
+    {"id": "e3", "file": "e3.log", "cluster": "c", "relation": "lookalike", "category": "dependency_build", "title": "Missing local schema module", "root_cause": "The import in src/reader.ts references src/schema.ts, which was omitted from the checkout because it was never committed. Add the missing module to the repository.", "differs_from_earlier": "Like e2, Deno cannot resolve a local TypeScript module, but this module must be added rather than correcting a misspelled import."},
+    {"id": "e4", "file": "e4.log", "cluster": "b", "relation": "recurrence", "category": "dependency_build", "title": "Missing local normalize module", "root_cause": "The import in src/compose.ts points to the nonexistent local file src/normalise.ts; the actual module is src/normalize.ts. Correct the import path.", "differs_from_earlier": "A later pull request runs the test task instead of the check task, with a shifted import line and a different runner path."}
+  ]
+}

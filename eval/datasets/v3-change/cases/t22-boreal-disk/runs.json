@@ -1,0 +1,7 @@
+﻿{
+  "failed": {"run_id": 9241836701, "run_attempt": 1, "workflow_id": 83741926, "workflow_path": ".github/workflows/boreal.yml", "event": "push", "head_branch": "main", "head_sha": "b6e42a19c8f035d7e1a94b602c7f38d15a9e046b", "created_at": "2026-11-08T10:20:00Z", "conclusion": "failure", "jobs": [{"name": "bundle (22)", "conclusion": "failure", "labels": ["ubuntu-24.04"], "runner_image": "ubuntu-24.04", "runner_image_version": "20261026.1"}], "failed_job": "bundle (22)"},
+  "candidates": [
+    {"run_id": 9241815502, "run_attempt": 1, "workflow_id": 83741926, "workflow_path": ".github/workflows/boreal.yml", "event": "push", "head_branch": "main", "head_sha": "b6e42a19c8f035d7e1a94b602c7f38d15a9e046b", "created_at": "2026-11-08T09:05:00Z", "conclusion": "success", "jobs": [{"name": "bundle (22)", "conclusion": "success", "labels": ["ubuntu-24.04"], "runner_image": "ubuntu-24.04", "runner_image_version": "20261026.1"}]},
+    {"run_id": 9241701184, "run_attempt": 1, "workflow_id": 83741926, "workflow_path": ".github/workflows/boreal.yml", "event": "push", "head_branch": "main", "head_sha": "2d1f9c6a47b085e31a9d62f7c8b430e56d1a729f", "created_at": "2026-11-07T18:10:00Z", "conclusion": "failure", "jobs": [{"name": "bundle (22)", "conclusion": "failure", "labels": ["ubuntu-24.04"], "runner_image": "ubuntu-24.04", "runner_image_version": "20261026.1"}]}
+  ]
+}

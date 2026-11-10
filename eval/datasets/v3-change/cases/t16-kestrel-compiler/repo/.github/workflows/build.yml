@@ -1,0 +1,10 @@
+﻿name: Build routes
+on: push
+jobs:
+  compile:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: cmake -S . -B build
+      - run: cmake --build build
+      - run: ./build/route_check

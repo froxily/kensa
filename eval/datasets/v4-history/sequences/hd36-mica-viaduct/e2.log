@@ -1,0 +1,64 @@
+2026-09-08T10:21:01.1134567Z Current runner version: '2.328.0'
+2026-09-08T10:21:01.2134567Z ##[group]Runner Image
+2026-09-08T10:21:01.3134567Z Image: ubuntu-24.04
+2026-09-08T10:21:01.4134567Z Version: 20260830.1.0
+2026-09-08T10:21:01.5134567Z ##[endgroup]
+2026-09-08T10:21:01.6134567Z ##[group]GITHUB_TOKEN Permissions
+2026-09-08T10:21:01.7134567Z Contents: read
+2026-09-08T10:21:01.8134567Z ##[endgroup]
+2026-09-08T10:21:02.1134567Z Prepare workflow directory
+2026-09-08T10:21:02.4134567Z Prepare all required actions
+2026-09-08T10:21:02.9134567Z Download action repository 'actions/checkout@v4'
+2026-09-08T10:21:03.3134567Z ##[group]Run actions/checkout@v4
+2026-09-08T10:21:03.4134567Z with:
+2026-09-08T10:21:03.5134567Z   repository: mica-viaduct/contour-ledger
+2026-09-08T10:21:03.6134567Z   clean: true
+2026-09-08T10:21:03.7134567Z ##[endgroup]
+2026-09-08T10:21:04.1134567Z Syncing repository: mica-viaduct/contour-ledger
+2026-09-08T10:21:04.4134567Z Initializing the repository
+2026-09-08T10:21:05.1134567Z Fetching the repository
+2026-09-08T10:21:05.8134567Z Checking out the ref
+2026-09-08T10:21:06.1134567Z ##[group]Run actions/setup-java@v4
+2026-09-08T10:21:06.2134567Z with:
+2026-09-08T10:21:06.3134567Z   distribution: temurin
+2026-09-08T10:21:06.4134567Z   java-version: 21
+2026-09-08T10:21:06.5134567Z ##[endgroup]
+2026-09-08T10:21:07.1134567Z Set Java version to 21
+2026-09-08T10:21:07.3134567Z ##[group]Run ./gradlew compileJava -x generateContourIndex
+2026-09-08T10:21:07.4134567Z ./gradlew compileJava -x generateContourIndex
+2026-09-08T10:21:07.5134567Z shell: /usr/bin/bash -e {0}
+2026-09-08T10:21:07.6134567Z ##[endgroup]
+2026-09-08T10:21:09.1134567Z Starting a Gradle Daemon
+2026-09-08T10:21:12.1134567Z > Task :compileJava FAILED
+2026-09-08T10:21:12.2134567Z /home/runner/work/contour-ledger/contour-ledger/src/main/java/io/micaviaduct/ledger/ContourLookup.java:28: error: cannot find symbol
+2026-09-08T10:21:12.3134567Z     return ContourIndex.find(code);
+2026-09-08T10:21:12.4134567Z            ^
+2026-09-08T10:21:12.5134567Z   symbol:   variable ContourIndex
+2026-09-08T10:21:12.6134567Z   location: class ContourLookup
+2026-09-08T10:21:12.7134567Z 1 error
+2026-09-08T10:21:12.8134567Z FAILURE: Build failed with an exception.
+2026-09-08T10:21:12.9134567Z * What went wrong:
+2026-09-08T10:21:13.0134567Z Execution failed for task ':compileJava'.
+2026-09-08T10:21:13.1134567Z > Compilation failed; see the compiler output below.
+2026-09-08T10:21:13.2134567Z   /home/runner/work/contour-ledger/contour-ledger/src/main/java/io/micaviaduct/ledger/ContourLookup.java:28: error: cannot find symbol
+2026-09-08T10:21:13.3134567Z       return ContourIndex.find(code);
+2026-09-08T10:21:13.4134567Z              ^
+2026-09-08T10:21:13.5134567Z     symbol:   variable ContourIndex
+2026-09-08T10:21:13.6134567Z     location: class ContourLookup
+2026-09-08T10:21:13.7134567Z   1 error
+2026-09-08T10:21:13.8134567Z * Try:
+2026-09-08T10:21:13.9134567Z > Check your code and dependencies to fix the compilation error(s)
+2026-09-08T10:21:14.0134567Z BUILD FAILED in 6s
+2026-09-08T10:21:14.1134567Z 1 actionable task: 1 executed
+2026-09-08T10:21:14.2134567Z ##[error]Process completed with exit code 1.
+2026-09-08T10:21:14.3134567Z ##[group]Run ./gradlew generateContourIndex compileJava
+2026-09-08T10:21:14.3234567Z ./gradlew generateContourIndex compileJava
+2026-09-08T10:21:14.3334567Z shell: /usr/bin/bash -e {0}
+2026-09-08T10:21:14.3434567Z ##[endgroup]
+2026-09-08T10:21:15.1134567Z > Task :generateContourIndex
+2026-09-08T10:21:15.2134567Z Generated build/generated/sources/contour/java/io/micaviaduct/ledger/ContourIndex.java
+2026-09-08T10:21:16.1134567Z > Task :compileJava
+2026-09-08T10:21:16.2134567Z BUILD SUCCESSFUL in 2s
+2026-09-08T10:21:16.3134567Z 2 actionable tasks: 2 executed
+2026-09-08T10:21:16.4134567Z Post job cleanup.
+2026-09-08T10:21:16.5134567Z Cleaning up orphan processes

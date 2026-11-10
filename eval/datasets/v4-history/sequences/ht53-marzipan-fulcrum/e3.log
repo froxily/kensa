@@ -1,0 +1,53 @@
+2026-09-15T09:15:00.0000000Z Current runner version: '2.329.0'
+2026-09-15T09:15:00.1000000Z ##[group]Runner Image
+2026-09-15T09:15:00.2000000Z Image: ubuntu-24.04
+2026-09-15T09:15:00.3000000Z Version: 20260913.1.0
+2026-09-15T09:15:00.4000000Z ##[endgroup]
+2026-09-15T09:15:00.5000000Z Prepare workflow directory
+2026-09-15T09:15:00.6000000Z Prepare all required actions
+2026-09-15T09:15:01.0000000Z ##[group]Run actions/checkout@v4
+2026-09-15T09:15:01.1000000Z with:
+2026-09-15T09:15:01.2000000Z   repository: marzipan-fulcrum/loomlight-console
+2026-09-15T09:15:01.3000000Z   fetch-depth: 1
+2026-09-15T09:15:01.4000000Z ##[endgroup]
+2026-09-15T09:15:02.0000000Z Syncing repository: marzipan-fulcrum/loomlight-console
+2026-09-15T09:15:03.0000000Z ##[group]Run actions/setup-node@v4
+2026-09-15T09:15:03.1000000Z with:
+2026-09-15T09:15:03.2000000Z   node-version: 22
+2026-09-15T09:15:03.3000000Z ##[endgroup]
+2026-09-15T09:15:04.0000000Z ##[group]Run npm ci
+2026-09-15T09:15:04.1000000Z npm ci
+2026-09-15T09:15:04.2000000Z shell: /usr/bin/bash -e {0}
+2026-09-15T09:15:04.3000000Z ##[endgroup]
+2026-09-15T09:15:10.0000000Z added 216 packages, and audited 217 packages in 5s
+2026-09-15T09:15:10.1000000Z found 0 vulnerabilities
+2026-09-15T09:15:10.2000000Z ##[group]Run npx playwright install --with-deps chromium
+2026-09-15T09:15:10.3000000Z npx playwright install --with-deps chromium
+2026-09-15T09:15:10.4000000Z shell: /usr/bin/bash -e {0}
+2026-09-15T09:15:10.5000000Z ##[endgroup]
+2026-09-15T09:15:29.0000000Z Chromium downloaded to /home/runner/.cache/ms-playwright/chromium-1169
+2026-09-15T09:15:29.1000000Z Chromium Headless Shell downloaded to /home/runner/.cache/ms-playwright/chromium_headless_shell-1169
+2026-09-15T09:15:29.2000000Z ##[group]Run npx playwright test e2e/dispatch.spec.ts --workers=1
+2026-09-15T09:15:29.3000000Z npx playwright test e2e/dispatch.spec.ts --workers=1
+2026-09-15T09:15:29.4000000Z shell: /usr/bin/bash -e {0}
+2026-09-15T09:15:29.5000000Z ##[endgroup]
+2026-09-15T09:15:31.0000000Z Running 1 test using 1 worker
+2026-09-15T09:15:37.2000000Z   1) [chromium] e2e/dispatch.spec.ts:12:5 > shows dispatch count
+2026-09-15T09:15:37.3000000Z
+2026-09-15T09:15:37.4000000Z     Error: expect(locator).toHaveText(expected) failed
+2026-09-15T09:15:37.5000000Z     Locator: getByTestId('dispatch-count')
+2026-09-15T09:15:37.6000000Z     Expected string: "2 dispatches"
+2026-09-15T09:15:37.7000000Z     Received string: "3 dispatches"
+2026-09-15T09:15:37.8000000Z     Call log:
+2026-09-15T09:15:37.9000000Z       - expect.toHaveText with timeout 5000ms
+2026-09-15T09:15:38.0000000Z       - waiting for getByTestId('dispatch-count')
+2026-09-15T09:15:38.1000000Z         9 x locator resolved to <span data-testid="dispatch-count">3 dispatches</span>
+2026-09-15T09:15:38.2000000Z           - unexpected value "3 dispatches"
+2026-09-15T09:15:38.3000000Z      10 | test('shows dispatch count', async ({ page }) => {
+2026-09-15T09:15:38.4000000Z      11 |   await page.goto('/dispatch?fixture=two-records-three-packages');
+2026-09-15T09:15:38.5000000Z    > 12 |   await expect(page.getByTestId('dispatch-count')).toHaveText('2 dispatches');
+2026-09-15T09:15:38.6000000Z         |                                                   ^
+2026-09-15T09:15:38.7000000Z      13 | });
+2026-09-15T09:15:38.8000000Z   1 failed
+2026-09-15T09:15:38.9000000Z ##[error]Process completed with exit code 1.
+2026-09-15T09:15:39.0000000Z Post job cleanup.

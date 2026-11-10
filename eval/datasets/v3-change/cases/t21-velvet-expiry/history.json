@@ -1,0 +1,9 @@
+{
+  "comparisons": {
+    "b2d840c19e67fa3051c8d2467ab903e5d1846fca...af309d627b81ce450a6f193bd274e80c59a1d362": {
+      "status": "ahead", "merge_base": "b2d840c19e67fa3051c8d2467ab903e5d1846fca", "truncated": false,
+      "commits": [{"sha": "af309d627b81ce450a6f193bd274e80c59a1d362", "message": "Adjust expiry assertion", "date": "2026-11-09T08:00:00Z", "files": [{"path": "src/test/kotlin/ExpiryTest.kt", "status": "modified", "additions": 1, "deletions": 1, "patch": "@@ -5,3 +5,3 @@ class ExpiryTest {\n     @Test fun clampsExpiredValue() {\n-        assertEquals(0, expiryDays(-1))\n+        assertEquals(-1, expiryDays(-1))\n     }"}]}]
+    }
+  },
+  "workflow_blobs": {"b2d840c19e67fa3051c8d2467ab903e5d1846fca": "e7812ab4f903cd65a127e8b6d340f9ca2b5e016d", "af309d627b81ce450a6f193bd274e80c59a1d362": "e7812ab4f903cd65a127e8b6d340f9ca2b5e016d"}
+}

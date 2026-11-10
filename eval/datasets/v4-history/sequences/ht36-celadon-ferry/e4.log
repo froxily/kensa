@@ -1,0 +1,59 @@
+2026-09-23T07:03:40.0010000Z Current runner version: '2.329.0'
+2026-09-23T07:03:40.0100000Z ##[group]Runner Image
+2026-09-23T07:03:40.0200000Z Image: ubuntu-22.04
+2026-09-23T07:03:40.0300000Z Version: 20260914.1.0
+2026-09-23T07:03:40.0400000Z ##[endgroup]
+2026-09-23T07:03:40.0500000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-23T07:03:40.0600000Z Contents: read
+2026-09-23T07:03:40.0700000Z Metadata: read
+2026-09-23T07:03:40.0800000Z ##[endgroup]
+2026-09-23T07:03:40.1000000Z Prepare workflow directory
+2026-09-23T07:03:40.3200000Z Prepare all required actions
+2026-09-23T07:03:40.8400000Z Complete job name: test
+2026-09-23T07:03:40.9100000Z ##[group]Run actions/checkout@v4
+2026-09-23T07:03:40.9200000Z with:
+2026-09-23T07:03:40.9300000Z   repository: ferryglass/celadon-ledger
+2026-09-23T07:03:40.9400000Z   fetch-depth: 1
+2026-09-23T07:03:40.9500000Z ##[endgroup]
+2026-09-23T07:03:41.6100000Z Syncing repository: ferryglass/celadon-ledger
+2026-09-23T07:03:42.8700000Z HEAD is now at 3d61a74 Restore schema task input
+2026-09-23T07:03:42.9800000Z ##[group]Run actions/setup-java@v4
+2026-09-23T07:03:42.9900000Z with:
+2026-09-23T07:03:43.0000000Z   distribution: temurin
+2026-09-23T07:03:43.0100000Z   java-version: 21
+2026-09-23T07:03:43.0200000Z   cache: gradle
+2026-09-23T07:03:43.0300000Z ##[endgroup]
+2026-09-23T07:03:43.8100000Z Cache restored from key: setup-java-Linux-gradle-b7a1
+2026-09-23T07:03:43.9200000Z ##[group]Run ./gradlew clean test --no-daemon
+2026-09-23T07:03:43.9300000Z ./gradlew clean test --no-daemon
+2026-09-23T07:03:43.9400000Z shell: /usr/bin/bash -e {0}
+2026-09-23T07:03:43.9500000Z ##[endgroup]
+2026-09-23T07:03:48.9000000Z > Task :clean UP-TO-DATE
+2026-09-23T07:03:50.2100000Z > Task :generateLedgerTypes
+2026-09-23T07:03:51.8000000Z > Task :compileJava
+2026-09-23T07:03:51.8900000Z > Task :processResources
+2026-09-23T07:03:51.9000000Z > Task :classes
+2026-09-23T07:03:53.3300000Z > Task :compileTestJava
+2026-09-23T07:03:53.3400000Z > Task :processTestResources
+2026-09-23T07:03:53.3500000Z > Task :testClasses
+2026-09-23T07:04:02.1000000Z > Task :test
+2026-09-23T07:04:02.1100000Z #
+2026-09-23T07:04:02.1200000Z # A fatal error has been detected by the Java Runtime Environment:
+2026-09-23T07:04:02.1300000Z #  SIGSEGV (0xb) at pc=0x00007f81be22a310, pid=2219, tid=2251
+2026-09-23T07:04:02.1400000Z # JRE version: OpenJDK Runtime Environment Temurin-21.0.8+9
+2026-09-23T07:04:02.1500000Z # Problematic frame:
+2026-09-23T07:04:02.1600000Z # C  [libtidepack-1.4.2.so+0xa310]  tidepack_compress_block+0x70
+2026-09-23T07:04:02.1700000Z # An error report file with more information is saved as:
+2026-09-23T07:04:02.1800000Z # /home/runner/work/celadon-ledger/celadon-ledger/hs_err_pid2219.log
+2026-09-23T07:04:02.4300000Z > Task :test FAILED
+2026-09-23T07:04:02.4400000Z FAILURE: Build failed with an exception.
+2026-09-23T07:04:02.4500000Z * What went wrong:
+2026-09-23T07:04:02.4600000Z Execution failed for task ':test'.
+2026-09-23T07:04:02.4700000Z > Process 'Gradle Test Executor 2' finished with non-zero exit value 134
+2026-09-23T07:04:02.4800000Z * Try:
+2026-09-23T07:04:02.4900000Z > Run with --info or --debug option to get more log output.
+2026-09-23T07:04:02.5000000Z BUILD FAILED in 18s
+2026-09-23T07:04:02.5100000Z 7 actionable tasks: 6 executed, 1 up-to-date
+2026-09-23T07:04:02.6200000Z ##[error]Process completed with exit code 1.
+2026-09-23T07:04:02.7000000Z Post job cleanup.
+2026-09-23T07:04:02.9000000Z Cleaning up orphan processes

@@ -1,0 +1,12 @@
+{
+  "id": "ht40-boreal-capstan",
+  "split": "test",
+  "ecosystem": "dotnet",
+  "repository": "borealworks/capstan-ledger",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"test_regression","title":"Settlement rounding assertion fails","root_cause":"The settlement calculator rounds midpoint values away from zero, while the settlement contract requires rounding to even.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"b","relation":"first","category":"dependency_build","title":"Restore cannot find a package version","root_cause":"The project references version 7.4.2 of the QuayMath package, which is not available from its configured package source.","differs_from_earlier":""},
+    {"id":"e3","file":"e3.log","cluster":"c","relation":"first","category":"test_regression","title":"Ledger export omits the header","root_cause":"The CSV exporter no longer writes the required header row when exporting an empty ledger.","differs_from_earlier":""},
+    {"id":"e4","file":"e4.log","cluster":"a","relation":"recurrence","category":"test_regression","title":"Settlement rounding assertion fails on newer image","root_cause":"The settlement calculator rounds midpoint values away from zero, while the settlement contract requires rounding to even.","differs_from_earlier":"A later run uses ubuntu-24.04, a different SDK patch, a different checkout and test duration; unrelated tests and source line numbers have changed."}
+  ]
+}

@@ -1,0 +1,56 @@
+2026-09-24T16:42:01.0100000Z Current runner version: '2.329.0'
+2026-09-24T16:42:01.0200000Z ##[group]Operating System
+2026-09-24T16:42:01.0300000Z macOS
+2026-09-24T16:42:01.0400000Z 15.6
+2026-09-24T16:42:01.0500000Z ##[endgroup]
+2026-09-24T16:42:01.0600000Z ##[group]Runner Image
+2026-09-24T16:42:01.0700000Z Image: macos-15
+2026-09-24T16:42:01.0800000Z Version: 20250922.0017
+2026-09-24T16:42:01.0900000Z ##[endgroup]
+2026-09-24T16:42:01.3300000Z Prepare workflow directory
+2026-09-24T16:42:01.6400000Z Prepare all required actions
+2026-09-24T16:42:02.2000000Z Download action repository 'actions/checkout@v4'
+2026-09-24T16:42:02.4200000Z Complete job name: archive
+2026-09-24T16:42:02.4900000Z ##[group]Run actions/checkout@v4
+2026-09-24T16:42:02.5000000Z with:
+2026-09-24T16:42:02.5100000Z   repository: peregrine-tide/harbor-signal-ios
+2026-09-24T16:42:02.5200000Z   path: source
+2026-09-24T16:42:02.5300000Z   clean: true
+2026-09-24T16:42:02.5400000Z   persist-credentials: false
+2026-09-24T16:42:02.5500000Z ##[endgroup]
+2026-09-24T16:42:03.0100000Z Syncing repository: peregrine-tide/harbor-signal-ios
+2026-09-24T16:42:03.3300000Z Working directory is '/Users/runner/work/harbor-signal-ios/harbor-signal-ios/source'
+2026-09-24T16:42:04.1010000Z Checking out the ref
+2026-09-24T16:42:04.2300000Z HEAD is now at e42b178 Rearrange station detail
+2026-09-24T16:42:04.3200000Z ##[group]Run xcodebuild -version
+2026-09-24T16:42:04.3300000Z xcodebuild -version
+2026-09-24T16:42:04.3400000Z shell: /bin/bash -e {0}
+2026-09-24T16:42:04.3500000Z ##[endgroup]
+2026-09-24T16:42:04.5110000Z Xcode 16.4
+2026-09-24T16:42:04.5210000Z Build version 16F6
+2026-09-24T16:42:04.6100000Z ##[group]Run xcodebuild archive
+2026-09-24T16:42:04.6200000Z xcodebuild archive -project HarborSignal.xcodeproj -scheme HarborSignal -configuration Release -destination 'generic/platform=iOS' -archivePath ../artifacts/HarborSignal.xcarchive CURRENT_PROJECT_VERSION=227
+2026-09-24T16:42:04.6300000Z working-directory: source
+2026-09-24T16:42:04.6400000Z shell: /bin/bash -e {0}
+2026-09-24T16:42:04.6500000Z ##[endgroup]
+2026-09-24T16:42:05.1200000Z Command line invocation:
+2026-09-24T16:42:05.1300000Z     /Applications/Xcode_16.4.app/Contents/Developer/usr/bin/xcodebuild archive -project HarborSignal.xcodeproj -scheme HarborSignal -configuration Release -destination generic/platform=iOS -archivePath ../artifacts/HarborSignal.xcarchive CURRENT_PROJECT_VERSION=227
+2026-09-24T16:42:05.5000000Z Build settings from command line:
+2026-09-24T16:42:05.5100000Z     CURRENT_PROJECT_VERSION = 227
+2026-09-24T16:42:06.2400000Z Resolve Package Graph
+2026-09-24T16:42:06.5100000Z Resolved source packages:
+2026-09-24T16:42:06.5200000Z   CurrentMarks: /Users/runner/work/harbor-signal-ios/harbor-signal-ios/source/Packages/CurrentMarks
+2026-09-24T16:42:06.9000000Z ComputePackagePrebuildTargetDependencyGraph
+2026-09-24T16:42:07.1800000Z Prepare packages
+2026-09-24T16:42:07.5200000Z ComputeTargetDependencyGraph
+2026-09-24T16:42:07.5300000Z note: Building targets in dependency order
+2026-09-24T16:42:07.5400000Z note: Target dependency graph (2 targets)
+2026-09-24T16:42:07.9200000Z /Users/runner/work/harbor-signal-ios/harbor-signal-ios/source/HarborSignal.xcodeproj: error: Provisioning profile "HarborSignal App Store" doesn't support the Push Notifications capability. (in target 'HarborSignal' from project 'HarborSignal')
+2026-09-24T16:42:07.9300000Z /Users/runner/work/harbor-signal-ios/harbor-signal-ios/source/HarborSignal.xcodeproj: error: Provisioning profile "HarborSignal App Store" doesn't include the aps-environment entitlement. (in target 'HarborSignal' from project 'HarborSignal')
+2026-09-24T16:42:08.0900000Z ** ARCHIVE FAILED **
+2026-09-24T16:42:08.1000000Z The following build commands failed:
+2026-09-24T16:42:08.1100000Z 	Archiving project HarborSignal with scheme HarborSignal
+2026-09-24T16:42:08.1200000Z (1 failure)
+2026-09-24T16:42:08.1800000Z ##[error]Process completed with exit code 65.
+2026-09-24T16:42:08.2400000Z Cleaning up orphan processes
+2026-09-24T16:42:08.2900000Z Complete job

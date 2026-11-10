@@ -1,0 +1,46 @@
+2026-09-22T18:05:00.0000000Z Current runner version: '2.329.0'
+2026-09-22T18:05:00.1000000Z Runner name: 'hosted-80'
+2026-09-22T18:05:00.2000000Z ##[group]Operating System
+2026-09-22T18:05:00.3000000Z Ubuntu
+2026-09-22T18:05:00.4000000Z 24.04.3
+2026-09-22T18:05:00.5000000Z ##[endgroup]
+2026-09-22T18:05:00.6000000Z ##[group]Runner Image
+2026-09-22T18:05:00.7000000Z Image: ubuntu-24.04
+2026-09-22T18:05:00.8000000Z Version: 20260921.1
+2026-09-22T18:05:00.9000000Z ##[endgroup]
+2026-09-22T18:05:01.0000000Z Prepare workflow directory
+2026-09-22T18:05:01.1000000Z Prepare all required actions
+2026-09-22T18:05:01.2000000Z Download action repository 'actions/checkout@v4'
+2026-09-22T18:05:01.3000000Z Complete job name: compile
+2026-09-22T18:05:02.0000000Z ##[group]Run actions/checkout@v4
+2026-09-22T18:05:02.1000000Z with:
+2026-09-22T18:05:02.2000000Z   repository: azimuth-foundry/tide-compiler
+2026-09-22T18:05:02.3000000Z   ref: refs/pull/95/merge
+2026-09-22T18:05:02.4000000Z ##[endgroup]
+2026-09-22T18:05:03.0000000Z Syncing repository: azimuth-foundry/tide-compiler
+2026-09-22T18:05:03.1000000Z [command]/usr/bin/git version
+2026-09-22T18:05:03.2000000Z git version 2.51.0
+2026-09-22T18:05:04.0000000Z Fetching the repository
+2026-09-22T18:05:05.0000000Z Checking out the ref
+2026-09-22T18:05:05.2000000Z ##[group]Run actions/setup-java@v4
+2026-09-22T18:05:05.3000000Z with:
+2026-09-22T18:05:05.4000000Z   distribution: temurin
+2026-09-22T18:05:05.5000000Z   java-version: '21'
+2026-09-22T18:05:05.6000000Z ##[endgroup]
+2026-09-22T18:05:06.0000000Z Java 21 was installed
+2026-09-22T18:05:06.5000000Z ##[group]Run ./gradlew build --stacktrace
+2026-09-22T18:05:06.6000000Z ./gradlew build --stacktrace
+2026-09-22T18:05:06.7000000Z shell: /usr/bin/bash -e {0}
+2026-09-22T18:05:06.8000000Z ##[endgroup]
+2026-09-22T18:05:10.0000000Z > Task :processResources UP-TO-DATE
+2026-09-22T18:05:11.0000000Z > Task :checkKotlinGradlePluginConfigurationErrors SKIPPED
+2026-09-22T18:05:15.0000000Z > Task :compileKotlin FAILED
+2026-09-22T18:05:15.1000000Z e: file:///home/runner/work/tide-compiler/tide-compiler/src/main/kotlin/tide/FlowGate.kt:57:22 Unresolved reference 'tideLimit'.
+2026-09-22T18:05:15.2000000Z FAILURE: Build failed with an exception.
+2026-09-22T18:05:15.3000000Z * What went wrong:
+2026-09-22T18:05:15.4000000Z Execution failed for task ':compileKotlin'.
+2026-09-22T18:05:15.5000000Z > Compilation error. See log for more details
+2026-09-22T18:05:15.6000000Z BUILD FAILED in 9s
+2026-09-22T18:05:15.7000000Z ##[error]Process completed with exit code 1.
+2026-09-22T18:05:15.8000000Z Post job cleanup.
+2026-09-22T18:05:15.9000000Z Cleaning up orphan processes

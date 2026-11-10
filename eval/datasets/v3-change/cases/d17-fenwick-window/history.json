@@ -1,0 +1,12 @@
+﻿{
+  "comparisons": {
+    "d5a7183c4e9f026b1a63c8d470be952fa4361c8d...ab38d79c205e4f6a19b0c873de42f5619a7c0b3e": {
+      "status": "ahead", "merge_base": "d5a7183c4e9f026b1a63c8d470be952fa4361c8d", "truncated": false,
+      "commits": [
+        {"sha": "c41e6a7903bdf528ac04617e9b23d15f8a72c60e", "message": "Adjust interval boundary", "date": "2026-11-09T07:35:00Z", "files": [{"path": "window/interval.go", "status": "modified", "additions": 1, "deletions": 1, "patch": "@@ -3,4 +3,4 @@\n // Contains reports whether x lies in the closed interval [lo, hi].\n func Contains(lo, hi, x int) bool {\n-    return lo <= x && x <= hi\n+    return lo < x && x <= hi\n }"}]},
+        {"sha": "ab38d79c205e4f6a19b0c873de42f5619a7c0b3e", "message": "Describe interval helper", "date": "2026-11-09T08:08:00Z", "files": [{"path": "README.md", "status": "modified", "additions": 1, "deletions": 0, "patch": "@@ -1,2 +1,3 @@\n # Fenwick window\n \n+Contains checks whether an integer is inside a closed interval."}]}
+      ]
+    }
+  },
+  "workflow_blobs": {"d5a7183c4e9f026b1a63c8d470be952fa4361c8d": "e3b71c604f29a8d15e6b902c7f4a31d8b50c6e29", "ab38d79c205e4f6a19b0c873de42f5619a7c0b3e": "e3b71c604f29a8d15e6b902c7f4a31d8b50c6e29"}
+}

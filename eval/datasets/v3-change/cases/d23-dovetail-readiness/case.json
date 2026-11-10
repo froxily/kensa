@@ -1,0 +1,18 @@
+﻿{
+  "id": "d23-dovetail-readiness",
+  "split": "dev",
+  "comparability": "identical",
+  "category": "db_connectivity",
+  "culprit_kind": "none",
+  "difficulty": "medium",
+  "ecosystem": "python",
+  "title": "PostgreSQL service fails during startup",
+  "root_cause": "The failed run and the successful baseline use the same commit, so no repository change in the comparison caused the failure. PostgreSQL could not bind its network address or create a TCP/IP socket, so the service did not become healthy and the integration test never started. The service's network binding must be restored.",
+  "culprit_paths": [],
+  "culprit_commit": null,
+  "unverified_factors": [],
+  "fix_keywords": ["PostgreSQL", "bind", "TCP/IP"],
+  "relevant_evidence": [
+    {"path": "log", "start_line": 56, "end_line": 63, "why": "The service is unhealthy and PostgreSQL reports that it cannot bind its address or create TCP/IP sockets."}
+  ]
+}

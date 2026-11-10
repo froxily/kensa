@@ -12,6 +12,7 @@ from sqlalchemy.orm import Session
 from kensa.agents.pipeline import append_event
 from kensa.analysis.causes import assess_causes
 from kensa.analysis.classifier import classify
+from kensa.analysis.fingerprint import fingerprints
 from kensa.analysis.signatures import extract_signatures
 from kensa.db.models import (
     ApprovalDecision,
@@ -25,6 +26,7 @@ from kensa.db.models import (
     WorkflowRun,
 )
 from kensa.github.importer import GitHubImport
+from kensa.history.fingerprints import record_fingerprints
 from kensa.indexing.service import ensure_repository, upsert_document
 from kensa.ingestion.chunking import chunk_log
 from kensa.ingestion.normalize import normalize_log
@@ -81,7 +83,8 @@ def create_investigation(
         raise AssertionError("redaction changed the line count")
 
     signatures = extract_signatures(lines)
-    rule = classify(signatures, assess_causes(lines))
+    causes = assess_causes(lines)
+    rule = classify(signatures, causes)
     title = (new.title or "").strip()[:200] or _default_title(
         [s.excerpt for s in sorted(signatures, key=lambda s: (-s.weight, s.line_number))],
         new.document_name,
@@ -98,6 +101,13 @@ def create_investigation(
     )
     session.add(investigation)
     session.flush()
+    # v1.1 (D-053): deterministic fingerprints from rule-derived facts, for similar failures.
+    record_fingerprints(
+        session,
+        workspace_id,
+        investigation.id,
+        fingerprints(lines, signatures, causes, rule.category),
+    )
 
     content_bytes = redaction.text.encode("utf-8")
     document = Document(

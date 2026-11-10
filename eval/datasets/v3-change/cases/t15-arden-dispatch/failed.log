@@ -1,0 +1,95 @@
+﻿2026-10-29T10:14:05.1032941Z Current runner version: '2.329.0'
+2026-10-29T10:14:05.1062812Z ##[group]Runner Image Provisioner
+2026-10-29T10:14:05.1065113Z Hosted Compute Agent
+2026-10-29T10:14:05.1067194Z Version: 20261020.1
+2026-10-29T10:14:05.1069001Z ##[endgroup]
+2026-10-29T10:14:05.1071312Z ##[group]Operating System
+2026-10-29T10:14:05.1073001Z Ubuntu
+2026-10-29T10:14:05.1074820Z 24.04.3
+2026-10-29T10:14:05.1076534Z LTS
+2026-10-29T10:14:05.1078311Z ##[endgroup]
+2026-10-29T10:14:05.1080214Z ##[group]Runner Image
+2026-10-29T10:14:05.1082135Z Image: ubuntu-24.04
+2026-10-29T10:14:05.1083856Z Version: 20261026.1
+2026-10-29T10:14:05.1086237Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261026.1/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-29T10:14:05.1088501Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261026.1
+2026-10-29T10:14:05.1090203Z ##[endgroup]
+2026-10-29T10:14:05.1092112Z ##[group]GITHUB_TOKEN Permissions
+2026-10-29T10:14:05.1094053Z Contents: read
+2026-10-29T10:14:05.1095794Z Metadata: read
+2026-10-29T10:14:05.1097481Z ##[endgroup]
+2026-10-29T10:14:05.1100212Z Secret source: Actions
+2026-10-29T10:14:05.1102312Z Prepare workflow directory
+2026-10-29T10:14:05.1411241Z Prepare all required actions
+2026-10-29T10:14:05.1516202Z Getting action download info
+2026-10-29T10:14:05.5215142Z Download action repository 'actions/checkout@v4'
+2026-10-29T10:14:05.8236121Z Download action repository 'actions/setup-node@v4'
+2026-10-29T10:14:06.1984122Z Complete job name: dispatch-check
+2026-10-29T10:14:06.2517123Z ##[group]Run actions/checkout@v4
+2026-10-29T10:14:06.2519124Z with:
+2026-10-29T10:14:06.2520913Z   repository: arden-labs/dispatch-board
+2026-10-29T10:14:06.2522541Z   clean: true
+2026-10-29T10:14:06.2524124Z   fetch-depth: 1
+2026-10-29T10:14:06.2525822Z ##[endgroup]
+2026-10-29T10:14:06.3842510Z Syncing repository: arden-labs/dispatch-board
+2026-10-29T10:14:06.3846521Z ##[group]Getting Git version info
+2026-10-29T10:14:06.3848520Z git version 2.51.0
+2026-10-29T10:14:06.3850511Z ##[endgroup]
+2026-10-29T10:14:06.5294312Z Initializing the repository
+2026-10-29T10:14:06.9134215Z Fetching the repository
+2026-10-29T10:14:07.2214121Z Checking out the ref
+2026-10-29T10:14:07.2315242Z [command]/usr/bin/git log -1 --format=%H
+2026-10-29T10:14:07.2321235Z d82e6a47f193cb508e4a762d9f03b615ca784e21
+2026-10-29T10:14:07.2753211Z ##[group]Run actions/setup-node@v4
+2026-10-29T10:14:07.2756210Z with:
+2026-10-29T10:14:07.2758311Z   node-version: 22
+2026-10-29T10:14:07.2760402Z   check-latest: false
+2026-10-29T10:14:07.2762421Z ##[endgroup]
+2026-10-29T10:14:07.4524121Z Found in cache @ /opt/hostedtoolcache/node/22.21.1/x64
+2026-10-29T10:14:07.4986513Z ##[group]Environment details
+2026-10-29T10:14:07.4988512Z node: v22.21.1
+2026-10-29T10:14:07.4990520Z npm: 10.9.4
+2026-10-29T10:14:07.4992512Z ##[endgroup]
+2026-10-29T10:14:07.5323212Z ##[group]Run npm test
+2026-10-29T10:14:07.5325712Z npm test
+2026-10-29T10:14:07.5328123Z shell: /usr/bin/bash -e {0}
+2026-10-29T10:14:07.5330123Z ##[endgroup]
+2026-10-29T10:14:07.7116231Z > arden-dispatch@1.0.0 test
+2026-10-29T10:14:07.7118412Z > node --test
+2026-10-29T10:14:07.7120113Z
+2026-10-29T10:14:07.7563122Z TAP version 13
+2026-10-29T10:14:07.7643281Z # /home/runner/work/dispatch-board/dispatch-board/src/settings.js:3
+2026-10-29T10:14:07.7646311Z #   throw new Error('ARDEN_DISPATCH_REGION is required');
+2026-10-29T10:14:07.7648501Z #   ^
+2026-10-29T10:14:07.7650302Z # Error: ARDEN_DISPATCH_REGION is required
+2026-10-29T10:14:07.7652102Z #     at Object.<anonymous> (/home/runner/work/dispatch-board/dispatch-board/src/settings.js:3:9)
+2026-10-29T10:14:07.7654210Z #     at Module._compile (node:internal/modules/cjs/loader:1706:14)
+2026-10-29T10:14:07.7656123Z #     at Object..js (node:internal/modules/cjs/loader:1839:10)
+2026-10-29T10:14:07.7658123Z #     at Module.load (node:internal/modules/cjs/loader:1441:32)
+2026-10-29T10:14:07.7660123Z #     at Function._load (node:internal/modules/cjs/loader:1263:12)
+2026-10-29T10:14:07.7662123Z # Node.js v22.21.1
+2026-10-29T10:14:07.7670123Z # Subtest: test/dispatch.test.js
+2026-10-29T10:14:07.7672123Z not ok 1 - test/dispatch.test.js
+2026-10-29T10:14:07.7674123Z   ---
+2026-10-29T10:14:07.7676123Z   duration_ms: 39.512
+2026-10-29T10:14:07.7678123Z   type: 'test'
+2026-10-29T10:14:07.7680123Z   location: '/home/runner/work/dispatch-board/dispatch-board/test/dispatch.test.js:1:1'
+2026-10-29T10:14:07.7682123Z   failureType: 'testCodeFailure'
+2026-10-29T10:14:07.7684123Z   exitCode: 1
+2026-10-29T10:14:07.7686123Z   error: 'test failed'
+2026-10-29T10:14:07.7688123Z   code: 'ERR_TEST_FAILURE'
+2026-10-29T10:14:07.7690123Z   ...
+2026-10-29T10:14:07.7692123Z 1..1
+2026-10-29T10:14:07.7694123Z # tests 1
+2026-10-29T10:14:07.7696123Z # suites 0
+2026-10-29T10:14:07.7698123Z # pass 0
+2026-10-29T10:14:07.7700123Z # fail 1
+2026-10-29T10:14:07.7702123Z # cancelled 0
+2026-10-29T10:14:07.7704123Z # skipped 0
+2026-10-29T10:14:07.7706123Z # todo 0
+2026-10-29T10:14:07.7708123Z # duration_ms 43.214
+2026-10-29T10:14:07.7813123Z ##[error]Process completed with exit code 1.
+2026-10-29T10:14:07.7923123Z Post job cleanup.
+2026-10-29T10:14:07.8621123Z [command]/usr/bin/git version
+2026-10-29T10:14:07.8643123Z git version 2.51.0
+2026-10-29T10:14:07.9323123Z Cleaning up orphan processes

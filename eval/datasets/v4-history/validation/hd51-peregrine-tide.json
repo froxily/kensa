@@ -1,0 +1,13 @@
+{
+  "id": "hd51-peregrine-tide",
+  "independent_labels": [
+    {"id": "e1", "cluster": "a", "relation": "first", "category": "dependency_build"},
+    {"id": "e2", "cluster": "b", "relation": "lookalike", "category": "dependency_build"},
+    {"id": "e3", "cluster": "c", "relation": "first", "category": "test_regression"},
+    {"id": "e4", "cluster": "b", "relation": "recurrence", "category": "dependency_build"}
+  ],
+  "verdict": "agree",
+  "disputed_fields": [],
+  "reason_category": "none",
+  "notes": "The first archive lacks a distribution certificate with its private key; the similar second archive instead needs a push-capable provisioning profile. The third entry is an unrelated formatting assertion. The fourth repeats the profile failure with a different runner, checkout path, Xcode version and build number. Root causes match the errors and no giveaway commentary appears. The e2 description's assertion that a certificate is present is not established by its log, but does not change the labels."
+}

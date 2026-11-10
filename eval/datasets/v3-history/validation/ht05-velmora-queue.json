@@ -1,0 +1,13 @@
+{
+  "id": "ht05-velmora-queue",
+  "independent_labels": [
+    {"id": "e1", "cluster": "a", "relation": "first", "category": "db_connectivity"},
+    {"id": "e2", "cluster": "a", "relation": "recurrence", "category": "db_connectivity"},
+    {"id": "e3", "cluster": "a", "relation": "recurrence", "category": "db_connectivity"},
+    {"id": "e4", "cluster": "b", "relation": "lookalike", "category": "db_connectivity"}
+  ],
+  "verdict": "disagree",
+  "disputed_fields": ["e4.relation", "e4.differs_from_earlier"],
+  "reason_category": "label_conflict",
+  "notes": "e4 repeats the same Redis localhost:6379 connection-refused error, but a live service is published on 6380; aligning the port is a different fix, making it a lookalike. Its relation is first and its comparison text is empty, as required by the plan's plain b token, so the plan conflicts with the observed lookalike. The first three logs consistently show refusal with no Redis startup shown, though refusal alone cannot prove why nothing listens. Recurrences differ substantially; no giveaway commentary found."
+}

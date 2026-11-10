@@ -1,0 +1,5 @@
+﻿cmake_minimum_required(VERSION 3.20)
+project(kestrel_routes VERSION 1.4.3 LANGUAGES CXX)
+add_executable(route_check src/main.cpp)
+target_compile_features(route_check PRIVATE cxx_std_17)
+target_compile_options(route_check PRIVATE -Wall -Wextra -Werror)

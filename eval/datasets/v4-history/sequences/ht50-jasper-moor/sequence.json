@@ -1,0 +1,12 @@
+{
+  "id": "ht50-jasper-moor",
+  "split": "test",
+  "ecosystem": "elixir (mix)",
+  "repository": "jasper-moor/tideledger",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"dependency_build","title":"Native compression dependency cannot find zlib headers","root_cause":"The runner lacks zlib development headers required to compile the ezstd dependency's native source. Install the zlib development package in the build environment.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"b","relation":"first","category":"test_regression","title":"Settlement rounding assertion fails","root_cause":"The settlement calculation rounds a half-cent down while the test expects it to round up. Correct the settlement rounding behavior.","differs_from_earlier":""},
+    {"id":"e3","file":"e3.log","cluster":"a","relation":"recurrence","category":"dependency_build","title":"Native compression dependency cannot find zlib headers","root_cause":"The runner lacks zlib development headers required to compile the ezstd dependency's native source. Install the zlib development package in the build environment.","differs_from_earlier":"A later run uses a newer runner image and BEAM versions and compiles another dependency first."},
+    {"id":"e4","file":"e4.log","cluster":"a","relation":"recurrence","category":"dependency_build","title":"Native compression dependency cannot find zlib headers","root_cause":"The runner lacks zlib development headers required to compile the ezstd dependency's native source. Install the zlib development package in the build environment.","differs_from_earlier":"A later run restores dependency sources from cache and runs an explicit dependency compilation step before tests."}
+  ]
+}

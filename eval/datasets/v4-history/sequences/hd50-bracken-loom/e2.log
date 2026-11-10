@@ -1,0 +1,60 @@
+2026-09-12T11:20:00.1012345Z Current runner version: '2.328.0'
+2026-09-12T11:20:00.1112345Z ##[group]Runner Image
+2026-09-12T11:20:00.1212345Z Image: ubuntu-24.04
+2026-09-12T11:20:00.1312345Z Version: 20260907.1.0
+2026-09-12T11:20:00.1412345Z ##[endgroup]
+2026-09-12T11:20:00.1512345Z Prepare workflow directory
+2026-09-12T11:20:00.1612345Z Prepare all required actions
+2026-09-12T11:20:00.1712345Z Download action repository 'actions/checkout@v4'
+2026-09-12T11:20:00.1812345Z Complete job name: test
+2026-09-12T11:20:01.0012345Z ##[group]Run actions/checkout@v4
+2026-09-12T11:20:01.0112345Z with:
+2026-09-12T11:20:01.0212345Z   repository: fenmere-labs/bracken-loom
+2026-09-12T11:20:01.0312345Z   clean: true
+2026-09-12T11:20:01.0412345Z ##[endgroup]
+2026-09-12T11:20:01.0512345Z Syncing repository: fenmere-labs/bracken-loom
+2026-09-12T11:20:02.0012345Z Fetching the repository
+2026-09-12T11:20:02.1012345Z Checking out the ref
+2026-09-12T11:20:02.2012345Z ##[group]Run erlef/setup-beam@v1
+2026-09-12T11:20:02.2112345Z with:
+2026-09-12T11:20:02.2212345Z   otp-version: '27.3'
+2026-09-12T11:20:02.2312345Z   elixir-version: '1.18.4'
+2026-09-12T11:20:02.2412345Z ##[endgroup]
+2026-09-12T11:20:03.0012345Z OTP 27.3 has been installed
+2026-09-12T11:20:03.1012345Z Elixir 1.18.4 has been installed
+2026-09-12T11:20:03.2012345Z ##[group]Run actions/cache@v4
+2026-09-12T11:20:03.2112345Z with:
+2026-09-12T11:20:03.2212345Z   path: |
+2026-09-12T11:20:03.2312345Z     deps
+2026-09-12T11:20:03.2412345Z     _build
+2026-09-12T11:20:03.2512345Z   key: beam-linux-27-loom-8
+2026-09-12T11:20:03.2612345Z ##[endgroup]
+2026-09-12T11:20:04.0012345Z Cache restored successfully
+2026-09-12T11:20:04.1012345Z ##[group]Run mix test
+2026-09-12T11:20:04.1112345Z mix test
+2026-09-12T11:20:04.1212345Z shell: /usr/bin/bash -e {0}
+2026-09-12T11:20:04.1312345Z env:
+2026-09-12T11:20:04.1412345Z   MIX_ENV: test
+2026-09-12T11:20:04.1512345Z ##[endgroup]
+2026-09-12T11:20:05.0012345Z Compiling 3 files (.ex)
+2026-09-12T11:20:05.1012345Z Generated bracken_loom app
+2026-09-12T11:20:05.2012345Z Running ExUnit with seed: 28413, max_cases: 8
+2026-09-12T11:20:05.3012345Z Excluding tags: [:integration]
+2026-09-12T11:20:05.4012345Z ............
+2026-09-12T11:20:05.5012345Z   1) test closes the dispatch window at its upper bound (BrackenLoom.DispatchWindowTest)
+2026-09-12T11:20:05.5112345Z      test/bracken_loom/dispatch_window_test.exs:47
+2026-09-12T11:20:05.5212345Z      Expected false or nil, got true
+2026-09-12T11:20:05.5312345Z      code: refute DispatchWindow.open?(window, ~T[17:00:00])
+2026-09-12T11:20:05.5412345Z      arguments:
+2026-09-12T11:20:05.5512345Z          # 1
+2026-09-12T11:20:05.5612345Z          %{opens_at: ~T[09:00:00], closes_at: ~T[17:00:00]}
+2026-09-12T11:20:05.5712345Z          # 2
+2026-09-12T11:20:05.5812345Z          ~T[17:00:00]
+2026-09-12T11:20:05.5912345Z      stacktrace:
+2026-09-12T11:20:05.6012345Z        test/bracken_loom/dispatch_window_test.exs:51: (test)
+2026-09-12T11:20:05.7012345Z ........
+2026-09-12T11:20:05.8012345Z Finished in 0.4 seconds (0.3s async, 0.1s sync)
+2026-09-12T11:20:05.8112345Z 21 tests, 1 failure
+2026-09-12T11:20:05.8212345Z ##[error]Process completed with exit code 2.
+2026-09-12T11:20:05.8312345Z Post job cleanup.
+2026-09-12T11:20:05.8412345Z Cleaning up orphan processes

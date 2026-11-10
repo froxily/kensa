@@ -1,0 +1,51 @@
+2026-09-03T10:14:01.1324910Z Current runner version: '2.328.0'
+2026-09-03T10:14:01.1392700Z ##[group]Operating System
+2026-09-03T10:14:01.1397000Z macOS
+2026-09-03T10:14:01.1400010Z 14.7.6
+2026-09-03T10:14:01.1403240Z ##[endgroup]
+2026-09-03T10:14:01.1410240Z ##[group]Runner Image
+2026-09-03T10:14:01.1414510Z Image: macos-14
+2026-09-03T10:14:01.1418200Z Version: 20250825.0031
+2026-09-03T10:14:01.1421400Z ##[endgroup]
+2026-09-03T10:14:01.1722910Z Prepare workflow directory
+2026-09-03T10:14:01.3210010Z Prepare all required actions
+2026-09-03T10:14:02.1034210Z Download action repository 'actions/checkout@v4'
+2026-09-03T10:14:02.4319210Z Complete job name: archive
+2026-09-03T10:14:02.5014210Z ##[group]Run actions/checkout@v4
+2026-09-03T10:14:02.5019210Z with:
+2026-09-03T10:14:02.5021710Z   repository: peregrine-tide/harbor-signal-ios
+2026-09-03T10:14:02.5025210Z   clean: true
+2026-09-03T10:14:02.5028210Z   persist-credentials: false
+2026-09-03T10:14:02.5031210Z ##[endgroup]
+2026-09-03T10:14:02.9972100Z Syncing repository: peregrine-tide/harbor-signal-ios
+2026-09-03T10:14:03.2918110Z Working directory is '/Users/runner/work/harbor-signal-ios/harbor-signal-ios'
+2026-09-03T10:14:04.0129910Z Checking out the ref
+2026-09-03T10:14:04.1495210Z HEAD is now at 8e32ba1 Adjust station list spacing
+2026-09-03T10:14:04.3227510Z ##[group]Run xcodebuild -version
+2026-09-03T10:14:04.3232110Z xcodebuild -version
+2026-09-03T10:14:04.3238710Z shell: /bin/bash -e {0}
+2026-09-03T10:14:04.3242010Z ##[endgroup]
+2026-09-03T10:14:04.5304910Z Xcode 16.2
+2026-09-03T10:14:04.5309910Z Build version 16C5032a
+2026-09-03T10:14:04.5416210Z ##[group]Run xcodebuild archive
+2026-09-03T10:14:04.5420710Z xcodebuild archive -project HarborSignal.xcodeproj -scheme HarborSignal -configuration Release -destination 'generic/platform=iOS' -archivePath build/HarborSignal.xcarchive
+2026-09-03T10:14:04.5426110Z shell: /bin/bash -e {0}
+2026-09-03T10:14:04.5429410Z ##[endgroup]
+2026-09-03T10:14:05.1214510Z Command line invocation:
+2026-09-03T10:14:05.1219710Z     /Applications/Xcode_16.2.app/Contents/Developer/usr/bin/xcodebuild archive -project HarborSignal.xcodeproj -scheme HarborSignal -configuration Release -destination generic/platform=iOS -archivePath build/HarborSignal.xcarchive
+2026-09-03T10:14:05.8987510Z Resolve Package Graph
+2026-09-03T10:14:06.1210310Z Resolved source packages:
+2026-09-03T10:14:06.1214710Z   CurrentMarks: /Users/runner/work/harbor-signal-ios/harbor-signal-ios/Packages/CurrentMarks
+2026-09-03T10:14:06.6512910Z ComputePackagePrebuildTargetDependencyGraph
+2026-09-03T10:14:06.9124510Z Prepare packages
+2026-09-03T10:14:07.3228510Z ComputeTargetDependencyGraph
+2026-09-03T10:14:07.3232910Z note: Building targets in dependency order
+2026-09-03T10:14:07.3236510Z note: Target dependency graph (2 targets)
+2026-09-03T10:14:07.6118910Z /Users/runner/work/harbor-signal-ios/harbor-signal-ios/HarborSignal.xcodeproj: error: No signing certificate "Apple Distribution" found: No "Apple Distribution" signing certificate matching team ID "M4R8T2Q6LP" with a private key was found. (in target 'HarborSignal' from project 'HarborSignal')
+2026-09-03T10:14:07.7221010Z ** ARCHIVE FAILED **
+2026-09-03T10:14:07.7225410Z The following build commands failed:
+2026-09-03T10:14:07.7228710Z 	Archiving project HarborSignal with scheme HarborSignal
+2026-09-03T10:14:07.7231910Z (1 failure)
+2026-09-03T10:14:07.7613910Z ##[error]Process completed with exit code 65.
+2026-09-03T10:14:07.8123810Z Cleaning up orphan processes
+2026-09-03T10:14:07.8532310Z Complete job

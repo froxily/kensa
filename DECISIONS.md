@@ -595,3 +595,87 @@ A lightweight decision record. Newest entries go at the bottom. Each entry gives
   - The snapshot check also fails on development-tool names outside those two notes, and allows the account name only in the repository and demo addresses.
   - The replay banner calls the demo a prerecorded interactive replay, not live AI inference.
   - The replay e2e tests take `KENSA_REPLAY_URL`, so the same 10 tests can check a deployed copy of the demo.
+
+### D-051: A provenance ladder, and history that can never confirm itself (v1.1)
+- **Status:** accepted (2026-11-09, part of the v1.1 plan approved by the owner)
+- **Decision:** every derived statement says where it comes from:
+
+  | provenance | meaning |
+  |---|---|
+  | `observed` | a log line, diff hunk or run status read from GitHub or a pasted log |
+  | `rule_derived` | a signature, cause or fingerprint found by rules |
+  | `model_hypothesis` | model output |
+  | `verifier_corroborated` | the verifier found the log states the cause |
+  | `human_confirmed` | the operator confirmed it (an audited request) |
+
+  - Only log causes corroborate. History, diffs and confirmed resolutions never raise a status.
+  - `data_origin` (`github_live`, `pasted`, `sample`, `eval_synthetic`, `replay`) keeps real observations apart; analytics count only the first two unless asked.
+  - `index_incidents` now defaults to off: a model conclusion no longer becomes evidence for the next investigation. Similar failures appear in a separate History panel instead.
+- **Why:** a wrong diagnosis indexed as an "incident" competed with real evidence for the next run of the same failure, an anchoring loop.
+- **Cost:** a corroborated past diagnosis no longer reaches the model as evidence. Whether human-confirmed resolutions help as hints is left as a measured experiment (not done in v1.1).
+
+### D-052: History ingestion: incremental, idempotent, budgeted, outside the agent worker (v1.1)
+- **Status:** accepted (2026-11-09)
+- **Decision:**
+  - Tracked public repositories are synced by a dedicated history worker. The agent worker never syncs and stays network-free (D-031).
+  - Runs and jobs are upserted on natural keys (`ON CONFLICT DO UPDATE ... WHERE IS DISTINCT FROM`), so a re-sync changes nothing that did not change.
+  - A cursor in `sync_state` (`complete_through`, the current window and page, pending work) lets an interrupted sync resume.
+  - Every sync has a request budget (default 300). On a rate limit or an exhausted budget the batch ends as `partial` or `rate_limited`; nothing reschedules itself.
+  - Commit authors, e-mail addresses and actor logins are never stored.
+  - Data-quality checks record findings by key (first seen, last seen, resolved).
+  - **Forget repository** and **retention** are full cascades (the owner's correction 3): investigations with every derived record, checkpoints, incident and diff documents, fingerprint links and unreferenced fingerprints, analytics rows, findings and snapshots. A meta-test fails if any table with `workspace_id` is not covered. Only non-reconstructable counts remain, in `purge_audits`.
+- **Why:** history must be cheap to keep current, safe to re-run, and impossible to turn into a reconstructable record of something the owner asked to forget.
+
+### D-053: Failure fingerprints are rule-derived and versioned; similar failures are history, not evidence (v1.1)
+- **Status:** accepted (2026-11-09); version 2 the same day
+- **Decision:**
+  - A fingerprint hashes `version | category | rule | normalised subject | masked template`, built only from signatures and stated causes, never from model output.
+  - Masks remove what varies between recurrences: timestamps, SHAs, UUIDs, numbers, durations, sizes, temporary and runner paths, source positions, long quoted literals.
+  - **Version 2** (developed on the v3-history dev split only):
+    - no primary from a generic rule (GitHub's `##[error]` annotation, an exit code)
+    - context only for a line that names no failure by itself; the step names a time-out, the pulled image names a pull failure
+    - test-regression templates keep assertion values; source positions are always masked
+  - Similar failures: same primary fingerprint first, then related (secondary) fingerprints, then similar wording. They are shown with their provenance and never enter the evidence or the prompt.
+  - A human-confirmed resolution is an audited record that can never change a verification status.
+- **Why:** recurrence detection is a deterministic problem, and a model-derived key would let history confirm itself.
+- **Cost:** two causes that differ only in values (one test failing for two reasons) get different fingerprints, or the same one when the values happen to match. Rules cannot separate them; precision was preferred.
+
+### D-054: Change-aware investigation: factor-based comparability, ranked suspects, correlation only (v1.1)
+- **Status:** accepted (2026-11-09)
+- **Decision:**
+  - At import, Kensa looks for the last successful run of the same workflow before the failure and compares the two (GitHub's compare API, a budget of 8 requests).
+  - **Comparability is factor-based** (the owner's correction 2): workflow-file identity, event, branch, job, runner labels and runner image are each `same`, `different`, `unknown` or `changed_in_range`. `comparable` needs every key factor `same`. Any `unknown` gives `partially_comparable`, with the unverified factors named. Unavailable information is never treated as equivalence.
+  - **Precedence:** no baseline, then incomparable, then the comparison (history unavailable; behind → incomparable; identical; partially comparable; comparable).
+  - **Suspects** are ranked by deterministic signals with documented weights (in the log, the subject in the diff, the change kind matching the category, size). Their status is `correlated` or `weak`, enforced by a CHECK constraint; "cause" is not a value.
+  - **Diff hunks** become redacted, citable documents. The verifier accepts them as support, never as corroboration.
+  - The analysis runs at import; the graph node `collect_changes` only reads it, so the worker stays network-free.
+- **Why:** "what changed since it last worked" is the strongest lead a human uses, but a correlation stated as a cause would be exactly the confident wrong answer Kensa exists to avoid.
+
+### D-055: Analytics: one incrementally refreshed daily aggregate on PostgreSQL; SVG charts (v1.1)
+- **Status:** accepted (2026-11-09)
+- **Decision:**
+  - `analytics_daily` holds runs, failures, investigations, corroborated counts and latency percentiles per day, repository, workflow, category and origin.
+  - A refresh recomputes whole days (delete and insert in one transaction), so refreshing a day twice gives the same rows. Days are refreshed when a sync touches them, or when investigations changed since the workspace's watermark.
+  - The dashboard is one API response. Charts are hand-written SVG, each in a figure with a caption and an equivalent data table (D-047: no chart library).
+  - The escalation rule stays: DuckDB or Parquet only if PostgreSQL fails the load benchmark after indexing.
+- **Why:** the data is small (a busy repository is tens of thousands of rows a year), and one datastore keeps purges and transactions simple.
+
+### D-056: v3 evaluation: independent validation before the freeze; Hit@1 and MRR for culprit ranking (v1.1)
+- **Status:** accepted (2026-11-09)
+- **Decision:**
+  - Before freezing, a separate validator task labels items blind and compares: every gate- or author-flagged item, plus a seeded 20% sample of each split. Disagreements get one author revision and one fresh re-validation; items still disputed are excluded. The rules were fixed before the verdicts were read.
+  - The culprit-ranking thresholds use Hit@1 and MRR against two naive baselines. Hit@3 is reported only: the cases change 2–5 files, so every ranking reaches about 1.0 (seen on dev).
+  - Thresholds are in `eval/reports/v11-protocol.md`, committed before any test split ran.
+- **Why:** the owner's correction 4, and a metric that can tell rankings apart.
+
+### D-057: Fingerprint version 3: exact recurrences only from named subjects; similarity is never a recurrence (v1.1.0)
+- **Status:** accepted (2026-11-10, after version 2 missed its held-out thresholds; the owner's v1.1.0 instructions)
+- **Decision:**
+  - **Two kinds.** An *exact* fingerprint is built from a subject the log names (variable, module, package, test with its assertion, image, file, port, database, permission, compile symbol), or from a line that still holds a distinctive identifier after masking. Only a shared exact primary fingerprint is shown as a **recurrence** ("same failure"). Everything else is *approximate* and only helps find *similar* failures, in a separate list that says it is not confirmed.
+  - **Rule families.** Rules reporting the same kind of fact share a key, so a recurrence reported through one rule in one run and another rule in the next still matches.
+  - **Where the failure is named.** Summaries point back to the error they summarise; headers (npm's code line) forward to their detail; compiler diagnostics in any language count as error lines; command echoes never do; decoration (`E`, `[error]`, yarn's prefixes) is removed before comparing.
+  - **Stored kind** (`failure_fingerprints.kind`, migration 0012); analytics count recurring failures from exact fingerprints only; only the current version takes part in matching, and the backfill replaces older links.
+- **Why:** version 2 met every threshold on the dev split it was tuned on and missed three on held-out data (precision 0.682). The cost of a false recurrence claim (a reader trusting a wrong earlier fix) is higher than the cost of a missed one, so precision comes first, and a generic line two causes can print is never treated as one failure.
+- **Generalization, measured before tuning on it:** designed on v3-history dev only, version 3 scored precision 0.842 and recall 0.432 on the then-unseen v4-history dev split. General fixes found there raised it to 1.000 / 0.651 on that dev split.
+- **Held-out result** (`v4-history` test split, 28 sequences, run once under `eval/reports/v110-protocol.md`): precision **1.000** (F1, met), recall **0.349** (F2, threshold 0.60, **missed**), look-alikes merged **0 of 22** (F3, met), similar-failure Recall@5 **0.892** (F4, threshold 0.90, **missed**), wrong "same failure" labels **0 of 15** (F5, met). Every recurrence it claimed was right; it found about a third of the true ones.
+- **Consequence (the protocol's decision rule):** history matching is **experimental and off by default** (`KENSA_HISTORY_MATCHING=false`). Fingerprints are still recorded, so turning it on needs no backfill. Off: the History panel shows the fingerprint and a note, with no matches or counts; the dashboard neither counts nor lists recurring failures. On: both are labelled experimental. Whether v1.1.0 ships this way is the owner's decision.

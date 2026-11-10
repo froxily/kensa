@@ -1,0 +1,52 @@
+2026-09-15T16:30:03.1000000Z Current runner version: '2.329.0'
+2026-09-15T16:30:03.1010000Z ##[group]Runner Image
+2026-09-15T16:30:03.1011000Z Image: ubuntu-22.04
+2026-09-15T16:30:03.1012000Z Version: 20260907.1.0
+2026-09-15T16:30:03.1013000Z ##[endgroup]
+2026-09-15T16:30:03.2020000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-15T16:30:03.2021000Z Contents: read
+2026-09-15T16:30:03.2022000Z Metadata: read
+2026-09-15T16:30:03.2023000Z ##[endgroup]
+2026-09-15T16:30:03.3000000Z Prepare workflow directory
+2026-09-15T16:30:03.6100000Z Prepare all required actions
+2026-09-15T16:30:04.1010000Z Getting action download info
+2026-09-15T16:30:04.8000000Z Complete job name: spec
+2026-09-15T16:30:04.9100000Z ##[group]Run actions/checkout@v4
+2026-09-15T16:30:04.9101000Z with:
+2026-09-15T16:30:04.9102000Z   repository: bracken-works/velvet-trestle
+2026-09-15T16:30:04.9103000Z   clean: true
+2026-09-15T16:30:04.9104000Z ##[endgroup]
+2026-09-15T16:30:05.4100000Z Syncing repository: bracken-works/velvet-trestle
+2026-09-15T16:30:05.8010000Z Checking out the ref
+2026-09-15T16:30:06.0100000Z ##[group]Run ruby/setup-ruby@v1
+2026-09-15T16:30:06.0101000Z with:
+2026-09-15T16:30:06.0102000Z   ruby-version: 3.3
+2026-09-15T16:30:06.0103000Z   bundler-cache: true
+2026-09-15T16:30:06.0104000Z ##[endgroup]
+2026-09-15T16:30:16.7100000Z Bundle complete! 24 Gemfile dependencies, 92 gems now installed.
+2026-09-15T16:30:16.8100000Z ##[group]Run bin/rails db:prepare
+2026-09-15T16:30:16.8101000Z [36;1mbin/rails db:prepare[0m
+2026-09-15T16:30:16.8102000Z shell: /usr/bin/bash -e {0}
+2026-09-15T16:30:16.8103000Z env:
+2026-09-15T16:30:16.8104000Z   RAILS_ENV: test
+2026-09-15T16:30:16.8105000Z ##[endgroup]
+2026-09-15T16:30:18.9100000Z Created database 'velvet_trestle_test'
+2026-09-15T16:30:19.1100000Z ##[group]Run bundle exec rspec spec/requests/berth_assignments_spec.rb
+2026-09-15T16:30:19.1101000Z [36;1mbundle exec rspec spec/requests/berth_assignments_spec.rb[0m
+2026-09-15T16:30:19.1102000Z shell: /usr/bin/bash -e {0}
+2026-09-15T16:30:19.1103000Z env:
+2026-09-15T16:30:19.1104000Z   RAILS_ENV: test
+2026-09-15T16:30:19.1105000Z ##[endgroup]
+2026-09-15T16:30:21.4920000Z An error occurred while loading ./spec/requests/berth_assignments_spec.rb.
+2026-09-15T16:30:21.4921000Z Failure/Error: ActiveRecord::FixtureSet.create_fixtures('spec/fixtures', 'harbor_berths')
+2026-09-15T16:30:21.4922000Z ActiveRecord::RecordNotUnique:
+2026-09-15T16:30:21.4923000Z   PG::UniqueViolation: ERROR:  duplicate key value violates unique constraint "index_harbor_berths_on_code"
+2026-09-15T16:30:21.4924000Z   DETAIL:  Key (code)=(NORTH-7) already exists.
+2026-09-15T16:30:21.4925000Z # ./spec/rails_helper.rb:46:in `<top (required)>'
+2026-09-15T16:30:21.4926000Z # ./spec/requests/berth_assignments_spec.rb:1:in `<top (required)>'
+2026-09-15T16:30:21.5010000Z No examples found.
+2026-09-15T16:30:21.5011000Z Finished in 0.00005 seconds (files took 2.19 seconds to load)
+2026-09-15T16:30:21.5012000Z 0 examples, 0 failures, 1 error occurred outside of examples
+2026-09-15T16:30:21.6000000Z ##[error]Process completed with exit code 1.
+2026-09-15T16:30:21.7000000Z Post job cleanup.
+2026-09-15T16:30:21.8010000Z Cleaning up orphan processes

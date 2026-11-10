@@ -1,0 +1,1 @@
+﻿{"name":"lumen-render","version":"1.0.0","scripts":{"build":"node src/build.cjs"},"dependencies":{"page-polish":"1.2.0"}}

@@ -1,0 +1,64 @@
+2026-10-29T10:00:01.0000000Z Current runner version: '2.330.0'
+2026-10-29T10:00:01.1000000Z ##[group]Runner Image
+2026-10-29T10:00:01.2000000Z Image: ubuntu-24.04
+2026-10-29T10:00:01.3000000Z Version: 20261026.1
+2026-10-29T10:00:01.4000000Z Included Software: https://github.com/actions/runner-images
+2026-10-29T10:00:01.5000000Z ##[endgroup]
+2026-10-29T10:00:01.6000000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-29T10:00:01.7000000Z Contents: read
+2026-10-29T10:00:01.8000000Z Metadata: read
+2026-10-29T10:00:01.9000000Z ##[endgroup]
+2026-10-29T10:00:02.0000000Z Prepare workflow directory
+2026-10-29T10:00:02.1000000Z Prepare all required actions
+2026-10-29T10:00:02.2000000Z Download action repository 'actions/checkout@v4'
+2026-10-29T10:00:02.3000000Z Download action repository 'actions/setup-java@v4'
+2026-10-29T10:00:02.4000000Z Complete job name: verify
+2026-10-29T10:00:02.5000000Z ##[group]Run actions/checkout@v4
+2026-10-29T10:00:02.6000000Z with:
+2026-10-29T10:00:02.7000000Z   repository: cedarvale/cedar-limit
+2026-10-29T10:00:02.8000000Z   clean: true
+2026-10-29T10:00:02.9000000Z ##[endgroup]
+2026-10-29T10:00:03.0000000Z Syncing repository: cedarvale/cedar-limit
+2026-10-29T10:00:03.1000000Z Getting Git version info
+2026-10-29T10:00:03.2000000Z git version 2.51.2
+2026-10-29T10:00:03.3000000Z Initializing the repository
+2026-10-29T10:00:03.4000000Z Fetching the repository
+2026-10-29T10:00:03.5000000Z Checking out the ref
+2026-10-29T10:00:03.6000000Z /usr/bin/git log -1 --format=%H
+2026-10-29T10:00:03.7000000Z b49d27a0f3c618e5d8a7016b2c9e43f05a67d812
+2026-10-29T10:00:03.8000000Z ##[group]Run actions/setup-java@v4
+2026-10-29T10:00:03.9000000Z with:
+2026-10-29T10:00:04.0000000Z   distribution: temurin
+2026-10-29T10:00:04.1000000Z   java-version: 21
+2026-10-29T10:00:04.2000000Z ##[endgroup]
+2026-10-29T10:00:04.3000000Z Installed distributions
+2026-10-29T10:00:04.4000000Z Trying to resolve the latest version from local cache...
+2026-10-29T10:00:04.5000000Z Resolved Java 21
+2026-10-29T10:00:04.6000000Z ##[group]Run mvn -B test
+2026-10-29T10:00:04.7000000Z mvn -B test
+2026-10-29T10:00:04.8000000Z shell: /usr/bin/bash -e {0}
+2026-10-29T10:00:04.9000000Z ##[endgroup]
+2026-10-29T10:00:05.0000000Z [INFO] Scanning for projects...
+2026-10-29T10:00:05.1000000Z [INFO] Building cedar-limit 1.0
+2026-10-29T10:00:05.2000000Z [INFO] --- resources:3.3.1:resources (default-resources) @ cedar-limit ---
+2026-10-29T10:00:05.3000000Z [INFO] --- compiler:3.13.0:compile (default-compile) @ cedar-limit ---
+2026-10-29T10:00:05.4000000Z [INFO] Compiling 1 source file with javac
+2026-10-29T10:00:05.5000000Z [INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ cedar-limit ---
+2026-10-29T10:00:05.6000000Z [INFO] --- surefire:3.5.2:test (default-test) @ cedar-limit ---
+2026-10-29T10:00:05.7000000Z [INFO] Running CedarLimitTest
+2026-10-29T10:00:05.8000000Z [ERROR] Tests run: 1, Failures: 1, Errors: 0, Skipped: 0
+2026-10-29T10:00:05.9000000Z [ERROR] CedarLimitTest.includesBoundary -- Time elapsed: 0.01 s <<< FAILURE!
+2026-10-29T10:00:06.0000000Z org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+2026-10-29T10:00:06.1000000Z  at CedarLimitTest.includesBoundary(CedarLimitTest.java:4)
+2026-10-29T10:00:06.2000000Z [INFO] Results:
+2026-10-29T10:00:06.3000000Z [ERROR] Failures: 
+2026-10-29T10:00:06.4000000Z [ERROR]   CedarLimitTest.includesBoundary:4 expected: <true> but was: <false>
+2026-10-29T10:00:06.5000000Z [INFO] Tests run: 1, Failures: 1, Errors: 0, Skipped: 0
+2026-10-29T10:00:06.6000000Z [INFO] BUILD FAILURE
+2026-10-29T10:00:06.7000000Z [INFO] Total time:  2.1 s
+2026-10-29T10:00:06.8000000Z [ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.2:test
+2026-10-29T10:00:06.9000000Z ##[error]Process completed with exit code 1.
+2026-10-29T10:00:07.0000000Z Post job cleanup.
+2026-10-29T10:00:07.1000000Z /usr/bin/git version
+2026-10-29T10:00:07.2000000Z git version 2.51.2
+2026-10-29T10:00:07.3000000Z Cleaning up orphan processes

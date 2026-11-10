@@ -1,0 +1,45 @@
+2026-09-20T07:03:26.1000000Z Current runner version: '2.329.0'
+2026-09-20T07:03:26.1100000Z ##[group]Runner Image
+2026-09-20T07:03:26.1200000Z Image: ubuntu-22.04
+2026-09-20T07:03:26.1300000Z Version: 20260914.1.0
+2026-09-20T07:03:26.1400000Z ##[endgroup]
+2026-09-20T07:03:26.1500000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-20T07:03:26.1600000Z Contents: read
+2026-09-20T07:03:26.1700000Z ##[endgroup]
+2026-09-20T07:03:26.1800000Z Prepare workflow directory
+2026-09-20T07:03:26.1900000Z Prepare all required actions
+2026-09-20T07:03:26.2000000Z Getting action download info
+2026-09-20T07:03:26.2100000Z ##[group]Run actions/checkout@v4
+2026-09-20T07:03:26.2200000Z with:
+2026-09-20T07:03:26.2300000Z   repository: dovetail-estuary/silt-index
+2026-09-20T07:03:26.2400000Z   clean: true
+2026-09-20T07:03:26.2500000Z ##[endgroup]
+2026-09-20T07:03:26.2600000Z Syncing repository: dovetail-estuary/silt-index
+2026-09-20T07:03:26.2700000Z ##[group]Getting Git version info
+2026-09-20T07:03:26.2800000Z git version 2.50.1
+2026-09-20T07:03:26.2900000Z ##[endgroup]
+2026-09-20T07:03:27.1000000Z ##[group]Checking out the ref
+2026-09-20T07:03:27.1100000Z HEAD is now at 9ab602d Extend composition tests
+2026-09-20T07:03:27.1200000Z ##[endgroup]
+2026-09-20T07:03:27.1300000Z ##[group]Run denoland/setup-deno@v2
+2026-09-20T07:03:27.1400000Z with:
+2026-09-20T07:03:27.1500000Z   deno-version: v2.5.0
+2026-09-20T07:03:27.1600000Z ##[endgroup]
+2026-09-20T07:03:28.1000000Z Deno was installed successfully
+2026-09-20T07:03:28.1100000Z ##[group]Run deno lint
+2026-09-20T07:03:28.1200000Z deno lint
+2026-09-20T07:03:28.1300000Z shell: /usr/bin/bash -e {0}
+2026-09-20T07:03:28.1400000Z ##[endgroup]
+2026-09-20T07:03:28.1500000Z Checked 8 files
+2026-09-20T07:03:28.1600000Z ##[group]Run deno task test
+2026-09-20T07:03:28.1700000Z deno task test
+2026-09-20T07:03:28.1800000Z shell: /usr/bin/bash -e {0}
+2026-09-20T07:03:28.1900000Z ##[endgroup]
+2026-09-20T07:03:28.2000000Z Task test deno test --allow-read tests/
+2026-09-20T07:03:28.2100000Z error: Module not found "file:///home/runner/work/silt-index/silt-index/src/normalise.ts".
+2026-09-20T07:03:28.2200000Z     at file:///home/runner/work/silt-index/silt-index/src/compose.ts:5:27
+2026-09-20T07:03:28.2300000Z ##[error]Process completed with exit code 1.
+2026-09-20T07:03:28.2400000Z Post job cleanup.
+2026-09-20T07:03:28.2500000Z [command]/usr/bin/git version
+2026-09-20T07:03:28.2600000Z git version 2.50.1
+2026-09-20T07:03:28.2700000Z Cleaning up orphan processes

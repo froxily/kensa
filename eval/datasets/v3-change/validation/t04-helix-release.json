@@ -1,0 +1,14 @@
+{
+  "id": "t04-helix-release",
+  "independent_labels": {
+    "comparability": "comparable",
+    "unverified_factors": [],
+    "category": "dependency_build",
+    "culprit_kind": "dependency_manifest",
+    "culprit_paths": ["pom.xml"]
+  },
+  "verdict": "agree",
+  "disputed_fields": [],
+  "reason_category": "none",
+  "notes": "The matching successful baseline has the same runner image and labels and an ahead comparison. The manifest raises the compiler release to 23 while the workflow uses JDK 21; the failed log reports that release 23 is unsupported. The evidence ranges and recorded history are consistent."
+}

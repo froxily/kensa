@@ -1,0 +1,13 @@
+{
+  "id": "ht04-nacre-weave",
+  "independent_labels": {
+    "e1": {"cluster": "a", "relation": "first", "category": "dependency_build"},
+    "e2": {"cluster": "b", "relation": "lookalike", "category": "dependency_build"},
+    "e3": {"cluster": "c", "relation": "first", "category": "dependency_build"},
+    "e4": {"cluster": "d", "relation": "lookalike", "category": "dependency_build"}
+  },
+  "verdict": "ambiguous",
+  "disputed_fields": ["e1.root_cause", "e2.root_cause", "e3.root_cause", "e4.root_cause"],
+  "reason_category": "ambiguous_evidence",
+  "notes": "The labels and plan agree, and both lookalike pairs involve different code or dependency requirements. The compiler lists available fields but does not establish that span and shade were removed or renamed, or conclusively establish the intended replacements. Cargo reports no matching candidates, but does not establish that the stated releases never existed. No recurrence or giveaway commentary is present."
+}

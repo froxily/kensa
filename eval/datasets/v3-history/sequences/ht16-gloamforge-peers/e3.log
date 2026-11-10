@@ -1,0 +1,51 @@
+﻿2026-09-19T07:03:10.0000000Z Current runner version: '2.329.0'
+2026-09-19T07:03:10.1000000Z ##[group]Runner Image
+2026-09-19T07:03:10.2000000Z Image: ubuntu-24.04
+2026-09-19T07:03:10.3000000Z Version: 20260914.1.0
+2026-09-19T07:03:10.4000000Z ##[endgroup]
+2026-09-19T07:03:10.5000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-19T07:03:10.6000000Z Contents: read
+2026-09-19T07:03:10.7000000Z Metadata: read
+2026-09-19T07:03:10.8000000Z ##[endgroup]
+2026-09-19T07:03:11.0000000Z Prepare workflow directory
+2026-09-19T07:03:11.2000000Z Prepare all required actions
+2026-09-19T07:03:12.0000000Z Download action repository 'actions/checkout@v4'
+2026-09-19T07:03:12.6000000Z Download action repository 'actions/setup-node@v4'
+2026-09-19T07:03:13.1000000Z Complete job name: verify
+2026-09-19T07:03:13.2000000Z ##[group]Run actions/checkout@v4
+2026-09-19T07:03:13.3000000Z with:
+2026-09-19T07:03:13.4000000Z   repository: gloamforge/harbor-sundial
+2026-09-19T07:03:13.5000000Z   fetch-depth: 1
+2026-09-19T07:03:13.6000000Z ##[endgroup]
+2026-09-19T07:03:14.1000000Z Syncing repository: gloamforge/harbor-sundial
+2026-09-19T07:03:14.3000000Z Initializing the repository
+2026-09-19T07:03:15.1000000Z Fetching the repository
+2026-09-19T07:03:15.7000000Z Checking out the ref
+2026-09-19T07:03:16.0000000Z ##[group]Run actions/setup-node@v4
+2026-09-19T07:03:16.1000000Z with:
+2026-09-19T07:03:16.2000000Z   node-version: 20
+2026-09-19T07:03:16.3000000Z ##[endgroup]
+2026-09-19T07:03:16.7000000Z Found in cache @ /opt/hostedtoolcache/node/20.19.5/x64
+2026-09-19T07:03:16.8000000Z ##[group]Run npm ci
+2026-09-19T07:03:16.9000000Z npm ci
+2026-09-19T07:03:17.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-19T07:03:17.1000000Z ##[endgroup]
+2026-09-19T07:03:23.0000000Z added 184 packages, and audited 185 packages in 5s
+2026-09-19T07:03:23.1000000Z 28 packages are looking for funding
+2026-09-19T07:03:23.2000000Z   run `npm fund` for details
+2026-09-19T07:03:23.3000000Z found 0 vulnerabilities
+2026-09-19T07:03:23.4000000Z ##[group]Run npm run build
+2026-09-19T07:03:23.5000000Z npm run build
+2026-09-19T07:03:23.6000000Z shell: /usr/bin/bash -e {0}
+2026-09-19T07:03:23.7000000Z ##[endgroup]
+2026-09-19T07:03:23.9000000Z > harbor-sundial@1.0.0 build
+2026-09-19T07:03:24.0000000Z > vite build --config config/harbor.build.mjs
+2026-09-19T07:03:24.5000000Z failed to load config from /home/runner/work/harbor-sundial/harbor-sundial/config/harbor.build.mjs
+2026-09-19T07:03:24.6000000Z error during build:
+2026-09-19T07:03:24.7000000Z Error: Could not resolve "/home/runner/work/harbor-sundial/harbor-sundial/config/harbor.build.mjs"
+2026-09-19T07:03:24.8000000Z     at failureErrorWithLog (node_modules/esbuild/lib/main.js:1467:15)
+2026-09-19T07:03:24.9000000Z     at node_modules/esbuild/lib/main.js:926:25
+2026-09-19T07:03:25.0000000Z     at runOnEndCallbacks (node_modules/esbuild/lib/main.js:1307:45)
+2026-09-19T07:03:25.1000000Z ##[error]Process completed with exit code 1.
+2026-09-19T07:03:25.2000000Z Post job cleanup.
+2026-09-19T07:03:25.3000000Z Cleaning up orphan processes

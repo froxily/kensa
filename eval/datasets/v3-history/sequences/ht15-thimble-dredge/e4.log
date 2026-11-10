@@ -1,0 +1,49 @@
+﻿2026-09-24T16:02:00.1000000Z Current runner version: '2.329.0'
+2026-09-24T16:02:00.2000000Z ##[group]Runner Image
+2026-09-24T16:02:00.2200000Z Image: ubuntu-24.04
+2026-09-24T16:02:00.2400000Z Version: 20260920.1.0
+2026-09-24T16:02:00.2600000Z ##[endgroup]
+2026-09-24T16:02:00.2800000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-24T16:02:00.3000000Z Contents: read
+2026-09-24T16:02:00.3200000Z ##[endgroup]
+2026-09-24T16:02:00.3400000Z Prepare workflow directory
+2026-09-24T16:02:00.3600000Z Prepare all required actions
+2026-09-24T16:02:01.0000000Z Download action repository 'actions/checkout@v4'
+2026-09-24T16:02:01.2000000Z Download action repository 'actions/upload-artifact@v4'
+2026-09-24T16:02:01.4000000Z Complete job name: archive-manifest
+2026-09-24T16:02:01.6000000Z ##[group]Run actions/checkout@v4
+2026-09-24T16:02:01.6200000Z with:
+2026-09-24T16:02:01.6400000Z   repository: quaylark/thimble-dredge
+2026-09-24T16:02:01.6600000Z   fetch-depth: 1
+2026-09-24T16:02:01.6800000Z ##[endgroup]
+2026-09-24T16:02:02.1000000Z Syncing repository: quaylark/thimble-dredge
+2026-09-24T16:02:02.5000000Z Initializing the repository
+2026-09-24T16:02:03.1000000Z Fetching the repository
+2026-09-24T16:02:04.1000000Z Checking out the ref
+2026-09-24T16:02:04.3000000Z ##[group]Run python3 -m dredge.manifest --output out/manifest/index.json
+2026-09-24T16:02:04.3200000Z python3 -m dredge.manifest --output out/manifest/index.json
+2026-09-24T16:02:04.3400000Z shell: /usr/bin/bash -e {0}
+2026-09-24T16:02:04.3600000Z ##[endgroup]
+2026-09-24T16:02:04.6000000Z manifest: scanning archive inputs
+2026-09-24T16:02:04.8000000Z manifest: 18 entries
+2026-09-24T16:02:04.9000000Z manifest: wrote out/manifest/index.json
+2026-09-24T16:02:05.0000000Z ##[group]Run ls -l out/manifest
+2026-09-24T16:02:05.0200000Z ls -l out/manifest
+2026-09-24T16:02:05.0400000Z shell: /usr/bin/bash -e {0}
+2026-09-24T16:02:05.0600000Z ##[endgroup]
+2026-09-24T16:02:05.1000000Z total 4
+2026-09-24T16:02:05.1200000Z -rw-r--r-- 1 runner runner 1024 Sep 24 16:02 index.json
+2026-09-24T16:02:05.2000000Z ##[group]Run actions/upload-artifact@v4
+2026-09-24T16:02:05.2200000Z with:
+2026-09-24T16:02:05.2400000Z   name: shoal-manifest
+2026-09-24T16:02:05.2600000Z   path: dist/manifest/index.json
+2026-09-24T16:02:05.2800000Z   if-no-files-found: error
+2026-09-24T16:02:05.3000000Z   compression-level: 6
+2026-09-24T16:02:05.3200000Z   overwrite: false
+2026-09-24T16:02:05.3400000Z   include-hidden-files: false
+2026-09-24T16:02:05.3600000Z ##[endgroup]
+2026-09-24T16:02:05.5000000Z ##[error]No files were found with the provided path: dist/manifest/index.json. No artifacts will be uploaded.
+2026-09-24T16:02:05.7000000Z Post job cleanup.
+2026-09-24T16:02:05.9000000Z [command]/usr/bin/git version
+2026-09-24T16:02:05.9200000Z git version 2.51.0
+2026-09-24T16:02:06.1000000Z Cleaning up orphan processes

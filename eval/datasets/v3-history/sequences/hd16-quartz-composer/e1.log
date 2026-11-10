@@ -1,0 +1,41 @@
+2026-09-01T08:00:00.0000000Z Current runner version: '2.328.0'
+2026-09-01T08:00:01.0000000Z ##[group]Operating System
+2026-09-01T08:00:02.0000000Z Ubuntu 24.04.3 LTS
+2026-09-01T08:00:03.0000000Z ##[endgroup]
+2026-09-01T08:00:04.0000000Z ##[group]Runner Image
+2026-09-01T08:00:05.0000000Z Image: ubuntu-24.04
+2026-09-01T08:00:06.0000000Z Version: 20250824.1
+2026-09-01T08:00:07.0000000Z ##[endgroup]
+2026-09-01T08:00:08.0000000Z Prepare workflow directory
+2026-09-01T08:00:09.0000000Z Prepare all required actions
+2026-09-01T08:00:10.0000000Z Download action repository 'actions/checkout@v4'
+2026-09-01T08:00:11.0000000Z Complete job name: dependencies
+2026-09-01T08:00:12.0000000Z ##[group]Run actions/checkout@v4
+2026-09-01T08:00:13.0000000Z with:
+2026-09-01T08:00:14.0000000Z   repository: velorum/quartz-ledger
+2026-09-01T08:00:15.0000000Z   clean: true
+2026-09-01T08:00:16.0000000Z ##[endgroup]
+2026-09-01T08:00:17.0000000Z Syncing repository: velorum/quartz-ledger
+2026-09-01T08:00:18.0000000Z git version 2.51.0
+2026-09-01T08:00:19.0000000Z Initialized empty Git repository
+2026-09-01T08:00:20.0000000Z Fetching the repository
+2026-09-01T08:00:21.0000000Z Checking out the ref
+2026-09-01T08:00:22.0000000Z ##[group]Run php --version
+2026-09-01T08:00:23.0000000Z php --version
+2026-09-01T08:00:24.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-01T08:00:25.0000000Z ##[endgroup]
+2026-09-01T08:00:26.0000000Z PHP 8.3.24 (cli)
+2026-09-01T08:00:27.0000000Z ##[group]Run composer update --no-interaction
+2026-09-01T08:00:28.0000000Z composer update --no-interaction
+2026-09-01T08:00:29.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-01T08:00:30.0000000Z ##[endgroup]
+2026-09-01T08:00:31.0000000Z Loading composer repositories with package information
+2026-09-01T08:00:32.0000000Z Updating dependencies
+2026-09-01T08:00:33.0000000Z Your requirements could not be resolved to an installable set of packages.
+2026-09-01T08:00:34.0000000Z   Problem 1
+2026-09-01T08:00:35.0000000Z     - Root composer.json requires velorum/calendar-core ^4.0, found velorum/calendar-core[3.0.0, 3.2.0] but it does not match the constraint.
+2026-09-01T08:00:36.0000000Z ##[error]Process completed with exit code 2.
+2026-09-01T08:00:37.0000000Z Post job cleanup.
+2026-09-01T08:00:38.0000000Z /usr/bin/git version
+2026-09-01T08:00:39.0000000Z git version 2.51.0
+2026-09-01T08:00:40.0000000Z Cleaning up orphan processes

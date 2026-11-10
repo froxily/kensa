@@ -1,0 +1,51 @@
+2026-09-15T07:31:01.2100000Z Current runner version: '2.328.0'
+2026-09-15T07:31:01.2110000Z ##[group]Runner Image
+2026-09-15T07:31:01.2120000Z Image: ubuntu-24.04
+2026-09-15T07:31:01.2130000Z Version: 20260908.1.0
+2026-09-15T07:31:01.2140000Z ##[endgroup]
+2026-09-15T07:31:01.2150000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-15T07:31:01.2160000Z Contents: read
+2026-09-15T07:31:01.2170000Z Metadata: read
+2026-09-15T07:31:01.2180000Z ##[endgroup]
+2026-09-15T07:31:01.2190000Z Prepare workflow directory
+2026-09-15T07:31:01.2200000Z Prepare all required actions
+2026-09-15T07:31:01.5210000Z ##[group]Run actions/checkout@v4
+2026-09-15T07:31:01.5220000Z with:
+2026-09-15T07:31:01.5230000Z   repository: tarnwick-labs/umberglass-dock
+2026-09-15T07:31:02.2220000Z Syncing repository: tarnwick-labs/umberglass-dock
+2026-09-15T07:31:02.9000000Z HEAD is now at b3c61da Revise ledger toolbar
+2026-09-15T07:31:02.9010000Z ##[endgroup]
+2026-09-15T07:31:02.9020000Z ##[group]Run actions/setup-node@v4
+2026-09-15T07:31:02.9030000Z with:
+2026-09-15T07:31:02.9040000Z   node-version: 22
+2026-09-15T07:31:03.3330000Z ##[endgroup]
+2026-09-15T07:31:03.3340000Z ##[group]Run npm ci
+2026-09-15T07:31:08.2040000Z added 173 packages, and audited 174 packages in 5s
+2026-09-15T07:31:08.2050000Z 23 packages are looking for funding
+2026-09-15T07:31:08.2060000Z found 0 vulnerabilities
+2026-09-15T07:31:08.2070000Z ##[endgroup]
+2026-09-15T07:31:08.2080000Z ##[group]Run npx playwright test --project=chromium
+2026-09-15T07:31:09.0080000Z Running 7 tests using 2 workers
+2026-09-15T07:31:11.0080000Z   ✓  1 [chromium] › e2e/dispatch.spec.ts:42:5 › submits dispatch (1.4s)
+2026-09-15T07:31:12.2080000Z   ✓  2 [chromium] › e2e/ledger.spec.ts:8:5 › shows ledger (2.5s)
+2026-09-15T07:31:12.2090000Z [chromium] › e2e/ledger.spec.ts:27:5 › exports ledger
+2026-09-15T07:31:12.2100000Z [ 'Download ledger' ]
+2026-09-15T07:31:17.4100000Z   ✘  3 [chromium] › e2e/ledger.spec.ts:27:5 › exports ledger (5.1s)
+2026-09-15T07:31:17.4110000Z   1) [chromium] › e2e/ledger.spec.ts:27:5 › exports ledger ─────────────────────
+2026-09-15T07:31:17.4120000Z     Error: locator.click: Timeout 5000ms exceeded.
+2026-09-15T07:31:17.4130000Z     Call log:
+2026-09-15T07:31:17.4140000Z       - waiting for getByRole('button', { name: 'Export ledger' })
+2026-09-15T07:31:17.4150000Z        29 | await page.goto('/ledger');
+2026-09-15T07:31:17.4160000Z        30 | const download = page.waitForEvent('download');
+2026-09-15T07:31:17.4170000Z     >  31 | await page.getByRole('button', { name: 'Export ledger' }).click();
+2026-09-15T07:31:17.4180000Z           |                                                          ^
+2026-09-15T07:31:17.4190000Z        32 | expect((await download).suggestedFilename()).toBe('ledger.csv');
+2026-09-15T07:31:17.4200000Z     at e2e/ledger.spec.ts:31:58
+2026-09-15T07:31:17.4210000Z     attachment #1: screenshot (image/png)
+2026-09-15T07:31:17.4220000Z     test-results/ledger-exports-ledger-chromium/test-failed-1.png
+2026-09-15T07:31:17.4230000Z   1 failed
+2026-09-15T07:31:17.4240000Z   6 passed (8.9s)
+2026-09-15T07:31:17.4250000Z ##[error]Process completed with exit code 1.
+2026-09-15T07:31:17.4260000Z ##[endgroup]
+2026-09-15T07:31:17.6020000Z Post job cleanup.
+2026-09-15T07:31:17.7100000Z Cleaning up orphan processes

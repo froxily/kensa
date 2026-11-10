@@ -1,0 +1,12 @@
+{
+  "id": "ht59-ternary-bellows",
+  "split": "test",
+  "ecosystem": "github actions",
+  "repository": "quillhaven/bellows-index",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"workflow_path","title":"Rust absent from Windows matrix job","root_cause":"The Windows matrix job invokes Cargo without installing the Rust toolchain; the toolchain setup is restricted to Linux.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"b","relation":"lookalike","category":"workflow_path","title":"Go absent from Windows matrix job","root_cause":"The Windows matrix job invokes Go without installing the Go toolchain; the Go setup is restricted to Linux.","differs_from_earlier":"The same Windows matrix setup omission affects Go rather than Rust and requires installing Go."},
+    {"id":"e3","file":"e3.log","cluster":"a","relation":"recurrence","category":"workflow_path","title":"Cargo unavailable in Windows build","root_cause":"The Windows matrix job invokes Cargo without installing the Rust toolchain; the toolchain setup is restricted to Linux.","differs_from_earlier":"A later pull request runs a different Cargo subcommand on a newer Windows runner."},
+    {"id":"e4","file":"e4.log","cluster":"a","relation":"recurrence","category":"workflow_path","title":"Windows test job cannot find Cargo","root_cause":"The Windows matrix job invokes Cargo without installing the Rust toolchain; the toolchain setup is restricted to Linux.","differs_from_earlier":"A later push runs tests through PowerShell after restoring a cache, with different runner and checkout details."}
+  ]
+}

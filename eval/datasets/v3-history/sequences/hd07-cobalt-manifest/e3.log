@@ -1,0 +1,45 @@
+2026-09-11T09:20:00.0000000Z Current runner version: '2.328.0'
+2026-09-11T09:20:01.0000000Z ##[group]Runner Image
+2026-09-11T09:20:02.0000000Z Image: ubuntu-24.04
+2026-09-11T09:20:03.0000000Z ##[endgroup]
+2026-09-11T09:20:04.0000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-11T09:20:05.0000000Z Contents: read
+2026-09-11T09:20:06.0000000Z ##[endgroup]
+2026-09-11T09:20:07.0000000Z Prepare workflow directory
+2026-09-11T09:20:08.0000000Z Prepare all required actions
+2026-09-11T09:20:09.0000000Z Getting action download info
+2026-09-11T09:20:10.0000000Z Download action repository 'actions/checkout@v4'
+2026-09-11T09:20:11.0000000Z Complete job name: check storage
+2026-09-11T09:20:12.0000000Z ##[group]Run actions/checkout@v4
+2026-09-11T09:20:13.0000000Z with:
+2026-09-11T09:20:14.0000000Z   repository: cobalt-heron/keel-parser
+2026-09-11T09:20:15.0000000Z   fetch-depth: 1
+2026-09-11T09:20:16.0000000Z ##[endgroup]
+2026-09-11T09:20:17.0000000Z Syncing repository: cobalt-heron/keel-parser
+2026-09-11T09:20:18.0000000Z Initialized empty Git repository
+2026-09-11T09:20:19.0000000Z Fetching the repository
+2026-09-11T09:20:20.0000000Z Checking out the ref
+2026-09-11T09:20:21.0000000Z ##[group]Run cargo check --features storage
+2026-09-11T09:20:22.0000000Z cargo check --features storage
+2026-09-11T09:20:23.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-11T09:20:24.0000000Z ##[endgroup]
+2026-09-11T09:20:25.0000000Z     Updating crates.io index
+2026-09-11T09:20:26.0000000Z  Downloading crates ...
+2026-09-11T09:20:27.0000000Z   Downloaded sqlx v0.8.2
+2026-09-11T09:20:28.0000000Z    Compiling syn v2.0.77
+2026-09-11T09:20:29.0000000Z     Checking sqlx v0.8.2
+2026-09-11T09:20:30.0000000Z     Checking keel-parser v0.3.0 (/home/runner/work/keel-parser/keel-parser)
+2026-09-11T09:20:31.0000000Z error: cannot find derive macro `FromRow` in this scope
+2026-09-11T09:20:32.0000000Z  --> src/storage.rs:12:10
+2026-09-11T09:20:33.0000000Z   |
+2026-09-11T09:20:34.0000000Z 12 | #[derive(FromRow)]
+2026-09-11T09:20:35.0000000Z    |          ^^^^^^^
+2026-09-11T09:20:36.0000000Z note: `FromRow` is imported here, but it is only a trait, without a derive macro
+2026-09-11T09:20:37.0000000Z  --> src/storage.rs:2:5
+2026-09-11T09:20:38.0000000Z   |
+2026-09-11T09:20:39.0000000Z 2 | use sqlx::FromRow;
+2026-09-11T09:20:40.0000000Z   |     ^^^^^^^^^^^^^
+2026-09-11T09:20:41.0000000Z error: could not compile `keel-parser` (lib) due to 1 previous error
+2026-09-11T09:20:42.0000000Z ##[error]Process completed with exit code 101.
+2026-09-11T09:20:43.0000000Z Post job cleanup.
+2026-09-11T09:20:44.0000000Z Cleaning up orphan processes

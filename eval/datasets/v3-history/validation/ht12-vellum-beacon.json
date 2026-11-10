@@ -1,0 +1,13 @@
+{
+  "id": "ht12-vellum-beacon",
+  "independent_labels": [
+    {"id": "e1", "cluster": "a", "relation": "first", "category": "missing_env_var"},
+    {"id": "e2", "cluster": "b", "relation": "first", "category": "test_regression"},
+    {"id": "e3", "cluster": "a", "relation": "recurrence", "category": "missing_env_var"},
+    {"id": "e4", "cluster": "a", "relation": "recurrence", "category": "missing_env_var"}
+  ],
+  "verdict": "ambiguous",
+  "disputed_fields": ["e1.root_cause", "e2.root_cause", "e3.cluster", "e3.relation", "e3.root_cause", "e4.root_cause"],
+  "reason_category": "ambiguous_evidence",
+  "notes": "e3 has the same empty variable and error as e1, but selects a different environment; the log does not show the workflow secret reference or prove a renamed secret. Thus the same-fix cluster assignment versus a lookalike cannot be resolved from the logs. The logs also do not establish where the secret is configured for e1/e4, or whether e2's calculation rather than its test needs correction. e4 differs materially from e1, and no explanatory giveaway commentary is apparent."
+}

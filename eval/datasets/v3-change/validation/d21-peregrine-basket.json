@@ -1,0 +1,14 @@
+{
+  "id": "d21-peregrine-basket",
+  "independent_labels": {
+    "comparability": "partially_comparable",
+    "unverified_factors": ["runner_image_unknown"],
+    "category": "test_regression",
+    "culprit_kind": "test",
+    "culprit_paths": ["test/basket_test.rb"]
+  },
+  "verdict": "disagree",
+  "disputed_fields": ["runs.json", "baseline.log", "unverified_factors", "comparability"],
+  "reason_category": "data_inconsistency",
+  "notes": "The baseline job's runner image and version are null in runs.json, but baseline.log lines 11-14 explicitly identify ubuntu-24.04 version 20261026.1, matching the failed run. The unknown-image factor and partial comparability therefore conflict with the baseline log. The test change and cited evidence otherwise support the regression labels."
+}

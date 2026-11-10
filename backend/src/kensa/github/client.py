@@ -232,7 +232,10 @@ class GitHubClient:
 
     @staticmethod
     def _url(path: str, params: dict[str, str | int] | None) -> str:
-        if not path.startswith("/repos/") or ".." in path:
+        # No "." or ".." path segment (v1.1: a segment may contain dots, as in GitHub's
+        # compare/<base>...<head>; every caller builds paths from validated names and ids).
+        segments = path.split("/")
+        if not path.startswith("/repos/") or any(s in (".", "..") for s in segments):
             raise GitHubError("invalid_request", "Kensa only reads repository data.", 500)
         query = f"?{urlencode(sorted((params or {}).items()))}" if params else ""
         return f"{API_ROOT}{path}{query}"

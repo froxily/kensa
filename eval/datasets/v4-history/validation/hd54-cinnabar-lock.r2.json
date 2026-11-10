@@ -1,0 +1,13 @@
+{
+  "id": "hd54-cinnabar-lock",
+  "independent_labels": [
+    {"id": "e1", "cluster": "a", "relation": "first", "category": "docker"},
+    {"id": "e2", "cluster": "b", "relation": "lookalike", "category": "docker"},
+    {"id": "e3", "cluster": "c", "relation": "lookalike", "category": "docker"},
+    {"id": "e4", "cluster": "a", "relation": "recurrence", "category": "docker"}
+  ],
+  "verdict": "agree",
+  "disputed_fields": [],
+  "reason_category": "none",
+  "notes": "PostgreSQL e1 and e4 probe 5544 while listening on 5432; e2 probes the wrong loopback address, and e3 probes the wrong MySQL port. Each lookalike requires a separate health-check change. The recurrence changes runner, health options, environment and output beyond timestamps. Root causes match the logs; no giveaway commentary found. The labels and pattern match the plan."
+}

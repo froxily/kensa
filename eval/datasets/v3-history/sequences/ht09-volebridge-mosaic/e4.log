@@ -1,0 +1,47 @@
+﻿2026-10-25T16:30:00.2000000Z Current runner version: '2.329.0'
+2026-10-25T16:30:00.4000000Z ##[group]Runner Image Provisioner
+2026-10-25T16:30:00.5000000Z Hosted Compute Agent
+2026-10-25T16:30:00.6000000Z Image: ubuntu-22.04
+2026-10-25T16:30:00.7000000Z ##[endgroup]
+2026-10-25T16:30:00.8000000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-25T16:30:00.9000000Z Contents: read
+2026-10-25T16:30:01.0000000Z ##[endgroup]
+2026-10-25T16:30:01.2000000Z Prepare workflow directory
+2026-10-25T16:30:01.6000000Z Prepare all required actions
+2026-10-25T16:30:02.2000000Z Complete job name: matrix
+2026-10-25T16:30:02.4000000Z ##[group]Run actions/checkout@v4
+2026-10-25T16:30:02.5000000Z with:
+2026-10-25T16:30:02.6000000Z   repository: volebridge/mosaic-quay
+2026-10-25T16:30:02.7000000Z   fetch-depth: 1
+2026-10-25T16:30:02.8000000Z ##[endgroup]
+2026-10-25T16:30:03.2000000Z Syncing repository: volebridge/mosaic-quay
+2026-10-25T16:30:04.6000000Z Fetching the repository
+2026-10-25T16:30:06.0000000Z Checking out the ref
+2026-10-25T16:30:06.4000000Z ##[group]Run sudo apt-get install -y libyaml-dev
+2026-10-25T16:30:06.5000000Z sudo apt-get install -y libyaml-dev
+2026-10-25T16:30:06.6000000Z ##[endgroup]
+2026-10-25T16:30:09.0000000Z libyaml-dev is already the newest version.
+2026-10-25T16:30:09.3000000Z ##[group]Run ruby/setup-ruby@v1
+2026-10-25T16:30:09.4000000Z with:
+2026-10-25T16:30:09.5000000Z   ruby-version: '3.3'
+2026-10-25T16:30:09.6000000Z   bundler-cache: true
+2026-10-25T16:30:09.7000000Z ##[endgroup]
+2026-10-25T16:30:18.0000000Z ruby 3.3.6 installed
+2026-10-25T16:30:18.3000000Z bundle install --jobs 4
+2026-10-25T16:30:35.0000000Z Bundle complete! 19 Gemfile dependencies, 43 gems now installed.
+2026-10-25T16:30:35.5000000Z ##[group]Run bundle exec rake mosaic:matrix
+2026-10-25T16:30:35.6000000Z bundle exec rake mosaic:matrix
+2026-10-25T16:30:35.7000000Z shell: /usr/bin/bash -e {0}
+2026-10-25T16:30:35.8000000Z ##[endgroup]
+2026-10-25T16:30:36.3000000Z MosaicQuay::Matrix: 480 render cases, workers=1
+2026-10-25T16:32:45.0000000Z 50/480 cases passed
+2026-10-25T16:34:54.0000000Z 100/480 cases passed
+2026-10-25T16:37:03.0000000Z 150/480 cases passed
+2026-10-25T16:39:12.0000000Z 200/480 cases passed
+2026-10-25T16:41:21.0000000Z 250/480 cases passed
+2026-10-25T16:43:30.0000000Z 300/480 cases passed
+2026-10-25T16:45:39.0000000Z 350/480 cases passed
+2026-10-25T16:47:48.0000000Z 400/480 cases passed
+2026-10-25T16:49:57.0000000Z 450/480 cases passed
+2026-10-25T16:50:00.2000000Z ##[error]The job running on runner Hosted Agent has exceeded the maximum execution time of 20 minutes.
+2026-10-25T16:50:00.4000000Z Cleaning up orphan processes

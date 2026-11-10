@@ -1,0 +1,12 @@
+{
+  "id": "hd57-moonwort-pulley",
+  "split": "dev",
+  "ecosystem": "bazel",
+  "repository": "moonwort-labs/pulley-index",
+  "entries": [
+    {"id": "e1", "file": "e1.log", "cluster": "a", "relation": "first", "category": "workflow_path", "title": "Build requests retired index target", "root_cause": "The workflow requests //indexer:release_bundle, a target no longer defined in the indexer package after its rename to release_archive. The workflow must use the new target name.", "differs_from_earlier": ""},
+    {"id": "e2", "file": "e2.log", "cluster": "b", "relation": "lookalike", "category": "workflow_path", "title": "Build requests absent schema target", "root_cause": "The workflow requests //schema:descriptor_set, but the schema BUILD file defines descriptors instead. Correct the schema target label in the workflow.", "differs_from_earlier": "Another Bazel target lookup fails with similar wording, but the invalid label is in a different package and requires a separate workflow correction."},
+    {"id": "e3", "file": "e3.log", "cluster": "c", "relation": "first", "category": "dependency_build", "title": "Sandbox cannot write generated index", "root_cause": "The catalog compiler writes its generated index into the read-only source tree inside the Bazel sandbox. The rule must direct the compiler output to its declared output path.", "differs_from_earlier": ""},
+    {"id": "e4", "file": "e4.log", "cluster": "c", "relation": "recurrence", "category": "dependency_build", "title": "Sandbox rejects source tree output again", "root_cause": "The catalog compiler writes its generated index into the read-only source tree inside the Bazel sandbox. The rule must direct the compiler output to its declared output path.", "differs_from_earlier": "A later build on another runner uses a different sandbox and output path, with different progress and timing, but the compiler still attempts the same source-tree write."}
+  ]
+}

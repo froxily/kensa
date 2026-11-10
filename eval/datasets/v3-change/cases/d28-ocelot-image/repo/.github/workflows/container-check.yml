@@ -1,0 +1,9 @@
+﻿name: Container check
+on: push
+jobs:
+  container:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build image
+        run: docker build -t ocelot-signal:ci .

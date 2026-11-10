@@ -1,0 +1,12 @@
+{
+  "id": "ht49-larkspur-weir",
+  "split": "test",
+  "ecosystem": "kubernetes (helm, kubectl)",
+  "repository": "reedglass/larkspur-weir",
+  "entries": [
+    {"id": "e1", "file": "e1.log", "cluster": "a", "relation": "first", "category": "workflow_path", "title": "Worker template requires queue name", "root_cause": "The worker deployment template requires weirWorker.queueName, but the staging values omit it. Add the queue name to the staging values.", "differs_from_earlier": ""},
+    {"id": "e2", "file": "e2.log", "cluster": "b", "relation": "lookalike", "category": "workflow_path", "title": "Ingress template requires host", "root_cause": "The gateway ingress template requires weirGateway.host, but the staging values omit it. Add the gateway host to the staging values.", "differs_from_earlier": "The same Helm required-value error comes from the gateway ingress template and a different missing value."},
+    {"id": "e3", "file": "e3.log", "cluster": "a", "relation": "recurrence", "category": "workflow_path", "title": "Worker template requires queue name", "root_cause": "The worker deployment template requires weirWorker.queueName, but the staging values omit it. Add the queue name to the staging values.", "differs_from_earlier": "A later chart revision and debug render use a different release and temporary values path; the worker queue name is still absent."},
+    {"id": "e4", "file": "e4.log", "cluster": "b", "relation": "recurrence", "category": "workflow_path", "title": "Ingress template requires host", "root_cause": "The gateway ingress template requires weirGateway.host, but the staging values omit it. Add the gateway host to the staging values.", "differs_from_earlier": "A later validation run uses a different release and chart revision, with the gateway host still absent."}
+  ]
+}

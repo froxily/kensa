@@ -1,0 +1,40 @@
+2026-09-23T12:41:05.0034400Z Current runner version: '2.329.0'
+2026-09-23T12:41:05.0204400Z ##[group]Operating System
+2026-09-23T12:41:05.0205400Z Ubuntu
+2026-09-23T12:41:05.0206400Z 24.04.3
+2026-09-23T12:41:05.0207400Z LTS
+2026-09-23T12:41:05.0208400Z ##[endgroup]
+2026-09-23T12:41:05.0214400Z ##[group]Runner Image
+2026-09-23T12:41:05.0215400Z Image: ubuntu-24.04
+2026-09-23T12:41:05.0216400Z Version: 20260914.1.0
+2026-09-23T12:41:05.0217400Z ##[endgroup]
+2026-09-23T12:41:05.0224400Z ##[group]GITHUB_TOKEN Permissions
+2026-09-23T12:41:05.0225400Z Contents: read
+2026-09-23T12:41:05.0226400Z Metadata: read
+2026-09-23T12:41:05.0227400Z ##[endgroup]
+2026-09-23T12:41:05.0324400Z Prepare workflow directory
+2026-09-23T12:41:05.2114400Z Prepare all required actions
+2026-09-23T12:41:05.5484400Z Getting action download info
+2026-09-23T12:41:05.8494400Z Download action repository 'actions/checkout@v4'
+2026-09-23T12:41:06.5014400Z Complete job name: audit
+2026-09-23T12:41:06.6014400Z ##[group]Run actions/checkout@v4
+2026-09-23T12:41:06.6015400Z with:
+2026-09-23T12:41:06.6016400Z   repository: tarn-lantern/sluice-audit
+2026-09-23T12:41:06.6017400Z   fetch-depth: 1
+2026-09-23T12:41:06.6018400Z ##[endgroup]
+2026-09-23T12:41:06.8134400Z Syncing repository: tarn-lantern/sluice-audit
+2026-09-23T12:41:07.0154400Z Initializing the repository
+2026-09-23T12:41:07.7034400Z Fetching the repository
+2026-09-23T12:41:08.3084400Z Checking out the ref
+2026-09-23T12:41:08.4254400Z ##[group]Run make audit
+2026-09-23T12:41:08.4255400Z [36;1mmake audit[0m
+2026-09-23T12:41:08.4294400Z shell: /usr/bin/bash -e {0}
+2026-09-23T12:41:08.4295400Z ##[endgroup]
+2026-09-23T12:41:08.4424400Z ./scripts/inspect-sluice.sh config/tarn-rules.tsv data/sluice-manifest.tsv
+2026-09-23T12:41:08.4484400Z data/sluice-manifest.tsv:37: duplicate identifier 'sluice-west-4' (first seen at line 11)
+2026-09-23T12:41:08.4494400Z make: *** [Makefile:21: audit] Error 1
+2026-09-23T12:41:08.4524400Z ##[error]Process completed with exit code 2.
+2026-09-23T12:41:08.4654400Z Post job cleanup.
+2026-09-23T12:41:08.6124400Z /usr/bin/git version
+2026-09-23T12:41:08.6184400Z git version 2.51.1
+2026-09-23T12:41:08.7094400Z Cleaning up orphan processes

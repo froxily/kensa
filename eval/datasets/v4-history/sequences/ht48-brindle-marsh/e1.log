@@ -1,0 +1,50 @@
+2026-09-03T10:11:03.1200000Z Current runner version: '2.328.0'
+2026-09-03T10:11:03.1300000Z ##[group]Runner Image
+2026-09-03T10:11:03.1400000Z Image: ubuntu-24.04
+2026-09-03T10:11:03.1500000Z Version: 20260824.1.0
+2026-09-03T10:11:03.1600000Z ##[endgroup]
+2026-09-03T10:11:03.1700000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-03T10:11:03.1800000Z Contents: read
+2026-09-03T10:11:03.1900000Z Metadata: read
+2026-09-03T10:11:03.2000000Z ##[endgroup]
+2026-09-03T10:11:03.2100000Z Prepare workflow directory
+2026-09-03T10:11:03.2200000Z Prepare all required actions
+2026-09-03T10:11:04.0100000Z Download action repository 'actions/checkout@v4'
+2026-09-03T10:11:04.2100000Z Download action repository 'hashicorp/setup-terraform@v3'
+2026-09-03T10:11:04.3100000Z Complete job name: plan
+2026-09-03T10:11:04.4000000Z ##[group]Run actions/checkout@v4
+2026-09-03T10:11:04.4100000Z with:
+2026-09-03T10:11:04.4200000Z   repository: brindle-marsh/reedgate-infra
+2026-09-03T10:11:04.4300000Z   fetch-depth: 1
+2026-09-03T10:11:04.4400000Z ##[endgroup]
+2026-09-03T10:11:04.9000000Z Syncing repository: brindle-marsh/reedgate-infra
+2026-09-03T10:11:05.2200000Z Checking out the ref
+2026-09-03T10:11:05.4100000Z ##[group]Run hashicorp/setup-terraform@v3
+2026-09-03T10:11:05.4200000Z with:
+2026-09-03T10:11:05.4300000Z   terraform_version: 1.9.8
+2026-09-03T10:11:05.4400000Z   terraform_wrapper: true
+2026-09-03T10:11:05.4500000Z ##[endgroup]
+2026-09-03T10:11:06.1200000Z Terraform CLI installed
+2026-09-03T10:11:06.1300000Z ##[group]Run sed -n '1,8p' providers.tf ../../modules/fenway/versions.tf
+2026-09-03T10:11:06.1400000Z sed -n '1,8p' providers.tf ../../modules/fenway/versions.tf
+2026-09-03T10:11:06.1500000Z ##[endgroup]
+2026-09-03T10:11:06.1600000Z     aws = { source = "hashicorp/aws", version = ">= 5.42.0" }
+2026-09-03T10:11:06.1700000Z     aws = { source = "hashicorp/aws", version = "< 5.40.0" }
+2026-09-03T10:11:06.2100000Z ##[group]Run terraform init -backend=false -input=false
+2026-09-03T10:11:06.2200000Z terraform init -backend=false -input=false
+2026-09-03T10:11:06.2300000Z shell: /usr/bin/bash -e {0}
+2026-09-03T10:11:06.2400000Z ##[endgroup]
+2026-09-03T10:11:06.4800000Z Initializing modules...
+2026-09-03T10:11:06.4900000Z - fenway in ../../modules/fenway
+2026-09-03T10:11:06.5500000Z Initializing provider plugins...
+2026-09-03T10:11:06.5600000Z - Finding hashicorp/aws versions matching ">= 5.42.0, < 5.40.0"...
+2026-09-03T10:11:07.1100000Z ╷
+2026-09-03T10:11:07.1200000Z │ Error: Failed to query available provider packages
+2026-09-03T10:11:07.1300000Z │
+2026-09-03T10:11:07.1400000Z │ Could not retrieve the list of available versions for provider
+2026-09-03T10:11:07.1500000Z │ hashicorp/aws: no available releases match the given constraints >= 5.42.0, < 5.40.0
+2026-09-03T10:11:07.1600000Z ╵
+2026-09-03T10:11:07.1900000Z ##[error]Terraform exited with code 1.
+2026-09-03T10:11:07.2000000Z ##[error]Process completed with exit code 1.
+2026-09-03T10:11:07.3100000Z Post job cleanup.
+2026-09-03T10:11:07.5200000Z Cleaning up orphan processes

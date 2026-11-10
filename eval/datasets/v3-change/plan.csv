@@ -1,0 +1,61 @@
+id_prefix,split,comparability,category,culprit_kind,event,note,suggested_ecosystem
+d01,dev,comparable,missing_env_var,workflow,push,an env entry removed from the workflow; decoy: a larger refactor in another commit,python
+d02,dev,comparable,missing_env_var,source,push,code now reads a renamed variable; decoy: README and test changes,node
+d03,dev,comparable,dependency_build,lockfile,push,lockfile bump pulls a breaking transitive release,node
+d04,dev,comparable,dependency_build,dependency_manifest,pull_request,manifest version range widened; decoy: the most recent commit is a docs change,rust
+d05,dev,comparable,test_regression,source,push,a logic change breaks an existing test; decoy: the test file also changed harmlessly,go
+d06,dev,comparable,test_regression,source,push,culprit is not the largest diff; a big formatting commit is in range,java
+d07,dev,comparable,db_connectivity,workflow,push,service port mapping changed in the workflow,python
+d08,dev,comparable,db_connectivity,source,push,default database host changed in a config module,ruby
+d09,dev,comparable,docker,build_config,push,Dockerfile base image tag changed,go
+d10,dev,comparable,docker,build_config,push,compose file service image renamed; decoy: many source edits,node
+d11,dev,comparable,workflow_path,workflow,push,a directory was moved but the workflow still uses the old path,python
+d12,dev,comparable,github_permissions,workflow,pull_request,the permissions block was narrowed,typescript
+d13,dev,comparable,oom_timeout,test,push,a new heavy test exhausts memory,java
+d14,dev,comparable,oom_timeout,workflow,push,timeout-minutes lowered; decoy: the log mentions a source file that changed harmlessly,dotnet
+d15,dev,partially_comparable,missing_env_var,workflow,push,baseline log unavailable (no baseline.log),php
+d16,dev,partially_comparable,dependency_build,runner_image,push,runner image version differs and its toolchain update is the cause; decoy code changes in range,python
+d17,dev,partially_comparable,test_regression,source,push,runner image version differs but the cause is a code change,go
+d18,dev,partially_comparable,docker,build_config,push,history diverged after a force-push; compare from the merge base,rust
+d19,dev,partially_comparable,github_permissions,workflow,push,history diverged after a rebase,node
+d20,dev,partially_comparable,db_connectivity,build_config,push,baseline runner labels unknown (null) and baseline log unavailable,kotlin
+d21,dev,partially_comparable,test_regression,test,push,runner image unknown in the baseline (null),ruby
+d22,dev,identical,oom_timeout,none,push,no code change; the job ran out of time on a slow runner,java
+d23,dev,identical,db_connectivity,none,push,no code change; the database service failed to become ready,python
+d24,dev,identical,dependency_build,none,push,no code change; the package registry returned errors,node
+d25,dev,incomparable,test_regression,none,push,the workflow file was renamed so earlier successes ran another workflow_path,go
+d26,dev,incomparable,missing_env_var,none,push,the only successful runs are on another branch,python
+d27,dev,incomparable,workflow_path,none,push,the earlier successes ran on another OS (different labels),dotnet
+d28,dev,no_baseline,docker,none,push,a new workflow; this is its first run,node
+d29,dev,no_baseline,dependency_build,none,pull_request,every earlier run of this workflow on the branch failed,rust
+d30,dev,history_unavailable,test_regression,none,push,the baseline commit was force-pushed away so compare returns not_found,java
+t01,test,comparable,missing_env_var,workflow,pull_request,a secret mapping removed from a step env block; decoy: dependency bump in range,go
+t02,test,comparable,missing_env_var,source,push,a new required setting read at startup; decoy: workflow comment edits,ruby
+t03,test,comparable,dependency_build,lockfile,push,lockfile regenerated with an incompatible version,python
+t04,test,comparable,dependency_build,dependency_manifest,push,language toolchain version bumped in the manifest,java
+t05,test,comparable,test_regression,source,push,boundary condition changed; decoy: the most recent commit edits tests only,typescript
+t06,test,comparable,test_regression,source,pull_request,culprit is in an older commit than three harmless later commits,python
+t07,test,comparable,db_connectivity,workflow,push,database name in the workflow env changed,node
+t08,test,comparable,db_connectivity,source,push,connection string builder changed the port,go
+t09,test,comparable,docker,build_config,push,a COPY path in the Dockerfile changed; decoy: a large docs commit,python
+t10,test,comparable,docker,build_config,push,build stage renamed but the target still uses the old name,rust
+t11,test,comparable,workflow_path,workflow,push,working-directory points at a renamed folder,node
+t12,test,comparable,github_permissions,workflow,push,packages write permission removed,go
+t13,test,comparable,oom_timeout,source,push,a cache change makes the build use far more memory,java
+t14,test,comparable,oom_timeout,workflow,push,a matrix entry added doubles the work within the same timeout; decoy: source edits,python
+t15,test,partially_comparable,missing_env_var,workflow,push,baseline log unavailable (no baseline.log),node
+t16,test,partially_comparable,dependency_build,runner_image,push,runner image update changed the default compiler; decoy: a manifest change,cpp
+t17,test,partially_comparable,test_regression,source,push,runner image version differs but the cause is a code change,python
+t18,test,partially_comparable,docker,build_config,pull_request,history diverged after a force-push,go
+t19,test,partially_comparable,github_permissions,workflow,push,history diverged after a rebase,java
+t20,test,partially_comparable,db_connectivity,workflow,push,baseline runner labels unknown (null),ruby
+t21,test,partially_comparable,test_regression,test,push,runner image unknown in the baseline (null) and baseline log unavailable,kotlin
+t22,test,identical,oom_timeout,none,push,no code change; the runner ran out of disk,node
+t23,test,identical,docker,none,push,no code change; the image registry was unavailable,python
+t24,test,identical,test_regression,none,pull_request,no code change; a time-dependent test failed,go
+t25,test,incomparable,dependency_build,none,push,the earlier successes ran under another event (schedule) only,python
+t26,test,incomparable,test_regression,none,push,the failed job did not exist in the earlier successful runs,rust
+t27,test,incomparable,missing_env_var,none,push,the workflow file was renamed so earlier successes ran another workflow_path,node
+t28,test,no_baseline,github_permissions,none,push,a new workflow; this is its first run,go
+t29,test,no_baseline,workflow_path,none,push,every earlier run of this workflow on the branch failed,java
+t30,test,history_unavailable,dependency_build,none,push,the baseline commit is gone so compare returns not_found,python

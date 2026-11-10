@@ -1,0 +1,54 @@
+2026-09-02T09:14:00.1083401Z Current runner version: '2.328.0'
+2026-09-02T09:14:00.1085100Z ##[group]Runner Image Provisioner
+2026-09-02T09:14:00.1086900Z Hosted Compute Agent
+2026-09-02T09:14:00.1088800Z ##[endgroup]
+2026-09-02T09:14:00.1090200Z ##[group]Runner Image
+2026-09-02T09:14:00.1091300Z Image: ubuntu-24.04
+2026-09-02T09:14:00.1092400Z Version: 20260823.1.0
+2026-09-02T09:14:00.1093500Z ##[endgroup]
+2026-09-02T09:14:00.1094600Z ##[group]GITHUB_TOKEN Permissions
+2026-09-02T09:14:00.1095700Z Contents: read
+2026-09-02T09:14:00.1096800Z ##[endgroup]
+2026-09-02T09:14:00.1097900Z Prepare workflow directory
+2026-09-02T09:14:00.2188100Z Prepare all required actions
+2026-09-02T09:14:00.7237100Z Download action repository 'actions/checkout@v4'
+2026-09-02T09:14:01.1173000Z Download action repository 'actions/setup-java@v4'
+2026-09-02T09:14:01.7112000Z Complete job name: verify
+2026-09-02T09:14:01.8420000Z ##[group]Run actions/checkout@v4
+2026-09-02T09:14:01.8421500Z with:
+2026-09-02T09:14:01.8422500Z   repository: brackenquay/lanternforge
+2026-09-02T09:14:01.8423500Z   clean: true
+2026-09-02T09:14:01.8424500Z ##[endgroup]
+2026-09-02T09:14:02.1423000Z Syncing repository: brackenquay/lanternforge
+2026-09-02T09:14:02.3194000Z Getting Git version info
+2026-09-02T09:14:03.4209000Z Checking out the ref
+2026-09-02T09:14:03.5561000Z [command]/usr/bin/git log -1 --format=%H
+2026-09-02T09:14:03.5563000Z 89eac62d4d936bf182ecb750f913e6fc1bf369aa
+2026-09-02T09:14:03.6113000Z ##[group]Run actions/setup-java@v4
+2026-09-02T09:14:03.6115000Z with:
+2026-09-02T09:14:03.6116000Z   distribution: temurin
+2026-09-02T09:14:03.6117000Z   java-version: 21
+2026-09-02T09:14:03.6118000Z ##[endgroup]
+2026-09-02T09:14:04.7267000Z Java 21 was set up
+2026-09-02T09:14:04.8410000Z ##[group]Run mvn -B verify
+2026-09-02T09:14:04.8412000Z [36;1mmvn -B verify[0m
+2026-09-02T09:14:04.8420000Z shell: /usr/bin/bash -e {0}
+2026-09-02T09:14:04.8421000Z ##[endgroup]
+2026-09-02T09:14:06.2010000Z [INFO] Scanning for projects...
+2026-09-02T09:14:06.4430000Z [INFO] ----------------< net.brackenquay:lanternforge >-----------------
+2026-09-02T09:14:06.4433000Z [INFO] Building lanternforge 1.4-SNAPSHOT
+2026-09-02T09:14:06.4435000Z [INFO] --------------------------------[ jar ]---------------------------------
+2026-09-02T09:14:06.7110000Z [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-enforcer-plugin/3.5.9/maven-enforcer-plugin-3.5.9.pom
+2026-09-02T09:14:07.0340000Z [WARNING] The POM for org.apache.maven.plugins:maven-enforcer-plugin:jar:3.5.9 is missing, no dependency information available
+2026-09-02T09:14:07.2120000Z [INFO] ------------------------------------------------------------------------
+2026-09-02T09:14:07.2122000Z [INFO] BUILD FAILURE
+2026-09-02T09:14:07.2124000Z [INFO] ------------------------------------------------------------------------
+2026-09-02T09:14:07.2126000Z [INFO] Total time:  1.128 s
+2026-09-02T09:14:07.2128000Z [INFO] Finished at: 2026-09-02T09:14:07Z
+2026-09-02T09:14:07.2130000Z [INFO] ------------------------------------------------------------------------
+2026-09-02T09:14:07.2132000Z [ERROR] Plugin org.apache.maven.plugins:maven-enforcer-plugin:3.5.9 or one of its dependencies could not be resolved: Could not find artifact org.apache.maven.plugins:maven-enforcer-plugin:jar:3.5.9 in central (https://repo.maven.apache.org/maven2) -> [Help 1]
+2026-09-02T09:14:07.2134000Z [ERROR] For more information about the errors and possible solutions, please read the following articles:
+2026-09-02T09:14:07.2136000Z [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/PluginResolutionException
+2026-09-02T09:14:07.2760000Z ##[error]Process completed with exit code 1.
+2026-09-02T09:14:07.2990000Z Post job cleanup.
+2026-09-02T09:14:07.4010000Z Cleaning up orphan processes

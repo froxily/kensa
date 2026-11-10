@@ -1,0 +1,13 @@
+{
+  "id": "hd19-verdant-heap",
+  "independent_labels": [
+    {"id": "e1", "cluster": "a", "relation": "first", "category": "oom_timeout"},
+    {"id": "e2", "cluster": "b", "relation": "lookalike", "category": "oom_timeout"},
+    {"id": "e3", "cluster": "a", "relation": "recurrence", "category": "oom_timeout"},
+    {"id": "e4", "cluster": "a", "relation": "recurrence", "category": "oom_timeout"}
+  ],
+  "verdict": "ambiguous",
+  "disputed_fields": ["e2.root_cause", "e2.category"],
+  "reason_category": "ambiguous_evidence",
+  "notes": "The heap failures share the 512 MB limit and ExpandedFixture retention; e3 and e4 have substantive run differences. In e2, repeated fixture-server connection refusals precede cancellation, but the log does not establish a step deadline or unbounded retries: cancellation could have another cause. The timeout category is therefore provisional. The plan pattern matches the proposed clusters; no giveaway commentary was found."
+}

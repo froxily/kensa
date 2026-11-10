@@ -1,0 +1,58 @@
+2026-09-08T11:05:20.1000000Z Current runner version: '2.328.0'
+2026-09-08T11:05:20.1010000Z ##[group]Runner Image
+2026-09-08T11:05:20.1020000Z Image: ubuntu-24.04
+2026-09-08T11:05:20.1030000Z Version: 20260831.1.0
+2026-09-08T11:05:20.1040000Z ##[endgroup]
+2026-09-08T11:05:20.1050000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-08T11:05:20.1060000Z Contents: read
+2026-09-08T11:05:20.1070000Z ##[endgroup]
+2026-09-08T11:05:20.1080000Z Prepare workflow directory
+2026-09-08T11:05:20.3100000Z Prepare all required actions
+2026-09-08T11:05:20.9000000Z Download action repository 'actions/checkout@v4'
+2026-09-08T11:05:21.3000000Z Download action repository 'actions/setup-java@v4'
+2026-09-08T11:05:21.9000000Z Complete job name: test
+2026-09-08T11:05:22.1000000Z ##[group]Run actions/checkout@v4
+2026-09-08T11:05:22.1010000Z with:
+2026-09-08T11:05:22.1020000Z   repository: brackenquay/lanternforge
+2026-09-08T11:05:22.1030000Z ##[endgroup]
+2026-09-08T11:05:22.4000000Z Syncing repository: brackenquay/lanternforge
+2026-09-08T11:05:23.2000000Z Checking out the ref
+2026-09-08T11:05:23.5000000Z ##[group]Run actions/setup-java@v4
+2026-09-08T11:05:23.5010000Z with:
+2026-09-08T11:05:23.5020000Z   distribution: temurin
+2026-09-08T11:05:23.5030000Z   java-version: 21
+2026-09-08T11:05:23.5040000Z ##[endgroup]
+2026-09-08T11:05:24.6000000Z Java 21 was set up
+2026-09-08T11:05:24.8000000Z ##[group]Run mvn -B test
+2026-09-08T11:05:24.8010000Z mvn -B test
+2026-09-08T11:05:24.8020000Z shell: /usr/bin/bash -e {0}
+2026-09-08T11:05:24.8030000Z ##[endgroup]
+2026-09-08T11:05:26.2000000Z [INFO] Scanning for projects...
+2026-09-08T11:05:26.4000000Z [INFO] ----------------< net.brackenquay:lanternforge >-----------------
+2026-09-08T11:05:26.4010000Z [INFO] Building lanternforge 1.4-SNAPSHOT
+2026-09-08T11:05:28.9000000Z [INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ lanternforge ---
+2026-09-08T11:05:31.2000000Z [INFO] Compiling 18 source files with javac [debug release 21] to target/classes
+2026-09-08T11:05:33.3000000Z [INFO] --- maven-surefire-plugin:3.5.2:test (default-test) @ lanternforge ---
+2026-09-08T11:05:34.0000000Z [INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+2026-09-08T11:05:34.1000000Z [INFO] -------------------------------------------------------
+2026-09-08T11:05:34.1010000Z [INFO]  T E S T S
+2026-09-08T11:05:34.1020000Z [INFO] -------------------------------------------------------
+2026-09-08T11:05:34.5000000Z [INFO] Running net.brackenquay.lanternforge.DispatchWindowTest
+2026-09-08T11:05:34.9000000Z [ERROR] Tests run: 8, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.218 s <<< FAILURE! -- in net.brackenquay.lanternforge.DispatchWindowTest
+2026-09-08T11:05:34.9010000Z [ERROR] net.brackenquay.lanternforge.DispatchWindowTest.endsAtExclusiveBoundary -- Time elapsed: 0.021 s <<< FAILURE!
+2026-09-08T11:05:34.9020000Z org.opentest4j.AssertionFailedError: expected: <2026-09-08T12:00:00Z> but was: <2026-09-08T11:59:59Z>
+2026-09-08T11:05:34.9030000Z 	at net.brackenquay.lanternforge.DispatchWindowTest.endsAtExclusiveBoundary(DispatchWindowTest.java:47)
+2026-09-08T11:05:35.0000000Z [INFO] Results:
+2026-09-08T11:05:35.0010000Z [ERROR] Failures:
+2026-09-08T11:05:35.0020000Z [ERROR]   DispatchWindowTest.endsAtExclusiveBoundary:47 expected: <2026-09-08T12:00:00Z> but was: <2026-09-08T11:59:59Z>
+2026-09-08T11:05:35.0030000Z [INFO] Tests run: 32, Failures: 1, Errors: 0, Skipped: 0
+2026-09-08T11:05:35.1000000Z [INFO] ------------------------------------------------------------------------
+2026-09-08T11:05:35.1010000Z [INFO] BUILD FAILURE
+2026-09-08T11:05:35.1020000Z [INFO] ------------------------------------------------------------------------
+2026-09-08T11:05:35.1030000Z [ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.2:test (default-test) on project lanternforge: There are test failures.
+2026-09-08T11:05:35.1040000Z [ERROR] Please refer to /home/runner/work/lanternforge/lanternforge/target/surefire-reports for the individual test results.
+2026-09-08T11:05:35.1050000Z [ERROR] -> [Help 1]
+2026-09-08T11:05:35.1060000Z [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+2026-09-08T11:05:35.2000000Z ##[error]Process completed with exit code 1.
+2026-09-08T11:05:35.4000000Z Post job cleanup.
+2026-09-08T11:05:35.6000000Z Cleaning up orphan processes

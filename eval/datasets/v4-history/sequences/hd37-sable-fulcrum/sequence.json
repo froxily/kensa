@@ -1,0 +1,12 @@
+{
+  "id": "hd37-sable-fulcrum",
+  "split": "dev",
+  "ecosystem": "docker",
+  "repository": "sable-fulcrum/cairn-dispatch",
+  "entries": [
+    {"id": "e1", "file": "e1.log", "cluster": "a", "relation": "first", "category": "docker", "title": "Worker base image tag is absent", "root_cause": "The Dockerfile references a worker base image tag that was never published. Point it at a published tag or publish the intended tag.", "differs_from_earlier": ""},
+    {"id": "e2", "file": "e2.log", "cluster": "b", "relation": "lookalike", "category": "docker", "title": "Web base image tag is absent", "root_cause": "The web Dockerfile references a different nonexistent base image tag. Correct or publish that web image tag.", "differs_from_earlier": "Like e1, BuildKit cannot resolve an image tag, but this is a separate web image reference requiring its own correction."},
+    {"id": "e3", "file": "e3.log", "cluster": "c", "relation": "lookalike", "category": "docker", "title": "Registry denies base image access", "root_cause": "The build does not authenticate to the private registry before fetching the relay base image. Configure registry login for the build job.", "differs_from_earlier": "The metadata fetch resembles e1 and e2, but the registry responds with an authentication error for an existing private image."},
+    {"id": "e4", "file": "e4.log", "cluster": "d", "relation": "first", "category": "docker", "title": "Build context exceeds available disk", "root_cause": "The runner runs out of disk space while copying the build context into BuildKit. Reduce the context or provide more disk space.", "differs_from_earlier": ""}
+  ]
+}

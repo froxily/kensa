@@ -1,0 +1,47 @@
+2026-09-24T07:39:20.1000000Z Current runner version: '2.329.0'
+2026-09-24T07:39:20.2000000Z ##[group]Runner Image
+2026-09-24T07:39:20.3000000Z Image: ubuntu-24.04
+2026-09-24T07:39:20.4000000Z Version: 20260920.1.0
+2026-09-24T07:39:20.5000000Z ##[endgroup]
+2026-09-24T07:39:20.6000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-24T07:39:20.7000000Z Contents: read
+2026-09-24T07:39:20.8000000Z Metadata: read
+2026-09-24T07:39:20.9000000Z ##[endgroup]
+2026-09-24T07:39:21.0000000Z Prepare workflow directory
+2026-09-24T07:39:21.1000000Z Prepare all required actions
+2026-09-24T07:39:21.2000000Z Getting action download info
+2026-09-24T07:39:21.3000000Z Download action repository 'actions/checkout@v4'
+2026-09-24T07:39:21.4000000Z Complete job name: render / production
+2026-09-24T07:39:21.5000000Z ##[group]Run actions/checkout@v4
+2026-09-24T07:39:21.6000000Z with:
+2026-09-24T07:39:21.7000000Z   repository: vellum-rill/gatehouse-chart
+2026-09-24T07:39:21.8000000Z   fetch-depth: 1
+2026-09-24T07:39:21.9000000Z   clean: true
+2026-09-24T07:39:22.0000000Z ##[endgroup]
+2026-09-24T07:39:22.1000000Z Syncing repository: vellum-rill/gatehouse-chart
+2026-09-24T07:39:22.2000000Z ##[group]Getting Git version info
+2026-09-24T07:39:22.3000000Z git version 2.51.1
+2026-09-24T07:39:22.4000000Z ##[endgroup]
+2026-09-24T07:39:22.5000000Z Initializing the repository
+2026-09-24T07:39:22.6000000Z Fetching the repository
+2026-09-24T07:39:23.1000000Z Checking out the ref
+2026-09-24T07:39:23.2000000Z /usr/bin/git log -1 --format=%H
+2026-09-24T07:39:23.3000000Z a1f924e365fd10974b360c392e8b256099816bf4
+2026-09-24T07:39:23.4000000Z ##[group]Run helm lint ./charts/gatehouse
+2026-09-24T07:39:23.5000000Z helm lint ./charts/gatehouse
+2026-09-24T07:39:23.6000000Z shell: /usr/bin/bash -e {0}
+2026-09-24T07:39:23.7000000Z ##[endgroup]
+2026-09-24T07:39:23.8000000Z ==> Linting ./charts/gatehouse
+2026-09-24T07:39:23.9000000Z [INFO] Chart.yaml: icon is recommended
+2026-09-24T07:39:24.0000000Z 1 chart(s) linted, 0 chart(s) failed
+2026-09-24T07:39:24.1000000Z ##[group]Run helm template gatehouse-live ./charts/gatehouse -f deploy/production.yaml --namespace live
+2026-09-24T07:39:24.2000000Z helm template gatehouse-live ./charts/gatehouse -f deploy/production.yaml --namespace live
+2026-09-24T07:39:24.3000000Z shell: /usr/bin/bash -e {0}
+2026-09-24T07:39:24.4000000Z ##[endgroup]
+2026-09-24T07:39:24.5000000Z Error: execution error at (gatehouse/templates/service.yaml:21:15): telemetry.listenPort is required
+2026-09-24T07:39:24.6000000Z Use --debug flag to render out invalid YAML
+2026-09-24T07:39:24.7000000Z ##[error]Process completed with exit code 1.
+2026-09-24T07:39:24.8000000Z Post job cleanup.
+2026-09-24T07:39:24.9000000Z [command]/usr/bin/git version
+2026-09-24T07:39:25.0000000Z git version 2.51.1
+2026-09-24T07:39:25.1000000Z Cleaning up orphan processes

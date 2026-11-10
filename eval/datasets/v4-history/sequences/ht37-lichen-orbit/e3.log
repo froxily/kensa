@@ -1,0 +1,45 @@
+2026-09-15T06:25:12.1010000Z Current runner version: '2.328.0'
+2026-09-15T06:25:12.1200000Z ##[group]Operating System
+2026-09-15T06:25:12.1210000Z Ubuntu
+2026-09-15T06:25:12.1220000Z 22.04.5
+2026-09-15T06:25:12.1230000Z ##[endgroup]
+2026-09-15T06:25:12.1540000Z ##[group]Runner Image
+2026-09-15T06:25:12.1550000Z Image: ubuntu-22.04
+2026-09-15T06:25:12.1560000Z Version: 20260913.1.0
+2026-09-15T06:25:12.1570000Z ##[endgroup]
+2026-09-15T06:25:12.2010000Z Prepare workflow directory
+2026-09-15T06:25:12.3330000Z Prepare all required actions
+2026-09-15T06:25:12.6560000Z Download action repository 'actions/checkout@v4'
+2026-09-15T06:25:13.0400000Z ##[group]Run actions/checkout@v4
+2026-09-15T06:25:13.0410000Z with:
+2026-09-15T06:25:13.0420000Z   repository: lichen-orbit/pulse-vault
+2026-09-15T06:25:13.0430000Z   fetch-depth: 1
+2026-09-15T06:25:13.0440000Z ##[endgroup]
+2026-09-15T06:25:13.2200000Z Syncing repository: lichen-orbit/pulse-vault
+2026-09-15T06:25:13.2220000Z ##[group]Getting Git version info
+2026-09-15T06:25:13.2230000Z git version 2.51.0
+2026-09-15T06:25:13.2240000Z ##[endgroup]
+2026-09-15T06:25:13.5940000Z Fetching the repository
+2026-09-15T06:25:14.4210000Z Checking out the ref
+2026-09-15T06:25:14.6220000Z ##[group]Run docker buildx build --progress=plain -f deploy/Containerfile .
+2026-09-15T06:25:14.6230000Z docker buildx build --progress=plain -f deploy/Containerfile .
+2026-09-15T06:25:14.6240000Z shell: /usr/bin/bash -e {0}
+2026-09-15T06:25:14.6250000Z ##[endgroup]
+2026-09-15T06:25:14.9310000Z #0 building with "default" instance using docker driver
+2026-09-15T06:25:14.9320000Z #1 [internal] load build definition from Containerfile
+2026-09-15T06:25:14.9330000Z #1 transferring dockerfile: 468B done
+2026-09-15T06:25:14.9340000Z #1 DONE 0.0s
+2026-09-15T06:25:14.9350000Z 
+2026-09-15T06:25:14.9360000Z  1 warning found (use docker --debug to expand):
+2026-09-15T06:25:14.9370000Z  - InvalidDefaultArgInFrom: Default value for ARG ${PULSE_RUNTIME_IMAGE} results in empty or invalid base image name (line 10)
+2026-09-15T06:25:14.9380000Z Containerfile:10
+2026-09-15T06:25:14.9390000Z --------------------
+2026-09-15T06:25:14.9400000Z    8 |     RUN go build -o /out/pulse ./cmd/pulse
+2026-09-15T06:25:14.9410000Z    9 | 
+2026-09-15T06:25:14.9420000Z   10 | >>> FROM ${PULSE_RUNTIME_IMAGE} AS runtime
+2026-09-15T06:25:14.9430000Z   11 |     COPY --from=builder /out/pulse /usr/local/bin/pulse
+2026-09-15T06:25:14.9440000Z --------------------
+2026-09-15T06:25:14.9450000Z ERROR: failed to build: failed to solve: base name (${PULSE_RUNTIME_IMAGE}) should not be blank
+2026-09-15T06:25:14.9620000Z ##[error]Process completed with exit code 1.
+2026-09-15T06:25:15.0210000Z Post job cleanup.
+2026-09-15T06:25:15.1430000Z Cleaning up orphan processes

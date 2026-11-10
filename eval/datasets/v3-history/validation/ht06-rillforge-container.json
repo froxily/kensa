@@ -1,0 +1,13 @@
+{
+  "id": "ht06-rillforge-container",
+  "independent_labels": [
+    {"id": "e1", "cluster": "a", "relation": "first", "category": "docker"},
+    {"id": "e2", "cluster": "b", "relation": "lookalike", "category": "docker"},
+    {"id": "e3", "cluster": "b", "relation": "recurrence", "category": "docker"},
+    {"id": "e4", "cluster": "a", "relation": "recurrence", "category": "docker"}
+  ],
+  "verdict": "disagree",
+  "disputed_fields": ["e2.relation", "e2.differs_from_earlier"],
+  "reason_category": "label_conflict",
+  "notes": "e2 resembles e1: both fail resolving Docker Hub metadata with a not-found error. e2 instead needs the COPY stage reference corrected, so it is a lookalike and should describe its difference. e3 and e4 repeat the respective causes with substantive run differences; the root causes match the logs and no giveaway commentary is apparent. The plan pattern calls e2 first."
+}

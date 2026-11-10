@@ -1,0 +1,52 @@
+﻿2026-09-12T11:23:40.0000000Z Current runner version: '2.329.0'
+2026-09-12T11:23:40.1000000Z ##[group]Runner Image
+2026-09-12T11:23:40.2000000Z Image: ubuntu-24.04
+2026-09-12T11:23:40.3000000Z Version: 20260907.1.0
+2026-09-12T11:23:40.4000000Z ##[endgroup]
+2026-09-12T11:23:40.5000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-12T11:23:40.6000000Z Contents: read
+2026-09-12T11:23:40.7000000Z ##[endgroup]
+2026-09-12T11:23:41.0000000Z Prepare workflow directory
+2026-09-12T11:23:41.3000000Z Prepare all required actions
+2026-09-12T11:23:42.0000000Z Download action repository 'actions/checkout@v4'
+2026-09-12T11:23:42.6000000Z Download action repository 'actions/setup-node@v4'
+2026-09-12T11:23:43.1000000Z Complete job name: verify
+2026-09-12T11:23:43.2000000Z ##[group]Run actions/checkout@v4
+2026-09-12T11:23:43.3000000Z with:
+2026-09-12T11:23:43.4000000Z   repository: gloamforge/harbor-sundial
+2026-09-12T11:23:43.5000000Z   fetch-depth: 1
+2026-09-12T11:23:43.6000000Z ##[endgroup]
+2026-09-12T11:23:43.9000000Z Syncing repository: gloamforge/harbor-sundial
+2026-09-12T11:23:44.1000000Z Initializing the repository
+2026-09-12T11:23:44.8000000Z Fetching the repository
+2026-09-12T11:23:45.5000000Z Checking out the ref
+2026-09-12T11:23:45.8000000Z ##[group]Run actions/setup-node@v4
+2026-09-12T11:23:45.9000000Z with:
+2026-09-12T11:23:46.0000000Z   node-version: 20
+2026-09-12T11:23:46.1000000Z ##[endgroup]
+2026-09-12T11:23:46.3000000Z Found in cache @ /opt/hostedtoolcache/node/20.19.5/x64
+2026-09-12T11:23:46.4000000Z ##[group]Environment details
+2026-09-12T11:23:46.5000000Z node: v20.19.5
+2026-09-12T11:23:46.6000000Z npm: 10.8.2
+2026-09-12T11:23:46.7000000Z ##[endgroup]
+2026-09-12T11:23:46.8000000Z ##[group]Run npm ci
+2026-09-12T11:23:46.9000000Z npm ci
+2026-09-12T11:23:47.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-12T11:23:47.1000000Z ##[endgroup]
+2026-09-12T11:23:49.3000000Z npm error code ERESOLVE
+2026-09-12T11:23:49.4000000Z npm error ERESOLVE could not resolve
+2026-09-12T11:23:49.5000000Z npm error While resolving: @gloamforge/timeline-ruler@2.4.0
+2026-09-12T11:23:49.6000000Z npm error Found: @gloamforge/timeline-core@5.0.0
+2026-09-12T11:23:49.7000000Z npm error node_modules/@gloamforge/timeline-core
+2026-09-12T11:23:49.8000000Z npm error   @gloamforge/timeline-core@"5.0.0" from the root project
+2026-09-12T11:23:49.9000000Z npm error Could not resolve dependency:
+2026-09-12T11:23:50.0000000Z npm error peer @gloamforge/timeline-core@"^4.0.0" from @gloamforge/timeline-ruler@2.4.0
+2026-09-12T11:23:50.1000000Z npm error node_modules/@gloamforge/timeline-ruler
+2026-09-12T11:23:50.2000000Z npm error   @gloamforge/timeline-ruler@"2.4.0" from the root project
+2026-09-12T11:23:50.3000000Z npm error Fix the upstream dependency conflict, or retry
+2026-09-12T11:23:50.4000000Z npm error this command with --force or --legacy-peer-deps
+2026-09-12T11:23:50.5000000Z npm error to accept an incorrect dependency resolution.
+2026-09-12T11:23:50.6000000Z npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-09-12T11_23_47_212Z-debug-0.log
+2026-09-12T11:23:50.7000000Z ##[error]Process completed with exit code 1.
+2026-09-12T11:23:50.8000000Z Post job cleanup.
+2026-09-12T11:23:50.9000000Z Cleaning up orphan processes

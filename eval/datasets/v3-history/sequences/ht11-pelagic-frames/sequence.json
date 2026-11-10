@@ -1,0 +1,12 @@
+{
+  "id": "ht11-pelagic-frames",
+  "split": "test",
+  "ecosystem": "python",
+  "repository": "pelagic-forge/kelp-collector",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"db_connectivity","title":"Collector frame exceeds proxy limit","root_cause":"The collector sends frames larger than the database ingress proxy's 16384-byte maximum, causing the proxy to reset the connection. Increase the proxy frame limit or reduce the collector batch size.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"b","relation":"lookalike","category":"db_connectivity","title":"Collector connects to metrics host","root_cause":"The collector endpoint points to the metrics exporter host, which resets database ingest protocol connections. Set the endpoint to the database ingress host.","differs_from_earlier":"The same Python client receives a reset, but the connected host identifies itself as the metrics exporter rather than the ingress proxy."},
+    {"id":"e3","file":"e3.log","cluster":"a","relation":"recurrence","category":"db_connectivity","title":"Oversized collector frame resets again","root_cause":"The collector sends frames larger than the database ingress proxy's 16384-byte maximum, causing the proxy to reset the connection. Increase the proxy frame limit or reduce the collector batch size.","differs_from_earlier":"A different batch and runner encounter the same proxy frame limit; the failure is surfaced by a retry wrapper."},
+    {"id":"e4","file":"e4.log","cluster":"c","relation":"first","category":"test_regression","title":"Tide window boundary assertion fails","root_cause":"The tide window calculation excludes a sample at its inclusive lower boundary. Correct the boundary comparison in the window calculation.","differs_from_earlier":""}
+  ]
+}

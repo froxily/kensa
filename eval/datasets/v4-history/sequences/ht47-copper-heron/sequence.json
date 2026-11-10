@@ -1,0 +1,12 @@
+{
+  "id": "ht47-copper-heron",
+  "split": "test",
+  "ecosystem": "kotlin (gradle, android)",
+  "repository": "copper-heron/tide-dial",
+  "entries": [
+    {"id":"e1","file":"e1.log","cluster":"a","relation":"first","category":"test_regression","title":"Free release lint finds a new untranslated string","root_cause":"The free flavor adds the harbor_count string without a French translation, so it is absent from the lint baseline. Add the translation or explicitly resolve the new lint finding.","differs_from_earlier":""},
+    {"id":"e2","file":"e2.log","cluster":"b","relation":"lookalike","category":"test_regression","title":"Paid release lint finds a new untranslated string","root_cause":"The paid flavor adds the berth_status string without a French translation, producing a separate finding absent from its lint baseline. Add the paid flavor translation or explicitly resolve that finding.","differs_from_earlier":"The same MissingTranslation lint check fails against another variant and a different string resource; fixing harbor_count does not fix berth_status."},
+    {"id":"e3","file":"e3.log","cluster":"b","relation":"recurrence","category":"test_regression","title":"Paid release translation finding remains outside the baseline","root_cause":"The paid flavor adds the berth_status string without a French translation, producing a separate finding absent from its lint baseline. Add the paid flavor translation or explicitly resolve that finding.","differs_from_earlier":"A later run has additional completed tasks and the resource moved to another line, but the paid variant still reports berth_status."},
+    {"id":"e4","file":"e4.log","cluster":"c","relation":"first","category":"dependency_build","title":"Kotlin compilation cannot resolve a formatter","root_cause":"The Kotlin source refers to formatTideLabel, which is not defined or imported. Restore the formatter or correct the reference.","differs_from_earlier":""}
+  ]
+}

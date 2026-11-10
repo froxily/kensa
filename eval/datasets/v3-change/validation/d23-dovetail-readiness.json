@@ -1,0 +1,14 @@
+{
+  "id": "d23-dovetail-readiness",
+  "independent_labels": {
+    "comparability": "identical",
+    "unverified_factors": [],
+    "category": "unknown",
+    "culprit_kind": "none",
+    "culprit_paths": []
+  },
+  "verdict": "disagree",
+  "disputed_fields": ["category"],
+  "reason_category": "label_conflict",
+  "notes": "The runs use the same commit. PostgreSQL reports an input/output error reading pg_xact during startup, but the evidence does not establish a fix to database reachability or authentication, as required for db_connectivity; the underlying storage failure and its fix are unknown."
+}

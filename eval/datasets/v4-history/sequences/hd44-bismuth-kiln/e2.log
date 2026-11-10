@@ -1,0 +1,47 @@
+2026-09-11T10:23:18.1030123Z Current runner version: '2.328.0'
+2026-09-11T10:23:18.1041100Z ##[group]Runner Image Provisioner
+2026-09-11T10:23:18.1042200Z Hosted Compute Agent
+2026-09-11T10:23:18.1043300Z Version: 20260901.2
+2026-09-11T10:23:18.1044400Z ##[endgroup]
+2026-09-11T10:23:18.1045500Z ##[group]Operating System
+2026-09-11T10:23:18.1046600Z Ubuntu
+2026-09-11T10:23:18.1047700Z 22.04.5
+2026-09-11T10:23:18.1048800Z ##[endgroup]
+2026-09-11T10:23:18.1049900Z ##[group]GITHUB_TOKEN Permissions
+2026-09-11T10:23:18.1051000Z Contents: read
+2026-09-11T10:23:18.1052100Z Metadata: read
+2026-09-11T10:23:18.1053200Z ##[endgroup]
+2026-09-11T10:23:18.1054300Z Prepare workflow directory
+2026-09-11T10:23:18.3380100Z Prepare all required actions
+2026-09-11T10:23:18.8130200Z Download action repository 'actions/checkout@v4'
+2026-09-11T10:23:19.2270000Z Complete job name: publish
+2026-09-11T10:23:19.3310000Z ##[group]Run actions/checkout@v4
+2026-09-11T10:23:19.3312000Z with:
+2026-09-11T10:23:19.3314000Z   repository: isobar-foundry/bismuth-kiln
+2026-09-11T10:23:19.3316000Z   ref: refs/tags/v2.4.1
+2026-09-11T10:23:19.3318000Z   fetch-depth: 0
+2026-09-11T10:23:19.3320000Z   token: ***
+2026-09-11T10:23:19.3322000Z ##[endgroup]
+2026-09-11T10:23:19.5520000Z Syncing repository: isobar-foundry/bismuth-kiln
+2026-09-11T10:23:19.6580000Z [command]/usr/bin/git version
+2026-09-11T10:23:19.6630000Z git version 2.43.0
+2026-09-11T10:23:20.1710000Z Fetching the repository
+2026-09-11T10:23:21.0910000Z Checking out the ref
+2026-09-11T10:23:21.1340000Z HEAD is now at f21ac63 Adjust packaging
+2026-09-11T10:23:21.1890000Z ##[group]Run zip -j kiln-linux-arm64.zip dist/kiln-arm64
+2026-09-11T10:23:21.1892000Z [36;1mzip -j kiln-linux-arm64.zip dist/kiln-arm64[0m
+2026-09-11T10:23:21.1894000Z shell: /usr/bin/bash -e {0}
+2026-09-11T10:23:21.1896000Z ##[endgroup]
+2026-09-11T10:23:21.2430000Z   adding: kiln-arm64 (deflated 49%)
+2026-09-11T10:23:21.3000000Z ##[group]Run gh release create v2.4.1 --title 'Kiln 2.4.1' --notes-file release-notes.md
+2026-09-11T10:23:21.3002000Z [36;1mgh release create v2.4.1 --title 'Kiln 2.4.1' --notes-file release-notes.md[0m
+2026-09-11T10:23:21.3004000Z shell: /usr/bin/bash -e {0}
+2026-09-11T10:23:21.3006000Z env:
+2026-09-11T10:23:21.3008000Z   GH_TOKEN: ***
+2026-09-11T10:23:21.3010000Z ##[endgroup]
+2026-09-11T10:23:21.8890000Z GraphQL: Resource not accessible by integration (createRelease)
+2026-09-11T10:23:21.8970000Z ##[error]Process completed with exit code 1.
+2026-09-11T10:23:21.9130000Z Post job cleanup.
+2026-09-11T10:23:22.0330000Z [command]/usr/bin/git version
+2026-09-11T10:23:22.0370000Z git version 2.43.0
+2026-09-11T10:23:22.1420000Z Cleaning up orphan processes

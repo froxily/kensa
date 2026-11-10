@@ -1,0 +1,42 @@
+2026-09-11T09:15:00.0000000Z Current runner version: '2.329.0'
+2026-09-11T09:15:01.0000000Z ##[group]Operating System
+2026-09-11T09:15:02.0000000Z Ubuntu 24.04.3 LTS
+2026-09-11T09:15:03.0000000Z ##[endgroup]
+2026-09-11T09:15:04.0000000Z ##[group]Runner Image
+2026-09-11T09:15:05.0000000Z Image: ubuntu-24.04
+2026-09-11T09:15:06.0000000Z Version: 20250907.1
+2026-09-11T09:15:07.0000000Z ##[endgroup]
+2026-09-11T09:15:08.0000000Z Prepare workflow directory
+2026-09-11T09:15:09.0000000Z Prepare all required actions
+2026-09-11T09:15:10.0000000Z Download action repository 'actions/checkout@v4'
+2026-09-11T09:15:11.0000000Z Complete job name: aggregation
+2026-09-11T09:15:12.0000000Z ##[group]Run actions/checkout@v4
+2026-09-11T09:15:13.0000000Z with:
+2026-09-11T09:15:14.0000000Z   repository: tessara/verdant-engine
+2026-09-11T09:15:15.0000000Z   fetch-depth: 1
+2026-09-11T09:15:16.0000000Z ##[endgroup]
+2026-09-11T09:15:17.0000000Z Syncing repository: tessara/verdant-engine
+2026-09-11T09:15:18.0000000Z git version 2.51.0
+2026-09-11T09:15:19.0000000Z Initialized empty Git repository
+2026-09-11T09:15:20.0000000Z Fetching the repository
+2026-09-11T09:15:21.0000000Z Checking out the ref
+2026-09-11T09:15:22.0000000Z ##[group]Run java -version
+2026-09-11T09:15:23.0000000Z java -version
+2026-09-11T09:15:24.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-11T09:15:25.0000000Z ##[endgroup]
+2026-09-11T09:15:26.0000000Z openjdk version "17.0.16"
+2026-09-11T09:15:27.0000000Z ##[group]Run sbt 'testOnly *AggregationSpec'
+2026-09-11T09:15:28.0000000Z sbt 'testOnly *AggregationSpec'
+2026-09-11T09:15:29.0000000Z shell: /usr/bin/bash -e {0}
+2026-09-11T09:15:30.0000000Z ##[endgroup]
+2026-09-11T09:15:31.0000000Z [info] welcome to sbt 1.10.7
+2026-09-11T09:15:32.0000000Z [info] Test / javaOptions: -Xmx512m
+2026-09-11T09:15:33.0000000Z [info] AggregationSpec:
+2026-09-11T09:15:34.0000000Z [info] - groups empty input
+2026-09-11T09:15:35.0000000Z [info] - preserves group order
+2026-09-11T09:15:36.0000000Z [error] java.lang.OutOfMemoryError: Java heap space
+2026-09-11T09:15:37.0000000Z [error] at java.base/java.util.Arrays.copyOf(Arrays.java:3481)
+2026-09-11T09:15:38.0000000Z [error] at tessara.verdant.ExpandedFixture.retainRows(ExpandedFixture.scala:51)
+2026-09-11T09:15:39.0000000Z ##[error]Process completed with exit code 1.
+2026-09-11T09:15:40.0000000Z Post job cleanup.
+2026-09-11T09:15:41.0000000Z Cleaning up orphan processes

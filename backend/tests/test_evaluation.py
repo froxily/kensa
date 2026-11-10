@@ -20,6 +20,7 @@ from kensa.evaluation.metrics import (
     recall_at_k,
     reciprocal_rank,
 )
+from kensa.evaluation.v3 import freeze_split, load_history_sequences, verify_v3
 
 RELEVANT = [
     EvidenceRef("log", 10, 12, "error"),
@@ -121,3 +122,56 @@ def test_a_split_frozen_on_its_own_can_be_evaluated_until_the_whole_set_is_froze
     log.write_text(log.read_text(encoding="utf-8") + "\ntampered", encoding="utf-8")
     with pytest.raises(DatasetError, match="differs"):
         verify_frozen(tmp_path, "dev")
+
+
+# ------------------------------------------------------------------------------ v3 (v1.1) ---
+
+
+def _v3_history(root: Path) -> None:
+    for name, split in (("hd01-x", "dev"), ("ht01-y", "test")):
+        folder = root / "sequences" / name
+        folder.mkdir(parents=True)
+        entries = [
+            {
+                "id": f"e{i}",
+                "file": f"e{i}.log",
+                "cluster": c,
+                "relation": r,
+                "category": "missing_env_var",
+            }
+            for i, (c, r) in enumerate((("a", "first"), ("a", "recurrence")), start=1)
+        ]
+        (folder / "sequence.json").write_text(
+            json.dumps({"id": name, "split": split, "entries": entries}), encoding="utf-8"
+        )
+        for entry in entries:
+            (folder / entry["file"]).write_text("Error: KEY is not set\n", encoding="utf-8")
+
+
+def test_a_v3_history_split_is_frozen_on_its_own_and_any_change_is_refused(
+    tmp_path: Path,
+) -> None:
+    _v3_history(tmp_path)
+    (dev,) = load_history_sequences(tmp_path, "dev")
+    assert [e.cluster for e in dev.entries] == ["hd01-x:a", "hd01-x:a"]
+    with pytest.raises(DatasetError, match="not frozen"):
+        verify_v3(tmp_path, "dev")
+    digest = freeze_split(tmp_path, "dev")
+    assert verify_v3(tmp_path, "dev") == digest
+    # The test split is not part of the dev manifest, so writing it does not unfreeze dev...
+    (tmp_path / "sequences" / "ht01-y" / "e2.log").write_text("other\n", encoding="utf-8")
+    assert verify_v3(tmp_path, "dev") == digest
+    # ...but any change to a dev file is refused.
+    (tmp_path / "sequences" / "hd01-x" / "e2.log").write_text("edited\n", encoding="utf-8")
+    with pytest.raises(DatasetError, match="differs"):
+        verify_v3(tmp_path, "dev")
+
+
+def test_a_v3_history_sequence_with_an_unknown_relation_is_refused(tmp_path: Path) -> None:
+    _v3_history(tmp_path)
+    path = tmp_path / "sequences" / "hd01-x" / "sequence.json"
+    data = json.loads(path.read_text(encoding="utf-8"))
+    data["entries"][1]["relation"] = "cousin"
+    path.write_text(json.dumps(data), encoding="utf-8")
+    with pytest.raises(DatasetError, match="unknown relation"):
+        load_history_sequences(tmp_path, "dev")

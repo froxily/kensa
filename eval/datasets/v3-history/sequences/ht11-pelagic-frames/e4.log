@@ -1,0 +1,45 @@
+2026-10-21T04:48:02.0100000Z Current runner version: '2.329.0'
+2026-10-21T04:48:02.1440000Z ##[group]Runner Image
+2026-10-21T04:48:02.1450000Z Image: ubuntu-24.04
+2026-10-21T04:48:02.1460000Z Version: 20261018.1.0
+2026-10-21T04:48:02.1470000Z ##[endgroup]
+2026-10-21T04:48:02.2800000Z ##[group]GITHUB_TOKEN Permissions
+2026-10-21T04:48:02.2810000Z Contents: read
+2026-10-21T04:48:02.2820000Z ##[endgroup]
+2026-10-21T04:48:02.3700000Z Prepare workflow directory
+2026-10-21T04:48:02.5600000Z Prepare all required actions
+2026-10-21T04:48:03.1300000Z Job name: unit
+2026-10-21T04:48:03.2610000Z ##[group]Run actions/checkout@v4
+2026-10-21T04:48:03.2620000Z with:
+2026-10-21T04:48:03.2630000Z   repository: pelagic-forge/kelp-collector
+2026-10-21T04:48:03.2640000Z   fetch-depth: 1
+2026-10-21T04:48:03.2650000Z ##[endgroup]
+2026-10-21T04:48:04.0900000Z Syncing repository: pelagic-forge/kelp-collector
+2026-10-21T04:48:04.5100000Z HEAD is now at 65d94ac Refine tide windows
+2026-10-21T04:48:04.6000000Z ##[group]Run actions/setup-python@v5
+2026-10-21T04:48:04.6010000Z with:
+2026-10-21T04:48:04.6020000Z   python-version: '3.12'
+2026-10-21T04:48:04.6030000Z ##[endgroup]
+2026-10-21T04:48:05.1120000Z Successfully set up CPython (3.12.7)
+2026-10-21T04:48:05.2000000Z ##[group]Run pip install -r requirements-ci.txt
+2026-10-21T04:48:05.2010000Z shell: /usr/bin/bash -e {0}
+2026-10-21T04:48:05.2020000Z ##[endgroup]
+2026-10-21T04:48:07.1900000Z Successfully installed pytest-8.3.3
+2026-10-21T04:48:07.2610000Z ##[group]Run pytest -q tests/test_tide_window.py
+2026-10-21T04:48:07.2620000Z shell: /usr/bin/bash -e {0}
+2026-10-21T04:48:07.2630000Z ##[endgroup]
+2026-10-21T04:48:07.9100000Z ..F.                                                                     [100%]
+2026-10-21T04:48:07.9110000Z =================================== FAILURES ===================================
+2026-10-21T04:48:07.9120000Z ____________________ test_window_includes_lower_boundary _____________________
+2026-10-21T04:48:07.9130000Z     def test_window_includes_lower_boundary():
+2026-10-21T04:48:07.9140000Z         samples = [(10, 3), (11, 5), (12, 7)]
+2026-10-21T04:48:07.9150000Z >       assert window_total(samples, start=10, end=12) == 15
+2026-10-21T04:48:07.9160000Z E       assert 12 == 15
+2026-10-21T04:48:07.9170000Z E        +  where 12 = window_total([(10, 3), (11, 5), (12, 7)], start=10, end=12)
+2026-10-21T04:48:07.9180000Z tests/test_tide_window.py:38: AssertionError
+2026-10-21T04:48:07.9190000Z =========================== short test summary info ============================
+2026-10-21T04:48:07.9200000Z FAILED tests/test_tide_window.py::test_window_includes_lower_boundary - assert 12 == 15
+2026-10-21T04:48:07.9210000Z 1 failed, 3 passed in 0.09s
+2026-10-21T04:48:07.9400000Z ##[error]Process completed with exit code 1.
+2026-10-21T04:48:08.0700000Z Post job cleanup.
+2026-10-21T04:48:08.2500000Z Cleaning up orphan processes

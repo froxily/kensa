@@ -1,0 +1,14 @@
+{
+  "id": "t06-aurora-ledger",
+  "independent_labels": {
+    "comparability": "comparable",
+    "unverified_factors": [],
+    "category": "test_regression",
+    "culprit_kind": "source",
+    "culprit_paths": ["ledger_math.py"]
+  },
+  "verdict": "agree",
+  "disputed_fields": [],
+  "reason_category": "none",
+  "notes": "The matching successful baseline has the same runner and an ahead comparison. The source change applies abs to signed open amounts, explaining the assertion failure; the later changes are harmless. The cited evidence and recorded run details are consistent."
+}

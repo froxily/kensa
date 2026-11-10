@@ -1,6 +1,9 @@
 import { ApiError, getJson, isRecord, postJson } from "../../lib/api/client";
 import type {
   AgentEvent,
+  Changes,
+  History,
+  Resolution,
   CreateInvestigationBody,
   DecisionBody,
   DecisionResponse,
@@ -49,6 +52,8 @@ export const queryKeys = {
   document: (id: string, documentId: string) =>
     ["investigations", "document", id, documentId] as const,
   samples: ["samples"] as const,
+  history: (id: string) => ["investigations", "history", id] as const,
+  changes: (id: string) => ["investigations", "changes", id] as const,
 };
 
 const enc = encodeURIComponent;
@@ -102,4 +107,106 @@ export async function decideInvestigation(
 
 export function streamUrl(id: string, after: number): string {
   return `/api/investigations/${enc(id)}/stream?after=${String(after)}`;
+}
+
+const oneOf = (value: unknown, values: readonly string[]) =>
+  typeof value === "string" && values.includes(value);
+const nullableString = (v: unknown) => v === null || typeof v === "string";
+const isResolution = (v: unknown): v is Resolution =>
+  isRecord(v) &&
+  oneOf(v.provenance, ["human_confirmed", "verifier_corroborated", "model_hypothesis", "none"]) &&
+  typeof v.summary === "string" &&
+  typeof v.created_at === "string";
+const isHistory = (v: unknown): v is History =>
+  isRecord(v) &&
+  typeof v.matching === "boolean" &&
+  Array.isArray(v.fingerprints) &&
+  v.fingerprints.every(
+    (f: unknown) =>
+      isRecord(f) &&
+      typeof f.hash === "string" &&
+      oneOf(f.role, ["primary", "secondary"]) &&
+      typeof f.category === "string" &&
+      typeof f.rule_id === "string" &&
+      typeof f.subject === "string" &&
+      typeof f.template === "string" &&
+      oneOf(f.kind, ["exact", "approximate"]) &&
+      (f.occurrences === null || typeof f.occurrences === "number"),
+  ) &&
+  Array.isArray(v.similar) &&
+  v.similar.every(
+    (x: unknown) =>
+      isRecord(x) &&
+      typeof x.investigation_id === "string" &&
+      typeof x.title === "string" &&
+      typeof x.created_at === "string" &&
+      oneOf(x.match, ["same_failure", "related", "similar_text"]) &&
+      typeof x.score === "number" &&
+      typeof x.earlier === "boolean" &&
+      typeof x.category === "string" &&
+      nullableString(x.diagnosis_category) &&
+      nullableString(x.verification_status) &&
+      oneOf(x.provenance, [
+        "human_confirmed",
+        "verifier_corroborated",
+        "model_hypothesis",
+        "none",
+      ]) &&
+      nullableString(x.resolution),
+  ) &&
+  (v.resolution === null || isResolution(v.resolution));
+const isChanges = (v: unknown): v is Changes =>
+  isRecord(v) &&
+  oneOf(v.comparability, [
+    "comparable",
+    "partially_comparable",
+    "incomparable",
+    "identical",
+    "no_baseline",
+    "history_unavailable",
+  ]) &&
+  Array.isArray(v.reasons) &&
+  v.reasons.every((x: unknown) => typeof x === "string") &&
+  Array.isArray(v.unverified) &&
+  v.unverified.every((x: unknown) => typeof x === "string") &&
+  Array.isArray(v.factors) &&
+  v.factors.every(
+    (x: unknown) =>
+      isRecord(x) &&
+      typeof x.name === "string" &&
+      oneOf(x.state, ["same", "different", "unknown", "changed_in_range"]) &&
+      typeof x.detail === "string",
+  ) &&
+  Array.isArray(v.suspects) &&
+  v.suspects.every(
+    (x: unknown) =>
+      isRecord(x) &&
+      typeof x.rank === "number" &&
+      typeof x.path === "string" &&
+      typeof x.change_kind === "string" &&
+      typeof x.score === "number" &&
+      oneOf(x.status, ["correlated", "weak"]) &&
+      isRecord(x.signals) &&
+      Object.values(x.signals).every((n) => typeof n === "number") &&
+      nullableString(x.document_id),
+  ) &&
+  typeof v.truncated === "boolean" &&
+  (v.baseline_run_id === null || typeof v.baseline_run_id === "number") &&
+  nullableString(v.baseline_sha) &&
+  typeof v.failed_sha === "string" &&
+  nullableString(v.compare_status) &&
+  typeof v.commits === "number" &&
+  typeof v.files === "number";
+export async function getHistory(id: string): Promise<History> {
+  return expect(await getJson(`/api/investigations/${enc(id)}/history`), isHistory);
+}
+export async function getChanges(id: string): Promise<Changes | null> {
+  const result = await getJson(`/api/investigations/${enc(id)}/changes`);
+  return result === null ? null : expect(result, isChanges);
+}
+export async function saveResolution(id: string, summary: string): Promise<Resolution> {
+  return expect(
+    await postJson(`/api/investigations/${enc(id)}/resolution`, { summary }),
+    isResolution,
+  );
 }

@@ -1,0 +1,43 @@
+﻿2026-09-23T18:45:31.7654321Z Current runner version: '2.329.0'
+2026-09-23T18:45:31.8654321Z ##[group]Runner Image
+2026-09-23T18:45:31.9654321Z Image: ubuntu-24.04
+2026-09-23T18:45:32.0654321Z Version: 20260914.1.0
+2026-09-23T18:45:32.1654321Z ##[endgroup]
+2026-09-23T18:45:32.2654321Z ##[group]GITHUB_TOKEN Permissions
+2026-09-23T18:45:32.3654321Z Contents: read
+2026-09-23T18:45:32.4654321Z ##[endgroup]
+2026-09-23T18:45:32.5654321Z Prepare workflow directory
+2026-09-23T18:45:32.6654321Z Prepare all required actions
+2026-09-23T18:45:32.7654321Z Getting action download info
+2026-09-23T18:45:33.7654321Z ##[group]Run actions/checkout@v4
+2026-09-23T18:45:33.8654321Z with:
+2026-09-23T18:45:33.9654321Z   repository: nacre-loom/weft-index
+2026-09-23T18:45:34.0654321Z   clean: true
+2026-09-23T18:45:34.1654321Z ##[endgroup]
+2026-09-23T18:45:34.2654321Z Syncing repository: nacre-loom/weft-index
+2026-09-23T18:45:34.3654321Z [command]/usr/bin/git version
+2026-09-23T18:45:34.4654321Z git version 2.51.0
+2026-09-23T18:45:34.5654321Z Initializing the repository
+2026-09-23T18:45:35.7654321Z Fetching the repository
+2026-09-23T18:45:36.7654321Z Checking out the ref
+2026-09-23T18:45:36.8654321Z [command]/usr/bin/git log -1 --format=%H
+2026-09-23T18:45:36.9654321Z 4ec769a311194ea8bd9565301552ee9ea19fb7d3
+2026-09-23T18:45:37.0654321Z ##[group]Run cargo test --workspace
+2026-09-23T18:45:37.1654321Z cargo test --workspace
+2026-09-23T18:45:37.2654321Z shell: /usr/bin/bash -e {0}
+2026-09-23T18:45:37.3654321Z env:
+2026-09-23T18:45:37.4654321Z   CARGO_TERM_COLOR: always
+2026-09-23T18:45:37.5654321Z   RUST_BACKTRACE: 1
+2026-09-23T18:45:37.6654321Z ##[endgroup]
+2026-09-23T18:45:37.7654321Z     Updating crates.io index
+2026-09-23T18:45:39.7654321Z error: failed to select a version for the requirement `shuttletree = "^0.6"`
+2026-09-23T18:45:39.8654321Z candidate versions found which didn't match: 0.5.3, 0.5.2, 0.5.1, ...
+2026-09-23T18:45:39.9654321Z location searched: crates.io index
+2026-09-23T18:45:40.0654321Z required by package `weft-index v0.1.0 (/home/runner/work/weft-index/weft-index)`
+2026-09-23T18:45:40.1654321Z ##[error]Process completed with exit code 101.
+2026-09-23T18:45:40.2654321Z Post job cleanup.
+2026-09-23T18:45:40.3654321Z [command]/usr/bin/git version
+2026-09-23T18:45:40.4654321Z git version 2.51.0
+2026-09-23T18:45:40.5654321Z Temporarily overriding HOME for git configuration
+2026-09-23T18:45:40.6654321Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/weft-index/weft-index
+2026-09-23T18:45:40.7654321Z Cleaning up orphan processes

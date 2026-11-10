@@ -1,0 +1,50 @@
+2026-09-24T16:08:02.1000000Z Current runner version: '2.329.0'
+2026-09-24T16:08:02.1010000Z ##[group]Runner Image
+2026-09-24T16:08:02.1020000Z Image: ubuntu-24.04
+2026-09-24T16:08:02.1030000Z Version: 20260920.1.0
+2026-09-24T16:08:02.1040000Z ##[endgroup]
+2026-09-24T16:08:02.1050000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-24T16:08:02.1060000Z Contents: read
+2026-09-24T16:08:02.1070000Z Metadata: read
+2026-09-24T16:08:02.1080000Z ##[endgroup]
+2026-09-24T16:08:02.1090000Z Prepare workflow directory
+2026-09-24T16:08:02.1100000Z Prepare all required actions
+2026-09-24T16:08:02.4200000Z ##[group]Run actions/checkout@v4
+2026-09-24T16:08:02.4210000Z with:
+2026-09-24T16:08:02.4220000Z   repository: tarnwick-labs/umberglass-dock
+2026-09-24T16:08:03.0070000Z Syncing repository: tarnwick-labs/umberglass-dock
+2026-09-24T16:08:03.7880000Z HEAD is now at 4fd6ab1 Add dispatch status filter
+2026-09-24T16:08:03.7890000Z ##[endgroup]
+2026-09-24T16:08:03.7900000Z ##[group]Run actions/setup-node@v4
+2026-09-24T16:08:03.7910000Z with:
+2026-09-24T16:08:03.7920000Z   node-version: 22
+2026-09-24T16:08:04.1100000Z ##[endgroup]
+2026-09-24T16:08:04.1110000Z ##[group]Run npm ci
+2026-09-24T16:08:09.1040000Z added 174 packages, and audited 175 packages in 5s
+2026-09-24T16:08:09.1050000Z found 0 vulnerabilities
+2026-09-24T16:08:09.1060000Z ##[endgroup]
+2026-09-24T16:08:09.1070000Z ##[group]Run npx playwright test --project=chromium --workers=1
+2026-09-24T16:08:10.0070000Z Running 8 tests using 1 worker
+2026-09-24T16:08:12.1400000Z   ✓  1 [chromium] › e2e/dispatch.spec.ts:10:5 › opens dispatch (1.5s)
+2026-09-24T16:08:13.0100000Z [quote-server] request=q62 POST /api/dispatch/quote size=oversized
+2026-09-24T16:08:13.0110000Z [quote-server] request=q62 acquired rate-table mutex
+2026-09-24T16:08:13.0120000Z [quote-server] request=q62 refreshOversizeRates waiting for rate-table mutex (owner=q62, non-reentrant)
+2026-09-24T16:08:57.2400000Z   ✘  2 [chromium] › e2e/dispatch.spec.ts:28:5 › quotes an oversized parcel (45.0s)
+2026-09-24T16:09:02.1100000Z   ✓  3 [chromium] › e2e/ledger.spec.ts:29:5 › exports ledger (1.6s)
+2026-09-24T16:09:05.7000000Z   1) [chromium] › e2e/dispatch.spec.ts:28:5 › quotes an oversized parcel ─────────────
+2026-09-24T16:09:05.7010000Z     Test timeout of 45000ms exceeded.
+2026-09-24T16:09:05.7020000Z     Error: page.waitForResponse: Test timeout of 45000ms exceeded.
+2026-09-24T16:09:05.7030000Z        37 | await page.getByLabel('Parcel size').selectOption('oversized');
+2026-09-24T16:09:05.7040000Z        38 | const response = page.waitForResponse('**/api/dispatch/quote');
+2026-09-24T16:09:05.7050000Z        39 | await page.getByRole('button', { name: 'Get quote' }).click();
+2026-09-24T16:09:05.7060000Z     >  40 | await response;
+2026-09-24T16:09:05.7070000Z        41 | await expect(page.getByTestId('quote-total')).toBeVisible();
+2026-09-24T16:09:05.7080000Z     at e2e/dispatch.spec.ts:40:9
+2026-09-24T16:09:05.7090000Z     attachment #1: trace (application/zip)
+2026-09-24T16:09:05.7100000Z     test-results/dispatch-quotes-an-oversized-parcel-chromium/trace.zip
+2026-09-24T16:09:05.7110000Z   1 failed
+2026-09-24T16:09:05.7120000Z   7 passed (55.5s)
+2026-09-24T16:09:05.7130000Z ##[error]Process completed with exit code 1.
+2026-09-24T16:09:05.7140000Z ##[endgroup]
+2026-09-24T16:09:05.8200000Z Post job cleanup.
+2026-09-24T16:09:05.9300000Z Cleaning up orphan processes

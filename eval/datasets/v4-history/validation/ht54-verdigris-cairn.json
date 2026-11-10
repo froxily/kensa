@@ -1,0 +1,13 @@
+{
+  "id": "ht54-verdigris-cairn",
+  "independent_labels": [
+    {"id": "e1", "cluster": "a", "relation": "first", "category": "docker"},
+    {"id": "e2", "cluster": "b", "relation": "lookalike", "category": "docker"},
+    {"id": "e3", "cluster": "c", "relation": "lookalike", "category": "missing_env_var"},
+    {"id": "e4", "cluster": "a", "relation": "recurrence", "category": "docker"}
+  ],
+  "verdict": "agree",
+  "disputed_fields": [],
+  "reason_category": "none",
+  "notes": "e1 and e4 probe with the absent cairn_probe role; e4 changes the runner, image, database and health timing. e2 probes port 5433 while PostgreSQL listens on 5432. e3 lacks a MySQL initialization password option. These require different fixes; the root causes match the logs and there is no giveaway commentary."
+}

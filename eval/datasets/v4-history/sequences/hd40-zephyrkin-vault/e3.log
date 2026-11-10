@@ -1,0 +1,48 @@
+2026-09-17T06:35:00.1123456Z Current runner version: '2.329.0'
+2026-09-17T06:35:00.1623456Z ##[group]Runner Image Provisioner
+2026-09-17T06:35:00.1823456Z Hosted Compute Agent
+2026-09-17T06:35:00.2023456Z Image: ubuntu-24.04
+2026-09-17T06:35:00.2223456Z ##[endgroup]
+2026-09-17T06:35:00.2523456Z ##[group]GITHUB_TOKEN Permissions
+2026-09-17T06:35:00.2723456Z Contents: read
+2026-09-17T06:35:00.2923456Z Metadata: read
+2026-09-17T06:35:00.3123456Z ##[endgroup]
+2026-09-17T06:35:00.3723456Z Prepare workflow directory
+2026-09-17T06:35:00.4823456Z Prepare all required actions
+2026-09-17T06:35:00.5923456Z Complete job name: integration
+2026-09-17T06:35:00.7123456Z ##[group]Run actions/checkout@v4
+2026-09-17T06:35:00.7323456Z with:
+2026-09-17T06:35:00.7523456Z   repository: zephyrkin/murmurvault
+2026-09-17T06:35:00.7723456Z   clean: true
+2026-09-17T06:35:00.7923456Z ##[endgroup]
+2026-09-17T06:35:00.9123456Z Syncing repository: zephyrkin/murmurvault
+2026-09-17T06:35:01.4123456Z Checking out the ref
+2026-09-17T06:35:01.6223456Z ##[group]Run actions/setup-dotnet@v4
+2026-09-17T06:35:01.6423456Z with:
+2026-09-17T06:35:01.6623456Z   dotnet-version: 8.0.404
+2026-09-17T06:35:01.6823456Z ##[endgroup]
+2026-09-17T06:35:03.1023456Z dotnet-install: Installed version is 8.0.404
+2026-09-17T06:35:03.2223456Z ##[group]Run dotnet test tests/Fallowspire.Integration/Fallowspire.Integration.csproj -c Release
+2026-09-17T06:35:03.2423456Z dotnet test tests/Fallowspire.Integration/Fallowspire.Integration.csproj -c Release
+2026-09-17T06:35:03.2623456Z shell: /usr/bin/bash -e {0}
+2026-09-17T06:35:03.2823456Z ##[endgroup]
+2026-09-17T06:35:04.0023456Z   Determining projects to restore...
+2026-09-17T06:35:04.8823456Z   Restored /home/runner/work/murmurvault/murmurvault/src/Fallowspire/Fallowspire.csproj (in 260 ms).
+2026-09-17T06:35:05.1723456Z   Restored /home/runner/work/murmurvault/murmurvault/tests/Fallowspire.Integration/Fallowspire.Integration.csproj (in 552 ms).
+2026-09-17T06:35:06.5323456Z   Fallowspire -> /home/runner/work/murmurvault/murmurvault/src/Fallowspire/bin/Release/net8.0/Fallowspire.dll
+2026-09-17T06:35:07.5623456Z   Fallowspire.Integration -> /home/runner/work/murmurvault/murmurvault/tests/Fallowspire.Integration/bin/Release/net8.0/Fallowspire.Integration.dll
+2026-09-17T06:35:07.6823456Z Test run for /home/runner/work/murmurvault/murmurvault/tests/Fallowspire.Integration/bin/Release/net8.0/Fallowspire.Integration.dll (.NETCoreApp,Version=v8.0)
+2026-09-17T06:35:07.7023456Z VSTest version 17.11.1 (x64)
+2026-09-17T06:35:07.7223456Z Starting test execution, please wait...
+2026-09-17T06:35:07.7423456Z A total of 1 test files matched the specified pattern.
+2026-09-17T06:35:08.2823456Z [xUnit.net 00:00:00.39]     Fallowspire.Integration.ArchiveProbeTests.ReadsManifest [FAIL]
+2026-09-17T06:35:08.3023456Z   Failed Fallowspire.Integration.ArchiveProbeTests.ReadsManifest [3 ms]
+2026-09-17T06:35:08.3223456Z   Error Message:
+2026-09-17T06:35:08.3423456Z    System.InvalidOperationException : Environment variable FALLOWSPIRE_ARCHIVE_URL is required.
+2026-09-17T06:35:08.3623456Z   Stack Trace:
+2026-09-17T06:35:08.3823456Z      at Fallowspire.Integration.ArchiveProbeTests.ReadsManifest() in /home/runner/work/murmurvault/murmurvault/tests/Fallowspire.Integration/ArchiveProbeTests.cs:line 26
+2026-09-17T06:35:08.4023456Z    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+2026-09-17T06:35:08.5023456Z Failed!  - Failed:     1, Passed:     4, Skipped:     0, Total:     5, Duration: 210 ms - Fallowspire.Integration.dll (net8.0)
+2026-09-17T06:35:08.5323456Z ##[error]Process completed with exit code 1.
+2026-09-17T06:35:08.6423456Z Post job cleanup.
+2026-09-17T06:35:08.7623456Z Cleaning up orphan processes

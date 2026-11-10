@@ -1,0 +1,54 @@
+2026-09-03T09:10:01.1000000Z Current runner version: '2.329.0'
+2026-09-03T09:10:01.1200000Z ##[group]Runner Image
+2026-09-03T09:10:01.1300000Z Image: ubuntu-24.04
+2026-09-03T09:10:01.1400000Z Version: 20260830.1.0
+2026-09-03T09:10:01.1500000Z ##[endgroup]
+2026-09-03T09:10:01.2000000Z ##[group]GITHUB_TOKEN Permissions
+2026-09-03T09:10:01.2100000Z Contents: read
+2026-09-03T09:10:01.2200000Z Metadata: read
+2026-09-03T09:10:01.2300000Z ##[endgroup]
+2026-09-03T09:10:01.3000000Z Prepare workflow directory
+2026-09-03T09:10:01.4000000Z Download action repository 'actions/checkout@v4'
+2026-09-03T09:10:02.0000000Z ##[group]Run actions/checkout@v4
+2026-09-03T09:10:02.0100000Z with:
+2026-09-03T09:10:02.0200000Z   repository: jasper-moor/tideledger
+2026-09-03T09:10:02.0300000Z   clean: true
+2026-09-03T09:10:02.0400000Z ##[endgroup]
+2026-09-03T09:10:02.2000000Z Syncing repository: jasper-moor/tideledger
+2026-09-03T09:10:03.5000000Z Fetching the repository
+2026-09-03T09:10:04.1000000Z Checking out the ref
+2026-09-03T09:10:04.2000000Z ##[group]Run erlef/setup-beam@v1
+2026-09-03T09:10:04.2100000Z with:
+2026-09-03T09:10:04.2200000Z   otp-version: '27.2'
+2026-09-03T09:10:04.2300000Z   elixir-version: '1.18.2'
+2026-09-03T09:10:04.2400000Z ##[endgroup]
+2026-09-03T09:10:08.1000000Z ##[group]Run mix local.hex --force
+2026-09-03T09:10:08.1100000Z mix local.hex --force
+2026-09-03T09:10:08.1200000Z mix local.rebar --force
+2026-09-03T09:10:08.1300000Z shell: /usr/bin/bash -e {0}
+2026-09-03T09:10:08.1400000Z ##[endgroup]
+2026-09-03T09:10:09.2000000Z * creating /home/runner/.mix/archives/hex-2.2.1
+2026-09-03T09:10:10.1000000Z * creating /home/runner/.mix/elixir/1-18/rebar3
+2026-09-03T09:10:10.2000000Z ##[group]Run mix deps.get
+2026-09-03T09:10:10.2100000Z mix deps.get
+2026-09-03T09:10:10.2200000Z shell: /usr/bin/bash -e {0}
+2026-09-03T09:10:10.2300000Z ##[endgroup]
+2026-09-03T09:10:11.1000000Z Resolving Hex dependencies...
+2026-09-03T09:10:11.3000000Z Resolution completed in 0.18s
+2026-09-03T09:10:11.3100000Z Unchanged:
+2026-09-03T09:10:11.3200000Z   ezstd 1.1.0
+2026-09-03T09:10:12.1000000Z ##[group]Run mix test
+2026-09-03T09:10:12.1100000Z mix test
+2026-09-03T09:10:12.1200000Z shell: /usr/bin/bash -e {0}
+2026-09-03T09:10:12.1300000Z ##[endgroup]
+2026-09-03T09:10:13.1000000Z ===> ezstd
+2026-09-03T09:10:13.3000000Z CC c_src/ezstd_nif.c
+2026-09-03T09:10:13.3100000Z c_src/ezstd_nif.c:8:10: fatal error: zlib.h: No such file or directory
+2026-09-03T09:10:13.3200000Z     8 | #include <zlib.h>
+2026-09-03T09:10:13.3300000Z       |          ^~~~~~~~
+2026-09-03T09:10:13.3400000Z 1 error generated.
+2026-09-03T09:10:13.3500000Z make: *** [Makefile:37: priv/ezstd_nif.so] Error 1
+2026-09-03T09:10:13.3600000Z ** (Mix) Could not compile dependency :ezstd
+2026-09-03T09:10:13.4000000Z ##[error]Process completed with exit code 1.
+2026-09-03T09:10:13.5000000Z Post job cleanup.
+2026-09-03T09:10:13.7000000Z Cleaning up orphan processes

@@ -1,0 +1,7 @@
+{
+  "id": "d01-settings", "split": "dev", "comparability": "comparable", "category": "missing_env_var", "culprit_kind": "workflow", "difficulty": "medium", "ecosystem": "python",
+  "title": "Required setting absent during collection",
+  "root_cause": "The workflow stopped supplying ORCHARD_REGION to the test job. The settings module requires that variable during test collection, so pytest exits before running the tests.",
+  "culprit_paths": [".github/workflows/check.yml"], "culprit_commit": "2222222222222222222222222222222222222222", "unverified_factors": [], "fix_keywords": ["ORCHARD_REGION", "env"],
+  "relevant_evidence": [{"path": "log", "start_line": 66, "end_line": 73, "why": "Collection fails while reading the required environment variable."}]
+}

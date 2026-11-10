@@ -1,0 +1,54 @@
+2026-09-08T11:20:01.1100000Z Current runner version: '2.328.0'
+2026-09-08T11:20:01.1120000Z ##[group]Operating System
+2026-09-08T11:20:01.1130000Z macOS
+2026-09-08T11:20:01.1140000Z 14.7.6
+2026-09-08T11:20:01.1150000Z ##[endgroup]
+2026-09-08T11:20:01.1160000Z ##[group]Runner Image
+2026-09-08T11:20:01.1170000Z Image: macos-14
+2026-09-08T11:20:01.1180000Z Version: 20250901.0021
+2026-09-08T11:20:01.1190000Z ##[endgroup]
+2026-09-08T11:20:01.2210000Z Prepare workflow directory
+2026-09-08T11:20:01.5510000Z Prepare all required actions
+2026-09-08T11:20:02.1000000Z Download action repository 'actions/checkout@v4'
+2026-09-08T11:20:02.3310000Z Complete job name: archive
+2026-09-08T11:20:02.4010000Z ##[group]Run actions/checkout@v4
+2026-09-08T11:20:02.4020000Z with:
+2026-09-08T11:20:02.4030000Z   repository: peregrine-tide/harbor-signal-ios
+2026-09-08T11:20:02.4040000Z   clean: true
+2026-09-08T11:20:02.4050000Z   persist-credentials: false
+2026-09-08T11:20:02.4060000Z ##[endgroup]
+2026-09-08T11:20:02.9510000Z Syncing repository: peregrine-tide/harbor-signal-ios
+2026-09-08T11:20:03.2450000Z Working directory is '/Users/runner/work/harbor-signal-ios/harbor-signal-ios'
+2026-09-08T11:20:04.0110000Z Checking out the ref
+2026-09-08T11:20:04.1440000Z HEAD is now at 44bf271 Enable tide alerts
+2026-09-08T11:20:04.3010000Z ##[group]Run xcodebuild -version
+2026-09-08T11:20:04.3020000Z xcodebuild -version
+2026-09-08T11:20:04.3030000Z shell: /bin/bash -e {0}
+2026-09-08T11:20:04.3040000Z ##[endgroup]
+2026-09-08T11:20:04.5100000Z Xcode 16.2
+2026-09-08T11:20:04.5110000Z Build version 16C5032a
+2026-09-08T11:20:04.6000000Z ##[group]Run xcodebuild archive
+2026-09-08T11:20:04.6010000Z xcodebuild archive -project HarborSignal.xcodeproj -scheme HarborSignal -configuration Release -destination 'generic/platform=iOS' -archivePath build/HarborSignal.xcarchive CURRENT_PROJECT_VERSION=214
+2026-09-08T11:20:04.6020000Z shell: /bin/bash -e {0}
+2026-09-08T11:20:04.6030000Z ##[endgroup]
+2026-09-08T11:20:05.1920000Z Command line invocation:
+2026-09-08T11:20:05.1930000Z     /Applications/Xcode_16.2.app/Contents/Developer/usr/bin/xcodebuild archive -project HarborSignal.xcodeproj -scheme HarborSignal -configuration Release -destination generic/platform=iOS -archivePath build/HarborSignal.xcarchive CURRENT_PROJECT_VERSION=214
+2026-09-08T11:20:05.7200000Z Build settings from command line:
+2026-09-08T11:20:05.7210000Z     CURRENT_PROJECT_VERSION = 214
+2026-09-08T11:20:06.1600000Z Resolve Package Graph
+2026-09-08T11:20:06.3900000Z Resolved source packages:
+2026-09-08T11:20:06.3910000Z   CurrentMarks: /Users/runner/work/harbor-signal-ios/harbor-signal-ios/Packages/CurrentMarks
+2026-09-08T11:20:06.8110000Z ComputePackagePrebuildTargetDependencyGraph
+2026-09-08T11:20:07.0100000Z Prepare packages
+2026-09-08T11:20:07.3310000Z ComputeTargetDependencyGraph
+2026-09-08T11:20:07.3320000Z note: Building targets in dependency order
+2026-09-08T11:20:07.3330000Z note: Target dependency graph (2 targets)
+2026-09-08T11:20:07.6120000Z /Users/runner/work/harbor-signal-ios/harbor-signal-ios/HarborSignal.xcodeproj: error: Provisioning profile "HarborSignal App Store" doesn't support the Push Notifications capability. (in target 'HarborSignal' from project 'HarborSignal')
+2026-09-08T11:20:07.6130000Z /Users/runner/work/harbor-signal-ios/harbor-signal-ios/HarborSignal.xcodeproj: error: Provisioning profile "HarborSignal App Store" doesn't include the aps-environment entitlement. (in target 'HarborSignal' from project 'HarborSignal')
+2026-09-08T11:20:07.7340000Z ** ARCHIVE FAILED **
+2026-09-08T11:20:07.7350000Z The following build commands failed:
+2026-09-08T11:20:07.7360000Z 	Archiving project HarborSignal with scheme HarborSignal
+2026-09-08T11:20:07.7370000Z (1 failure)
+2026-09-08T11:20:07.7900000Z ##[error]Process completed with exit code 65.
+2026-09-08T11:20:07.8300000Z Cleaning up orphan processes
+2026-09-08T11:20:07.8700000Z Complete job
